@@ -1,2 +1,95 @@
-
 \section{Rankin-Selberg product}
+
+\subsection{Rankin-Selberg convolution of modular forms}
+
+Let $f, g$ be two holomorphic cusp forms of weight $k$ and level 1.
+Assume that two forms have Fourier expansions
+$$
+    f(z) = \sum_{n\geq 1} a_{n}e^{2\pi i n}, \quad g(z) = \sum_{n\geq 1} b_{n}e^{2\pi i n}.
+$$
+If $f,g$ are Hecke eigenforms, then their $L$-functions admit euler products as
+\begin{align*}
+    L(s, f) &= \sum_{n\geq 1}\frac{a_{n}}{n^{s}} = \prod_{p} \frac{1}{(1 - \alpha_{p}p^{-s})(1 - \beta_{p}p^{-s})} \\
+    L(s, g) &= \sum_{n\geq 1}\frac{b_{n}}{n^{s}} = \prod_{p} \frac{1}{(1 - \alpha_{p}'p^{-s})(1 - \beta_{p}'p^{-s})}
+\end{align*}
+where $\alpha_{p} + \beta_{p} = a_{p}$, $\alpha_{p}' + \beta_{p}' = b_{p}$, and $\alpha_{p}\beta_{p} = \alpha_{p}'\beta_{p}' = p^{k-1}$ for all $p$.
+Rankin (1939) and Selberg (1940) independently studied the \emph{convolution} of two $L$-series attached to $f$ and $g$, which is
+$$
+    L(s, f\times g) = \sum_{n\geq 1} \frac{a_{n}\overline{b_{n}}}{n^{s}} = \prod_{p} \frac{1}{(1 - \alpha_{p}\alpha_{p}'p^{-s})(1 - \alpha_{p}\beta_{p}'p^{-s})(1 - \beta_{p}\alpha_{p}'p^{-s})(1 - \beta_{p}\beta_{p}'p^{-s})}
+$$
+and studied its analytic properties.
+They proved that the new $L$-function also satisfy similar properties as original $L$-functions $L(s, f)$ and $L(s, g)$: it admits a meromorphic continuation, bounded on vertical strips,
+and satisfy a functional equation.
+
+\begin{theorem}[Rankin-Selberg convolution]
+Let $f, g$ be two holomorphic cusp eigenforms of weight $k$ on $\Gamma = \mathrm{SL}(2, \mathbb{Z})$.
+Let
+$$
+\Lambda(s, f \times g) = (2\pi)^{-2s}\Gamma(s)\Gamma(s - k + 1)\zeta(2s-2k+2)L(s, f\times g)
+$$
+be a completed $L$-function.
+Then $\Lambda(s, f\times g)$, which is originally defined for large $\Re(s)$, admits a meromorphic continuation to all $s$ except for at most simple poles at $s = k$ and $k-1$.
+Also, it satisfies a functional equation
+$$
+\Lambda(s, f\times g) = \Lambda(2k-1-s, f\times g).
+$$
+\end{theorem}
+Essence of the proof is using real-analytic Eisenstein series with \emph{unfolding trick}.
+For $s \in \mathbb{C}$, define a real-analytic Eisenstein series $E_{s}(z)$ as
+$$
+E_{s}(z):= \sum_{\gamma \in P\backslash \mathrm{SL}(2, \mathbb{Z})} \Im(\gamma z)^{s}
+$$
+where $P = \left\{\left(\begin{smallmatrix} * & * \\ 0 & * \end{smallmatrix}\right)\right\}\subset \Gamma$ is a standard parabolic subgroup of $\Gamma$.
+Clearly, this is a $\Gamma$-invariant function, and it converges for $\Re(s) > 1$. 
+Also, using $\Delta y^{s} = s(1-s)y^{s}$, one can show that $E_{s}(z)$ is also a Maass form with eigenvalue $s(1-s)$ (but not a cusp form).
+By computing its Fourier expansion, we can see that $E_{s}(z)$, as a function in $s$, satisfies the functional equation 
+$$
+    \xi(2s)E_{s}(z) = \xi(2 - 2s)E_{1-s}(z)
+$$
+where $\xi(s)$ is the completed zeta function
+$$
+    \xi(s) = \pi^{-s/2} \Gamma\left(\frac{s}{2}\right)\zeta(s)
+$$
+that satisfies $\xi(s) = \xi(1-s)$ for all $s$.
+\begin{proposition}
+$$    
+    \langle f\cdot E_{s}, g\rangle = (4\pi)^{-(s+2k-1)}\Gamma(s + 2k-1)\sum_{n\geq 1} L(s+2k-1, f\times g)
+$$
+where $\langle -,-\rangle$ is the Petersson inner product.
+\end{proposition}
+\begin{proof}
+The idea is to unfold the integral.
+If $\varphi$ is a $P$-invariant function on $\mathfrak{H}$, then Fubini's theorem gives
+$$
+\int_{\Gamma\backslash \mathfrak{H}} \sum_{\gamma \in P \backslash \Gamma}\varphi(\gamma z) \frac{dxdy}{y^{2}}
+=\int_{P \backslash \mathfrak{H}} \varphi(z) \frac{dxdy}{y^{2}}
+= \int_{0}^{\infty} \int_{0}^{1} \varphi(z) \frac{dxdy}{y^{2}}
+$$
+(the fundamental domain of $P\backslash \mathfrak{H}$ is $\{z = x + iy \in \mathfrak{H}\,:\, 0\leq x < 1\}$.)
+Once we apply this for $\varphi(z) = y^{s} f(z)\overline{g(z)}y^{2k}$, we get
+\begin{align*}
+    \langle f\cdot E_{s}, g\rangle &= \int_{0}^{\infty}\int_{0}^{1} y^{s}f(z)\overline{g(z)} y^{2k} \frac{dxdy}{y^{2}} \\
+    &= \sum_{m, n \geq 1} a_{m} \overline{b_{n}}y^{s + 2k - 1} e^{-2\pi(m+n)y}  \left(\int_{0}^{1} e^{2\pi i (m - n)x}dx\right)\frac{dy}{y} \\
+    &= \sum_{n\geq 1} a_{n}\overline{b_{n}} \int_{0}^{\infty} y^{s + 2k - 1} e^{-4\pi n y} \frac{dy}{y} \\
+    &= (4\pi)^{-(s+2k-1)}\Gamma(s + 2k - 1) L(s+2k-1, f\times g).
+\end{align*}
+\end{proof}
+
+\subsection{Modularity of $\GL(2) \times \GL(2)$}
+It is also possible to construct Rankin-Selberg $L$-function attached to two Maass cusp forms with similar properties.
+In general, for given automorphic representations $\pi_{1}, \pi_{2}$ on $\GL(2)$,
+one can define Rankin-Selberg $L$-function $L(s, \pi_{1}\times \pi_{2})$.
+According to the philosophy of Langlands, there should exists a $\GL(4)$ automorphic representation whose $L$-function 
+is $L(s, \pi_{1}\times \pi_{2})$.
+This is proven by Ramakrishnan in 2000.
+\begin{theorem}[Ramakrishnan, \cite{ramakrishnan2000modularity}]
+    Let $\pi_{1}, \pi_{2}$ be automorphic forms on $\GL(2, \mathbb{A})$.
+    Then there exists an automorphic representation $\pi_{1} \boxtimes \pi_{2}$ on $\GL(4, \mathbb{A})$
+    whose $L$-function equals the Rankin-Selberg $L$-function, i.e 
+    $$
+        L(s, \pi_{1}\boxtimes \pi_{2}) = L(s, \pi_{1} \times \pi_{2}).
+    $$
+\end{theorem}
+As a corollary, he proved multiplicity one result for $\SL(2)$.
+\subsection{$\GL(n)\times \GL(n)$}
+
