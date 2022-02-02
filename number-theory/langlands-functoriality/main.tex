@@ -1,0 +1,39 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+% \newtheorem*{conjecture*}{Conjecture}[section]
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+
+\DeclareMathOperator{\GL}{\mathrm{GL}}
+\DeclareMathOperator{\PGL}{\mathrm{PGL}}
+\DeclareMathOperator{\Ad}{\mathrm{Ad}}
+\DeclareMathOperator{\Oo}{\mathrm{O}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\AI}{\mathrm{AI}}
+
+\title{Langlands Functoriality Conjecture - A Survey}
+\author{Seewoo Lee}
+% \date{July 2021}
+
+\begin{document}
+
+\maketitle
+
+\input{intro}
+
+\input{autoind}
+\input{basechange}
+\input{rankinselberg}
+\input{symmetricpower}
+\input{jacquetlanglands}
+\input{thetacorrespondence}
+
+\bibliographystyle{acm}
+\bibliography{ref}
+\end{document}

@@ -1,0 +1,95 @@
+
+\section{Automorphic induction}
+
+\subsection{From $\GL_{1}/K$ to $\GL_{2}/\mathbb{Q}$}
+Let $K$ be a quadratic field (over $\mathbb{Q}$) and $\xi$ be a Hecke character for $K$. 
+By Hecke and Maass, it was proven that one can associate $\GL_{2}$ automorphic forms. 
+Hecke attached modular forms to Hecke characters for imaginary quadratic fields, and Maass attached Maass forms to those for real quadratic fields.
+More precisely, they proved the following:
+\begin{theorem}[Hecke]
+Let $\xi$ (mod $\mathfrak{m}$) be a primitive Hecke character of $K = \mathbb{Q}(\sqrt{D})$ of discriminant $D < 0$ such that 
+$$
+\xi((a)) = \left(\frac{a}{|a|}\right)^{u} \quad \mathrm{if}\, a\equiv 1 \,(\mathrm{mod}\,\mathfrak{m})
+$$
+where $u$ is a non-negative integer. Then 
+$$
+f(z) = \sum_{\mathfrak{a} \subset \mathcal{O}_{K}}\xi(\mathfrak{a}) (N\mathfrak{a})^{\frac{u}{2}} e^{2\pi (N\mathfrak{a})z} 
+$$
+is a modular form of weight $k = u + 1$ and level $N = |D|\cdot N\mathfrak{m}$ with Nebentypus $\chi\,(\mathrm{mod}\,N)$, which is a Dirichlet character defined as 
+$$
+\chi(n) = \chi_{D}(n)\xi((n))\quad n \in \mathbb{Z}.
+$$
+\end{theorem}
+
+\begin{theorem}[Maass]
+Let $K = \mathbb{Q}(\sqrt{D})$ be a real quadratic field of discriminant $D > 0$ and $\xi\,(\mathrm{mod}\,\mathfrak{m})$ a Hecke character such that
+$$
+\xi((a)) = \frac{a}{|a|}\quad \mathrm{if}\, a \equiv 1\,(\mathrm{mod}\,\mathfrak{m})
+$$
+or
+$$
+\xi((a)) = \frac{a'}{|a'|}\quad \mathrm{if}\, a \equiv 1\,(\mathrm{mod}\,\mathfrak{m})
+$$
+where $a'$ is a conjugate of $a$ over $\mathbb{Q}$. 
+Then 
+$$
+u(z) = \sum_{\mathfrak{a}\in \mathcal{O}_{K}}\xi(\mathfrak{a})y^{\frac{1}{2}}e^{2\pi i (N\mathfrak{a})z}, \quad z = x + yi
+$$
+is a Maass form of level $N$, eigenvalue $1/4$, and a Nebentypus $\chi\,(\mathrm{mod}\,N)$ for $N = D\cdot N\mathfrak{m}$.
+\end{theorem}
+
+Both theorem can be proved using converse theorems for $L$-functions.
+By showing that the $L$-function attached to Hecke character $\xi$ satisfies suitable functional equations, converse theorem shows that the $L$ function should coincides with one comes from modular forms or Maass forms.
+
+\subsection{From $\GL_{n}/K$ to $\GL_{rn}/F$}
+In view of Langlands functoriality conjecture, Hecke and Maass' results can be considered as a special case when $G = \mathrm{GL}_{1} / K$ and $G' = \GL_{2}/\mathbb{Q}$. 
+Automorphic induction, which is a vast generalization of this, is a functoriality from $\GL_{n}/K$ to $\GL_{rn}/F$, where $K/F$ is a degree $r$ extension.
+% It is more natural to see Galois counterpart for the functoriality. 
+On Galois side, this actually corresponds to the \emph{induction} of Galois representation of $G_{K} = \Gal(\overline{K}/K)$ to $G_{F} = \Gal(\overline{F}/F)$.
+In other words, if one has a $\GL_{n}/K$ automorphic representation $\pi$ with corresponding Galois representation $\sigma = \sigma(\pi): G_{K} \to \GL_{n}(\mathbb{C})$, 
+then automorphic induction predicts the existence of $\GL_{rn}/F$ automorphic representation $\Pi$ that corresponds to the Galois representation
+$$
+\Sigma = \mathrm{Ind}_{G_{K}}^{G_{F}} \sigma : G_{F} \to \GL_{rn}(\mathbb{C})
+$$
+via Langlands correspondence.
+
+\begin{conjecture}[Automorphic induction]
+Let $K/F$ be a degree $r$ extension of number fields. 
+Let $\pi$ be a $\GL_{n}/K$ automorphic representation. 
+Then there exists a $\GL_{rn}/F$ automorphic representation $\Pi = \AI_{F}^{K}(\pi)$ such that 
+\begin{enumerate}
+    \item the Galois representations 
+    $$
+    \sigma = \sigma(\pi): G_{K} \to \GL_{n}(\mathbb{C}), \quad \Sigma = \Sigma(\Pi): G_{F} \to \GL_{rn}(\mathbb{C})
+    $$
+    corresponds to $\pi$ and $\Pi$ via Langlands correspondence satisfies 
+    $$
+    \Sigma \simeq \mathrm{Ind}_{G_{K}}^{G_{F}} \sigma.
+    $$
+    \item Local $L$-functions of $\pi$ and $\Pi$ are related as
+    $$
+    L(s, \Pi_{v}) = \prod_{w|v} L(s, \pi_{w})
+    $$
+    for all but finitely many $v$. 
+\end{enumerate}
+\end{conjecture}
+
+This is open in general, but proven to be true for some cases.
+% Here are brief reviews of proofs for known cases. 
+We give a sketch of proofs for known cases.
+
+\subsubsection{Local automorphic induction (Henniart-Herb)}
+
+\subsubsection{Cyclic Galois extension of prime degree (Arthur-Clozel)}
+
+\begin{theorem}[Arthur-Clozel, \cite{arthur2016simple}]
+
+\end{theorem}
+% This includes:
+% \begin{itemize}
+%     \item Over local fields
+%     \item Cyclic Galois extension of prime degree
+%     \item Non-normal cubic extension
+%     \item Non-normal extensions with solvable Galois closure for certain Hecke characters
+%     \item Non-normal quintic extension with non-solvable closure
+% \end{itemize}

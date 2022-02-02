@@ -1,0 +1,24 @@
+\section{Base change}
+
+\subsection{Doi-Naganuma lifting}
+In \cite{doi1969functional}, Doi and Naganuma constructed a lifting from the space of elliptic modular forms to the space of Hilbert modular forms of the same (parallel) weight. 
+The proved the following theorem:
+\begin{theorem}[Doi-Naganuma \cite{doi1969functional}]
+Let $p$ be a prime such that the real quadratic field $F = \mathbb{Q}(\sqrt{p})$ has class number 1, and let $\phi_{p}$ be the Dirichlet character associated to $F$.
+Let $f(z) = \sum_{n\geq 1} a_{n}q^{n}\in S_{k}(p, \phi_{p})$ be a weight $k$ Hecke eigenform of level $p$ with Nebentypus $\phi_{p}$.
+Then there exists a Hilbert modular form $h:= \mathrm{DN}(f)$ with respect to $\mathrm{GL}_{2}(\mathcal{O}_{F})$, the \emph{Doi-Naganuma lift of $f$}, that satisfies
+\begin{enumerate}
+    \item $h$ is also an Hecke eigenform of weight $k$,
+    \item 
+    $$
+        L(s, \mathrm{DN}(f)) = L(s, f)L(s, f^{\rho})
+    $$
+    where $f^{\rho}(z) := \sum_{n\geq 1} \overline{a_{n}}q^{n}$ is a complex conjugate of $f(z)$,
+    \item
+    has a Fourier expansion
+    $$
+        h(z_{1}, z_{2}) = - \frac{B_{k}}{2k}\tilde{a}_{0} + \sum_{\substack{\nu \in \mathfrak{d}_{F}^{-1} \\ \nu >> 0}} \sum_{d | \nu} d^{k-1}\tilde{a}_{p\nu\nu' / d^{2}} q_{1}^{\nu} q_{2}^{\nu'}
+    $$
+    where $B_{k}$ denotes the $k$-th Bernoulli number, $\nu'$ is a conjugate of $\nu$, and $q_{j} = e^{2\pi i z_{j}}$. 
+\end{enumerate}
+\end{theorem}
