@@ -14,9 +14,10 @@ If $f,g$ are Hecke eigenforms, then their $L$-functions admit euler products as
 \end{align*}
 where $\alpha_{p} + \beta_{p} = a_{p}$, $\alpha_{p}' + \beta_{p}' = b_{p}$, and $\alpha_{p}\beta_{p} = \alpha_{p}'\beta_{p}' = p^{k-1}$ for all $p$.
 Rankin (1939) and Selberg (1940) independently studied the \emph{convolution} of two $L$-series attached to $f$ and $g$, which is
-$$
-    L(s, f\times g) = \sum_{n\geq 1} \frac{a_{n}\overline{b_{n}}}{n^{s}} = \prod_{p} \frac{1}{(1 - \alpha_{p}\alpha_{p}'p^{-s})(1 - \alpha_{p}\beta_{p}'p^{-s})(1 - \beta_{p}\alpha_{p}'p^{-s})(1 - \beta_{p}\beta_{p}'p^{-s})}
-$$
+\begin{align*}
+    L(s, f\times g) &= \sum_{n\geq 1} \frac{a_{n}\overline{b_{n}}}{n^{s}} \\
+    &= \prod_{p} \frac{1}{(1 - \alpha_{p}\alpha_{p}'p^{-s})(1 - \alpha_{p}\beta_{p}'p^{-s})(1 - \beta_{p}\alpha_{p}'p^{-s})(1 - \beta_{p}\beta_{p}'p^{-s})}
+\end{align*}
 and studied its analytic properties.
 They proved that the new $L$-function also satisfy similar properties as original $L$-functions $L(s, f)$ and $L(s, g)$: it admits a meromorphic continuation, bounded on vertical strips,
 and satisfy a functional equation.
@@ -83,6 +84,7 @@ According to the philosophy of Langlands, there should exists a $\GL(4)$ automor
 is $L(s, \pi_{1}\times \pi_{2})$.
 This is proven by Ramakrishnan in 2000.
 \begin{theorem}[Ramakrishnan, \cite{ramakrishnan2000modularity}]
+    \label{rankin-selberg-modularity}
     Let $\pi_{1}, \pi_{2}$ be automorphic forms on $\GL(2, \mathbb{A})$.
     Then there exists an automorphic representation $\pi_{1} \boxtimes \pi_{2}$ on $\GL(4, \mathbb{A})$
     whose $L$-function equals the Rankin-Selberg $L$-function, i.e 
@@ -90,6 +92,43 @@ This is proven by Ramakrishnan in 2000.
         L(s, \pi_{1}\boxtimes \pi_{2}) = L(s, \pi_{1} \times \pi_{2}).
     $$
 \end{theorem}
-As a corollary, he proved multiplicity one result for $\SL(2)$.
+
+As a corollary of Theorem \ref{rankin-selberg-modularity}, he proved multiplicity one result for $\SL(2)$.
+This was conjectured by Labesse and Langlands before \cite{labesse1979indistinguishability}.
+\begin{theorem}[Ramakrishnan, \cite{ramakrishnan2000modularity}]
+\label{sl2-multiplicity-one}
+Multiplicity one theorem holds for $\SL(2)$. 
+More precisely, any smooth irreducible admissible representation of $\SL(2, \mathbb{A})$ occurs with 
+multiplicity at most one in the space of cusp forms $L^{2}_{0}(\SL(2, F)\backslash\SL(2, \mathbb{A}_{F}))$.
+\end{theorem}
+In the context of modular forms, this implies the following.
+Let $f, g$ be cusp forms of level $N$ and $M$ respectively.
+Assume that, for all but finitely many $p$, we have
+$$
+    a_{p}^{2} = b_{p}^{2}
+$$
+where $a_{p}$ (resp. $b_{p}$) is the $p$-th Fourier coefficient of $f$ (resp. $g$).
+Then there exists a quadratic Dirichlet character $\chi$ such that
+$$
+    a_{p} = \chi(p)b_{p}
+$$
+for all but finitely many $p$.
+Also, if $N, M$ are in addition square-free, then $\chi = 1$ and so $f = g$ by strong multiplicity one.
+
+Proof of Theorem \ref{sl2-multiplicity-one} goes as follows. 
+In \cite{labesse1979indistinguishability}, the authors proved that the multiplicity one theorem for $\SL(2)$ 
+holds if one can show the following.
+\begin{theorem}[Ramakrishnan, \cite{ramakrishnan2000modularity}]
+If two automorphic representation $\pi, \pi'$ on $\GL(2, \mathbb{A}_{F})$ satisfy
+$\Ad(\pi)\simeq \Ad(\pi')$, then $\pi' \simeq \pi \otimes \chi$ for some idele class character $\chi$ of $F$.
+Here $\Ad$ is the adjoint lift from $\GL(2)$ to $\GL(3)$ \cite{gelbart1976relation}.
+\end{theorem}
+He first show this when at least one of $\pi$ or $\pi'$ is \emph{dihedral} (i.e. has a form of $\mathrm{AI}_{K}^{F}(\mu)$ for some 
+quadratic extension $K$ of $F$ and idele class character $\mu$ of $K$).
+If both $\pi$, $\pi'$ are not dihedral, then he proved that $\pi \boxtimes \pi'$ is not cuspidal by
+analyzing poles of $L$-functions at $s = 1$.
+which shows that $\pi' \simeq \pi \otimes \chi$ for some $\chi$ by cuspidality criterion that is also proved by him in loc. cit.
+
+
 \subsection{$\GL(n)\times \GL(n)$}
 
