@@ -2,11 +2,11 @@
 \section{Theta correspondence and Howe duality}
 
 \subsection{Half-integral weight modular forms}
-The theta series, defined as 
+The theta series
 $$
 \theta(z) = \sum_{n\in\mathbb{Z}} q^{n^{2}}, \qquad q = e^{2\pi i z}
 $$
-is regarded as a powerful to study lattices and quadratic forms.
+is regarded as a powerful tool to study lattices and quadratic forms.
 For example, power of the theta series $\theta(z)^{k}$ is a generating function of $r_{k}(n)$,
 the number of ways to represent an integral $n$ as a sum of $k$ squares.
 For \emph{even} $k$, $\theta(z)^{k}$ is a weight $k/2$ modular form,
@@ -30,12 +30,62 @@ and Lagrange's four square theorem is a direct consequence of this
 in the book \cite{bruinier20081} for details).
 
 How about the \emph{odd} powers of $\theta(z)$? For example, what is $\theta(z)$ itself?
+Since $\theta(z)^{2}$ is a weight 1 modular form, we have $\theta(\gamma z)^{2} = \chi_{4}(d)(cz+d)\theta(z)^{2}$
+for all $\gamma = \left(\begin{smallmatrix} a & b \\ c & d\end{smallmatrix}\right) \in \Gamma_{1}(4)$.
+So $\theta(z)$ itself satisfies a transformation law $\theta(\gamma z) = j(\gamma, z)\theta(z)$ where $j(\gamma, z)$ is, by definition,
+$j(\gamma, z):= \theta(\gamma z) / \theta(z)$.
+Indeed, it can be written as
+$$
+j(\gamma, z) =\begin{cases} \epsilon_{d}^{-1} \left(\frac{c}{d}\right)(cz + d)^{1/2} & c \neq 0 \\ 1 & c = 0\end{cases}
+$$
+where the branch of $(cz + d)^{1/2}$ is choosen so that its real part is positive.
+$\epsilon_{d}$ is 1 if $d\equiv 1\,(\mathrm{mod}\,4)$, and $i$ otherwise.
+% By definition, the $\theta$-multiplier $j(\gamma, z)$ satisfies $j(\gamma_{1}\gamma_{2}, z) =j(\gamma_{1}, \gamma_{2}z) j(\gamma_{2}, z)$.
+
+In general, half-integral weight modular forms are defined as follows.
+Define $\mathcal{G}$ to be the group with elements $(\gamma, \phi)$ where
+$\gamma = \left(\begin{smallmatrix} a &b \\ c & d \end{smallmatrix}\right) \in \GL^{+}(2, \mathbb{R})$ 
+(group of matrices with positive determinant) and
+$\phi: \mathfrak{H} \to \mathbb{C}$ is a holomorphic function satisfying
+$\phi(z)^{2} = t\det(\gamma)^{-1/2}(cz+d)$ with $t = t(\gamma, \phi)\in \mathbb{C}$
+independent of $z$ satisfying $|t| = 1$.
+This has a group structure defined as
+$$
+(\gamma_{1}, \phi_{1})(\gamma_{2}, \phi_{2}) = (\gamma_{1}\gamma_{2}, z\mapsto \phi_{1}(\gamma_{2}z)\phi_{2}(z))
+$$
+and it is an extension of the group $\GL^{+}(2, \mathbb{R})$ with fiber $\mathbb{T} = \{z\in\mathbb{C}\,:\,|z| = 1\}$.
+
+We have Hecke operators on the space of half-integral modular forms too, but it is quite different from that of integral weights.
+
+
 
 \subsection{Shimura correspondence and Shintani lift}
+Let $f(z) = \sum_{n \geq 1} a_{n}q^{n}$ be a Hecke eigenform of half-integral weight $k/2$ and level $N$ with character $\chi$, i.e.
+$T_{\chi, p^{2}}f = \lambda_{p}f$ for all $p$ with $p\nmid N$.
+Then for every square-free integer $t$, we have
+\begin{align*}
+    \sum_{n\geq 1} \frac{a_{n^{2}}}{n^{s}} \prod_{p} \left(1 - \chi(p)\left(\frac{-1}{p}\right)^{\frac{k-1}{2}}p^{\frac{k-1}{2}-1-s}\right)^{-1} = \prod_{p} (1 - \lambda_{p} p^{-s} + \chi(p)^{2}p^{k-2-2s})^{-1}
+\end{align*}
 In \cite{shimura1973onmodular}, Shimura established a lift from the space of 
 half integral weight modular forms to the space of integral weight modular forms.
+More precisely, he proved that the RHS of above equation becomes an $L$-function attached to
+certain weight $k-1$ modular form.
 \begin{theorem}[Shimura, \cite{shimura1973onmodular}]
+Let $F(z) = \sum_{n\geq 1} A_{n}q^{n}$ where
+$$
+\sum_{n\geq 1} \frac{A_{n}}{n^{s}} = \prod_{p} (1 - \lambda_{p} p^{-s} + \chi(p)^{2}p^{k-2-2s})^{-1}.
+$$
+Then $F(z)$ is a weight $k-1$ modular form satisfying
+$$
+F(\gamma z) = \chi(d)^{2}(cz + d)^{k-1} F(z)
+$$
+for all $\gamma \in \Gamma_{0}(N_{0})$, where $N_{0}$ is an integer only depends on $N$ and $\chi$.
+This defines a map
+$$S_{k/2}(N, \chi) \to M_{k-1}(N_{0}, \chi^{2}),$$
+which is called as Shimura correspondence.
+$F(z)$ is a cusp form if $k\geq 5$.
 \end{theorem}
+The proof is based on Weil's converse theorem.
 
 \subsection{Waldspurger's work}
 
