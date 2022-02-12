@@ -55,7 +55,32 @@ $$
 $$
 and it is an extension of the group $\GL^{+}(2, \mathbb{R})$ with fiber $\mathbb{T} = \{z\in\mathbb{C}\,:\,|z| = 1\}$.
 
+Some other examples of half-integral weight modular forms are the theta series with characters.
+For example, an even primitive character $\psi$ of conductor $r$ defines a theta series
+$$
+\theta_{\psi}(z) = \sum_{n\in\mathbb{Z}} \psi(n)q^{n^{2}}
+$$
+that belongs to $M_{1/2}(\Gamma_{0}(4r^{2}), \psi)$ (Proposition 2.2 of \cite{shimura1973onmodular}, proven by Poisson summation formula).
+From this, we also have $\theta_{\psi, t}(z):= \theta_{\psi}(tz) \in M_{1/2}(\Gamma_{0}(4r^{2}t), \psi)$.
+Note that $\theta_{\psi}(z)$ is different from $(\theta \otimes \psi)(z) = \sum_{n\in \mathbb{Z}}\psi(n)^{2}q^{n^2}$,
+the series obtained by \emph{twisting} $\theta$ with character $\psi$.
+Serre and Stark proved that every modular form of weight $1/2$ is a linear combination of theta series $\theta_{\psi, t}$.
+Indeed, they find a bases for $M_{1/2}(\Gamma_{0}(N), \chi)$.
+
+\begin{theorem}[Serre-Stark, \cite{serre1977modular}]
+Let $\Omega(N, \chi)$ be the set of pairs $(\psi, t)$ where $t\geq 1$ is an integer and $\psi$ is an
+even primitive character of conductor $r = r(\psi)$ such that
+\begin{enumerate}
+    \item $4r^{2}t | N$
+    \item $\chi(n) = \psi(n)\left(\frac{n}{t}\right)$ for all $n$ prime to $N$ (i.e. $\psi$ is the primitive character
+    associated with $\chi \left(\frac{\cdot}{t}\right)$).
+\end{enumerate}
+Then $\{\theta_{\psi, t}\,:\, (\psi, t) \in \Omega(N, \chi)\}$ forms a basis of $M_{1/2}(\Gamma_{0}(N), \chi)$.
+\end{theorem}
+% You can find some explicit computations in Buzzard's note \cite{buzzard2013halfintegral}.
+
 We have Hecke operators on the space of half-integral modular forms too, but it is quite different from that of integral weights.
+As in the integral weight cases, we define the Hecke operator as an action of double cosets.
 
 
 
