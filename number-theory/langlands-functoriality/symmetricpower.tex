@@ -415,3 +415,82 @@ $$
 \frac{1}{4} - \left(\frac{7}{64}\right)^{2} = \frac{975}{4096} \approx 0.238037\dots
 $$
 \end{corollary}
+
+Another consequence of symmetric power lifting is Sato-Tate conjecture.
+It is a conjecture about equidistribution of \emph{Frobenius angle}, which we are going to explain briefly.
+Let $E$ be an elliptic curve over $\mathbb{Q}$ without CM.
+For every prime $p$ of good reduction for $E$, the number of points over $\mathbb{F}_{p}$ satisfies an inequality
+$$
+|\#E(\mathbb{F}_{p}) - (p + 1)| \leq 2\sqrt{p}
+$$
+which was proven by Hasse in 1933. The quantity $t_{p} : = (p + 1) - \#E(\mathbb{F}_{p})$ is called
+\emph{trace}, since it is actually the trace of $\rho_{E, \ell}(\mathrm{Frob}_{p})$, where
+$\rho_{E, \ell}$ is a (family of) $\ell$-adic Galois representation attached to $E$ and $\mathrm{Frob}_{p} \in \mathrm{Gal}(\overline{\mathbb{Q}} / \mathbb{Q})$
+is a Frobenius automorphism.
+Because of Hasse's inequality, we can write $t_{p}$ as $t_{p} = 2\sqrt{p}\cos\theta_{p}$ for some $\theta_{p} \in [0, \pi]$,
+where we call $\theta_{p}$ as \emph{Frobenius angle}.
+Sato-Tate conjecture states that the Frobenius angle is equidistributed over $[0, \pi]$,
+and it was proven in 2011 by Barnet-Lamb, Geraghty, Harris, and Taylor \cite{barnet2011family}.
+
+\begin{theorem}[Sato-Tate conjecture, \cite{barnet2011family}]
+\label{sato-tate}
+Let $E/\mathbb{Q}$ be an elliptic curve without CM.
+The sequence of Frobenius angles $\{\theta_{p}\}$ is uniformly distributed on the
+interval $[0, \pi]$. In terms of traces $\{x_{p}\}$, for every subinterval $[a, b]$ of $[-2, 2]$,
+$$
+\lim_{B\to \infty} \frac{\#\{p\leq B\,:\, x_{p} \in [a, b]\}}{\#\{p\leq B\}} = \int_{a}^{b} \frac{1}{2\pi} \sqrt{4 - t^{2}} dt.
+$$
+\end{theorem}
+
+A key idea for the proof of Theorem \ref{sato-tate} is the following equivalence between 
+equidistribution and holomorphicity \& nonzeroness of a $L$-function.
+Let $G$ be a compact group and $X = \mathrm{conj}(G)$ be a space of
+conjugacy classes of $G$. Let $K$ be a number field, and $P = (\mathfrak{p}_{1}, \mathfrak{p}_{2}, \dots)$
+be a sequence of all but finitely many primes of $K$ ordered by norm.
+Let $(x_{\mathfrak{p}})_{\mathfrak{p}\in P}$ be a sequence in $X$ indexed by $P$, and for each
+irreducible representation $\rho: G \to \GL(d, \mathbb{C})$, define the $L$-function
+$$
+L(s, \rho) := \prod_{\mathfrak{p}\in P} \det(1 - \rho(x_{\mathfrak{p}})N(\mathfrak{p})^{-s})^{-1},
+$$
+for $s\in \mathbb{C}$ with $\Re s > 1$.
+
+\begin{theorem}
+\label{equidistribution}
+Let $G$ and $(x_{\mathfrak{p}})$ as above, and assume that $L(s, \rho)$ is meromorphic on $\Re s \geq 1$
+with nozeros or poles except possibly at $s=1$, for every irreducible representation $\rho$ of $G$.
+The sequence $(x_{\mathfrak{p}})$ is equidistributed if and only if for each $\rho \neq 1$, the $L$-function
+$L(\rho, s)$ extends analytically to a function that is holomorphic and nonvanishing on $\Re s \geq 1$.
+\end{theorem}
+\begin{proof}
+See Theorem 2.3 of \cite{fite2015equidistribution}.
+\end{proof}
+
+Now let $G = \mathrm{SU}(2)$ (compact group of complex 2 by 2 unitary matrices of determinant 1)
+and $K = \mathbb{Q}$. The irreducible representations of $\mathrm{SU}(2)$ are of the form $\rho_{m} = \mathrm{Sym}^{m}\rho_{1}$
+where $\rho_{1}: \mathrm{SU}(2) \hookrightarrow \GL(2, \mathbb{C})$ is the representation given by inclusion.
+In this case, each element of $X = \mathrm{conj}(\mathrm{SU}(2))$ has a representative of the form
+$$
+\begin{pmatrix}
+    e^{i\theta} & 0 \\ 0 & e^{-i\theta}
+\end{pmatrix}
+$$
+with $\theta \in [0, \pi]$, and the $L$-function of $\rho_{m}$ can be written as
+$$
+L(s, \rho_{m}) = \prod_{p\nmid N} \det(1 - \rho_{m}(x_{p})p^{-s})^{-1} = \prod_{p\nmid N}\prod_{k=0}^{m} (1 - e^{i(m - 2k)\theta_{p}}p^{-s})^{-1}
+$$
+where $\theta_{p}$ is Frobenius angle and $N$ is a conductor of elliptic curve $E$.
+If we set $\alpha_{p} := e^{i\theta_{p}}p^{1/2}$ and
+$$
+L_{m}^{1}(s):= \prod_{p\nmid N}\prod_{k=0}^{m} (1 - \alpha_{p}^{m-k}\bar{\alpha}_{p}^{k}p^{-s})^{-1},
+$$
+then we have $L(s, \rho_{m}) = L_{m}^{1}(s - m/2)$.
+By Theorem \ref{equidistribution}, Sato-Tate theorem (for non-CM elliptic curve) would follow from
+holomorphicity and nonzeroness of $L_{m}^{1}(s - m/2)$ for $\Re s \geq \frac{m}{2} + 1$.
+Now, the celebrated modularity theorem by several mathematicians (Wiles, Taylor, Brueil, Conrad, \dots)
+states that one can find a modular form $f$ whose $L$-function $L(s, f)$ coincides with
+the Hasse-Weil $L$-function $L(s, E)$ attached to $E$, and both coincides with $L_{1}^{1}(s)$ up to
+finitely many Euler factors at bad primes.
+It is easy to show holomorphicity and nonvanishing property of $L(s, f)$, and
+one essentially have $L_{m}^{1}(s) = L(s, \mathrm{Sym}^{m}f)$.
+Hence, Sato-Tate conjecture reduces to some analytic properties of $L(s, \mathrm{Sym}^{m}f)$.
+
