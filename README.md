@@ -18,6 +18,9 @@ List of notes:
     * Low-dimensional complex Spin groups
     * $\mathbb{S}^2$ is not a Lie group
 
+* Representation theory
+    * Littlewood-Richardson rule (ongoing)
+
 * Miscellaneous
     * Probabilities in poker game
     * Similarity of matrices and field extension
