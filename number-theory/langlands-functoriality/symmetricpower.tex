@@ -366,9 +366,9 @@ For any $n\geq 1$, $\mathrm{Sym}^{n}(f)$ is a regular algebraic cuspidal represe
 \end{theorem}
 
 
-\subsection{Ramanujan's conjecture, Selberg's 1/4 conjecture, and Sato-Tate conjecture}
+\subsection{Ramanujan's conjecture and Selberg's 1/4 conjecture}
 
-The importance of symmetric power lifting is due to it's application on the Ramanujan conjecture, Selberg's eigenvalue conjecture, and the Sato-Tate conjecture.
+The importance of symmetric power lifting is due to it's application on Ramanujan's conjecture and Selberg's eigenvalue conjecture.
 
 \begin{conjecture}[Selberg's 1/4 conjecture]
 For any Maass form on a congruence subgroup $\Gamma \subseteq \mathrm{SL}(2, \mathbb{Z})$, its eigenvalue is at least $1/4$.
@@ -416,6 +416,8 @@ $$
 $$
 \end{corollary}
 
+\subsection{Sato-Tate conjecture}
+
 Another consequence of symmetric power lifting is Sato-Tate conjecture.
 It is a conjecture about equidistribution of \emph{Frobenius angle}, which we are going to explain briefly.
 Let $E$ be an elliptic curve over $\mathbb{Q}$ without CM.
@@ -432,7 +434,7 @@ where we call $\theta_{p}$ as \emph{Frobenius angle}.
 Sato-Tate conjecture states that the Frobenius angle is equidistributed over $[0, \pi]$,
 and it was proven in 2011 by Barnet-Lamb, Geraghty, Harris, and Taylor \cite{barnet2011family}.
 
-\begin{theorem}[Sato-Tate conjecture, \cite{barnet2011family}]
+\begin{theorem}[Sato-Tate conjecture, \cite{harris2010family}]
 \label{sato-tate}
 Let $E/\mathbb{Q}$ be an elliptic curve without CM.
 The sequence of Frobenius angles $\{\theta_{p}\}$ is uniformly distributed on the
@@ -494,3 +496,17 @@ It is easy to show holomorphicity and nonvanishing property of $L(s, f)$, and
 one essentially have $L_{m}^{1}(s) = L(s, \mathrm{Sym}^{m}f)$.
 Hence, Sato-Tate conjecture reduces to some analytic properties of $L(s, \mathrm{Sym}^{m}f)$.
 
+Sato-Tate conjecture is also true for CM elliptic curves, but with different measures.
+Actually it is much easier to prove for such cases
+since the corresponding \emph{Sato-Tate group} is $U(1)$ (embedded in $\GL(2, \mathbb{C})$ via
+$u\mapsto \left(\begin{smallmatrix}
+    u & 0 \\ 0 & \bar{u}
+\end{smallmatrix}\right)$) or $N(U(1))$ (normalizer of $U(1)$ in $GL(2, \mathbb{C})$) and $U(1)$ is abelian,
+so all the irreducible representations are 1-dimensional.
+Also, it is possible to define \emph{a} Sato-Tate group $\mathrm{ST}(A)$ and formulate the analogous conjecture
+for abelian varieties $A$: the normalized images of the Frobenius elements in a Sato-Tate group
+is equidistributed with respect to the pushforward of the Haar measure of $\mathrm{ST}(A)$ to its
+space of conjugacy classes.
+However, we don't even know whether \emph{the} Sato-Tate group is well-defined or not for $g\geq 2$, and only 
+few examples of abelian varieties are known to be that the conjecture holds (e.g. \cite{fite2014sato}).
+One can find more details in Sutherland's excellent survey paper \cite{sutherland2013sato}.
