@@ -1,0 +1,369 @@
+\documentclass{article}
+\usepackage{amsfonts, amssymb, amsmath, amsthm, comment}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usetikzlibrary{positioning}
+\title{Automorphic induction from $\mathrm{GL}_{1}/K$ to $\mathrm{GL}_{2}/\mathbb{Q}$}
+\author{Seewoo Lee}
+
+\newcommand{\SST}{\mathrm{SST}}
+\newcommand{\wt}{\mathrm{wt}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newcommand{\Cl}{\mathrm{Cl}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\Mod}[1]{\,(\mathrm{mod}\,#1)}
+\newcommand{\smat}[4]{\left(\begin{smallmatrix} #1 & #2 \\ #3 & #4 \end{smallmatrix}\right)}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+\maketitle
+
+In this note, we show that for any given Hecke character $\xi$ of a quadratic field $K/\mathbb{Q}$, there exists a $\GL_{2}$ automorphic form over $\mathbb{Q}$. This is a part of conjectured \emph{automorphic induction}: for any degree $r$ field extension $K/F$, an automorphic representation of $\GL_{n}$ over $K$ induces an automorphic representation $\GL_{rn}$ over $F$. 
+Essentially, there are two kinds of automorphic forms of $\GL_{2}$: (holomorphic) modular forms and Maass forms. Here we give proofs for both cases, where the first case is proved by Hecke and the second case is proved by Maass. 
+
+
+\section{Converse theorems of $L$-functions}
+For any given modular form (or even an automorphic form over $\GL(n)$) $f(z) = \sum_{n\geq 0}a_{n}e^{2\pi i n z}$, we can define a $L$-function 
+$$
+L_{f}(s) = \sum_{n\geq 1} \frac{a_{n}}{n^{s}}
+$$
+which has a meromorphic continuation (with simple poles at $s = 0, k$), functional equation and bounded on any vertical strip. 
+Hecke's converse theorem gives a converse of this. He proved that if a certain $L$-function satisfies the above properties, then it is a $L$-function comes from a modular form. 
+More precisely:
+\begin{theorem}
+Let $k$ be a positive even number. Suppose $f(z) = \sum_{n\geq 0}a_{n}e^{2\pi i n z}$ with $a_{n} = O(n^{\alpha})$ for some positive constant $\alpha >0$. 
+Then $f\in \mathcal{M}_{k}(\SL_{2}(\mathbb{Z}))$, i.e. $f$ is a modular form on $\SL_{2}(\mathbb{Z})$ of weight $k$ if and only if the function 
+$$
+\Lambda_{f}(s) = (2\pi)^{-s} \Gamma(s) \sum_{n\geq 1} \frac{a_{n}}{n^{s}}
+$$
+can be analytically continued over the whole $s$-plane, 
+$$
+\Lambda_{f}(s) + \frac{a_{0}}{s} + \frac{i^{k}a_{0}}{k-s}
+$$
+is entire and bounded in vertical strips, and satisfies the functional equation $$\Lambda_{f}(s) = i^{k} \Lambda_{f}(k-s).$$
+\end{theorem}
+Proof uses the following theorem with $q=1$, which is also proved by Hecke. 
+\begin{theorem}[Hecke]
+Suppose $f$ and $g$ are given by the Fourier series 
+$$
+f(z) = \sum_{n\geq 0} a_{n}e^{2\pi i n z}, \quad g(z) = \sum_{n\geq 0}b_{n}e^{2\pi i n z}
+$$
+with coefficients $a_{n}, b_{n}$ bounded by $O(n^{\alpha})$ for $n\geq 1$ where $\alpha >0$ is a constant. Let 
+$$
+L_{f}(s) = \sum_{n\geq 1}\frac{a_{n}}{n^{s}}, \quad L_{g}(s) = \sum_{n\geq 1} \frac{b_{n}}{n^{s}}
+$$
+be corresponding $L$-functions and 
+$$
+\Lambda_{f}(s) = \left(\frac{\sqrt{q}}{2\pi}\right)^{s}\Gamma(s)L_{f}(s), \quad \Lambda_{g}(s) = \left(\frac{\sqrt{q}}{2\pi}\right)^{s}\Gamma(s)L_{g}(s)
+$$
+be completed $L$-functions, where $q$ is a given positive number. Put $\omega = \smat{}{-1}{q}{}$ and $(f|_{\omega})(z) = (\sqrt{q}z)^{-k} f(-1/qz)$, where $k$ is a given positive integer. TFAE:
+\begin{enumerate}
+\item $g =f|_{\omega}$. 
+\item Both $\Lambda_{f}(s)$ and $\Lambda_{g}(s)$ have meromorphic continuation over the whole $s$-plane, 
+\begin{align*}
+\Lambda_{f}(s) + \frac{a_{0}}{s} + \frac{b_{0}i^{k}}{k-s} \\
+\Lambda_{g}(s) + \frac{b_{0}}{s} + \frac{a_{0}i^{-k}}{k-s}
+\end{align*}
+are entire and bounded on vertical strips, and they satisfy
+$$
+\Lambda_{f}(s) = i^{k}\Lambda_{g}(k-s). 
+$$
+\end{enumerate}
+\end{theorem}
+Proof of this theorem uses the Mellin transform, the Phragm\'en-Lindel\"of convexity principle and Striling's estimate for the gamma function. (See \cite{iwa}.) 
+
+To generalize this result for arbitrary levels, we need more functional equations, which are given by \emph{twisting} the original $L$-functions by characters. Weil proved the following converse theorem:
+\begin{theorem}[Weil]
+Let $k\geq 1$ be an integer and $\chi$ a character mod $q\geq1$. 
+Let $f, g$ be a function on $\mathcal{H}$ defined by 
+$$
+f(z) = \sum_{n\geq 0} a_{n}e^{2\pi i n z}, \quad g(z) = \sum_{n\geq 0} b_{n}e^{2\pi i n z}
+$$
+with coefficients $\{a_{n}\}, \{b_{n}\}$ bounded by $O(n^{\alpha})$ for all $n\geq 1$, where $\alpha>0$ is a constant. 
+Suppose $\Lambda_{f}(s), \Lambda_{g}(s)$ is defined by 
+$$
+\Lambda_{f}(s) = \left(\frac{\sqrt{q}}{2\pi}\right)^{s}\Gamma(s) L_{f}(s), \quad \Lambda_{g}(s) = \left(\frac{\sqrt{q}}{2\pi}\right)^{s}\Gamma(s) L_{g}(s)
+$$
+satisfies the following: both $\Lambda_{f}(s), \Lambda_{g}(s)$  have meromorphic continuation over the whole $s$-plane, 
+$$\Lambda_{f}(s) + \frac{a_{0}}{s} + \frac{b_{0}i^{k}}{k-s}, \quad \Lambda_{g}(s) + \frac{b_{0}}{s} + \frac{a_{0}i^{-k}}{k-s} $$
+are entire and bounded on vertical strips, and they satisfy 
+$$
+\Lambda_{f}(s) = i^{k}\Lambda_{g}(k-s). 
+$$
+Let $\mathcal{R}$ be a set of prime numbers coprime to $q$ which meets every primitive residue class, i.e. for any $c>0$ and any $a$ with $(a, c) = 1$ there exists $r\in \mathcal{R}$ such that $r\equiv a\Mod{c}$. 
+Suppose for any primitive character $\psi$ of conductor $r\in \mathcal{R}$ the functions
+\begin{align*}
+\Lambda_{f}(s,\psi) &= \left(\frac{\sqrt{N}}{2\pi}\right)^{s}\Gamma(s) L_{f}(s, \psi) = \left(\frac{\sqrt{N}}{2\pi}\right)^{s}\Gamma(s) \sum_{n\geq 1} \frac{a(n)\psi(n)}{n^{s}}
+\\ \Lambda_{g}(s, \psi) &= \left(\frac{\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) L_{g}(s, \psi)= \left(\frac{\sqrt{N}}{2\pi}\right)^{s}\Gamma(s) \sum_{n\geq 1} \frac{b(n)\psi(n)}{n^{s}}
+\end{align*}
+with $N = qr^{2}$ are entire, bounded in vertical strips and satisfy the functional equation 
+$$
+\Lambda_{f}(s, \psi) = i^{k} w(\psi)\Lambda_{g}(k-s, \overline{\psi})
+$$
+with $w(\psi) = \chi(r)\psi(q)\tau(\psi)^{2}r^{-1}$, where $\tau(\psi)=\sum_{u\Mod{r}}\psi(u)e^{2\pi i u/r}$ is a Gauss sum. 
+Then $f\in \mathcal{M}_{k}(\Gamma_{0}(q), \chi)$, i.e. modular form of weight $k$ on $\Gamma_{0}(q)$ with a character $\chi$, and $f\in \mathcal{M}_{k}(\Gamma_{0}(q), \overline{\chi})$. 
+Also, $g = f|_{\omega}$ where $\omega = \omega_{q} = \smat{}{-1}{q}{}$. 
+Moreover, $f, g$ are cusp forms if $L_{f}(s)$ or $L_{g}(s)$ converges absolutely on some line $\Re s = \sigma$ with $0<\sigma < k$. 
+\end{theorem}
+ 
+
+\section{Hecke $L$-function}
+For a number field $K$, we can define a Dedekind zeta function
+$$
+\zeta_{K}(s) = \sum_{\mathfrak{a}} \frac{1}{(N\mathfrak{a})^{s}}
+$$
+where $\mathfrak{a}$ ranges through nonzero ideals of $\mathcal{O}_{K}$, and $N\mathfrak{a}:=[\mathcal{O}_{K}:\mathfrak{a}]$ denotes the absolute norm of $\mathfrak{a}$. 
+This is a generalization of a zeta function ($\zeta_{\mathbb{Q}}(s)$ coincides with the original Riemann zeta function) and also satisfies some similar properties - has an analytic continuation and a functional equation. 
+We can also \emph{twist} it by some characters as we can do for zeta functions (which is called a Dirichlet $L$-function). Such character is called a \emph{Hecke character}, which is a homomorphism from $I$, the group of fractional ideals, to $\mathbb{C}$. 
+
+To define such $L$-function, we first define Hecke character. Let $I$ be the group of nonzero fractional ideals of $K$ and $P\leq I$ be the subgroup of principal ideals. Then the group $\Cl(K) = I/P$ is called the class group of $K$, which is known to be finite. 
+For any integral ideal $\mathfrak{m}\subset \mathcal{O}_{K}$, we define 
+\begin{align*}
+I_{\mathfrak{m}} &= \{ \mathfrak{a}\in I\,:\, (\mathfrak{a}, \mathfrak{m}) = 1\} \\
+P_{\mathfrak{m}} &= \{(a)\in P\,:\, a\equiv 1\Mod{\mathfrak{m}}\}
+\end{align*}
+Then the group $\Cl_{\mathfrak{m}}(K):= I_{\mathfrak{m}}/P_{\mathfrak{m}}$ is also finite, which is called the ray class group. 
+
+Now define a homomorphism $\xi_{\infty}:K^{\times}\to S^{1}$ by the product 
+$$
+\xi_{\infty}(a) = \prod_{\sigma} \left(\frac{a^{\sigma}}{|a^{\sigma}|}\right)^{u_{\sigma}}|a^{\sigma}|^{iv_{\sigma}}
+$$
+where  $\sigma$ ranges through all the embeddings $\sigma:K\to \mathbb{C}$ and the numbers $u_{\sigma}, v_{\sigma}$ are given with the following restrictions:
+\begin{center}
+\begin{tabular}{lllll}
+$u_{\sigma} = 0, 1$        & if $\sigma$ is real                     &  &  &  \\
+$u_{\sigma}\in \mathbb{Z}$ & if $\sigma$ is complex                  &  &  &  \\
+$v_{\sigma}\in \mathbb{R}$ & such that $\sum_{\sigma}v_{\sigma} = 0$ &  &  & 
+\end{tabular}
+\end{center}
+Then we can find a smallest integral ideal $\mathfrak{m}$ such that the group 
+$$
+U_{\mathfrak{m}} = \{\eta \in U_{K}=\mathcal{O}_{K}^{\times}\,:\,\eta\equiv 1\Mod{\mathfrak{m}}\}
+$$
+is in $\ker \xi_{\infty}$. We call such $\mathfrak{m}$ as a modulus of $\xi_{\infty}$. By definition, $\xi_{\infty}$ can be regarded as a function on $P_{\mathfrak{m}}$. 
+
+A group homomorphism $\xi:I_{\mathfrak{m}} \to S^{1}$ is said to be a character to modulus $\mathfrak{m}$ if $\xi|_{P_{\mathfrak{m}}} = \xi_{\infty}$. 
+Note that if $\xi$ is a character to modulus $\mathfrak{m}$, then it is a character to modulus $\mathfrak{n}$ for any $\mathfrak{n}\subseteq \mathfrak{m}$. 
+We call that $\xi$ is primitive if it is not induced by other character with a smaller modulus. 
+We can extend such homomorphism to $\xi:I\to \mathbb{C}$ by setting $\xi(\mathfrak{a}) = 0$ for $(\mathfrak{a}, \mathfrak{m}) \neq 1$. 
+Such map is called \emph{Hecke character} or \emph{Grossencharacter} of $K$. For any given Hecke character $\xi$, we can define Hecke $L$-function 
+$$
+L(s, \xi) = \sum_{0\neq \mathfrak{a}\subseteq \mathcal{O}_{K}} \frac{\xi(\mathfrak{a})}{(N\mathfrak{a})^{s}}.
+$$
+Like other $L$-functions, it also has the Euler product 
+$$
+L(s, \xi) = \prod_{\mathfrak{p}} (1-\xi(\mathfrak{p})(N\mathfrak{p})^{-s})^{-1}.
+$$
+Hecke proved that the $L$-function has an analytic countinuation and a functional equation. 
+\begin{theorem}[Hecke]
+Let $\xi\Mod{m}$ be a primitive nontrivial Hecke character of a number field $K$. Put
+$$
+\Lambda(s, \xi) = (2^{r_{1}}(2\pi)^{-n}|D|N\mathfrak{m})^{\frac{s}{2}} \prod_{\sigma}\Gamma\left( \frac{1}{2}(|u_{\sigma}| + n_{\sigma}(s+ iv_{\sigma}))\right) L(s, \xi)
+$$
+where
+$$
+n_{\sigma} = \begin{cases} 1 & \sigma\text{ is real} \\  2 & \sigma\text{ is complex} \end{cases}. 
+$$
+The function $\Lambda(s, \xi)$ is entire and bounded in vertical strips, and it satisfies the functional equation 
+$$
+\Lambda(s, \xi) = w(\xi)\Lambda(1-s, \overline{\xi})
+$$
+where $$w(\xi) = i^{-u} W(\xi)(N\mathfrak{m})^{-1/2}, \quad u = \sum_{\sigma}u_{\sigma}.$$
+Here $W(\xi)$ is a Gauss sum 
+$$
+W(\xi) = \frac{\xi_{\infty}(b)}{\xi(\mathfrak{t})} \sum_{a\in \mathfrak{t}/\mathfrak{tm}} \xi_{\mathfrak{m}}(a)e^{2\pi i (\mathrm{Tr}(a/b))z}, 
+$$
+where $\mathfrak{t}$ is an integral ideal prime to $\mathfrak{m}$ such that $\mathfrak{tdm}$ is principal, say $\mathfrak{tdm} = (b)$ with $b\in \mathcal{O}_{K}$. The sum does not depend on the choice of $\mathfrak{t}$ and $b$. $\xi_{\mathfrak{m}}$ is a character of $K^{\times}$ given by 
+$$
+\xi_{\mathfrak{m}}(a) = \frac{\xi((a))}{\xi_{\infty}(a)}, \quad a\in K^{\times}
+$$
+which is periodic of period $\mathfrak{m}$. 
+\end{theorem}
+\section{Modular form associated with  imaginary quadratic fields}
+
+Now we prove that we can attach a modular form to a given Hecke character of an imaginary quadratic field. Let $K = \mathbb{Q}(\sqrt{D})$ be an imaginary quadratic field with discriminant $D<0$. 
+Let $\chi_{D}(n) = \left(\frac{n}{D}\right)$ be a Kronecker symbol, so that $\chi_{D}(-1) = 1, -1$ if $K$ is real or imaginary, and 
+$$
+\chi_{D}(p) = \begin{cases} 0 & p\text{ ramifies in $K$} \\ 1 & p\text{ splits in $K$} \\ -1 & p\text{ inerts in $K$} \end{cases}
+$$
+\begin{theorem}
+Let $\xi\Mod{\mathfrak{m}}$ be a Hecke character of $K$ such that 
+$$
+\xi((a)) = \left(\frac{a}{|a|}\right)^{u} \quad \text{if }a\equiv 1\Mod{\mathfrak{m}}
+$$
+where $u$ is a non-negative integer. Then 
+$$
+f(z) = \sum_{\mathfrak{a}\subset \mathcal{O}_{K}}\xi(\mathfrak{a}) (N\mathfrak{a})^{\frac{u}{2}}e^{2\pi i (N\mathfrak{a})z} \in \mathcal{M}_{k}(\Gamma_{0}(N), \chi)
+$$
+where $k = u+1$, $N = |D|\cdot N\mathfrak{m}$ and $\chi\Mod{N}$ is the Dirichlet character given by $$\chi(n) = \chi_{D}(n)\xi((n)), \quad n\in \mathbb{Z}. $$
+\end{theorem}
+\begin{proof}
+Here we only give a proof when $\xi$ is primitive. Consider 
+$$
+g(z) = C\sum_{\mathfrak{a}}\overline{\xi}(\mathfrak{a})(N\mathfrak{a})^{\frac{u}{2}}e^{2\pi i (N\mathfrak{a})z}
+$$
+where $C = i^{-2u-1}W(\xi)(N\mathfrak{m})^{-1/2}$. By definition, we have $L_{f}(s) = L(s - \frac{u}{2}, \xi)$ and $L_{g}(s) = CL(s-\frac{u}{2},\overline{\xi})$.
+Now replace $s$ with $s-\frac{u}{2}$ in the functional equation 
+$$
+\Lambda(s, \xi) = i^{-u}W(\xi)(N\mathfrak{m})^{-1/2}\Lambda(1-s, \overline{\xi})
+$$
+and we get the functional equation $$\Lambda_{f}(s) = i^{k}\Lambda_{g}(k-s)$$ where
+$$
+\Lambda_{f}(s) = \left(\frac{\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) L\left( s- \frac{u}{2}, \xi\right), \quad \Lambda_{g}(s) = \left(\frac{\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) CL\left( s- \frac{u}{2}, \overline{\xi}\right).
+$$
+Hence by the converse theorem it follows that 
+$$
+g = f|_{\omega_{N}}, \quad \omega_{N} = \begin{pmatrix} & -1 \\ N & \end{pmatrix}. 
+$$
+Next let $\psi\Mod{p}$ be a primitive Dirichlet character of conductor $p\nmid N$. 
+To show that $f$ is in $\mathcal{M}_{k}(\Gamma_{0}(N), \chi)$, we apply the Weil's converse theorem to the completed $L$-functions 
+\begin{align*}
+\Lambda_{f}(s, \psi) &= \left(\frac{p\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) L\left( s - \frac{u}{2}, \xi\cdot \psi\circ N\right) \\
+\Lambda_{g}(s, \psi) &= \left(\frac{p\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) CL\left( s - \frac{u}{2}, \overline{\xi}\cdot \psi\circ N\right), 
+\end{align*}
+which satisfy the functional equation $$\Lambda_{f}(s, \psi) = i^{k}w(\psi)\Lambda_{g}(k-s, \overline{\psi})$$
+with $w(\psi) = \chi(p)\psi(N)\tau(\psi)^{2}p^{-1}$, which follows from the functional equation of Hecke $L$-function again. Here we use the identity $W(\psi\circ N) = \chi_{D}(p)\psi(|D|)\tau(\psi)^{2}$. (This identity follows from the $L$-function factorization 
+$$
+L(s, \psi\circ N) = L(s, \psi)L(s, \psi\chi_{D})
+$$
+and comparing the functional equations of both sides.)
+\end{proof}
+
+\section{Maass form associated with real quadratic fields}
+By the same argument, we can prove that there exists a Maass form of weight 0 with an eigenvalue 1/4 corresponds to a Hecke character of a real quadratic field. 
+First, we prove that there exists a corresponding weight 1 modular form.
+
+\begin{theorem}
+Let $K= \mathbb{Q}(\sqrt{D})$ be a real quadratic field with discriminant $D>0$ and $\xi\Mod{\mathfrak{m}}$ a Hecke character such that 
+$$
+\xi((a)) = \frac{a}{|a|}\quad \text{if }a\equiv 1\Mod{\mathfrak{m}} 
+$$
+or
+$$
+\xi((a)) = \frac{a'}{|a'|}\quad \text{if }a\equiv 1\Mod{\mathfrak{m}} 
+$$
+where $a'$ denotes the conjugate over $\mathbb{Q}$. Then 
+$$
+f(z) = \sum_{\mathfrak{a}} \xi(\mathfrak{a}) e^{2\pi i (N\mathfrak{a}) z} \in \mathcal{S}_{1}(\Gamma_{0}(N), \chi)
+$$
+where $N = D\cdot N\mathfrak{m}$ and the character $\chi\Mod{N}$ is defined in the previous theorem. 
+\end{theorem}
+\begin{proof}
+Define 
+$$
+g(z) = C\sum_{\mathfrak{a}} \overline{\xi}(\mathfrak{a}) e^{2\pi (N\mathfrak{a})z}
+$$
+where $C = -W(\xi)(N\mathfrak{m})^{-1/2}$. By definition, we have $L_{f}(s) = L(s, \xi)$ and $L_{g}(s) = CL(s, \overline{\xi})$. The completed $L$-function $\Lambda(s, \xi)$ is given by 
+\begin{align*}
+\Lambda(s, \xi) &= (2^{2}(2\pi)^{-2}N)^{s/2}\Gamma\left(\frac{s}{2}\right)\Gamma\left(\frac{s+1}{2}\right)L(s, \xi) \\
+&=2\sqrt{\pi} \left(\frac{\sqrt{N}}{2\pi}\right)^{s}\Gamma(s)L(s, \xi).
+\end{align*}
+Here we use the duplication formula of the Gamma function
+$$
+\Gamma\left(\frac{s}{2}\right)\Gamma\left(\frac{s+1}{2}\right) = 2^{1-s}\sqrt{\pi}\Gamma(s). 
+$$
+Then from the functional equation 
+$$
+\Lambda(s, \xi) = i^{-1}W(\xi)(N\mathfrak{m})^{-1/2}\Lambda(1-s, \xi)
+$$
+we get the functional equation 
+$$
+\Lambda_{f}(s) = i\Lambda_{g}(1-s)
+$$
+where 
+$$
+\Lambda_{f}(s) =\left(\frac{\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) L(s, \xi), \quad \Lambda_{g}(s) =\left(\frac{\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) CL(s, \overline{\xi}).
+$$
+Hence by the converse theorem it follows that 
+$$
+g = f|_{\omega_{N}}, \quad \omega_{N} = \begin{pmatrix} & -1 \\ N & \end{pmatrix}. 
+$$
+Next let $\psi\Mod{p}$ be a primitive Dirichlet character of conductor $p\nmid N$. 
+To show that $f$ is in $\mathcal{S}_{1}(\Gamma_{0}(N), \chi)$, we apply the Weil's converse theorem to the completed $L$-functions 
+\begin{align*}
+\Lambda_{f}(s, \psi) &= \left(\frac{p\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) L\left(s, \xi\cdot \psi\circ N\right) \\
+\Lambda_{g}(s, \psi) &= \left(\frac{p\sqrt{N}}{2\pi}\right)^{s} \Gamma(s) CL\left(s, \overline{\xi}\cdot \psi\circ N\right), 
+\end{align*}
+which satisfy the functional equation $$\Lambda_{f}(s, \psi) = iw(\psi)\Lambda_{g}(1-s, \overline{\psi})$$
+with $w(\psi) = \chi(p)\psi(N)\tau(\psi)^{2}p^{-1}$, which follows from the functional equation of Hecke $L$-function again. 
+\end{proof}
+
+\begin{corollary}
+Let $K, \xi$, and $\chi$ be as in the previous theorem. Then 
+$$
+u(z) = \sum_{\mathfrak{a}} \xi(\mathfrak{a}) y^{1/2}e^{2\pi i (N\mathfrak{a}) z}
+$$
+is a Maass cusp form of weight $1$ with an eigenvalue $1/4$ and a character $\chi$ on $\Gamma_{0}(N)$. 
+\begin{comment}
+Here $W_{k/2, ir}(z)$ is the Whittaker function, which is the exponentially-decaying solution of the differential equation 
+$$
+y^{2}\frac{d^{2}W_{k/2, ir}}{dy^{2}} + y\frac{dW_{k/2, ir}}{dy} - (y^{2} - ky - r^{2}) W_{k/2, ir} = 0
+$$
+\end{comment}
+\end{corollary}
+\begin{proof}
+Use the fact that if $f(z)$ is a modular form of weight $k$, then $z\mapsto y^{k/2}f(z)$ is a Maass form of weight $k$ with an eigenvalue $\frac{k}{2}\left(1-\frac{k}{2}\right)$. $u(z)$ is a cusp form since $f(z)$ is. 
+\end{proof}
+Note that $e^{-y} = W_{1, 0}(y)$, where $W_{k, ir}(y)$ is the Whittaker function, which is the exponentially-decaying solution of the differential equation 
+$$
+y^{2}\frac{d^{2}W}{dy^{2}} + y\frac{dW}{dy} - (y^{2} - ky - r^{2}) W = 0.
+$$
+One can check that $\mathcal{W}_{k, ir}(y):= \sqrt{y}W_{k, ir}(2\pi  y)e^{2\pi i  x}$ is an eigenfunction of the weight $k$ Laplacian with an eigenvalue $\frac{1}{4} + r^{2}$, i.e. $\Delta_{k}\mathcal{W}_{k, ir} = (\frac{1}{4} + r^{2})\mathcal{W}_{k, ir}$. We can rewrite the function $u(z)$ as 
+$$
+u(z) = \sum_{n\geq 1} c_{n}n^{-1/2}\mathcal{W}_{1, 0}(nz)
+$$
+where $c_{n} = \sum_{N\mathfrak{a} = n} \xi(\mathfrak{a})$. 
+
+As you can see, every weight 1 Maass form with an eigenvalue $1/4$ comes from a weight 1 modular form, and it is known that there exists a Galois representation associated with such modular form. (This is a theorem of Deligne-Serre, see \cite{del}.) 
+It is conjectured that we can attach a Galois representation to  any Maass form with an eigenvalue $1/4$ (even for weight $k\neq 1$), and this is still open. 
+Cohen construct an explicit example of Maass form of weight 0 with an eigenvalue $1/4$ which has a corresponding Galois representation (See \cite{coh}). 
+
+
+
+\section{Known cases of automorphic induction}
+So we just proved the automorphic induction from $\GL_{1}/K$ to $\GL_{2}/\mathbb{Q}$ when $K/\mathbb{Q}$ is a quadratic extension. In general, automorphic induction is an open problem, but there are some known cases (see \cite{lai}):
+\begin{itemize}
+\item Local fields (Henniart-Herb, \cite{hen})
+\item Cyclic Galois extension of prime degree (Arthur-Clozel, \cite{ar})
+\item Non-normal cubic extension (Jacquet-Piatetski-Shapiro-Shalika, \cite{jac1} and \cite{jac2})
+\item Non-normal extensions with solvable Galois closure for certain Hecke characters (Harris, \cite{har})
+\item Non-normal quintic extension with non-solvable closure (Kim, \cite{kim})
+\end{itemize}
+
+
+
+
+
+\begin{thebibliography}{5}
+\bibitem{ar} J. Arthur, L. Clozel, \emph{Simple Algebras, Base Change, and the Advanced Theory of the Trace Formula}, Annals of Mathematics Studies, Princeton University Press, 1989. 
+
+\bibitem{coh} H. Cohen, \emph{$q$-identities for Maass waveforms}, Invent. Math. 91, no. 3, 409-422, 1988. 
+
+\bibitem{del} P. Deligne and J. P. Serre. \emph{Formes modulaires de poids 1}. Ann. Sci. \'Ecole Norm. Sup. 7, no. 4, Elsevier, 1974.
+
+\bibitem{har} M. Harris, \emph{The local Langlands conjecture for $\GL(n)$ over a $p$-adic field, $n<p$}, Invent. Math. 134, no. 1, 177-210, 1998. 
+
+
+\bibitem{hen} G. Henniart, R. Herb, \emph{Automorphic induction for $\GL(n)$ (over nonarchmedean fields)}, Duke Math J. 78, no. 1, 131-192, 1995. 
+
+\bibitem{iwa} H. Iwaniec, \emph{Topics in Classical Automorphic Forms}, American Mathematical Soc., 1997. 
+
+\bibitem{kim} H. Kim, \emph{An example of non-normal quintic automorphic induction and modularity of symmetric powers of cusp forms of icosahedral type}, 2003. 
+
+\bibitem{jac1} H. Jacquet, I. Piatetski-Shapiro, J. Shalika, \emph{Automorphic forms on $\GL(3)$ I},  Ann. of Math. 109, no. 1, 169-212, 1979. 
+
+\bibitem{jac2} H. Jacquet, I. Piatetski-Shapiro, J. Shalika, \emph{Automorphic forms on $\GL(3)$ II},  Ann. of Math. 109, no. 2. 213-258, 1979.
+
+
+\bibitem{lai} Laie, \emph{The status of automorphic induction}, question on mathoverflow, \url{https://mathoverflow.net/questions/152263/the-status-of-automorphic-induction}. 
+
+
+
+\end{thebibliography}
+\end{document}

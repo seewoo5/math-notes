@@ -1,0 +1,304 @@
+\documentclass{article}
+\usepackage{amsfonts, amssymb, amsmath, amsthm}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{tabu}
+\usepackage{comment}
+\usepackage{mathrsfs}
+\usepackage{pst-poker}
+
+\usetikzlibrary{positioning}
+\title{Hands in the 5-cards poker and their probabilities}
+\author{Seewoo Lee}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newtheorem{claim}{Claim}
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\Nm}{\mathrm{N}}
+\newcommand{\Cl}{\mathrm{Cl}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newtheorem{corollary}{Corollary}
+\newcommand{\cha}{\mathrm{char}\,}
+\newcommand{\rH}{\mathrm{H}}
+\newcommand{\Mod}[1]{\,(\text{mod }#1)}
+\newtheorem{proposition}{Proposition}
+\newcommand\smallO{
+  \mathchoice
+    {{\scriptstyle\mathcal{O}}}% \displaystyle
+    {{\scriptstyle\mathcal{O}}}% \textstyle
+    {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+    {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+  }
+
+\newcommand{\quadres}[2]{\left(\frac{#1}{#2}\right)}
+
+\begin{document}
+\maketitle
+
+There are 10 kinds of \emph{hands} in the 5-card poker. The following table shows frequency and probability for each hands.
+\begin{center}
+\def\arraystretch{2}
+\begin{tabular}{|l|l|l|}
+\hline
+Hand           & Frequency                                                                     & Probability  \\ \hline \hline
+Royal flush    & $\binom{4}{1} = 4$                                                            & $0.000154\%$ \\ \hline
+Straight flush & $\binom{9}{1} \binom{4}{1} = 36$                                                   & $0.00139\%$  \\ \hline
+Four of a kind & $\binom{13}{1}\cdot \binom{12}{1}\cdot \binom{4}{1} = 624$                    & $0.0240\%$   \\ \hline
+Full house     & $\binom{13}{1} \binom{4}{3} \binom{12}{1} \binom{4}{2} = 3744$                & $0.1441\%$   \\ \hline
+Flush          & $\binom{13}{5}\binom{4}{1} - \binom{10}{1} \binom{4}{1} = 5108$                  & $0.1965\%$   \\ \hline
+Straight       & $\binom{10}{1}\binom{4}{1}^{5} - \binom{10}{1}\binom{4}{1} = 10200$           & $0.3925\%$   \\ \hline
+Three of kind  & $\binom{13}{1}\binom{4}{3}\binom{12}{2}\binom{4}{1}^{2} = 54912$              & $2.1128\%$   \\ \hline
+Two pairs      & $\binom{13}{2}\binom{4}{2}^{2}\binom{11}{1}\binom{4}{1} = 123522$             & $4.7539\%$   \\ \hline
+One pair       & $\binom{13}{1}\binom{4}{2}\binom{12}{3}\binom{4}{1}^{3} = 1098240$            & $42.2569\%$  \\ \hline
+No pair        & $\left[\binom{13}{5} - 10 \right]\left[\binom{4}{1}^{5} - 4\right] = 1302540$ & $50.1117\%$  \\ \hline
+\end{tabular}\end{center}
+
+Now we will try to figure out how to compute these probabilities. 
+First, we know that the probability space has
+$$
+\binom{52}{5}
+$$
+elements, since we are choosing 5 cards from a deck of 52 cards. (Order doesn't matter.)
+So we will count the number of possible cases for each hand and divide them by this number. 
+\subsection*{Royal flush}
+
+Royal flush is a set of 5 cards that contains 10, J, Q, K, A, and shape of the cards are same. For example, 
+\begin{center}
+{\psset{inline=boxed} \tend{} \Jd{} \Qd{} \Kd{} \Ad}
+\end{center}
+ is a Royal flush. 
+ 
+Since numbers are fixed, we only need to choose shapes for 5 cards, and there are only 4 choices - heart, diamond, clover, and spade. So there are $$\binom{4}{1} = 4$$ Royal flushes and the probability is
+$$
+\frac{4}{\binom{52}{5}} \approx 0.00000154.
+$$
+
+
+\subsection*{Straight flush}
+Straight flush is a set of 5 cards with consecutive numbers, from 1, 2, 3, 4, 5 to 9, 10, J, Q, K, and shape of the cards are same. We exclude 10, J, Q, K, A since it is a Royal flush. For example, 
+\begin{center}
+{\psset{inline=boxed} \treh{} \fourh{} \fiveh{} \sixh{} \sevh}
+\end{center}
+is a Straight flush. 
+
+For numbers, we have 9 choices: 
+\begin{align*}
+1, 2, &3, 4, 5 \\
+2, 3, &4, 5, 6 \\
+&\vdots \\
+8, 9, &10, J, Q \\
+9, 10, &J, Q, K
+\end{align*}
+and we have 4 choices for shapes. Since they are independent, we have to multiply those two numbers and we get $$\binom{9}{1} \binom{4}{1}= 36$$ for the number of Straight flushes. 
+So the probability is 
+$$
+\frac{\binom{9}{1}\binom{4}{1}}{\binom{52}{5}} \approx 0.0000139.
+$$
+
+\subsection*{Four of a kind}
+
+Four of a kind is a set of 5 cards where four of them have same numbers, such as
+\begin{center}
+{\psset{inline = boxed} \fiveh{} \fived{} \fivec{} \fives{} \Jd}
+\end{center}
+First, we choose a number for the 4-cards block. We have $\binom{13}{1} = 13$ choices for that since we have 13 kinds of numbers: from A to K. Then we don't need to care about their shapes since they should have all different shapes. 
+For the rest of card, we have $\binom{12}{1}$ choices for number since one of 13 choices is already chosen by 4-cards block. We can choose any shapes for that last card, which have $\binom{4}{1}$ choices. 
+Thus there are
+$$
+\binom{13}{1}\binom{12}{1}\binom{4}{1} = 624
+$$
+possible Four of a kind and the probability is
+$$
+\frac{\binom{13}{1}\binom{12}{1}\binom{4}{1}}{\binom{52}{5}} \approx 0.00024
+$$
+
+
+
+\subsection*{Full house}
+
+Full house is a set of 5 cards where three of them are same numbers, and the other two also have same numbers. For example, 
+\begin{center}
+{\psset{inline=boxed} \twoh{} \twoc{} \twos{} \sixh{} \sixc{}}
+\end{center}
+is a Full house. 
+
+We have $\binom{13}{1} = 13$ choices for the number of first 3-cards set, and $\binom{4}{3} = 4$ choices for their shapes. (They have 3 different shapes among 4 possible shapes.) 
+For the other two cards, there are $\binom{12}{1} = 12$ choices for the number since one of 13 choices is already taken by the first set of 3-cards. For the shape, we have $\binom{4}{2} = 6$ choices since they have 2 different shapes among 4 possible shapes. 
+By multiplying all of these, there are
+$$
+\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2} = 3744
+$$
+possible Full houses and the probability is
+$$
+\frac{\binom{13}{1}\binom{4}{3}\binom{12}{1}\binom{4}{2} }{\binom{52}{5}} \approx 0.001441.
+$$
+
+
+
+\subsection*{Flush}
+
+Flush is a set of 5 cards where all the cards have same shapes, but not Royal flush or Straight flush. For example, 
+\begin{center}
+{\psset{inline=boxed} \As{} \fives{} \sevs{} \Js{} \Ks}
+\end{center}
+is a Flush. 
+
+We have to choose 5 numbers among 13 possible numbers, which has $\binom{13}{5}$ ways to do. Also, since every card has same shape, we only need to choose one shape among 4 shapes, which is $\binom{4}{1} =4$. 
+However, we have to exclude Royal flush and Straight flush. So we have to subtract $4 + 36 = 40$ from the answer. 
+Thus, there are
+$$
+\binom{13}{5}\binom{4}{1} - 40 = 5108
+$$
+possible Flushes and the probability is 
+$$
+\frac{\binom{13}{5}\binom{4}{1} - 40}{\binom{52}{5}} \approx 0.001965.
+$$
+
+
+
+
+\subsection*{Straight}
+Straight is a set of 5 cards with consecutive numbers, but not all the same shapes (i.e. exclude Royal flush and Straight flush). For example, 
+\begin{center}
+{\psset{inline=boxed} \tres{} \fourd{} \fives{} \sixc{} \sevh{} }
+\end{center}
+is a Straight. 
+
+There are 10 possible choices for consecutive numbers: from 1, 2, 3, 4, 5 to 10, J, Q, K, A. 
+Also, for each card we can choose any shape among 4 shapes, so there are $\binom{4}{1}^{5} =4^{5}$ choices for their colors. 
+However, w can to exclude Royal flush and Straight flush. So we have to subtract $4 + 36 = 40$ from the answer as we did in Flush. 
+Thus, there are
+$$
+\binom{10}{1} \binom{4}{1}^{5} - 40 = 10200
+$$
+possible Straights and the probability is 
+$$
+\frac{\binom{10}{1}\binom{4}{1}^{5} - 40}{\binom{52}{5}} \approx 0.003925. 
+$$
+
+
+
+
+
+\subsection*{Three of kind}
+
+Three of kind is a set of 5 cards where exactly three of them have same numbers. For example, 
+\begin{center}
+{\psset{inline=boxed} \Jh{} \Jd{} \Jc{} \fourh{} \fiveh}
+\end{center}
+is a Three of kind. 
+
+First, we choose number among 13 numbers  for the set of 3-cards, which has $\binom{13}{1} =13$ ways to do. 
+Then we have $\binom{4}{3} = 4$ choices for their shapes since they have 3 different shapes among 4 possible shapes. 
+Now, for the numbers of last two cards,  we have to choose two different numbers among 12 numbers that is not used yet, which has $\binom{12}{2}$ many ways to do. 
+We can choose any shapes for that two cards, so we have $\binom{4}{1}^{2} = 4^{2}$ for their shapes. 
+By multiplying all of these numbers, there are
+$$
+\binom{13}{1}\binom{4}{3} \binom{12}{1}\binom{4}{1}^{2} = 54912
+$$
+possible Three of kind and the probability is 
+$$
+\frac{\binom{13}{1}\binom{4}{3} \binom{12}{1}\binom{4}{1}^{2} }{\binom{52}{5}} \approx 0.021128.
+$$
+
+
+\subsection*{Two pairs}
+Two pairs is a set of 5 cars which contains two pairs of same numbers, but the numbers for each pair should be different (i.e. not Four of a kind). Also, the other card's number should be different from the numbers of those pairs (i.e. not Full house).  
+For example, 
+\begin{center}
+{\psset{inline = boxed} \Qh{} \Qc{} \Ks{} \Kc{} \sevs{}}
+\end{center}
+is a Two pairs. 
+
+First, we choose two numbers for each pairs, which has $\binom{13}{2}$ possible choices. 
+Then we choose shapes for each pairs. For a pair, the two cards in the pair should have different shapes among 4 shapes, which have $\binom{4}{2}$ ways to do. Since we have two pairs, we have to multiply $\binom{4}{2}$ for each pairs. 
+Finally, the last card's number should be different from the numbers of those pairs, so we have $\binom{11}{1}$ choices for that, and $\binom{4}{1}$ choices for it's shape. 
+By multiplying all of these numbers, there are
+$$
+\binom{13}{2}\binom{4}{2}^{2}\binom{11}{1}\binom{4}{1} = 123552
+$$
+possible Two pairs and the probability is 
+$$
+\frac{\binom{13}{2}\binom{4}{2}^{2}\binom{11}{1}\binom{4}{1} }{\binom{52}{5}} \approx 0.047539. 
+$$
+
+
+
+\subsection*{One pair}
+One pair is a set of 5 cards which contains exactly one pair of two cards with same shapes. 
+For example, 
+\begin{center}
+{\psset{inline = boxed} \Jh{} \Jd{} \Ah{} \tres{} \fourc{} }
+\end{center}
+is a One pair. 
+
+First, we choose a number for the pair, which has $\binom{13}{1}$ possibilities, and shapes for the pair, which has $\binom{4}{2}$ possibilities. 
+For the other three cards, their numbers should be all different and also different from the number of the pair, so we have to choose 3 different numbers among 12 numbers, which is $\binom{12}{3}$. 
+There's no restriction on shapes of these 3 cards, so we have $\binom{4}{1}^{3}$ possibilities since we have $\binom{4}{1}$ many choices of shapes for each cards. 
+By multiplying all of these numbers, there are
+$$
+\binom{13}{2}\binom{4}{2}\binom{12}{3}\binom{4}{1}^{3} = 1098240
+$$
+possible One pairs and the probability is
+$$
+\frac{\binom{13}{2}\binom{4}{2}\binom{12}{3}\binom{4}{1}^{3}}{\binom{52}{5}} \approx 0.422569.
+$$
+ 
+\subsection*{No pair}
+
+No pair is a set of 5 cards which does not belong to any of the previous results. For example, 
+\begin{center}
+{\psset{inline = boxed} \Ah{} \twoh{} \fourc{} \sevc{} \Js}
+\end{center}
+is a No pair. 
+
+To find number of No pairs, we choose their numbers first. 
+Since there's \emph{no pair}, all of the numbers should be different, so we have to choose 5 different numbers among 13 numbers, which has $\binom{13}{5}$ many ways. 
+However, we have to exclude the case of straight, which is formed with consecutive 5 numbers. 
+There are 10 possible choices for consecutive numbers: from 1, 2, 3, 4, 5 to 10, J, Q, K, A. 
+So we have to exclude those cases and we get $\binom{13}{5} - 10$ for numbers. 
+For shapes, we can choose any shape for each card, so we get $\binom{4}{1}^{5}$. 
+By the way, we have to exclude Flush, i.e. all of the cards have same shapes. 
+For any given set of 5 different numbers, we have 4 different choices for shapes to be a Flush, and we have to exclude those cases. 
+So we have $\binom{4}{1}^{5} - 4$ for shapes. 
+Now we multiply those two numbers (since they are independent) and we get
+$$
+\left[\binom{13}{5} - 10\right]\left[\binom{4}{1}^{5} - 4\right] = 1302540
+$$
+for the number of No pairs, and the probability is 
+$$
+\frac{\left[\binom{13}{5} - 10\right]\left[\binom{4}{1}^{5} - 4\right] }{\binom{52}{5}} \approx 0.501117.
+$$
+
+\subsection*{What if...}
+
+Now assume that our Ramanujan is addicted to the 5-card poker and he played it 10000 times. What is a probability that Ramanujan get at least on Royal flush during the 10000 games? 
+We can compute this by using the complement rule. The probability space can be divided into 
+\begin{align*}
+\Omega = &\{\text{At least one Royal flush among 10000 games}\} \\
+ &\cup \{\text{No Royal flush among 10000 games}\}.
+\end{align*}
+So if $A$ stands for the event that \emph{Ramanujan got at least one Royal flush among 10000 games}, then $$P(A) = 1-P(A^{c})$$ where $A^{c}$ stands for the event that \emph{Ramanujan got no Royal flush among 10000 games}. 
+Now, for each game, the probability of \emph{not} having Royal flush is $$1 - 0.00000154 = 0.99999846$$ by complemet rule again, since the probability of having Royal flush is $0.00000154$ as we find.  
+If we (or Ramanujan) play 10000 games, then the probability of not having Royal flush for every 10000 game is 
+$$
+(1-0.00000154)^{10000} = 0.99999846^{10000}
+$$
+since all the probabilities for each game are independent, so we can just multiply $1-0.00000154$ by $10000$ times. Since the above number is the probability $P(A^{c})$, we get
+$$
+P(A) = 1- P(A^{c}) = 1- 0.99999846^{10000} \approx 0.015282 = 1.5282\%, 
+$$
+which is quite big (even bigger than the probability that Straight appears for a single game!). 
+However, you need to play $10000$ games to get this probability. 
+
+How many games do Ramanujan have to play to make the probability bigger than 50\%? We need to find the smallest $N$ such that 
+$$
+1 - \left(1 - \frac{4}{\binom{52}{5}}\right)^{N} \geq \frac{1}{2},
+$$
+and it turns out that the smallest such $N$ is $N = 450366$. So if you play poker 450366 games, then the probability to have at least one Royal flush is bigger than $50\%$! But, keep in mind that you have to play \textbf{450366} games. 
+\end{document}

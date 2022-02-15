@@ -1,0 +1,445 @@
+\documentclass{article}
+\usepackage{amsfonts, amssymb, amsmath, amsthm, comment}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usetikzlibrary{positioning}
+\title{Some facts about $p$-adic numbers}
+\author{Seewoo Lee}
+
+\newcommand{\SST}{\mathrm{SST}}
+\newcommand{\nc}{\newcommand}
+\newcommand{\wt}{\mathrm{wt}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+
+
+\nc{\Tr}{\mathrm{Tr}\,}
+\newcommand{\Cl}{\mathrm{Cl}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\nc{\Gal}{\mathrm{Gal}}
+
+%\nc{\Mod}[1]{\,(\mathrm{mod}\,#1)}
+
+\nc{\cSO}{\mathcal{SO}}
+\nc{\cO}{\mathcal{O}}
+\nc{\cS}{\mathcal{S}}
+
+\nc{\Zz}{\mathbb{Z}}
+\nc{\Qq}{\mathbb{Q}}
+\nc{\Cc}{\mathbb{C}}
+\nc{\Rr}{\mathbb{R}}
+\nc{\Ff}{\mathbb{F}}
+
+\nc{\ord}{\mathrm{ord}}
+
+\nc{\Frac}{\mathrm{Frac}}
+
+
+
+\newcommand{\Mod}[1]{\,(\mathrm{mod}\,#1)}
+\newcommand{\smat}[4]{\left(\begin{smallmatrix} #1 & #2 \\ #3 & #4 \end{smallmatrix}\right)}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+
+\begin{document}
+\maketitle
+\begin{abstract}
+In this note, we introduce some simple and nontrivial facts about $p$-adic numbers. Most of the results here can be generalized to any complete DVRs or Henselian fields. 
+You may need to know some basic notion of local fields such as unramified and totally ramified extensions, Newton polygon, Hensel's lemma, etc. See \cite{neu} for such definitions. 
+\end{abstract}
+
+\section{The only automorphism is the identity.}
+
+\begin{theorem}
+Let $f:\Qq_{p} \to \Qq_{p}$ be a field automorphism. The $f = \mathrm{id}$. 
+\end{theorem}
+\begin{proof}
+This proof is adapted from Jyrki Lahtonen's answer on MSE \cite{jy}. 
+Note that this is true for $p =\infty$, where $\Qq_{p} = \Rr$. We will prove that case first, which gives an intuition for the proof of non-archimedean case. 
+Assume that $\varphi:\Rr\to \Rr$ is a field automorphism. So $\varphi|_{\Qq} = \mathrm{id}$. 
+Since $\Qq$ is dense in $\Rr$, it is enough to show that $\varphi$ is continuous. 
+For any $a\in\Rr$, we have $\varphi(a^{2}) =\varphi(a)^{2} \geq 0$. This implies that $\varphi(\Rr_{\geq 0}) \subseteq \Rr_{\geq 0}$. Now if $a\leq b$, we have
+$$
+\varphi(b) - \varphi(a) = \varphi(b-a) = \varphi((b-a)^{1/2})^{2} \geq 0
+$$
+so $\varphi(a) \leq \varphi(b)$, i.e. $\varphi$ is an increasing function. 
+Now, let $a\in \Rr$ be given. Choose sequences of rational numbers $\{r_{n}\}$ and $\{s_{n}\}$ such that $r_{n} \leq a \leq s_{n}$ and $r_{n}$ (resp. $s_{n}$) increases (resp. decreases), and both converges to $a$. 
+Then 
+$$
+r_{n} = \varphi(r_{n}) \leq \varphi(a) \leq \varphi(s_{n})  = s_{n},
+$$
+and taking the limit $n\to \infty$ gives $\varphi(a) = a$. 
+
+
+For non-archimedean case, we will also use square as we did for $\Rr$. 
+First, assume $p>2$ and let $\varphi:\Qq_p \to \Qq_p$ be a field automorphism. 
+Assume that we proved $\varphi$ fixes $\Zz_p$, i.e. $\varphi(\Zz_p)  = \Zz_p$. 
+Then $\varphi^{-1}(p^{k}\Zz_{p}) = p^{k}\Zz_{p}$ for any $k\geq 0$, which implies that $\varphi$ is continuous (since $p^{k}\Zz_{p}$ form a basis of the topology at $0$), and so $\varphi|_{\Zz_{p}} = \mathrm{id}$ from the fact that $\Zz$ is dense in $\Zz_{p}$. 
+
+To prove that $\varphi(\Zz_{p}) =\Zz_{p}$, we will use the following lemma. 
+\begin{lemma}
+Let $x\in \Qq_{p}$. $1 + px^{2}$ is square in $\Qq_{p}$ if and only if $x\in \Zz_{p}$. 
+\end{lemma}
+\begin{proof}
+If $x\not\in \Zz_p$, then $x = p^{-m}u$ for some $u\in \Zz_{p}^{\times}$ and $m\geq 1$, so that $v(1+px^{2}) = v(1+ p^{-2m+1}u^{2}) = -2m+1$, which is odd. 
+If $x\in \Zz_{p}$, then we can use Hansel's lemma: the polynomial $f(t) = t^{2} - (1+px^{2})$ splits mod $p$, so it has a solution in $\Qq_{p}$ (which is also in $\Zz_{p}$ by considering the valuation). 
+Here we need $p>2$ to apply Hansel's lemma. 
+\end{proof}
+By the lemma, we have
+$$
+x\in \Zz_{p}\Leftrightarrow 1+px^{2} = y^{2} \Leftrightarrow 1 + p\varphi(x)^{2} = \varphi(y)^{2} \Leftrightarrow \varphi(x)\in \Zz_{p}
+$$
+so $\varphi(\Zz_{p}) =\Zz_{p}$. 
+
+For $p = 2$, we need a slight modification. We can use the following variation. 
+\begin{lemma}
+Let $x\in \Qq_{2}$. $1+8x^{2}$ is square in $\Qq_{2}$ if and only if $x\in \Zz_{2}$. 
+\end{lemma}
+\begin{proof}
+Assume that $x\not\in \Zz_{2}$, so that $x = 2^{-m}u$ with $m\geq 1$ and $u\in \Zz_{2}^{\times}$. 
+If $m = 1$, then $2x \equiv 1\Mod{2}$ and $1 + 8x^{2} \equiv 3 \Mod{4}$, which can't be a square mod 4. 
+If $m \geq 2$, then $v(1+8x^{2}) = v(1 + 2^{-2m+3}u^{2}) = -2m+3$ is odd, so is not square again. 
+If $x\in \Zz_{2}$, let $f(t) = t^{2}  - (1+8x^{2})$ and let $a = 1$. Since $f(a) = -8x^{2}$ and $f'(a) = 2$, $|f(a)|_{2}  < |f'(a)|_{2}^{2}$, Hensel's lemma shows that there exists $b\in\Qq_{2}$ such that $f(b) =b^{2} - (1+8x^{2}) = 0$ and $|b-a|_{2} < |f'(a)|_{2} = \frac{1}{2}$. 
+\end{proof}
+As before, this shows $\varphi(\Zz_{2}) =\Zz_{2}$ and continuity of $\varphi$. 
+\end{proof}
+
+\section{They are different for distinct $p$'s.}
+\begin{theorem}
+$\Qq_{p} \simeq \Qq_{q}$ if and only if $p = q$. 
+\end{theorem}
+\begin{proof}
+Again, such isomorphism should fix $\Qq$. We will show that there exists $a\in \Zz$ such that $\sqrt{a}$ exists in $\Qq_{q}$ but not in $\Qq_{p}$, which gives a contradiction. This follows from the following lemma:
+\begin{lemma}
+There exists $m\in \Zz$ such that $p\nmid m$ and $\left(\frac{mp}{q}\right) = 1$. 
+\end{lemma}
+\begin{proof}
+Assume that $q>2$. If $\left(\frac{p}{q}\right) = 1$, then we can choose $m = 1$. If $\left(\frac{p}{q}\right) = -1$, choose $m'\in \Zz$ with $\left(\frac{m'}{q}\right) = -1$ (such $m'$ exists since $q >2$). 
+Then at least one of $m'$ and $m'+q$ is not a multiple of $p$. 
+Let $m$ be such one. Then
+$$
+\left(\frac{mp}{q}\right) = \left( \frac{m}{q}\right)\left(\frac{p}{q}\right) = \left(\frac{m'}{q}\right)\left(\frac{p}{q}\right) = (-1)(-1) = 1. 
+$$
+\end{proof}
+Now consider $f(x) = x^{2} - mp$. This doesn't have a solution in $\Qq_{p}$: if $\alpha\in \Qq_{p}$ satisfies $\alpha^{2} = mp$, then $v(\alpha) = \frac{1}{2}v(mp) = \frac{1}{2}$, which is not an integer. 
+However, the equation has a solution in $\Qq_{q}$ by Hensel's lemma. 
+
+As before, this is also true when $q = \infty$, so that $\Qq_{q} = \Rr$. 
+If $p>3$, then $\Qq_{p}$ has $(p-1)$-many distinct solution of $x^{p-1} - 1 = 0$ (by Hensel's lemma), but $\Rr$ has only two solutions. For $p =2$, $\Qq_{2}$ has $\sqrt{-7}$ (by Hensel's lemma), but $\Rr$ doesn't. 
+For $p = 3$, $\Qq_{3}$ has $\sqrt{-2}$, but $\Rr$ doesn't. 
+\end{proof}
+
+
+
+
+
+
+
+
+\section{Correlation between Algebraic and Analytic Properties}
+
+As we know, we can define $\mathbb{Q}_{p}$ in both algebraic and analytic way. For algebraic definition, we define $\mathbb{Z}_{p}$ as an inverse limit 
+$$
+\Zz_{p} := \lim_{\substack{\longleftarrow \\ n}} \Zz/p^{n}\Zz
+$$
+and $\Qq_{p} := \Frac(\Zz_{p})$. 
+For analytic definition, we define $\Qq_{p}$ as a completion of $\Qq$ with respect to the $p$-adic norm $|\cdot |_{p}$. 
+The following theorems gives some interesting relations between algebraic and analytic properties.
+Recall that we define 
+$$
+|f| := \max_{0\leq i\leq n}\{|a_{i}|\}
+$$
+for a polynomial $f(x) = a_{n}x^{n} + \cdots + a_{1}x + a_{0} \in K[x]$. 
+If $\alpha$ is a zero of $f(x)$, we have 
+$$
+|\alpha| \leq \max\left\{ 1, \sum_{i=0}^{n-1} \Big| \frac{a_{i}}{a_{n}} \Big|\right\}.
+$$
+Indeed, there's nothing to prove for $|\alpha| \leq 1$, and if $|\alpha|>1$, we have
+$$
+|\alpha|^{n} = \Big| \frac{a_{n-1}}{a_{n}} \alpha^{n-1} + \cdots + \frac{a_{0}}{a_{n}} \Big| \leq \max_{0\leq i\leq n-1} \left\{ \Big| \frac{a_{i}}{a_{n}}\alpha^{i}\Big| \right\} \leq |\alpha|^{n-1}\sum_{i=0}^{n-1} \Big| \frac{a_{i}}{a_{n}}\Big|
+$$
+which proves the inequality. 
+\begin{theorem}
+\label{zero}
+In a Henselian field the zeros of a polynomial are continuous functions on its coefficients. 
+More precisely, let $f(x)\in K[x]$ be a polynomial of degree $n$ with $n$ distinct zeros $\alpha_1, \dots, \alpha_n$. 
+If the polynomial $g(x)$ of degree $n$ has all coefficients sufficiently close to those of $f(x)$, then it has $n$ roots $\beta_1, \dots, \beta_n$ which approximate the $\alpha_1, \dots, \alpha_n$ to any given precision.
+\end{theorem}
+\begin{proof}
+Let $f(x) = a_{n}x^{n} + \cdots + a_{n} = a_{n}(x-\alpha_{1})(x-\alpha_{2})\cdots (x-\alpha_{n})$ and $\epsilon >0$. 
+Choose $\delta >0$ so that 
+$$
+\delta \leq \min \left\{ \frac{|a_{n}|}{2}, \frac{|a_{n}|\epsilon^{n}}{\sum_{i=0}^{n}M^{i}}, \frac{|a_{n}|\epsilon^{n}}{2\sum_{i=0}^{n} N^{i}}\right\}
+$$
+where
+$$
+M = \sum_{i=0}^{n-1}\left( 1 + 2\frac{|a_{i}|}{|a_{n}|} \right), \qquad N = \max\left\{ 1, \sum_{i=0}^{n-1} \Big| \frac{a_{i}}{a_{n}} \Big|\right\}.
+$$
+Suppose that $g(x) \in K[x]$ satisfies $|f-g|<\delta$, and let $\beta$ be any root of $g$. 
+Then $|a_{n}| \leq |a_{n} - b_{n}| + |b_{n}| < \delta + |b_{n}| \leq \frac{\delta}{2} + |b_{n}|$ gives $\frac{|b_{i}|}{|b_{n}|} \leq 2\cdot \frac{|a_{i}-b_{i}| + |a_i|}{|b_n|} \leq \frac{2\delta}{|a_{n}|} + 2\frac{|a_{i}|}{|a_{n}|} \leq 1 + 2\frac{|a_{i}|}{|a_n|}$. So we get $|\beta| \leq M$. Thus
+$$
+|f(\beta)| = |f(\beta) - g(\beta)| \leq \sum_{i=0}^{n} |a_i - b_i| |\beta|^{i}< \delta\sum_{i=0}^{n} M^{i} < |a_n| \epsilon^{n}. 
+$$
+Therefore $|a_{n}| \prod_{i=1}^{n} |\beta - \alpha_i| < |a_n|\epsilon^{n}\Leftrightarrow \prod_{i=1}^{n} |\beta - \alpha_i| < \epsilon^{n}$, hence one of the factors $|\beta - \alpha_i|$ must be smaller than $\epsilon$. 
+This shows that $\beta$ is within $\epsilon$ of a root of $f$. 
+Conversely, we can prove that for any zero $\alpha$ of $f(x)$, there exists a zero of $g(x)$ very close to $\alpha$ by the same argument (using $|\alpha| \leq N$ and $\frac{|a_n|}{2} \leq |b_n|$). 
+\end{proof}
+\begin{lemma}[Krasner]
+\label{kr}
+Let $K$ be an Henselian field, $\alpha\in \overline{K}$ be separable over $K$ and let $\alpha = \alpha_1, \alpha_2, \dots, \alpha_n$ be its conjugates over $K$. If $\beta\in \overline{K}$ and 
+$$
+|\alpha - \beta| < |\alpha - \alpha_i|, \qquad i = 2, \dots, n, 
+$$
+then $K(\alpha)\subseteq K(\beta)$. 
+\end{lemma}
+\begin{proof}
+Assume that $\alpha\not\in K(\beta)$. 
+Then $K(\alpha, \beta)/K(\beta)$ is a field extension of degree $>1$, and it is separable since $\alpha$ is separable over $K$. 
+So we have an field embedding $\sigma:K(\alpha, \beta)\hookrightarrow \overline{K}$ such that $\sigma|_{K(\beta)} = \mathrm{id}$, but $\sigma(\alpha) \neq \alpha$. Then $\sigma(\alpha) = \alpha_i$ for some $2\leq i\leq n$, and since the valuation is invariant under the field automorphism (by the uniqueness extension property of Henselian field)
+$$
+|\beta - \alpha| = |\sigma(\beta -\alpha)| = |\beta - \alpha_i|.
+$$
+However, this implies
+$$
+|\alpha - \alpha_i| \leq \max\{ |\alpha- \beta|, |\beta - \alpha_i|\} = |\beta - \alpha_i|, 
+$$
+which contradicts to the assumption. 
+\end{proof}
+The following corollary shows that how analysis can govern algebra in $p$-adic (or more generally, in Henselian) fields. 
+\begin{corollary}
+Let $f(x)\in K[x]$ be an irreducible polynomial over a Henselian field $K$ which is separable, and let $\alpha\in \overline{K}$ be a zero of $f(x)$. 
+Then there exists $\delta >0$ such that for all $g(x)\in K[x]$ with $|f-g| <\delta$, there exists a zero $\beta\in \overline{K}$ of $g(x)$ such that $K(\alpha) = K(\beta)$. 
+In particular, $g(x)$ is also irreducible. 
+\end{corollary}
+\begin{proof}
+By Theorem \ref{zero}, there exists $\delta >0$ such that a  polynomial any $g(x) \in K[x]$ with $|f - g| < \delta$ satisfies 
+$$
+|\alpha_{i} - \beta_{i}| < \min\{ |\alpha_{i} - \beta_{j}|, |\alpha_{j} - \beta_{i}|\}
+$$
+for all $1\leq i\neq j\leq $, where $\beta_{1}, \dots, \beta_{n} \in \overline{K}$ are zeros of $g(x)$. 
+By Lemma \ref{kr}, we have $K(\alpha_i) = K(\beta_i)$.  
+\end{proof}
+
+Using these, we can prove that the algebraic closure of $\Qq_{p}$ is not complete, but its completion is algebraically closed. 
+
+\begin{theorem}
+For any $p$, the algebraic closure $\overline{\Qq_{p}}$ of $\Qq_{p}$ is not complete under the $p$-adic metric extended to $\overline{\Qq_{p}}$. However, its completion $\Cc_{p} :=\widehat{\overline{\Qq_{p}}}$ is algebraically closed. 
+\end{theorem}
+\begin{proof}
+For the first statement, let's consider the sequence
+$$
+a_{n} = \sum_{k=1}^{n} p^{n + \frac{1}{n}}
+$$
+in $\overline{\mathbb{Q}_{p}}$. 
+It is clear that $a_{n} \in \overline{\mathbb{Q}_{p}}$, and also the sequence $\{a_{n}\}_{n\geq 1}$ is a Cauchy sequence since $|s_{n} - s_{n-1}| = |p^{n+1/n}| \leq p^{-(n+1/n)}$ converges to 0. 
+However, the limit does not exist in $\overline{\mathbb{Q}_{p}}$. 
+Indeed, let $\beta$ be any element in $\overline{\mathbb{Q}_p}$ which has degree $m$ over $\mathbb{Q}_p$. 
+If we consider the Newton polygon of the minimal polynomial $f(x)$ of $\beta$, 
+valuation of each zeros should be a form of $\frac{a}{b}$ for some $1\leq b \leq m$. 
+In other words, denominators of the valuations are bounded by $m!$. 
+However, it is not hard to check that $v(a_n) = \frac{a}{b}$ for $b = \mathrm{lcm}\{1, 2, \dots, n\}$, which tends to infinity as $n$ grows. 
+Thus $\lim_{n\to \infty} a_n$ does not exist in $\overline{\mathbb{Q}_{p}}$. 
+
+We will use the above lemmas to prove the second statement. 
+Let $\alpha$ be a zero of some monic polynomial $f(x) = a_{n}x^{n} + \cdots + a_{0} \in \Cc_p[x]$. 
+We want to show that $\alpha\in \Cc_p$. 
+By the Corollary, we can find $g(x) \in \overline{\Qq_{p}}[x]$ such that $|f-g|$ is sufficiently small so $\Cc_{p}(\alpha) = \Cc_{p}(\beta)$ for some zero $\beta \in \overline{\Qq_p}$ of $g(x)$. 
+This proves $\alpha \in \Cc_{p}$. 
+\end{proof}
+In fact, the above theorem is true for any field which is complete with respect to some non-trivial non-archimedean absolute value $|\cdot |$. See \cite{co} for the proof.
+
+
+
+\section{Extensions of $\Qq_{p}$}
+There are some interesting things happen for extensions of $\Qq_p$. 
+First, there are only \emph{finitely many} extensions of $\Qq_p$ with a given degree. 
+\begin{theorem}
+For any $n\geq 1$, there are only finitely many extensions $K/\Qq_{p}$ with $[K:\Qq_{p}] = n$. In particular, there exists a unique unramified extension of $\Qq_{p}$ of given degree, which is cyclic. 
+\end{theorem}
+\begin{proof}
+For unramified extension of given degree, it is not hard to show that $K_d = \Qq_{p}(\zeta_{p^d-1})$ is a degree $d$ unramified extension of $\Qq_{p}$. (For example, see \cite{neu}.) 
+To show the uniqueness of unramified extensions, it is enough to show that there is a 1-1 correspondence between finite unramified extensions of $\Qq_{p}$ and finite extensions of the residue field $\Ff_{p}$. In fact, if $K_1, K_2$ are two unramified extensions of same degree $n$, then both have a residue field $\Ff_{p^n}$. 
+The compositum $L = K_1 K_2$ is also unramified with a residue field $\Ff_{p^n}$, so 
+$$
+[K_1 K_2:\Qq_p] = n = [K_1 : \Qq_p]
+$$
+which gives $K_1 = K_2$. 
+
+Now, we will show that there are finitely many totally ramified extensions of a given degree. 
+First, we can show that every totally ramified extension is a form of $\mathbb{Q}_{p}(\alpha)$ for some $\alpha$ which is a zero of an Eisenstein polynomial (polynomial whose Newton polygon has only one segment with a slope $1/n = 1/\deg f$). 
+If $K = \mathbb{Q}_{p}(\alpha)$ for some zero $\alpha$ of an Eisenstein polynomial, then $v(\alpha) = 1/n$ by the theory of Newton polygon. So $K/\mathbb{Q}_{p}$ is totally ramified. 
+Conversely, if $K/\mathbb{Q}_p$ is totally ramified, there exist $\alpha \in K$ such that $v(\alpha) = 1/n$. 
+By the following simple lemma, $1, \alpha, \dots, \alpha^{n-1}$ are all $\Qq_p$-linearly independent:
+\begin{lemma}
+If $b_{1} +\cdots + b_m = 0$ for $b_1, \dots, b_m \in K$, then the minimum of $v(b_i)$ is obtained by at least two $i$'s. 
+\end{lemma}
+\begin{proof}
+If not, we may assume that $v(b_1) < v(b_i)$ for all $2\leq i\leq m$. 
+Then $v(a_1) = v(-a_1) = v(a_2 + \cdots + a_m) \geq \min\{v(a_2), \dots, v(a_m)\} > v(a_1)$, a contradiction. 
+\end{proof}
+Note that all $1, \alpha, \dots, \alpha^{n-1}$ have different valuations. 
+So $\deg(\alpha) \geq n$ and $K = \Qq_{p}(\alpha)$. 
+Now let $f(x) = x^{n} + a_{n-1}x^{n-1} + \cdots + a_{1}x + a_{0} \in \Qq_{p}[x]$ be a minimal polynomial of $\alpha$. 
+By the lemma again, we should have $v(a_1), \dots, v(a_{n-1})\geq 0$ and $v(a_{0}) = 1$, which means that $f(x)$ is an Eisenstein polynomial. 
+
+Now we can prove our claim. For each $(a_{0}, \dots, a_{n-1}) \in p\Zz_{p}^{\times} \times p\Zz_{p} \times \cdots \times p\Zz_{p}$, we have an Eisenstein polynomial $f(x) = x^{n} + a_{n-1}x^{n-1} +  \cdots + a_{0}$. 
+By Krasner's lemma (Lemma \ref{kr}), each $(a_{0}, \dots, a_{n-1})$ has a neighborhood which defines a same splitting field over $\Qq_{p}$. 
+Since $p\Zz_{p}^{\times} \times  p\Zz_{p} \times \cdots p\Zz_{p}$ is compact, it can covered by finitely many such open subsets, which means that we only need finitely many Eisenstein polynomials to cover all the totally ramified extensions. Combining these two results about unramified and totally ramified extensions, we get the theorem. 
+\end{proof}
+We can even find all the quadratic extensions of $\Qq_{p}$. 
+\begin{theorem}
+Let $p>2$ be an odd prime. Then there are exactly three nonisomorphic quadratic extensions of $\Qq_{p}$, 
+$$
+\Qq_{p}(\sqrt{p}), \Qq_{p}(\sqrt{u}), \Qq_{p}(\sqrt{pu}), 
+$$
+where $u\in \Zz$ is a non-quadratic residue mod $p$. 
+Also, there are 7 quadratic extensions of $\Qq_{2}$, 
+$$
+\Qq_{2}(\sqrt{-1}), \Qq_{2}(\sqrt{\pm 2}), \Qq_{2}(\sqrt{\pm 5}), \Qq_{2}(\sqrt{\pm 10}). 
+$$
+\end{theorem}
+\begin{proof}
+Every quadratic extension has a form of $\Qq_{p}(\sqrt{D})$ for some $D\in \Qq_{p} -\Qq_{p}^{2}$, and $\Qq_{p}(\sqrt{D}) = \Qq_{p}(\sqrt{D'})$ if and only if $D/D' \in \Qq_{p}^{2}$. 
+So we can reduce the problem to find representatives of $\Qq_{p}^{\times}/ (\Qq_{p}^{\times})^{2}$. 
+
+First, let $p>2$. It is not hard to show that $p, u, pu$ are all not in $\Qq_{p}^{2}$ and their image in $\Qq_{p}^{\times} / (\Qq_{p}^{\times})^{2}$ are all different. 
+Now let $a\in \Qq_{p} -\Qq_{p}^{2}$. By multiplying suitable power of $p^{2}$, we can assume that $a\in \Zz_{p}$ with $0\leq v_{p}(a)\leq 1$. 
+If $v_{p}(a) = 0$ and $a = a_{0} + a_{1}p + \cdots$, then $a\in \Qq_{p}^{2}$ if and only if $a_{0}$ is a quadratic residue mod $p$ by Hensel's lemma. When $a_{0}$ is not a quadratic residue, then $u^{-1}a\Mod{p}$ is a quadratic residue and so $u^{-1}a\in \Qq_{p}^{2}$. This means that $\sqrt{a}\in \Qq_{p}(\sqrt{u})$. 
+Similarly, we can prove that $a \in \Qq_{p}(\sqrt{p})$ or $\Qq_{p}(\sqrt{pu})$ when $v_{p}(a) = 1$. 
+
+For $p = 2$, a situation is more technical. 
+First, we can show that they are all degree 2 extensions. If $-1$ is square in $\Qq_2$, then it is also square in $\Zz_2$ since it has valuation 0, and this is impossible since there's no solution of $x^{2} + 1 = 0$ mod $4$. Similarly, $5$ and $-5$ are not squares because of mod $4$ or $8$. $\pm2$ and $\pm 10$ are not squares since their valuations are $1$, which is odd. 
+
+To show that they are all, it is enough to show that all $D\in \Zz$ with $D \equiv 1 \Mod{8}$ are square in $\Zz_{2}$. This follows from (strong) Hensel's lemma - if we put $f(x) = x^{2} - D$, then $|f(1)|_{2} \leq 2^{-3} < 2^{-2} = |f'(1)|_{2}^{2}$, so there exists $a\in \Zz_{2}$ such that $f(a) = a^{2} - D = 0$ (with $|a - 1|_{2} < |f'(1)|_{2} = 2^{-2}$. Then we can proceed as we did above. 
+\end{proof}
+This theorem tells us that extensions of $\Qq_{p}$ are much simpler than extensions of global fields, such as $\Qq$. 
+How about Galois groups? 
+As we know, Abel proved that there's no general formula to solve quintic equation. More precisely, there exists a degree 5 polynomial over $\Qq$ whose roots can't be represented as radicals. 
+However, for $\Qq_{p}$, we can prove that \emph{every} finite Galois extension of $\Qq_p$ are solvable. 
+Before we prove it, we define higher ramification groups, which give a filtration of normal subgroups of the Galois group. 
+\begin{definition}
+Let $K/\Qq_{p}$ be a finite Galois extension and let $G = \Gal(K/\Qq_p)$ be a Galois group. . Let $v_{K}$ be a normalized valuation on $K$ which extends the $p$-adic valuation on $\Qq_p$. 
+For each $s\geq -1$, we define the higher ramification groups as
+$$
+G_{s} = G_{s}(K/\Qq_p) := \{\sigma\in G\,:\, v_{K}(\sigma(a) - a) \geq s+1\,\forall a\in \cO_{K}\}
+$$
+It is easy to check that 
+$$
+G = G_{-1} \supseteq G_{0} \supseteq G_{1} \supseteq G_{2} \supseteq \cdots \supseteq G_{s_{0}} = \{1\}
+$$
+is a filtration of $G$ which are all normal subgroups and $G_{s} = \{1\}$ for sufficiently large $s$. 
+\end{definition}
+
+\begin{proposition}
+Let $\pi_K$ be a uniformizer of $K$. For any $s\geq 0$, we have a well-defined homomorphism 
+$$
+G_{s}/G_{s+1} \to U_{K}^{(s)}/U_{K}^{(s+1)}, \qquad \sigma \mapsto \frac{\sigma (\pi_{K})}{\pi_{K}}
+$$
+is an injective homomorphism which is independent of the choice of $\pi_{K}$. 
+Here $U_{K}^{(0)} = \cO_{K}^{\times}$ and $U_{K}^{(s)} = 1+\pi_{K}^{s}\cO_{K}$ for $s\geq 1$. 
+\end{proposition}
+\begin{proof}
+The most tricky part is injectivity. We will only prove injectivity for $s = 0$, and $s\geq 1$ case is similar. (You can find the proof for $s\geq 1$ in \cite{co2}.) 
+Assume that $\sigma \in G_{s}$ is in the kernel of the map, so that $\sigma(\pi_{K}) \equiv \pi_{K} \Mod{\pi_{K}^{s+1}}$.  
+Let $K'$ be a maximal unramified subextension of $K$. 
+Then the residue field $k'$ is same as $k$ because $k/\Ff_{p}$ is separable. This means that we have a surjective map $\cO_{K'} \twoheadrightarrow k$, so that any $\alpha \in \cO_{K}$ satisfies $\alpha \equiv c_{0} + c_{1} \pi_{K}\Mod{\pi_{K}^{2}}$ for some $c_{0}, c_{1} \in \cO_{K'}$. Then
+$$
+\sigma(\alpha) \equiv \sigma(c_{0}) + \sigma(c_{1}) \sigma(\pi_{K}) \equiv c_{0} + c_{1} \pi_{K} \equiv \alpha\Mod{\pi_{K}^{2}}
+$$
+since $K' = K^{G_{0}}$. This proves $\sigma \in G_{1}$. 
+\end{proof}
+\begin{corollary}
+Any finite Galois extension of $\Qq_p$ are solvable. 
+\end{corollary}
+\begin{proof}
+The quotient $U_{K}^{(s)} /U_{K}^{(s+1)}$ is clearly an abelian group for any $s\geq 0$. In fact, it is not hard to show that 
+$$
+U_{K}^{(s)}/U_{K}^{(s+1)} \simeq \begin{cases} k^{\times} & s = 0 \\ k & s\geq 1\end{cases}
+$$
+where $k$ is the residue field of $K$. 
+By the previous proposition, every quotient $G_{s}/G_{s+1}$ is abelian, and the above filtration proves that $G$ is a solvable group. 
+\end{proof}
+
+In general, it is hard to find generators of a ring of integer of a number field. It is known that there are some number fields which has a ring of integer that is not monogenic, i.e. not of the form $\Zz[\alpha]$ for some $\alpha\in \cO_{K}$. 
+For example, Dedekind found that a cubic field $K/\mathbb{Q}$ generated by a root of the polynomial $x^{3} - x^{2} - 2x - 8$ is not monogenic. Also, $\Qq(\sqrt{7}, \sqrt{10})$ is another example - see Chapter 2, Exercise 30 of \cite{ma}.
+However, for local fields, we can show that every ring of integers are monogenic. 
+\begin{theorem}
+Every ring of integer of finite extension $K$ of $\Qq_{p}$ is monogenic, i.e. $\cO_{K} = \Zz_{p}[\alpha]$ for some $\alpha\in \cO_{K}$. 
+\end{theorem}
+\begin{proof}
+Let $k$ be a residue field of $K$, which is a finite extension of $\Ff_{p}$. Then there exists $\alpha\in \Ff_{p}$ s.t. $k = \Ff_{p}(\bar{\alpha})$. 
+Now let $\bar{f}(x)\in \Ff_{p}[x]$ be a minimal polynomial of $\bar{\alpha}$ and let $f(x) = \cO_{K}[x]$ be a lift. 
+\begin{lemma}
+There exists a lift $\alpha\in \cO_K$ of $\bar{\alpha}$ such that $\pi = f(\alpha)$ is a uniformizer of $K$. 
+\end{lemma}
+\begin{proof}
+Let $v_{K}$ be a normalized valuation on $K$. 
+From $\bar{f}(\bar{\alpha}) = 0$, we have $v_{K}(f(\alpha))\geq 0$ for any lift $\alpha$. 
+If $v_{K}(\alpha) = 1$, then we are done. So let's assume $v_{K}(\alpha) \geq 2$. 
+Then $\alpha +\pi_{K}$ will work: indeed, by Taylor's formula we have
+$$
+f(\alpha + \pi_{K}) = f(\alpha) + f'(\alpha)\pi_{K} + b\pi_{K}^{2}, \quad b\in \cO_{K}
+$$
+and we get $v_{L}(f(\alpha+ \pi_{K})) = 1$ since $f'(\alpha) \in \cO_{K}^{\times}$, because $\bar{f}'(\bar{\alpha})\neq 0$.
+\end{proof}
+From this, one can prove that 
+$$
+\alpha^{j}\pi^{i}, \quad 0\leq i\leq e-1,\, 0\leq j\leq f-1
+$$
+form an integral basis of $\cO_{K}$ over $\Zz_{p}$. Hence $\cO_{K} =\Zz_{p}[\alpha]$. 
+\end{proof}
+
+
+
+\section{Monsky's theorem}
+At last, we introduce some amazing application of $p$-adic numbers, which seems to be nothing to do with $p$-adic numbers. 
+\begin{theorem}[Monsky]
+If we dissect a square into $n$ triangles with all the same areas, then $n$ is even. 
+\end{theorem}
+\begin{proof}
+This proof requires Axiom of Choice. 
+By using Zorn's lemma, we can prove that any two different extensions of a same field which are algebraically closed and have the same cardinality are isomorphic as a field. This implies that there is a field isomorphism $i_{p}:\Cc \to \Cc_{p}$, and we can extend the $p$-adic valuation to $\Cc$ by $|x|_{p}:= |i_{p}(x)|_{p}$. 
+
+Now we can color points on a real plane $\Rr^{2}$ equipped with a 2-adic norm via $\Rr\hookrightarrow \Cc \xrightarrow{i_{2}} \Cc_{2}$. 
+Color a point $(x, y)$ red if $|x|_2 < 1, |y|_2<1$, color it blue if $|x|_2\leq |y|_2$ and $|y|_2\geq 1$, and color it green if $|x| _2> |y|_2$ and $|x|_2\geq 1$. 
+Then each edge can only contain at most two colors. By Sperner's lemma, we can find a complete triangle where all the vertices have different colors. 
+Let $(x_{r}, y_{r}), (x_{b}, y_{b}), (x_{g}, y_{g})$ be the coordinates of the complete triangle with red, blue, and green colors. 
+The area $A$ of the triangle is the absolute value of 
+$$
+\frac{(x_g - x_r)(y_b - y_r) - (x_b - x_r)(y_g - y_r)}{2}.
+$$
+By definition of the coloring, we have 
+\begin{align*}
+|(x_b - x_r)&(y_g - y_r)|_2 = |x_{b}y_{g}|_2 \geq 1,  \\
+|x_{b}|_2 &\geq \max\{ |y_{b}|_2, |y_{r}|_2\}, \\
+|y_{g}|_2 &> \max\{|x_{g}|_2, |x_{r}|_2\}
+\end{align*}
+and so we have
+$$
+|A| = |1/2||x_b||y_g| \geq 2.
+$$
+By the way, the area is $A = 1/n$, so we get $|n| \leq 1/2$ and $n$ is even. 
+\end{proof}
+\begin{thebibliography}{9}
+
+\bibitem{co} Brian Conrad, \emph{Completion of Algebraic Closure}, \url{http://virtualmath1.stanford.edu/~conrad/248APage/handouts/algclosurecomp.pdf}, Online note. 
+\bibitem{co2} Brian Conrad, \emph{Higher ramification groups}, \url{http://math.stanford.edu/~conrad/676Page/handouts/ramgroup.pdf}, Online note. 
+\bibitem{kc} Keith Conrad, \emph{Which number fields are monogenic? and related questions}, \url{https://mathoverflow.net/questions/21267/which-number-fields-are-monogenic-and-related-questions}, Answer to a question on Mathematics Overflow.
+\bibitem{jy}
+Jyrki Lahtonen, answer to the question \emph{An automorphism of the $p$-adic numbers}, \url{https://math.stackexchange.com/questions/449424/an-automorphism-of-the-field-of-p-adic-numbers}, Mathematics StackExchange.
+\bibitem{ma}
+Daniel A. Marcus, \emph{Number fields}, Vol. 8. New York: Springer, 1977.
+\bibitem{mi}
+James Milne, \emph{Algebraic Number Theory}, Online note.
+
+\bibitem{neu}
+J\"urgen Neukirch, Algebraic number theory. Vol. 322. Springer Science \& Business Media, 2013.
+
+\end{thebibliography}
+\end{document}
