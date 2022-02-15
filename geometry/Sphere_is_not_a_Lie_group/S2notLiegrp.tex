@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{amsfonts, amssymb, amsmath, amsthm}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usetikzlibrary{positioning}
+\title{$S^{2}$ is not a Lie group}
+\author{Seewoo Lee}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+\maketitle
+
+It is known that the among the $n$-spheres, only $S^{0}$, $S^{1}$ and $S^{3}$ can admit a Lie group structure, which is a highly nontrivial theorem. However, it may be easier to prove that 2-sphere $S^{2}$ can't admit a Lie group structure. 
+There are several ways to prove this, and we are  going to introduce two of them. 
+
+\section{Hairy ball theorem}
+First proof uses an interesting theorem in algebraic topology called \emph{Hairy ball theorem}. 
+Such theorem can be observed when we comb hair of our pets, or any other things that are homeomorphic to $S^{2}$ and hair on it. 
+(Maybe some of you will claim that pets are homeomorphic to a 3-dimentional ball, or even some other 3-manifolds that has some holes. This is completely true in anatomically, but we aren't biologists, at least I think, so we will consider our pets as $S^{2}$ for a moment.) 
+
+Now Hairy ball theorem is the following:
+\begin{theorem}
+There's no non-vanishing tangent vector field on $S^{2}$. 
+\end{theorem}
+This implies that whenever we try to comb our pets, if they have hair on every points on surface, then there will always be at least one tuft of hair at one point on the ball. 
+(Note that this true for all even-dimensional spheres, and false for odd dimensional spheres. You can easily find a non-vanishing tangent vector fields on them.) 
+Here we will introduce a really short proof from Peter McGrath \cite{hbtpf}. 
+\begin{proof}
+Before we start, we note that a \emph{rotation number} of a closed plane curve $\gamma:[0, 1]\to \mathbb{R}^{2}$ is defined as a winding number of $\dot{\gamma}$, which is $1/2\pi$ times change of an oriented angle of $\dot{\gamma}$. 
+
+Suppose that $S^{2}$ admits a continuous non-vanishing vector field $\mathbf{v}$, and we can assume that $\mathbf{v}$ has a unit length everywhere by replacing $\mathbf{v}$ with $\mathbf{v}/\mathbf{|v|}$. 
+Now we will define a rotation number of a given closed curve on $S^{2}$. Fix an orientation of $\mathbb{R}^{3}$ given by an ordered basis $\{\mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}\}$. 
+For any given point $\mathbf{p}\in S^{2}$ and a unit tangent vector $\mathbf{w}\in T_{\mathbf{p}}S^{2}$, we can find a unique vector $\mathbf{w}^{\perp}$ such that $\{\mathbf{w}, \mathbf{w}^{\perp}, \mathbf{p}\}$ is positively oriented. 
+Now define $\Phi_{\mathbf{w}, \mathbf{p}}$ as an isometry that sends $\mathbf{p}$ to $\mathbf{0}$ and send $\{\mathbf{w}, \mathbf{w}^{\perp}, \mathbf{p}\}\subset T_{\mathbf{p}}\mathbb{R}^{3}$ to $\{\mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}\}\subset T_{\mathbf{0}}\mathbb{R}^{3}$. 
+Then we define the rotation number of $\gamma\subset S^{2}$ with respect to $\mathbf{v}$ as a rotation number of the curve $\Phi_{\gamma, \mathbf{v}(\gamma)}(\dot{\gamma})\subset \{(x, y, z):z=0\}\simeq \mathbb{R}^{2}$.
+
+Consider the family of a regular smooth curves in $S^{2}$ defined as $C_{\mathbf{p}, s}:=\{\mathbf{q}\in S^{2}:\langle \mathbf{p}, \mathbf{q}\rangle = s\}$ for $\mathbf{p}\in S^{2}$ and $-1<s<1$, oriented so that $\mathbf{p}$ is . This are circles on $S^{2}$, and all of them are regularly homotopic, so they have a same rotation number $n$. 
+If we consider $C_{\mathbf{p}, 0}$ and $C_{-\mathbf{p}, 0}$, they define a same great circle with opposite directions, so $n = -n$ and $n=0$. 
+However, if we consider the rotation number of $C_{\mathbf{p}, s}$ where $s$ is close to 1, is close to the rotation number of a circle in the plane since $\mathbf{v}$ is close to $\mathbf{v(p)}$ on $C_{\mathbf{p}, s}$ by continuity. Hence $n\in \{-1, 1\}$ and we get a contradiction. 
+\end{proof}
+
+We need a simple lemma to finish the proof of our claim. 
+\begin{lemma}
+Let $G$ be a Lie group. Then there exists a non-vanishing tangent vector field on $G$. 
+\end{lemma}
+\begin{proof}
+Choose any nonzero vector $\mathbf{v}$ in $T_{e}G$, where $e\in G$ is an identity. For any $g\in G$, consider the left translation $\phi_{g}:G\to G, x\mapsto gx$, which is a diffeomorphism of $G$. This induces an isomorphism $d\phi_{g}:T_{e}G\to T_{g}G$, which maps $\mathbf{v}$ to another nonzero vector $\phi_{g}(\mathbf{v})\in T_{g}G$. Then $\{\phi_{g}(\mathbf{v})\}$ defines a smooth tangent vector field on $G$, which is nonzero anywhere. 
+\end{proof}
+Hence $S^{2}$ doesn't admit a Lie group structure.
+
+
+\section{Lefschetz fixed point theorem}
+For the second proof, we will prove the following theorem. 
+\begin{theorem}
+Let $G$ be a compact connected Lie group. Then $\chi(G)$, the Euler characteristic of $G$, is zero. 
+\end{theorem}
+To prove this, we need Lefschetz fixed point theorem. 
+
+\begin{theorem}[Lefschetz fixed point theorem]
+Let $f:X\to X$ be a continuous map from a compact triangulable space $X$ to itself. Define a Lefschetz number $\Lambda_{f}$ of $f$ by 
+$$
+\Lambda_{f}:=\sum_{k\geq 0}(-1)^{k}\mathrm{Tr}(f_{*}|H_{k}(X, \mathbb{Q})), 
+$$
+the alternating (finite) sum of the matrix traces of the linear maps induced by $f$ on the $H_{k}(X, \mathbb{Q})$, the singular homology of $X$ with rational coefficients. 
+Then if $\Lambda_{f}\neq 0$, $f$ has at least one fixed point. 
+\end{theorem}
+We will only sketch a proof of the theorem. For the full proof, you may see Isabel Vogt's notes \cite{lftpf}. 
+\begin{proof}[sketch of proof]
+Let $f:X\to X$ be a continuous map with no fixed points. By simplicial approximation theorem, possibly after subdividing $X$, $f$ is homotopic to a fixed-point-free simplicial map $g$, which means that it sends each simplex to a different simplex. 
+One can check that the Lefschetz number $\Lambda_{g}$ of $g$ can be also computed using the alternating sum of the matrix traces of the aforementioned  linear maps, and so it is zero since it is a fixed-point-free map and its diagonal elements are all zero. 
+Since the Lefschetz number $\Lambda_{f}$ is a homotopy invariant, we get $\Lambda_{f}=0$ for the original $f$. 
+\end{proof}
+
+Now using this, we can prove the original claim. First, by definition, the Lefschetz number of an identity map is same as Euler characteristic $\chi(G)$ of $G$, since $\mathrm{Tr}(f_{*}|H_{k}(X, \mathbb{Q})$ should be same as $\dim_{\mathbb{Q}}H_{k}(X, \mathbb{Q})$, the $k$-th betti number of $X$. 
+Now choose a nontrivial element $g\in G$ and consider the left multiplication map $m_{g}:G\to G, x\mapsto gx$, which is a diffeomorphism of $G$. Clearly, this is a fixed-point-free map and so $\Lambda_{m_{g}}=0$. 
+By the way, the identity map and the map $m_{g}$ are homotopic (since $G$ is a connected manifold, it is a path-connected and we can find a path $\gamma:[0, 1]\to G$ with $\gamma(0) = e$ and $\gamma(1) =  g$. Then the map $M:[0, 1]\times G\to G, M(t, x):=\gamma(t)x$ gives a homotopy between the identity map $\mathrm{id} = m_{e}$ and $m_{g}$.), we have $0=\Lambda_{m_{g}} = \Lambda_{\mathrm{id}} = \chi(G)$. 
+
+Since $\chi(S^{2}) = 2$, it can't admit a Lie group structure. More generally, $\chi(S^{2n})\neq 0$ for $n\geq 1$, so $S^{2n}$ can't be Lie groups. 
+
+\begin{thebibliography}{5}
+\bibitem{hbtpf}
+P. McGrath, \emph{An Extremely Short Proof of the Hairy Ball Theorem}, The American Mathematical Monthly, 123(5):502, May 2016. 
+\bibitem{lftpf}
+I. Vogts, \emph{The Lefschetz Fixed Point Theorem}, online note, \href{http://www.mit.edu/~ivogt/LefschetzFixedPointTheorem.pdf}{link}. 
+\end{thebibliography}
+\end{document}
