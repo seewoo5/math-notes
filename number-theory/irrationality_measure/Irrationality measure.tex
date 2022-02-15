@@ -1,0 +1,205 @@
+\documentclass{article}
+\usepackage{tabu}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amsfonts}
+\usepackage{kotex}
+%\usepackage{musicography}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+
+\usepackage{amssymb}
+
+\usepackage[OT2,T1]{fontenc}
+\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
+\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newcommand{\pmat}[4]{\begin{pmatrix} #1 & #2 \\ #3 & #4 \end{pmatrix}}
+\newcommand{\smat}[4]{\left(\begin{smallmatrix} #1 & #2 \\ #3 & #4 \end{smallmatrix}\right)}
+\newcommand{\rH}{\mathrm{H}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\fin}{\mathrm{fin}}
+\newcommand{\rk}{\mathrm{rk}}
+\newcommand{\Mod}[1]{\,\mathrm{mod}\,#1\,}
+\newcommand{\Sym}{\mathrm{Sym}}
+%\newcommand{\fi}{\mathrm{fin}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\cusp}{\mathrm{cusp}}
+\newcommand{\Fil}{\mathrm{Fil}}
+\newcommand{\et}{\mathrm{\'et}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\SO}{\mathrm{SO}}
+%\newcommand{\gcd}{\mathrm{gcd}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Res}{\mathrm{Res}}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\GK}{\mathrm{GK}}
+\newcommand{\tr}{\mathrm{Tr}}
+\newcommand{\Frac}{\mathrm{Frac}}
+\newcommand{\Isom}{\mathrm{Isom}}
+\title{Strange series and Irrationality measure}
+\author{Seewoo Lee}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Consider the following problems:
+\begin{enumerate}
+\item Does the following series converge?
+$$
+\sum_{n=1}^{\infty} \frac{1}{n^{3}\sin^{2}n}
+$$
+\item Does the following sequence bounded?
+$$
+a_{n} = \frac{1}{|n^{2}\sin n|}
+$$
+\end{enumerate}
+Two problems look alike and both aren't easy. In fact, both problems are open. First one is called Flint-Hills series and we don't know the answer yet. 
+To introduce one approach to attack these problems, we introduce the concept of irrationality measure. 
+
+\begin{definition}
+Let $x$ be a real number and let $R = R(x)$ be the set of positive real numbers $\mu$ for which 
+$$
+0<\left|x -\frac{p}{q}\right| < \frac{1}{q^{\mu}}
+$$
+has at most finitely many solutions $p/q$ for $p$ and $q$ integers. Then the irrationality measure of $x$ is defined as 
+$\mu(x):= \inf_{\mu\in R(x)} \mu$. 
+\end{definition}
+If $x$ can be approximated by rational numbers well, then $\mu(x)$ will be small. In fact, we have the following proposition:
+\begin{proposition}
+For $x\in \mathbb{Q}$, $\mu(x) = 1$. 
+\end{proposition}
+\begin{proof}
+Let $x = \frac{r}{s}$ with $\gcd(r, s) = 1$. First, assume that $\mu>1$. Then 
+$$
+0< \left| \frac{r}{s} - \frac{p}{q} \right| < \frac{1}{q^{\mu}} \Rightarrow 0< |qr - ps| < \frac{s}{q^{\mu-1}}
+$$
+and $qr-ps$ is a nonzero integer, so $|qr-ps|\geq 1$. Since $\mu>1$, $\frac{s}{q^{\mu-1}}<1$ for large $q$, so the equation only has finitely many solutions. 
+For $\mu = 1-\epsilon$ with small $\epsilon>0$, there exists infinitely many $(p, q)$ with $|ps-qr|=1$ (since $\gcd(r, s)=1$), and then $0<|qr-ps| =1< sq^{\epsilon}$ for sufficiently large $q$. 
+\end{proof}
+
+For $x\not\in \mathbb{Q}$, we have Dirichlet's theorem:
+
+\begin{theorem}[Dirichlet]
+For any $x\in \mathbb{R}\backslash \mathbb{Q}$, the inequality 
+$$
+\left| x-\frac{p}{q}\right| <\frac{1}{q^{2}}
+$$
+has infinitely many solutions. Hence, for $x\in \mathbb{R}\backslash \mathbb{Q}$, we have $\mu(x)\geq 2$. 
+\end{theorem}
+\begin{proof}
+Proof follows from pigeonhole principle. Assume that $x\not\in \mathbb{Q}$. We will show the following: for any $N>0$, there exists integers  $p, q$ with $1\leq q\leq N$ s.t. 
+$$
+|qx-p|<\frac{1}{N}.
+$$
+Consider the following set: $\{0, \{x\}, \{2x\}, \{3x\}, \dots, \{Nx\}\}$, where $\{\alpha\} = \alpha - \lfloor\alpha\rfloor$ is a fractional part of $\alpha$. By pigeonhole principle, there exists $i>j$ s.t. $|\{ix\} - \{jx\}|< \frac{1}{N}$. If we put $q = i-j$ and $p = \lfloor ix\rfloor - \lfloor jx \rfloor$, then we get $|qx-p|<\frac{1}{N}$. 
+From this, we have
+$$
+0<\left|x - \frac{p}{q}\right| < \frac{1}{Nq} \leq \frac{1}{q^{2}}. 
+$$
+\end{proof}
+
+We have a natural question: for which $x$, $\mu(x) = 2$? Roth's theorem shows that $\mu(x) = 2$ for algebraic numbers with degree $>1$. 
+
+\begin{theorem}[Roth]
+Let $x\not\in\mathbb{Q}$ be an algebraic number and $\epsilon>0$. Then 
+$$
+\left| x-\frac{p}{q}\right| <\frac{1}{q^{2+\epsilon}}
+$$
+has at most finitely many solutions $p/q$ for $p$ and $q$ integers. Hence, we have $\mu(x) = 2$ for $x\in \overline{\mathbb{Q}}\backslash\mathbb{Q}$.
+\end{theorem}
+This is a very hard theorem and Roth got Fields medal by proving this. Until now, we don't know much about irrationality measure of transcendental numbers. However,  we can express $\mu(x)$ in terms of continued fraction of $x$. 
+
+\begin{theorem}[Sondow]
+Let $x = [a_{0}, a_{1}, a_{2}, \dots]$ be a simple continued fraction of $x$ and $p_{n}/q_{n}$ be $n$-th convergent. Then 
+$$
+\mu(x) = 1 + \limsup_{n\to\infty} \frac{\ln q_{n+1}}{\ln q_{n}} = 2 + \lim\sup_{n\to \infty} \frac{\ln a_{n+1}}{\ln q_{n}}
+$$
+\end{theorem}
+To prove this, we need a lemma:
+\begin{lemma}[Legendre]
+For integers $p, q$ with 
+$$
+\left| x-\frac{p}{q}\right|  < \frac{1}{2q^{2}}, 
+$$
+$p/q$ is a convergent of the continued fraction expansion of $x$. 
+\end{lemma}
+\begin{proof}
+Define $\lambda_{n}$ by 
+$$
+\left| x- \frac{p_{n}}{q_{n}}\right| = q_{n}^{-\lambda_{n}}. 
+$$
+One can show that 
+$$
+\frac{1}{2q_{n}q_{n+1}}< \left|x-\frac{p_{n}}{q_{n}}\right| <\frac{1}{q_{n}q_{n+1}}, 
+$$
+so we have 
+$$
+\frac{1}{2q_{n}q_{n+1}} < \frac{1}{q_{n}^{\lambda_{n}}} < \frac{1}{q_{n}q_{n+1}}. 
+$$
+By taking logarithm, Lemma 1 implies that
+$$\mu(x) = \limsup_{n\to\infty} \lambda_{n} = 1 +  \limsup_{n\to\infty} \frac{\ln q_{n+1}}{\ln q_{n}}. $$
+\end{proof}
+As a corollary,  one can show that every quadratic irrational number has irrationality measure 2, since their continued fractions are periodic, so $\log q_{n}\sim n\log \beta$ for some $\beta\in \overline{\mathbb{Q}}$. Also, simple continued fraction of $e$ is
+$$
+e = [2;1, 2, 1, 1, 4, 1, 1, 6, \dots]
+$$
+and we can prove that $\mu(e) = 2$ from this. 
+
+Now we go back to the original problems. Both problems are related to irrationality measure of $\pi$. Let $\mu = \mu(\pi)$ and $\alpha, \beta >0$. We are going to estimate the sequence 
+$$
+A_{n}^{(\alpha, \beta)} =n^{\alpha}|\sin n|^{\beta}.
+$$
+\begin{theorem}
+For $\alpha, \beta>0$ with $\frac{\alpha}{\beta}<\mu-1$, $\inf_{n\geq 1} A_{n}^{(\alpha, \beta)} = 0$. 
+\end{theorem}
+\begin{proof}
+Assume that $\beta(\mu-1)>\alpha$. Choose $\epsilon>0$ such that $\beta(\mu-\epsilon-1)>\alpha$. 
+$$
+\left| \pi - \frac{p}{q}\right| < \frac{1}{q^{\mu-\epsilon}}
+$$
+has infinitely many solutions. 
+\begin{align*}
+|\sin p | = |\sin (p-q\pi)| = \sin |p-q\pi|  < |p-q\pi| < \frac{1}{q^{\mu-\epsilon-1}}
+\end{align*}
+\begin{align*}
+A_{p}^{(\alpha, \beta)} = p^{\alpha}|\sin p|^{\beta} < \frac{p^{\alpha}}{q^{\beta(\mu-\epsilon-1)}} < \frac{(4q)^{\alpha}}{q^{\beta(\mu-\epsilon-1)}} = \frac{4^{\alpha}}{q^{\beta(\mu-\epsilon-1)-\alpha}}
+\end{align*}
+and so  $\inf_{n\geq 1}A_{n}^{(\alpha, \beta)}=0$. 
+\end{proof}
+Now assume that Flint-Hills series converges. Then we have $\lim_{n\to \infty} 1/A_{n}^{(3, 2)} = 0$, hence $\inf_{n\geq 1}A_{n}^{(3, 2)}  > 0$ and $\mu \leq 1+ 3/2 = 5/2$. Similarly, if we can prove that $\{a_{n}\}$ is bounded, then $\inf_{n\geq 1} 1/a_{n} = \inf_{n\geq 1} 1/A_{n}^{(2, 1)} >0$, so $\mu \leq 1 + 2/1 = 3$. Note that the current record of the upperbound of $\mu(\pi)$ is 7.6063 which is proved by Salikov (see \cite{sa}). 
+
+There's another interesting series from MO:
+$$
+\sum_{n=1}^{\infty} \frac{|\sin (n)|^{n}}{n}.
+$$
+This also seems that we have to deal with irrationality measure of $\pi$. Actually, this series converges and proved by Terrence Tao (see \cite{ta}). He actually proved the stronger result 
+$$
+\sum_{n=1}^{\infty} \frac{|\sin (n)|^{n}}{n^{1-\frac{1}{2(\mu-1+\epsilon)}}}<\infty
+$$
+where $\mu = \mu(\pi)$. He use the fact that $\mu(\pi)$ is finite. 
+
+
+
+\begin{thebibliography}{5}
+\bibitem{sa}
+V.Salikhov. \emph{On the Irrationality Measure of $\pi$}, Usp. Mat. Nauk 63, 163-164, 2008
+\bibitem{so}
+J. Sondow, \emph{Irrationality Measures, Irrationality Bases, and a Theorem of Jarnik}, Proceedings of Journées Arithmétiques, Graz 2003 in the Journal du Theorie des Nombres Bordeaux.
+\bibitem{ta}
+T. Tao, answer to the MO question \emph{Is the series $\sum_{n}|\sin n|^{n}/n$ convergent?}, mathoverflow, \url{https://mathoverflow.net/questions/282259/is-the-series-sum-n-sin-nn-n-convergent}
+\end{thebibliography}
+
+\end{document}
+

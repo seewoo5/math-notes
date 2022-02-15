@@ -1,0 +1,179 @@
+\documentclass{article}
+\usepackage{amsfonts, amssymb, amsmath, amsthm}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usetikzlibrary{positioning}
+\title{The Littlewood-Richardson rule and decomposition of representations of $\mathfrak{sl}(3, \mathbb{C})$}
+\author{Seewoo Lee}
+
+\newcommand{\SST}{\mathrm{SST}}
+\newcommand{\wt}{\mathrm{wt}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+\maketitle
+
+Let $V_{n}$ be a unique irreducible representation of $\mathfrak{sl}(2, \mathbb{C})$ with highest weight $n$. We can show that the representation $V_{m}\otimes V_{n}$ decomposes as 
+$$
+V_{m}\otimes V_{n} = \bigoplus_{k=0}^{m-n} V_{m+n-2k}
+$$
+for $m\geq n$. This can be shown by analyzing multiplicity of weights $V_{m}\otimes V_{n}$, or by using the Weyl character formula. 
+
+In this note, we introduce the Littlewood-Richardson rule, which gives a formula to express a product of two Schur polynomials into a linear combination of Schur polynomials. Using this, we decompose a representation $V_{\lambda_{1}}\otimes V_{\lambda_{2}}$ into irreducibles, where $V_{\lambda_{i}}$ is a  unique irreducible representation of highest weight $\lambda_{i}$ for $i=1, 2$. 
+
+
+
+\section{Irreducible representation of $\mathfrak{sl}(3, \mathbb{C})$}
+Here we give a summary of the representation theory of $\mathfrak{sl}(3, \mathbb{C})$. 
+
+\section{The Littlewood-Richardson rule}
+In this section, we introduce Schur polynomials and the Littlewood-Richardson rule. Let $\lambda = (\lambda_{1}, \lambda_{2}, \dots, \lambda_{n})$ be a partition of $d = \lambda_{1} + \lambda_{2} + \cdots + \lambda_{n}$ and let $\mathcal{P}_{d, n}$ be a set of such partitions, i.e. partition of $d$ with at most $n$ nonzero numbers. 
+Now the \emph{Young diagram} $Y(\lambda)$ of the partition $\lambda$ is a subset $\{(i, j)\in \mathbb{N}^{2}\,:\, j\in [\lambda_{i}]$, where $\mathbb{N} = \{0, 1, 2, \dots\}$ and $[n] = \{0, 1, \dots, n-1\}$. For example, we can display the Young diagram $Y((4, 2, 1))$ as
+\begin{center}
+\begin{tabular}{|l|lll}
+\hline
+ & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+ & \multicolumn{1}{l|}{} &                       &                       \\ \cline{1-2}
+ &                       &                       &                       \\ \cline{1-1}
+\end{tabular}
+\end{center}
+A \emph{semistandard Young tableux} $T$ of a partition $\lambda$ is a function $T:Y(\lambda)\to \mathbb{N}, \, (i, j)\mapsto T_{i, j}$ that satisfies $T_{i, j} \leq T_{i, j+1}$ and $T_{i, j} < T_{i+1, j}$ for any $i, j\in \mathbb{N}$. 
+For example, 
+\begin{center}
+\begin{tabular}{|l|lll}
+\hline
+0 & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} \\ \hline
+1 & \multicolumn{1}{l|}{2} &                        &                        \\ \cline{1-2}
+2 &                        &                        &                        \\ \cline{1-1}
+\end{tabular}
+\end{center}
+depicts a semistandard Young tableau of shape $(4, 2, 1)$ and entries in $[3]$. Let $\SST(\lambda, n)$ be a set of semistandard Young tableaux of shape $\lambda$ and entries in $[n]$. The \emph{weight} $\wt(T)$ of $T\in \SST(\lambda, n)$ is $\alpha\in \mathbb{N}^{n}$ such that $\alpha_{k}$ counts the occurrences of the entry $k$ in $T$; the tableau just depicted has weight $(2, 3, 2)$. 
+Then the \emph{Schur polynomial} $s_{\lambda}(n)$ of $\lambda\in \mathcal{P}_{d, n}$ is defined by 
+$$
+s_{\lambda}(n) = \sum_{T\in \SST(\lambda, n)} x^{\wt(T)}. 
+$$
+We can prove that any Schur polynomials are symmetric, and they forms a basis of the space $\Lambda_{n}^{d}$ of symmetric polynomials of $n$ variables with degree at most $d$ over $\mathbb{Z}$. 
+For example, the set $\SST((2, 1), 3)$ has the following 8 elements
+\begin{center}
+\begin{tabular}{|l|l}
+\hline
+0 & \multicolumn{1}{l|}{0} \\ \hline
+1 &                        \\ \cline{1-1}
+\end{tabular}\,
+\begin{tabular}{|l|l}
+\hline
+0 & \multicolumn{1}{l|}{1} \\ \hline
+1 &                        \\ \cline{1-1}
+\end{tabular}\,
+\begin{tabular}{|l|l}
+\hline
+0 & \multicolumn{1}{l|}{2} \\ \hline
+1 &                        \\ \cline{1-1}
+\end{tabular}\,
+\begin{tabular}{|l|l}
+\hline
+0 & \multicolumn{0}{l|}{0} \\ \hline
+2 &                        \\ \cline{1-1}
+\end{tabular}\,
+\begin{tabular}{|l|l}
+\hline
+0 & \multicolumn{0}{l|}{1} \\ \hline
+2 &                        \\ \cline{1-1}
+\end{tabular}\,
+\begin{tabular}{|l|l}
+\hline
+0 & \multicolumn{0}{l|}{2} \\ \hline
+2 &                        \\ \cline{1-1}
+\end{tabular}\,
+\begin{tabular}{|l|l}
+\hline
+1& \multicolumn{1}{l|}{1} \\ \hline
+2 &                        \\ \cline{1-1}
+\end{tabular}\,
+\begin{tabular}{|l|l}
+\hline
+1 & \multicolumn{1}{l|}{2} \\ \hline
+2 &                        \\ \cline{1-1}
+\end{tabular}
+\end{center}
+and the  Schur polynomial $s_{(2, 1)}(3)$ of $\lambda = (2, 1)$ is
+$$
+s_{(2, 1)}(3) = x_{0}^{2}x_{1} + x_{0}x_{1}^{2} + x_{0}^{2}x_{2} + x_{0}x_{2}^{2} + x_{1}^{2}x_{2} + x_{1}x_{2}^{2} + 2x_{0}x_{1}x_{2}. 
+$$
+Since Schur polynomials forms a basis, we may express the product $s_{\lambda_{1}}(n)s_{\lambda_{2}}(n)$ as a $\mathbb{Z}$-linear combination of Schur polynomials. The Littlewood-Richardson rule gives us a way to compute the coefficient, by counting some combinatorial objects. 
+
+
+
+
+\section{Decomposition of $V_{\lambda_{1}}\otimes V_{\lambda_{2}}$} 
+Now we are going to decompose the tensor product representation as irreducibles, by using the Littlewood-Richardson rule. 
+First, we introduce how to interpret the irreducible representations of given highest weight as partitions. 
+As we said in the section 1, for each given highest weight $\lambda = mL_{1} - nL_{3}$, there exists a unique irreducible representation $V_{\lambda}$, of highest weight $\lambda$. 
+Now for each weight of the representation $V_{\lambda}$, we can express it as a sum $b_{1}L_{1} + b_{2}L_{2} +b_{3}L_{3}$, where $b_{i}\geq 0$ for all $i = 1, 2, 3$ and $b_{1} + b_{2} + b_{3} = 2m+n$. For example, we can see the picture for $\lambda = 3L_{1} - 2L_{3}$:
+
+Now we can associate 
+
+\textbf{Example 1.} Let $\lambda_{1} = L_{1}$ and $\lambda_{2} = -L_{3} = L_{1} + L_{2}$. Then each $\lambda_{i}$'s correspond to partitions $(1, 0)\in \mathcal{P}_{1, 3}$ and $(1, 1)\in \mathcal{P}_{2, 3}$. For each partitions, the corresponding Schur polynomials are
+\begin{align*}
+s_{(1, 0)}(3) &= x_{0} + x_{1} +x_{2} \\
+s_{(1, 1)}(3) &= x_{0}x_{1} + x_{0}x_{2} + x_{1}x_{2}.
+\end{align*}
+Now the product decomposes as 
+\begin{align*}
+s_{(1, 0)}(3)s_{(1, 1)}(3) &= (x_{0}+x_{1}+x_{2})(x_{0}x_{1} + x_{0}x_{2} + x_{1}x_{2}) \\
+&= x_{0}^{2}x_{1} + x_{0}x_{1}^{2} + x_{0}^{2}x_{2} +x_{0}x_{2}^{2} +x_{1}^{2}x_{2}+x_{1}x_{2}^{2} + 3x_{0}x_{1}x_{2} \\
+&= (x_{0}^{2}x_{1} + x_{0}x_{1}^{2} + x_{0}^{2}x_{2} +x_{0}x_{2}^{2} +x_{1}^{2}x_{2}+x_{1}x_{2}^{2} + 2x_{0}x_{1}x_{2}) + x_{0}x_{1}x_{2} \\
+&= s_{(2, 1)}(3) + s_{(1, 1, 1)}(3)
+\end{align*}
+and each partition corresponds to weights $2L_{1} + L_{2}$ and $L_{1} +L_{2} + L_{3} = 0$. 
+Thus we get 
+$$
+V_{L_{1}}\otimes V_{L_{1} + L_{2}} = V_{2L_{1}+L_{2}} \oplus V_{0}. 
+$$
+
+\textbf{Example 2.} Let $\lambda_{1} = L_{1} - L_{3} = 2L_{1} + L_{2}$ and $\lambda_{2} = 2L_{1} - L_{3} = 3L_{1} + 2L_{2}$. Then each $\lambda_{i}$'s correspond to partitions $(2, 1)\in \mathcal{P}_{3, 3}$ and $(3, 2)\in \mathcal{P}_{5, 3}$. For each partitions, the corresponding Schur polynomials are
+\begin{align*}
+s_{(2, 1)}(3) &= x_{0}^{2}x_{1} + x_{0}x_{1}^{2} + x_{0}^{2}x_{2} + x_{0}x_{2}^{2} + x_{1}^{2}x_{2} + x_{1}x_{2}^{2} + 2x_{0}x_{1}x_{2} \\
+s_{(3, 2)}(3) &= (x_{0}^{3}x_{1}^{2} + x_{0}^{2}x_{1}^{3} + x_{1}^{3}x_{2}^{2} + x_{1}^{2}x_{2}^{3} + x_{2}^{3}x_{0}^{2} + x_{2}^{2}x_{0}^{3}) \\
+&+ (x_{0}^{3}x_{1}x_{2} +x_{1}^{3}x_{2}x_{0} + x_{2}^{3}x_{0}x_{1}) \\
+&+ 2(x_{0}^{2}x_{1}^{2}x_{2}+x_{1}^{2}x_{2}^{2}x_{0} + x_{2}^{2}x_{0}^{2}x_{1}). 
+\end{align*}
+Now by the Littlewood-Richardson rule, we have 
+$$
+s_{(2, 1)}(3)s_{(3, 2)}(3) = \sum_{\substack{\lambda\supset (2, 1), (3, 2) \\ \lambda\in \mathcal{P}_{8, 3}}}c_{(2, 1),(3, 2)}^{\lambda}s_{\lambda}(3)
+$$
+where the coefficients are given by 
+\begin{align*}
+&c^{(6, 2)} = 0 \\
+&c^{(5, 3)} = c^{(5, 2, 1)} = c^{(4, 4)} = c^{(4, 2, 2)} = c^{(3, 3, 2)}  = 1 \\
+&c^{(4, 3, 1)} = 2. 
+\end{align*}
+Note that the last coefficient $c^{(4, 3, 1)} =2$ counts the following two tableau
+\begin{center}
+\begin{tabular}{llll}
+\cline{3-4}
+                        & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} \\ \cline{2-4} 
+\multicolumn{1}{l|}{}   & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{1} &                        \\ \cline{1-3}
+\multicolumn{1}{|l|}{0} &                        &                        &                        \\ \cline{1-1}
+\end{tabular}\qquad\qquad
+\begin{tabular}{llll}
+\cline{3-4}
+                        & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} \\ \cline{2-4} 
+\multicolumn{1}{l|}{}   & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{1} &                        \\ \cline{1-3}
+\multicolumn{1}{|l|}{1} &                        &                        &                        \\ \cline{1-1}
+\end{tabular}
+\end{center}
+Thus we get the following decomposition 
+$$
+V_{2L_{1} + L_{2}} \otimes V_{3L_{1} + 2L_{2}} = V_{5L_{1} +3L_{2}} \oplus V_{4L_{1}+L_{2}} \oplus V_{4L_{1} + 4L_{2}} \oplus V_{2L_{1}} \oplus V_{L_{1} + L_{2}} \oplus V_{3L_{1} +2L_{2}}^{\oplus 2}. 
+$$
+
+\begin{thebibliography}{5}
+\bibitem{lrr} Marc A. A. van Leeuwen, \emph{The Littlewood-Richardson Rule, and Related Combinatorics}, 
+\end{thebibliography}
+\end{document}
