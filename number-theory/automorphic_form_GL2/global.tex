@@ -1,0 +1,1572 @@
+\newpage
+
+\section{Global theory}
+
+Using local theories, now we can define $\GL(2)$-automorphic forms. We will \emph{glue} local theories and interpret things in ad\'elic language. Also, we will see how to interpret the classical modular forms and Maass forms in this way. Before we start, we will study $\GL(1)$-theory first, which is developed by Tate in his celebrated thesis. His thesis shows how powerful ad\'elic languages are, and why this is the right way to study global things. 
+
+After that, we define the notion of automorphic forms and representations for $\GL(2)$, and define $L$-functions attached to automorphic representations for $\GL(2)$, by generalizing Tate's idea. 
+Here we need Flath's decomposition theorem and multiplicity one theorem. 
+
+\subsection{Tate's thesis}
+
+Tate's thesis is a theory of $\GL(1)$-automorphic forms over a global field. In 1950s, Riemann proved that his famous Riemann zeta function has an analytic continuation and a functional equation, by using the theta function. Tate \emph{re}-proved this fact, but in a completely different way.
+Tate's idea is the following:
+\begin{enumerate}
+\item Develop Fourier theory on ad\'eles $\Aa$, including Fourier transform and Fourier inversion formula.
+\item Define ad\'elic version of Hecke $L$-functions and local \& global zeta integrals. Prove functional equation for these zeta integrals. 
+\item Show that the local zeta integrals coincides with the local $L$-functions for all but finitely many places. 
+\item Derive analytic continuation and functional equation for Hecke $L$-functions  from corresponding local statements. Also, Euler product becomes simply a factorization of global integral according to the product structure of $\Aa^{\times}$. 
+\end{enumerate}
+This gives a natural way to get the global result from local results, and we will develop $\GL(2)$-theory via similar way. 
+
+
+Let $F$ be a global field (number field or function field over a finite field), and let $\Aa = \Aa_{F}$ be its ad\'ele ring, i.e. the restricted product
+$$
+\Aa = \sideset{}{'}\prod_{v} F_{v} = \{ (a_{v}) \in \prod_{v} F_{v}\,:\, a_{v} \in \calO_{v}\text{ for all but finitely many }v\}
+$$
+where $v$ runs over the set of places of $F$ and $F_{v}$ is a completion of $F$ with respect to $v$. For non-archimedean $v$, $\calO_{v}$ is a ring of integer of $F_{v}$. 
+This is a locally compact abelian group and we have Haar measure on it, which is both left and right invariant. 
+$F$ can be embedded into $\Aa$ diagonally, and the quotient $\Aa/F$ is compact. It is known that we can always find a nontrivial additive character $\psi = \prod_{v}\psi_{v}$ on $\Aa$ that is trivial on $F$. 
+Also, any continuous character of $\Aa$ has the form $\psi_{a}(x) = \psi(ax)$ for some $a\in \Aa$, and $a\mapsto \psi_{a}$ gives an isomorphism $\Aa \simeq \Aa^{*}$. 
+Let $\Aa_{\fin} = \sideset{}{'}\prod_{v<\infty} F_{v}$ be a ring of finite ad\'eles, which is a restricted product of $F_{v}$'s for non-archimedean $v$. 
+
+Now we want to define Fourier transform  as 
+$$
+\wh{f}(x) = \int_{\Aa}f(y)\psi(xy)dy,
+$$
+where $dy$ is a Haar measure on $\Aa$. However, there are two problems with this definition. 
+
+First, the integral does not converge for some $f\in L^{2}(\Aa)$. To fix this, we consider smaller but dense subspace, which is the space of Schwartz functions. 
+
+\begin{definition}[Schwartz function on $\Aa$]
+Let $F$ be a local field. If $F = \Rr$, then a $\Cc$-valued function $f:\Rr^{n} \to \Cc$ is a Schwartz function if 
+$$
+|f|_{\alpha, \beta} = \sup_{x\in \Rr^{n}} |x_{1}^{\alpha_{1}}\cdots x_{n}^{\alpha_{n}}| \left|\frac{\partial^{\beta_{1} + \cdots + \beta_{n}} f}{\partial x_{1}^{\beta_{1}} \cdots \partial x_{n}^{\beta_{n}}}(x)\right|
+$$
+is bounded for all $\alpha_{i}, \beta_{i}\in \Zz_{\geq 0}$. 
+We topologize the space of Schwartz functions $\calS(\Rr^{n})$ by giving it the smallest topology in which all the seminorms $|\,|_{\alpha, \beta}$ are continuous. 
+If $F = \Cc$, we regard $\Cc^{n} = \Rr^{2n}$ and define Schwartz space of $\Cc$ similarly. 
+
+For non-archimedean $F$, define the Schwartz space $\calS(F^{n})$ of Schwartz functions on $F^{n}$ as the space of compactly supported smooth (i.e. locally constant) functions, and give the weakest topology in which every linear functional is continuous. 
+In fact, we can ignore the topology for non-archimedean case. 
+
+Now define $\calS(\Aa)$ as the space of all finite linear combinations of the form 
+$$
+\Phi(x) = \prod_{v} \Phi_{v}(x_{v}), \quad x = (x_{v}) \in \Aa
+$$
+where each $\Phi_{v}\in \calS(F_{v})$ and $\Phi_{v} = \chf_{\calO_{v}}$ for all but finitely many $v$. 
+\end{definition}
+For Schwartz functions, the integral absolutely converges and the problem is resolved. 
+However, there's one more problem. 
+We want that the Fourier inversion formula holds, so that $\doublehat{f}(x) = f(-x)$ for all $x\in\Aa$. 
+To do this, Haar measures on $\Aa$ and its dual $\Aa^{*}$ should be compatible in some sense. 
+We saw that $\Aa^{*} \simeq \Aa$ by fixing a nontrivial additive character $\psi:\Aa/F \to \Cc^{\times}$, and this gives a unique normalization of the Haar measure for which the Fourier inversion formula holds. 
+Such measure is called \emph{self-dual} Haar measure. 
+If $dx_{v}$'s are local self-dual measures for each place $v$, then $dx = \prod_{v} dx_{v}$ is a self-dual measure of $\Aa$, and same thing holds for $d^{\times}x = \prod_{v} d^{\times}x_{v}$ on $\Aa^{\times}$. 
+
+We can also think Dirichlet characters in ad\'elic setting. Such characters are called Hecke characters.
+\begin{definition}[Hecke character]
+A Hecke character $\chi$ is a continuous character of $\Aa^{\times}/F^{\times}$. 
+We can write it as $\chi = \prod_{v}\chi_{v}$ where $\chi_{v} =  \chi \circ i_{v}: F_{v}^{\times} \to \Cc^{\times}$ where $i_{v} : F_{v}^{\times} \hookrightarrow \Aa^{\times}$. 
+\end{definition}
+First, for all but finitely many $v$, local components $\chi_{v}$ are \emph{unramified}:
+\begin{proposition}
+Let $F$ be a global field and $\Aa = \Aa_F$. Let $\chi:\Aa^{\times}\to \Cc^{\times}$ be a continuous character. 
+Then there exists a finite set $S$ of places, including all archimedean ones, such that $\chi_{v}|_{\calO_{v}^{\times}} = 1$ if $v\not\in S$. Such $\chi_{v}$ is called unramified.
+\end{proposition}
+\begin{proof}
+By no small subgroup argument (Proposition \ref{nss}), $\ker (\chi|_{\Aa_{\fin}^{\times}})$ contains an open neighborhood of the identity. 
+\end{proof}
+
+Now the following proposition shows that finite order Hecke characters and Dirichlet characters are just same things, at least for $F = \Qq$. 
+\begin{proposition}
+\label{dirad}
+\begin{enumerate}
+\item Let $F = \Qq$ and $\chi:\Aa^{\times}/F^{\times} \to \Cc^{\times}$ be a character. There exists a unique character $\chi_{1}$ of finite order of $\Aa^{\times}/F^{\times}$ and a unique purely imaginary number $\lambda$ such that $\chi(x) = \chi_{1}(x) |x|^{\lambda}$. 
+\item Let $F = \Qq$ and $\chi$ be a character of finite order of $\Aa^{\times}/F^{\times}$. 
+There exists an integer $N$ whose prime divisors are precisely the primes $p_{v}$ such that $v$ is a non-archimedean place of $\Qq$ and $\chi_{v}$ is ramified, and a primitive Dirichlet character $\chi_{0}$ modulo $N$ such that if $v$ is a non-archimdean place such that $p_{v}\nmid N$, then $\chi_{0}(p_{v}) = \chi(p_{v})$. 
+This correspondence $\chi\mapsto \chi_{0}$ is a bijection between the characters of finite order of $\Aa^{\times}/F^{\times}$ and the primitive Dirichlet characters. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Let $N$ be a positive integer, and let 
+\begin{align*}
+S_{0}(N) &= \{v\,:\, v\text{ is non-archimedean},\, p_{v}|N\} \\
+S_{1}(N) &= \{v\,:\, v\text{ is non-archimedean},\, p_{v}\nmid N\}.
+\end{align*}
+For each $v\in S_{0}(N)$, let 
+$$
+U_{v}(N) = \{x\in\calO_{v}\,:\, x\equiv 1\Mod{N}\}
+$$
+and
+$$
+U_{\fin}(N) = \prod_{v\in S_{0}(N)} U_{v}(N) \times \prod_{v\in S_{1}(N)} \calO_{v}^{\times}, \quad U(N) = \Rr_{+}^{\times} \times U_{\fin}(N).
+$$
+Then $U_{\fin}(N)$ form a basis of neighborhoods of the identity in $\Aa_{\fin}^{\times}$, so there exists $N$ such that $\chi|_{U_{\fin}(N)}=1$ by no small subgroup argument. 
+The restriction $\chi|_{\Rr_{+}^{\times}}$ is of the form $|x|^{\lambda}$ for some unique $\lambda\in i\Rr$, so $\chi_{1}(x):= \chi(x)|x|^{-\lambda}$ is trivial on $U(N)$. 
+If we put 
+$$
+V(N) = \Rr_{+}^{\times} \times \prod_{v\in S_{0}(N)} U_{v}(N) \times\resp_{v\in S_{1}(N)} \Qq_{v}^{\times},
+$$
+then this is an open subgroup and $\Aa^{\times} = \Qq^{\times}V(N)$ by the approximation theorem. 
+Hence $\Aa^{\times}/\Qq^{\times} \simeq V(N) /(\Qq^{\times}\cap V(N))$ and it is enough to show that $\chi_{1}|_{V(N)}$ has finite order. Since $\chi_{1}$ is trivial on $U(N)(\Qq^{\times}\cap V(N))$, it is enough to show $[V(N):U(N)(\Qq^{\times} \cap V(N))] <\infty$. 
+In fact, we have
+$$
+V(N)/U(N)(\Qq^{\times}\cap V(N)) \simeq I_{N}/P_{N} \simeq (\Zz/N\Zz)^{\times}
+$$
+where $I_{N}$ is a group of all fractional ideals of $\Qq$ prime to $N$, and $P_{N}$ is the subgroup of principal fractional ideals $\alpha\Zz$ with $\alpha\in \Qq^{\times} \cap V(N)$. 
+
+2  follows from composing with the above isomorphism. Note that we have to take minimal $N$ to make the corresponding Dirichlet character primitive. 
+\end{proof}
+This also holds for general global fields. 
+This proposition will be used later to show that the classicial Dirichlet $L$-function (or Hecke $L$-function for general number fields) is same as the ad\'elic version of it. 
+
+\begin{definition}
+Let $S$ be a finite set of places containing archimedean places so that $\chi_{v}$ is unramified for all $v\not\in S$. For $v\not\in S$, we define the local $L$-function $L_{v}(s, \chi_{v})$ as 
+$$
+L_{v}(s, \chi_v) = (1-\chi(\frap_{v})q_{v}^{-s})^{-1}
+$$
+and the partial $L$-function as
+$$
+L_{S}(s, \chi) = \prod_{v\not\in S} L_{v}(s, \chi_{v}). 
+$$
+\end{definition}
+If $\chi(x) = \chi_{1}(x)|x|^{\lambda}$, then $L_{S}(s, \chi) = L_{S}(s + \lambda, \chi_{1})$ and so we can assume that $\chi$ is of finite order. We will define $L_{v}(s, \chi_{v})$ for $v\in S$ later. 
+
+
+\begin{proposition}[Poisson summation formula]
+\begin{enumerate}
+\item The volume of $\Aa/F$ is 1 with respect to the self-dual Haar measure on $\Aa$. 
+\item Let $\Phi$ be a Schwartz function on $\Aa$ and let 
+$$
+\wh{\Phi}(x) = \int_{\Aa} \Phi(y) \psi(xy)dy
+$$
+be its Fourier transform. Then 
+$$
+\sum_{\alpha\in F} \Phi(\alpha t) = \frac{1}{|t|} \sum_{\alpha\in F} \wh{\Phi}\left(\frac{\alpha}{t}\right)
+$$
+for any $t\in \Aa^{\times}$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For $t\in \Aa^{\times}$, define 
+$$
+F(x) = \sum_{\alpha\in F} \Phi((x+\alpha) t). 
+$$
+This is a continuous function on the compact abelian group $\Aa/F$ and has a Fourier expansion
+$$
+F(x) = \sum_{\beta\in F} c_{\beta} \psi(-\beta x).
+$$
+By orthogonality of characters, coefficients can be computed by 
+\begin{align*}
+c_{\beta} &= \frac{1}{V} \int_{\Aa/F} F(x) \psi(\beta x)dx \\
+&= \frac{1}{V} \int_{\Aa/F} \sum_{\alpha\in F} \Phi((x+\alpha)t) \psi(\beta(x+\alpha)) dx \\
+&= \frac{1}{V} \int_{\Aa} \Phi(xt)\psi(\beta x)dx \\
+&=\frac{1}{V|t|} \int_{\Aa} \Phi(x)\psi(\beta x/t) dx = \frac{1}{V|t|} \wh{\Phi}\left(\frac{\beta}{t}\right).
+\end{align*}
+Here $V$ is the volume of $\Aa/F$ and we use the substitution $x \to x/t$ in the last equality. 
+Now put $x =0$ and we get 
+$$
+\sum_{\alpha\in F} \Phi(\alpha t) = F(0) = \sum_{\beta\in F} c_{\beta}= \frac{1}{V|t|} \sum_{\beta\in F}\wh{\Phi}\left(\frac{\beta}{t}\right).
+$$
+If we apply this twice and put $t = 1$, then 
+$$
+\sum_{\alpha\in F} \Phi(\alpha) = \frac{1}{V^{2}} \sum_{\alpha\in F}\Phi(-\alpha)
+$$
+and this implies $V = 1$. 
+\end{proof}
+
+
+
+\begin{definition}[Zeta integral]
+For $\Phi\in \calS(\Aa)$ and a Hecke character $\chi:\Aa^{\times}/F^{\times} \to \Cc^{\times}$, define the zeta integral as
+$$
+\zeta(s, \chi, \Phi) = \int_{\Aa^{\times}} \Phi(x) \chi(x) |x|^{s} d^{\times}x. 
+$$
+If $\Phi = \prod_{v}\Phi_{v}$, then this integral factorizes formally as
+$$
+\zeta(s, \chi, \Phi) = \prod_{v} \zeta_{v}(s, \chi_{v}, \Phi_{v})
+$$
+where 
+$$
+\zeta_{v}(s, \chi_{v}, \Phi_{v}) = \int_{F_{v}^{\times}} \Phi_{v}(x)\chi_{v}(x)|x|_{v}^{s}d^{\times}x.
+$$
+The last integrals $\zeta_{v}(s, \chi_{v}, \Phi_{v})$ are called local zeta integrals. 
+\end{definition}
+We will show that the above factorization of zeta integral makes sense, i.e. it converges for $\Re s >1$. 
+Also, we will show functional equations of local zeta integrals, which automatically gives the functional equation for the global zeta integral. 
+\begin{proposition}
+\begin{enumerate}
+\item The local integrals are convergent if $\Re s >0$. 
+\item There exists a finite set $S$ of places containing the archimedean ones such that 
+$$
+\zeta_{v}(s, \chi_{v}, \Phi_{v}) = (1-\chi(\mathfrak{p}_{v}) q_{v}^{-s})^{-1}
+$$
+for all $v\not\in S$. 
+Indeed, it is sufficient to choose $S$ so that if $v\not\in S$, then $\chi_{v}$ is unramified and $\Phi_{v}$ is the characteristic function of $\calO_{v}$. 
+\item The global integral integral is absolutely convergent for $\Re s >1$, in which case the decomposition is valid. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+First, we will show that the integral absolutely converges for $\Re s > 0$. 
+Since $\chi_{v}$ is unitary, the integral is bounded by 
+$$
+\int_{F_{v}^{\times}} |\Phi_{v}(x)| |x|_{v}^{s} d^{\times}x_{v}  = \int_{|x|_{v} \leq 1}|\Phi_{v}(x)| |x|_{v}^{s} d^{\times}x_{v} + \int_{|x|_{v} > 1} |\Phi_{v}(x)| |x|_{v}^{s} d^{\times}x_{v}
+$$
+For the above two integrals on RHS, second integral absolutely converges because of rapid decay of $\Phi_{v}(x)$ (the function is in the Schwartz space). For the first integral corresponds to the region $|x|_{v} \leq 1$, $|\Phi_{v}(x)|$ is bounded because $|x|_{v} \leq 1$ is compact. So we can ignore $\Phi_{v}(x)$ and the remaining term decomposes as
+$$
+\sum_{k\geq 0} \int_{\ord_{v}(x) = k} |x|_{v}^{s} d^{\times}x_{v} = \sum_{k\geq 0} q_{v}^{-ks}
+$$
+when $v$ is non-archimedean, and the summation converges for $\Re s >0$. Real and complex case comes from the convergence of the integrals
+$$
+\int_{-1}^{1} |t|^{s} \frac{dt}{t}, \quad \frac{1}{2\pi} \int_{0}^{2\pi} \int_{0}^{1} r^{2s} \frac{dr}{r} d\theta
+$$
+for $\Re s >0$. 
+
+Now let $S$ be a finite set of primes so that for all $v\not\in S$, $v$ is non-archimedean, $\chi_{v}$ is unramified and $\Phi_{v} = \chf_{\calO_{v}}$. Then 
+\begin{align*}
+\zeta_{v}(s, \chi_{v}, \Phi_{v}) &= \int_{F_{v}^{\times}} \chf_{\calO_{v}}(x) \chi_{v}(x) |x|_{v}^{s} d^{\times}x_{v} \\
+&= \sum_{k\geq 0} \int_{\ord_{v}(x) = k} \chi_{v}(\frap_{v})^{k} q_{v}^{-ks} d^{\times}x_{v} \\
+&= \sum_{k\geq 0} (\chi_{v}(\frap_{v})q_{v}^{-s})^{k} = (1-\chi_{v}(\frap_{v})q_{v}^{-s})^{-1}
+\end{align*}
+Now the product 
+$$
+\prod_{v} \zeta_{v}(s, \chi_{v}, \Phi_{v})
+$$
+absolutely converges for $\Re s > 1$ because the local zeta integrals agrees with the local factors of corresponding Hecke $L$-function. 
+\end{proof}
+
+
+\begin{theorem}[Tate]
+\label{tate}
+\begin{enumerate}
+\item The local integral has meromorphic continuation to all $s\in\Cc$, with no poles in the region $\Re s > 0$. 
+\item There exists a meromorphic function $\gamma_{v}(s, \chi_{v}, \psi_{v})$, independent of the test function $\Phi_{v}$ such that 
+$$
+\zeta_{v}(1-s, \chi_{v}^{-1}, \wh{\Phi}_{v}) = \gamma_{v}(s, \chi_{v}, \psi_{v}) \zeta_{v}(s, \chi_{v}, \Phi_{v}).
+$$
+\item Let $s_{0}\in \Cc$ be given. We can choose $\Phi_{v}$ so that $\zeta_{v}(s, \chi_{v}, \Phi_{v})$ has neither zero nor pole at $s = s_{0}$. If $v$ is non-archimedean, we may even choose the local data so that $\zeta_{v}(s, \chi_{v}, \Phi_{v})$ is identically equal to 1. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+First, we show that $\gamma$ doesn't depend on the test function when $0<\Re s < 1$. In other words, we must prove that 
+$$
+\zeta_{v}(1-s, \chi_{v}^{-1}, \wh{\Phi}_{v}) \zeta_{v}(s, \chi_{v}, \Phi_{v}') = \zeta_{v}(1-s, \chi_{v}^{-1}, \wh{\Phi_{v}'}) \zeta_{v}(s, \chi_{v}, \Phi_{v}).
+$$
+The LHS equals to 
+\begin{align*}
+&\int_{F_{v}^{\times}}\left[ \int_{F_{v}} \Phi_{v}(y) \psi_v(xy)dy\right]\chi_{v}(x)^{-1}|x|_{v}^{1-s} d^{\times}x \int_{F_{v}^{\times}} \Phi_{v}'(z)\chi_{v}(z) |z|_{v}^{s} d^{\times}z \\
+&= \int_{F_{v}^{\times}}\int_{F_{v}}\int_{F_{v}^{\times}} \Phi_{v}(y)\Phi'_{v}(z)\psi_v(xy)\chi_{v}(x)^{-1}\chi_{v}(z) |x|_{v}^{1-s}|z|_{v}^{s} d^{\times}x dyd^{\times}z \\
+&= \frac{1}{m_{v}} \int_{F_{v}^{\times}}\int_{F_{v}^{\times}}\int_{F_{v}^{\times}} \Phi_{v}(y)\Phi'_{v}(z) \chi_{v}(yz) |yz|_{v}^{s} \psi_v(x) \chi_{v}(x)^{-1} |x|_{v}^{1-s}d^{\times}x d^{\times}y d^{\times} z
+\end{align*}
+where the last equality follows from the substitution $x\to y^{-1}x$ for $y\neq 0$. Here $m_{v}$ is a constant that satisfies $d^{\times}y = m_{v}dy / |y|_{v}$ between nomarlized additive Haar measure and normalized multiplicative Haar measure.  Clearly, this is symmetric in $\Phi_{v}$ and $\Phi_{v}'$, so the equation holds. 
+
+To extend this for all $s$, choose $\Phi_{v}$ so that $\wh{\Phi}_{v}$  vanishes in a neighborhood of zero. Then $\zeta_{v}(1-s,\chi_{v}^{-1}, \wh{\Phi}_{v})$ is convergent for all $s$ and we already know that $\zeta_{v}(s, \chi_{v}, \Phi_{v})$ is convergent and holomorphic for $\Re s >0$. 
+This implies that their quotient $\gamma_{v}(s, \chi_{v}, \psi_{v})$ has a meromorphic continuation on $\Re s> 0$, and we get a similar result for $\Re s <1$ by choosing nice $\Phi_{v}$ that vanishes near zero. This also proves 1 together with the previous proposition. 
+
+For 3, choose $\Phi_{v}$ as compactly supported near $x = 1$, so that integral converges for any $s\in \Cc$ and $\chi_{v}(x) |x|^{s_{0}}_{v}$ has positive real part on the support of $\Phi_{v}$, so is nonzero. For non-archimedean $v$, choose $\Phi_{v}$ so that the support of $\Phi_{v}$ is in $\calO_{v}^{\times}$, then $\zeta_{v}(s, \chi_{v}, \Phi_{v})$ is independent of $s$ and we can normalize it as 1. 
+\end{proof}
+
+\begin{proposition}
+The function $\zeta(s, \chi, \Phi)$ has meromorphic continuation and its entire unless the restriction of $\chi$ to the subgroup $\Aa_{1}^{\times} = \{x\in \Aa\,:\, |x| = 1\}$ is trivial. In this case, $\chi(x) = |x|^{\lambda}$ for some $\lambda\in i\Rr$ and $\zeta(s, \chi, \Phi)$ can have pole at $s = 1-\lambda$ and $\lambda$. Also, it satisfies the functional equation 
+$$
+\zeta(s, \chi, \Phi) = \zeta(1-s, \chi^{-1}, \wh{\Phi}).
+$$
+\end{proposition}
+\begin{proof}
+The main idea is to split the integral into two parts, $|x| <1$ and $|x|>1$, and using the Poisson summation formula to unfold and refold integral. Let
+\begin{align*}
+\zeta_{1}(s, \chi, \Phi) &:= \int\displaylimits_{\substack{\Aa^{\times} \\ |x| > 1}} \Phi(x)\chi(x)|x|^{s} d^{\times} x \\
+\zeta_{0}(s, \chi, \Phi) & := \int\displaylimits_{\substack{\Aa^{\times} \\ |x| < 1 }} \Phi(x) \chi(x) |x|^{s} d^{\times}x
+\end{align*}
+We already know that the first integral converges for all $s$, since it converges for $\Re s > 1$ by the previous results and decreasing $\Re s$ only improves the convergence in the region $|x| >1$. For the second one, we can unfold the integral as
+\begin{align*}
+\zeta_{0}(s, \chi, \Phi) &= \sum_{\alpha\in F^{\times}} \int\dpl{\substack{\Aa^{\times}/F^{\times} \\ |x| < 1}} \Phi(\alpha x)\chi(\alpha x) |\alpha x|^{s} d^{\times}x \\
+&= \int\dpl{\substack{\Aa^{\times}/F^{\times} \\ |x| < 1}} \left[\sum_{\alpha\in F^{\times}} \Phi(\alpha x)\right] \chi(x) |x|^{s} d^{\times}x \\
+&= \int\dpl{\substack{\Aa^{\times}/F^{\times} \\ |x| < 1}} \left[\sum_{\alpha\in F} \Phi(\alpha x)\right] \chi(x) |x|^{s} d^{\times}x - \Phi(0) \int\dpl{\substack{\Aa^{\times}/F^{\times} \\ |x|<1}} \chi(x)|x|^{s}d^{\times}x
+\end{align*}
+since $\chi(\alpha) = 1 = |\alpha|$ for all $\alpha\in F$. The last integral can be written as
+$$
+\int\limits_{0}^{1}\int\dpl{\substack {\Aa^{\times}/F^{\times} \\ |x| = t}} \chi(x)|x|^{s}d^{\times}x \frac{dt}{t}
+$$
+If $\chi|_{\Aa^{\times}_{1}}$ is nontrival, then this integral is zero since there exists $y_{0}\in \Aa^{\times}_{1}$ with $\chi(y_{0}) \neq 1$ and
+$$
+\int\limits_{\substack{\Aa^{\times}/F^{\times} \\ |x| = t}} \chi(x)|x|^{s} d^{\times}x = \int\limits_{\substack{\Aa^{\times}/F^{\times} \\ |x| = t}} \chi(xy_{0})|xy_{0}|^{s} d^{\times}x = \chi(y_{0})\int\limits_{\substack{\Aa^{\times}/F^{\times} \\ |x| = t}} \chi(x)|x|^{s} d^{\times}x
+$$
+impiles that the integral vanishes. If  it is trivial, then $\chi(x) = |x|^{\lambda}$ for some $\lambda\in i\Rr$ (since $\chi$ is unitary) and the integral became
+$$
+\rho_{F} \int_{0}^{1} t^{s+\lambda} \frac{dt}{t} = \frac{\rho_{F}}{s+\lambda}
+$$
+where $\rho_{F}$ is the volume of $\Aa^{\times}_{1} /F^{\times}$. By the Poisson summation formula, we have
+\begin{align*}
+\zeta_{0}(s, \chi, \Phi) = \begin{cases} \int\dpl{\substack{\Aa^{\times}/F^{\times} \\ |x| < 1}} \left[ \sum_{\alpha\in F} \wh{\Phi}\left(\frac{\alpha}{x}\right)\right] \chi(x) |x|^{s-1}d^{\times}x & \chi|_{\Aa^{\times}_{1}} \neq 1 \\ \int\dpl{\substack{\Aa^{\times}/F^{\times} \\ |x| < 1}} \left[ \sum_{\alpha\in F} \wh{\Phi}\left(\frac{\alpha}{x}\right)\right] \chi(x) |x|^{s-1}d^{\times}x  - \frac{\rho_{F}\Phi(0)}{s + \lambda}& \chi|_{\Aa^{\times}_{1}} = 1\end{cases}
+\end{align*}
+Now apply the change of variable $x\to x^{-1}$ and we get 
+\begin{align*}
+\zeta(s, \chi, \Phi) = \begin{cases}\zeta_{1}(s, \chi, \Phi) + \zeta_{1}(1-s, \chi^{-1}, \wh{\Phi}) & \chi|_{\Aa^{\times}_{1}} \neq 1 \\
+ \zeta_{1}(s, \chi, \Phi) + \zeta_{1}(1-s, \chi^{-1}, \wh{\Phi}) - \rho_{F} \left( \frac{\Phi(0)}{s+\lambda} + \frac{\wh{\Phi}(0)}{1-s-\lambda}\right)& \chi|_{\Aa^{\times}_{1}} = 1\end{cases}
+\end{align*}
+Essential boundedness follows from 
+$$
+|\zeta_{1}(s, \chi, \Phi)| \leq \int\dpl{\substack{\Aa^{\times} \\ |x| >1 }} |\Phi(x)||x|^{\Re (s)} d^{\times} x. 
+$$
+\end{proof}
+
+By combining all the previous results, we get the analytic continuation and functional equation of a Hecke $L$-function. 
+\begin{theorem}[Hecke, Tate]
+Let  $\chi$ be a Hecke character of $\Aa^{\times}/F^{\times}$. Let $S$ be a finite set of places of $F$ such that for all $v\not\in S$, $\chi_{v}$ is unramified and the conductor of $\psi_{v}$ is $\calO_{v}$. 
+Then $L_{S}(s, \chi)$ has meromorphic continuation to all $s$, entire unless there exists a complex number $\lambda$ such that $\chi(x) = |x|^{\lambda}$, in which case the poles are at $s =- \lambda$ and $s = 1-\lambda$. We have the functional equation
+$$
+L_{S}(s, \chi) = \left( \prod_{v\in S} \gamma_{v}(s, \chi_{v}, \psi_{v})\right) L_{S}(1-s, \chi^{-1}). 
+$$
+\end{theorem}
+\begin{proof}
+We proved that $L_{v}(s, \chi_{v}) = \zeta_{v}(s, \chi_{v}, \Phi_{v})$ holds except for finitely many places (especially, for $v\not\in S$). Then the functional equation of the local and global zeta integrals give the result.  
+\end{proof}
+
+We will complete the $L$-function by defining $L_{v}(s, \chi_{v})$ for $v\in S$, too. 
+In this case, the functional equation will contain some extra factors called $\epsilon$ factors. 
+If $v\in S$ is non-archimedean (so that $\chi_{v}$ is ramified), then define $L_{v}(s, \chi_{v}) = 1$. 
+If $v$ is real, $\chi_{v}(x) = (x/|x|_{v})^{\epsilon}$ for some $\epsilon \in \{0, 1\}$, and we define $L_{v}(s, \chi_{v}) = \pi^{-(s+\epsilon)/2}\Gamma((s+\epsilon)/2)$. 
+Finally, for complex $v$, 
+$$
+\chi_{v}(x) = |x|_{v}^{\nu} \left( \frac{x}{\sqrt{|x|_{v}}}\right)^{k}
+$$
+for some $\nu\in i\Rr$ and $k\in \Zz$ (since it is unitary). (Here $|x|_{v}$ is the square of the usual complex norm.) Then we put
+$$
+L_{v}(s, \chi_{v}) = \frac{1}{2}(2\pi)^{-s-\nu-|k|/2} \Gamma\left( s + \nu + \frac{|k|}{2}\right).
+$$
+
+We say that a nonzero function $e:\Cc\to \Cc$ is of exponential type if $e(s) = ab^{s}$ for some $a\in \Cc$ and $b\in\Rr$. We will show that we can choose appropriate $\Phi_{v}$ so that the quotient of local zeta integrals by local $L$-functions became a function of exponential type. 
+
+
+\begin{proposition}
+Let $v$ be any place of $F$ and $s_{0}\in \Cc$. Then $L_{v}(s, \chi_{v})$ has a pole at $s = s_{0}$ iff $\zeta_{v}(s, \chi_{v}, \Phi_{v})$ has a pole there for some $\Phi_{v}\in \calS(F_{v})$. 
+In particular, $\zeta_{v}(s, \chi_{v}, \Phi_{v}) / L_{v}(s, \chi_{v})$ is holomorphic for all values of $s$. 
+If $v$ is non-archimedean, then $\zeta_{v}(s, \chi_{v},\Phi_{v})$ is rational function in $q_{v}^{-s}$. 
+There exists a choice of $\Phi_{v}$ such that $\zeta_{v}(s, \chi_{v} ,\Phi_{v})/L_{v}(s, \chi_{v})$ is a function of exponential type. 
+\end{proposition}
+\begin{proof}
+For a non-archimedean $v$, we can write the local zeta integral as
+$$
+\zeta_{v}(s, \chi_{v}, \Phi_{v}) = \sum_{k\in \Zz} q_{v}^{ks} \int\limits_{|x|_{v} = q_{v}^{k}} \Phi_{v}(x)\chi_{v}(x)d^{\times}x.
+$$
+Since $\Phi_{v}(x)$ is compactly supported, the contribution is zero for large $k$. Also, if $-k$ is large, 
+then $\Phi_{v}(x) = \Phi_{v}(0)$ (since the function is locally constant) and the contribution equals
+$$
+\Phi_{v}(0)\int\limits_{|x|_{v} = q_{v}^{k}} \chi_{v}(x)d^{\times}x.
+$$
+If $\chi_{v}$ is ramified, then this is zero and the sum is only a finite sum, i.e. $\zeta_{v}(s, \chi_{v}, \Phi_{v})$ is entire and rational in $q_{v}^{-s}$. 
+If $\chi_{v}$ is unramified, then it became a geometric series for small $k$, and we can explicitly describe pole of the function. 
+
+If $v$ is real, the integral can be decomposed as integral over $|x|\leq 1$ and $|x|>1$ as before, and we only need to analyze the first part since the second part converges absolutely for all $s$ by rapid decay of $\Phi_{v}$. 
+We may split $\Phi_{v}$ into even and odd parts and handle these two cases separately. 
+The integral vanishes unless the parity of $\Phi_{v}$ and $\chi_{v}$ matches. 
+If $\chi_{v} = 1$ and $\Phi_{v}$ is even, then the Taylor expansion of $\Phi_{v}(x)$ has only even terms and the possible poles of the integral 
+$$
+\int\limits_{|x|\leq 1} \Phi_{v}(x) \chi_{v}(x)|x|_{v}^{s} d^{\times}x = 2\int_{0}^{1} \Phi_{v}(x) x^{s} d^{\times} x
+$$
+are at $s = 0, -2, -4, \dots$, which agrees with the poles of $L_{v}(s, \chi_{v})$. Similarly thing holds for odd cases, too. 
+
+If $v$ is complex,  we use polar coordinate and 
+$$
+\zeta_{v}(s,\chi_{v}, \Phi_{v}) = \int_{0}^{\infty} r^{2\nu + 2s} \phi(r) \frac{dr}{r}
+$$
+where $$\phi(r) = \frac{1}{2\pi} \int_{0}^{2\pi} \Phi_{v}(re^{ik\theta}) e^{ik\theta}d\theta.$$
+We consider the Taylor expansion of $\Phi_{v}$ and $\phi(r)$, which gives
+$$
+\phi(r) = \sum_{m-n = k} a(n, m) r^{n+m}
+$$
+where $a(n, m)$ is a Taylor coefficient of $\Phi_{v}(x)$ of $x^{n}\overline{x}^{m}$. 
+Then we get the result about poles by the same argument as real case. 
+
+For the suitable choice of $\Phi_{v}$, choose
+\begin{align*}
+\Phi_{v}(x) = \begin{cases} \chf_{\calO_{v}}(x) & v\text{ non-archimedean, $\chi_{v}$ unramified} \\
+\chi_{v}(x)^{-1} \chf_{\calO_{v}^{\times}}(x) & v\text{ non-archimedean, $\chi_{v}$ ramified} \\
+x^{\epsilon}e^{-\pi x^{2}} & v \text{ real} \\
+\overline{x}^{k} e^{-2\pi |x|_{v}} & v\text{ complex}, k>0 \\
+x^{-k} e^{-2\pi |x|_{v}} & v \text{ complex}, k<0
+\end{cases}
+\end{align*}
+then we get $L_{v}(s, \chi_{v}) = \zeta_{v}(s, \Phi_{v}, \chi_{v})$ for all $v$. 
+\end{proof}
+
+
+
+The following proposition describes so-called (local) $\epsilon$ factor (or root numbers), which is an extra factor for the completed $L$-function. 
+\begin{proposition}
+Let $v$ be any place of $F$, and define 
+$$
+\epsilon_{v}(s, \chi_{v}, \psi_{v}) = \frac{\gamma_{v}(s, \chi_{v}, \psi_{v})L_{v}(s, \chi_{v})}{L_{v}(1-s, \chi_{v}^{-1})}.
+$$
+Then $\epsilon_{v}(s, \chi_{v}, \psi_{v})$ is a function of exponential type. 
+If  $v$ is non-archimedean, $\chi_{v}$ is unramified and the conductor of $\psi_{v}$ is $\calO_{v}$, then $\epsilon_{v}(s, \chi_{v}, \psi_{v}) = 1$. 
+\end{proposition}
+
+\begin{proof}
+By definition, we have
+$$
+\epsilon_{v}(s, \chi_{v}, \psi_{v}) = \frac{\zeta_{v}(1-s, \chi_{v}^{-1}, \widehat{\Phi}_{v})}{L_{v}(1-s, \chi_{v}^{-1})} \cdot \frac{L_{v}(s, \chi_{v})}{\zeta_{v}(s, \chi_{v}, \Phi_{v})} 
+$$
+and the result follows from the previous proposition. 
+\end{proof}
+
+Now we define
+\begin{align*}
+L(s, \chi) &= \prod_{v} L_{v}(s, \chi_{v}) \\
+\epsilon(s, \chi) &= \prod_{v} \epsilon_{v}(s, \chi_{v}, \psi_{v})
+\end{align*}
+where the product is over all places $v$ of $F$. 
+The next theorem show that the completed $L$-function $L(s, \chi)$ has meromorphic continuation with the functional equation that contains $\epsilon(s, \chi)$. Also, we show that $\epsilon(s, \chi)$ doesn't depend on the choice of $\psi$, although the local factors do. 
+
+
+\begin{theorem}
+The factor $\epsilon(s, \chi)$ is independent of the choice of $\psi$. 
+The $L$-function $L(s, \chi)$ has analytic continuation to all $s$ except $s = 0$ or $1$, where it can have simple poles. We have the functional equation 
+$$
+L(s, \chi) = \epsilon(s, \chi) L(1-s, \chi^{-1})
+$$
+and $L(s, \chi)$ is essentially bounded in vertical strips. 
+\end{theorem}
+\begin{proof}
+The functional equation follows from previous propositions:
+\begin{align*}
+L(s, \chi) &=\left( \prod_{v\in S}L_{v}(s, \chi_{v})\right) L_{S}(s, \chi) \\
+&= \left(\prod_{v\in S} L_{v}(s, \chi_{v}) \gamma_{v}(s, \chi_{v}, \psi_{v}) L_{v}(s, \chi_{v})\right) L_{S}(1-s, \chi^{-1}) \\
+&= \left( \prod_{v\in S} \frac{L_{v}(s, \chi_{v}) \gamma_{v}(s, \chi_{v}, \psi_{v})}{L_{v}(1-s, \chi_{v}^{-1})}\right) L(1-s, \chi^{-1}) \\
+&= \epsilon(s, \chi) L(1-s, \chi^{-1})
+\end{align*}
+and it is evident from the functional equation that $\epsilon(s, \chi)$ is independent of the choice of $\psi$. Essential boundedness follows from 
+$$
+L(s, \chi) = \zeta(s, \Phi, \chi) \prod_{v} \frac{L_{v}(s, \chi)}{\zeta_{v}(s, \Phi_{v}, \chi_{v})}
+$$
+and the fact that we can choose $\Phi = \prod_{v}\Phi_{v}$ so that the quotient $L_{v} / \zeta_{v}$ is exponential type for all $v$ (and identically 1 for almost all $v$), and $\zeta(s, \Phi, \chi)$ is essentially bounded. 
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Definition of automorphic forms and representations}
+
+Now we will develop similar theory for $\GL(2)$. Before doing this, we first define automorphic forms of $\GL(2, \Rr)^{+}$, which is a generalization of both modular forms and Maass forms, and then define automorphic representations which use ad\'elic language. 
+
+
+Let $G = \GL(2, \Rr)^{+}$ and let $\Gamma$ be a discrete subgroup that contains $-I$ and cofinite, i.e. $\Gamma\backslash \calH$ has a finite volume. But we \emph{do not} assume that $\Gamma\backslash \calH$ is compact, so that we will allow discrete subgroups like $\Gamma_{0}(N)$ (congruence subgroups) that has \emph{cusps}. Let $K = \SO(2)$, $\chi$ be a character of $\Gamma$, and let $\omega$ be a character of the center $Z(\Rr)$ of $G$. 
+Here we assume that all the characters are unitary. 
+
+
+
+\begin{definition}[Automorphic forms on $\GL(2, \Rr)^{+}$]
+Let $\calA(\Gamma\backslash G, \chi, \omega)$ be the space of smooth functions $F:G\to \Cc$ such that 
+\begin{enumerate}
+\item (automorphic) $$F(\gamma gz) = \chi(\gamma)\omega(z)F(g), \quad \gamma\in \Gamma, \, g\in G, \, z\in Z(\Rr)$$
+\item (finiteness) $F$ is $K$-finite; its right translates by elements of $K$ span a finite dimensional space. Also, $F$ is $\calZ$-finite; it lies in a finite dimensional vector space that is invariant by action of the center of the universal enveloping algebra $U\frag_{\Cc}$.  
+\item (growth condition) there exists a constant $C$ and $N$ such that $$|F(g)|  < C||g||^{N}, \quad g\in G,$$where $||g||$ is the length of the vector $(g, \det g^{-1})$ in $\Rr^{5}$. 
+\end{enumerate}
+We call elements of $\calA(\Gamma\backslash G, \chi, \omega)$ automorphic forms. 
+\end{definition}
+
+We also define \emph{cusp forms}. Assume that $a = \infty$ is a cusp of $\Gamma$ so that $\Gamma$ contains an element of the form $\tau_{r} = \smat{1}{r}{0}{1}$. We say that $F$ is cuspidal at $\infty$ if either $\chi(\tau_{r})\neq 1$ or 
+$$
+\int_{0}^{r} F\left( \pmat{1}{x}{0}{1}g \right) dx = 0. 
+$$
+If $a$ is an arbitrary cusp, we can find $\xi\in \SL(2, \Rr)$ such that $\xi(\infty) = a$. 
+Then $F'(g) = F(\xi g)$ is an element in $L^{2}(\Gamma'\backslash G, \chi', \omega)$ with $\Gamma' = \xi^{-1}\Gamma\xi$ and $\chi'(\gamma) = \chi(\xi\gamma\xi^{-1})$. We say that $F$ is cuspidal at $a$ if $F'$ is cuspidal at $\infty$. 
+
+\begin{definition}
+Let $\calA_{0}(\Gamma\backslash G, \chi, \omega)$ be a subspace of automorphic functions which are cuspidal at every cusp. We call elements of $\calA_{0}(\Gamma\backslash G, \chi, \omega)$ cusp forms. 
+\end{definition}
+
+
+\begin{theorem}
+\label{autoadm}
+The spaces $\calA(\Gamma\backslash G, \chi, \omega)$ and $\calA_{0}(\Gamma \backslash G, \chi, \omega)$ are stable under the action of $U\frag_{\Cc}$. If $f\in \calA(\Gamma\backslash G, \chi, \omega)$ ,then $U\frag_{\Cc}f$ is an admissible $(\frag, K)$-module. 
+For any $f\in  \calA(\Gamma\backslash G, \chi, \omega)$ and $D\in U\frag_{\Cc}$, $Df$ also satisfies the growth estimate with the same $N$ as $f$. 
+\end{theorem}
+
+\begin{proof}
+This is a theorem of Harish-Chandra. More precisely, he proved the same theorem for $G = \SL(2, \Rr)$ and $K = \SO(2)$. Now we can reduce the original statement to the $\SL(2, \Rr)$ case. 
+Indeed, for $f\in \calA(\Gamma \bs G, \chi, \omega)$, $|f|$ is constant on the cosets of $Z(\Rr)$ and it is easy to see that in each coset of $Z(\Rr)$, the element $g$ with the minimal height $||g||$ is actually in $\SL(2, \Rr)$. 
+For the proof of Harish-Chandra's theorem, see Theorem 2.9.2 of \cite{bu}.
+\end{proof}
+
+For example, modular forms and Maass forms are automorphic forms with some additional conditions, such as being holomorphic  or being an eigenvector of Laplacian operator. 
+Also, we know that modular forms can be regarded as a Maass form: if $f(z)$ is a weight $k$ modular form, then $z\mapsto y^{k/2}f(z)$ is a Maass form with the eigenvalue $\lambda = -\frac{k}{2}\left(1-\frac{k}{2}\right)$. 
+
+Now we relate these classical automorphic forms to $(\frag, K)$-modules in the previous theorem. Let $f$ be a Maass form of weight $k$. Define a function $F:G\to \Cc$ as
+$$
+F(g) = (f||_{k}g)(i). 
+$$
+One can check that $F\in C^{\infty}(\Gamma\backslash G, \chi, \omega)$, where $\omega$ is the character of $Z(\Rr) = \Rr^{\times}$ that is trivial on the connected component of the identity and agrees with $\chi$ on $-I$. Since $f$ is an eigenfunction of $\Delta_{k}$, $F$ is an eigenfunction of $\Delta$ and it is $Z(\Rr)^{+}$-finite. 
+Also, the function $F$ satisfies the equation $F(g\kappa_{\theta}) = e^{ik\theta} F(g)$, which implies that $F$ is also $K$-finite. Growth condition of $f$ is equivalent to that of $F$, so that $F$ generates an admissible $(\frag, K)$-module. The effects of $R_{k}, L_{k}$ on $f$ are transferred into the effects of $R, L$ on $F$. 
+
+
+We are also interested in the decomposition of (right) regular representation of $L^{2}(\Gamma \bs G, \chi, \omega)$ and $L_{0}^{2}(\Gamma \bs G, \chi, \omega)$. 
+As before, we have the corresponding action of Hecke algebra $C_{c}^{\infty}(G)$ given by 
+$$
+(\rho(\phi)f)(g) = \int\dpl{G} f(gh)\phi(h)dh
+$$
+for $f\in L^{2}(\Gamma \bs G, \chi, \omega)$. 
+$\rho(\phi)$ is an operator on $L^{2}(\Gamma \bs G,\chi, \omega)$ leaving $L^{2}_{0}(\Gamma \bs G, \chi, \omega)$ invariant, and $\rho$ is a unitary representation on both spaces. 
+Also, we can rewrite the above equation as an integral over $Z(\Rr)\bs G$:
+$$
+(\rho(\phi)f)(g) = \int\dpl{Z(\Rr)\bs G} f(gh)\phi_{\omega}(h) dh
+$$
+where 
+$$
+\phi_{\omega}(g) = \int\dpl{\Rr^{\times}} \phi\left( \pmat{z}{}{}{z} g\right) \omega(z)dz.
+$$
+Our aim is to prove that $\rho(\phi)$ is a compact operator, so that the space $L^{2}_{0}(\Gamma \bs G, \chi, \omega)$ decomposes into a Hilbert space direct sum of irreducible invariant subspaces. 
+To prove that, we need a notion of Siegel sets. 
+For $c, d>0$, we denote by $\calF_{c, d}$ the Siegel set of $z = x+iy\in \calH$ such that $0\leq x\leq d$ and $y\geq c$. 
+Also, we denote by $\calF_{d}^{\infty}$ the set of $z$ such that $0\leq x\leq d$. 
+\begin{proposition}
+\label{siegel}
+\begin{enumerate}
+\item Let $a_{1}, \dots, a_{h}\in \Rr\cup \{\infty\}$ be the cusps of $\Gamma$, and let $\xi_{i}\in \SL(2, \Rr)$ be chosen such that $\xi_{i}(a_{i}) = \infty$. 
+Then we can choose $c, d>0$ so that the set 
+$$
+\bigcup_{i = 1}^{h} \xi_{i}^{-1}\calF_{c, d}
+$$
+contains a fundamental domain for $\Gamma$. 
+\item Suppose that $\infty$ is a cusp of $\Gamma$. Then if $d$ is large enough, $\calF_{d}^{\infty}$ contains a fundamental domain for $\Gamma$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+One can find $c, d>0$ such that $\xi_{i}^{-1}\calF_{c, d}$ contains a neighborhood of the cusp $a_i$ in the fundamental domain $F$ of $\Gamma$, and so $F - \bigcup_{i} \xi_{i}^{-1}\calF_{c, d}$ is relatively compact in $\calH$. 
+Then we can increase $d$ and decrease $c$ so that $F = \bigcup_{i} \xi_{i}^{-1} \calF_{c, d}$. 
+For 2, we can also find sufficiently large $d'$ so that $\calF_{d'}^{\infty}$ contains each $\xi_{i}^{-1}\calF_{c, d}$. 
+\end{proof}
+We can lift these Siegel sets to subsets of $G$ under the map $G\to \calH, \smat{a}{b}{c}{d}\mapsto \frac{ai+b}{ci+d}$. 
+Let $\calG_{c, d}, \calG_{d}^{\infty}$ be the preimages of $\calF_{c, d}, \calF_{d}^{\infty}$ in $G$. Also, we denote $\ol{\calG_{c, d}}, \ol{\calG_{d}^{\infty}}$. Then the previous proposition also holds for fundamental domains of $\Gamma \bs G$ and $\Gamma \bs G/Z(\Rr)$. 
+\begin{proposition}[Gelfand, Graev, Piatetski-Shapiro]
+\label{compact}
+\begin{enumerate}
+\item There exists a constant $C$ depending on $\phi$ such that 
+$$
+\sup_{g\in G} |\rho(\phi)f(g)| \leq C||f||_{2}
+$$
+for all $f\in L_{0}^{2}(\Gamma\backslash G, \chi, \omega)$, where 
+$$
+||f||_{2} = \left(\int_{G/Z(\Rr)} |f(g)|^{2} dg \right)^{1/2}.
+$$
+\item The restriction of the operator $\rho(\phi)$ to $L_{0}^{2}(\Gamma\backslash G, \chi, \omega)$ is a compact operator. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Recall that $\Gamma$ has cusps. We can assume that $\infty$ is a cusp of $\Gamma$ and that $\Gamma$ contains the group 
+$$
+\Gamma_{\infty} = \left\{ \pmat{1}{n}{}{1} \,:\, n\in \Zz\right\}.
+$$
+By the Proposition \ref{siegel}, it is enough to show that 
+$$
+\sup_{g\in \calG_{c, d}}|\rho(\phi)f(g)| \leq C_{0}||f||_{2}
+$$
+for some $C_{0} >0$. We have
+\begin{align*}
+(\rho(\phi)f)(g) &= \int_{Z(\Rr)\bs G} f(gh)\phi_{\omega}(h) dh \\
+&= \int_{Z(\Rr)\bs G} f(h) \phi_{\omega}(g^{-1}h)dh \\
+&= \int\limits_{\Gamma_{\infty} Z(\Rr)\bs G} \sum_{\gamma\in \Gamma_{\infty}} f(\gamma h)\phi_{\omega}(g^{-1}\gamma h) \\
+&= \int\limits_{\Gamma_{\infty} Z(\Rr)\bs G} K(g, h) f(h) dh
+\end{align*}
+where 
+$$
+K(g, h) = \sum_{\gamma\in \Gamma_{\infty}} \chi(\gamma) \phi_{\omega}(g^{-1}\gamma h). 
+$$
+Now we will assume $\chi$ is trivial. The nontrivial case is almost same as the following proof.
+Since $f$ is cuspidal, we have 
+$$
+\int\limits_{\Gamma_{\infty} Z(\Rr)\bs G} K_{0}(g, h) f(h) dh = 0
+$$
+where we define
+$$
+K_{0}(g, h) = \int_{-\infty}^{\infty} \phi_{\omega} \left( g^{-1} \pmat{1}{x}{}{1} h\right) dx.
+$$
+So we may write 
+$$
+(\rho(\phi)f)(g) = \int\limits_{\Gamma_{\infty} Z(\Rr)\bs G} K'(g, h) f(h) dh
+$$
+where $K'(g, h) = K(g, h) - K_{0}(g, h)$. Now we will estimate this function to get the desired result. 
+By the Poisson summation formula, we have
+$$
+K'(g, h) = \sum_{n\neq 0} \wh{\Phi}_{g, h}(n)
+$$
+where 
+$$
+\Phi_{g, h}(t) = \phi_{\omega} \left( g^{-1} \pmat{1}{t}{}{1} h\right). 
+$$
+Using Iwasasa decomposition, we can write $g, h$ as 
+$$
+g = \pmat{\eta}{}{}{\eta}\pmat{y}{x}{}{1} \kappa_{\theta}, \quad h = \pmat{\zeta}{}{}{\zeta}\pmat{v}{u}{}{1} \kappa_{\sigma}
+$$
+where $y, u, \eta, \zeta > 0$. By the change of variable, we can show that the absolute value of $|\wh{\Phi}_{g, h}(n)|$ is  independent of $x, u$ and $|\wh{\Phi}_{g, h} (n)| = |y|\,|\wh{F}_{\theta, \sigma, y^{-1}v}(yn)|$, where 
+$$
+F_{\theta, \sigma, v}(t) = \phi_{\omega} \left( \kappa_{\theta}^{-1} \pmat{1}{t}{}{1} \pmat{v}{}{}{1} \kappa_{\sigma}\right). 
+$$
+(Note that the central character $\omega$ is unitary.)
+By Fourier theory, since $F$ is smooth, $\wh{F}$ decays faster than any polynomial, i.e. for any $N$ we have a constant $C = C_{\theta, \sigma, v}$ (vary continuously in $\theta, \sigma, v$) such that 
+$$
+|\wh{F}_{\theta, \sigma, v}(y)| \leq C_{\theta, \sigma, v}|y|^{-N}.
+$$
+Since $\phi_{w}$ is compactly supported modulo $Z(\Rr)$, there exists $B>1$ such that $F_{\theta, \sigma, v}(t) = 0$ unless $B^{-1} \leq v \leq B$.  So we have 
+$$
+|\wh{\Phi}_{g, h}(n)| \leq C_{1} |y|^{1-N}|n|^{-N}
+$$
+where $C_{1} = \max_{(\theta, \sigma, v)\in [0, 2\pi]\times [0, 2\pi] \times [yB^{-1}, yB]} C_{\theta, \sigma, v} < \infty$. 
+Also, $\Phi_{g, h}(n) = 0$ unless $B^{-1} \leq y^{-1}v \leq B$, so by summing up we get
+$$
+|K'(g, h)| \leq C_{2} |y|^{1-N}
+$$
+where $N\geq 2$ and $C_{2}$ is a constant depending on $\phi$ and $N$. 
+
+To estimate $(\rho(\phi)f)(g)$ for $g\in \calG_{c, d}$, since the kernel $K'$ vanishes unless $B^{-1}\leq y^{-1}v$, we have 
+$$
+|(\rho(\phi)f)(g)| \leq C_{2}y^{1-N} \int\limits_{\overline{\calG}_{B^{-1}c, d}}|f(h)| dh. 
+$$
+Now $\overline{\calG}_{B^{-1}c, d}$ can be covered by a finite number of copies of a fundamental domain, so it is dominated by $L^{1}$ norm of $f$, so is by $L^{2}$ norm (the fundamental domain has finite volume). 
+This proves 1 and also shows that $\rho(\phi)f(g)$ decays rapidly. 
+
+To prove compactness of $\rho(\phi)$, we use Arz\'ela-Ascoli theorem. Let $Y$ be a compactification of $\Gamma Z(\Rr) \bs G$ by adjoining cusps and let $\Sigma$ be the image of the unit ball in $L^{2}_{0}(\Gamma\bs G, \chi, \omega)$ under $\rho(\phi)$; we extend each $\rho(\phi)f$ to $Y$ by making it vanish at the cusps. This $\Sigma$ is bounded because of the inequality we just proved, and equicontinuity follows from that derivatives are bounded uniformly for all $f$ with $||f||_{2} \leq 1$. 
+This follows from $(X\rho(\phi)f)(g) = \rho(\phi_{X})f(g)$ where 
+$$
+\phi_{X}(g) = \frac{d}{dt} \phi(\exp (-tX)g)|_{t=0}. 
+$$
+Hence $\Sigma$ is compact in $L^{\infty}$ topology and hence also in $L^{2}$ topology. 
+\end{proof}
+\begin{theorem}
+\label{cuspdecom}
+The space $L_{0}^{2}(\Gamma\backslash G, \chi, \omega)$ decomposes into a Hilbert space direct sum of subspaces that are invariant and irreducible under the right regular representation $\rho$. Let $H$ be a such a subspace. 
+Then $K$-finite vectors $H_{\fin}$ in $H$ are dense, and every $K$-finite vectors form an irreducible admissible $(\frag, K)$-module contained in $\calA_{0}(\Gamma\backslash G, \chi, \omega)$. 
+\end{theorem}
+\begin{proof}
+The proof that $L_{0}^{2}(\Gamma \bs G, \chi, \omega)$ decomposes into a Hilbert space direct sum of irreducible invariant subspaces is almost same as the proof of Theorem \ref{l2decomp}. Here we use the previous proposition and the spectral theorem for self-adjoint compact operators. 
+Let $H$ be an irreducible invariant subspace of $L_{0}^{2}(\Gamma \bs G, \chi, \omega)$. 
+Then $H = \oplus_{k} H_{k}$ where $H_{k} = \{f\in H\,:\, \rho(\kappa_{\theta})f = e^{ik\theta}f\}$. 
+By Theorem \ref{mult1char}, $\dim H_{k} \leq 1$ for all $k$, and this implies that $H_{\fin}$ is a $(\frag, K)$-module. 
+
+Finally, to show $H_{\fin} \subseteq \calA_{0}(\Gamma\bs G, \chi, \omega)$, it is enough to show that $H_{k} \subseteq \calA_{0}(\Gamma\bs G, \chi, \omega)$. 
+Let $0\neq f\in H_k$. 
+One can prove that there exists $\phi\in C_{c}^{\infty}(G)$ such that $\phi(\kappa_{\theta}g) = \phi(g\kappa_{\theta}) = e^{-ik\theta}\phi(g)$ and $\rho(\phi)f \neq 0$. 
+It is easy to check that $\rho(\phi)f\in H_k$, so from $\dim H_k \leq 1$, we may assume that $\rho(\phi) f = f$. 
+By the way, convolutioning $f$ with a compactly supported smooth function $\phi\in C_{c}^{\infty}(G)$ makes $\rho(\phi)f = f$ as a smooth and rapidly decreasing function (this follows from the equation $X\rho(\phi)f = \rho(\phi_X)f$ and the estimation of $K'(g, h)$), so $f\in \calA_{0}(\Gamma \bs G, \chi, \omega)$. 
+\end{proof}
+
+
+We can also consider the subspace $\calA_{0}(\Gamma, \chi, \omega, \lambda, \rho)$ of automorphic forms which are cuspidal, $\lambda$-eigenspace of $\Delta$, and $\sigma$-isotypic. 
+The following theorem shows that this space is finite dimensional, and all the irreducible admissible unitary representations of $\GL(2, \Rr)$ occur in $L^{2}_{0}$ with finite multiplicity. 
+
+\begin{theorem}
+\label{autofin}
+\begin{enumerate}
+\item Let $(\pi, V)$ be an irreducible admissible unitary representation of $\GL(2, \Rr)$. Then the multiplicity of $\pi$ in the decomposition of $L^{2}_{0}(\Gamma \backslash G, \chi, \omega)$ is finite. 
+\item Let $\lambda\in \Cc$ and let $\sigma$ be a character of $K$. Then $\calA_{0}(\Gamma, \chi, \omega, \lambda, \rho)$ is finite dimensional. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+We prove 1. 
+Choose $\sigma \in \wh{K}$ such that $V(\sigma)\neq 0$, and let $0\neq \xi\in V(\sigma)$. 
+One can choose $\phi\in C_{c}^{\infty}(G)$ such that $\pi(\phi)\xi = \xi$ and $\pi(\phi)$ is self-adjoint and compact. 
+If $T:V\to L_{0}^{2}(\Gamma \bs G, \chi, \omega)$ is an intertwining map, then $\rho(\phi)T\xi = T\xi$, so $T\xi$ lies in the 1-eigenspace of the compact operator $\rho(\phi)$, which is finite dimensional by the spectral theorem. 
+Since $\pi$ is irreducible, $T$ is determined by the image of any single nonzero vector, and it follows that $\Hom_{\GL(2, \Rr)}(V, L_{0}^{2}(\Gamma \bs G, \chi, \omega))$ is finite dimensional. 
+
+For the second part, we assume that $\Delta$ acts as a constant $\lambda$ and also $\omega$ is fixed, so the action of  $Z = \smat{1}{0}{0}{1}\in \calZ (U\frag)$ is also given by a constant $\mu$ determined by $\omega$. By Theorem \ref{unigk}, there are only finite number of isomorphism classes of unitary irreducible admissible representations with given $\omega$ and $\lambda$ (in fact, only one or two). 
+Let $\Sigma$ be the set of these isomorphism classes. 
+By the previous Theorem \ref{cuspdecom}, we know that $L_{0}^{2}(\Gamma \bs G, \chi, \omega)$ decomposes into a direct sum of irreducible admissible representations and that the $K$-finite vectors in each of these are elements of $\calA_{0}(\Gamma \bs G, \chi, \omega)$, so $\calA_{0}(\Gamma, \chi, \omega, \lambda, \rho)$ is the direct sum of the $\rho$-isotypic components of the irreducible subspaces of $L_{0}^{2}(\Gamma \bs G, \chi, \omega)$ that are isomorphic of an element of $\Sigma$. 
+Now the finite dimensionality follows from the finiteness of $\Sigma$ and the finite multiplicity of each representations in $\Sigma$. 
+\end{proof}
+
+Now, we are going to transfer everything in terms of ad\'elic setting. In particular, we will define automorphic forms and representations of $\GL(n, \Aa)$. 
+This is a modern point of view and this is also a natural way to study in philosophy of local-global principle - think about Tate's thesis. 
+(Actually, Tate's thesis is exactly about the theory of $\GL(1)$ automorphic forms.) 
+
+Before we define them, we will prove the ad\'elic version of the Theorem \ref{cuspdecom}, which can be prove by using the ad\'elic version of the Proposition \ref{compact}. 
+Ideas are almost same and we only need to define everything properly in terms of ad\'eles. 
+
+\begin{definition}
+\label{l2def}
+\begin{enumerate}
+\item
+Let $\omega$ be a unitary Hecke character (unitary character of  $\Aa^{\times}/F^{\times}$). 
+Let $L^{2}(\GL(n, F) \bs \GL(n, \Aa), \omega)$ be the space of all function $\phi$ on $\GL(n, \Aa)$ that are measurable with respect to Haar measure and that satisfy
+\begin{enumerate}
+\item For any $z\in \Aa^{\times}$ and $\gamma \in \GL(n, F)$, 
+$$
+\phi\left(\gamma g\begin{pmatrix} z & & \\ & \ddots & \\ & & z\end{pmatrix}\right) = \omega(z)\phi(g)
+$$
+\item Square integrable modulo the center:
+$$
+\int\dpl{Z(\Aa)\GL(n, F) \bs \GL(n, A)} |\phi(g)|^{2} dg < \infty. 
+$$ 
+\end{enumerate}
+Also, $\phi$ is cuspidal if it satisfies 
+$$
+\int\dpl{\Mat_{r\times s}(F) \bs \Mat_{r\times s}(\Aa)} \phi\left(\pmat{I_{r}}{X}{}{I_{s}}g\right)dX = 0
+$$
+for any $r, s>0$ with $r + s = n$ and for a.e. $g$. 
+We let $\GL(n, \Aa)$ act on $L^{2}(\GL(n, F)\bs \GL(n, \Aa), \omega)$ by right translation. 
+\item Let $C_{c}^{\infty}(\GL(n, \Aa))$ be a space of functions that are finite linear combinations of functions $\phi(g) = \prod_{v} \phi_{v}(g_{v})$, where $\phi_v \in C_{c}^{\infty}(\GL(n, F_{v}))$ for each $v$ and $\phi_v = \chf_{\calO_{v}}$ for almost all $v$. 
+Then we have $C_{c}^{\infty}(\GL(n, \Aa))$-action on $L^{2}(\GL(n, F)\bs \GL(n, \Aa), \omega)$ given by 
+$$
+(\rho(\phi)f)(g) = \int\dpl{\GL(n, \Aa)} \phi(h)f(gh)dh = \int\dpl{Z(\Aa)\bs \GL(n, \Aa)} \phi_{\omega}(h) f(gh)dh, 
+$$
+where
+$$
+\phi_{\omega}(g) = \int\dpl{\Aa^{\times}} \phi \left(\begin{pmatrix}z & & \\ & \ddots & \\ & & z \end{pmatrix}\right)\omega(z)dz.
+$$
+\end{enumerate}
+\end{definition}
+
+To prove the decomposition theorem of $L^{2}_{0}(\GL(2, F) \bs GL(2, \Aa), \omega)$, we need some well-known properties of $\GL(n, \Aa)$. 
+We use the following propositions in the proof of the Proposition \ref{compactad}, but we will not prove these theorems. See Theorem 3.3.1, Proposition 3.3.1, and Proposition 3.3.2 in \cite{bu}. 
+
+
+
+\begin{theorem}[Strong approximation]
+Let $F$ be a number field. 
+\begin{enumerate}
+\item $\SL(n, F_{\infty})\SL(n, F)$ is dense in $\SL(n, \Aa)$. 
+\item Let $K_{0}$ be a open compact subgroup of $\GL(n, \Aa_{\fin})$. Assume that the image of $K_{0}$ in $\Aa_{\fin}^{\times}$ under the determinant map is $\prod_{v\not\in S_{\infty}} \calO_{v}^{\times}$. Then the cardinality of 
+$$
+\GL(n, F)\GL(n, F_{\infty})\bs \GL(n, \Aa)/K_{0}
+$$
+is equal to the class number of $F$. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+Let $\Aa = \Aa_{\Qq}$ be the ad\'ele ring of $\Qq$. The inclusion $\SL(2, \Rr)\to \GL(2, \Aa)$ induces a homeomorphism 
+$$
+\Gamma_{0}(N) \bs \SL(2, \Rr) \simeq Z(\Aa) \GL(2, \Qq) \bs \GL(2, \Aa) /K_{0}(N).
+$$
+As a corollary, $Z(\Aa)\GL(2, \Qq) \bs \GL(2, \Aa)$ has finite measure. 
+\end{proposition}
+Note that this holds for any $n \geq 1$ and a number field $F/\Qq$. 
+Now we can prove our main proposition for the decomposition theorem. 
+
+
+\begin{proposition}[Gelfand-Graev-Piatetski-Shapiro]
+\label{compactad}
+Let $\phi\in C_{c}^{\infty}(\GL(n, \Aa))$. 
+\begin{enumerate}
+\item There exists $C>0$ (depending on $\phi$) such that 
+$$
+\sup_{g\in \GL(2, \Aa)} |\rho(\phi)f(g)| \leq C||f||_{2}
+$$
+for all $f\in L_{0}^{2}(\GL(2, F) \bs \GL(2,\Aa), \omega)$. 
+\item The operator $\rho(\phi)$ is compact on $L_{0}^{2}(\GL(n, F)\bs \GL(n, \Aa), \omega)$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+We will only prove when $n = 2$ and $F = \Qq$. 
+We can define Siegel sets $\calG_{c, d}\subset \GL(2, \Aa)$ as the set of ad\'eles of the form $(g_{v})$ where $g_{v} \in K_v$ for all non-archimedean $v$ and 
+$$
+g_{\infty} = \pmat{z}{}{}{z} \pmat{y}{x}{}{1} \kappa_{\infty}, \qquad z\in \Rr^{\times}, y\geq c, 0\leq x\leq d, \kappa_{\infty} \in K_{\infty}. 
+$$
+Then if $c\leq \sqrt{3}/2$ and $d\geq 1$ we have $\GL(2, \Aa) = \GL(2, \Qq) \calG_{c, d}$. 
+This follows from the strong approximation theorem and the fact that $\calF_{c, d}$ contains a fundamental domain for $\SL(2, \Zz)$. 
+
+To prove the inequality, we use the same trick as before. We can express $\rho(\phi)f$ as 
+$$
+(\rho(\phi)f)(g) = \int\dpl{N(F)Z(\Aa)\bs \GL(2, \Aa)} K'(g, h)f(h)dh, 
+$$
+where
+\begin{align*}
+K'(g, h) & = K(g, h) - K_{0}(g, h), \\
+K(g, h) & = \sum_{\gamma \in N(F)} \phi_{\omega}(g^{-1}\gamma h), \\
+K_{0}(g, h) = \int\dpl{\Aa/F} &\phi_{\omega} \left( g^{-1} \pmat{1}{x}{}{1} h\right)dx. 
+\end{align*}
+Let $g\in \calG_{c, d}$. We can write it as
+$$
+g = \pmat{\eta}{}{}{\eta} \pmat{y}{x}{}{1} \kappa_{g}
+$$
+where $\eta\in \Rr^{\times}, 0\leq x\leq d, y\geq c$ and $\kappa_{g} \in K$. 
+Also, an arbitrary element $h\in \GL(2, \Aa)$ can be written as
+$$
+h = \pmat{\zeta}{}{}{\zeta}\pmat{v}{u}{}{1} \kappa_{h}
+$$
+where $\zeta v\in \Aa^{\times}, u\in \Aa$, and $\kappa_{h} \in K$. 
+By the Poisson summation formula, 
+$$
+K'(g, h) = \sum_{\alpha\in F^{\times}} \wh{\Phi}_{g, h}(\alpha)
+$$
+where $\Phi_{g, h}:\Aa\to \Cc$ is the compactly supported continuous function 
+$$
+\Phi_{g, h}(x) =\phi_{\omega} \left( g^{-1} \pmat{1}{x}{}{1} h\right).
+$$
+By substitution, we can also check that
+$$
+\wh{\Phi}_{g, h}(\alpha) = \psi(\alpha(x-u))\omega(\zeta^{-1}\eta) |y|\wh{F}_{\kappa_{g}, \kappa_{h}, y^{-1}v}(\alpha y),
+$$
+where 
+$$
+F_{\kappa_{g}, \kappa_{h}, y}(t) = \phi_{\omega} \left( \kappa_{g}^{-1} \pmat{1}{t}{}{1} \pmat{y}{}{}{1} \kappa_{h}\right). 
+$$
+Since $K\supp(\phi)K \cap B(\Rr)$ is compact, there exists a compact subset $\Omega \subset \Aa^{\times}$ such that if $F_{\kappa_g, \kappa_h, y}(t) \neq 0$ for any $t$, then $y\in \Omega$. We have
+$$
+|K'(g, h)| \leq |y| \sum_{\alpha\in F^{\times}} |\wh{F}_{\kappa_g, \kappa_h, y^{-1}v}(\alpha y)| 
+$$
+and $F_{\kappa_g, \kappa_h, y^{-1}v}(y)$ vanishing identically unless $(\kappa_g, \kappa_h, y^{-1}v) \in K\times K\times \Omega$, which is a compact set. 
+Therefore for any given $N>0$, there exists a constant $C_N > 0$ such that $|K'(g, h)| \leq C_N |y|^{-N}$ and $K'(g, h) = 0$ unless $y^{-1}v \in \Omega$. Thus
+$$
+|(\rho(\phi)f)(g)| \leq C_{N}|y|^{-N} \int\dpl{\Aa/F} \int\dpl{y^{-1}v\in \Omega}\int\dpl{K} \Bigg| f\left( \pmat{v}{u}{}{1} \kappa_{h}\right)\Bigg| |v|^{-1} d\kappa_{h}d^{\times}v du. 
+$$
+(Here $|v|^{-1}$ comes from $d_{L}b = |v_{2}/v_{1}| d_{R}b = |v_{2}/v_{1}|d^{\times}v_1 d^{\times}v_2 du$ for $b = \smat{v_1}{u}{}{v_2}$.) 
+Since $\Aa/F \times y\Omega \times K$ is compact, it can be covered by a finite number of copies of a fundamental domain of $\GL(2, F)Z(\Aa)$. Since it has finite measure, RHS is dominated by $||f||_{1}$, so $||f||_{2}$. 
+Compactness of $\rho(\phi)$ follows from Arzela-Ascoli theorem as before, by showing that the image of unit ball in $L^{2}_{0}(\GL(2, F) \bs \GL(2, \Aa), \omega)$ is equicontinuous. 
+By no small subgroup argument, there exists an open subgroup of $\GL(2, \Aa_{\fin})$ under which $\phi$ is right invariant, and any element of the image of $\rho(\phi)$ will be right invariant under this same subgroup. So we only need to show that $(\rho(\phi)f)(g)$ are equicontinuous as functions of $g_{\infty}$, and this follows from a uniform bound for $X\rho(\phi)f$ as before. 
+\end{proof}
+
+This with the spectral theorem prove the following decomposition theorem. 
+
+\begin{theorem}
+\label{cuspdecomad}
+The space $L_{0}^{2} (\GL(n, F) \bs \GL(n, \Aa), \omega)$ decomposes into a Hilbert direct sum of irreducible invariant subspaces. 
+\end{theorem}
+
+
+Now we define automorphic forms and representations of $\GL(n, \Aa)$. 
+Automorphic forms of $\GL(n, \Aa)$ are functions on $\GL(n, \Aa)$ that satisfies the transformation law, the $K$-finiteness and $\calZ$-finiteness condition, and the growth condition. 
+\begin{definition}[Automorphic forms on $\GL(n, \Aa)$]
+An automorphic forms on $\GL(n, \Aa)$ with central quasi-character $\omega$ are functions that satisfies 
+\begin{enumerate}
+\item (automorphic) 
+$$
+\phi\left( \gamma g\begin{pmatrix} z & & \\ & \ddots & \\  & & z\end{pmatrix} \right) = \omega(z)\phi(g)
+$$
+for all $g\in \GL(n, \Aa), z\in \Aa^{\times}$ and $\gamma\in \GL(n, F)$. 
+\item (finiteness) $\phi$ is $K$-finite; its right translates by elements of $K$ span a finite dimensional space. Also, $\phi$ is $\calZ$-finite; it lies in a finite dimensional vector space that is invariant by action of centers of universal enveloping algebras $U(\mathfrak{gl}(n, F_{v})_{\Cc}) = U\mathfrak{gl}(n, \Cc)$ for each archimedean place $v$. 
+\item (growth condition) there exists a constant $C$ and $N$ such that $f(g) \leq C||g||^{N}$, where $||g|| := \prod_{v} \max_{1\leq i, j\leq n}\{ |g_{ij}|_{v}, |\det(g)^{-1}|_{v}\}$. 
+\end{enumerate}
+We denote by $\calA(\GL(n, F)\bs \GL(n, \Aa), \omega)$ the space of automorphic forms with central quasi-character $\omega$ and by $\calA_{0}(\GL(n, F)\bs \GL(n, \Aa), \omega)$ the space of cusp forms, which are further assumed to satisfy exactly same integral equation in Definition \ref{l2def}. 
+\end{definition}
+
+Note that $\GL(n, \Aa)$ does not act on the space $\calA(\GL(n, F)\bs \GL(n, \Aa), \omega)$ since $K$-finiteness is not preserved by right translation by elements of $\GL(n, F_{v})$ for archimedean $v$. 
+However, it is still a representation of $\GL(n, \Aa_{\fin})$ and also $(\frag_{\infty}, K_{\infty})$-module, where $\frag_{\infty} = \prod_{v\in S_{\infty}}\mathfrak{gl}(n, F_{v})$ and $K_{\infty} = \prod_{v\in S_{\infty}} K_{v}$. 
+This motivates the following definition. 
+
+
+\begin{definition}[Automorphic representation of $\GL(n, \Aa)$]
+Automorphic representation of $\GL(n, \Aa)$ is a representation of $\GL(n, \Aa_{\fin})$ and a commuting $(\frag_{\infty}, K_{\infty})$-module structure which can be realized as a subquotient of the representation $\calA(\GL(n, F)\bs \GL(n, \Aa), \omega)$. 
+\end{definition}
+In Section 4.6, we will explain how to attach an automorphic representation by using the classical automorphic forms, for example, modular forms. 
+
+We can also define the notion of an \emph{admissible} representation of $\GL(n, \Aa)$. 
+\begin{definition}[Admissible representation of $\GL(n, \Aa)$]
+Let $V$ be a complex vector space with $(\frag_{\infty}, K_{\infty})$-module and $\GL(n, \Aa_{\fin})$-module structure where two actions commute. 
+Let's denote both actions by $\pi$. 
+Then $V$ is admissible if every vector in $V$ is $K$-finite and the $\rho$-isotypic part $V(\rho)$ is finite dimensional for any irreducible finite dimensional representation $\rho$ of $K$. 
+\end{definition}
+In Section 4.6,  we will see that this is equivalent to a representation of the global Hecke algebra.
+The following theorem shows that any irreducible subrepresentation of $L_{0}^{2}$ induces an irreducible admissible representation of $\GL(n, \Aa)$. 
+\begin{theorem}
+\label{l2autoad}
+Let $(\pi, V)$ be an irreducible constituent of the decomposition of $L^{2}_{0}(\GL(n, F)\bs \GL(n, \Aa), \omega)$.
+Then $\pi$ induces an irreducible admissible representation of $\GL(n, \Aa)$ on the space of $K$-finite vectors in $V$. 
+\end{theorem}
+\begin{proof}
+We only prove for $n = 2$ and $F = \Qq$. We will reduce this to the Theorem \ref{autofin}. 
+We need to show that $\dim V(\rho) < \infty$ for any irreducible finite dimensional representation $\rho$ of $K$. 
+One can show that $\rho$ decomposes as a restricted tensor product of local factors, i.e. $\rho = \otimes_{v} \rho_{v}$ where $(\rho_{v}, V_{v})$ are finite dimensional representations of $K_v$ and $\rho_v$ is trivial for almost all $v$. (Look up the next section for the definition of restricted product of representations and the proof of this property.)
+%%%%%%%%%%%%%%
+\begin{comment}
+Indeed, no small subgroup argument implies that $\ker \rho$ contains an open subgroup of $K_{\fin}$, so ti contains $K_v$ for all but finitely many $v$. 
+Then $\rho$ factors through the projection 
+$$
+K \twoheadrightarrow K/ \left[ \prod_{v\not\in S}K_v\right] \simeq \prod_{v\in S} K_v
+$$
+for some finite set of places $S$ containing $S_{\infty}$. 
+Now $\rho$ is a representation of a finite direct product of compact groups, and it factors as $\otimes_{v\in S} \rho_v$ where $\rho_v$ is an irreducible representation of $K_v$. Then the original $\rho$ is the restricted tensor product of $\rho_v$'s where $(\rho_v, V_v)$ are trivial for $v\not\in S$. 
+\end{comment}
+%%%%%%%%%%%%%%%
+From this, there exists an open subgroup $K_{0, \fin}\subseteq K_{\fin}$ such that every vector in $V(\rho)$ is invariant under $K_{0, \fin}$ so that $V(\rho) = V^{K_{0,\fin}}(\rho)$. 
+
+Now, we will show that $V^{K_{0, \fin}}(\rho_\infty)$ has a finite dimension. Since $V(\rho) = V^{K_{0, \fin}}(\rho) \subseteq V^{K_{0, \fin}}(\rho_{\infty})$, this shows  $\dim V(\rho) <\infty$. 
+In fact, we will prove that $V^{K_{0, \fin}}(\rho_{\infty})$ is isomorphic  to  a finite product of spaces of automorphic forms on $\GL(2, \Rr)^{+}$, each of which is finite dimensional by Theorem \ref{autofin}. By strong approximation theorem, $\GL(2, \Aa) =\GL(2,\Qq)\GL(2, \Rr)^{+}K_\fin$ and since $[K_{\fin}:K_{0, \fin}] < \infty$, the set of double cosets
+$$
+\GL(2, \Qq) \GL(2, \Rr)^{+} \bs \GL(2, \Aa)/K_{0, \fin}
+$$
+is finite. 
+Let $g_1, \dots, g_n$ be a set of representatives - we may assume $g_{i, \infty} = 1$ for all $i$. For $\phi\in V^{K_{0, \fin}}$, we can associate $h$ functions $\Phi_i$ on $\GL(2, \Rr)^{+}$  defined by $\Phi_{i}(g_\infty) = \phi(g_{\infty}g_{i})$. 
+Any $g\in \GL(2, \Aa)$ can be written as $g = \gamma g_{\infty}g_{i}k_{0}$ for $\gamma\in \GL(2, \Qq), g_{\infty} \in \GL(2, \Rr)^{+}$ and $k_{0} \in K_{0, \fin}$, so $\phi(g) = \Phi_{i}(g_{\infty})$. 
+This means that $\phi$ is uniquely determined by $\Phi_i$'s, so it is sufficient to show that each of these lies in a finite dimensional vector spaces. 
+
+Let $\Gamma$ be the projection onto $\GL(2, \Rr)^{+}$ of $\GL(2, \Qq) \cap (\GL(2, \Rr)^{+}K_{0, \fin})$, which became a finite index subgroup of $\SL(2, \Zz)$ (in fact, this is a congruence subgroup). 
+Then it is easy to check that $\Phi_i \in \calA(\Gamma \bs \GL(2, \Rr)^{+}, 1, \omega_{\infty})$ where $\omega = \prod_{v} \omega_{v}$. (Moderate growth of $\Phi_i$ follows from that of $\phi$.) 
+Since $\rho_{\infty}$-isotypic subspace of this space is finite dimensional by Theorem \ref{autofin}, so is $V^{K_{0, \fin}}(\rho_\infty)$. 
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\subsection{Flath's decomposition theorem}
+
+We can ask a simple but hard question: how to construct a nontrivial example of (irreducible admissible) representation of $\GL(n, \Aa)$, and how can we study? 
+There's one possible and natural way to do it by \emph{glueing} local representations. To be more specific, first we define restricted tensor product of representations. 
+\begin{definition}[restricted tensor product]
+Let $\Sigma$ be the index set and  $\{V_{v}\}_{v\in \Sigma}$ be a family of infinite number of vector spaces. 
+For almost all $v$ let there be a given nonzero $x_{v}^{\circ} \in V_{v}$. 
+Let $\Omega$ be a set of all finite subsets $S$ of $\Sigma$ having the property that $x_{v}^{\circ}$ is defined for $v\not\in S$. 
+We order $\Omega$ by inclusion, so that for all $S, S'\in \Omega$ and $S\subseteq S'$, there exists an injective map $\lambda_{S, S'} : \bigotimes_{v\in S} V_{v}  \to \bigotimes_{v\in S'} V_{v}$ given by $x\mapsto x\otimes (\otimes_{v\in S'\bs S}\,x_{v}^{\circ})$. 
+Then this form a direct family, and we define the restricted tensor product as a direct limit
+$$
+\bigotimes_{v\in \Sigma} V_{v} = \lim_{\longrightarrow} \bigotimes_{v\in S} V_{v}.
+$$
+\end{definition}
+For each $S\in \Omega$, we have natural injective maps $\lambda_{S} : \bigotimes_{v\in S} V_{v} \to \bigotimes_{v\in \Sigma} V_{v}$ and we denote the image of $x = \otimes_{v\in s} \, x_{v}$ under this map as $\otimes_{v\in \Sigma}\, x_{v}$ where $x_{v} = x_{v}^{\circ}$ for $v\not\in S$. 
+Such element is called a pure tensor. 
+We can consider $\bigotimes_{v\in \Sigma}V_{v}$ as a vector space spanned by pure tensors. 
+One can check that changing finite number of $x_{v}^{\circ}$ does not change the restricted tensor product. 
+
+Using this,  we can also define a restricted tensor product of representations. 
+
+\begin{definition}
+Let $\Sigma$ be an index set and for each $v\in \Sigma$, suppose that a group $G_{v}$ and a subgroup $K_{v}$ is given. 
+For each $v\in \Sigma$, let $(\rho_{v}, V_{v})$ be a representation of $G_{v}$. 
+Assume that there are nonzero $K_{v}$-fixed vectors $\xi_{v}^{\circ}\in V_{v}$ for almost all $v$.
+Then we can define a representation $(\otimes_{v}\rho_{V}, \otimes_{v} V_{v})$ by 
+$$
+(\otimes_{v}\rho_{v})(g_{v})\xi_{v} = \otimes_{v}\rho_{v}(g_{v})\xi_{v}. 
+$$
+\end{definition}
+In this note, we assume that $\Sigma$ is a set of places of some global field $F$, $K_{v}$ be maximal compact group of $\GL(n, F_{v})$ and $G_{v}= \GL(n, F_{v})$ or $G_{v} = K_{v}$. 
+The following lemma shows that a finite dimensional representation of the maximal compact subgroup $K$ can be decomposed into local representations.
+\begin{lemma}
+\label{cptprod}
+Let $\rho$ be an irreducible finite dimensionalrepresentation of $K$. Then there exists finite dimensional representations $\rho_{v}$ or $K_{v}$ such that $(\rho_{v}, V_{v})$ is 1-dimensional for almost all $v$, and nonzero vectors for such $\xi_{v}^{\circ}$ such that the restricted tensor product $\otimes_{v}\rho_{v}$ with respect to $\{\xi_{v}^{\circ}\}$ is isomorphic to $(\rho, V)$. 
+\end{lemma}
+\begin{proof}
+By \emph{no small subgroup argument}, $\ker \rho$ contains an open subgroup of $K_{\fin}$ and so there exists a finite set of places $S$ containing $S_{\infty}$ such that $\rho(K_{v}) = 1$ for all $v\not\in S$. 
+Then $\rho$ factors through the projection 
+$$
+K \twoheadrightarrow K / (\prod_{v\not\in S} K_{v}) \simeq \prod_{v\in S} K_{v}
+$$
+where the last group is a finite direct product of compact groups. 
+Any irreducible representation of such group has a form $\otimes_{v\in S} \rho_{v}$ where $\rho_{v}$ is an irreducible representation of $K_{v}$. Then $\rho$ is isomorphic to the restricted tensor product with $(\rho_{v}, V_{v})$ trivial (one-dimensional) for $v\not\in S$.  
+\end{proof}
+
+
+%%%%%%%%%%%%%
+\begin{comment}
+\begin{definition}[Admissible representation of $\GL(n, \Aa)$]
+A representation $(\pi, V)$ of $\GL(n, \Aa)$ is admissible if $V$ is both $(\frag_{\infty}, K_{\infty})$-module and $\GL(n, \Aa_{\fin})$-module with commuting actions, where every vector in $V$ is $K$-finite and $\rho$-isotypic part $V(\rho)$ of $V$ is finite dimensional for any irreducible finite dimensionalrepresentation of $K$. 
+\end{definition}
+Note that this is almost same as the local definitions that we defined in the previous chapters. 
+\end{comment}
+%%%%%%%%%%%%%%%
+
+
+Now Flath's decomposition theorem (tensor product theorem) says that any irreducible admissible representation of $\GL(n, \Aa)$ decomposes as a restricted product of local irreducible representations, where almost all of them are spherical. 
+
+\begin{theorem}[Flath, Tensor product theorem]
+Let $(V, \pi)$ be an irreducible admissible representation of $\GL(n, \Aa)$. Then there exists for each archimedean place $v$ of $F$ an irreducible admissible $(\frag_{v}, K_{v})$-module, and for each non-archimedean place $v$ there exists an irreducible admissible representation $(\pi_{v}, V_{v})$ of $\GL(n, F_{v})$ such that for almost all $v$, $V_{v}$ contains a nonzero $K_{v}$-fixed vector $\xi_{v}^{0}$ such that $\pi$ is the restricted tensor product of the representations $\pi_{v}$. 
+\end{theorem}
+We will not give a complete proof here. The proof uses properties of so-called \emph{idempotented algebras}. One can use theory of idempotented algebras and apply it to Hecke algebras. 
+For a non-archimedean place $v$, $\calH_{v} = C_{c}^{\infty}(G_{v})$ is a convolution algebra where $\chf_{K_{v}}$ became a spherical idempotent element of $\calH_{v}$ when the Haar measure is normalized so that the volume of $\GL(n, \calO_{v})$ is 1. (These are commutative by the Cartan decomposition theorem). 
+For an archimedean place $v$, define $\calH_{v}$ as a convolution algebra of compactly supported distributions on $G_{v}$ that are supported in $K_{v}$ and $K_{v}$-finite under the left and right translations. 
+(The support of $\calH_{v} = \calH_{G_{v}}$ contains $K_{v}$. $\calH_{v}$ itself contains both $\calH_{K_{v}}$ and $U\frag_{\Cc}$, and every element of $\calH_{G}$ has the form $f * D$ with $f\in \calH_{K_{v}}$ and $D\in U\frag_{\Cc}$.)
+Then $(\pi, V)$, which is $\calH_{G}$-module, became a restricted tensor product of $\calH_{v}$-modules (with respect to spherical Hecke algebras $\chf_{K_{v}}\calH_{v} \chf_{K_{v}}$) which are just representations $(\pi_{v}, V_{v})$ of $G_{v}$).  
+
+
+By using the decomposition theorem, we can define the contragredient representation of an irreducible admissible representation $(\pi, V)$ of $\GL(2, \Aa)$ as $\wh{\pi} = \otimes_{v} \wh{\pi}_v$. 
+We already defined contragredient representation of $\GL(2, F_{v})$ for non-archimedean $v$ in Section 3.1, and we can also define the contragredient representation of given $(\frag, K)$-module as a $(\frag, K)$-module $\wh{V} = \bigoplus_{\rho\in \wh{K}}^{\alg}V(\rho)$ by 
+\begin{align*}
+\bra{v}{\wh{\pi}(k)\Lambda} &= \bra{\pi(k^{-1})v}{\Lambda} \\
+\bra{v}{\wh{\pi}(X)\Lambda} &= -\bra{\pi(X)v}{\Lambda} 
+\end{align*}
+for $k\in K$ and $X\in \frag$. 
+Then we can show the global analogue of the Theorem \ref{contra}, which almost directly follows from the local results. 
+Note that archimedean analogue of the theorem is also true, but we will not prove here. One can prove it by using the classification of irreducible admissible $(\frag, K)$-modules of $\GL(2, \Rr)$. 
+\begin{proposition}
+Let $(\pi, V)$ be an automorphic cuspidal representation of $\GL(n, \Aa)$ with central quasicharacter $\omega$. 
+Then $(\wh{\pi}, \wh{V})$ is also an automorphic cuspidal representation. 
+If $V\subset \calA_{0}(\GL(n, F)\bs\GL(n, \Aa), \omega)$, then a subspace of $\calA_{0}(\GL(n, F)\bs\GL(n, \Aa), \omega^{-1})$ affording a representation isomorphic to $\wh{\pi}$ consists of all functions of the form $g\mapsto \phi(\pre{T}{g}^{-1})$ where $\phi\in V$. 
+Also, we have $\wh{\pi} \simeq \omega^{-1}\otimes \pi$ for $n = 2$ and $F = \Qq$. 
+\end{proposition}
+
+
+
+
+
+\subsection{Whittaker models and multiplicity one} 
+
+In this section, we will prove that irreducible representation of $\GL(n, \Aa)$ is determined by all but finitely many local components. More precisely:
+\begin{theorem}[Strong multiplicity one]
+\label{multone}
+Let $(\pi, V), (\pi', V')$ be two irreducible admissible subrepresentations of $\calA_{0}(\GL(n, F)\bs \GL(n, \Aa), \omega)$. 
+Assume that $\pi_{v} \simeq \pi_{v}'$ for all archimedean $v$ and all but finitely many non-archimedean $v$. 
+Then $V = V'$. 
+\end{theorem}
+We will only show this for $n = 2$. 
+To prove this, we will construct global version of Whittaker model (by glueing local Whittaker models) and prove existence and uniqueness. 
+
+First, we will prove the result for function field, so that we can ignore archimedean places. 
+Let $\psi$ be a nontrivial additive character of $\Aa/F$ and let $(\pi, v)$ be an irreducible admissible representation of $\GL(2, \Aa)$. 
+\begin{definition}
+Global Whittaker functional of an irreducible admissible representation $(\pi, V)$ of $\GL(2, \Aa)$ is a functional $\Lambda : V\to \Cc$ satisfying 
+$$
+\Lambda \left( \pi \pmat{1}{x}{}{1}v \right) = \psi(x) \Lambda(v), \quad x\in \Aa, v\in V.
+$$
+\end{definition}
+The following theorem proves that Whittaker functional is unique and always decomposes as local Whittaker functionals. 
+\begin{theorem}
+\label{ffwituniq}
+Let $F$ be a function field, $\Aa = \Aa_{F}$ be its ad\'ele ring and let $\pi = \otimes_{v} \pi_{v}$ be an irreducible admissible representation of $\GL(2, \Aa)$ with $K_{v} = \GL(2, \calO_{v})$-fixed vectors $\xi_{v}^{\circ}\in V_{v}$ for almost all $v$. 
+If $\Lambda$ is a nonzero Whittaker functional on $V$, then for each place $v$ of $F$ there exists a Whittaker functional $\Lambda_{v}$ on $V_{v}$ such that $\Lambda_{v}(\xi_{v}^{\circ}) = 1$ for almost all $v$, and 
+$$
+\Lambda ( \otimes_{v}\xi_{v}) = \prod_{v} \Lambda_{v}(\xi_{v})
+$$
+and the dimension of Whittaker functionals on $V$ is at most one. 
+\end{theorem}
+\begin{proof}
+Since $\Lambda$ is nonzero, there exists a nonzero pure tensor $\xi^{\circ} = \otimes_{v} \xi_{v}^{\circ}$ such that $\Lambda(\xi^{\circ})= 1$. (Note that changing finite number of $\xi_{v}^{\circ}$ does not change the restricted tensor product.) 
+For each place $w$ of $F$, let $i_{w} : V_{w} \to V, \xi_{w} \mapsto \xi_{w} \otimes (\bigotimes_{v\neq w} \xi_{v}^{\circ})$ and $\Lambda_{w} = \Lambda \circ i_{w}$. 
+Then $\Lambda_{w}(\xi_{w}^{\circ}) =1$ and $\Lambda_{w}$ is a Whittaker functional on $V_{w}$. 
+To prove the equation, we can use induction on the cardinality of the finite set $S$ such that $\xi_{v} =\xi_{v}^{\circ}$ for all $v\not\in S$. 
+Base case is trivial because both sides are 1, and to add a single place $w$ to $S$, let's assume that $\xi_{v} = \xi_{v}^{\circ}$ for all $v\not\in S\cup \{w\}$. 
+Then 
+$$
+x_{w} \mapsto \Lambda \left( x_{w} \otimes \left( \bigotimes_{v\neq w} \xi_{v}\right)\right)
+$$
+is a Whittaker functional on $V_{w}$, so the uniqueness implies that there exists $c\in \Cc$ such that 
+$$
+\Lambda \left( x_{w} \otimes \left( \bigotimes_{v\neq w} \xi_{v}\right)\right) = c\Lambda_{w} (x_{w}).
+$$
+Now evaluate at $x_{w} = \xi_{w}^{\circ}$ and it gives a result for $S \cup \{w\}$. 
+Uniqueness follows from the uniqueness of local Whittaker functionals. 
+\end{proof}
+
+%%%%%%%%%%%%%%%
+\begin{comment}
+We can think Whittaker models as functions on $\GL(2, F)$ that satisfy the similar equation. 
+\begin{definition}
+Let $F$ be a non-archimedean local field, $\psi$ a nontrivial additive character of $F$, and let $(\pi, V)$ be an irreducible admissible representation of $\GL(2, F)$. 
+A space of functions $W:\GL(2, F) \to \Cc$ satisfying 
+$$
+W\left( \pmat{1}{x}{}{1} g\right) = \psi(x) W(g), \quad x\in F, g\in\GL(2, F)
+$$
+is called a Whittaker model for $(\pi, V)$, and denoted as $\calW_{\pi}$. 
+\end{definition}
+
+There's no big difference between Whittaker functionals and Whittaker models. 
+
+\begin{theorem}[Local multiplicity one, Whittaker model version]
+The space of Whittaker functional is isomorphic to the space of Whittaker models. In particular, $\dim \calW_{\pi} \leq 1$. 
+\end{theorem}
+\begin{proof}
+For a given nonzero $\Lambda$, define $W_{\xi}: \GL(2, F) \to \Cc$ as 
+$
+W_{\xi}(g) = \Lambda(\pi(g)\xi)
+$
+for $\xi\in V$. Then $W_{\pi(g)\xi} = \rho(g)W_{\xi}$ (where $\rho$ is the action of $\GL(2, F)$ by right translation), so the space $\calW = \{W_{\xi}\,:\, \xi\in V\}$ is closed under right translation and isomorphic to $\pi$. 
+Conversely, if $\calW$ is given with an isomorphism $\xi \mapsto W_{\xi}$ between $\pi$ and $\calW$, then $\Lambda:\xi \mapsto W_{\xi}(1)$ define a nonzero Whittaker functional. 
+The last statement follows from the local multiplicity one theorem (Theorem \ref{nonarchmultone}). 
+\end{proof}
+\end{comment}
+%%%%%%%%%%%%%%%%%
+
+To prove global uniqueness for number fields, we have to prove uniqueness theorem for archimedean places, too. We already proved for $(\frag, K)$-modules of $\GL(2, \Rr)$ and the same statement is also  true for $\GL(2, \Cc)$. 
+To unite both archimedean and non-archimedean cases, we will consider $C_{c}^{\infty}(G)$ as $\calH_{G}$-module for $G = \GL(2, F)$, where $F$ is a local field. (We've defined $\calH_G = \calH_{G_{v}}$ in the previous section.)
+For such $G$, let $V$ be a simple admissible $\calH_{G}$-module and denote the action by $\pi:\calH_{G}\to \End(V)$. 
+
+\begin{definition}
+Let $(\pi, V)$ be a simple admissible $\calH_{G}$-module and $\psi$ be a fixed nontrivial character of $F$. 
+Whittaker model of $(\pi, V)$ with respect to $\psi$, denoted as $\calW$, is a space of smooth functions $W: G\to \Cc$ that satisfy
+$$
+W\left(\pmat{1}{x}{}{1}g\right) = \psi(x)W(g), \quad x\in F, g\in G
+$$
+and satisfy a growth condition, i.e. the function $W(\smat{y}{}{}{1}g)$ is bounded by a polynomial in $|y|$ as $|y| \to \infty$. Also, we assume that there exists an $G$-equivariant  isomorphism $V\to \calW, \xi\mapsto W_{\xi}$ so that $W_{\pi(\phi)\xi} = \rho(\phi)W_{\xi}$. 
+\end{definition}
+
+In terms of this formulation, we can describe the uniqueness of local Whittaker models as follows. 
+\begin{proposition}
+Whittaker model of simple admissible $\calH_{G}$-module is unique up to isomorphism. 
+\end{proposition}
+
+Global Whittaker model is almost the same as the local definition. 
+Let $F$ be a global field, let $\Sigma$ be the set of all places of $F$, and let $\calH = \calH_{\GL(2, \Aa)} = \bigotimes_{v\in \Sigma} \calH_{v}$ be the restricted tensor product of the $\calH_v$ with respect to the spherical idempotents (see the previous section). 
+Let $\psi$ be a nontrivial additive character on $\Aa/F$. 
+\begin{definition}
+Let $(\pi, V)$ be an irreducible admissible representation of $\GL(2, \Aa)$. 
+Whittaker model of $\pi$ with respect to a nontrivial character $\psi$  is a space $\calW$ of smooth $K$-finite functions on $\GL(2, \Aa)$ satisfying 
+$$
+W\left( \pmat{1}{x}{}{1} g\right) = \psi(x)W(g)
+$$
+for all $x\in \Aa, g\in G$ and are of moderate growth, i.e. $W\left( \smat{y}{}{}{1} g\right)$ is bounded by a polynomial in $|y|$ for large $y$. We assume that there is an $\calH$-module isomorphism $V \to \calW, \xi\mapsto W_{\xi}$ such that 
+$$
+W_{\pi(\phi)\xi} = \rho(\phi) W_{\xi}. 
+$$
+\end{definition}
+To prove the uniqueness theorem, we need one more proposition. 
+\begin{proposition}
+Let $F, \psi, G, \calH_{G}$ be as above and $(\pi, V)$ be a simple admissible $\calH_{G}$-module. 
+Let $\calW = \calW_{\pi}$ be a Whittaker model of $(\pi, V)$ with respect to $\psi$, and let $\xi\mapsto W_{\xi}$ be a $G$-equivariant isomorphism $V\simeq\calW$. 
+Then there exists $\xi\in V$ such that $W_{\xi}(1) \neq 0$. 
+If $V$ is non-archimedean and $\pi$ is spherical, and if the conductor of $\psi$ is the ring of integers of $F$, then we may take $\xi$ to be $\GL(2, \calO)$-invariant. 
+\end{proposition}
+\begin{proof}
+Let $F$ be a non-archimedean and $0\neq W_{\xi}\in \calW$, so $W_{\xi}(g_0)\neq 0$ for some $g_0\in G$. For given $\calH_G$-action, one can prove that there exists a representation $\pi$ of $\GL(2, F)$ such that the corresponding $\calH_G$-action coincides with the previous one. If we denote the right translation action by $\rho$, then $W_{\pi(g)\xi} = \rho(g)W_{\xi}$ for $g\in \GL(2, F)$, so that $W_{\pi(g_{0})\xi} (1) = W_{\xi}(g_0)\neq 0$.
+If $\pi$ is spherical and the conductor of $\psi_v$ is $\calO_v$, then by Theorem \ref{sphps}, $\pi$ is a spherical principal series representation. Then the nonvanishing of $W_{0}(1)$ follows from the explicit formula Theorem \ref{explicitsph}. 
+
+If $F$ is archimedean, we have to be more careful.  
+Since $V$ is an admissible $\calH_G$-module, it is also a $(\frag, K)$-module, and we can make use of the action $\pi : K\to \End(V)$. Since $K$ intersects every connected component of $G$, by applying $\pi(k)$ for suitable $k$ we may assume $W_{\xi}$ does not vanish identically on the connected component of the identity of $G$. 
+Since $W_{\xi}$ is analytic (this is a solution of certain 2nd order differential equation), so $DW_{\xi}(1)\neq 0$ for some $D\in U\frag$. 
+This equals $W_{D\xi}(1)$, so we may take $W = W_{D\xi}$. 
+\end{proof}
+
+
+\begin{theorem}[Global uniqueness]
+Let $(\pi, V)$ be an irreducible admissible representation of $\GL(2, \Aa)$. 
+Then $(\pi, V)$ has a Whittaker model $\calW$ with respect to $\psi$ if and only if each $(\pi_v, V_v)$ has a Whittaker model $\calW_v$ with respect to $\psi_v$. 
+If this is the case, then $\calW$ is unique and consists of all finite linear combinations of functions of the form $W(g) = \prod_{v} W_{v}(g_{v})$, where $W_{v}\in \calW_{v}$ and $W_{v} = W_{v}^{\circ}$ for almost all $v$, where $W_{v}^{\circ}$ is the normalized spherical Whittaker function in $\calW_v$. 
+\end{theorem}
+\begin{proof}
+First, assume that each $\pi_v$ has a Whittaker model $\calW_v$. 
+By the previous proposition, if $\pi_v$ is a spherical representation and the conductor of $\psi_v$ is $\calO_v$, there exists $W_v^{\circ} \in \calW_v$ such that $W_{v}^{\circ}(k_v) = 1$ for all $k_v\in \GL(2, \calO_v)$, which is a spherical element of $\calW_v$. 
+Then we can define a global Whittaker model $\calW$ as the space of all finite linear combinations of functions of the form $W_{\xi}$ where 
+$$
+W_{\xi}(g) = \prod_{v} W_{v, \xi_v} (g_v), \qquad g = (g_v) \in \GL(2, \Aa)
+$$
+where $\xi = \otimes_v \xi_v$ is a pure tensor in $V = \otimes_v V_v$ (so that $\xi_v = \xi_v^{\circ}$ for almost all $v$) and $W_{v, \xi_v^{\circ}} = W_{v}^{\circ}$ for almost all $v$. 
+Then the product is well-defined because $W_{v, \xi_v}(g_v) =1$ for almost all $v$ and $\calW$ affords an irreducible admissible representation of $\GL(2, \Aa)$. 
+Rapid decay of $W_{\xi}$ follows from the local results - see Theorem \ref{archwit} and \ref{pskr}.
+
+Uniqueness proof is similar to the proof of Theorem \ref{ffwituniq}. We will show that if $\pi$ has a Whittaker model $\calW$, then it is same as the one just described. Let $\xi\mapsto W_{\xi}$ be an isomorphism $V\simeq \calW$. 
+
+First, one can show that there exists $\xi\in V$ such that $W_{\xi}(1) \neq 0$. The argument is almost same as the proof of the previous proposition. 
+So we may assume $\xi$ is a pure tensor and $W_{\xi}(1) = 1$. Let $\xi = \otimes_v \xi_v^{\circ}$ where $\xi_v^{\circ}$ is $\GL(2, \calO_v)$-fixed for almost all $v$. 
+
+Now for each $v$, if $\xi_v\in V_v$ and $g_v\in \GL(2, F_v)$ we define 
+$$
+W_{v, \xi_v}(g_v) = W_{i_v(\xi_v)}(g_v)
+$$
+where $i_v:V_v \to V$ is the map in the proof of Theorem \ref{ffwituniq}. 
+Then the space of functions $W_{v, \xi_v}$ form a Whittaker model $\calW_v$ for $\pi_v$ and $W_{v, \xi_{v}^{\circ}}(1) = 1$. 
+Let $S$ be a finite set of places and let $\Aa_{S} = \prod_{v\in S} F_{v} \subset \Aa$. By induction on the size of $S$, we can prove that 
+$$
+W_{\xi}(g) = \prod_{v\in S} W_{v, \xi_v}(g_v)
+$$
+for all $g = (g_v) \in \GL(2, \Aa_S)$. Now for an arbitrary $g = (g_v) \in \GL(2, \Aa)$ and an arbitrary pure tensor $\xi = \otimes_v \xi_v \in V$, there exists a finite set $S$ of places such that if $v\not\in S$, then $v$ is non-archimedean, $\xi_v$ is $K_v$-fixed,  and $g_v\in K_v$. 
+Let $h \in \GL(2, \Aa_\fin)$ be the adele such that $h_v = g_v$ for $v\in S$ and $h_v = 1$ for $v\not\in S$. 
+Then 
+$$
+W_{\xi}(g) = W_{\xi}(h) = \prod_{v\in S} W_{v, \xi_v}(h_v) = \prod_{v} W_{v, \xi_v}(g_v), 
+$$
+so we get the exactly same equation as before. This proves the global uniqueness. 
+\end{proof}
+
+When $(\pi, V)$ is an automorphic cuspidal representation of $\GL(n, \Aa)$, then we can explicitly construct Whittaker models in terms of integral and prove existence. 
+This is not true in general - for example, there's no Whittaker models for $\mathrm{Sp}(2n)$. 
+\begin{theorem}[Global existence]
+Let $(\pi, V)$ be an automorphic cuspidal representation of $\GL(2, \Aa)$, so $V\subset \calA_{0}(\GL(2, F)\bs \GL(2, \Aa), \omega)$, where $\omega$ is a character of $\Aa^{\times}/F^{\times}$. 
+If $\phi\in V$ and $g\in \GL(2, \Aa)$, let 
+$$
+W_{\phi}(g) = \int\dpl{\Aa/F}\phi\left( \pmat{1}{x}{}{1}g\right) \psi(-x)dx. 
+$$
+Then the space $\calW$ of functions $W_{\phi}$ is a Whittaker model for $\pi$. 
+We have the Fourier expansion 
+$$
+\phi(g) = \sum_{\alpha\in F^{\times}} W_{\phi} \left( \pmat{\alpha}{}{}{1}g\right).
+$$
+\end{theorem}
+\begin{proof}
+It is not hard to see that $W_{\phi}$ satisfy the transformation law and of moderate growth. 
+Also, $(\frag_\infty, K_\infty)$ and $\GL(2, \Aa_{\fin})$ act on $\calW$ by right translation, and the action is compatible with the action on $V$. 
+So we only need to show that the map $\phi\mapsto W_{\phi}$ is injective, and this will follow from the Fourier expansion. 
+
+To prove the Fourier expansion, let $f:\Aa \to \Cc$ be a function 
+$$
+f(x) = \phi\left( \pmat{1}{x}{}{1} g\right). 
+$$
+Then $f$ is continuous (since $\phi$ is) and $f(x+a) = f(x)$ for all $a\in F$. 
+So it can be regarded as a function on the compact group $\Aa/F$, and therefore it has a Fourier expansion as
+$$
+\phi\left( \pmat{1}{x}{}{1} g\right) = \sum_{\alpha\in F} C(\alpha) \psi(\alpha x)
+$$
+with 
+$$
+C(\alpha) = \int\dpl{\Aa/F} \phi\left( \pmat{1}{x}{}{1} g\right) \psi(-\alpha x)dx. 
+$$
+We have $C(0) = 0$ since $\phi$ is cuspidal, and for $\alpha \neq 0$, because $\phi$ is automorphic
+\begin{align*}
+C(\alpha) &= \int\dpl{\Aa/F} \phi\left( \pmat{\alpha}{}{}{1} \pmat{1}{x}{}{1} g\right) \psi(-\alpha x) dx \\
+&= \int\dpl{\Aa/F} \phi\left( \pmat{1}{\alpha x}{}{1} \pmat{\alpha}{}{}{1} g\right) \psi(-\alpha x) dx
+\end{align*}
+and the change of variables $x\mapsto \alpha^{-1} x$ gives 
+$$
+C(\alpha) = W_{\phi}\left(\pmat{\alpha}{}{}{1} g\right). 
+$$
+Now put $x = 0$ and we obtain the equation. 
+\end{proof}
+
+Using the existence and uniqueness of global Whittaker model, we can prove the multiplicity one theorem for $n = 2$. 
+\begin{proof}[proof of Theorem \ref{multone} when $n=2$]
+First, we prove weaker form of the result (weak multiplicity one theorem), which is that if two automorphic representation $(\pi, V)$ and $(\pi, V')$ satisfies $\pi_{v}\simeq \pi'_{v}$ for \emph{all} $v$, then $V = V'$. 
+By the existence theorem, if $\calW$ is the Whittaker model of $\pi$ then $V$ consists of the space of all functions $\phi$ of the form 
+$$
+\phi(g) = \sum_{\alpha\in F^{\times}} W\left( \pmat{\alpha}{}{}{1}g \right), \quad W\in \cal W
+$$
+and by the same reasoning, $V'$ consists of the same space. So we get $V = V'$. 
+
+For the original statement, let $(\pi, V)$ and $(\pi', V')$ be cuspidal automorphic representations such that such that $\pi \simeq \otimes_{v}\pi_{v}, \pi'\simeq \otimes_{v}\pi_{v}'$ and $\pi_{v}\simeq \pi_{v}'$ for all $v\not\in S$, where $S$ is a finite set of non-archimedean places. 
+Let $\calW_{v}$ and $\calW_{v}'$ be the Whittaker models of $\pi_{v}$ and $\pi_{v}'$. 
+For each $v$, we choose a nonzero $W_{v}\in \calW_{v}$ so that 
+\begin{itemize}
+\item $W_{v}(k_{v}) = 1$ for all $k_{v}\in K_{v}$, for all but finitely many $v$, 
+\item $W_{v}\smat{y}{}{}{1}$ on $F_{v}^{\times}$ is compactly supported  for $v\in S$. 
+\end{itemize}
+(First choice is possible because $\pi_v$ is spherical all but finitely many $v$. The second assertion follows from Theorem \ref{kicpt} - for any $\sigma \in C_{c}^{\infty}(F_{v}^{\times})$, there exists $W_v \in \calW_v$ such that $\sigma(y) = W_{v} \smat{y}{}{}{1}$.)  
+Then chose $W_{v}'\in \calW_{v}'$ as follows. 
+For $v\not\in S$, $\calW_{v}' = \calW_{v}$ so choose $W_{v}' = W_{v}$. 
+If $v\in S$, then by the Theorem \ref{kicpt} we may arrange that 
+$$
+W_{v}\pmat{y}{}{}{1} = W_{v}'\pmat{y}{}{}{1}
+$$
+for all $y\in F_{v}^{\times}$. 
+With this choices, define $\phi\in V$ by 
+$$
+\phi(g) = \sum_{\alpha\in F^{\times}} W\left(\pmat{\alpha}{}{}{1}g \right), 
+$$
+where $g = (g_{v})\in \GL(2, \Aa), W(g) = \prod_{v} W_{v}(g_{v})$, and similarly $\phi'\in V'$ from $W_{v}'$. 
+Then it is enough to show that $\phi = \phi'$. 
+By definition, $\phi(g) = \phi'(g)$ for all $g = \smat{y}{}{}{1}$ where $y\in \Aa^{\times}$. 
+Also, $W_{v}= W_{v}'$ if $v$ is archimedean and $W, W'$ are right invariant uner some open subgroup $K_{0}$ of $\GL(2, \Aa_{\fin})$, and they are automorphic. So $\phi(g) = \phi'(g)$ for $g = \gamma\smat{y}{}{}{1} g_{\infty}k_{0}$, where $\gamma\in \GL(2, F), y\in \Aa^{\times}, g_{\infty}\in \GL(2, F_{\infty}), k_{0}\in K_{0}$, and the strong approximation concludes that $\phi = \phi'$. 
+Since $W$ is nonzero, $\phi$ is nonzero and we can express $W$ in terms of $\phi$. So $V\cap V'\neq\emptyset$ and this proves $V = V'$.  
+\end{proof}
+
+
+\subsection{Automorphic $L$-functions for $\GL(2)$}
+
+The multiplicity one theorem is important as itself, but it is also important because we can construct automorphic $L$-functions, which are $L$-functions attached to cuspidal automorphic representations. 
+This is a generalization of Tate's thesis for  $\GL(2)$ automorphic forms. 
+
+In the previous section, we defined local $L$-functions $L(s, \pi, \xi)$ for an irreducible admissible representation of $\GL(2, F_v)$ and a quasicharacter $\xi:F_v^{\times} \to \Cc^{\times}$. 
+Using this, we can define partial $L$-function as follows. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+First, we define local $L$-functions for spherical principal series representations. Recall that if $\pi = \otimes_{v} \pi_{v}$ is a cuspidal automorphic representation of $\GL(2)$, then $\pi_{v}$ is spherical for all but finitely many $v$, so is spherical principal series representation since 1-dimensional spherical representations can't admit Whittaker models. 
+
+\begin{definition}[Local $L$-function]
+Let $F$ be a non-archimedean local field with a ring of integer $\calO = \calO_{F}$ and a uniformizer $\varpi$. Let $q$ be the cardinality of the residue field $\calO/(\varpi)$ and let $\xi$ be a unramified character of $F^{\times}$. Let $\pi = \pi(\chi_{1}, \chi_{2})$ be a spherical principal series representation of $\GL(2, F)$ associated to unramified characters $\chi_{1}, \chi_{2}$.  
+Define the local $L$-function as
+$$
+L(s, \pi, \xi) = (1-\alpha_{1}\xi(\varpi)q^{-s})^{-1}(1-\alpha_{2}\xi(\varpi)q^{-s})^{-1}
+$$
+where $\alpha_{i} = \chi_{i}(\varpi)$. 
+\end{definition}
+By multiply those local $L$-functions, we can define (incomplete) global $L$-function. 
+\end{comment}
+%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}[Partial $L$-function]
+Let $\pi = \otimes_{v} \pi_{v}$ be an automorphic cuspidal representation of $\GL(2, \Aa)$. 
+Let $\xi = \prod_{v}\xi_{v}$ be a Hecke character. 
+Let $S$ be a finite set of places contains archimedean places such that if $v\not\in S$, then $\pi_{v}$ is spherical principal series representation and $\xi_{v}$ is unramified. 
+Then define the partial $L$-function as
+$$
+L_{S}(s, \pi, \xi) = \prod_{v\not\in S} L_{v}(s, \pi_{v}, \xi_{v}). 
+$$
+\end{definition}
+Our aim is to prove the functional equation of $L_{S}(s, \pi, \xi)$, by using the existence and uniqueness of the global Whittaker model.  
+As we did in the Tate's thesis, we first define a global zeta integral. 
+
+\begin{definition}[Zeta integral]
+Let $\phi\in V$ and let $\xi$ be a unitary Hecke character. Define the global zeta integral as
+$$
+Z(s, \phi, \xi) = \int\dpl{\Aa^{\times}/F^{\times}} \phi\pmat{y}{}{}{1} |y|^{s-1/2} \xi(y) d^{\times}y
+$$
+By the Fourier expansion, this can be written as
+$$
+Z(s, \phi, \xi) = \int\dpl{\Aa^{\times}} W_{\phi}\pmat{y}{}{}{1} |y|^{s-1/2} \xi(y) d^{\times}y. 
+$$
+Also, we define the local zeta integral as 
+$$
+Z_{v}(s, W_{v}, \xi_{v}) = \int\dpl{F_{v}^{\times}} W_{v}\pmat{y_{v}}{}{}{1} |y_{v}|_{v}^{s-1/2} \xi_{v}(y_{v})d^{\times}y_{v}. 
+$$
+Note that if $\phi$ corresponds to a pure tensor in $\otimes_{v}\pi_{v}$, then 
+$$
+Z(s, \phi, \xi) =\prod_{v} Z_{v}(s, W_{v}, \xi_{v}). 
+$$
+\end{definition}
+By rapid decay of $\phi\in V$, we can show that the global zeta integral converges for \emph{any} $s$. 
+Indeed, $\phi\smat{y}{}{}{1}$ is rapidly decreasing as $|y| \to \infty$, i.e. for any $N>0$ there exists a constant $C_N>0$ such that $|\phi\smat{y}{}{}{1}| < C_{N}|y|^{-N}$ for sufficiently large $|y|$. 
+Also, since $\phi$ is automorphic, 
+$$
+\phi\pmat{y}{}{}{1} = \omega(y) \left( \pi \pmat{}{1}{1}{} \phi\right) \pmat{y^{-1}}{}{}{1}
+$$
+so $\phi\smat{y}{}{}{1}$ also rapidly decreases as $|y|\to 0$. 
+This implies that the global zeta integral (of the first form, integral over $\Aa^{\times} / F^{\times}$) absolutely converges for any $s$. (Recall that local zeta integrals converge for sufficiently large $\Re s$.) However, the second form (integral over $\Aa^{\times}$) does not absolutely converges for all $s$, but for sufficiently large $\Re s$. 
+
+By simple transformation, we can prove a functional equation of global zeta integral. 
+\begin{proposition}[Global functional equation of zeta integral]
+Let $(\pi, V)$ be an automorphic representation of $\GL(2, \Aa)$ and let $\phi \in V$. 
+Let $\xi$ be a quasicharacter of $\Aa^{\times}/F^{\times}$. 
+Then 
+$$
+Z(s, \phi, \xi) = Z(1-s, \pi(w_1)\phi, \xi^{-1} \omega^{-1})
+$$
+for all $s\in \Cc$, where $w_1 = \smat{}{1}{-1}{}$. 
+\end{proposition}
+\begin{proof}
+Since $\phi$ is automorphic, we have
+\begin{align*}
+Z(s, \phi, \xi) &= \int\dpl{\Aa^{\times}/F^{\times}} \left( w_1 \pmat{y}{}{}{1} \right) |y|^{s-1/2} \xi(y)d^{\times} y \\
+&= \int\dpl{\Aa^{\times}/F^{\times}} \phi\left( \pmat{1}{}{}{y} w_{1}\right) |y|^{s-1/2} \xi(y) d^{\times} y.
+\end{align*}
+If we substitute $y^{-1}$ for $y$, we obtain
+$$
+\int\dpl{\Aa^{\times}/F^{\times}} (\pi(w_1)\phi)\pmat{y}{}{}{1} |y|^{-s+1/2} (\xi \omega)^{-1}(y)d^{\times}y = Z(1-s, \pi(w_1)\phi, \xi^{-1}\omega^{-1}). 
+$$
+\end{proof}
+ 
+Following proposition shows that the local zeta integral coincides with local $L$-functions for \emph{unramified} places. 
+\begin{proposition}
+Let $v$ be an unramified place, so that 
+\begin{itemize}
+\item $v$ is non-archimedean, 
+\item $\pi_{v}$ is a spherical principal series, 
+\item the conductor of $\psi_{v}$ is $\calO_{v}$, 
+\item the vector $\phi_{v}$ is the spherical vector in the representation, 
+\item $W_{v}(1) = 1$, 
+\item $\xi_{v}$ is trivial on $\calO_{v}^{\times}$. 
+\end{itemize}
+(As before, this is true for all but finitely many $v$). Then for sufficiently large $\Re s$, we have $$Z_{v}(s, W_{v}, \xi_{v}) = L_{v}(s, \pi_{v}, \xi_{v}).$$ 
+\end{proposition}
+\begin{proof}
+The proof uses explicit formula of $W_{v}$ in Theorem \ref{explicitsph} in terms of the Satake parameters $\alpha_{1}, \alpha_{2}$. Recall that 
+$$
+W_{v}\pmat{y}{}{}{1} = \begin{cases} q^{-m/2} \frac{\alpha_{1}^{m+1} - \alpha_{2}^{m+1}}{\alpha_{1} - \alpha_{2}} & m\geq 0 \\ 0 & \text{otherwise.} \end{cases}
+$$
+where $m = \ord_{v}(y)$ and $q = q_{v} = |\calO_{v}/(\varpi_{v})|$. (Here the formula is slightly different because we use the different normalization $W_{v}(1) = 1$.)
+We can break the integral up into a sum over $m=0$ to $\infty$ to obtain
+\begin{align*}
+&\sum_{m=0}^{\infty} q^{-m/2} \frac{\alpha_{1}^{m+1} - \alpha_{2}^{m+1}}{\alpha_{1} - \alpha_{2}} q^{m/2 - ms}\xi_{v}(\varpi)^{m} \\
+&= \frac{1}{\alpha_{1} - \alpha_{2}} \left( \frac{\alpha_{1}}{1-\alpha_{1}\xi_{v}(\varpi_{v})q^{-s}} - \frac{\alpha_{2}}{1-\alpha_{2}\xi_{v}(\varpi_{v})q^{-s}}\right)\\
+&= L_{v}(s, \pi_{v}, \xi_{v}).
+\end{align*}
+\end{proof}
+
+
+%%%%%%%%%%%%%%
+\begin{comment}
+\begin{theorem}[Local functional equation]
+The local zeta integral $Z_{v}(s, W_{v}, \xi_{v})$ converges for sufficiently large $\Re s$, and has meromorphic continuation to all $s$. 
+Also, there exists a meromorphic function $\gamma_{v}(s, \pi_{v}, \xi_{v}, \psi_{v})$ such that 
+$$
+Z_{v}(1-s, \pi_{v}(w_{1})W_{v}, \xi_{v}^{-1}\omega_{v}^{-1}) = \gamma_{v}(s, \pi_{v},\xi_{v}, \psi_{v}) Z_{v}(s, W_{v}, \xi_{v}). 
+$$
+\end{theorem}
+\begin{proof}
+non-archimedean case is proved in the previous chapter (Theorem \ref{localfe}). Archimedean case is proved in Jacquet-Langlands' book, which uses Weil representation. 
+\end{proof}
+\end{comment}
+%%%%%%%%%%%%%%%%%
+
+Now, we are ready to prove the global functional equation of $L$-function. 
+\begin{theorem}[Global functional equation of $L$-function]
+Let $\pi$ be an automorphic cuspidal represenation of $\GL(2, \Aa)$ and let $\xi$ be a Hecke character. 
+Let $S$ be a finite set of places of $F$ containing all the archimedean ones such that if $v\not\in S$, then $\pi_{v}$ is spherical, $\xi_{v}$ is unramified and $\psi_{v}$ has conductor $\calO_{v}$. 
+Then we have a functional equation
+$$
+L_{S}(s, \pi, \xi) = \left( \prod_{v\in S} \gamma_{v}(s, \pi_{v}, \xi_{v}, \psi_{v})\right) L_{S}(1-s, \wh{\pi}, \xi^{-1})
+$$
+where $\wh{\pi}$ is the contragredient representation of $\pi$. 
+\end{theorem}
+\begin{proof}
+Choose a pure tensor $\phi = \otimes_{v}\phi_{v}\in V$ such that $\phi_{v}$ is spherical for $v\not\in S$ and normalized so that if $W_{v}$ is a local Whittaker function corresponding to $\phi_{v}$, then $W_{v}(1) =1$ for $v\not\in S$. 
+We will evaluate 
+$$
+\left( \prod_{v\in S} Z_{v}(s, W_{v}, \xi_{v})^{-1} \right) Z(s, \phi, \xi)
+$$ 
+in two different ways. 
+First, it is easy to check that this equals the LHS of the above functional equation for large $\Re s$. 
+Now, take $-\Re s$ to be large and positive. 
+Local functional equation allow us to write above equation as
+\begin{align*}
+&\left(\prod_{v\in S} Z_{v}(s, W_{v}, \xi_{v})^{-1}Z_{v}(1-s, \pi(w_{1})W_{v}, \xi_{v}^{-1}\omega_{v}^{-1})\right) \\
+&\times \prod_{v\not\in S} Z_{v}(1-s, \pi(w_{1})W_{v}, \xi_{v}^{-1}\omega_{v}^{-1}). 
+\end{align*}
+Thus we will obtain the RHS if we show 
+$$
+Z_{v}(s, \pi(w_{1})W_{v}, \xi_{v}^{-1}\omega_{v}^{-1}) = L_{v}(s, \wh{\pi}_{v}, \xi_{v}^{-1})
+$$
+for $v\not\in S$. 
+Since $v$ is unramified, $W_{v}$ is the spherical vector and 
+\begin{align*}
+Z_{v}(s, \pi(w_{1})W_{v}, \xi_{v}^{-1}\omega_{v}^{-1}) &= Z_{v}(s, W_{v}, \xi_{v}^{-1}\omega_{v}^{-1})\\
+&= L_{v}(s, \pi_{v}, \omega_{v}^{-1}\xi_{v}^{-1}) \\
+&= L_{v}(s, \wh{\pi}_{v}, \xi_{v}^{-1}).
+\end{align*}
+The last equality follows from $\wh{\pi}_{v} \simeq \omega_{v}^{-1} \otimes  \pi_{v}$, or by direct calculation (if $\alpha_1, \alpha_2$ are Satake parameters of $\pi_v$, then $\alpha_1^{-1}, \alpha_{2}^{-1}$ are Satake parameters of $\wh{\pi}_v$). 
+\end{proof}
+To complete the $L$-function, we want to define local $L$-functions for ramified places $v$. 
+For any place $v$, we should have $Z_{v}(s, W_{v}, \xi_{v}) / L(s, \pi_v, \xi_v)$ holomorphic for all $W_v$, and if we define 
+$$
+\epsilon_{v}(s, \pi_v, \xi_v, \psi_v) = \frac{\gamma_v(s, \pi_v, \chi_v, \psi_v)L_v(s, \pi_v, \chi_v)}{L_v(1-s, \wh{\pi}_v, \xi_{v}^{-1})}
+$$
+then $\epsilon_v(s, \pi_v, \xi_v, \psi_v)$ is a function of exponential type. 
+
+When $\pi_v = \pi(\chi_1, \chi_2)$ is a principal series representation, we define 
+$$
+L_{v}(s, \pi_v, \xi_v) := L(s, \xi_v \chi_1)L(s, \xi_v\chi_2)
+$$
+Where the $L$-factors on the RHS are as defined in section 4.1. In this case, we have
+$$
+\epsilon_v(s, \pi_V, \xi_v, \psi_v) = \epsilon(s, \xi_v \chi_1, \psi_v) \epsilon_v(s, \xi_v \chi_2, \psi_v).
+$$
+If $v$ is non-archimedean and $\pi_v= \sigma_v(\chi_1, \chi_2)$ is a special representation (so that $\chi_1\chi_2^{-1}(x) = |x|$), then we have
+$$
+L_{v}(s, \pi_v, \xi_v) = L(s, \xi_v \chi_1)
+$$
+and
+$$
+\epsilon(s, \pi_v, \xi_V, \psi_v) = \epsilon(s, \xi_v \chi_1,\psi_v)\epsilon(s, \xi_v \chi_2, \psi_v) \frac{L(1-s, \xi_{v}^{-1}\chi_1^{-1})}{L(s, \chi_1\chi_2)}.
+$$
+For other cases (such as  supercuspidal representation on non-archimedean place), we put $L_{v}(s, \pi_v, \xi_v) = 1$. In these cases, we have $\epsilon_{v}(s, \pi_v, \xi_v, \chi_v) = \gamma_v(s, \pi_v, \xi_v, \psi_v)$. 
+
+
+
+
+
+\subsection{Adelization of classical automorphic forms}
+
+In this last section, we will study how to get automorphic representations from classical automorphic forms such as  modular forms and Maass forms. 
+For a given modular form, we can lift a function as a function on the ad\'ele group $\GL(2, \Aa)$, then consider a $(\frag, K)$-module generated by the function. 
+This is an irreducible admissible representation of $\GL(2, \Aa)$ by Theorem \ref{autoadm}. We will describe this procedure more rigorously and prove that the associated representation is automorphic when the original modular form is a Hecke eigenfunction. 
+
+Let $f:\calH \to \Cc$ be a modular form or Maass form of weight $k$ on $\Gamma_0(N)$ with a character $\chi:\Gamma_0(N) \to \Cc^{\times}$. 
+We already saw that the function $F:\GL(2, \Rr)^{+}\to \Cc$ defined as $F(g) = (f||_{k}g)(i)$ is of moderate growth, an eigenfunction of $\Delta$, and 
+$$
+F(\gamma g \kappa_\theta) = \chi(d) e^{ik\theta}F(g)
+$$
+for $\gamma = \smat{a}{b}{c}{d} \in \Gamma_{0}(N), \kappa_{\theta} = \smat{\cos \theta}{\sin \theta}{-\sin \theta}{\cos\theta} \in \SO(2)$. 
+Here $\chi$ is a Dirichlet character modulo $N$ (not necessarily primitive). 
+
+To ad\'elize $F$ as a function $\phi$ on $\GL(2, \Aa)$, we also need to ad\'elize $\chi$ as a character of $K_{0}(N) = \{g  = (g_{v}) \in K_{\fin}\,:\, c_{v}\in N\calO_{v}\}$. 
+In Proposition \ref{dirad}, we saw that there's 1-1 correspondence between Dirichlet characters and characters of $\Aa^{\times}/\Qq^{\times}$. 
+So we have a character $\omega = \prod_{v} \omega_{v}$ of $\Aa^{\times}/\Qq^{\times}$ corresponds to $\chi$, so that $\chi(p) = \omega_{v}(\varpi_{v})$ for $p\nmid N$ and $v = p$. 
+Also, $\omega_{v}$ is unramified for $v\nmid N$ and $\omega_{v}$ is trivial on the subgroup of $\calO_{v}^{\times}$ consisting of elements $\equiv 1\Mod{N}$. 
+$\omega_{\infty}$ is trivial on $\Rr_{+}^{\times}$. 
+
+Now we define a character $\lambda$ of $K_{0}(N)$ by 
+$$
+\lambda\pmat{a}{b}{c}{d} = \prod_{v\in S_{\fin}(N)} \omega_{v}(d_{v})
+$$
+where $S_{\fin}(N)$ is a set of non-archimedean places dividing $N$. By strong approximation theorem, we can write any $g\in \GL(2, \Aa)$ by $g = \gamma g_{\infty} k_0$ with $\gamma \in \GL(2, \Qq), g_{\infty} \in \GL(2, \Rr)^{+}, k_{0}\in K_{0}(N)$. 
+Then we define 
+$$
+\phi(g) = \phi_{F}(g) = F(g_{\infty}) \lambda(k_{0})
+$$
+as associated function on $\GL(2, \Aa)$. This function is well-defined: this follows from the equation
+$$
+\chi(d) = \prod_{v\in S_{\fin}(N)} \omega_{v}^{-1}(d_{v})
+$$
+for $d\in \Zz$ coprime to $N$. This $\phi$ is an automorphic form with a central quasicharacter $\omega$, which can be shown by using 
+$$
+\Aa^{\times}= \Qq^{\times} \Rr_{+}^{\times} \prod_{p<\infty} \Zz_{p}^{\times}. 
+$$
+
+We can also extend classical Hecke operators to ad\'elic setting. For each prime $p\nmid N$, the corresponding ad\'elized Hecke operator $\Tt_{p}$ will be the operator in the local spherical Hecke algebra $\calH_{p}=\calH_{K_p}$, which is defined in Section 3.8. 
+ 
+First, we define Hecke operator for automorphic forms on $\GL(2, \Rr)^{+}$. 
+Let $\Sigma = \{ p\,:\, p|N\}$ and let $\Zz_{\Sigma}$ be the localization of $\Zz$ at the prime in $\Sigma$, so that $r/s\in \Zz_{\Sigma}$ iff $N\nmid s$. 
+We can trivially extend the Dirichlet character $\chi$ to $\Zz_{\Sigma}$. If we put $G_{0}(N) := \{\smat{a}{b}{c}{d}\in \GL(2, \Zz_{\Sigma})\,:\, c\in N\Zz_{\Sigma}\}$, then we have a right action of $G_{0}(N)$ on functions on $\GL(2, \Rr)^{+}$ by 
+$$
+(F|_{\chi}\alpha)(g) = \chi(d)^{-1}F(\alpha g), \qquad \alpha = \pmat{a}{b}{c}{d} \in G_{0}(N). 
+$$
+Then for $\xi \in G_{0}(N)$, we can define the Hecke operator $T_{\xi}$ as 
+$$
+T_{\xi}F = \sum_{i=1}^{h} F|_{\chi}\xi_i
+$$
+where $\{\xi_{1}, \dots, \xi_{h}\}$ is a complete set of coset representatives for $\Gamma_{0}(N) \bs \Gamma_{0}(N) \xi \Gamma_{0}(N)$. Especially we put $T_{p} := T_{\xi_p}$ for $\xi_{p} = \smat{p}{}{}{1}$.  
+Now, the following theorem shows that every Hecke eigenform gives rise to an automorphic representation. 
+\begin{theorem}
+Suppose that $F$ is an eigenfunction of all the Hecke operators $T_{p}$ when $p\nmid N$. Then $\phi$ lies in an irreducible subspace of $L_{0}^{2}(\GL(2, F) \bs \GL(2, \Aa), \omega)$. Hence, by Theorem \ref{l2autoad}, the space generated by $\phi$ induces an irreducible automorphic representation. 
+\end{theorem}
+\begin{proof}
+By Theorem \ref{cuspdecomad}, $L^{2}_{0}$ decomposes as Hilbert space direct sum of irreducible invariant subspaces. Now choose $(\pi, V) \subseteq L_{0}^{2}$ such that the projection of $\phi$ to $V$ is nonzero. We will show that $\pi$ is uniquely determined by eigenvalues of $T_{p}$ with $p\nmid N$ and $\omega$. 
+This will show that $\phi \in \pi$. Note that $\phi$ is $K_{v} = \GL(2, \Zz_{p})$-fixed for $p\nmid N$ since $\lambda$ is trivial on that group. 
+
+For $p\nmid N$, let $G_{p} = \GL(2, \Qq_{p})$, $\calH_{p} =C_{c}^{\infty}(G_p)$ be the Hecke algebra and $\calH_{p}^{\circ} = C_{c}^{\infty}(K_{p} \bs G_{p} / K_p)$ be the spherical Hecke algebra. 
+We studied the structure of spherical Hecke algebra in Section 3.7 - $\calH_p^{\circ}$ is commutative and generated by three elements $T(\frap), R(\frap),$ and $R(\frap)^{-1}$. (See Theorem \ref{nonarchsphcom}, Proposition \ref{heckerel} and Proposition \ref{heckegen}.) 
+We will use new notations $\Tt_{p} := T(\frap)$ and $\Rr_{p} := R(\frap)$ in here to avoid confusion between classical and ad\'elized Hecke operators. 
+So we have
+$$
+\Tt_{p} := \chf_{K_{p} \smat{\varpi_p}{}{}{1} K_{p}}, \quad \Rr_{p} := \chf_{K_{p} \smat{\varpi_{p}}{}{}{\varpi_{p}}}, \quad \Rr_{p} := \chf_{K_{p} \smat{\varpi_{p}}{}{}{\varpi_p}^{-1}}
+$$
+where $\varpi_{p}$ is the idele whose $p$th component is $p$ and all of whose other components are 1. 
+As before, we can decompose the double coset as
+$$
+K_{p} \pmat{\varpi_p}{}{}{1} K_{p} = \bigcup_{i=1}^{p+1} i_{p}(\xi_{i})K_p
+$$ 
+where $i_{p}: \GL(2, \Qq) \to \GL(2, \Aa)$ is the map induced by the composition $\Qq\hookrightarrow \Qq_p \hookrightarrow \Aa$ and 
+$$
+\xi_{i} = \pmat{p}{i}{}{1} \quad (1\leq i\leq p), \quad \xi_{p+1} = \pmat{1}{}{}{p}.
+$$
+Also, we have an action $\rho$ of $\calH_{p}$ on automorphic forms given by 
+$$
+(\rho(\sigma)\phi)(g) = \int\dpl{\GL(2, \Aa)} \sigma(h)\phi(gh)dh, \quad \sigma\in \calH_p
+$$
+and we will denote $\rho(\Tt_{p})\phi$ as $\Tt_{p}(\phi)$. We will evaluate $(\Tt_{p}\phi)(g)$ when $g = \gamma g_{\infty} k_{0}$.  
+Since $\phi$ is right $K_{p}$-invariant, we have
+$$
+(\Tt_{p}\phi)(g) = \sum_{i=1}^{p+1} \phi(gi_{p}(\xi_{i})).
+$$
+For each $1\leq i\leq p+1$ and $k_{0} \in K_{0}(N)$, there exists $1\leq j\leq p+1$ and $k_{0}'\in K_{0}(N)$ such that $k_{0}i_{p}(\xi_{i}) = i_{p}(\xi_{j})k_{0}'$. If we write $\xi_{j} = \xi_{j, \infty}\xi_{j, \fin}$, then 
+$$
+gi_{p}(\xi_{i}) = (\gamma\xi_{j}) (\xi_{j, \infty}^{-1}g_{\infty}) (\xi_{j, \fin}^{-1}i_{p}(\xi_{j})k_{0}')
+$$
+where each component lies in $\GL(2, \Qq), \GL(2, \Rr)^{+}$ and $K_{0}(N)$. (Note that $\xi_{j}$ is considered as an element of $\GL(2, \Aa)$ via diagonal map $\GL(2, \Qq)\hookrightarrow \GL(2, \Aa)$, and the $p$th component of $\xi_{j, \fin}^{-1}i_{p}(\xi_j)$ is 1.)
+Then 
+$$\phi(g i_{p}(\xi_{i})) = F(\xi_{j, \infty}^{-1}g_{\infty}) \lambda(\xi_{j, \fin}^{-1} i_{p}(\xi_j) k_{0}').$$
+We know that $\lambda$ is determined by places $v|N$ and for each $v$, the $v$th component of $i_{p}(\xi_{j})k_{0}'$ is the same as the $v$th component of $k_{0}'$ or $k_{0}$. 
+Thus we get
+$$
+\phi(gi_{p}(\xi_{i})) = (F|_{\chi}\xi_{j, \infty}^{-1})(g_{\infty})\lambda(k_{0})
+$$
+and so if $F$ is an eigenfunction of the classical Hecke operator $T_{p} = T_{\smat{p}{}{}{1}}$, then $\phi$ is an eigenfunction of $\Tt_p$ with the same eigenvalue. 
+Similarly, we have
+$$
+(\Rr_{p}\phi)(g) = \int\dpl{K_{p}\smat{\varpi_{p}}{}{}{\varpi_{p}}} \phi(gh)dh = \phi(g) \omega(\varpi_{p}) = \chi(p)\phi(g)
+$$
+so $\phi$ is an eigenfunction of $\Rr_{p}$ with eigenvalue $\chi(p)$. 
+To summarize, $\phi$ is an eigenvector of $\calH_{p}$, and the eigenvalues are determined by $\chi$ and the eigenvalues of the classical Hecke operators on $F$. 
+
+The projection of $L_{0}^{2}$ onto the invariant subspace $V$ is $\GL(2, \Aa)$-equivariant, so the image of $\phi$ in $V$ is an eigenvector of $\calH_p$ with the same eigenvalues. 
+Now Theorem \ref{sphchar} tells us that this determines the irreducible constituent $\pi_{p}$ of $\pi$, and so $\pi$ is itself determined by the global multiplicity one theorem. 
+\end{proof}
+
+We can also obtain theorems for classical automorphic forms by ad\'elizing it and use tools that we proved for automorphic representations. 
+For example, the global multiplicity one theorem implies that if we know almost all Fourier coefficients of a modular form, then it is uniquely determined. This theorem also holds for Maass wave forms. 
+\begin{theorem}[Multiplicity one for modular forms]
+Let $$f(z)= \sum_{n\geq 1} a_{n}q^{n}, \quad g(z) = \sum_{n\geq 1} b_{n}q^{n}$$ be holomorphic cusp forms of weight $k$ on $\SL(2, \Zz)$ which are normalized $(a_{1} = b_{1} = 1)$ Hecke eigenforms. 
+Assume that $a_{p} = b_{p}$ for all but finitely many $p$. 
+Then $f(z) = g(z)$. 
+\end{theorem}
+\begin{proof}
+By ad\'elizing it, we obtain two automorphic representations $\pi_{f}, \pi_{g}$ of $\GL(2, \Aa)$. 
+Since these are Hecke eigenforms, we have $T_{p}f = a_{p}f$ and $T_{p}g = b_{p}f$ for all prime $p$, and $a_{p}$, $b_{p}$ are also eigenvalues of $\Tt_{p} \in \calH_{p}$ for each components of representations $\pi_{f, p}$, $\pi_{g, p}$. Since $\Rr_{p}$ acts trivially, Theorem \ref{sphchar} implies $\pi_{f, p} \simeq \pi_{g, p}$ for any $p$ with $a_{p}= b_{p}$. Now the multiplicity one gives us $\pi_{f} = \pi_{g}$, which is $a_{p}= b_{p}$ for all $p$. So we get $f = g$. 
+\end{proof}
+Note that this is not true for general congruence groups $\Gamma_{0}(N)$ with characters - we also need to assume that $f, g$ are \emph{newforms}. 
+

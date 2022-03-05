@@ -1,0 +1,955 @@
+\newpage
+
+\section{Archimedean theory}
+In this section, we will study representation theory of the group $\GL(2, \Rr)$. 
+Usually, it is easier to study representation of compact groups than non-compact groups because it is not much different from the representation theory of finite groups. First, any finite dimensional representations are unitarizable, by taking average of arbitrary hermitian inner product on the space over all group with respect to Haar measure, which is finite for compact groups. Also, we have celebrated Peter-Weyl theorem, which claims that any unitary representation (including infinite dimensional representation) on a complex Hilbert space is semisimple, i.e. can be decomposed as a direct sum of irreducible dimensional unitary representations, and these are all finite dimensional and mutually orthogonal. 
+It is also known that representation of compact group are completely determined by its character. 
+
+Also, Lie algebra representations of $\frag = \mathfrak{gl}(2, \Rr)$ (or its complexification $\frag_{\Cc} = \mathfrak{gl}(2, \Cc)$) are much easier than studying the representation of Lie group, because it is a linearlized version of original representation and we have a lot of tools to use. We even have a complete classification of semisimple Lie algebra over $\Cc$, which is a very rich theory itself. 
+
+Instead of studying representations of $\GL(2, \Rr)$ directly, we will study representation theory of its maximal compact group $\rmO(2)$ and Lie algebra representation of $\mathfrak{gl}(2,\Rr)$. Eventually, we  will consider so-called $(\frag, K)$-module, which is a vector space with compatible actions of $\frag$ and $K$, and the space is not so big to deal with, i.e. admissible. 
+We give complete classification of $(\frag, K)$-module for $\GL(2, \Rr)^{+}$ and $\GL(2, \Rr)$, and investigate which of them are unitarizable. 
+Since unitary representation of $\GL(2, \Rr)$ is completely determined by associated $(\frag, K)$-module, we also get a complete classification of unitary representations. 
+
+In the last subsection, we will also see how the representation theory of $\GL(2, \Rr)$ can be used to study spectral problems (of classical automorphic forms). 
+
+
+
+
+\subsection{Representation theory of $\mathfrak{gl}(2, \Rr)$}
+Geometrically, Lie algebra of a Lie group is a tangent space at the identity, and it has a structure of Lie algebra given by a Lie bracket. In case of $G = \GL(n, \Rr)^{+}$ and $\GL(n, \Rr)$, their Lie algebra is $\frag = \mathfrak{gl}(n, \Rr) = \Mat(n, \Rr)$, the space of $n\times n$ real matrices with the Lie bracket $[X, Y]:= XY - YX$. The most important point is that any representation of Lie group induces a Lie algebra representation. 
+\begin{proposition}
+Let $G$ be a Lie group and $\frag$ be a Lie algebra of $G$. Let $(\pi, V)$ be a finite dimensional representation of $G$ such that $g\mapsto \pi(g)v$ is a smooth function for all $v\in V$. Then we have an induced Lie algebra representation $d\pi:\frag\to \End(V)$ given by 
+$$
+(d\pi X)v = \frac{d}{dt}\Big|_{t=0} \pi(\exp(tX))v
+$$
+where $\exp:\frag \to G$ is the exponential map. 
+\end{proposition}
+The finite dimensionality assumption is non really necessary. 
+In fact, we will only consider special kind of representation: right regular representation on $C^{\infty}(G)$. 
+The statement is also true for this case, even if the space is not finite dimensional.
+\begin{proposition}
+The map $d:\frag \to \End(C^{\infty}(G))$ defined as 
+$$
+(dXf)(g) = \frac{d}{dt}\Big|_{t=0} f(g\exp(tX))
+$$
+is a Lie algebra homomorphism, i.e. $d$ is a Lie algebra representation of $\frag$ on $C^{\infty}(G)$. 
+\end{proposition}
+
+By the universal property of universal enveloping algebra $U\frag$, any Lie algebra representation $\pi:\frag \to \End(V)$ can be extended to a representation of $U\frag$. 
+We will regard $U\frag$ as a ring of differential operators, which are left-invariant since Lie algebra action is obtained by differentiating right regular representation. 
+When the element is in the center $Z(U\frag)$ of the universal enveloping algebra $U\frag$, it is both  invariant under the left and right regular representations.
+
+\begin{theorem}
+\label{center}
+Let $G = \GL(n, \Rr)^{+}$ and let $\frag = \gl(n, \Rr)$. If $D$ is an element of $U\frag$, then $D$ is invariant under both the left and right regular representations of $G$. 
+\end{theorem}
+\begin{proof}
+The proof is a little technical. We need the following lemma:
+\begin{lemma}
+Let $G = \GL(n, \Rr)^{+}$ and let $X\in \frag = \gl(n, \Rr)$. Suppose that $\phi\in C^{\infty}(G\times \Rr)$ satisfies 
+$$
+\frac{\partial}{\partial t} \phi(g, t) = dX \phi(g, t)
+$$
+and the boundary condition $\phi(g, 0) = 0$. Then $\phi(g, t) = 0$ for all $t\in \Rr$. 
+\end{lemma}
+\begin{proof}
+This can be done by method of characteristic. Let $\phi_{g}(u, t) = \phi(g \exp(uX),t)$ for $g\in G$. If we make the change of variables as $t = v + w$ and $u = v-w$, the equation is equivalent to 
+$$
+\frac{\partial}{\partial w}\phi_{g}(v-w, v+w) = 0
+$$
+so $\phi_{g}(v-w, v+w)$ is independent of $w$ and $\phi_{g}(v-w, v+w) = F_{g}(v)$ for some $F_{g}\in C^{\infty}(\Rr)$. This gives $\phi_{g}(u, t) = F_{g}((u+t)/2)$ and the boundary condition implies that $F_{g} = 0$, so $\phi_{g} = 0$. 
+\end{proof}
+Now apply the lemma for the function
+$$
+\phi(g, t) = (D\rho(\exp(tX))f - \rho(\exp(tX))Df)(g)
+$$
+and we get the result. Note that $G$ is generated by $\exp(\frag)$.
+\end{proof}
+
+Now we will concentrate on $n = 2$. $\frag = \gl(2, \Rr)$ is generated by the elements
+$$
+\wh{R} = \pmat{0}{1}{0}{0}, \quad \wh{L} = \pmat{0}{0}{1}{0}, \quad \wh{H} = \pmat{1}{0}{0}{-1}, \quad Z = \pmat{1}{0}{0}{1}
+$$
+with relations 
+$$
+[\wh{H}, \wh{R}] = 2\wh{R}, \quad [\wh{H}, \wh{L}] = -2\wh{L}, \quad [\wh{R}, \wh{L}] = \wh{H}. 
+$$
+Now let
+$$
+\Delta = -\frac{1}{4} ( \wh{H}^{2} + 2\wh{R}\wh{L} + 2\wh{L}\wh{R})
+$$
+be an element in $U\frag$, where the multiplication is in $U\frag$, not a matrix multiplication. This is a very special element in $U\frag$, which is called the \emph{Cacimir element}. The element is in the center of $U\frag$, and in fact the center is generated by $\Delta$ and $Z$. 
+\begin{theorem}
+$\Delta$ lies in the center of $U\frag = U\gl(2, \Rr)$. 
+\end{theorem}
+\begin{proof}
+This follows from direct computations and relations among $\wh{R}, \wh{L}, \wh{H}$. 
+\end{proof}
+We will consider the complexification $\frag_{\Cc} = \gl(2, \Cc)$ of $\frag$ and slightly modify the elements $\wh{R}, \wh{L}, \wh{H}$ in $\gl(2,\Cc)$ as
+$$
+R = \frac{1}{2} \pmat{1}{i}{i}{-1} , \quad L = \frac{1}{2} \pmat{1}{-i}{-i}{-1}, \quad H = -i\pmat{0}{1}{-1}{0}.
+$$
+Then they satisfy the same relations as $\wh{R}, \wh{L}$, and $\wh{H}$. Indeed, we have
+$$
+CHC^{-1} = \wh{H}, \quad CRC^{-1} = \wh{R}, \quad CLC^{-1} = \wh{L}
+$$
+where 
+$$
+C = -\frac{1+i}{2} \pmat{i}{1}{i}{-1}
+$$
+is the Cayley transform. We will see the reason why we are using $R, L, H$ instead of $\wh{R}, \wh{L}$, and $\wh{H}$, in section 2.6. 
+
+
+
+For an arbitrary representation $(\pi, \fraH)$ of $G$, there may not exists a corresponding Lie algebra action on $\fraH$ since the limit may not exists. 
+We will define $\fraH^{\infty}$ as a largest subspace where such action exists, i.e. the limit $\pi(X)f = Xf = \frac{d}{dt}|_{t=0} \pi(\exp(tX)) f$ exists for all $X\in \frag$ and $f \in \fraH^{\infty}$. We will call such $f$ as \emph{smooth} vector, and we can easily check that such space is invariant under the action of $G$ from the equation
+$$
+\pi(X)\pi(g)f = \pi(g)\left( \lim_{t\to 0} \frac{1}{t} (\pi(\exp( t\Ad(g^{-1})X))f - f)\right).
+$$  
+Also, the action of $\frag$ on $\fraH^{\infty}$ is a Lie algebra representation. 
+We define the action of $C^{\infty}_{c}(G)$ on $\fraH$ as 
+$$
+\pi(\phi)f = \int_{G} \phi(g)\pi(g)f dg
+$$
+for $\phi\in C_{c}^{\infty}(G)$. We can show that the subspace $\fraH^{\infty}$ of smooth vectors is not so small, indeed, it is dense in $\fraH$. 
+
+\begin{proposition}
+Let $(\pi, \fraH)$ be a Hilbert space representation of $G = \GL(n, \Rr)$ or $G = \GL(n, \Rr)^{+}$. 
+\begin{enumerate}
+\item If $\phi\in C_{c}^{\infty}(G)$ and $f\in \fraH$, then $\pi(\phi)f \in \fraH^{\infty}$. 
+\item $\fraH^{\infty}$ is dense in $\fraH$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+For 1, we can check that $\pi(X)\pi(\phi)f = \pi(\phi_{X})f$ where $$\phi_{X}(g) = \frac{d}{dt}\Big|_{t=0} \phi(\exp(-tX)g).$$ 
+Hence $\pi(\phi)f$ is differentiable and we can repeat this to get $\pi(\phi)f\in \fraH^{\infty}$. 
+
+For 2, we use 1 with appropriate function $\phi$. For given $\epsilon>0$, continuity of $(g, f)\to \pi(g)f$ implies that there exists an open neighborhood of the identity of $G$ such that $|\pi(g)f - f|<\epsilon$ for all $g\in U$. 
+Now take $\phi\in C_{c}^{\infty}(G)$ to be a nonnegative function with $\supp(\phi)\subset U$ and $\int_{G}\phi(g) dg = 1$, so that 
+$$
+|\pi(\phi)f - f| \leq \int_{G} \phi(g)|\pi(g)f - f|dg \leq \epsilon
+$$
+which proves that $\fraH^{\infty}$ is dense in $\fraH$. 
+\end{proof}
+
+
+
+
+
+
+
+
+\subsection{Representation theory of compact group}
+In this section, we will see how representations of compact groups well-behaves. We will prove the Peter-Weyl theorem, which claims that every representation of a compact group decomposes as a direct sum of finite dimensional irreducible representations. 
+
+For any finite group $G$ and it's irreducible representation $(\pi, V)$ (which has finite degree), we can construct a $G$-invariant inner product on $V$: choose any inner product  $\bra{\,}{\,}_{1}:V\times V\to \Cc$ and define a new pairing $\bra{\,}{\,}:V\times V \to \Cc$ as 
+$$
+\bra{v}{w} = \sum_{g\in G} \bra{\pi(g)v}{\pi(g)w}_{1}.
+$$
+Then this pairing is also an inner product on $V$ and it is $G$-invariant by definition. We can do the same thing for a representation of compact group $K$ on a Hilbert space $\fraH$,  by integrating a given inner product on over $K$ with respect to its Haar measure. (Note that compact group has a finite Haar measure.) This induces same topology as before. 
+\begin{lemma}
+Let $(\pi, \fraH)$ be a representation of a compact group $K$ on a Hilbert space $(\fraH, \bra{\,}{\,}_{1})$. 
+There exists a Hermitian inner product $\bra{\,}{\,}$ on $\fraH$ inducing the same topology as the original one and $K$-invariant. 
+\end{lemma}
+\begin{proof}
+We define such inner product on $\fraH$ as 
+$$
+\bra{v}{w} = \int_{K} \bra{\pi(\kappa)v}{\pi(\kappa)w}_{1}d\kappa. 
+$$
+It is easy to check that this defines a new inner product which is $K$-invariant. By Banach-Steinhaus theorem,  we can found a constant $C>0$ such that $C^{-1}|v|_{1} \leq |\pi(\kappa)v|_{1} \leq C|v|_{1}$ for all $v\in \fraH$ and $\kappa \in K$, and this proves $C^{-1}|v|_{1} \leq |v| \leq C|v|_{1}$ for all $v$. Hence topologies are same. 
+\end{proof}
+
+
+Now we will prove the most important theorem in the representation theory of compact groups, Peter-Weyl theorem. For a representation $(\pi, \fraH)$ on a Hilbert space $\fraH$ of $G$, a \emph{matrix coefficient} of the representation is a function on $G$ of the form $g\mapsto \langle \pi(g)x, y\rangle$. 
+We need the following proposition:
+\begin{proposition}
+\label{nonzeroint}
+Let $G$ be a compact group and $(\pi_{1}, H_{1}), (\pi_{2}, H_{2})$ be representations where $(\pi_{2}, H_{2})$ is unitary. 
+If there exists matrix coefficients $f_{1}, f_{2}$ of $\pi_{1}$ and $\pi_{2}$ that are not orthogonal in $L^{2}(G)$, then there exists a nonzero intertwining operator $L:H_{1}\to H_{2}$. 
+\end{proposition}
+\begin{proof}
+Assume that $f_{i} = \bra{\pi_{i}(g)x_{i}}{y_{i}}$ such that
+$$
+\ol{\dbra{f_{1}}{f_{2}}} := \int_{G} \ol{f_{1}(g)} f_{2}(g) dg = \int_{G} \ol{\bra{\pi_{1}(g)x_{1}}{y_{1}}}\bra{\pi_{2}(g)x_{2}}{y_{2}} dg \neq 0. 
+$$
+Then the bounded linear map $L:H_{1}\to H_{2}$ defined as
+$$
+L(v) = \int_{G} \bra{\pi_{1}(g)v}{y_{1}} \pi_{2}(g^{-1})y_{2} dg
+$$
+gives a nonzero intertwining operator, since $\bra{x_{2}}{L(x_{1})} = \ol{\dbra{f_{1}}{f_{2}}}$. 
+\end{proof}
+\begin{theorem}[Peter-Weyl]
+Let $K$ be a compact subgroup of $\GL(n, \Cc)$.
+\begin{enumerate}
+\item The matrix coefficiens of finite dimensional unitary representation of $K$ is dense in $C(K)$ and $L^{p}(K)$ for all $1\leq p <\infty$. 
+\item Any irreducible unitary representation of $K$ is finite dimensional. 
+\item Any unitary representation of $K$ is semisimple, i.e. decomposes as a Hilbert direct sum of (finite dimensional) irreducible representations. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+By embedding $\GL(n, \Cc)\hookrightarrow \GL(2n, \Rr)$, we can assume that $K$ is a subgroup of $\GL(n, \Rr)$ for some $n$. We call a function on $K$ a polynomial function if it sis a polynomial with complex coefficients in terms of $n^{2}$ entries of matrices in $K\subset \Mat(n, \Rr)$. We first show that any polynomial function on $K$ is a matrix coefficient of a finite dimensional representation. 
+Indeed, let $r\in \Zz_{>0}$ and $(\rho, R)$ be the representation of $K$ where $R$ is a space of polynomial functions of degree $\leq r$ on $\Mat(n, \Rr)$, where $K$ acts by right translation. 
+We can find a Hiermitian inner product on $R$ which is $K$-invariant, and by Riesz representation theorem there exists $f_{0}\in R$ such that $f(1) = \bra{f}{f_{0}}$ for all $f\in R$, since $f\mapsto f(1)$ is a bounded linear functional on $R$. Then 
+$$
+f(g) = (\rho(g)f)(1) = \bra{\rho(g)f}{f_{0}}
+$$
+so the function $f$ is a matrix coefficient of $R$. 
+
+Now we prove 1. It is known that $C(K)$ is dense in $L^{p}(K)$ for any $1\leq p <\infty$, and Stone-Weierstrass theorem implies that any continuous function on $K$ can be uniformly approximated by polynomial functions, which are matrix coefficients. 
+
+To show 2 and 3, it is enough to show that any nonzero unitary representation $(\pi, \fraH)$ of $K$ admits a nonzero finite dimensional invariant subspace. 
+Choose any nonzero matrix coefficient $\phi$ of $\fraH$ and approximate it by a polynomial function $\phi_{0}$, so that $\phi$ and $\phi_{0}$ are not orthogonal. Then the proposition \ref{nonzeroint} shows that there is a nonzero intertwining map $L:R\to \fraH$ for a finite dimensional representation $R$ of polynomial functions, and the image of $L$ is a finite dimensional invariant subspace of $\fraH$. 
+This proves 2, and 3 also follows from this with applying Zorn's lemma. 
+\end{proof}
+
+Using Peter-Weyl theorem, we can define admissibility of representation of $G$ for $G = \GL(n, \Rr)^{+}$ or $\GL(n,\Rr)$. 
+A representation $(\pi, \fraH)$ of $G$ is \emph{admissible} if each isomorphism class of finite dimensional representations of $K$ occurs only finitely many times in a decomposition of $\pi|_{K}$. 
+This implies that for each irreducible representation $\rho$ of $K$, the isotypic component $\fraH(\rho)$ of $(\pi|_{K}, \fraH)$, the direct sum of all the subrepresentations of $(\pi|_{K}, \fraH)$ isomorphic to $\rho$, is finite dimensional. 
+We can check that multiplicity of a given finite dimensional representation does not depend on the decomposition. 
+Also, it is a right category to study since it is known that any irreducible unitary representation is admissible. 
+
+The next result shows that in the decomposition of irreducible admissible unitary representation $\fraH$ over $K$, the multiplicity of the trivial representation of $K$ is at most one. 
+To prove this, we need the result about commutativity of Hecke algebra $C^{\infty}_{c}(K\backslash G/K)$ which can be proved by Gelfand's trick with Cartan decomposition. 
+
+\begin{theorem}[Gelfand]
+\label{archec}
+Let $G = \GL(n, \Rr)$ and $K = \rmO(n)$, or $G = \GL(n, \Rr)^{+}$ and $K = \SO(n)$. Let $C_{c}^{\infty}(K\backslash G/K)$ be a subalgebra of $C_{c}^{\infty}(G)$ which are $K$-bi-invariant, i.e. $\phi(\kappa_{1}g\kappa_{2})=\phi(g)$ for all $g\in G$ and $\kappa_{1}, \kappa_{2}\in K$, where the multiplication is given by convolution. 
+Then $C_{c}^{\infty}(K\backslash G/K)$ is commutative. 
+\end{theorem}
+Note that $C_{c}^{\infty}(G)$ is non-commutative. 
+\begin{proof}
+We need the following decomposition theorem of Cartan, which we will not going to prove. Basically, this follows from the induction on $n$. 
+\begin{proposition}[Cartan]
+Let $G = \GL(n, \Rr)$ and $K = \rmO(n)$, or $G = \GL(n, \Rr)^{+}$ and $K = \SO(n)$. 
+In either case, every double coset in $K\backslash G/K$ has a unique representative of the form 
+$$
+\begin{pmatrix} d_{1} & & \\ & \ddots & \\ & & d_{n}\end{pmatrix}, \quad d_{i}\in \Rr, \quad d_{1} \geq d_{2} \geq \dots \geq d_{n} >0.
+$$
+\end{proposition}
+Now let $\iota:C^{\infty}_{c}(K\backslash G / K)\to C^{\infty}_{c}(K\backslash G /K)$ be a map defined as $\iota(\phi(g))= \wh{\phi}(g) := \phi(\pre{T}{g})$. 
+Then this map ins an anti-involution of $C^{\infty}_{c}(K\backslash G / K)$:
+\begin{align*}
+\wh{(\phi_{1}*\phi_{2})}(g) &= \int_{G} \phi_{1}(\pre{T}{}gh)\phi_{2}(h^{-1})dh \\
+&= \int_{G} \wh{\phi_{2}}({}^{T}h^{-1}) \wh{\phi_{1}}({}^{T}hg) dh \\
+&= \int_{G} \wh{\phi_{2}}(h) \wh{\phi_{1}}(h^{-1}g)dh = (\wh{\phi_{2}} * \wh{\phi_{1}})(g). 
+\end{align*}
+By the way, Cartan's decomposition theorem allow us to decompose $g$ as $g = \kappa_{1} d\kappa_{2}$ where $\kappa_{1}, \kappa_{2}\in K$ and $d$ is a diagonal matrix. Then 
+$\phi(g) = \phi(d) = \wh{\phi}(d) = \wh{\phi}(g)$, so that $\iota = \id$ and $\phi_{1} * \phi_{2} = \phi_{2} * \phi_{1}$, i.e. $C_{c}^{\infty}(K\backslash G /K)$ is commutative. 
+\end{proof}
+
+For $n = 2$, we can prove a similar result when we consider the subalgebra of $C_{c}^{\infty}(G)$ where $K$ acts as a nontrivial character $\sigma$, i.e. $\phi(\kappa_{1} g\kappa_{2}) = \sigma(\kappa_{1}) \phi(g) \sigma(\kappa_{2})$. Let $C_{c}^{\infty}(K\backslash G/K, \sigma)$ be a subalgebra of such functions. 
+\begin{proposition}
+\label{commchar}
+Let $G = \GL(2, \Rr)^{+}$ and $K = \SO(2)$. Let $\sigma$ be a character of $K$. Then $C_{c}^{\infty}(K\backslash G / K, \sigma)$ is commutative. 
+\end{proposition}
+\begin{proof}
+The proof is almost same, but we use the following involution
+$$
+\wh{\phi}(g) = \phi\left(\pmat{-1}{}{}{1} \pre{T}{}g \pmat{-1}{}{}{1}\right). 
+$$
+\end{proof}
+
+Now we can prove the uniqueness of the $K$-fixed vector. 
+\begin{theorem}
+\label{mult1char}
+Let $G = \GL(n, \Rr)$ and $K = \rmO(n)$, or let $G = \GL(n, \Rr)^{+}$ and $K =\SO(n)$. Let $(\pi, \fraH)$ be an irreducible admissible unitary representation of $G$. Then $\dim \fraH^{K} \leq 1$. 
+Similarly, $\dim \fraH_{k} \leq 1$ for each $k\in \Zz$, where $\fraH_{k} = \{v\in \fraH\,:\, \pi(\kappa_{\theta})v = \sigma_{k}(\kappa_{\theta})v\}$ for $\sigma_{k}(\kappa_{\theta}) = e^{ik\theta}$. 
+\end{theorem}
+\begin{proof}
+By admissibility, we know that $\fraH^{K}$ is finite dimensional. $C_{c}^{\infty}(K\backslash G/K)$ can be realized as a commutative family of normal operators on a finite dimensional space, which are simultaneously diagonalizable. Therefore there is a one dimensional invariant subspace $V_{0}$ of $\fraH^{K}$, which should be whole $\fraH^{K}$ by irreducibility. 
+The proof is almost same for $\fraH_{k}$ except that we use commutativity of $C_{c}^{\infty}(K\bs G/K, \sigma_{k})$ instead of $C_{c}^{\infty}(K\backslash G/K)$.
+\end{proof}
+Note that the admissibility condition is unnecessary because any irreducible unitary representation is admissible (as we mentioned above). 
+
+
+\subsection{$(\frag, K)$-module for $\GL(2, \Rr)$ and classification}
+Now we can define the $(\frag, K)$-module, which is a thing what we really want to study. In some sense, the subspace $\fraH^{\infty}$ of smooth vectors is still too big to study. We will consider much smaller space, the space of $K$-finite vectors $\fraH_{\fin}$, which is also dense in $\fraH$ but much easier to study algebraically. 
+
+\begin{definition}
+Let $(\pi, \fraH)$ be an admissible representation of $G = \GL(n, \Rr)$ or $\GL(n, \Rr)^{+}$. 
+We may assume that $\sigma|_{K}$ is a unitary representation of $K$, so that $\sigma|_{K}$ decomposes as a Hilbert space direct sum of the isotypic parts $\fraH(\sigma)$ for each $\sigma\in \wh{K}$. 
+Now let $\fraH_{\fin}$ be the algebraic direct sum of the $\fraH(\sigma)$. 
+We call $f\in \fraH_{\fin}$ as $K$-finite vectors. 
+\end{definition}
+
+\begin{proposition}
+For $f\in \fraH$, TFAE:
+\begin{enumerate}
+\item $f\in \fraH_{\fin}$.
+\item $\langle \pi(\kappa)f\,:\, \kappa\in K\rangle$ is finite dimensional.
+\item $\langle Xf\,:\, X\in \mathfrak{k}\rangle$ is finite dimensional (here $\mathfrak{k} = \mathrm{Lie}(K)$). 
+\end{enumerate}
+\end{proposition}
+\begin{proposition}
+Let $(\pi, \fraH)$ be an admissible Hilbert space representation of $G = \GL(n, \Rr)$ or $G = \GL(n, \Rr)^{+}$. 
+The $K$-finite vectors are smooth, and $\fraH_{\fin}$ is dense $G$-invariant subspace of $\fraH^{\infty}$.
+\end{proposition}
+\begin{proof}
+Let $\fraH_{0} = \fraH^{\infty} \cap \fraH_{\fin}$. 
+We will first show that $\fraH_{0}$ is dense in $\fraH^{\infty}$. 
+For given $f\in \fraH$, we will find suitable $\phi \in C^{\infty}(G)$ such that $\pi(\phi)f$ is sufficiently close to $f$ and $\pi(\phi)f \in \fraH_{0}$. 
+To do this, let $U$ be a small open neighborhood of the identity in $G$ and let $\epsilon >0$ be a given constant. 
+Choose $U_{1} \subset U$ and $V\subset K$ such that $VU_{1} \subset U$. 
+Let $\phi_1$ be a smooth positive-valued function with $\supp(\phi_1)\subset U_1$ and $\int_{F} \phi_{1}(g) dg = 1$. Also, by Peter-Weyl theorem, we can find a matrix coefficient $\phi_0$ of a finite dimensionalunitary representation $(\rho, R)$ of $K$ such that $\int_{K} \phi_0(\kappa)d\kappa = 1$ and $\int_{K\bs V} |\phi_{0}(\kappa)| d\kappa < \epsilon$. 
+Now let
+$$
+\phi(g) := \int\dpl{K} \phi_{0}(\kappa) \phi_{1}(\kappa^{-1}g)d\kappa.
+$$
+Then one can check that $\int_{G\bs U} |\phi(g)|dg < \epsilon$, so that $\pi(\phi)f$ is sufficiently close to $f$. 
+To show that $\pi(\phi)f$ is $K$-finite, let $\phi_{0}(\kappa) = \bra{\rho(\kappa)\xi}{\eta}$ where $\xi, \eta$ are vectors in $R$. 
+Then for $\kappa_1\in K$, we have
+\begin{align*}
+\phi_{1}(\kappa^{-1}g) = \int\dpl{K} \dbra{\rho(\kappa)\xi}{\rho(\kappa_1)\eta} \phi_1(\kappa^{-1}g)d\kappa
+\end{align*}
+so the space of functions $\phi(\kappa_{1}^{-1}g)$ lies in the finite dimensionalspace spanned by functions of the form 
+$$
+g\mapsto \int\dpl{K} \dbra{\rho(\kappa)\xi}{\zeta} \phi_{1}(\kappa^{-1}g)d\kappa, \quad \zeta\in R.
+$$
+This is a finite dimensionalspace of functions, so the space spanned by the vectors 
+$$
+\pi(\kappa_1) \pi(\phi)f = \int\dpl{G}\phi(g)\pi(\kappa_{1}g)fdg = \int\dpl{G} \phi(\kappa_{1}^{-1}g)\pi(g)fdg
+$$
+is finite dimensional. Hence $\pi(\phi)f\in \fraH_{\fin}$ by the previous proposition. This shows $\fraH_0$ is dense in $\fraH$. 
+
+To show $\fraH_\fin \subseteq \fraH^{\infty}$, it is enough to show that $\fraH_{0}(\sigma) = \fraH(\sigma)$ for all irreducible representation $\sigma$ of $K$. 
+Clearly, $\fraH_{0}(\sigma) \subseteq \fraH(\sigma)$, and if they are not same for some $\sigma$, then we can find $0\neq f\in \fraH(\sigma)$ orthogonal to $\fraH_{0}(\sigma)$, 
+Then this $f$ is orthogonal to $\fraH_{0}(\tau)$ for all $\tau \neq \sigma$, which contradicts to the denseness of $\fraH_{0}$ in $\fraH^{\infty}$. 
+
+For $\frag$-invariance, let $f\in R\subset \fraH$ be a $K$-finite vector where $R$ is a finite dimensional  $\fraK$-invariant subspace. 
+Let $R_{1}$ be a space generated by $Yf$ for $Y\in \frag$ and $f\in R$, which is also a finite dimensional space. For $X\in \fraK$ and $Y\in \frag$, $X(Y\phi) = [X, Y]\phi + Y(X\phi)$ shows that $R_{1}$ is $\fraK$-invariant so $Yf$ is a $K$-finite vector. 
+\end{proof}
+Motivated by this, we define a notion of $(\frag, K)$-module, which is a vector space of $K$-finite vectors with compatible $\frag, K$ actions.
+\begin{definition}
+Let $G, K, \frag, \fraK$ as above. A vector space $V$ with representations $\pi$ of $K$ and $\frag$ is called $(\frag, K)$-module if
+\begin{enumerate}
+\item $V$ is $K$-finite, i.e. $V$ decomposes into an algebraic direct sum of finite dimensional invariant subspaces under the action of $K$. 
+\item The representations of $\frag$ and $K$ are compatible in the sense that 
+$$
+\pi(X)f = \frac{d}{dt}\Big|_{t=0} \pi(\exp(tX))f
+$$
+for all $f\in V$ and $X\in \fraK$. 
+\item The representations are compatible with adjoint action in the sense that
+$$
+\pi(g) \pi(X)\pi(g^{-1}) f = \pi(\Ad(g)X)f
+$$
+for all $f\in V$, $g\in K$, and $X\in \frag$.
+\end{enumerate}
+\end{definition}
+
+
+For example, if $(\pi, \fraH)$ is an admissible representation of $\GL(2, \Rr)$, then $\fraH_{\fin}$ is a $(\frag, K)$-module. 
+We will classify all the irreducible admissible $(\frag, K)$-module for $\GL(2, \Rr)$.
+First, we will do for $G = \GL(2, \Rr)^{+}$ with $K = \SO(2)$, and modify it to get the result for $\GL(2, \Rr)$ with $K = \rmO(2)$. 
+
+Let $V$ be a irreducible admissible $(\frag, K)$-module, so that it can be decomposed as an algebraic sum of isotypic parts 
+$$
+V = \bigoplus _{\sigma} V(\sigma)\quad (\text{algebraic sum})
+$$
+where each $V(\sigma)$ is finite dimensional. 
+Since $K = \SO(2)$ is abelian, all the irreducible representations are 1-dimensional, and they are parametrized by integers as $\sigma_{k}(\kappa_{\theta}) = e^{ik\theta}$. Hence we can write $V$ as
+$$
+V = \bigoplus_{k\in \Zz} V(k)
+$$
+where $V(k) = V(\sigma_{k})$. 
+Each $V(k)$ is at most 1-dimensional by Theorem \ref{mult1char}.   Now we can extend the $\frag$-action to $U\frag_{\Cc}$-action naturally. 
+The set $\Sigma = \{k\in \Zz\,:\, V(k)\neq 0\}$ is called the set of $K$-types. 
+We have the following Schur's lemma for $(\frag, K)$-modules. 
+\begin{proposition}
+Let $V$ be an irreducible admissible $(\frag, K)$-module. If $D\in Z(U\frag_{\Cc})$ is an element in a center of $U\frag_{\Cc}$, then $D$ acts as a scalar on $V$. 
+\end{proposition}
+\begin{proof}
+We can naturally extend the adjoint action $\Ad$ of $G$ on $\frag$ to $U\frag_{\Cc}$ by 
+$$
+\Ad(g) (x_{1}\otimes \cdots \otimes x_{r}) = \Ad(g)x_{1} \otimes \cdots \otimes \Ad(g)x_{r}. 
+$$
+One can check that $D$ is fixed by this action by the third condition of $(\frag, K)$-module, so that $\pi(\kappa)\circ D = D\circ \pi(\kappa)$ for $\kappa\in K$. 
+Consequently, the isotypic subspaces $V(\sigma)$ are stable under $D$. 
+Choose any nonzero $V(\sigma)$. Since it has finite dimension, there exists a nonzero eigenvector $x_{0}\in V(\sigma)$ with an eigenvalue $\lambda$. Let $V_{0}\subseteq V(\sigma)$ be an eigenspace of $\lambda$. 
+Since $D$ is in the center, it commutes with the action of $\frag$ and $K$, so that $V_{0}$ is a nonzero invariant subspace. Thus we have $V = V(\sigma) = V_{0}$. 
+\end{proof}
+This proposition shows that the elements $Z, \Delta$ acts as scalars on $V$. (This will be the parameter to classify $(\frag, K)$-modules later.) 
+The following proposition gives a description how the elements $R, L, H, Z, \Delta \in U\frag_{\Cc}$ acts . 
+
+\begin{proposition}
+Let $V$ be an irreducible admissible $(\frag, K)$-module for $\GL(2, \Rr)^{+}$. 
+\begin{enumerate}
+\item $V(k)$ is the eigenspace for $H$ with an eigenvalue $k$. 
+\item $R(V(k)) \subseteq V(k+2)$ and $L(V(k))\subseteq V(k-2)$. 
+\item If $0\neq x\in V(k)$, then $V(k) = \Cc. x, V(k+2n) = \Cc. R^{n}x, V(k-2n) =\Cc. L^{n}x$ for $n>0$ and 
+$$
+V = \Cc. x \oplus \bigoplus _{n>0} \Cc. R^{n}x \oplus \bigoplus_{n>0} \Cc. L^{n}x.
+$$
+\item $\dim V(k) \leq 1$ and if $V(k), V(l)$ are both nonzero, then $k\equiv l\Mod{2}$. 
+\item Let $\lambda$ be an eigenvalue of $\Delta$ on $V$. If $x\in V(k)$, then 
+$$
+LRx=\left( -\lambda - \frac{k}{2}\left(1 + \frac{k}{2}\right)\right) x, \quad RLx = \left( - \lambda + \frac{k}{2}\left( 1- \frac{k}{2}\right)\right)x.
+$$
+\item Let $\lambda$ be an eigenvalue of $\Delta$ on $V$. If $0\neq x\in V(k)$ and $Rx = 0$, then $\lambda = -\frac{k}{2}\left( 1 +\frac{k}{2}\right)$, while if $Lx = 0$, then $\lambda = \frac{k}{2}\left(1-\frac{k}{2}\right)$. 
+\item Suppose that $\lambda = \frac{k}{2}\left( 1-\frac{k}{2}\right)$ and $x\in V(l)$. If $Rx =0$, then either $l =-k$ or $l = k-2$, and if $Lx = 0$, then either $l = k$ or $l = 2-k$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Every statement follows form the relations among $R, L, H$ and $\Delta$. 
+\end{proof}
+By the proposition, we have that the set of $K$-types of $V$ is all even or all odd. This defines a parity of $V$, even or odd. 
+The following theorem tells us the uniqueness of representations, whether we don't know the existence yet. 
+\begin{theorem}
+Let $\lambda, \mu$ be complex numbers. 
+\begin{enumerate}
+\item Assume that $\lambda \neq \frac{k}{2}\left( 1-\frac{k}{2}\right)$ for all $k$ even (resp. odd). Then There exists at most one isomorphism class of even (resp. odd) $(\frag, K)$-modules $V$ such that $\Delta, Z$ acts as scalars $\lambda, \mu$. For such $V$, the set of $K$-types consists of all even (resp. odd) $k$. 
+\item Assume that $\lambda = \frac{k}{2}\left(1-\frac{k}{2}\right)$ for some integer $k\geq 1$. Then there are three possible sets of $K$-types:
+\begin{align*}
+\Sigma^{+}(k) &= \{l\in \Zz\,:\, l\equiv k\Mod{2}, l\geq k\} \\
+\Sigma^{-}(k) &= \{l\in \Zz\,:\, l\equiv k\Mod{2}, l\leq -k\} \\
+\Sigma^{0}(k) &= \{l\in \Zz\,:\, l\equiv k\Mod{2}, -k < l < k\}
+\end{align*}
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Basically, all of these follows from the previous proposition, 6 and 7. For the uniqueness, we will only show the first case. 
+Let $V, V'$ be two irreducible admissible $(\frag, K)$-module with the same set of $K$-types. 
+Choose $0\neq x\in V(k)$ and $0\neq x'\in V'(k)$, then $x, L^{n}x, R^{n}x$ (for $n>0$) form a basis of $V$, and similarly $x', L^{n}x', R^{n}x'$ ($n>0$) form a basis of $V'$. 
+Now if we define $\phi:V\to V'$ by $\phi(x) = x', \phi(L^{n}x) = L^{n}x'$ and $\phi(R^{n}x) = R^{n}x'$, then we can easily check that this is a nonzero $(\frag, K)$-module homomorphism from $V$ to $V'$. 
+\end{proof}
+
+
+Now we will give a construction of such representation with given parameters, which will finish the classification. Let $\epsilon = 0$ or $1$, which represents parity of a representation, and let $s_{1}, s_{2}$ be two complex numbers. Let $\lambda = s(1-s)$ and $\mu = s_{1} + s_{2}$, where $s = \frac{1}{2}(s_{1} - s_{2} + 1)$. As you expect, these will be scalars corresponding to $\Delta$ and $Z$. 
+
+\begin{definition}
+$H^{\infty}(s_{1}, s_{2}, \epsilon)$ be the space of smooth functions $f:\GL(2, \Rr)^{+}\to \Cc$ satisfying 
+\begin{align*}
+f\left(\pmat{y_{1}}{x}{}{y_{2}} g\right) &= y_{1}^{s_{1} + 1/2}y_{2}^{s_{2} - 1/2}f(g), \quad y_{1}. y_{2} >0 \\
+f\left( \pmat{-1}{}{}{-1}g \right) &= (-1)^{\epsilon} f(g).
+\end{align*}
+We let $G$ acts by right translation. We also give a Hermitian inner product by 
+$$
+\langle f_{1}, f_{2}\rangle = \frac{1}{2\pi} \int_{0}^{2\pi} f_{1}(\kappa_{\theta})\overline{f_{2}(\kappa_{\theta})} d\theta
+$$
+and let $H(s_{1}, s_{2}, \epsilon)$ be the Hilbert space completion of $H^{\infty}(s_{1}, s_{2}, \epsilon)$. 
+\end{definition}
+Note that the right translation action (regular action) extends to $H(s_{1}, s_{2}, \epsilon)$. We can also prove that $H^{\infty}(s_{1}, s_{2}, \epsilon)$ is the space of smooth vectors for this representation. 
+By Iwasawa decomposition, we have 
+$$
+f(g) = f\left( \pmat{u}{}{}{u} \pmat{y^{1/2}}{xy^{-1/2}}{}{y^{-1/2}} \kappa_{\theta}\right) = u^{s_{1} + s_{2}} y^{s} f(\kappa_{\theta})
+$$
+for $f\in H(s_{1}, s_{2}, \epsilon)$, so each $f$ is determined by its value on $K = \SO(2)$, and $f|_{K}$ can be any smooth function, subject to the condition $f(\kappa_{\theta+ \pi}) = (-1)^{\epsilon}f(\kappa_{\theta})$. 
+
+In fact, the representation is an example of an example of induced representation. 
+For a locally compact Hausdorff group $G$ and its subgroup $H$, we can obtain a representation of $G$ from a representation of $H$ in a canonical way: if $(\rho, V)$ is a representation of $H$, then define 
+$$
+V^{G} = \left\{f:G\to \Cc\,:\, f(hg) = \left( \frac{\delta_{H}(h)}{\delta_{G}(g)}\right)^{1/2}\rho(h)f(g)\right\}
+$$
+where $\delta_{H}, \delta_{G}$ are modular characters. If we give $G$-action on $V^{G}$ by right translation, then this gives a representation of $G$. We denote such representation by $\Ind_{H}^{G} (\rho)$. 
+Now let $G = \GL(2, \Rr)^{+}$, $H = B(\Rr)^{+}$ (the subgroup of upper triangular matrices in $G$), and let $\chi:B(\Rr)^{+}\to \mathbb{C}^{\times}$ be a character defined as 
+$$
+\chi\pmat{y_{1}}{x}{}{y_{2}} = \sgn(y_{1})^{\epsilon}|y_{1}|^{s_{1}}|y_{2}|^{s_{2}}.
+$$
+Then, by definition, the representation $H(s_{1}, s_{2}, \epsilon)$ is just $\Ind_{H}^{G}(\chi)$. 
+Note that $G$ is a unimodular group (so that $\delta_{G}$ is trivial) and 
+$$
+\delta_{B(\Rr)^{+}} \pmat{y_{1}}{x}{}{y_{2}} = \frac{y_{1}}{y_{2}}. 
+$$
+
+Now we want to study $(\frag, K)$-module of $K$-finite vectors in $\fraH = H(s_{1}, s_{2}, \epsilon)$. 
+If $l\equiv \epsilon\Mod{2}$, then there exists a unique $f_{l}\in \fraH$ such that $f_{l}(\kappa_{\theta}) = e^{il\theta}$, which satisfies $\rho(\kappa_{\theta})f_{l} = e^{il\theta}f_{l}$. 
+Iwasawa decomposition gives an explicit description of $f_{l}$: 
+$$
+f_{l}\left( \pmat{u}{}{}{u} \pmat{y^{1/2}}{xy^{-1/2}}{}{y^{-1/2}} \kappa_{\theta}\right) = u^{s_{1} + s_{2}} y^{s} e^{il\theta}.
+$$
+By the direct computation, we can show that this function satisfies the following relations:
+\begin{proposition}
+\begin{align*}
+Hf_{l} &= lf_{l} \\
+Rf_{l} &= \left( s + \frac{l}{2}\right) f_{l+2} \\
+Lf_{l} &= \left( s - \frac{l}{2}\right) f_{l-2} \\
+\Delta f_{l} &= \lambda f_{l} \\
+Zf_{l} &= \mu f_{l}
+\end{align*}
+where $\lambda = s(1-s), \mu = s_{1} + s_{2}, s = \frac{1}{2}(s_{1} - s_{2} +1)$. 
+\end{proposition}
+Now, as you expect, these representations give examples of the previous representations with two parameters $\lambda, \mu$ and $K$-type. 
+The above $f_{l}$'s generate the space of $K$-finite vectors. 
+\begin{theorem}
+Let $s_{1}, s_{2}, s, \lambda, \mu, \epsilon$ are given as above, and let $\fraH$ be the $(\frag, K)$-module of $K$-finite vectors in $H(s_{1}, s_{2}, \epsilon)$, where $\Delta, Z$ acts as $\lambda, \mu$, respectively. 
+\begin{enumerate}
+\item If $s$ is not of the form $\frac{k}{2}$ for $k\equiv \epsilon\Mod{2}$, then $\fraH$ is irreducible. 
+\item If $s\geq \frac{1}{2}$ and $s = \frac{k}{2}$ for some integer $k\geq 1$ with $k\equiv \epsilon\Mod{2}$, then $\fraH$ has two irreducible invariant subspaces $\fraH_{+}, \fraH_{-}$, with the set of $K$-types as $\Sigma^{+}(k), \Sigma^{-}(k)$, respectively. The quotient $\fraH/(\fraH_{+}\oplus \fraH_{-})$ is irreducible with a set of $K$-type $\Sigma_{0}(k)$ for $k\neq 1$, where zero for $k=1$. 
+\item If $s\leq \frac{1}{2}$ and $s = 1-\frac{k}{2}$ for some integer $k\geq 1$ with $k\equiv \epsilon\Mod{2}$, then $\fraH$ has an invariant subspace $\fraH_{0}$ which is irreducible and whose set of $K$-types is $\Sigma^{0}(j)$. 
+The quotient $\fraH/\fraH_{0}$ decomposes into two irreducible invariant subspaces $\fraH_{+}$ and $\fraH^{-}$, with the set of $K$-types $\Sigma^{+}(k), \Sigma^{-}(k)$ respectively. 
+\end{enumerate}
+\end{theorem}
+In other words, this gives a classification of $(\frag, K)$-module for $\GL(2, \Rr)^{+}$. 
+\begin{theorem}[Classification of $(\frag, K)$-module for $\GL(2, \Rr)^{+}$]
+Let $\lambda, \mu$ be given complex numbers and $\epsilon \in \{0, 1\}$. 
+\begin{enumerate}
+\item If $\lambda$ is not of the form $\frac{k}{2}\left( 1- \frac{k}{2}\right)$ for $k\equiv \epsilon \Mod{2}$, then there exists a unique irreducible admissible $(\frag, K)$-module of parity $\epsilon$ on which $\Delta$ and $Z$ act by scalars $\lambda$ and $\mu$, and we have $\Sigma = \{k\,:\, k\equiv \epsilon\Mod{2}\}$ in this case. 
+\item If $\lambda = \frac{k}{2}\left( 1 - \frac{k}{2} \right)$ for some $k\geq 1$, $k\equiv \epsilon\Mod{2}$, then there exists three irreducible admissible  $(\frag, K)$-modules of parity $\epsilon$ on which $\Delta$ and $Z$ act by scalars $\lambda$ and $\mu$, except that if $k = 1$, there are only two. 
+The set of $K$-types are $\Sigma ^{\pm}(k)$ and (if $k>1$) $\Sigma^{0}(k)$. 
+\end{enumerate}
+\end{theorem}
+When $\lambda$ is not of the form $\frac{k}{2}\left(1-\frac{k}{2}\right)$, then the equivalence class of irreducible admissible $(\frag, K)$-modules of $\GL(2, \Rr)^{+}$ with given $\lambda, \mu$ are denoted by $\calP_{\mu}(\lambda, \epsilon)$. When $\mu = 0$, we denote it as $\calP(\lambda, \epsilon)$ and it is called \emph{principal series}. (By tensoring with a suitable power of determinant, we can assume $\mu = 0$ easily.) Later, we wiil check that the representation is unitarizable if and only if $\lambda\in \Rr$ and $\lambda \geq 1/4$, so we will concentrate on this case. 
+
+The finite dimensional representation with a set of $K$-types $\Sigma^{0}(k)$ can be realized as a space of polynomials: consider the space of homogeneous polynomials of degree $k-2$ in two variables $x_{1}, x_{2}$, and let $G = \GL(2, \Rr)^{+}$ acts on the space by 
+$$
+\pi(g)f(x_{1}, x_{2}) = \det(g)^{(\mu-k-2)/2} f((x_{1}, x_{2})g),
+$$
+which is a degree $k-1$ irreducible admissible representation where $Z$ acts as the scalar $\mu$. 
+This will not appear again since it is \emph{not unitarizable}. (We will prove that the only finite dimensional unitarizable representation is 1-dimensional, which factors through the determinant map.)
+
+If $k>1$, we have irreducible admissible representations with set of $K$-types as $\Sigma^{\pm}(k)$, and equivalence class of these representations will be denoted as $\calD^{\pm}_{\mu}(k)$ and called the \emph{discrete series}. When $k = 1$, the representations $\calD_{\mu}^{\pm}(1)$ are called \emph{limit of discrete series}. 
+
+
+To classify $(\frag, K)$-modules of $\GL(2, \Rr)$, we need some modification. We can check that the representation of $\rmO(2)$ has a symmetric property: the set of $K$-types is symmetric so that $k\in\Sigma$ if and only if $-k\in \Sigma$. Hence $\calD_{\mu}^{\pm}(k)$ cannot be extended to $\GL(2, \Rr)$, but $\calD_{\mu}^{+}(k)\oplus \calD_{\mu}^{-}(k)$ can be. We will denote the latter one by $\calD_{\mu}(k)$, with $(\frag, \rmO(k))$-module structure. 
+
+For the construction of principal series reresentation of $\GL(2, \Rr)$, we define $\chi: B(\Rr)\to \Cc^{\times}$ as 
+$$
+\chi\pmat{y_{1}}{x}{}{y_{2}} = \chi_{1}(y_{1})\chi_{2}(y_{2})
+$$
+for $\chi_{i}(y) = \sgn(y)^{\epsilon_{i}}|y|^{s_{i}}$, where $\epsilon_{i} \in \{0, 1\}$ and $\epsilon_1 + \epsilon_2 \equiv \epsilon \Mod{2}$. 
+Then we denote $\Ind_{B(\Rr)}^{\GL(2, \Rr)} (\chi)$ as $H(\chi_1, \chi_2)$, and we will denote by $\pi(\chi_1, \chi_2)$ the underlying $(\frag, \rO(2))$-module of $K$-finite vectors. 
+Note that $H(\chi_1, \chi_2) \simeq H(s_1, s_2, \epsilon)$ since each function in $H(\chi_1, \chi_2)$ is determined by its restriction to $\GL(2, \Rr)^{+}$. 
+So there are two extensions of the $\GL(2, \Rr)^{+}$-module structure on $H(s_1, s_2, \epsilon)$ to a $\GL(2, \Rr)$-module structure (corresponds to the choice of $(\epsilon_1, \epsilon_2)$), and the same is true for the corresponding $(\frag, K)$-modules. 
+\begin{theorem}[Classification of $(\frag, K)$-module for $\GL(2, \Rr)$]
+\begin{enumerate}
+\item The finite \\dimensional representations have a form of $\Sym^{n}\rho_{0} \otimes (\chi\circ \det)$, where $\rho_{0}$ is the standard representation and $\chi:\Rr^{\times}\to \Cc$ a character. 
+\item If $\chi_{1}, \chi_{2}$ are characters of $\Rr^{\times}$ such that $\chi_{1}\chi_{2}^{-1} \neq \sgn(\cdot)^{\epsilon}|\cdot|^{k-1}$, where $\epsilon\equiv k\Mod{2}$, then $\pi(\chi_{1}, \chi_{2})$ is an irreducible admissible $(\frag, \rmO(2))$-module.
+\item If $\mu \in \Cc$  and $k\geq 1$ an integer, then we have discrete series $\calD_{\mu}(k)$ ($k\geq 2$) and limits of discrete series $\calD_{\mu}(1)$. 
+\end{enumerate}
+\end{theorem}
+
+\subsection{Unitaricity and intertwining integrals}
+Now we will see which representations in the above list are unitarizable. For some special case (so-called complementary series), we will show that the representation is unitary by using the intertwining integral, which is an hidden explicit isomorphism between two isomorphic $(\frag, K)$-modules. 
+
+
+The following theorem tells us that induced representation of unitary representation is again unitary in some special case. 
+\begin{theorem}
+Let $G$ be a unimodular locally compact group, $P$ be a closed subgroup, and $K$ be a compact subgroup such that $PK = G$, so that $P\bs G$ is compact. If $(\sigma, V)$ is a unitary representation of $P$ with an inner product $\langle, \rangle$, then the induced representation $\Ind_{P}^{G}(\sigma)$ is also unitary with respect to the inner product 
+$$
+\dbra{f_{1}}{f_{2}} = \int_{K} \langle f_{1}(\kappa), f_{2}(\kappa)\rangle d\kappa. 
+$$ 
+\end{theorem}
+\begin{proof}
+It is easy to check that the function $g\mapsto \bra{f_{1}(g)}{f_{2}(g)}$ is in $C(P\bs G, \delta)$, i.e. satisfies $f(pg) =\delta(p)f(g)$ for all $p\in P$ and $g\in G$. 
+One can prove that the linear functional $I:C(P\bs G, \delta)\to \Cc$ defined as $I(f) = \int_{K} f(\kappa)d\kappa$ is $G$-invariant under the right regular representation, by showing that the map $\Lambda:C_{c}(G)\to C(P\bs G, \delta), \phi\mapsto (g\mapsto \int_{P} \phi(pg)dp)$, is surjective and $I(\Lambda f) = \int_{G}f(g)dg$. 
+For details, see Lemma 2.6.1 in \cite{bu}. 
+\end{proof}
+Using this, we can prove that there are some class of representations that are induced from unitary representation, so is unitarizable. 
+\begin{theorem}
+Let $\mu$ be a pure imaginary number, $\lambda\geq \frac{1}{4}$  be a real numbers, $\epsilon\in \{0, 1\}$, and assume that $\lambda$ is not of the form $\frac{k}{2}\left(1-\frac{k}{2}\right)$ for any integer $k\equiv \epsilon\Mod{2}$. Then $\calP_{\mu}(\lambda, \epsilon)$ contains a unitary representation of $\GL(2, \Rr)^{+}$. 
+\end{theorem}
+\begin{proof}
+With the assumption, we can easily check that $s_{1}, s_{2}$ satisfying $\mu = s_{1} + s_{2}, s = \frac{1}{2}(s_{1}-  s_{2} + 1), \lambda = s(1-s)$ are all pure imaginary. Then the character $\chi:B(\Rr)^{+}\to \Cc^{\times}$ defined as
+$$
+\chi\pmat{y_{1}}{x}{}{y_{2}} = \sgn(y_{1})^{\epsilon}|y_{1}|^{s_{1}}|y_{2}|^{s_{2}}
+$$
+is unitary and the induced representation that is contained in the class $\calP_{\mu}(\lambda, \epsilon)$ is also unitary by the previous theorem. 
+\end{proof}
+
+If $(\pi, \fraH)$ is a unitary representation of $G$ and  $X\in \frag$, then the action of $X$ on $\fraH^{\infty}$ is skew-symmetric, i.e. $\langle Xv, w\rangle = -\langle v, Xw\rangle$ for all $v, w\in \fraH^{\infty}$.  
+Especially, we have $\langle Rv, w\rangle = -\langle v, Lw\rangle$. 
+The following theorem give some necessary conditions for unitaricity. 
+\begin{theorem}
+Let $(\pi, \fraH)$ be a unitary representation of $G = \GL(2, \Rr)^{+}$. 
+\begin{enumerate}
+\item If $Z$ and $\Delta$ in $U\frag$ acts by scalars $\mu$ and $\lambda$, then $\mu\in i\Rr$ and $\lambda\in \Rr$. 
+\item Assume that $(\pi, \fraH)$ is in the class of $\calP_{\mu}(\lambda, \epsilon)$, where $\lambda$ is not of the form $\frac{k}{2}\left(1-\frac{k}{2}\right)$ for integer $k\equiv \epsilon\Mod{2}$. If $\epsilon = 0$, then $\lambda > 0$, and if $\epsilon = 1$, then $\lambda > \frac{1}{4}$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+1 follows from the fact that $Z\in \frag$, so action is skew-symmetric, and the action of $\Delta$ is symmetric. For 2, we know that $\fraH(k)\neq 0$ for all $k\equiv\epsilon\Mod{2}$. From $-4\Delta - H^{2} + 2H = 4RL$, $Hf_{k} = kf_{k}$ (where $0\neq f_{k}\in \fraH(k)$), and $\langle RL f_{\epsilon}, f_{\epsilon}\rangle = \langle Lf_{\epsilon}, Lf_{\epsilon}\rangle  >0$, we get $-4\lambda - \epsilon^{2} + 2\epsilon <0$ which gives the results. 
+\end{proof}
+
+From the above theorems, we know unitarizability of $\calP_{\mu}(\lambda, \epsilon)$ except for $\epsilon = 0$ and $0 < \lambda < \frac{1}{4}$. We will also show that these representations are also unitary, but induced from nonunitary representations of Borel subgroup. Such representations are called \emph{complementary series}, and the corresponding eigenvalues are \emph{exceptional eigenvalues}. 
+
+To construct such representation, we will use intertwining integral. We know that $H(s_{1}, s_{2}, \epsilon)$ and $H(s_{2}, s_{1}, \epsilon)$ are isomorphic, when they are irreducible,  as $(\frag, K)$-module since they have the same $\lambda$ and $\mu$. 
+Also, when they are not irreducible (when $\lambda = \frac{k}{2}\left(1-\frac{k}{2}\right)$) they are not isomorphic, but their composition factors are isomorphic. 
+We will construct an intertwining map between those to representations as an integral. 
+
+For $s\in \Cc$, the operators $M(s)$ are defined by 
+$$
+(M(s)f)(g) = \int_{-\infty}^{\infty} f\left(\pmat{0}{-1}{1}{0}\pmat{1}{x}{0}{1}g\right)dx.
+$$
+The next proposition shows that this is the desired intertwining map, when the integral converges. 
+\begin{proposition}
+Let $f\in H^{\infty}(s_{1}, s_{2}, \epsilon)$ and suppose $\Re s >\frac{1}{2}$ where $s = \frac{1}{2}(s_{1} - s_{2} + 1)$, so that $\Re s_{1} > \Re s_{2}$. Then the integral $M(s)f$ is convergent and define an intertwining map 
+$$
+M(s):H^{\infty}(s_{1}, s_{2}, \epsilon) \to H^{\infty}(s_{2}, s_{1}, \epsilon).
+$$
+Also, it sends a $K$-finite vector to a $K$-finite vector, which therefore induces a homomorphism of $(\frag, K)$-modules $H(s_{1}, s_{2}, \epsilon)_{\fin} \to H(s_{2}, s_{1}, \epsilon)_{\fin}$. 
+\end{proposition}
+\begin{proof}
+It is almost direct to check that the map is indeed an intertwining map, if we know that the intertwining map is convergent. 
+For the convergence, we only need to check convergence for $g = 1$ (since $M(s)$ is an intertwining map). The identity  
+\begin{align*}
+\pmat{}{-1}{1}{}\pmat{1}{x}{}{1} &= \pmat{\Delta_{x}^{-1}}{-x\Delta_{x}^{-1}}{}{\Delta_{x}} \kappa_{\theta(x)} \\
+\Delta_{x} &= \sqrt{1+x^{2}}, \quad \theta(x) = \arctan\left(-\frac{1}{x}\right). 
+\end{align*}
+gives
+$$
+(M(s)f)(1) = \int_{-\infty}^{\infty} (1+x^{2})^{-s}f(\kappa_{\theta(x)})dx, 
+$$
+and by the boundedness of $f$ on $K$, the integral converges if 
+$$
+\int_{-\infty}^{\infty} \frac{1}{|(1+x^{2})^{s}|} dx
+$$
+converges, which is true for $\Re s>\frac{1}{2}$. 
+To check that $M(s)f\in H^{\infty}(s_{2}, s_{1}, \epsilon)$, it is enough to check the following equations
+\begin{align*}
+(M(s)f)\left(\pmat{1}{\xi}{}{1}g\right) &= (M(s)f)(g) \\
+(M(s)f)\left(\pmat{y_{1}}{}{}{y_{2}}g\right) &= |y_{1}|^{s_{2} + \frac{1}{2}} |y_{2}|^{s_{1} - \frac{1}{2}} (M(s)f)(g)
+\end{align*}
+for $\xi\in \Rr$ and $y_{1}, y_{2}>0$, which can be checked by direct computation (with some substitutions). 
+Smoothness and $K$-finiteness are also can be easily checked from
+$$
+(M(s)f)(\kappa_{t}) = \int_{-\infty}^{\infty} (1+x^{2})^{-s}f(\kappa_{\theta(x)+t})dx.
+$$
+\end{proof}
+
+We can also compute the effect of $M(s)$ on a $K$-finite vector. 
+\begin{proposition}
+If $\Re s>\frac{1}{2}$, we have
+$$M(s)f_{k, s} = (-1)^{k} \sqrt{\pi} \frac{\Gamma(s)\Gamma\left( s- \frac{1}{2}\right)}{\Gamma\left(s+\frac{k}{2}\right)\Gamma\left(s-\frac{k}{2}\right)} f_{k, 1-s}.$$
+\end{proposition}
+\begin{proof}
+It is enough to show for $g = 1$, which is equivalent to 
+$$
+\int_{-\infty}^{\infty} (1+x^{2})^{-s}\exp(ik\theta(x)) dx = (-1)^{k} \sqrt{\pi} \frac{\Gamma(s)\Gamma\left( s-\frac{1}{2}\right)}{\Gamma\left(s+\frac{k}{2}\right)\Gamma\left(s-\frac{k}{2}\right)}.
+$$
+Under the substitution $y = \frac{x-i}{x+i}$, the integral equals
+$$
+2i(-i)^{k} 4^{-s} \int_{C} (1-y)^{2s-2}(-y)^{\frac{k}{2}-s}dy
+$$
+where $C$ is a contour consisting of  unit circle centered at the origin and moves counterclockwise. 
+For the convergence, we may assume $\Re(2s - 1), \Re(\frac{k}{2}-s) >0$, and use analytic continuation on $k$. 
+If we deform the contour $C$ so that it proceeds directly from 1 to 0 along real axis, circles the origin in the counterclockwise direction, then returns to 1 along the real line, then the integral became
+\begin{align*}
+2i&(-i)^{k}4^{-s}[e^{-i\pi(s-k/2)} - e^{i\pi (s-k/2)}] \int_{0}^{1}(1-y)^{2s-2}y^{k/2-s}dy \\
+&=(-1)^{k}\sqrt{\pi} \frac{\Gamma(s)\Gamma\left( s- \frac{1}{2}\right)}{\Gamma\left(s+\frac{k}{2}\right)\Gamma\left(s-\frac{k}{2}\right)},
+\end{align*}
+which follows from the Beta function identity and some other formulas of Gamma function. 
+\end{proof}
+
+Now we can prove that the complementary series is unitary. 
+\begin{theorem}
+Let $\mu\in i\Rr$ and $0<\lambda < \frac{1}{4}$. Then $\calP_{\mu}(\lambda, 0)$ contains a representative that is a unitary representation. 
+\end{theorem}
+\begin{proof}
+For $s_{1}, s_{2}\in \Cc$, we have a Hermitian pairing 
+\begin{align*}
+H^{\infty}(s_{1}, s_{2}, \epsilon) &\times H^{\infty}(-\ol{s_{1}}, -\ol{s_{2}}, \epsilon) \to \Cc \\
+(f, f')&\mapsto \int_{K} f(\kappa) \ol{f'(\kappa)} d\kappa
+\end{align*}
+which is $G$-invariant. 
+
+Now assume that $s_{1} = -\ol{s_{2}}$ and $s_{2} = -\ol{s_{1}}$, so that $\mu = s_{1} + s_{2} \in i\Rr$ and $s = \frac{1}{2}(s_{1} - s_{2} + 1)\in \Rr$. Since $H^{\infty}(s_{2}, s_{1}, \epsilon) = H^{\infty} (-\ol{s_{1}}, -\ol{s_{2}}, \epsilon)$, we can define Hermitian pairing on $H^{\infty}(s_{1}, s_{2}, \epsilon)$ by 
+$$
+\langle f, f'\rangle = \int_{K} f(\kappa)\ol{i^{\epsilon}(M(s)f')(\kappa)}d\kappa, 
+$$
+which is $G$-invariant. We only need to show that this pairing is positive definite, and it follows from the following computation
+$$
+\langle f_{k, s}, f_{k, s}\rangle = (-1)^{\frac{k}{2}} \sqrt{\pi} \frac{\Gamma(s)\Gamma\left(s-\frac{1}{2}\right)}{\Gamma\left(s+\frac{k}{2}\right)\Gamma\left(s-\frac{k}{2}\right)}
+$$
+which is positive for $\frac{1}{2} <s < 1$ and even $k$. 
+\end{proof}
+
+In contrast, finite dimensional representations are not unitary in general. In fact, the easiest ones are the only one which are unitary. 
+\begin{proposition}
+The only irreducible finite dimensional unitary representation of $\GL(n, \Rr)^{+}$ are 1-dimensional character $g\mapsto \det(g)^{r}$ where $r\in i\Rr$. 
+\end{proposition}
+\begin{proof}
+Finite dimensional unitary representation of $\GL(n, \Rr)^{+}$ can be regarded as a homomorphism $\pi:\GL(n, \Rr)^{+}\to U(m)$ where $m$ is the dimension of the representation. Since $U(m)$ is compact, image of $\pi$ is also compact. It is known that $\SL(n, \Rr)$  is simple for odd $n$ and $\mathrm{PSL}(n, \Rr) = \SL(n, \Rr)/\{\pm I\}$ is simple for even $n$, so the only compact homomorphic image of $\SL(n, \Rr)$ is the trivial group. 
+Hence $\SL(n, \Rr)\subset \ker\pi$ and the representation factors through the determinant map. Now we know that the only unitary representation of $\Rr_{+}^{\times}$ are of the form $t\mapsto t^{r}$ for $r\in i\Rr$. 
+\end{proof}
+The only thing remain that we have to figure out is unitarizability of discrete series. We will prove that there is a unitary representation in the infinitesimal equivalence class $\calD^{\pm}(k)$ for $k>1$, by constructing such representation on a space of holomorphic functions on $\mathcal{H}$ which has bounded $L^{2}$-norm. 
+We know that $\mu\in i\Rr$ if the representation is unitary, and we may assume $\mu = 0$ as before. 
+
+\begin{theorem}
+\begin{enumerate}
+\item Let $\fraH$ be the space of holomorphic functions $f$ on the upper half plane $\mathcal{H}$ which satisfies
+$$
+\int_{\mathcal{H}} |f(z)|^{2} y^{k} \frac{dxdy}{y^{2}}<\infty.
+$$
+Define the $G = \GL(2, \Rr)^{+}$ action on $\fraH$ by 
+$$
+(\pi^{\pm}(g)f)(z)= (ad-bc)^{k/2} (\mp bz+d)^{-k} f\left( \frac{az\mp c}{\mp bz + d}\right), \quad g = \pmat{a}{b}{c}{d}.
+$$
+Then $(\pi^{\pm}, \fraH)$ are admissible unitary representations in $\calD^{\pm}(k)$. 
+\item Let $Z$ be the center of $G = \GL(2, \Rr)^{+}$. Then the right regular representation of $G$ on $L^{2}(G/Z)$ contains an irreducible admissible representation in the class $\calD^{\pm}(k)$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The automorphism $\iota:G\to G$ defined as 
+$$
+\iota\left(\pmat{a}{b}{c}{d}\right)= \pmat{a}{-b}{-c}{d}
+$$
+relates $\pi^{+}$ and $\pi^{-}$ by $\pi^{+}(g)= \pi^{-}(\iota(g))$. Thus it is sufficient to show that $(\pi^{-}, \fraH)$ is an irreducible admissible representation in $\calD^{-}(k)$. 
+
+Define the representation $(\pi, \fraH)$ by 
+$$
+\pi(g) f= f|_{k}g^{-1}
+$$
+where $|_{k}$ is the weight $k$ slash operator, i.e.
+$$
+(f|_{k}g)(z) = \det(g)^{k/2} (cz+d)^{-k} f\left( \frac{az+b}{cz+d}\right)
+$$
+for $g\in \GL(2, \Cc)$. Then $\pi\simeq \pi^{-}$ since $\pi^{-}(g)f = \pi(w_{0}gw_{0}^{-1})f$ for $w_{0} = \smat{0}{-1}{1}{0}$. So it is enough to show that $(\pi, \fraH)$ is an irreducible admissible representation in $\calD^{-}(k)$. 
+
+Let $s_{1} = -s_{2} = (k-1)/2$, so that $s = k/2$ and $\mu = 0$, and let $\epsilon\in \{0, 1\}$ with $\epsilon\equiv k\Mod{2}$. We can define a bilinear pairing $\dbra{\,}{}: H^{\infty}(s_{1}, s_{2}, \epsilon) \times H^{\infty} (-s_{1}, -s_{2}, \epsilon) \to \Cc$ by 
+$$
+\dbra{f_{1}}{f_{2}} = \int_{K} f_{1}(\kappa)f_{2}(\kappa) d\kappa
+$$
+which is $G$-equivariant. Now we define a map $\sigma:H^{\infty}(-s_{1}, -s_{2}, \epsilon)\to C^{\infty}(G)$ by 
+$$
+(\sigma f)(g) = \dbra{\rho(g)f_{k, s}}{f}, 
+$$
+then the function 
+$$
+(\Sigma f)(z) = y^{-k/2}(\sigma f)\left(\pmat{y^{1/2}}{xy^{-1/2}}{}{y^{1/2}}\right)
+$$
+is an holomorphic function on $\mathcal{H}$ that satisfies $(\Sigma f|_{k}g)(i) = (\sigma f)(g)$. 
+(Holomorphicity follows from $L(\sigma f) =0$.)
+
+We will now prove that 
+$$
+\Sigma f_{l, 1-s} = c(l) (z-i)^{-(i+k)/2}(z+i)^{(l-k)/2}
+$$
+for some constant $c(l)$ which is zero for $l>-k$. We have
+$$
+(\sigma f_{l, 1-s})(\kappa_{\theta}g) = \dbra{\rho(g)f_{k, s}}{\rho(\kappa_{\theta}^{-1})f_{l, 1-s}} = e^{-il\theta}(\sigma f_{l, 1-s})(g),
+$$
+and this implies that the function $\phi = \Sigma f_{l, 1-s}$ satisfies
+$$
+\phi|_{k}\kappa_{\theta} = e^{-il\theta}\phi. 
+$$
+If $C = -\frac{1+i}{2} \smat{i}{1}{i}{-1}$ (Cayley transform), $\psi:= \phi_{k}|C^{-1}$ is a function on the unit disk with
+$$
+\psi\Big|_{k} \pmat{e^{i\theta}}{}{}{e^{-i\theta}} = e^{-il\theta}\psi
+$$
+and if we consider the Taylor expansion of $\psi$, we get $\psi(w) = cw^{(-l-k)/2}$ for some constant $c$, which implies $\phi= c(l) (z-i)^{-(i+k)/2}(z+i)^{(l-k)/2}$ where $c(l) =0$ for $l>-k$. 
+From this, the kernel of the map $\Sigma:H(-s_{1}, -s_{2}, \epsilon) \to C^{\omega}(\calH)$ contains the (reducible) invariant subspace $\langle f_{l, 1-s}\,:\, l\geq 2-k\rangle$, and we can check that $\Sigma f_{l, 1-s}$ are all square-integrable for $l\leq -k$ by using the explicit description, so the image lies in $\fraH$. Also, $\Sigma f_{l, 1-s}$ span $\fraH$ for $l\leq -k$ because as a function on the unit disk (via Cayley transform), power series expansion of a holomorphic function on the unit disk can be regarded as a Fourier expansion in terms of $\Sigma f_{l, 1-s}$.
+This completes the proof of 1. 
+
+For 2, note that the correspondence between $\sigma f$ and $\Sigma f$ is an isometry, and this gives a realization of $\calD^{-}(k)$ in the left regular representation of $G$ on $L^{2}(G/Z)$, and it can be transferred to the right regular representation by composing with $g\mapsto g^{-1}$. 
+\end{proof}
+
+The limits of the discrete series representation $\calD^{\pm}(1)$ also can be realized in a space of holomorphic functions on $\calH$ with the norm 
+$$
+|f|^{2} = \sup_{y>0}  \int_{-\infty}^{\infty} |f(x+iy)|^{2} dx,
+$$
+but we don't need this since they are subrepresentations of $H(0, 0, 1)$, which is already unitary. 
+
+Until now, we studied which $(\frag, K)$-module arises from irreducible admissible unitary representation of $\GL(2, \Rr)^{+}$. The following theorem tells us that this actually classifies all the irreducible unitary representations. 
+\begin{theorem}
+\label{unigk}
+Irreducible admissible unitary representation of $\GL(2, \Rr)^{+}$ is determined by the corresponding $(\frag, K)$-module. 
+\end{theorem}
+\begin{proof}
+Let $(\pi, \fraH)$ and $(\pi', \fraH')$ be irreducible admissible unitary representations of $G = \GL(2, \Rr)^{+}$ such that the spaces $V = \fraH_{\fin}$ and $V' = \fraH_{\fin}'$ are isomorphic as $(\frag, K)$-modules, and let $\phi:V\to V'$ be an isomorphism. 
+Decompose $V$ and $V'$ as $V = \oplus_{k} V(k), V' = \oplus_{k} V'(k)$ and choose $k$ so that $V(k)\neq 0$. 
+Then we can find $0\neq x\in V(k)$ which satisfies $|x| = 1$, and by normalizing $\phi$ we can also assume that $|\phi(x)| = 1$. (Note that all the spaces $V(k)$ are at most 1-dimension.) 
+Then 
+$$
+|Rx|^{2} = \langle Rx, Rx\rangle = -\langle LRx, x\rangle = \left(\lambda + \frac{k}{2}\left(1+\frac{k}{2}\right)\right) \langle x, x\rangle = \lambda + \frac{k}{2}\left(1+\frac{k}{2}\right), 
+$$
+and we get the same result for $|R\phi(x)|$. By repeating this, we can prove that $|R^{n}x| = |R^{n}\phi(x)|$ and $|L^{n}x| = |L^{n}\phi(x)|$ for all $n\geq 1$, which proves that $\phi$ is an isometry. Since $\fraH$ and $\fraH'$ are Hilbert space completions of $V$ and $V'$, we can extend $\phi$ to an isometry $\phi:\fraH\to \fraH'$. 
+
+Now we have to show that $\phi$ is an intertwining operator. For $f\in V = \fraH_{\fin}$ and $X\in \frag$, we have
+\begin{align*}
+\phi(\pi(e^{X})f) = \sum_{n\geq 0} \frac{1}{n!} \phi(X^{n}f) = \sum_{n\geq 0} \frac{1}{n!}X^{n}\phi(f) = \pi'(e^{X})\phi(f)
+\end{align*}
+and the result follows from the fact that $V\subset \fraH$ is dense and $G$ is generated by elements of the form $e^{X}$. 
+\end{proof}
+
+By combining all of the results, we get the following classification. 
+
+\begin{theorem}[Unitary representations of $\GL(2, \Rr)^{+}$]
+The following is a complete list of the isomorphism classes of irreducible admissible unitary representations of $\GL(2, \Rr)^{+}$:
+\begin{enumerate}
+\item 1-dimensional representation $g\mapsto \det(g)^{\mu}$ for $\mu\in i\Rr$. 
+\item The principal series $\calP_{\mu}(\lambda, \epsilon)$ with $\mu\in i\Rr, \epsilon \in \{0, 1\}$ and $\lambda\in \Rr$ with $\lambda \geq \frac{1}{4}$. 
+\item The complementary series $\calP_{\mu}(\lambda, 0)$ with $\mu\in i\Rr$ and $0<\lambda <\frac{1}{4}$. 
+\item The holomorphic discrete series and limits of discrete series $\calD_{\mu}^{\pm}(k)$ with $\mu\in i\Rr$. 
+\end{enumerate}
+\end{theorem}
+
+
+\subsection{Whittaker models}
+Now we know all the representations of $\GL(2, \Rr)$. However, if someone give an arbitrary abstract representation, then it is not easy to study it directly. To resolve such a problem, we may realize the abstract representation as a space of certain functions with an explicit and easy action (right translation). 
+This is a main philosophy of \emph{Whittaker models}, and we will show that it is possible to realize almost all representations as a space of such functions. 
+
+Let $W:\GL(2, \Rr)^{+}\to \Cc$ be a smooth function that satisfies 
+$$
+W\left(\pmat{1}{x}{}{1}g \right) = \psi(x) W(g)
+$$
+for a fixed nontrivial unitary additive character of $\Rr$, which has a form of $\Psi(x) = \Psi_{a}(x) = e^{iax}$ where  $0\neq a\in\Rr$. We say that $W$ is of moderate growth if, when we express the function $W$ in terms of $u, x, y, \theta$ via Iwasawa decomposition, it is bounded by a polynomial in $y$ as $y\to \infty$. We say that $W$ is rapidly decreasing if $y^{N}W\to 0$ as $y\to \infty$ for any $N>0$. We say that $W$ is analytic if it is locally given by a convergent power series. 
+The function $W$ satisfying the functional equation and of moderate growth is called \emph{Whittaker function}.
+
+The following proposition shows uniqueness of such function with fixed eigenvalues of $\Delta$ and $Z$. 
+\begin{proposition}
+Let $\mu, \lambda\in \Cc$ and $k\in \Zz$. Let $\calW(\lambda, \mu, k)$ be the space of Whittaker functions with prescribed eigenvalues $\lambda, \mu$ of $\Delta, Z$  and weight $k$, i.e. the space of functions $W:\GL(2, \Rr)^{+}\to \Cc$ satisfying 
+\begin{align*}
+W\left( \pmat{1}{x}{}{1}g \kappa_{\theta}\right) &= \psi(x)e^{ik\theta}W(g) \\
+\Delta W &= \lambda W \\
+ZW &= \mu W
+\end{align*}
+and is of moderate growth. Then $\calW(\lambda, \mu, k)$ is one-dimensional, and a function in this space is actually rapidly decreasing and analytic. 
+Also, the operators $R$ and $L$ map $\calW(\lambda, \mu,k)$ to $\calW(\lambda, \mu, k+2)$ and $\calW(\lambda, \mu, k-2)$, respectively. 
+\end{proposition}
+\begin{proof}
+We will assume that $\psi(x) =\psi_{1/2}(x) = e^{ix/2}$. The condition $ZW = \mu W$ implies 
+$$
+W\left(\pmat{u}{}{}{u}g\right) = u^{\mu} W(g)
+$$
+and we get
+\begin{align*}
+W(g) = u^{\mu} e^{i(x/2+k\theta)}w(y), \quad w(y) = W\pmat{y^{1/2}}{}{}{y^{-1/2}}\end{align*}
+where $g = \smat{u}{}{}{u} \smat{y^{1/2}}{xy^{-1/2}}{}{y^{-1/2}} \kappa_{\theta}$. 
+Then the condition $\Delta W = \lambda W$ is equivalent to the 2nd order differential equation
+$$
+w'' + \left(-\frac{1}{4} + \frac{k}{2y} + \frac{\lambda}{y^{2}}\right)w = 0.
+$$
+It is known that there exists two linearly independent solutions of this equation, $W_{\frac{k}{2}, s-\frac{1}{2}}(y)$ and $W_{-\frac{k}{2}, s-\frac{1}{2}}(-y)$, which are asymptotically $e^{-y/2}y^{k/2}$ and $e^{y/2}(-y)^{-k/2}$.  (Here $s = \frac{1}{2} + (-\lambda + \frac{1}{4})^{1/2}$, and such functions are \emph{classical Whittaker functions}.) 
+Thus the assumption of moderate growth excludes the second solution and $\calW(\lambda, \mu, k)$ is 1-dimensional space spanned by the function
+$$
+W_{k, \lambda, \mu}(g) = u^{\mu}e^{i(x/2 + k\theta)} W_{\frac{k}{2}, s-\frac{1}{2}}(y),
+$$
+which is known to be rapidly decreasing and analytic. 
+The statement about $R$ and $L$ action also follows from analytic properties of classical Whittaker functions. 
+\end{proof}
+
+From this, we can prove uniqueness of Whittaker model.
+\begin{theorem}
+\label{archwit}
+Let $(\pi, V)$ be an irreducible admissible $(\frag, K)$-module for $G = \GL(2, \Rr)^{+}$ or $\GL(2, \Rr)$. Then there exists at most one space $\calW(\pi, \psi)$ of smooth $K$-finite Whittaker functions $W$ which is isomorphic to $(\pi, V)$ as a $(\frag, K)$-module. Every function in $\calW(\pi, \psi)$ is rapidly decreasing and analytic. 
+\end{theorem}
+\begin{proof}
+Let $\mu, \lambda$ be scalars corresponds to action of $Z$ and $\Delta$. Decompose $V$ as $\oplus_{k} V(k)$. If $V(k)\neq 0$, then its image under the isomorphism with $\calW(\pi, \psi)$ is $\calW(\lambda, \mu, k)$, and the previous theorem implies uniqueness and analytic properties. 
+\end{proof}
+Such uniqueness is important, and we also have uniqueness theorem for non-archimedean local fields (we will prove this in Chapter 3 using the theory of Jacquet functor). By combining uniqueness result for archimedean and non-archimedean local fields, we get the global result, which is called \emph{multiplicity one}. 
+
+\subsection{Classical Automorphic Forms and Spectral Problem}
+In this section, we will see how the representation theory relates to classical modular forms, Maass forms and spectral problems. 
+
+First, the elements $R, L, H, \Delta \in U\frag_{\Cc}$ coincide with the classical Maass operators.
+Recall that we have (weight $k$) Maass differential operators
+\begin{align*}
+R_{k} &= (z-\ol{z}) \parz + \frac{k}{2} \\
+L_{k} &= -(z-\ol{z}) \parzb - \frac{k}{2}
+\end{align*}
+and the (weight $k$) Laplacian
+$$
+\Delta_{k} = -y^{2}\left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} \right) iky \frac{\partial}{\partial x}
+$$
+which acts on the space of smooth functions on $\calH$, the complex upper half plane. 
+Since $\calH \simeq \SL(2, \Rr) / \SO(2)$, we can lift such function as a smooth function on $\SL(2, \Rr)$, so on $G = \GL(2, \Rr)^{+}$ by letting it translation invariant under $Z(\Rr)^{+} = \{ \smat{a}{}{}{a}\,:\, a>0\}$. 
+This gives a 1-1 correspondence between space of functions on $\calH$ and on $G$. More precisely:
+\begin{proposition}
+Let $\Gamma$ be a discrete cofinite subgroup of $G$ and let $\chi:\Gamma \to \Cc^{\times}$ be a character. 
+Let $L^{2}(\Gamma \bs \calH, \chi, k)$ be a space of functions $f(z)$ on $\calH$ satisfying
+\begin{align*}
+\chi(\gamma)f(z) = &\left(\frac{c\ol{z} + d}{|cz+d|}\right)^{k} f\left( \frac{az+b}{cz+d}\right)=:(f||_{k}\gamma)(z), \quad \gamma = \pmat{a}{b}{c}{d} \in \Gamma 
+\end{align*}
+and
+\begin{align*}
+\int_{\Gamma\bs \calH} |f(z)|^{2} \frac{dxdy}{y^{2}} <\infty.
+\end{align*}
+Similarly, let $L^{2}(\Gamma \bs G, \chi, k)$ be a space of functions $F(g)$ on $G$ satisfying 
+$$
+F(\gamma g u \kappa_{\theta}) = \chi(\gamma)e^{ik\theta}F(g), \quad \gamma\in \Gamma, u\in Z^{+}, g\in G, \kappa_{\theta}\in \SO(2)
+$$
+and
+$$
+\int_{G/Z^{+}} |F(g)|^{2} dg <\infty.
+$$
+There is a Hilbert space isomorphism 
+$$
+\sigma_k : L^{2}(\Gamma \bs \calH, \chi, k) \to L^{2}(\Gamma \bs G, \chi, k)
+$$
+given by 
+$$
+(\sigma_k f)(g) = (f||_{k}g)(i).
+$$
+\end{proposition}
+\begin{proof}
+Proof follows from direct computations. The inverse map is given by 
+$$
+f(z) = F\left(\pmat{y}{x}{}{1}\right)
+$$
+for given $F\in L^{2}(\Gamma \bs G, \chi, k)$. 
+\end{proof}
+The main point is that under this isomorphism, Maass differential operators and the (weight $k$) Laplacian operator correspond to the elements $R, L, \Delta \in U\frag_{\Cc}$ we defined. 
+\begin{proposition}
+Let $R, L, H, \Delta$ be elements in $U\frag_{\Cc}$ we defined before. Then it acts as differential operators on $C^{\infty}(G)$. 
+We have 
+\begin{align*}
+dR &= e^{2i\theta} \left( iy \frac{\partial}{\partial x} + y\frac{\partial}{\partial y} + \frac{1}{2i} \frac{\partial}{\partial \theta}\right) \\
+dL &= e^{-2i\theta} \left(-iy \frac{\partial}{\partial x} + y \frac{\partial}{\partial y} - \frac{1}{2i}\frac{\partial}{\partial \theta}\right) \\
+dH & = -i\frac{\partial}{\partial\theta} \\
+\Delta &= -y^{2}\left( \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}}\right) + y\frac{\partial^{2}}{\partial x \partial \theta} 
+\end{align*} 
+where $x, y, \theta$ are parameters in the Iwasawa decomposition of $g\in G$. 
+Also, we have
+$$
+\sigma_{k+2} \circ R_k = R\circ \sigma_k, \quad \sigma_{k-2} \circ L_k = L \circ \sigma_k, \quad \sigma_k \circ \Delta_k = \Delta \circ \sigma_k. 
+$$
+\end{proposition}
+
+We know that there are three types of automorphic forms on $\Gamma \bs \calH$:
+\begin{enumerate}
+\item Holomorphic modular forms: For a given character $\chi:\Gamma \to \Cc^{\times}$ and $k\geq 1$ with $\chi(-I) = (-1)^{k}$, a weight $k$ holomorphic modular form on $\Gamma$ is a holomorphic function $f:\calH \to \Cc$ satisfying $f(\gamma z) = \chi(\gamma)(cz+d)^{k}f(z)$ for all $\gamma\in \Gamma, z\in \calH$, and holomorphic at the cusps of $\Gamma$. 
+\item Maass forms: Also a function on $\calH$, but smooth, not holomorphic. $f:\calH \to \Cc$ satisfies $(f||_{k}\gamma)(z) = \chi(\gamma)f(z)$ for $\gamma\in \Gamma$, and an eigenfunction of the Laplacian operator $\Delta_k$. 
+\item The constant function. $f(z) = 1$ for all $z\in \calH$ is clearly invariant under (any) discrete subgroup $\Gamma \subset G$. 
+More generally, $f(z) = y^{s}$ is also  an automorphic form for any $s\in \Cc$.
+\end{enumerate}
+Why are there precisely these types of automorphic forms on $\Gamma \bs \calH$ and no others? 
+You may see that this list of automorphic forms are very similar to the classification of $(\frag, K)$-modules of $\GL(2, \Rr)^{+}$ (and $\GL(2, \Rr)$). 
+In fact, this gives an answer to the above question. 
+We can consider such an automorphic form $f(z)$ on $\calH$ as  a function $F(g)$ on $G$ (by the above map $\sigma_k$), and we can consider a $(\frag, K)$-submodule generated by the single element $F(g)$. 
+This is an irreducible admissible $(\frag, K)$-module (admissibility is a result of Harish-Chandra, see Theorem \ref{autoadm}), and the previous classification gives us three types of automorphic forms. 
+
+Another important question is the spectral problem. We can formulate it as follows: 
+\begin{enumerate}
+\item Determine the spectrum of the symmetric unbounded operator $\Delta_k$ on $L^{2}(\Gamma \bs \calH, \chi, k)$. 
+\item Determine the decomposition of the Hilbert space $L^{2}(\Gamma \bs G, \chi)$ into irreducible subspaces. 
+\end{enumerate}
+We don't know the complete answer yet, but we  understand some of them. First, one can prove that such decomposition \emph{exists}. 
+\begin{theorem}
+\label{l2decomp}
+$L^{2}(\Gamma \bs G, \chi)$ decomposes into a Hilbert space direct sum of  irreducible representations, and $L^{2}(\Gamma\bs\calH, \chi, k)$ decomposes into a Hilbert space direct sum of eigenspaces for $\Delta_k$. 
+\end{theorem}
+\begin{proof}
+First statement uses Zorn's lemma. If we define $\Sigma$ to be the set of all sets $S$ of irreducible invariant subspaces of $L^{2}(\Gamma \bs G, \chi)$ such that the elements of $S$ are mutually orthogonal, then there exists a maximal element $S$ in $\Sigma$. 
+If we put $\fraH$ as the orthogonal complement of the closure of the direct sum of the elements of $S$, then one can show that $\fraH = 0$. (For details, see Theorem 2.3.3 in \cite{bu}.)
+
+For the second statement, it is equivalent to showing that $L^{2}(\Gamma \bs G, \chi, k)$ decomposes into direct sum of eigenspaces of $\Delta$. 
+In Proposition \ref{commchar}, we showed that $C_{c}^{\infty}(K\bs G /K, \sigma)$ is a commutative ring, where $\sigma(\kappa_{\theta}) = e^{ik\theta}$. 
+For each character $\xi$ of $C_{c}^{\infty}(K\bs G/K, \sigma)$, let $H(\xi) := \{f\in L^{2}(\Gamma \bs G, \chi, k)\,:\, \pi(\phi)f = \xi(\phi)f, \phi\in C_{c}^{\infty}(K\bs G/K, \sigma)\}$. 
+Here $C_{c}^{\infty}(K\bs G/K, \sigma)\subset C_{c}^{\infty}(G)$ acts as
+$$
+\pi(\phi)f = \int\dpl{G} \phi(g)\pi(g)f dg. 
+$$
+One can show that 
+$$
+L^{2}(\Gamma \bs G, \chi, k) = \bigoplus_{\xi} H(\xi), 
+$$
+where the direct sum is a Hilbert space direct sum and $\xi$ ranges through all distinct characters of $C_{c}^{\infty}(K\bs G/K, \sigma)$ with $H(\xi)\neq 0$. 
+Each of $H(\xi)$ is finite dimensional. (Most of the result follows from the spectral theorem for self-adjoint compact operators, applied to $\pi(\phi)$. See Theorem 2.3.4 of \cite{bu} for details.) 
+Since $\Delta$ commutes with $\pi(\phi)$ (recall that $H$ lies in the center of $U\frag_{\Cc}$, and it is both invariant under left and right regular representations - see Theorem \ref{center}), the spaces $H(\xi)$ are $\Delta$-invariant, so these decomposes as a direct sum of $\Delta$-eigenspaces since $\Delta$ is self-adjoint. Hence $L^{2}(\Gamma \bs G, \chi, k)$ also decomposes as $\Delta_k$-eigenspaces. 
+\end{proof}
+Now the previous classification of irreducible admissible unitary representations of $\GL(2, \Rr)^{+}$ gives the decomposition of $L^{2}(\Gamma \bs G, \chi)$. 
+For each irreducible subspace $H$ of it, $\Delta$ acts as a scalar $\lambda = \lambda(H)$ on $H$ and it depends only on the isomorphism class of $H$. According to the value of $\lambda$, the different types of irreducible admissible unitary representations occur as constituents of the decomposition with some multiplicity. 
+\begin{theorem}
+The right regular representation of $G$ on $L^{2}(\Gamma \bs G, \chi)$ decomposes as following:
+\begin{align*}
+L^{2}(\Gamma \bs G, \chi) = \Cc.1 &\bigoplus \left( \bigoplus_{\substack{\lambda \neq \frac{k}{2}\left(1-\frac{k}{2}\right), k\equiv \epsilon \Mod{2}\\ \lambda \geq \frac{\epsilon}{4}}} m(\lambda, \epsilon) \calP(\lambda, \epsilon)\right) \\&\bigoplus \left(\bigoplus_{\substack{k\geq 1 \\ k\equiv \epsilon \Mod{2}}}d(k, \chi) (\calD^{+}(k) \oplus \calD^{-}(k))\right)
+\end{align*}
+where $m(\lambda, \epsilon)$ is a multiplicity of $\calP(\lambda, \epsilon)$ in the decomposition, which is equal to the multiplicity of the eigenvalue $\lambda$ in $L^{2}(\Gamma\bs\calH, \chi, k)$ for $k\equiv \epsilon\Mod{2}$, and $d(k, \chi) = \dim M_{k}(\Gamma, \chi)$, the dimension of the space of weight $k$ holomorphic modular forms on $\Gamma$ with character $\chi$. 
+\end{theorem}
+\begin{proof}
+The only point worth to mention is the connection between discrete series representations and holomorphic modular forms. The multiplicity of $\calD^{+}(k)$ equals the dimension of the $\frac{k}{2}\left( 1- \frac{k}{2}\right)$-eigenspace in $L^{2}(\Gamma\bs G, \chi, k)$, or in $L^{2}(\Gamma \bs \calH, \chi, k)$. This eigenspace is isomorphic to the space of modular forms $M_{k}(\Gamma, \chi)$: let $H$ be an irreducible subspace that is isomorphic to $\calD^{\pm}(k)$. 
+Then $H(k-2) = 0$ implies that $L_{k}f = 0$ for any $f\in L^{2}(\Gamma \bs \calH, \chi, k)$. This is equivalent to $y^{-k/2}f(z)$ to be a holomorphic modular form in $M_{k}(\Gamma, \chi)$. 
+\end{proof}
+It is not hard to compute $d(k, \chi)$ (using Riemann-Roch theorem or other tools), but it is extremely hard to compute $m(\lambda, \epsilon)$ and we conjecture that all of them are one, but until now, we don't know any single exact value of it. (There are some known upper bounds.) 
+It is known that  if $\Gamma$ is cocompact (i.e. $\Gamma \bs \calH$ is compact), it is known that the spectrum of $\Delta_k$ on $L^{2}(\Gamma\bs\calH, \chi, k)$ is discrete and the eigenvalues $ \lambda_1 < \lambda_2 < \cdots$ tend to infinity. 
+
