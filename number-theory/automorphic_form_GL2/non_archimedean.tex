@@ -1,0 +1,1478 @@
+\newpage
+
+\section{Non-archimedean theory}
+Now we will get into the representation theory of $\GL(2, F)$ over non-archimedean local fields. Archimedean and non-archimedean cases are very similar, but also very different. 
+Their topologies are completely different from archimedean case, which make the situations easier or harder. However, their representations are very similar. For example, we can construct most of the representation from principal series representations, which are induced representations of characters of Borel subgroup, as in the archimedean case. 
+
+There are some other representations that do not come from principal series representations, which are called supercuspidal representations. Such representations are also interesting, and we will present some methods to construct such representations (Weil representations). 
+
+\subsection{Smooth and admissible representation}
+In this section, we will fix some notations as follows:
+\begin{itemize}
+\item $F$: a non-archimedean local field
+\item $\calO$: a ring of integers
+\item $\frap$: the unique maximal ideal of $\calO$
+\item $\varpi$: a uniformizer, i.e. generator of $\frap$
+\item $k = \calO / \frap$: a residue field
+\item $q$: cardinality of $k$
+\item $v:F\to \Zz\cup\{\infty\}$: normalized valuation of $F$
+\item $dx$: nomalized additive Haar measure
+\item $d^{\times}x$: normalized multiplicative Haar measure
+\end{itemize}
+The biggest difference between archimedean and non-archimedean local fields is the topology. Every group over non-archimedean local fields that we will see will be totally disconnected locally compact spaces. 
+Such groups always have a basis of open subgroups at the identity, which can be chosen as normal subgroups when $G$ is compact. 
+For example, in case of $G = \GL(n, F)$, the subgroups $K(\varpi^{n})$ ($n\geq0$) of elements in $\GL(n, \calO)$ congruent to identity modulo $\varpi^{n}$ forms such a basis, and these are even normal in a compact subgroup $\GL(n, \calO)$. 
+
+
+As in the archimedean case, we will concentrate on representations that  we can handle, which are \emph{smooth} and \emph{admissible} representations. 
+\begin{definition}
+Let $G$ be a totally disconnected locally compact group and $(\pi, V)$ be a representation of $G$. We say that $\pi$ is \emph{smooth} if $\Stab(v) = \{g\in G\,:\,\pi(g)v= v\}$ is open for all $v\in V$. 
+If $\pi$ is smooth and $V^{U} = \{v\in V\,:\, \pi(g)v= v\,\forall g\in U\}$ is finite dimensional for any open subgroup $U\subset G$, then $V$ is called \emph{admissible}.
+\end{definition} 
+ One can check that complex representation of $G$ is smooth if and only if the map $\pi:G\times V\to V$ is continuous, where $V$ is given by usual complex topology. 
+
+
+Admissible representations are important because they satisfy important properties that also holds for representations of finite groups. Also, most of the properties can be proved by using the corresponding result of representations of finite groups. 
+For example, the following theorem shows that any smooth representation of totally disconnected locally compact group is semisimple, and each isotypic part of the decomposition is finite dimensional if and only if the representation is admissible. 
+\begin{proposition}
+Let $(\pi, V)$ be a smooth representation of $G$ and $K$ be a compact open subgroup of $G$. Then $V$ is semisimple, i.e.
+$$
+V = \bigoplus_{\rho\in \wh{K}} V(\rho)\qquad(\text{algebraic direct sum}).
+$$
+$\pi$ is admissible if and only if $V(\rho)$ is finite dimensional for all $\rho$. 
+\end{proposition}
+\begin{proof}
+We show first that $V\subset \sum_{\rho\in \wh{K}} V(\rho)$. 
+For $v\in V$, it is fixed by a compact open subgroup $K_{0}$ of $K$, which can be assumed to be normal. Then 
+$$
+v\in V^{K_{0}} = \bigoplus_{\rho\in \wh{\Gamma}} V(\rho) \subseteq \sum_{\rho\in \wh{K}} V(\rho)
+$$
+where $\Gamma = K/K_{0}$, which is finite. 
+
+To show that the sum is direct, let's assume that it is not, so $\sum_{\rho\in S} c_{\rho}v_{\rho} = 0$ for some finite subset $S\subset \wh{K}$, $v_{\rho}\in V(\rho)$ and $c_{\rho}\in \Cc$ that are not all zero. If we put $K_{0} = \cap_{\rho\in S}\ker (\rho)$, then we obtain a contradiction to the directness of the summation for $\Gamma = K/K_{0}$. 
+
+For the last statement, $V(\rho)\subset V^{\ker(\rho)}$ implies that $V(\rho)$ is finite dimensional if $\pi$ is admissible since $\ker(\rho)$ is an open subgroup. 
+Conversely, if $\pi$ is not admissible, then $V^{K_{0}}$ is infinite dimensional for some open normal subgroup $K_{0}$ of $K$. From $V^{K_{0}} = \oplus_{\rho\in \wh{K/K_{0}}} V(\rho)$, since $K/K_{0}$ is a finite group, $V(\rho)$ is infinite dimensional for some $\rho$. 
+\end{proof}
+
+We call that a linear functional $\wh{v}:V\to \Cc$ is \emph{smooth} if there exists an open neighborhood $U$ of identity such that $\langle \pi(g)v, \wh{v}\rangle = \langle v, \wh{v}\rangle$ for all $g\in U$ and $v\in V$. 
+We will denote the space of smooth linear functionals as $\wh{V}$. For any representation $(\pi, V)$, we define its \emph{contragredient representation} $(\wh{\pi}, \wh{V})$ by 
+$$
+\bra{v}{\wh{\pi}(g)\wh{v}} = \bra{\pi(g^{-1})v}{\wh{v}}.
+$$
+By smoothness, we can check that $\wh{V}$ also decomposes as
+$$
+\wh{V} = \bigoplus_{\rho} V(\rho)^{*}
+$$
+so the contragredient of an admissible representation is admissible. 
+
+As in the archimedean case, representation $\pi$ of $G$ on the space $V$ induces an action of Hecke algebra $\calH = C_{c}^{\infty}(G)$ of compactly supported smooth functions, i.e. locally constant functions, where the multiplication is given by the convolution 
+$$
+(\phi_{1} * \phi_{2})(g) = \int_{G} \phi_{1}(gh^{-1})\phi_{2}(h) dh.
+$$
+The action of $\calH$ is given by 
+$$
+\pi(\phi)v = \int_{G} \phi(g)\pi(g)vdg
+$$
+which satisfies $\pi(\phi_{1}*\phi_{2}) = \pi(\phi_{1})\circ \pi(\phi_{2})$. Note that the above integration is actually a finite sum. 
+There's no identity in the algebra $\calH$. However, for any compact open subgroup of $G$, the subalgebra of $K_{0}$-biinvariant functions $\calH_{K_{0}} = C_{c}^{\infty}(K_{0}\backslash G/K_{0})$ has an identity element 
+$$
+\epsilon_{K_{0}} = \frac{1}{|K_{0}|} \chf_{K_{0}}. 
+$$
+The following proposition shows that irreducibility of the representation is equivalent to irreducibility of correponding Hecke algebra representation. 
+
+\begin{proposition}
+\label{simple}
+Let $(\pi, V)$ be a smooth representation of $G$. TFAE:
+\begin{enumerate}
+\item $\pi$ is irreducible. 
+\item $V$ is a simple $\calH$-module. 
+\item $V^{K_{0}}$ is either zero or simple $\calH_{K_{0}}$-module for all open subgroup $K_{0}$ of $G$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+We will show that $G$-invariance of subspace is equivalent to $\calH$-invariance, which proves $1\Leftrightarrow 2$. Clearly,  $G$-invariant space is also $\calH$-invariant. Conversely, let $W\subset V$ be a $\calH$-invariant subspace. Assume that $W$ is not $G$-invariant, so that $\pi(g)w\neq w$ for some $g\in G$ and $w\in W$. 
+Now $w$ is fixed by some neighborhood $N$ of the identity, so let $\phi = \frac{1}{|N|} \chf_{gN}$ then we have $w = \pi(\phi)w = \phi(g)w$, a contradiction. 
+
+$3\Rightarrow 2$ is also simple: assume that $V$ is not simple and let $W \subset V$ be a proper $\calH$-submodule. From $V = \cup_{K_{0}} V^{K_{0}}$, we can find $K_{0}$ small enough so that $W^{K_{0}}$ is a nonzero proper subspace of $V^{K_{0}}$.
+
+For $2\Rightarrow3$, let $W_{0}\subset V^{K_{0}}$ be a nonzero proper $\calH_{K_{0}}$-submodule. We will show that $\pi(\calH)W_{0} \cap V^{K_{0}} = W_{0}$, which implies that $\pi(\calH)W_{0}$ is a nonzero proper $\calH$-submodule of $V$. 
+Assume that $w = \sum_{i} \pi(\phi_{i})w_{i} \in \pi(\calH)W_{0}\cap V^{K_{0}}$, where $w_{i}\in W_{0}$. 
+Since $w_{i}\in V^{K_{0}}$ and $w\in V^{K_{0}}$, we have $\pi(\epsilon_{K_{0}})w_{i} = w_{i}$ and $\pi(\epsilon_{K_{0}})w = w$, which shows that $w = \sum_{i} \pi(\epsilon_{K_{0}} * \phi_{i} * \epsilon_{K_{0}}) w_{i}$. 
+However, $\epsilon_{K_{0}} * \phi_{i} * \epsilon_{K_{0}} \in \calH_{K_{0}}$ and since $W_{0}$ is $\calH_{K_{0}}$-stable, we get $w\in W_{0}$. 
+\end{proof}
+
+Another important feature is that irreducible admissible representations are determined by their characters. 
+For a representation of a finite group $G$, we defined its character as a trace of the representation, i.e. the function $\chi:G\to \Cc$ defined as $\chi(g) = \Tr(\pi(g))$. 
+We can also define character of admissible representations as a distribution on $\calH = C^{\infty}_{c}(G)$. The key property of trace is that the trace of $L:V\to V$ is same as the trace of restriction $L|_{W}$ on any invariant subspace $W\subseteq V$. From this, we can define the character $\chi:\calH\to \Cc$ as follows: for any $f\in \calH$, there exists an open compact subgroup $K_{0}$ such that $f\in\calH_{K_{0}}$.  
+Then $V^{K_{0}}$ is invariant under $\pi(f)$, which is a finite dimensional subspace, so the trace of the map is well-defined and we let $\chi(f) = \Tr(\pi(f))$. 
+\begin{theorem}
+\label{char}
+Let $(\pi_{1}, V_{1})$ and $(\pi_{2}, V_{2})$ be irreducible admissible representations of the totally disconnected locally compact group $G$. If characters of $\pi_{1}$ and $\pi_{2}$ agree, then the two representations are equivalent. 
+\end{theorem}
+\begin{proof}
+It is known that for any $k$-algebra $R$, structure of simple $R$-module is completely determined by traces of endomorphisms induced by multiplication of elements in $R$. Hence the assumption implies that $V_{1}^{K_{1}}\simeq V_{2}^{K_{1}}$ as $\calH_{K_{1}}$-modules for any open compact subgroup $K_{1}$ of $G$. 
+
+Let $K_{0}$ be a small open compact subgroup so that $V_{1}^{K_{0}}$ and $V_{2}^{K_{0}}$ are nonzero. 
+By hypothesis, we have an  $\calH_{K_{0}}$-module isomorphism $\sigma_{K_{0}}:V_{1}^{K_{0}}\to V_{2}^{K_{0}}$, which is unique up to constant by Schur's lemma.  
+Then for any open subgroup $K_{1} \subset K_{0}$, we can extend $\sigma_{K_{0}}$ uniquely to a $\calH_{K_{1}}$-module isomorphism $\sigma_{K_{1}}:V_{1}^{K_{1}}\to V_{2}^{K_{1}}$.
+Indeed, the existence is in our hypothesis and from $V_{i}^{K_{0}} = \pi_{i}(\epsilon_{K_{0}}) V_{i}^{K_{1}}$ we have
+\begin{align*}
+\sigma_{K_{1}}(V_{1}^{K_{0}}) = \sigma_{K_{1}}(\pi_{1}(\epsilon_{K_{0}})V_{1}^{K_{1}}) = \pi_{2}(\epsilon_{K_{0}}) (\sigma_{K_{1}}(V_{1}^{K_{1}})) = \pi_{2}(\epsilon_{K_{0}}) V_{2}^{K_{1}} = V_{2}^{K_{0}},
+\end{align*}
+so $\sigma_{K_{1}}|_{V_{1}^{K_{0}}} : V_{1}^{K_{0}} \to V_{2}^{K_{0}}$ is an $\calH_{K_{0}}$-module isomorphism, and uniqueness implies that the restriction of $\sigma_{K_{1}}$ and $\sigma_{K_{0}}$ agrees up to scalar, so we can assume that they coincides on $V_{1}^{K_{0}}$ by normalizing. 
+Now we can repeat this for an open compact basis of identities $\{K_{n}\}_{n\geq 0}$, and we get a map $\sigma:V_{1}\to V_{2}$ which is an $\calH$-module isomorphism. 
+
+To show that $\sigma$ is an intertwining operator, let $g\in G$ and $v\in V_{1}$. Choose an open compact subgroup $K_{1}$ such that $v\in V^{K_{1}}$, and let $\phi = \frac{1}{|K_{1}|} \chf_{gK_{1}}$. 
+Then $\pi_{1}(\phi)v = \pi_{1}(g)v$ and $\pi_{2}(\phi)\sigma(v)= \pi_{2}(g)\sigma(v)$, and we get
+$$
+\sigma(\pi_{1}(g)v) = \sigma(\pi_{1}(\phi)v) = \pi_{2}(\phi)\sigma(v) = \pi_{2}(g)\sigma(v). 
+$$
+This shows that $\sigma$ is an intertwining operator between $V_{1}$ and $V_{2}$. 
+\end{proof}
+
+Using the theorem, we can prove that contragredient representation of $\GL(2, F)$ is isomorphic to other representations on the original space with different actions by comparing characters. 
+\begin{theorem}
+\label{contra}
+Let $G = \GL(n, F)$ with $F$ non-archimedeal local field, and let $(\pi, V)$ be an irreducible admissible representation of $G$. 
+\begin{enumerate}
+\item Let $(\pi_{1}, V)$ be a representation defined as $\pi_{1}(g) = \pi(\pre{T}{}g^{-1})$. Then $\wh{\pi}\simeq \pi_{1}$. 
+\item For $n = 2$, let $\omega$ be the central quasi-character of $\pi$. Define $(\pi_{2}, V)$ on the same space as $\pi_{2}(g) = \omega(\det(g))^{-1}\pi(g)$. Then $\wh{\pi} \simeq \pi_{2}$. 
+\end{enumerate}
+\end{theorem}
+Here the central character $\omega:F^{\times} \to \Cc^{\times}$ is a character corresponds to the action of $\pi$ restricted to $Z(F)$. Note that the center acts as a scalar by Schur's lemma. 
+\begin{proof}
+For $\phi\in C^{\infty}(G)$, let $\phi', \phi''\in C^{\infty}(G)$ as $\phi'(g) = \phi(g^{-1})$, $\phi''(g) = \phi(\pre{T}{}g^{-1})$. We know that character is conjugation invariant, and it is known that conjugation invariant distribution on $\GL(n, F)$ is also transpose invariant. (This is a nontrivial result proved by Bernstein-Zelevinski. You can found a proof in p. 449 of \cite{bu}.)
+Hence we have
+$$
+\chi_{\pi_{1}}(\phi) = \chi_{\pi}(\phi'') = \chi_{\pi}(\phi') = \chi_{\wh{\pi}}(\phi)
+$$
+where the last equality follows from the fact that $\pi(\phi)$ and $\wh{\pi}(\phi')$ are adjoints of each other, so have equal trace. 
+
+For 2, the following identity
+$$
+\pre{T}{}g^{-1} = \pmat{\det(g)}{}{}{\det(g)}^{-1} w^{-1}gw, \quad w = \pmat{}{-1}{1}{}
+$$
+shows that $\pi(w)$ is an intertwining operator from $(\pi_{1}, V)$ to $(\pi_{2}, V)$. 
+\end{proof}
+
+By the previous theorem, we can directly check that irreducibility of admissible representation is preserved by taking dual. 
+\begin{proposition}
+Let $\pi$ be an admissible representation of $\GL(n, F)$. Then $\pi$ is irreducible if and only if $\wh{\pi}$ is irreducible. 
+\end{proposition}
+\begin{proof}
+$\pi$-invariant subspace is also $\pi_{1}$-invariant. 
+\end{proof}
+
+There's one more thing worth to mention about totally disconnected locally compact groups. We use the following \emph{no small subgroup argument} several times, which is very useful and important. 
+
+\begin{proposition}[No small subgroups argument]
+\label{nss}
+Let $G$ be totally disconnected locally compact group, so that it has a basis of open neighborhoods of the identity consisting of open and compact subgroups. For any homomorphism $\phi:G \to \GL(n, \Cc)$, the kernel $\ker \phi$ contains an open subgroup. 
+\end{proposition}
+\begin{proof}
+It is enough to show that there exists an open neighborhood $N$ of the identity of $\GL(n, \Cc)$ that does not contain any nontrivial open subgroups. Then we can take the compact open subgroup that is contained in $\phi^{-1}(N)$. 
+To show the existence of such $N$, let $\mathfrak{g}= \mathfrak{gl}(n, \mathbb{C})$ be its Lie algebra and let $\exp : \mathfrak{g} \to G'$ be the exponential map. Since $\exp$ is a local homeomorphism, we can find an open neighborhood $U \subseteq \mathfrak{g}$ of the identity such that $\exp:U\to \exp(U)$ is a homeomorphism. 
+Fix an inner product on $\mathfrak{g}$ and we can assume that $U$ is of the form $\{v\in \mathfrak{g}\,:\, |v| <\epsilon$ for some $\epsilon>0$. 
+Let $V = \frac{1}{2} U = \{v\in \mathfrak{g}\,:\, 2v\in U\} = \{v\in \mathfrak{g}\,:\, |v| <\epsilon/2\}$. 
+We will show that $\exp(V)$ contains no nontrivial subgroups. 
+Suppose that $H$ is a nontrivial subgroup contained in  $\exp(V)$ and choose $1\neq g\in H$ and $v\in V$ so that $g = \exp(v)$.  Since $g^{2}\in H$, $g^{2} = \exp(w)$ for some $w\in V$ and $\exp(2v) = g^{2} = \exp(w)$ implies that $w = 2v$ since $\exp$ is a homeomorphism on $V$. 
+Now iterate this and we have $2^{n}v\in V$ for all $n$, and this implies $v = 0$ since $|2^{n}v| = 2^{n}|v|$. This gives a contradiction since $1\neq g = \exp(v) = \exp(0) = 1$. 
+\end{proof}
+
+\subsection{Distributions}
+
+In this section, we will briefly introduce properties about distributions that will be used in the later chapters. For a totally disconnected locally compact space $X$, we define a distribution on $X$ as a linear functional on $C_{c}^{\infty}(X)$. Note that there's no restriction that the functional is continuous. 
+We denote $\fraD(X)$ for the space of distributions on $X$. 
+We have an exact sequence:
+
+\begin{proposition}
+Let $X$ be a totally disconnected locally compact space, and let $C\subseteq X$ be a closed subset. Then we have exact sequences
+$$
+0 \to C_{c}^{\infty}(X\bs C) \to C_{c}^{\infty}(X) \to C_{c}^{\infty}(C) \to 0
+$$
+and 
+$$
+0 \to \fraD(C) \to \fraD(X) \to \fraD(X\bs C) \to 0. 
+$$
+\end{proposition}
+\begin{proof}
+The only nontrivial part for the first exact sequence is the surjectivity of $C_{c}^{\infty}(X) \to C_{c}^{\infty}(C)$. Let $f\in C_{c}^{\infty}(C)$. Since $f$ is locally constant and compactly supported, there exists disjoint open and compact sets $U_{i} \subseteq C$ and $a_{i}\in \Cc$ such that $f(x) = a_i$ if $x\in U_i$ and $f(x) = 0$ off $\cup U_i$. 
+Let $V_i$ be open and compact subsets of $X$ such that $U_i = V_i \cap C$. By replacing $V_i$ by $V_i \bs \cup_{j<i} V_j$, we can assume that $V_i$ are disjoint. Then we can extend the function $f$ to $X$ by letting $f(x) = a_i$ if $x\in V_i$ and $f(x) = 0$ off $\cup V_i$. 
+Exactness of the second one follows by dualizing the first one. 
+\end{proof}
+
+
+We can also define actions of $G$ on $G, C_{c}^{\infty}(G)$, and $\fraD(G)$ by left and right translations. More precisely, we have
+\begin{align*}
+(\rho(g) f)(x) = f(xg), &\quad (\lambda(g)f)(x) = f(g^{-1}x), \\
+(\rho(g)T)(f) = T(\rho(g^{-1})f), &\quad (\lambda(g)T)(f) = T(\lambda(g^{-1})f)
+\end{align*}
+for $T\in \fraD(G)$ and $f\in C_{c}^{\infty}(G)$. 
+The following proposition shows that a distribution which is left $G$-invariant up to some character of $G$  is unique up to constant. The proof is not so hard, but this proposition will be used a lot later. 
+\begin{proposition}
+\label{distuniq}
+Let $G$ be a locally compact totally disconnected group, and let $\xi$ be a character of $G$. Suppose that $T$ is a distribution on $G$ that satisfies $\lambda(h)T = \xi(h)^{-1}T$ for $h\in G$. Then there exists a constant $c$ such that
+$$
+T(f) = c\int_{G} \xi(h)f(h)dh
+$$
+where $dh = d_{L}h$ is the left Haar measure. 
+\end{proposition}
+\begin{proof}
+We define another distribution by $f\mapsto T(\xi^{-1}f)$. (Note that $\xi^{-1}f$ is locally constant since $\xi^{-1}$ is locally constant by no small subgroups argument (Proposition \ref{nss}). Replacing $T$ by this, we may assume that $\xi = 1$ so that $\lambda(h)T = T$ for all $h$. 
+
+Let $K$ be an open compact subgroup of $G$. If $f\in C_{c}^{\infty}(G)$, let $S(f) = \{h\in G\,:\, \lambda(h)f = f\}$. 
+Then $S(f)$ is a compact open subgroup of $G$ and for any open subgroup $K_0$ of $S(f)$, we have 
+$$
+f = |K_{0}|\sum_{i=1}^{r} a_{i}\lambda(h_{i})\epsilon_{K_{0}}
+$$
+where $h_{1}, \dots, h_{r}$ be representatives of cosets in $K_{0}\bs G$ on which $f$ does not vanish and $a_{i} = f(h_{i})$. 
+Then 
+$$
+T(f) = |K_{0}| \left[ \sum_{i=1}^{r}a_{i}\right] T(\epsilon_{K_{0}}).
+$$
+Apply this for $f = \epsilon_K$ so that $S(f) = K$ and $K_{0}$ can be any open subgroup of $K$. 
+Since $[K:K_{0}] = |K|/|K_{0}|$, we have $T(\epsilon_{K_{0}}) = T(\epsilon_K) = c$. 
+For general $f$, we may assume $K_{0} \subseteq K$ and this implies the desired result. 
+\end{proof}
+
+Finally, we introduce the concept of cosmooth modules and there relation with sheaves on $X$. 
+\begin{definition}
+Let $X$ be a locally compact totally disconnected space and let $M$ be a $C_{c}^{\infty}(X)$-module. 
+We call $M$ cosmooth if for every $x\in M$, there exists an open compact subset $U$ of $X$ such that $\chf_{U} \cdot x = x$. 
+\end{definition}
+The following proposition shows an equivalence of category of sheaves of $C^{\infty}$-modules and the category of cosmooth modules over $C_{c}^{\infty}(X)$. 
+\begin{proposition}
+Let $M$ be a cosmooth $C_{c}^{\infty}(X)$-module. There exists a sheaf $\calM$ of $C^{\infty}$-modules on $X$ associated to $M$ such that $\calM(U) = \chf_{U}\cdot M$ for open compact sets $U$, and a restriction map $\rho_{U, V} : \calM(U) \to \calM(V)$ by $\rho_{U, V}(m) := \chf_{V}\cdot m$. 
+
+Conversely, let $\calF$ be a sheaf of $C^{\infty}(X)$-modules on $X$. Then there exists an $C_{c}^{\infty}(X)$-module $\calF_{c}$ with embeddings $i_U : \calF(U) \hookrightarrow \calF_{c}$ for each open compact subsets $U$ such that if $U\supset V$, then we have $i_{V, U} : \calF(V)\hookrightarrow \calF(U)$ which satisfies $\rho_{U, V} \circ i_{V, U} = \mathrm{id}_{\calF(V)}$. 
+Also, for $f\in \calF(V)$, $\rho_{U, U\bs V}(f) = 0$. These two constructions are inverse each other. 
+\end{proposition}
+
+The following theorem of Bernstein-Zelevinsky will be used in the proof of the uniqueness of local Whittaker models, i.e. local multiplicity one theorem. 
+\begin{proposition}[Bernstein-Zelevinsky]
+\label{bz}
+Let $X, Y$ be totally disconnected locally compact spaces, and let $p:X\to Y$ be a continuous map. 
+Let $\calF$ be a sheaf on $X$. 
+Suppose that  $G$ is a group acting on $X$ and on its sheaf $\calF$. Assume that the action  satisfies $p(g\cdot x) = p(x)$ for $g\in G, x\in X$. 
+Let $\chi$ be a character of $G$. 
+\begin{enumerate}
+\item Let $y\in Y$, and let $Z = p^{-1}(y)$. 
+Let $\calF_{c}(\chi)$ (resp. $(\calF_{Z})_{c}(\chi)$) be the submodule of $\calF_{c}$ (resp. $(\calF_{Z})_{c}$) generated by elements of the form $g\cdot f - \chi(g)^{-1}f$ for $f\in \calF_{c}$ (resp. $f\in (\calF_{Z})_{c})$. 
+Then $M =\calF_{c}/ \calF_{c}(\chi)$ is a cosmooth $C_{Y}^{\infty}$-module; let $\calG$ be the corresponding sheaf on $Y$. If $y\in Y$, then the stalk $\calG_{y}$ is isomorphic to $(\calF_{Z})_{c} / (\calF_{Z})_{c}(\chi)$. 
+\item Assume that there are no nonzero distributions $D$ in $\fraD(p^{-1}(y), \calF_{p^{-1}(y)})$ that satisfy $g\cdot D = \chi(g)D$ for all $g\in G$, for any $y\in Y$. 
+Then there are non nonzero distributions in $\fraD(X, \calF)$ satisfying the same equation. 
+\end{enumerate}
+\end{proposition}
+Here $\fraD(X, \calF)$ is a space of $\calF$-valued distribution, which is a space of linear functional on $\calF_{c}$. In the proof of local multiplicity one theorem, this will help us to prove certain distribution is zero by only proving it fiberwise. 
+
+
+
+\subsection{Whittaker functionals and Jacquet functor}
+Like archimedean cases, non-archimedean theory also has a notion of Whittaker models. 
+Let $\psi$ be a nontrivial additive character of $F$ and $\psi_{N}$ be a character of $N(F)$, the group of upper triangular unipotent matrices in $\GL(n, F)$, by
+$$
+\psi_{N}(u) = \psi\left( \sum_{i=1}^{n-1} u_{i, i+1}\right), \quad u = (u_{ij})\in N(F). 
+$$
+
+\begin{definition}
+Let $(\pi, V)$ be a smooth representation of $\GL(n, F)$. 
+A Whittaker functional on $V$ is a linear functional (non necessarily smooth) $\lambda: V\to \Cc$ such that $\lambda(\pi(u)x) = \psi_{N}(u)\lambda(x)$ for all $u\in N(F), x\in V$.
+\end{definition}
+
+The following theorem claims that local Whittaker functional is unique (up to constant), which is referred as \emph{local multiplicity one} theorem. 
+\begin{theorem}[Uniqueness of Whittaker functional]
+\label{nonarchmultone}
+Let $(\pi, V)$ be an irreducible admissible representation of $\GL(n, F)$. Then the dimension of the space of Whittaker functionals on $V$ is at most one. 
+\end{theorem}
+
+For the proof, we need a lemma, which claims that a distribution that transforms like Whittaker functional under left and right translations (we will call such distribution as Whittaker distribution, only in this note) is invariant under certain involution on the space of distributions. 
+Let $\Delta\in\fraD(\GL(n, F))$ be a distribution. $D$ is called a \emph{Whittaker distribution} if 
+$$
+\lambda(u) \Delta = \psi_{N}(u)^{-1}\Delta, \quad \rho(u)\Delta = \psi_{N}(u)\Delta
+$$
+for all $u\in N(F)$. 
+We define an involution $\iota:\GL(n, F) \to \GL(n, F)$ by $\iota(g) = w^{0}\pre{T}{}gw^{0}$, where 
+$$
+w^{0} =\begin{pmatrix} & & 1 \\ & \iddots & \\1 & & \end{pmatrix}
+$$
+This also induces an action on $C^{\infty}_{c}(\GL(n, F))$ and $\fraD(\GL(n, F))$. Note that $\iota(N(F)) = N(F)$. 
+\begin{theorem}
+Let $\Delta\in \fraD(\GL(n, F))$ be a Whittaker distribution. Then $\Delta$ is stable under $\iota$. 
+\end{theorem}
+
+\begin{proof}
+By replacing $\Delta$ by $\Delta - \pre{\iota}{}\Delta$, we can assume that $\pre{\iota}\Delta = -\Delta$, too. Now we want to show that a Whittaker distribution satisfying the above condition is zero. 
+
+The above conditions (transformations laws) on $\Delta$ can be written in a more simpler way. Let $G$ be a semidirect product of the group $N(F)\times N(F)$ and an order 2 cyclic group generated by $\calI$ satisfying $\calI^{2} = 1$ and $\calI(u_{1}, u_{2})\calI^{-1} = (\pre{\iota}{}u_{2}^{-1}, \pre{\iota}{}u_{1}^{-1})$ for $(u_{1}, u_{2})\in N(F)\times N(F)$. 
+Let $\chi$ be a character of $G$ defined as $\chi(u_{1}, u_{2})= \psi_{N}(u_{1})^{-1}\psi_{N}(u_{2})$ and $\chi(\calI) = -1$. 
+Let $\sigma$ be the action of $G$ on $\GL(n, F), C_{c}^{\infty}(\GL(n, F))$, and $\fraD(\GL(n, F))$ by $\sigma(u_{1}, u_{2}) = \lambda(u_{1})\rho(u_{2}), \sigma(\calI) =\iota$. Then the conditions on $\Delta$ can be summarized as $\sigma(g) \Delta = \chi(g)\Delta$. 
+
+To show that such distribution is zero, we will use the Bruhat decomposition and the corresponding exact sequence of distributions. We have an exact sequence
+$$
+0 \to \fraD(B(F)) \to \fraD(\GL(2, F)) \to \fraD(X) \to 0
+$$
+where $X = B(F)w^{0}B(F)$. 
+
+We first show that the image in $\fraD(X)$ of $\Delta$ is zero. 
+For a continuous mapping $p:X\to Y$ with $Y = F^{\times} \oplus F^{\times}$ given by $\smat{a}{b}{c}{d} \mapsto (c, (ad-bc)/c)$, the fibers of this map are $\sigma$-invariant and they are the double cosets 
+$$
+N(F) \pmat{}{b_{0}}{c_{0}}{} N(F)
+$$
+which is homeomorphic to $N(F)\times N(F)$ under the map $(u_{1}, u_{2})\mapsto u_{1} \smat{}{b_{0}}{c_{0}}{} u_{2}^{-1}$. By the theorem of Bernstein-Zelevinski (Proposition \ref{bz}), we only need to show that there are no nonzero distributions $\Delta$ on the single double coset that satisfies $\sigma(g)\Delta = \chi(g)\Delta$. 
+By Proposition \ref{distuniq}, there exists $c\in \Cc$ such that 
+$$
+\Delta(f) = c \int\limits_{N(F)\times N(F)} \psi_{N}(u_{1})\psi_{N}(u_{1}) f\left( u_{1} \pmat{}{b_{0}}{c_{0}}{} u_{2}\right) du_{1}du_{2}.
+$$
+This distribution is invariant under $\iota$, since $\iota\left( u_{1} \smat{}{b_{0}}{c_{0}}{} u_{2}\right) = u_{2}\smat{}{b_{0}}{c_{0}}{} u_{1}$. Thus $\pre{\iota}{}\Delta = \Delta = -\pre{\iota}{}\Delta$ and so $\Delta = 0$. 
+By exactness, $\Delta \in \fraD(B(F))$. We can use the similar argument to show $\Delta = 0$. 
+Let $Y_{1} =F^{\times} \oplus F^{\times}$ and let $p:B(F) \to Y_{1}, \smat{a}{b}{}{d} \mapsto (a, d)$. 
+Then each fibers are homeomorphic to $N(F)$ via $u\mapsto u\delta = u\smat{a}{}{}{d}$. If we apply the Proposition \ref{distuniq} for left and right translations, we get
+$$
+\Delta(\phi) = c_{1}\int\limits_{N(F)} \phi(u\delta)\psi_{N}(u)du = c_{2} \int\limits_{N(F)} \phi(u\delta) \psi_{N}(\delta^{-1}u\delta) du
+$$
+for some $c_{1}, c_{2}\in \Cc$, where $du$ is the right Haar measure of $N(F)$. If $a\neq d$, then $c_{1} =c_{2} = 0$: otherwise, we may choose $u$ such that $c_{1}\psi_{N}(u) \neq c_{2}\psi_{N}(\delta^{-1}u\delta)$, and then taking a test function $\phi$ that is the characteristic function of a small neighborhood of $u$ gives a contradiction. 
+If $a = d$, then $\pre{\iota}\Delta = \Delta$ so $\Delta = 0$. 
+\end{proof}
+
+
+
+\begin{proof}[proof of Theorem \ref{nonarchmultone} when $n = 2$]
+The representation $\pi’(g) = \pi(\iota(g^{-1}))$ is isomorphic to $\pi_1$, so to $\hat{\pi}$. Hence we have a pairing $V \times V \to \Cc$ s.t. $\langle \pi(g)v,w \rangle = \langle v,\pi(\iota(g))w\rangle$. By Riesz representation theorem, any linear functional $\Lambda$ corresponds to a vector $[\Lambda]$ by $\langle v, [\Lambda]\rangle = \Lambda(v)$. 
+We can also define another linear functional $\Lambda * \phi$ for any $\phi \in \calH$ by
+$$
+(\Lambda * \phi)(\xi) = \Lambda(\pi(\phi)\xi) = \int_{G} \Lambda(\pi(g)\xi)\phi(g)dg
+$$ 
+which satisfies the associativity $\Lambda * (\phi_1 * \phi_2) = (\Lambda * \phi_1) * \phi_2$. 
+It satisfies following transformation laws:
+\begin{align*}
+\pi(g) [\Lambda*\phi] &= [\Lambda * \rho(\iota(g^{-1}))\phi] \\
+[L* \phi] &= \pi(\pre{\iota}{}\phi)[L]\\
+[\Lambda * \lambda(u)\phi] &= \psi_N(u)[\Lambda * \phi]
+\end{align*}
+(Second one holds for smooth $L$, and the third one holds for Whittaker functionals.) 
+ Now if $\Lambda_1,\Lambda_2$ are Whittaker functionals, define a distribution $\Delta(\phi) = \Lambda_2([\Lambda_1 * \phi])$. 
+ The above transformation properties imply that this is a Whittaker distribution, so it is invariant under the involution by the previous theorem. Using that, we can show $\Lambda_1 * \phi = 0 \Rightarrow \Lambda_2 * \phi = 0$. One can show that for any given nonzero linear functional $\Lambda$ on $V$, any vector in V has a form of $[\Lambda * \phi]$ for some $\phi\in \calH$. 
+Then  we can define a map $T:[\Lambda_1 * \phi] \mapsto  [\Lambda_2 * \phi]$, which is an intertwining map by the above transformation law. By Schur’s lemma, $T = cI$ for some $c$, and this gives $\Lambda_2 = c\Lambda_1$. 
+\end{proof}
+
+Since we just proved uniqueness, we wonder about existence. We will prove that any irreducible representation of $\GL(2, F)$ of $\dim >1$ has a Whittaker model. For this, we need a concept of (twisted) Jacquet functor.
+\begin{definition}[Jacquet functor]
+Let $(\pi, V)$ be a smooth representation of $B(F)$. Let $V_N$ be a subspace of $V$ generated by elements of the form $\pi(u)v - v$ for $u\in N(F)$ and $v\in V$. 
+Then $V_N$ is $T(F)$-invariant, and we get a $T(F)$-module $J(V):= V/V_N$. The smooth representation $(\pi_N, J(V))$ of $T(F)$ obtained in this way is called Jacquet module of $V$. 
+$J$ is a functor from the category of $B(F)$-modules to the category of $T(F)$-modules. 
+\end{definition}
+We can also define the twisted version of the Jacquet functor. 
+\begin{definition}[Twisted Jacquet functor]
+Fix a nontrivial additive character $\psi$ of $F$. 
+Let $V_{N, \psi}$ be the subspace generated by elements of the form $\pi(u)v - \psi_{N}(u)v$ for $u\in N(F)$ and $v\in V$. Then $J_{\psi}(V) := V/V_{N, \psi}$ is a $Z(F)$-module, and $J_{\psi}$ is a functor from the category of $B(F)$-modules to the category of $Z(F)$-modules. 
+\end{definition}
+First important property of these functors is exactness. 
+\begin{proposition}
+The functor $J$ and $J_{\psi}$ are exact. 
+\end{proposition}
+\begin{proof}
+Let $0\to V'\to V\to V'' \to 0$ be a short exact sequence of $B(F)$-modules. 
+Then we can prove that the induced sequence $0\to V_{N}' \to V_N \to V_{N}'' \to 0$ is also exact. Here we use the following characterization: $x\in V_N$ iff 
+$$
+\int_{\frap^{-n}} \pi\pmat{1}{x}{}{1} v dx = 0
+$$
+for sufficiently large $n$. Now we get the result by the snake lemma. 
+Proof for $J_{\psi}$ is similar. 
+\end{proof}
+
+Another important property of the twisted Jacquet module is that it is directly related to the space of Whittaker functionals. This is almost direct from the definition. 
+\begin{proposition}
+The space of Whittaker functionals on $V$ is isomorphic to the dual space of $J_{\psi}(V)$. Therefore, if $(\pi, V)$ is an irreducible admissible representation, $\dim J_{\psi}(V) \leq 1$.
+\end{proposition}
+
+Now we will prove our main result - existence of a Whittaker functional. 
+For a $B(F)$-module $(\pi, V)$, we can associate sheaf of $C^{\infty}_{c}(F)$-module by defining the $(C_{c}^{\infty}(F), \cdot)$-action as
+$$
+\phi \cdot v = \rho(\wh{\phi})v = \int_F \wh{\phi}(x) \pi \pmat{1}{-x}{}{1} v dx. 
+$$
+(Here we fix a nonzero additive character $\psi$.) One can check that $V$ is a cosmooth $C_{c}^{\infty}(F)$-module under this action, so we have a sheaf $\calS(V)$ associated to $V$. Using this, we can prove our theorem. 
+\begin{theorem}[Existence of Whittaker functional]
+\label{dim1}
+Any irreducible representation of $\GL(2)$ of dimension greater that 1 has a nonzero Whittaker functional. If there's no nonzero Whittaker functional, then it factors through the determinant map. 
+\end{theorem}
+Note that this is not true for $\GL(n)$, but it is still true for \emph{generic} representations in the sense of Gelfand-Kirillov dimension. 
+
+
+\begin{proof}
+Assume that $(\pi, V)$ has no nonzero Whittaker functional. Fix an additive char $\psi$ of $F$ and corresponding self-dual Haar measure. Let $\psi_a:F\to \Cc^{\times}$ be a character $\psi_a(x)=\psi(ax)$. Then the stalk of the above sheaf is given by
+ $$
+\calS(V)_{a} \simeq \begin{cases} J(V) & a = 0 \\ J_{\psi_{a}}(V) \simeq J_{\psi}(V) & a\neq 0 \end{cases}
+$$
+so $\calS(V)_a = 0$ for $a\neq 0$ and $\calS(V)$  is a skyscraper sheaf at $a=0$. Then $V\to S(V)_0=J(V)$ is an isomorphism, so that $V_N=0$ and $N(F)$ acts trivially. Then all conjugates of $N(F)$ also acts trivially, so does $\SL(2, F)$ (they generate $\SL(2,F)$) and factors through determinant map. 
+\end{proof}
+
+Like archimedean case, we can also think the Whittaker functional as a \emph{Whittaker model}, which gives a concrete model of a given representation. This is almost same as the archimedean case. 
+In non-archimedean case, we also have \emph{Kirillov model}, which is a model given by functions on $F^{\times}$. 
+\begin{definition}[Whittaker model and Kirillov model]
+Assume that $(\pi, V)$ is an infinite dimensional irreducible admissible representation, so that it has a nonzero Whittaker functional.  The space $\calW$ of the Whittaker model consists of tunctions $W_{v}:\GL(2, F) \to \Cc$ for $v\in V$ of the form $W_{v}(g) = \Lambda(\pi(g)v)$. From $W_{\pi(g)v}(h) = W_{v}(hg)$,  $\calW$ is closed under the right translation by $\GL(2, F)$, and the resulting representation is isomorphic to $(\pi, V)$. 
+
+The Kirillov model of $(\pi, V)$ is the space of functions $\phi_v:F^{\times} \to \Cc$ for $v\in V$ defined by 
+$$
+\phi_v(a) = W_{v} \pmat{a}{}{}{1}. 
+$$
+\end{definition}
+Note that if Whittaker functional is nonzero, then the Kirillov model is also nonzero. (For the proof, see Proposition 4.4.6 and 4.4.7 in \cite{bu}.) It is not easy to describe the action of $\GL(2, F)$ on $\calK$, but the action of $B(F)$ is rather easy: 
+$$
+\pi\pmat{a}{}{}{1} \phi(x) = \phi(ax), \quad \pi\pmat{1}{b}{}{1}\phi(x) = \psi(bx)\phi(x). 
+$$
+With the action of center by central character, this completely determines the action of $B(F)$. We will investigate $\calK$ more explicitly in the later chapter. 
+
+Another important property of Jacquet functor is that it sends an admissible representation to an admissible representation. Proof uses Iwahori subgroups and the Iwahori factorization. See page 466--469 of \cite{bu} for the proof. 
+\begin{theorem}[Harish-Chandra]
+\label{jacadm}
+If $(\pi, V)$ is an admissible representation of $\GL(2, F)$, then the corresponding representation $(\pi_N, J(V))$ of $T(F)$ is also admissible.
+\end{theorem}
+
+
+
+
+\subsection{Classification}
+Now we introduce the classification of irreducible admissible representations of $\GL(2, F)$. Definition of each terms will be defined in following sections. 
+\begin{theorem}
+Irreducible admissible representation of $\GL(2, F)$ is isomorphic to one of the following:
+\begin{enumerate}
+\item Principal series representations $\pi(\chi_{1}, \chi_{2})$, where $\chi_{1}, \chi_{2}:F^{\times} \to \Cc^{\times}$ are quasi-characters of $F^{\times}$ satisfying $\chi_{1}\chi_{2}^{-1} \neq |\cdot |^{\pm 1}$. 
+\item Special representations (or twisted Steinberg representations) $\sigma(\chi_{1}, \chi_{2})$. 
+\item 1-dimensional representations $g\mapsto \chi(\det(g))$ for some $\chi:F^{\times}\to \Cc^{\times}$. 
+\item Supercuspidal representations.
+\end{enumerate}
+\end{theorem}
+Classification of representation of $\GL(2, \Ff_{q})$ (over a finite field) is almost same. For details, see chapter 4.1 of \cite{bu}. For the later chapters, we will study about these representations. 
+
+Later, we will see that \emph{global} automorphic representations decomposes as a product of local representations. For almost all place $v$, the $v$-part of the representation will be \emph{spherical} principal series representation, which corresponds to certain characters $\chi_1, \chi_2$. 
+The classification of unitarizable principal series representation is somehow similar to the archimedean theory.
+
+
+\subsection{Principal series representations}
+In short, \emph{principal series representations} are representations induced by characters of Borel subgroup (same as archimedean case). 
+Usually, they are irreducible, but there are some special cases that the induced representations are not irreducible. In that case, it has an infinite dimensional irreducible subrepresentation (or quotient) with 1-dimensional complement. Such infinite dimensional representation is called (twisted) Steinberg representations. 
+
+The definition of induced representation is slightly different from that for finite groups. We need some extra factors for latter purpose. We did the same thing for archimedean case (see Section 2.4). 
+\begin{definition}[Induced representation]
+Let $G$ be a totally disconnected locally compact group, and let $H$ be a closed subgroup. 
+Let $(\pi, V)$ be a smooth representation of $H$. The induced representation $\Ind_{H}^{G}\pi$ is the space of functions $f:G\to V$ such that 
+\begin{enumerate}
+\item We have 
+$$
+f(hg) = \delta_G(h)^{-1/2} \delta_H(h)^{1/2}\pi(h)f(g)
+$$
+for all $h\in H, g\in G$, where $\delta_G$ and $\delta_H$ are the modular quasi-characters of $G$ and $H$. 
+\item There exists an open subgroup $K_0$ of $G$ such that $f(gk) = f(g)$ for all $g\in G$ and $k\in K_0$. 
+\end{enumerate}
+Then $G$ acts on this space by the right translation, and this gives induced representation of $G$. 
+
+Similarly, we can define compact induction, as a space of functions that satisfies above conditions and compactly supported modulo $H$ (image of the support of $f$ in $H\bs G$ is compact). It is denoted by $\cInd_{H}^{G}\pi$. The are same if $H\bs G$ is compact. 
+\end{definition}
+By definition, (compact) induced representations are also smooth. As before, we have Frobenius reciprocity, which we need extra factor again. 
+
+\begin{proposition}[Frobenius reciprocity]
+Let $G$ be a totally disconnected locally compact group and $H$ a closed subgroup. 
+Let $(\pi, V)$ and $\sigma, W)$ be smooth representations of $H$ and $G$, respectively. 
+Then there is a natural isomorphism $\Hom_G(\sigma, \Ind_H^{G}\pi) \simeq \Hom_H(\sigma|_{H}, \pi \otimes (\delta_{G}^{-1}\delta_{H})^{1/2})$
+\end{proposition}
+\begin{proof}
+For $\Phi\in \Hom_G(\sigma, \Ind_{H}^{G}\pi)$, define $\phi\in \Hom_H(\sigma|_{H}, \pi\otimes (\delta_{G}^{-1}\delta_{H})^{1/2})$ by $\phi(w) = \Phi(w)(1)$. 
+Conversely, if $\phi\in \Hom_H(\sigma|_{H}, \pi\otimes (\delta_{G}^{-1}\delta_{H})^{1/2})$ is given, we can define $\Phi\in \Hom_G(\sigma, \Ind_{H}^{G}\pi)$ as $\Phi(w)(g) = \phi(\sigma(g)w)$. 
+It is easy to check that these maps give isomorphisms between two spaces. 
+\end{proof}
+
+Now we can define principal series representation. (Compare this with the archimedean case in Chapter 2.4.)
+\begin{definition}
+Let $G = \GL(2, F)$ and $H = B(F)$. 
+Let $\chi_1, \chi_2$ be quasi-characters of $F^{\times}$. 
+Then we define a quasi-character $\chi$ of $B(F)$ by 
+$$
+\chi\pmat{y_1}{*}{}{y_2} = \chi_1(y_1)\chi_2(y_2).
+$$
+Let $\calB(\chi_1, \chi_2) = \Ind_{B(F)}^{\GL(2, F)} \chi$. 
+So this is a space of smooth functions $f:G\to \Cc$ which satisfies 
+$$
+f(bg) = \left| \frac{b_{1}}{b_{2}}\right|^{1/2} \chi_{1}(b_{1})\chi_{2}(b_{2})f(g)
+$$
+for all $b = \smat{b_{1}}{*}{}{b_{2}}\in B(F)$ and $g\in \GL(2, F)$. 
+If $\calB(\chi_1, \chi_2)$ is irreducible, then we call it principal series representation. We denote its isomorphism class as $\pi(\chi_1, \chi_2)$. 
+\end{definition}
+We can also consider the compact induction $\cInd_{B(F)}^{\GL(2, F)}\chi$. In this case, they agree since $B(F)$ is cocompact by the following theorem:
+\begin{proposition}[Iwasawa decomposition]
+Let $G = \GL(n, F)$ and $B(F)B$ be the Borel subgroup of $G$. 
+Let $K = \GL(n, \calO_{F})$ be the maximal compact subgroup of $G$. 
+Then $G = B(F)K$ and $B(F)\bs G$ is compact. 
+\end{proposition}
+\begin{proof}
+Use induction on $n$. One can find $k_1\in K$ such that 
+$$
+gk_{1} =\pmat{g_{n-1}}{*}{0}{x_{n}}
+$$
+for some $g_{n-1}\in \GL(n-1, F)$. By induction hypothesis, there exists $k'\in \GL(n-1, \calO_F)$ such that $g_{n-1}k'$ is upper triangular. Then $k = k_1 \smat{k'}{}{}{1}$ makes $gk \in B(F)$. 
+Then the map $K \to B(F)\bs G$ is continuous and surjective, so the coset $B(F)\bs G$ is compact. 
+\end{proof}
+
+Now we can ask some basic questions about principal series representations: 
+\begin{itemize}
+\item When $\calB(\chi_{1}, \chi_2)$ is irreducible?
+\item What is a contragredient representation of given principal series representation?
+\item When two principal series representations are isomorphic?
+\item What is a Jacquet module of it?
+\end{itemize}
+
+Note that $\Hom_G(V, V) =1$ \emph{does not} imply that $V$ is irreducible, since the representation may not be unitary. So we need other approach to prove irreducibility. 
+We will use Jacquet functor that we defined in the previous section. 
+
+First, we will prove uniqueness of Whittaker functional, and use it to prove irreducibility. The argument is similar to the proof Theorem \ref{nonarchmultone}. 
+(We can't use the uniqueness result in the previous section since we don't know whether the representation is irreducible or not.) 
+
+\begin{theorem}
+\label{psrepwh}
+Principal series representations admit at most one Whittaker functional. 
+\end{theorem}
+\begin{proof}
+Define $P:C^{\infty}_{c}(\GL(2,F))\to V$ by convolutioning with $\delta^{1/2}\chi$ over $B(F)$, where $\delta = \delta_{B(F)}$,
+$$
+(P\phi)(g) = \int\dpl{B(F)} \phi(b^{-1}g) (\delta^{1/2}\chi)(b)db.
+$$
+(Here $db = d_{L}b$.) One can show that $P$ is surjective by choosing $\phi = \frac{1}{|K\cap B(F)|}\chf_{K}f$ for $f\in V$. 
+Also, it satisfies $P(\lambda(b)^{-1}\phi) = (\delta^{-1/2}\chi)(b)P(\phi)$ and $P(\rho(g)\phi) = \pi(g)P(\phi)$ for all $b\in B(F)$ and $g\in \GL(2, F)$. 
+
+Now let $\Lambda: V\to \Cc$ be a Whittaker functional. Define $\Delta\in \fraD(\GL(2, F))$ as $\Delta(\phi) = \Lambda(P\phi)$. 
+Then it satisfies $\lambda(b) \Delta = (\delta^{-1/2}\chi)(b)\Delta$ and $\rho(n)\Delta = \psi_{N}(n)^{-1}\Delta$ for all $b\in B(F)$ and $n\in N(F)$. 
+Now we use Bruhat decomposition again: we have an exact sequence 
+$$
+0\to \fraD(B(F)) \to \fraD(\GL(2, F)) \to \fraD(X) \to 0
+$$
+where $X = \GL(2, F) -  B(F) = B(F)w_{0}N(F)$ where $w_{0} = \smat{}{-1}{1}{}$. 
+Let $\Delta_1\in \fraD(X)$ be a distribution satisfies the above transformation laws. 
+By the Proposition \ref{distuniq}, there exists $c\in \Cc$ such that 
+$$
+\Delta_{1}(\phi) = c\int\dpl{B(F)}\int\dpl{N(F)} \phi(bw_{0}n^{-1})\psi_{N}(n)(\delta^{1/2}\chi^{-1})(b)db\,dn.
+$$
+Also, let $\Delta_2\in \fraD(B(F))$ be a distribution satisfies the above transformation laws. 
+By the Proposition \ref{distuniq} again, there exists $c\in \Cc$ such that
+$$
+\Delta_2(\phi) = c\int\dpl{B(F)} \phi(b) (\delta^{1/2}\chi^{-1})(b)db
+$$
+for all $\phi\in C_{c}^{\infty}(B(F))$. 
+Then $\rho(n)\Delta_2 = \Delta_2$ for $n\in N(F)$, so together with $\rho(n)\Delta_2 = \psi_{N}(n)^{-1}\Delta_2$ we get $\Delta_2 =0$. 
+By combining these two results, we can show that the space of $\Delta\in \fraD(\GL(2, F))$ satisfying the above equations is one dimensional. 
+\end{proof}
+
+
+Let's answer the second question first. It is relatively easy to answer the second question, and we will use this for the first question. 
+\begin{theorem}
+contragredient representation of $\calB(\chi_1, \chi_2)$ is $\calB(\chi_1^{-1},\chi_2^{-1})$. \end{theorem}
+\begin{proof}
+Let $(\pi, V) = \calB(\chi_1, \chi_2)$ and $(\pi', V') = \calB(\chi_1^{-1}, \chi_{2}^{-1})$. 
+Then we can define a non-degenerate pairing $\langle\,,\,\rangle : V\times V' \to \Cc$ by 
+$$
+\bra{f}{f'} = \int\dpl{K} f(k)f'(k)dk
+$$
+which is $G$-invariant. 
+\end{proof}
+
+Now we return to the first question. The following lemma proves that if $\calB(\chi_1, \chi_2)$ has a 1-dimensional subrepresentation (or quotient), then $\chi_1, \chi_2$ should satisfy some relation. 
+\begin{lemma}
+If $\calB(\chi_1, \chi_2)$ has an 1-dimensional invariant subspace, then $\chi_{1}\chi_{2}^{-1} = |\cdot |^{-1}$. Similarly, if $\calB(\chi_1, \chi_2)$ admits a one-dimensional quotient representation, then $\chi_{1}\chi_{2}^{-1} = |\cdot |$. 
+\end{lemma}
+\begin{proof}
+For a fixed vector $f$, $\pi$ acts as a character, which factors through commutator subgroup $\SL(2,F)$, hence $\pi(g) = (\rho\circ\det)(g)$ for some quasi-character $\rho$. Then $f(bg) = (\delta^{1/2} \chi)(b) \rho(\det(g)) f(1)$, and taking $b = g^{-1} =\smat{y}{}{}{y^{-1}}$ gives the result. Second one follows from taking dual of first one. 
+\end{proof}
+
+Now we can examine when $\calB(\chi_1, \chi_2)$ is irreducible. 
+\begin{theorem}
+$\calB(\chi_1, \chi_2)$ is irreducible if and only if $\chi_1^{-1}\chi_2 \neq  |\cdot|^{\pm 1}$. 
+\end{theorem}
+\begin{proof}
+We use exactness of twisted Jacquet module and its relation to Whittaker models. 
+Assume that $V$ is not irreducible, so it has a nontrivial proper invariant subspace $0\subsetneq V'\subsetneq V$. 
+Let $V'' = V/V'$ and let $\pi', \pi''$ be the corresponding representations. 
+Then we get an exact sequence
+$$
+0\to J_{\psi}(V') \to J_{\psi}(V) \to J_{\psi}(V'') \to 0. 
+$$
+Since $\dim J_\psi(V) \leq 1$, at least one of $J_\psi(V')$ or $J_{\psi}(V'')$ is zero. 
+If $J_{\psi}(V') = 0$, then $\pi'$ factors through $\det : \GL(2, F) \to F^{\times}$ by Theorem \ref{dim1}. 
+One can prove that admissible representation of $F^{\times}$ contains a 1-dimensional invariant subspace, so we get $\chi_1 \chi_2^{-1} = |\cdot|^{-1}$ by the previous lemma. In this case, the function $f(g) = \chi(\det(g))$ spans an invariant 1-dimensional subspace when $\chi_{1}(y) = \chi(y)|y|^{-1/2}$ and $\chi_{2}(y) = \chi(y)|y|^{1/2}$. 
+We can prove another case $J_\psi(V'') = 0$ by dualizing. 
+\end{proof}
+When it is irreducible, we denote the isomorphism class as $\pi(\chi_1, \chi_2)$. If it is reducible, we showed that it has two composition factors in its Jordan-H\"older series, a 1-dimensional factor and an infinite dimensionalfactor. 
+In either case, the infinite dimensional factor is irreducible and we denote its isomorphism class as $\sigma(\chi_1, \chi_2)$. 
+(Irreducibility of $\sigma(\chi_1, \chi_2)$ can be proved by using $J_{\psi}$ again. If it is not irreducible, we may assume $\chi_{1}^{-1}\chi_{2} = |\cdot |^{-1}$ and $\sigma(\chi_1, \chi_2)$ has a 1-dimensional subrepresentation. 
+From this, we get a 2-dimensional subrepresentation of $\calB(\chi_1, \chi_2)$. 
+However, one can show that every finite dimensional representation of $\GL(2, F)$ factors through the determinant by no small subgroup argument, and $\GL(2, F) = B(F) \SL(2, F)$ proves that such representation should be 1-dimensional. In other words, the only finite dimensional representation of $\calB(\chi_1, \chi_2)$ is 1-dimensional.)
+Such representation is called a \emph{special} or \emph{Steinberg} representation. 
+The 1-dimensional factor is denoted $\pi(\chi_1, \chi_2)$ again. There are also other kinds of representations - supercuspidal representations - which we will see later. 
+
+Now, let's answer the next question. When two principal series representations  are isomorphic?
+\begin{theorem}
+If $\calB(\chi_1, \chi_2)\simeq \calB(\mu_1, \mu_2)$, then $\chi_1 = \mu_1$ and $\chi_2 = \mu_2$, or $\chi_1 = \mu_2$ and $\chi_2 = \mu_1$. 
+\end{theorem}
+\begin{proof}
+By Frobenius reciprocity, intertwining map corresponds to a linear functional $\Lambda:V\to \Cc$ with $B(F)$-module structure on $\Cc$ by means of the quasi-character $\delta^{1/2}\mu$. 
+Then $\Delta = \Lambda \circ P$ (here $P:C_{c}^{\infty}(\GL(2, F))\to V$ is the convolutioning map we defined in Theorem \ref{psrepwh})  is a nonzero distribution and satisfies $\lambda(b)\Delta = (\delta^{-1/2}\chi)(b)\Delta$ and $\rho(b)\Delta = (\delta^{-1/2}\mu^{-1})(b)\Delta$ for $b\in B(F)$. 
+From the exact sequence of distribution, there exists a nonzero distribution that satisfies same equations in either $\fraD(B(F))$ or $\fraD(\GL(2, F) - B(F))$. 
+
+First, assume that  $\Delta\in \fraD(\GL(2, F) - B(F))$ is a such nonzero distribution. By Proposition \ref{distuniq}, we have
+$$
+\Delta(\phi) = \int\dpl{B(F)}\int\dpl{N(F)} \phi(bw_{0}n^{-1}) (\delta^{1/2}\chi^{-1})(b) db\,dn
+$$
+after adjusting by a nonzero constant. If we apply $\rho(t)$ action and using a change of variable, we have
+\begin{align*}
+(\delta^{-1/2}\mu^{-1})(t)\Delta(\phi) &= (\rho(t)\Delta)(\phi) \\
+&=\int\dpl{N(F)}\int\dpl{B(F)} \phi(bw_{0}n^{-1}t^{-1})(\delta^{1/2}\chi^{-1})(b)db\,dn \\
+&=\delta(t)^{-1}(\delta^{1/2}\chi^{-1})(w_{0}tw_{0}^{-1})\Delta(\phi).
+\end{align*}
+where the last equality follows from the change of variables $n\mapsto t^{-1}nt, b\mapsto bw_{0}tw_{0}^{-1}$. From $\delta(t) = \delta(w_{0}tw_{0}^{-1})^{-1}$, we have $\mu(t) = \chi(w_{0}tw_{0}^{-1})$ and so $\chi_1 = \mu_2$ and $\chi_2 = \mu_1$. 
+
+Another case is similar. By using the integral form of the distribution with change of variables, we can show that for $b\in B(F)$ we have $(\delta^{-1/2}\mu^{-1})(b)\Delta = \rho(b)\Delta = (\delta^{-1/2}\chi^{-1})(b)\Delta$, so $\chi_1 = \mu_1$ and $\chi_2 = \mu_2$. 
+\end{proof}
+
+We can even write the isomorphism $\calB(\chi_1, \chi_2) \to \calB(\chi_2, \chi_1)$ explicitly via \emph{intertwining integral}. 
+We will define such map $M:\calB(\chi_1, \chi_2) \to \calB(\chi_2, \chi_1)$ as an integral
+$$
+Mf(g) = \int\dpl{F} f\left( \pmat{}{-1}{1}{}{}\pmat{1}{x}{}{1} g\right) dx.
+$$
+Formally, this gives an intertwining map since
+$$
+Mf\left(\pmat{1}{x}{}{1}g\right) = Mf(g)
+$$
+holds and 
+\begin{align*}
+Mf\left( \pmat{y_{1}}{}{}{y_{2}}g \right) &= \int\dpl{F} f\left( \pmat{}{-1}{1}{} \pmat{1}{x}{}{1}\pmat{y_{1}}{}{}{y_{2}}g\right) dx \\
+&= \int\dpl{F} f\left( \pmat{y_{2}}{}{}{y_{1}} \pmat{}{-1}{1}{} \pmat{1}{y_{2}y_{1}^{-1}x}{}{1}g\right)dx \\
+&=\left| \frac{y_{2}}{y_{1}}\right|^{1/2} \chi_{1}(y_{2})\chi_{2}(y_{1}) |y_{1}y_{2}^{-1}| Mf(g) \\
+&=\left|\frac{y_{1}}{y_{2}}\right|^{1/2} \chi_{1}(y_{2})\chi_{2}(y_{1}) Mf(g)
+\end{align*}
+where the third equality follows from the substitution $x\mapsto y_{1}y_{2}^{-1}x$. Also, if $f$ is locally constant then $Mf$ is also locally constant. At last, $M$ is a nonzero map since the function
+$$
+f(g) = \begin{cases} \left|\frac{y_{1}}{y_{2}}\right|^{1/2} \chi_{1}(y_{1})\chi_{2}(y_{2}) & \substack{g = \smat{y_{1}}{z}{}{y_{2}} \smat{}{-1}{1}{} \smat{1}{x}{}{1}, \\ y_{1}, y_{2}\in F^{\times},\, z\in F,\, x\in \calO_F }\\
+0 & \text{otherwise} \end{cases}
+$$
+is in $\calB(\chi_1, \chi_2)$ and satisfies $Mf(1) = 1$. 
+
+However, the integral may not converges. The integral converges when $\chi_1, \chi_2$ satisfies certain relations: if we fix two unitary characters $\xi_1, \xi_2$ and take $\chi_i(y) = |y|^{s_i}\xi_i(y)$ for $i = 1,2$, then the integral converges when $\Re(s_1 - s_2) >0$. 
+\begin{proposition}
+If $\Re(s_1 - s_2) >0$, the integral is absolutely convergent and defines a nonzero intertwining map. 
+\end{proposition}
+\begin{proof}
+We have
+\begin{align*}
+f\left(\pmat{}{-1}{1}{}\pmat{1}{x}{}{1}g\right) &= f\left( \pmat{x^{-1}}{-1}{}{x} \pmat{1}{}{x^{-1}}{1} g\right) \\
+&= |x|^{-1}(\chi_{1}^{-1}\chi_{2})(x) f\left( \pmat{1}{}{x^{-1}}{1}g\right).
+\end{align*}
+Since $f$ is smooth, there exists $N$ such that if $|x|>q^N$, then $$f\left( \pmat{1}{}{x^{-1}}{1}g\right) = f(g).$$ 
+Hence the absolute convergence of the integral is equivalent to the convergence of 
+$$
+\int\dpl{|x|>q^N} |x|^{-1}|(\chi_{1}^{-1}\chi_{2})(x)| dx = \int\dpl{|x|>q^N} |x|^{-s_{1} + s_{2} - 1} dx
+$$
+and this converges if $\Re(s_1 - s_2) >0$. 
+\end{proof}
+By interchanging roles of $\chi_1$ and $\chi_2$, we also get a map for $\Re(s_1 - s_2) <0$. 
+So we still have a remaining case of $\Re(s_1 - s_2) =0$, which is the most interesting case since it is conjectured that the only when $\Re(s_1) = \Re(s_2) = 0$ can $\calB(\chi_1, \chi_2)$ occur as a constituent in an automorphic cuspidal representation. 
+To extend the map for this case, we will analytically continue the map with respect to the complex parameters $s_1, s_2$. There will be a pole when $\chi_1 = \chi_2$, but we don't need to worry about this case since we automatically have $\calB(\chi_1, \chi_2) \simeq \calB(\chi_2, \chi_1)$. 
+
+Let $V_0$ be the space of functions on $K = \GL(2, \calO_F)$ that satisfies
+$$
+f\left( \pmat{y_{1}}{x}{}{y_{2}}k\right) = \xi_1(y_1)\xi_2(y_2)f(k)
+$$
+for all $y_1, y_2\in \calO^{\times}_F, x\in \calO_F, k\in K$. For each $f_{0}\in V_{0}$ and $s_1, s_2\in\Cc$, there exists a unique extension $f_{s_{1}, s_{2}}$ of $f_{0}$ to $V_{s_{1}, s_{2}} = \calB(\chi_{1}, \chi_{2})$. We will refer to $(s_{1}, s_{2}) \mapsto f_{s_{1}, s_{2}}$ as a flat section of the family $(\pi_{s_{1}, s_{2}}, V_{s_{1}, s_{2}})$. 
+
+\begin{proposition}
+Fix $f_{0}\in V_{0}$ and let $(s_{1}, s_{2})\mapsto f_{s_{1}, s_{2}}$ be the corresponding flat section. 
+For fixed $g\in GL(2, F)$, the integral $Mf_{s_{1}, s_{2}}(g)$, originally defined for $\Re(s_{1} - s_{2})>0$, has analytic continuation to all $s_{1}, s_{2}$ where $\chi_1 \neq\chi_2$, and defines a nonzero intertwining operator $V_{s_{1}, s_{2}}\to V_{s_{2}, s_{1}}' = \calB(\chi_2, \chi_1)$. 
+\end{proposition}
+\begin{proof}
+Fix $\xi_1, \xi_2, f_{0}\in V_{0}$ and $g$. Since $f$ is smooth, there exists $N$ such that 
+\begin{align*}
+Mf_{s_{1}, s_{2}}(g) &= \int\dpl{|x|\leq q^{N}} f_{s_{1}, s_{2}}\left( \pmat{}{-1}{1}{} \pmat{1}{x}{}{1} g\right) dx \\
+&+ \int\dpl{|x|\geq q^{N+1}} |x|^{-s_{1} + s_{2} -1} (\xi_{1}^{-1}\xi_{2})(x) dx \cdot f_{s_{1},s_{2}}(g). 
+\end{align*}
+The first integral converges absolutely (since the domain is compact), so the analytic continuation is clear. 
+For the second integral, if $\xi_{1}\xi_{2}^{-1}$ is ramified then 
+$$
+\int\dpl{|x| = q^{m}} (\xi_{1}^{-1}\xi_{2})(x)dx = 0
+$$ 
+for all $m\in \Zz$ (consider the change of variable $x\mapsto \alpha x$ with $\alpha\in \calO_{F}^{\times}$, $(\xi_{1}^{-1}\xi_{2})(\alpha)\neq 1$) and so the integral vanishes. 
+If $\xi_{1}\xi_{2}^{-1}$ is unramified then there exists $\alpha\in \Cc$ such that $(\xi_{1}\xi_{2}^{-1})(y) = \alpha^{v(y)}$ where $v:F^{\times} \to \Zz$ is the valuation map. 
+Then the integral became
+\begin{align*}
+&\sum_{m = N+1}^{\infty}\int\dpl{|x|= q^{m}} |x|^{-s_{1} + s_{2}} (\xi_{1}^{-1}\xi_{2})(x) \frac{dx}{|x|} f_{s_{1}, s_{2}}(g) \\
+&= |\calO_{F}^{\times}| f_{s_{1}, s_{2}}(g) \sum_{m \geq N+1} (\alpha q^{-s_{1} + s_{2}})^{m}. 
+\end{align*}
+The latter sum equals constant times $(\alpha q^{-s_{1} + s_{2}})^{N+1} (1-\alpha q^{-s_{1}+s_{2}})^{-1}$ for $\Re(s_{1} - s_{2}) >0$, and it has analytic continuation for all $s_{1}, s_{2}$, except where $\alpha q^{-s_{1} +s_{2}} = 1 \Leftrightarrow \chi_{1} = \chi_{2}$. 
+This also proves that the analytically continued integral remains an intertwining operator and nonzero. 
+\end{proof}
+
+The composition $M'\circ M : \calB(\chi_1, \chi_2)\to \calB(\chi_2, \chi_1)\to \calB(\chi_1, \chi_2)$ is a scalar by Schur's lemma because $\calB(\chi_1, \chi_2)$ is irreducible for most $\chi_1, \chi_2$. 
+We can compute this scalar, and it is given by product of two gamma factors. (For the definition of the Tate gamma factor, see Chapter 4.1.)
+
+\begin{proposition}
+\label{intcomp}
+The scalar $M'\circ M: \calB(\chi_1, \chi_2) \to \calB(\chi_1, \chi_2)$ is given by 
+$$
+\gamma(1-s_1 + s_2, \xi_{1}^{-1}\xi_{2}, \psi) \gamma(1+s_{1} - s_{2}, \xi_{1}\xi_{2}^{-1}, \psi).
+$$
+\end{proposition}
+\begin{proof}
+The proof is based on the uniqueness of Whittaker models. We have a Whittaker functional $\Lambda:\calB(\chi_1, \chi_2)\to \Cc$ defined by 
+$$
+\Lambda (f) = \int\dpl{F} f\left( w_{0}\pmat{1}{x}{}{1}\right)\psi(-x) dx.
+$$
+This is absolutely convergent if $\Re(s_1 - s_2) >0$, and we also have an analytic continuation for all $s_1, s_2$. 
+Similarly, we have a Whittaker functional $\Lambda' : \calB(\chi_2, \chi_1)\to \Cc$. By uniqueness, there exists $\lambda\in \Cc$ such that $(\Lambda' \circ M)(f) = \lambda\Lambda(f)$. 
+We can compute the constant $\lambda$ by inserting suitable $f$. 
+This gives us $\lambda = \xi_{1}\xi_{2}^{-1}(-1) \gamma(1-s_1 + s_2, \xi_1^{-1}\xi_2, \psi)$, which implies the desired result. For detail, see Proposition 4.5.9 and 4.5.10 in \cite{bu}. 
+\end{proof}
+This computation is useful for the functional equations of Eisenstein series. Also, Kazhdan-Petterson, Bank showed that the image of intertwining integral is irreducible by using this. 
+Also, this helped Harish-Chandra to compute the Plancherel measure of $\GL(2, F)$. 
+
+
+At last, we can compute Jacquet module of principal series representations. More precisely, we can compute the action of $T(F)$ on $J(\calB(\chi_1, \chi_2))$ explicitly. 
+First, we have a classification of 2-dimensional smooth representations of $F^{\times}$. 
+
+\begin{proposition}
+There are two kinds of 2-dimensional smooth representations of $F^{\times}$:
+$$
+t\mapsto \pmat{\xi(t)}{}{}{\xi'(t)}
+$$
+for some quasi-characters $\xi, \xi':F^{\times} \to \Cc^{\times}$, or 
+$$
+t\mapsto \xi(t) \pmat{1}{v(t)}{}{1}
+$$
+where $v:F^{\times}\to \Zz\subset \Cc$ is the valuation map. 
+\end{proposition}
+\begin{proof}
+One can always find 1-dimensional invariant subspace, so there exists a nonzero vector fixed by the action. Hence there exists a character $\xi:F^{\times} \to \Cc^{\times}$ such that $\rho(t)x = \xi(t)x$ for all $t\in F^{\times}$. 
+Since $V/\Cc x$ is 1-dimensional again, $F^{\times}$ acts by quasi-character $\xi'$ on this space. 
+If we choose $y\in V - \Cc x$, then we have
+$$
+\rho(t)y = \xi'(t)y + \lambda(t)x
+$$
+for some $\lambda:F^{\times} \to \Cc$. From $\rho(tu) = \rho(t)\rho(u)$, we get
+$$
+\lambda(tu) = \xi'(u)\lambda(t) + \lambda(u)\xi(t).
+$$
+When $\xi\neq \xi'$, one can show that $\lambda(t) = C(\xi(t) - \xi'(t))$ for some $C\in \Cc$, and then $\rho(t)$ has the above form of diagonal matrix with respect to the basis $\{x, y - Cx\}$. 
+If $\xi = \xi'$, $t\mapsto \lambda(t)/\xi(t)$ is a homomorphism from $F^{\times}$ to $\Cc$, and $\calO_F^{\times}$ lies in the kernel since the image is a compact subgroup of $\Cc$, which is trivial. 
+Hence $\lambda(t) = c\xi(t)v(t)$ for some $c\in \Cc$, and $\rho$ is isomorphic to the first one if $c =0$, or the second one if $c\neq 0$. 
+\end{proof}
+
+\begin{theorem}[Jacquet module of $\calB(\chi_1, \chi_2)$]
+\label{psjac}
+Let $\chi_1, \chi_2$ be quasi-characters of $F^{\times}$, and let $\chi, \chi'$ be quasi-characters of $T(F)$ defined by 
+$$
+\chi\pmat{t_1}{}{}{t_2} = \chi_1(t_1)\chi_2(t_2), \quad \chi'\pmat{t_1}{}{}{t_2} = \chi_2(t_1)\chi_1(t_2). 
+$$
+Then the representation of $T(F)$ on $J(\calB(\chi_1, \chi_2))$ is isomorphic to the following 2-dimensional representation:
+\begin{align*}
+t\mapsto \begin{cases} \pmat{\delta^{1/2}\chi(t)}{}{}{\delta^{1/2}\chi'(t)} & \chi_1 \neq \chi_2 \\ 
+\delta^{1/2}\chi(t) \pmat{1}{v(t_1/t_2)}{}{1} & \chi_1 = \chi_2 \end{cases}
+\end{align*}
+\end{theorem}
+\begin{proof}
+First, one can show that $\dim J(\calB(\chi_1, \chi_2)) = 2$ for any $\chi_1, \chi_2$. 
+To show this, we can construct two explicit linearly independent linear functionals on $J(V)$, which shows $\dim J(V) \geq 2$. The opposite direction uses the Bruhat decomposition, the exact sequence of distributions, and the Proposition \ref{distuniq}. 
+
+Now consider $T_{1}(F) = \left\{ \smat{a}{}{}{1}\,:\, a\in F^{\times}\right\}$. Since $T_1(F)\simeq F^{\times}$, the action is isomorphic to one of the representations in the previous proposition. 
+Since $T(F) = T_{1}(F)Z(F)$ and $Z(F)$ acts as a scalar, $(T(F), J(V))$ is isomorphic to one of the following representations
+$$
+t\mapsto \pmat{\delta^{1/2}\xi(t)}{}{}{\delta^{1/2}\xi'(t)}\quad\text{or}\quad \delta^{1/2}\xi(t)\pmat{1}{v(t_1/t_2)}{}{1}. 
+$$
+To distinguish two cases, we use
+\begin{align*}
+\Hom_{T(F)}(J(V), \delta^{1/2}\eta) \simeq \Hom_{B(F)}(V, \delta^{1/2}\eta) \simeq \Hom_{\GL(2, F)}(V, \calB(\eta_1, \eta_2))
+\end{align*}
+where $\eta_1, \eta_2$ are quasi-characters of $F^{\times}$ and $\eta\smat{t_1}{}{}{t_2} = \eta_1(t_1)\eta_2(t_2)$ is a quasi-character of $T(F)$, trivially extended to $B(F)$. 
+If $\chi_1 \neq \chi_2$, then the $\Hom$ is nonzero iff  $\eta = \chi$ or $\eta = \chi'$, and this is the case when $(\pi_N, J(V))$ has a form of diagonal matrices with $\xi = \chi$ and $\xi' = \chi'$. 
+If $\chi_1 = \chi_2$, then the $\Hom$ is nonzero iff $\eta_1 =\eta_2 = \chi_1 = \chi_2$, in which chase it is 1-dimensional by Schur's lemma because $\calB(\chi_1, \chi_2)$ is irreducible. This is possible only if $(\pi_N, J(V))$ is of the second form with $\xi = \chi$. 
+\end{proof}
+
+
+
+
+\subsection{Supercuspidal and Weil representations}
+We just saw principal series representations and special representations. One can show that if $(\pi, V)$  is an irreducible admissible representation of $\GL(2, F)$, then $\dim J(V) \leq 2$. (See Proposition \ref{jacdim2}.) 
+We also know that $\dim J(\calB(\chi_1, \chi_2)) = 2$, and it is known that the converse is true: any irreducible admissible representation $(\pi, V)$ with $\dim J(V) = 2$ is a principal series representation. 
+Also, using the exactness of Jacquet functor we can prove that $\dim J(V) = 1$ for 1-dimensional representions or special representations (twisted Steinberg representations).  
+So we have only one more case left: when $J(V) = 0$. 
+\begin{definition}
+Let $(\pi, V)$ a representation of $\GL(2, F)$. If $J(V) = 0$, then $\pi$ is called a supercuspidal representation. 
+\end{definition}
+
+Such representations don't come from principal series representations, and they are interesting itself. 
+One way to construct such representation is using representation of $\GL(2, \Ff_{q})$. 
+We also have a similar classification of irreducible representations of the finite group $\GL(2, \Ff_{q})$, 
+and there are so-called cuspidal representations of $\GL(2, \Ff_{q})$, which are representations that there's no nonzero linear functional $l:V\to \Cc$ invariant under $N(\Ff_{q})$.  (For the detailed explanation about representations of $\GL(2, \Ff_{q})$, see the chapter 4.1 of \cite{bu}.) 
+One can get supercuspidal representations of $\GL(2, F)$ by using cuspidal representations of $\GL(2, \Ff_{q})$. 
+\begin{theorem}
+Let $(\pi_0, V_0)$ be a cuspidal representation of $\GL(2, \Ff_{q})$ where $\Ff_{q}= \calO_{F}/ \frap$. Lift $\pi_{0}$ to a representation of $K = \GL(2, \calO_{F})$ under the projection map $K \to GL(2, \Ff_{q})$. 
+The central character $\omega_0$ of $\pi_{0}$ is lifted to a character of $\calO_{F}$, and we extend to a unitary character of $F^{\times}$. 
+Then we get a representation of $KZ(F)$. Now let $\pi = \cInd_{KZ(F)}^{\GL(2, F)} (\pi_{0})$ be a compact induction of $\pi_0$ to $\GL(2, F)$. 
+Then $\pi$ is a unitarizable irreducible admissible supercuspidal representation. 
+\end{theorem}
+\begin{proof}
+The proof uses Mackey's theory, which gives an explicit description of decomposition of the space $\Hom_{G}(V_{1}, V_{2})$ where both $V_{1}, V_{2}$ are induced representations form some closed subgroups of $G$. For the detailed proof, see the Theorem 4.8.1 of \cite{bu}. 
+\end{proof}
+
+There's direct way to construct such representations by means of Weil representations. Here we assume that the characteristic of $F$ is not 2. 
+
+\begin{definition}[Heisenberg group]
+Let $F$ be a local field of characteristic not 2, and let $\psi:F\to \Cc$ be a nontrivial additive character. Let $V$ be a vector space over $F$ with a nondegenerate symmetric bilinear form $B:V\times V\to \Cc$. 
+We define Heisenberg group $H$ by giving a group structure on a set $V\times V\times F$ by 
+$$
+(v_{1}^{*}, v_{1}, x_{1}) (v_{2}^{*}, v_{2}, x_{2}) = (v_{1}^{*} + v_{2}^{*}, v_{1} + v_{2}, x_{1} + x_{2} + B(v_{1}^{*}, v_{2}) - B(v_{1}, v_{2}^{*}))
+$$
+for $v_1, v_2\in V, v_1^{*}, v_2^{*}\in V^{*} \simeq V, x_1, x_2\in F$. 
+Here we identify $V^{*}$ with $V$ by $v\mapsto (v'\mapsto \psi(-2B(v, v')))$. 
+Also, define a group $A(V) = V\times V\times \Tt$ with multiplication $(v_1^{*}, v_1, t_1)(v_2^{*}, v_2, t_2) = (v_1^{*} + v_2^{*}, v_1 + v_2, t_1 t_2 \psi(-2B(v_1, v_2^{*})))$. 
+We have a homomorphism $\tau:H\to A(V)$ by $\tau(v^{*}, v, x) = (v^{*}, v, \psi(x)\psi(-B(v, v^{*})))$. 
+Also, we have an action of $A(V)$ on $L^{2}(V)$ given by 
+$$
+(\rho(v^{*}, v, t)\Phi)(u) = t\bra{u}{v^{*}} \Phi(u+v).
+$$
+Let $\pi= \rho\circ \tau$ be the corresponding representation of $H$ on $L^2(V)$. 
+
+We have actions of $\SL(2, F)$ and $\rO(V)$ on $H$ as 
+\begin{align*}
+\pre{g}{(v_1, v_2, x)} &= (av_1 + bv_2, cv_1 + dv_2, x), \quad g = \smat{a}{b}{c}{d}\in \SL(2, F) \\
+\pre{k}{(v_1, v_2, x)} &= (k(v_1), k(v_2), x), \quad k\in \rO(V)
+\end{align*}
+We define the Fourier transform as 
+$$
+\wh{\Phi}(v) = \int\dpl{V} \Phi(u) \psi(2B(u, v))du
+$$
+for $\Phi\in L^{2}(V)$, where $du$ is the self-dual Haar measure on $V$.
+\end{definition}
+\begin{theorem}
+There exists a unitary projective representation $\omega_1$ of $\SL(2, F)$ on $L^2(V)$ such that $\omega_1(g)\pi(h)\omega_1(g)^{-1} = \pi(\pre{g}{}h)$ for $g\in\SL(2, F)$ and $h\in H$. 
+There exists a representation $\omega_2$ of $\rmO(V)$ on $L^{2}(V)$ such that $\omega_2(k)\pi(h)\omega_2(k)^{-1} = \pi(\pre{k}{}h)$ for $k\in \rmO(V)$ and $h\in H$. 
+The Schwartz space $\calS(V)$ is invariant under both these representations. 
+We have
+\begin{align*}
+\left(\omega_1\pmat{1}{x}{}{1}\Phi\right)(v) &=\psi(xB(v, v))\Phi(v)  \\
+\left(\omega_1\pmat{a}{}{}{a^{-1}}\Phi\right)(v) &= |a|^{d/2}\Phi(av) \\
+\omega_1(w_1)\Phi &= \wh{\Phi}, \quad w_1 = \pmat{}{1}{-1}{} \\
+(\omega_2(k)\Phi)(v) &= \Phi(k^{-1}v)
+\end{align*}
+\end{theorem}
+To get a true representation of $\SL(2, F)$ (and $\GL(2, F)$), we need to \emph{lift} the projective representation $\omega_1$. 
+We can interpret projective representations as a cohomology class in $\rH^{2}(G, \Cc^{\times})$ (or $\rH^{2}(G, \Tt)$ if the representation is unitary), and we can show that when $\dim V$ is even, the the corresponding cohomology class vanishes so the projective representations can be lifted to a true representation. 
+\begin{definition}
+Let $V$ be a (possibly infinite dimensional) Hilbert space. 
+A projective representation of $G$ is a homomorphism $\omega : G\to \PGL(V)$ where $\PGL(V) = \GL(V)/Z(\GL(V))$. By definition, there exists a lift $\omega' : G\to \GL(V)$ and $c:G\times G\to \Cc^{\times}$ such that $\omega'(g_{1}g_{2}) = c(g_{1}, g_{2})\omega'(g_{1})\omega'(g_{2})$ for all $g_{1}, g_{2}\in G$. 
+Such $c$ defines a cohomology class in $\rH^{2}(G, \Cc^{\times})$. 
+Also, we can do the same thing for unitary representations by replacing $\PGL(V), \GL(V), \Cc^{\times}$ to $\PU(V), \rU(V), \Tt = \{z\in \Cc\,:\, |z| = 1\}$, where $U(V)$ is a unitary group that preserves inner product on $V$. 
+\end{definition}
+
+\begin{theorem}
+Let $V$ be a $F$-vector space of even dimension. Then the cohomology class in $\rH^{2}(\SL(2, F), \Tt)$ attached to $\omega_1$ is trivial. 
+Hence there exists a lift of $\omega_1$ to the true representation of $\SL(2, F)$.  
+\end{theorem}
+The proof uses quaternion algebra and Hilbert symbol. 
+Note that this is false for even dimension, and the corresponding cohomology class of $\rH^{2}(\SL(2, F), \Tt)$ defines an important central extension of $\SL(2, F)$ called the \emph{metaplectic group}. 
+
+Using this, we can construct a supercuspidal representation of $\GL(2, F)$. 
+Let $\omega = \omega_{0}\boxtimes \omega_{2}$ be the representation of $\SL(2, F)\times \rO(V)$, and let $\omega_\infty$ be the restriction of $\omega$ to $C_{c}^{\infty}(V)$. 
+Howe conjectured that there's certain duality between representations of $\SL(2, F)$ and $\rO(V)$. 
+\begin{definition}
+Let $\pi_1, \pi_2$ be irreducible admissible representations of $\SL(2, F)$ and $\rO(V)$. 
+We say that $\pi_1$ and $\pi_2$ correspond if there exits a nonzero $\SL(2, F)\times \rO(V)$ intertwining operator $\omega_\infty \to \pi_1\boxtimes \pi_2$. 
+\end{definition}
+\begin{theorem}[Howe duality, Waldspurger]
+For each irreducible admissible represenattion of $\SL(2, F)$, there exists at most one irreducible admissible representation of $\rO(V)$ that $\pi_1$ and $\pi_2$ correspond, and vice versa. 
+Such correspondence is called theta correspondence. 
+\end{theorem}
+We are interested in $\GL(2, F)$ rather than $\SL(2, F)$, and it is possible to modify Howe duality as a correspondence between representations of $\GL(2, F)$ and $\GO(V)$, the group of automorphisms of $V$ that preserves $\beta$ up to constant. 
+
+When $\dim V = 2$. In this case, the quadratic space $(V, \beta)$ can be identified with $(E, N)$, where $E$ is a 2-dimensional commutative semisimple algebra over $F$ and $N:E\to F$ is the norm map. 
+We have two possible cases: when $\beta$ splits ($E = F\oplus F$ and $N(x, y) = xy$) or not ($E = F(\sqrt{D})$ is a quadratic extension and $N(a+b\sqrt{D}) = a^{2} - b^{2}D$). 
+We can embed $E^{\times}$ into $\GO(V) = \GO(E)$ by $x\mapsto (a\mapsto xa)$, and we also have a nontrival involution $\sigma:E\to E$. Those two generates $\GO(V)$ subject to the relation $\sigma^{2} =1$ and $\sigma x \sigma^{-1} = \ol{x}$. 
+
+Now let $\xi:E^{\times} \to \Cc^{\times}$ be a quasicharacter. It is known that $\xi$ can't be extended to the quasicharacter of $\GO(V)$ if and only if $\xi$ does not factor through the norm map $E^{\times} \to F^{\times}$. (This follows from Hilbert's theorem 90.) 
+In this case, we get an induced representation of $\GO(V)$, and there exists a corresponding representation of $\GL(2, F)$ under the theta correspondence. This gives a supercuspidal representation. For non-split case, such representation can be described as follows:
+\begin{theorem}
+Let $E/F$ be a quadratic extension of non-archimedean local fields, and let $\xi$ be a quasicharacter of $E^{\times}$ that does not factor through the norm map $N:E^{\times} \to F^{\times}$. 
+Let $U_{\xi, \psi}$ be the space of compactly supported smooth functions on $E$ such that 
+$$
+\Phi(yv) = \xi(y)^{-1}\Phi(v), \quad \forall y\in E_{1}^{\times} = \ker N
+$$
+and let $\chi: F^{\times} \to \{\pm 1\}$ be the quadratic character attached to the extension $E/F$. 
+Let $\GL(2, F)_{+}$ denote the subgroup of $\GL(2, F)$ consisting of elements whose determinants are norms from $E$. 
+Then there exists an irreducible admissible representation $\omega_{\xi, \psi}$ of $\GL(2, F)_{+}$ on $U_{\xi, \psi}$ such that 
+$$
+\left(\omega_{\xi, \psi}\pmat{a}{}{}{1} \Phi\right)(v) = |a|^{1/2} \xi(b) \Phi(bv)
+$$
+if $b\in E^{\times}, N(b) = a\in F^{\times}$, 
+\begin{align*}
+\left(\omega_{\xi, \psi}\pmat{1}{x}{}{1} \Phi\right)(v) &= \psi(xN(v)) \Phi(v)
+\left(\omega_{\xi, \psi}\pmat{a}{}{}{a^{-1}} \Phi\right)(v) &= |a|\chi(a)\Phi(av)
+\end{align*}
+and
+$$
+\omega_{\xi, \psi}(w_{1})\Phi = \gamma(N)\wh{\Phi}
+$$
+where the Fourier transform
+$$
+\wh{\Phi}(v) = \int\dpl{E} \Phi(u) \Tr(u\ol{v}) du.
+$$
+The representation $\omega_{\xi} = \Ind_{\GL(2, F)_{+}}^{\GL(2, F)}(\omega_{\xi, \psi})$  is irreducible and supercuspidal. 
+\end{theorem}
+\begin{proof}
+For supercuspidality, we can show that restriction of $\omega_{\xi}$ to $B_{1}(F)$ is isomorphic to $\cInd_{N(F)}^{B_{1}(F)}(\psi_{N})$, which is a $B_{1}(F)$-representation on the space $C_{c}^{\infty}(F^{\times})$. Since $V_N = C_{c}^{\infty}(F^{\times})$ and it is irreducible, we get $V = V_N$ and $\omega_{\xi}$ is a supercuspidal representation. 
+For details and proof of smoothness, admissibility and irreducibility, see 542p of \cite{bu}. 
+\end{proof}
+When $E = F\oplus F$, similar construction gives Whttaker models for principal series representations. 
+\begin{definition}
+For $\Phi\in\calS(E) = \calS(F\oplus F)$, let $W_{\Phi}:\GL(2, F)\to \Cc$ be a function
+$$
+W_{\Phi}(g) = \int\dpl{F^{\times}} \chi(t) (\omega_0(g)\Phi)(t, t^{-1}) d^{\times}t.
+$$
+Here the Weil representation $\omega_0$ of $\SL(2, F)$ is extended to $\GL(2, F)$ by 
+$$
+\left(\omega_{0}\pmat{y}{}{}{1}\Phi\right)(v_1, v_2) = \sqrt{|y|}\chi_1(y)\Phi(yv_1, v_2).
+$$
+Let $\calW = \{W_{\Phi}\,:\, \Phi\in\calS(E)\}$. 
+\end{definition}
+\begin{proposition}[Jacquet-Langlands]
+Assume that $\Re(s_1 - s_2 + 1)>0$ and that $\calB(\chi_1, \chi_2)$ is irreducible. 
+Then the space $\calW$ of functions $W_{\Phi}$ comprises the Whittaker model of $\calB(\chi_1, \chi_2)$.
+If $\rho$ denotes the action of $\GL(2, F)$ on $\calW$ by right translation, then for $g\in \GL(2, F)$ 
+$$
+\rho(g)W_{\Phi} = W_{\omega_0(g)\Phi}. 
+$$
+\end{proposition}
+
+\subsection{Spherical representation and Unitarizability}
+
+In Chapter 3, we will show that every automorphic representation $\pi$ of $\GL(2, \Aa)$ (we will define this in Chapter 3) decomposes as a restricted product of local factors, $\pi = \otimes_{v}\pi_v$ where almost all $\pi_v$ are \emph{spherical} (or \emph{unramified}) representations. 
+Spherical representations is defined in the following way. 
+\begin{definition}
+Let $K = \GL(2, \calO_F)$ be the maximal compact subgroup of $\GL(2, F)$. 
+An irreducible admissible representation $(\pi, V)$ of $\GL(2, F)$ is called spherical if it contains a $K$-fixed vector, i.e. $V^{K} = \{v\in V\,:\, \pi(k)v = v\,\forall k\in K\}\neq 0$. 
+Such nonzero vector is called a spherical vector.  
+\end{definition}
+We can show that dual of spherical representations are also spherical. 
+\begin{proposition}
+If $(\pi, V)$ is a spherical representation of $\GL(2, F)$, then the contradgradient representation $(\wh{\pi}, \wh{V})$ is also spherical. 
+\end{proposition}
+\begin{proof}
+By Theorem 3.2, it is enough to show that $\pi_{1}(g) = \pi(\pre{T}{g}^{-1})$ is spherical. Since $K$ is invariant under transpose, the spherical vector for $\pi$ is also spherical vector for $\pi_1$. 
+\end{proof}
+One of our aim in this section is to understand the structure of the \emph{spherical Hecke algebra} $\calH_{K} = (C_{c}^{\infty}(K\bs G / K), *)$. 
+First, we show that this is commutative, and the proof is almost same as archimedean case (Theorem \ref{archec}), which uses Cartan decomposition and Gelfand's trick. 
+
+\begin{theorem}
+\label{nonarchsphcom}
+The spherical Hecke algebra $\calH_K$ is commutative. 
+\end{theorem}
+\begin{proof}
+We use $p$-adic version of Cartan decomposition theorem: a complete set of double coset representatives for $K\bs \GL(2, F)/K$ consists of diagonal matrices
+$$
+\pmat{\varpi^{n_1}}{}{}{\varpi^{n_2}}
+$$
+where $n_1 \geq n_2$ are integers. Proof is almost same as archimedean case. 
+Now define $\iota:\calH_K\to \calH_K$ by $\pre{\iota}{\phi}(g) = \phi(\pre{T}{g})$. 
+Then $\pre{\iota}{(\phi_1 * \phi_2)} = \pre{\iota}{\phi_2} * \pre{\iota}{\phi_1}$ holds by direct computation. 
+By the Cartan decomposition, double cosets are invariant under transpose and so $\iota$ is the identity map. This implies $\phi_1 * \phi_2 = \phi_2 * \phi_1$. 
+\end{proof}
+
+\begin{theorem}
+For an irreducible admissible representation $(\pi, V)$ of $\GL(2, F)$,  $\dim V^{K} \leq 1$, and the space of $K$-fixed linear functionals on $V$ is also at most 1-dimensional. 
+\end{theorem}
+\begin{proof}
+Assume that $V^{K} \neq 0$. By Proposition \ref{simple}, $V^{K}$ is a finite dimensionalsimple $\calH_K$-module, so is 1-dimensional since $\calH_K$ is commutative. 
+The second assertion follows from the first assertion, since such $L$ would be a $K$-fixed vector in the contragredient representation. 
+\end{proof}
+
+Now let $(\pi, V)$ be an irreducible admissible spherical representation and let $v_K\in V$ be a spherical vector. 
+Then $\pi(\phi)$ is also spherical for $\phi\in \calH_K$, so there exists $\xi(\phi)\in \Cc$ such that $\pi(\phi)v_K = \xi(\phi)v_K$. 
+Such $\xi$ defines a character of $\calH_{K}$, and we cal $\xi$ the \emph{character of $\calH_K$ associated with the spherical representation $(\pi, V)$}. 
+We proved that irreducible admissible representations are determined by their characters in Theorem \ref{char}. 
+For spherical representation, stronger result holds - $\xi$ determines the representation. 
+\begin{theorem}
+\label{sphchar}
+Let $(\pi_1, V_1)$ and $(\pi_2, V_2)$ be irreducible admissible spherical representations. 
+Suppose that the characters of $\calH_K$ associated with $\pi_1, \pi_2$ are equal, i.e. $\xi_1 = \xi_2$. Then $\pi_1\simeq \pi_2$. 
+\end{theorem}
+\begin{proof}
+By Proposition \ref{simple}, it is sufficient to show that $V_{1}^{K_1}\simeq V_{2}^{K_1}$ as $\calH_{K_{1}}$-modules for any open subgroup $K_1\subseteq K$. 
+It is known that such $\calH_{K_{1}}$-module structures are determined by matrix coefficients, i.e. a function $c:\calH_{K_1} \to \Cc$ of the form $c_i(\phi) = L_i(\pi(\phi)x)$ for a linear functional $L:V_i\to \Cc$ and $x\in V_i$. 
+So it is enough to show that 
+$$
+\bra{\pi_1(\phi)v_1}{\wh{v_1}} = \bra{\pi_2(\phi)v_2}{\wh{v_2}}
+$$
+for any $\phi\in \calH$, where $v_i, \wh{v_i}$ are normalized spherical vectors of $V_i, \wh{V_i}$ so that $\bra{v_i}{\wh{v_i}} = 1$ for $i= 1,2$.
+ If we define $P: \calH\to \calH$ as $P(\phi) = \epsilon_K * \phi * \epsilon_K$, then we have $P^{2} = P$, $\Img(P) = \calH_K$, and $\calH = \Img(P) \oplus \ker(P) = \calH_K \oplus \ker(P)$. 
+So it is enough to show for $\phi\in \calH_K$ and $\phi\in \ker(P)$ separately. 
+We can easily check that for $\phi \in \calH_K$, both sides are same as $\xi(\phi)$, and for $\phi\in \ker(P)$, both sides vanishes (here we use $\pi_i(\epsilon_K) v_i = v_i$ and $\wh{\pi_i}(\epsilon_K) = \wh{v_i}$. 
+Now restrict the equation for $\phi\in \calH_{K_1}$ for $K_1\subseteq K$ and we get $V_1^{K_1}\simeq V_2^{K_1}$ as $\calH_{K_1}$-modules. 
+\end{proof}
+
+We can do more. We can study the precise structure of $\calH_K$ in terms of simple generators and relations. 
+For $k\geq 0$, let $T(\frap^{k})$ be the characteristic function of the set of all $g\in \mathrm{Mat}_{2}(\calO_F)$ such that the ideal generated by $\det(g)$ in $\calO$ is $\frap^k$. 
+Also, let $R(\frap)\in \calH_K$ be the characteristic function of $K \smat{\varpi}{}{}{\varpi} K = K\smat{\varpi}{}{}{\varpi}$. ($R(\frap)$ is invertible)
+Then we have a nontrivial and simple relation, which might be familiar to you. 
+\begin{proposition}
+\label{heckerel}
+For $k\geq 1$, $T(\frap)*T(\frap^k) = T(\frap^{k+1}) + qR(\frap)*T(\frap^{k-1})$. 
+\end{proposition}
+\begin{proof}
+Since $T(\frap)*T(\frap^k), T(\frap^{k+1}), R(\frap)*T(\frap^{k-1})$ are all supported on the double cosets whose determinants generate the ideal $\frap^{k+1}$, so it is sufficient to verify it for the matrices 
+$$
+\pmat{\varpi^{k+1-r}}{}{}{\varpi^{r}}, \quad r\in \Zz
+$$
+with $0\leq r\leq k+1$. Using
+$$
+K \pmat{\varpi}{}{}{1}K = \pmat{1}{}{}{\varpi}K \cup \bigcup_{b\Mod{\frap}} \pmat{\varpi}{b}{}{1} K
+$$
+we can prove
+$$
+(T(\frap) * T(\frap^{k}))(g) = T(\frap^{k}) \left( \pmat{1}{}{}{\varpi}^{-1}g\right) + \sum_{b\Mod{\frap}} T(\frap^{k}) \left( \pmat{\varpi}{b}{}{1}^{-1} g\right)
+$$
+and we get the result by comparing both sides for the above matrices. 
+\end{proof}
+\begin{proposition}
+\label{heckegen}
+$\calH_K$ is generated by $T(\frap), R(\frap)$ and $R(\frap)^{-1}$. 
+\end{proposition}
+\begin{proof}
+By Cartan decomposition, a basis of $\calH_K$ are characteristic functions of the double cosets
+$$
+K\pmat{\varpi^n}{}{}{\varpi^m} K, \quad n\geq m. 
+$$
+which equals $R(\frap)^m$ times the characteristic function of
+$$
+K\pmat{\varpi^{n-m}}{}{}{1} K. 
+$$
+or $T(\frap^{n-m}) - R(\frap)*T(\frap^{n-m-2})$. Since $T(\frap^{k})$ can be generated by $T(\frap)$ and $R(\frap)$, we are done. 
+\end{proof}
+
+Now we have a natural question - which representations are spherical? 
+First simple but nontrivial examples are principal series representations with unramified chracters. 
+\begin{proposition}
+Let $\chi_1, \chi_2$ be unramified quasicharacters of $F^{\times}$ such that $\chi_{1}\chi_{2}^{-1}\neq |\cdot|^{\pm 1}$, so that $\calB(\chi_1, \chi_2)$ is irreducible. 
+Then it is spherical. 
+\end{proposition}
+\begin{proof}
+Let $\chi\smat{b_{1}}{*}{}{b_{2}} = \chi_{1}(b_{1})\chi_{2}(b_{2})$ be a quasicharacter of $B(F)$. 
+Let $\phi_{K, \chi}:\GL(2, F)\to \Cc$ be a function defined as $\phi_{K, \chi}(bk) = (\delta^{1/2}\chi)(b)$. (Recall that any elements in $\GL(2, F)$ can be written as a form of $bk$ for $b\in B(F)$ and $k\in K$ by Iwasawa decomposition.)
+Well-definedness follows from unramifiedness of $\chi_1, \chi_2$. 
+Also, it is clear that $\phi_{K, \chi}$ is a spherical vector. 
+\end{proof}
+Is there any other spherical representations? Obviously, there are simpler ones: 1-dimensional representations, which are just unramified quasicharacters of $F^{\times}$. 
+We will show that these are all, i.e. there are no other spherical representations. 
+For this, we need to know how $\calH_K$ acts on the spherical vector in the spherical principal series representation. 
+\begin{proposition}
+Let $\phi_K$ be a spherical vector in $\pi(\chi_1, \chi_2)$ wehre $\chi_1, \chi_2$ are unramified quasicharacters of $F^{\times}$. 
+Let $\alpha_i = \chi_i(\varpi)$ for $i = 1, 2$. 
+Then $T(\frap)\phi_K = \lambda \phi_K$ and $R(\frap)\phi_K = \mu \phi_K$, where
+$$
+\lambda = q^{1/2}(\alpha_1 + \alpha_2), \quad \mu = \alpha_1 \alpha_2.
+$$
+\end{proposition}
+\begin{proof}
+We use the previous decomposition of $K\smat{\varpi}{}{}{1}K$. Since $\phi_K(1) = 1$, 
+\begin{align*}
+\lambda &= (T(\frap)\phi_K)(1) = \int\dpl{K\smat{\varpi}{}{}{1}K} \phi_{K}(g)dg \\
+&= \sum_{\gamma\in K\smat{\varpi}{}{}{1}K/K} \int_K \phi_K(\gamma k)dk \\
+&= (\delta^{1/2}\chi)\pmat{1}{}{}{\varpi} + q(\delta^{1/2}\chi)\pmat{\varpi}{}{}{1} = q^{1/2}(\alpha_1 + \alpha_2). 
+\end{align*}
+For $R(\frap)$, it is much easier:
+$$
+\mu = (R(\frap)\phi_K)(1) = \int\dpl{K\smat{\varpi}{}{}{\varpi}K} \phi_K(g)dg = (\delta^{1/2}\chi)\pmat{\varpi}{}{}{\varpi} = \alpha_1 \alpha_2. 
+$$
+\end{proof}
+Using this with Theorem \ref{sphchar}, we can prove that the only spherical representations are principal series representations and 1-dimensional representations.
+\begin{theorem}
+\label{sphps}
+Let $(\pi, V)$ be an irreducible admissible spherical representation of $\GL(2, F)$. 
+Then either $V$ is 1-dimensional that has a form of $\pi(g) = \chi(\det(g))$ for some unramified quasicharacter $\chi$ of $F^{\times}$, or a spherical principal series representation. 
+\end{theorem} 
+\begin{proof}
+Let $\xi$ be the character of $\calH_K$ associated with the spherical representation $(\pi, V)$ and let $\lambda, \mu$ be the eigenvalues of $T(\frap)$ and $R(\frap)$. 
+Since $R(\frap)$ is invertible, $\mu\neq 0$. 
+Let $\alpha_1, \alpha_2$ be the roots of the quadratic polynomial $X^{2} - q^{-1/2}\lambda X + \mu = 0$, and let $\chi_1,\chi_2$ be the unramified quasicharacters of $F^{\times}$ with $\chi_i(\varpi) = \alpha_i$. 
+Then $T(\frap)$ and $R(\frap)$ have the same eigenvalues $\lambda$ and $\mu$ on $V^{K}$, so the character $\xi$ and the character associated with $\calB(\chi_1, \chi_2)$ coincides. 
+So if $\calB(\chi_1, \chi_2)$ is irreducible, $(\pi, V)\simeq \calB(\chi_1, \chi_2)$ by the Theorem \ref{sphchar}. 
+If not, we may assume $\alpha_1 \alpha_2^{-1} = q$ so that $\calB(\chi_1, \chi_2)$ has a 1-dimensional subspace. 
+By Theorem \ref{sphchar} again, $(\pi, V)$ is isomorphic to this 1-dimensional subrepresentation, and we can check that $\pi(g) = \chi(\det(g))$ where $\chi(y) = |y| \chi_1(y)$. 
+\end{proof}
+
+We can also compute the action of intertwining operator on the spherical vector. 
+\begin{proposition}
+Let $(\pi, V) = \calB(\chi_1, \chi_2), (\pi', V') = \calB(\chi_2, \chi_1)$, and let $M:V\to V'$ be the intertwining map. 
+Then we have
+$$
+M\phi_{K, \chi} = \frac{1-q^{-1}\alpha_{1}\alpha_{2}^{-1}}{1- \alpha_{1}\alpha_{2}^{-1}} \phi_{K, \chi'}. 
+$$
+\end{proposition}
+\begin{proof}
+It is clear that $M\phi_{K, \chi}$ is a spherical vector in $V'$, so $M\phi_{K, \chi} = c\phi_{K, \chi'}$ for some constant $c = M\phi_{K, \chi}(1) \in \Cc$. 
+For the computation of $c$, we have
+\begin{align*}
+\int\dpl{F} \phi_{K, \chi}\left(\pmat{}{-1}{1}{} \pmat{1}{x}{}{1}\right) dx &= 1 + \sum_{m\geq 1} |\frap^{-m} - \frap^{-(m-1)}| q^{-m}\alpha_{1}^{m}\alpha_{2}^{-m} \\
+&= 1 + \sum_{m\geq 1}(1-q^{-1})(\alpha_{1}\alpha_{1}^{-1})^{m} \\
+&= \frac{1-q^{-1}\alpha_{1}\alpha_{2}^{-1}}{1- \alpha_{1}\alpha_{2}^{-1}}.
+\end{align*}
+\end{proof}
+
+There are two special functions on $\GL(2, F)$ associated with a spherical representation, called \emph{spherical Whittaker function} and \emph{spherical function}. 
+Let's study spherical Whittaker model first. 
+\begin{definition}
+Let $(\pi, V) = \calB(\chi_1, \chi_2)$ be a spherical principal series representation where $\chi_1, \chi_2$ are unramified quasicharacters. 
+Define a Whittaker functional $\Lambda$ on $\calB(\chi_1, \chi_2)$ by 
+$$
+\Lambda(f) = \int\dpl{F} f\left( \pmat{}{-1}{1}{} \pmat{1}{x}{}{1}\right) \psi(-x) dx
+$$
+where $\psi$ is a nonzero additive character with conductor $\calO_F$. 
+We define the spherical Whittaker function $W_{0}:\GL(2, F)\to \Cc$ as $W_{0}(g) = \Lambda(\pi(g)\phi_K)$. 
+\end{definition}
+The integral absolutely converges if $\chi$ is \emph{dominant}, i.e. $|\alpha_{1}| < |\alpha_{2}|$. 
+For general $\chi$, we can define it as a limit
+$$
+\Lambda(f) = \lim_{k\to\infty} \int\dpl{\frap^{-k}} f\left( w_{0}\pmat{1}{x}{}{1}\right) \psi(-x)dx.
+$$
+which makes sense and defines a Whittaker functional. 
+
+We can compute the spherical Whittaker function explicitly. 
+Note that we have
+$$
+W_{0}\left( \pmat{1}{x}{}{1} \pmat{z}{}{}{z} gk\right) = \psi(x)\omega(z)W_{0}(g)
+$$
+for $x\in F, z\in F^{\times}$ and $k\in K$, where $\omega = \chi_1 \chi_2$ is the central quasicharacter of $\calB(\chi_1, \chi_2)$. 
+So it is sufficient to compute $W_{0}(g)$ as $g$ runs through a set of coset representatives for $N(F)Z(F)\bs \GL(2, F)/ K$, and by Iwasawa decomposition, it is sufficient to compute 
+$$
+W_{0}\pmat{\varpi^m}{}{}{1}
+$$
+for $m\in \Zz$. 
+\begin{theorem}
+\label{explicitsph}
+Let $a_{m} = \smat{\varpi^m}{}{}{1}$. Then we have the following explicit formula
+$$
+W_{0}(a_m) = \begin{cases} (1-q^{-1}\alpha_1 \alpha_2^{-1}) q^{-m/2} \frac{\alpha_{1}^{m+1} -\alpha_{2}^{m+1}}{\alpha_{1} - \alpha_{2}} & m \geq 0 \\ 0 & m < 0. \end{cases}
+$$
+\end{theorem}
+\begin{proof}
+For $m<0$, we have
+$$
+W_{0}\left( a_m \pmat{1}{x}{}{1} \right) = W_{0}\left( \pmat{1}{\varpi^{m}x}{}{1}a_m \right) = \psi(\varpi^{m}x)W_{0}(a_{m})
+$$
+and by choosing $x\in \calO_F$ with $\psi(\varpi^{m}x)\neq 1$, we get $W_{0}(a_{m}) = 0$. 
+For $m\geq 0$, we use a special basis $\{\phi_0, \phi_1\}$ of $V^{K_{0}(\frap)} \simeq J(V)$, which is called Casselman basis. These are vectors such that $L_{0}(\phi_{0}) = L_{1}(\phi_{1}) = 1$ and $L_{1}(\phi_{0}) = L_{0}(\phi_{1}) = 0$, where $L_{0}, L_{1}$ are linear functionals on $V$ defined as $L_{1}(\phi) = \phi(1)$ and $L_{0}(\phi) = (M\phi)(1)$, which can be regarded as a functional on $J(V)$ or $V^{K_{0}(\frap)}$. One can check that these are nonzero and linearly independent, so form a basis of $J(V)^{*} \simeq (V^{K_{0}(\frap)})^{*}$. 
+Using this, one can prove that
+$$
+W_{0}(a_{m}) = C q^{-m/2}\alpha_{1}^{m} + M\phi_{K, \chi}(1)  q^{-m/2}\alpha_2^m,
+$$
+for some $C\in \Cc$. Also, $(1-q^{-1}\alpha_{1}\alpha_{2}^{-1})^{-1}W_{0}(g)$ is invariant under the interchange of $\alpha_1$ and $\alpha_2$ since it is a normalized spherical vector and $\calB(\chi_1, \chi_2)\simeq \calB(\chi_2, \chi_1)$. 
+Using this, we can compute $C$ and we obtain the formula. 
+\end{proof}
+Spherical function is defined as $\sigma(g) = \bra{\pi(g)v}{\wh{v}}$ where $v\in V, \wh{v}\in \wh{V}$ are normalized spherical vectors so that $\bra{v}{\wh{v}} = 1$. 
+We can also compute this function explicitly. 
+Note that $\sigma$ is $K$-biinvariant and $\sigma(\smat{z}{}{}{z}g) = \omega(z)\sigma(g)$, so we only need to compute its values on a coset representatives for $KZ(F) \bs \GL(2, F) / K$. 
+By Cartan decomposition, it is sufficient to compute $\sigma(a_{m})$ for $m\geq 0$. 
+\begin{theorem}[Macdonald formula] For $m\geq 0$, 
+$$
+\sigma(a_m) = \frac{1}{1+q^{-1}} q^{-m/2} \left[ \alpha_1^m \frac{1 - q^{-1}\alpha_{2}\alpha_{1}^{-1}}{1-\alpha_{2}\alpha_{1}^{-1}} + \alpha_{2}^{m} \frac{1-q^{-1}\alpha_{1}\alpha_{2}^{-1}}{1-\alpha_{1}\alpha_{2}^{-1}}\right].
+$$
+\end{theorem}
+
+We can ask a different kind of question. When principal series representations are unitarizable? 
+If the representation is induced from unitary data, then it is also unitary. 
+\begin{proposition}
+If $\chi_1, \chi_2$ are unitary characters of $F^{\times}$, then $\calB(\chi_1, \chi_2)$ is unitarizable. 
+\end{proposition}
+\begin{proof}
+For $f_1, f_2\in V$,
+$$
+\bra{f_1}{f_2} = \int\dpl{K} f_1(k)\ol{f_2(k)} dk
+$$
+defines a positive-definite $\GL(2, F)$-invariant Hermitian pairing. 
+\end{proof}
+However, there may exist other principal series representations that are unitary but not induced from unitary characters.
+\begin{proposition}
+If $\calB(\chi_1, \chi_2)$ is unitarizable, then either $\chi_1, \chi_2$ are unitary, or $\chi_1 = \ol{\chi_2}^{-1}$. 
+\end{proposition}
+\begin{proof}
+If $\langle \,,\,\rangle$ is the paring, then $(f_1, f_2) := \bra{f_1}{\ol{f_2}}$ is a nondegenerate $\GL(2, F)$-invariant bilinear pairing
+$$
+\calB(\chi_1, \chi_2) \times \calB(\ol{\chi}_1, \ol{\chi}_{2})\to \Cc,
+$$
+and so $\calB(\ol{\chi}_{1},  \ol{\chi}_2) \simeq \wh{\calB(\chi_{1}, \chi_2)} \simeq \calB(\chi_1^{-1}, \chi_2^{-1})$. 
+\end{proof}
+So we want to know when $\calB(\chi, \ol{\chi}^{-1})$ is unitary. 
+If we write $\chi(y) = \chi_{0}(y) |y|^{s}$ with a unitary character $\chi_{0}$ and $s\in \Rr$, 
+Then $\calB(\chi, \ol{\chi}^{-1})\simeq \chi_{0}\otimes \calB(\chi_s, \chi_s^{-1})$ where $\chi_s(y) = |y|^s$. 
+So we are reduced to determine when $\calB(\chi_s, \chi_s^{-1})$ is unitarizable. 
+\begin{proposition}
+Suppose that $s\neq \pm\frac{1}{2}$ is a real number, so that $\calB(\chi_s, \chi_s^{-1})$ is irreducible. 
+Then $\calB(\chi_s, \chi_s^{-1})$ is unitarizable if and only if $-\frac{1}{2} < s < \frac{1}{2}$. 
+\end{proposition}
+\begin{proof}
+We may assume $s<0$. Since $V = \calB(\chi_s, \chi_s^{-1})$ is irreducible, there can be at most one nondegenerate $\GL(2, F)$-invariant sesquilinear pairing on $V$ (up to a constant multiple). 
+If we put $M_{s}: \calB(\chi_s, \chi_s^{-1})\to \calB(\chi_s^{-1}, \chi_s)$, then we get a nondegenerate sesquilinear pairing
+$$
+\bra{f_1}{f_2} = \int\dpl{K} (M_s f_1)(k) \ol{f_{2}(k)} dk. 
+$$
+Define an Iwahori fixed vector 
+$$
+f_{0}(g) = \begin{cases} \delta^{s+1/2}(b) & g = bk, b\in B(F), k_{0} \in K_{0}(\frap) \\ 0 & g \in B(F)w_{0}K_{0}(\frap) \end{cases}
+$$
+where $K_{0}(\frap) = \{ \smat{a}{b}{c}{d}\in \GL(2 ,\calO_{K})\,:\, c\in \frap\}$. 
+Then we get
+$$
+\bra{f_0}{f_0} = \frac{1-q^{-1}}{1+q} \frac{q^{-2s}}{1-q^{-2s}}.
+$$
+Here the integral converges for $s>0$ and this equation gives an analytic continutation for $s<0$, and this expression is negative for $s<0$. 
+For the standard spherical vector $\phi_K$, we have
+$$
+\bra{\phi_K}{\phi_K} = \frac{1-q^{-1-2s}}{1-q^{-2s}}
+$$
+which is negative if $-\frac{1}{2} < s < 0$ but positive $s<-\frac{1}{2}$. 
+So it can't be unitarizable for $s< -\frac{1}{2}$ (since it is not positive definite) and it remain to show that it is unitarizable for $-\frac{1}{2} < s< 0$. 
+To prove this, we consider a new intertwining operator $M_{s}^{*} = (1-q^{-2s})M_{s}$. 
+The original $M_{s}$ is not defined at $s = 0$ (it has a pole), but $M_{s}^{*}$ is even defined at $s = 0$ and it varies continuously. 
+We know that $\calB(\chi_s, \chi_s^{-1})$ is unitary for $s = 0$, and the new pairing $\bra{f_1}{f_2}^{*} = (1-q^{-2s})\bra{f_1}{f_2}$ become positive definite. 
+Now let $\rho$ be an irreducible admissible representation of $K$. 
+If it is not positive definite for some $-\frac{1}{2} <s < 0$, then there exists $s$ such that $M_{s}^{*}$ has zero eigenvalue, which means that $M_{s}^{*}$ is not invertible. This contradicts to the fact that $M_{s}$ is nonzero, so invertible for $-\frac{1}{2} <s < 0$. 
+Hence $\langle \,,\,\rangle^{*}$ defines a positive definite Hermitian form on $V(\rho)$, so on $V = \oplus_{\rho \in \wh{K}} V(\rho)$. 
+\end{proof}
+These representations are called \emph{complementary series} representation (recall that there is also complementary series representation for $\GL(2, \Rr)$). In summary, we have the following result. 
+\begin{theorem}
+$\calB(\chi_1, \chi_2)$ is unitary if and only if either $\chi_1, \chi_2$ are unitary, or else there exists a unitary character $\chi_0$ and a real number $-\frac{1}{2} < s < \frac{1}{2}$ such that $\chi_1(y) = \chi_0(y)|y|^{s}$ and $\chi_2(y) = \chi_0(y) |y|^{-s}$. 
+\end{theorem}
+
+
+
+\subsection{Local zeta functions and local functional equations}
+In this section, we will define local zeta functions and prove local functional equations, which will be used to define and prove global functional equations of global automorphic $L$-functions in Chapter 4. 
+We will use some notations from Tate's thesis, so you may have to read Chapter 4.1 first. 
+To define local zeta functions, 
+
+
+First, we will show that Jacquet module controls the asymptotics of the functions in the Kirillov model of $V$. 
+This will allow us to define local zeta functions (we will define it as an integral of Kirillov model over $F^{\times}$, and the following results control the convergence).
+
+\begin{proposition}
+\label{jacdim2}
+Let $(\pi, V)$ be an irreducible admissible representation of $\GL(2, F)$. Then $\dim J(V) \leq 2$, and if it is nonzero, then $\pi$ is isomorphic to a subrepresentation of $\calB(\chi_1, \chi_2)$. 
+\end{proposition}
+\begin{proof}
+Since it is trivial if $J(V) = 0$, assume that $J(V) \neq 0$. 
+By Theorem \ref{jacadm}, $J(V)$ is admissible $T(F)$-module, so is its contragredient. 
+Since $T(F)$ is abelian, there exists 1-dimensional $T(F)$-invariant subspace of $J(V)^{*}$, which means that there exists a quasicharacter $\chi$ of $T(F)$ and a nonzero linear functional $L:J(V)\to \Cc$ such that $L(\pi_{N}(t)v) = (\delta^{1/2}\chi)(t)L(v)$ for $v\in J(V), t\in T(F)$. 
+If we consider $L$ as a linear functional on $V$ that is trivial on $V_N$, we have $L(\pi(b)v) = (\delta^{1/2}\chi)(b)L(v)$ for $v\in V, b\in B$. (Here we extend $\chi$ to $B(F)$ that is trivial on $N(F)$. 
+By Frobeinus reciprocity, this corresponds to a nonzero intertwining map $V \to \calB(\chi_1, \chi_2)$, which is injective because of irreducibility of $V$. 
+Since Jacquet functor is exact, we have $J(V)\hookrightarrow J(\calB(\chi_1, \chi_2))$ and the result follows from $\dim J(\calB(\chi_1, \chi_2)) = 2$. 
+\end{proof}
+
+\begin{proposition}
+Let $(\pi, V)$ be an infinite dimensional  irreducible representation of $\GL(2, F)$, and let's identify it with its Kirillov model. 
+Then $\phi\in V$ is locally constant and $\phi(y)$ vanishes for sufficiently large $|y|$. 
+Also, if $\phi\in V_N$ then $\phi(y) = 0$ for sufficiently small $|y|$, so that $\phi:F^{\times} \to \Cc$ is a compactly supported smooth function. 
+\end{proposition}
+\begin{proof}
+Recall that the action of $B_{1}(F)$ on the Kirillov model is given as
+$$
+\pi\pmat{a}{}{}{1} \phi(x) = \phi(ax), \qquad \pi\pmat{1}{b}{}{1}\phi(x) = \psi(bx)\phi(x). 
+$$
+Since $\pi$ is a smooth representation, $\phi$ is fixed by an open subgroup of $T_1(F)$, and the first equation implies that $\phi$ is locally constant. 
+Also, $\phi$ is fixed by $N(\frap^k)$ for some $k$, which gives $\phi(y) = \psi(xy) \phi(y)$ for all $x\in \frap^k$. If $|y|$ is sufficiently large, then $\psi(xy) \neq 1$ and so $\phi(y) = 0$. 
+For the last claim, a function $\phi' = \pi\smat{1}{x}{}{1}\phi - \phi$ satisfies $\phi'(y) = (\psi(xy) -1 )\phi(y)$, and if $|y|$ is sufficiently small then $\psi(xy) = 1$, hence $\phi' = 0$. 
+\end{proof}
+Now we can completely understand what is $V_N \subseteq V$ as a Kirillov model. 
+\begin{theorem}
+\label{kicpt}
+Let $(\pi, V)$ be an irreducible smooth representation of $\GL(2, F)$. 
+Assume that $V$ is infinite dimensional, so that it has a Kirillov model; identify $(\pi, V)$ with its Kirillov model. 
+Then $V_N = C_{c}^{\infty}(F^{\times})$. 
+\end{theorem}
+\begin{proof}
+By the previous proposition, we have $V_N\subseteq C_{c}^{\infty}(F^{\times})$. 
+Also, $V_N\neq 0$ since $\dim V = \infty$ and $\dim J(V) <\infty$. So it is enough to show that $C_{c}^{\infty}(F^{\times})$ is an irreducible $B_1(F)$-module. 
+
+Let $U$ be a nonzero invariant subspace of $C_c^{\infty}(F^{\times})$. For any $a\in F^{\times}$, we will show that $U$ contains a characteristic function of any sufficiently small neighborhood of $a$, which proves $U = C_{c}^{\infty}(F^{\times})$. 
+Let $0\neq \phi\in U$ and we may assume $\phi(a)\neq 0$. Let $W$ be an open neighborhood of $a$ such that $\phi|_{W} = \phi(a)$. 
+Choose $f\in C_{c}^{\infty}(F)$ such that $\wh{f} = \frac{1}{f(a)} \chf_{W}$, then 
+$$
+\phi_1(y) := \int\dpl{F} f(x) \pi\pmat{1}{x}{}{1}\phi(y) dx = \int\dpl{F}f(x)\psi(xy)\phi(y)dx = \wh{f}(y)\phi(y) =  \chf_{W}(y)
+$$
+is in $C_{c}^{\infty}(F^{\times})$ since it is a finite sum of elements of $C_{c}^{\infty}(F^{\times})$. 
+\end{proof}
+
+Now we will see that we can control the asymptotic of functions in the Kirillov model of representations of $\GL(2, F)$ near 0. 
+The previous theorem tells us that if $(\pi, V)$ is a supercuspidal representation, then the functions in the Kirillov model vanishes near 0. 
+We will also study the other two cases - principal series representations and special representations. 
+\begin{proposition}
+Let $(\pi, V)$ be an irreducible representation identified with its Kirillov model. 
+Let $\chi$ be a quasicharacter of $T(F)$ and $\chi_1, \chi_2$ be the corresponding quasicharacters of $F^{\times}$. 
+Assume that $\phi\in V$ satisfies $\pi_N(t)\ol{\phi} = (\delta^{1/2}\chi)(t)\ol{\phi}$ for all $t\in T(F)$, where $\ol{\phi}$ is the image of $\phi$ in $J(V)$. 
+Then there exists a constant $C$ such that
+$$
+\phi(t) = C|t|^{1/2}\chi_1(t)
+$$
+for sufficiently small $|t|$. 
+\end{proposition}
+\begin{proof}
+Let $t_0 \in \varpi\calO_F^{\times}$. 
+By assumption, 
+$$
+\pi\pmat{t_0}{}{}{1}\phi - (\delta^{1/2}\chi)\pmat{t_0}{}{}{1} \phi
+$$
+is in $V_N$, so it vanishes near zero. 
+So there exists a constant $\epsilon(t_0)>0$ such that 
+$$
+\phi(tu) - |t|^{1/2}\chi_1(t)\phi(u) = 0
+$$
+for $t = t_0$ and $|u|\leq \epsilon(t_0)$. 
+By smoothness of $\pi$ and $\chi$, it also holds when $t$ is near $t_0$. 
+By compactness of $\varpi \calO_F^{\times}$, there exists uniform $\epsilon >0$ such that the above equation is true for $t\in \varpi \calO_{F}^{\times}$ and $|u|\leq \epsilon$. 
+By factoring $0\neq t\in \frap$ as a product of elements of $\varpi \calO_{F}^{\times}$, we get the same equation for $0\neq t\in \frap$ and $|u|\leq \epsilon$, which proves the claim. 
+\end{proof}
+\begin{theorem}
+\label{pskr}
+Let $(\pi, V) = \pi(\chi_1, \chi_2)$ be an irreducible principal series representation. 
+\begin{enumerate}
+\item If $\chi_1 \neq \chi_2$, the space of Kirillov model of $V$ consists of the functions $\phi$ on $F^{\times}$ that are smooth, vanish for large $t$ and 
+$$
+\phi(t) = C_{1}|t|^{1/2}\chi_{1}(t) + C_{2}|t|^{1/2}\chi_2(t)
+$$
+for small $t$, where $C_1, C_2$ are constants. 
+\item If $\chi_1 = \chi_2$, the space of Kirillov model of $V$ consists of the functions $\phi$ on $F^{\times}$ that are smooth, vanish for large $t$ and 
+$$
+\phi(t) = C_{1}|t|^{1/2} \chi_{1}(t) + C_{2}v(t)|t|^{1/2}\chi_{1}(t)
+$$
+for small $t$, where $C_1, C_2$ are constants and $v:F^{\times} \to \Cc$ is the valuation map. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+This follows from Theorem \ref{psjac} and the previous proposition. For details, see p.515 of \cite{bu}. 
+\end{proof}
+\begin{theorem}
+\label{spkr}
+Let $(\pi, V) = \sigma(\chi_1, \chi_2)$ be a special representation, where $(\chi_1\chi_2^{-1})(t) = |t|^{-1}$.  Then the space of Kirillov model of $V$ consists of the functions $\phi$ on $F^{\times}$ that are smooth, vanish for large $t$ and $$\phi(t) = C|t|^{1/2}\chi_{2}(t)$$ for small $t$, where $C$ is a constant. 
+\end{theorem}
+\begin{proof}
+The proof is almost same as the proof of Theorem \ref{pskr}. Note that $T(F)$ acts as $\delta^{1/2}\chi$ on the Jacquet module of $\sigma(\chi_1, \chi_2)$. 
+\end{proof}
+
+Now we can define local $L$-function $L(s, \pi, \xi)$ for given $(\pi, V)$ and a quasicharacter $\xi:F^\times \to\Cc^{\times}$, and local zeta functions $Z(s, \phi, \xi)$ for $\phi\in V$ (identified with the Kirillov model). 
+The above theorems about asymptotes of Kirillov models will allow us to define local zeta functions. 
+\begin{definition}
+Let $(\pi, V)$ be an irreducible admissible representation of $GL(2, F)$ that admits a Whittaker model.
+Define the local $L$-function $L(s, \pi)$ associated with $(\pi, V)$ as
+$$
+L(s, \pi) = \begin{cases} (1-\alpha_1 q^{-s})^{-1}(1-\alpha_2 q^{-s})^{-1} & \text{spherical principal series}, \alpha_i = \chi_i(\varpi) \\
+(1-\alpha_{2} q^{-s})^{-1} & \text{special representation}, (\chi_{1}\chi_{2}^{-1})(y) = |y|^{-1} \\
+1 &  \text{otherwise.}\end{cases}
+$$
+Also, for a quasicharacter $\xi:F^{\times} \to \Cc^{\times}$, define $L(s, \pi, \xi):= L(s, \pi\otimes \xi)$. 
+\end{definition}
+
+\begin{proposition}
+Let $(\pi, V)$ be an irreducible admissible representation of $\GL(2, F)$ that admits a Whittaker model. 
+If $\phi$ is an element of the space of the Kirillov model of $\pi$, consider the integral 
+$$
+Z(s, \phi, \xi) = \int\dpl{F^{\times}} \phi(y)\xi(y)|y|^{s-1/2} d^{\times}y, 
+$$
+where $d^{\times}y$ denotes the normalized Haar measure on $F^{\times}$. 
+This integral is convergent for sufficiently large $\Re s$ and has meromorphic continuation to all $s$. 
+More precisely, $Z(s, \phi, \xi) = p_{\phi}(s^{-1})L(s, \pi, \xi)$, where $p_{\phi}$ is a rational function. 
+Moreover, $\phi$ can be chosen so that $p_{\phi} = 1$. 
+\end{proposition}
+\begin{proof}
+We will only show the case where $(\pi, V)$ is a spherical principal series representation and $\xi$ is unramified. 
+By Theorem \ref{pskr}, we can assume that $\phi(y) = 0$ for $|y| > q^N$ and  $\phi(y) = C_{1}|y|^{1/2}\chi_1(y) + C_{2}|y|^{1/2}\chi_2(y)$ for $|y|\leq q^{-N'}$. 
+Then the integral can be written as
+\begin{align*}
+Z(s, \phi, \xi) &= \sum_{m\in \Zz} \int_{|y| = q^{m}} \phi(y)\xi(y) |y|^{s-1/2} d^{\times}y \\
+&= \sum_{m=-N}^{N' - 1} q^{-m(s-1/2)} \int\dpl{|y| = q^{-m}} \phi(y)\xi(y)d^{\times}y \\
+&+ \sum_{m\geq N'} q^{-m(s-1/2)}\int\dpl{|y| = q^{-m}} (C_{1}|y|^{1/2}\chi_1(y) + C_{2}|y|^{1/2} \chi_2(y)) \xi(y) d^{\times}y \\
+&=r_{\phi}(q^{-s}) + \sum_{m\geq N'} [C_{1} (\alpha_1 q^{-s})^{m}  + C_{2}(\alpha_{2} q^{-s})^{m}]\int\dpl{|y| = q^{-m}}\xi(y)d^{\times}y \\
+&= r_{\phi}(q^{-s}) + \sum_{m\geq N'} [C_{1} (\alpha_1 \xi(\varpi) q^{-s})^{m}  + C_{2}(\alpha_{2} \xi(\varpi)q^{-s})^{m}] \\
+&= r_{\phi}(q^{-s}) + \frac{C_1 \alpha_{1}^{N'} q^{-N's}}{1-\alpha_{1}\xi(\varpi)q^{-s}} + \frac{C_2 \alpha_{2}^{N'} q^{-N's}}{1-\alpha_{2}\xi(\varpi)q^{-s}} \\
+&=p_{\phi}(q^{-s}) L(s, \pi, \xi)
+\end{align*}
+where $p_{\phi}$ is a rational function, $C' = \int_{|y| = 1} \xi(y)d^{\times} y$ and $L(s, \pi, \xi) = L(s, \pi\otimes \xi)$ with $\pi\otimes \xi \simeq \pi(\xi \chi_1, \xi \chi_2)$. 
+Now, define $\phi :F^{\times} \to \Cc$ as
+$$
+\phi(y) = \begin{cases} \frac{\alpha_{1}}{\alpha_{1} - \alpha_{2}} |y|^{1/2} (\xi\chi_{1})(y) - \frac{\alpha_{2}}{\alpha_{1} - \alpha_{2}} |y|^{1/2} (\xi\chi_{2})(y) & y\in \calO_F \\ 0 & \text{otherwise}\end{cases}
+$$
+Then this function is in the Kirillov model of $\pi(\xi \chi_1, \xi\chi_2)$, and we can check $Z(s, \phi, \xi) = L(s, \pi, \xi)$ by the above computation. 
+\end{proof}
+
+The next theorem gives us local functional equations of local zeta integrals.
+\begin{theorem}[Local functional equation]
+\label{localfe}
+Let $(\pi, V)$ be an irreducible admissible representation of $\GL(2, F)$ with central quasicharacter $\omega$ that admits a Whittaker model, and let $\xi$ be a quasicharacter of $F^{\times}$. 
+Identify $V$ with the space of Kirillov model. 
+There exists a meromorphic function $\gamma(s, \pi, \xi, \psi)$ such that 
+$$
+Z(1-s, \pi(w_1)\phi, \omega^{-1}\xi^{-1}) = \gamma(s, \pi, \xi, \psi) Z(s, \phi, \xi), \quad w_1 = \pmat{}{1}{-1}{}
+$$
+for all $\phi\in V$. 
+\end{theorem}
+\begin{proof}
+For fixed $s$, define two linear functionals $L_1, L_2$ on $V$ by 
+$$
+L_1(\phi) = Z(s, \phi, \xi), \qquad L_2(\phi) = Z(1-s, \pi(w_1)\phi, \omega^{-1}\xi^{-1}).
+$$
+We can check that both linear functionals satisfy 
+$$
+L\left( \pi\pmat{y}{}{}{1} \phi\right) = \xi(y)^{-1}|y|^{-s+1/2} L(\phi)
+$$
+by using change of variables and analytic continuations. 
+Using Proposition \ref{distuniq}, one can show that $L_{1}$ and $L_{2}$ are linearly dependent when restricted to $V_N$, so $c_1 L_1 + c_2 L_2$ factors through $J(V)$ for some $c_1, c_2\in \Cc$ that not both zero. 
+This implies that $c_1 L_1 + c_2 L_2 = 0$ for all but two possible choices of $s$ in $\Cc$ modulo $2\pi i / \log (q)$, and meromorphic continuation proves that they are proportional for all $s$, i.e. there exists a meromorphic function $\gamma(s, \pi, \xi, \psi)$ satisfies $L_{1} = \gamma L_{2}$. 
+\end{proof}
+
+We call the meromorphic function $\gamma(s, \pi, \xi, \psi)$ (which does not depend on the choice of $\phi$) as a gamma factor. 
+The next proposition shows that the gamma factors $\gamma(s, \pi, \xi, \psi)$ determine the representation $\pi$. 
+\begin{proposition}
+Let $\pi_1, \pi_2$ be irreducible admissible representations of $\GL(2, F)$. 
+Suppose that $\pi_1, \pi_2$ have the same central quasicharacter $\omega$ and that $\gamma(s, \pi_1, \xi, \psi) = \gamma(s, \pi_2, \xi, \psi)$ for all quasicharacters $\xi$ of $F^{\times}$. 
+Then $\pi_1\simeq \pi_2$. 
+\end{proposition}
+\begin{proof}
+Let's identify $\pi_1, \pi_2$ with their Kirillov models, so $V_1, V_2$ are subspaces of $C^{\infty}(F^{\times})$ with $\GL(2, F)$-actions. 
+Let $V_0 = V_1 \cap V_2$. 
+It is enough to show that $\pi_1(w_1)\phi = \pi_2(w_1)\phi$ for $\phi\in V_0$, because this implies $V_1, V_2$ are nonzero irreducible $\GL(2, F)$-spaces so we get $V_1= V_0 = V_2$. (Note that $B(F)$ and $w_1$ generate $\GL(2, F)$.) 
+Also, if we put $\phi_i = \pi_i(w_1)\phi$, then it is sufficient to show that $\phi_1(1) = \phi_2(1)$ by considering the action of $\smat{a}{}{}{1}$ for $a\in F^{\times}$. 
+To show this, we use Fourier inversion formula: if $M$ is compact abelian group with normalized Haar measure (so that $|M| = 1$), and if $F$ is a continuous function on $M$, then 
+$$
+F(1) = \sum_{\chi\in \hat{M}} \,\,\int\dpl{M}F(m)\chi(m)dm.
+$$
+Now for $n\in \Zz$, let
+$$
+F_{\xi}(n) = \int\dpl{|y| = q^{-n}} (\phi_1(y) - \phi_2(y))\xi(y) d^{\times}y.
+$$
+Then $F_{\xi}(0)$ depends only on the restriction of $\xi$ on $\calO_{F}^{\times}$, and $F_{\xi}(0) = 0$ for all but finitely many characters $\xi$ of $\calO_{F}^{\times}$ and 
+$$
+\phi_{1}(1) - \phi_{2}(1) = \sum_{\xi\in \wh{\calO_{F}^{\times}}} F_{\xi}(0)
+$$
+by Fourier inversion formula applied to $M =\calO_{F}^{\times}$ and $F(y) = \phi_{1}(y) - \phi_{2}(y)$. 
+By hypothesis and the functional equations of local zeta functions, we have $Z(s, \phi_1, \xi) = Z(s, \phi_2, \xi)$ for all characters $\xi$ of $F^{\times}$. 
+Also, since $\phi_i(y) = 0$ for sufficiently large $|y|$, $F_{\xi}(n) =0$ for sufficiently small $n$. If we put $x = q^{-s +1/2}$, then 
+$$
+\sum_{n\in \Zz} F_{\xi}(n) x^{n} = Z(s, \phi_1, \xi) - Z(s, \phi_2, \xi) = 0
+$$
+for sufficiently small $x$ (i.e. sufficiently large $\Re s$), so $F_{\xi}(n) = 0$ for all $n$, and in particular, $F_{\xi}(0) = 0$. 
+\end{proof}
+
+There's a simple relation between this (local) gamma factor for  $\GL(2, F)$ and $\GL(1, F)$, i.e. Tate gamma factors.
+\begin{theorem}[Jacquet-Langlands]
+Let $\chi_1, \chi_2$ be quasicharacters of $F^{\times}$ such that $(\pi, V) = \calB(\chi_1, \chi_2)$ is irreducible. Then 
+$$
+\gamma(s, \pi, \xi, \psi) = \gamma(s, \xi\chi_1, \psi)\gamma(s, \xi\chi_2, \psi)
+$$
+where the Tate gamma factors $\gamma(s, \xi\chi_i, \psi)$ are defined in Theorem \ref{tate}. 
+\end{theorem}
+\begin{proof}
+The proof uses Whittaker model of $\calB(\chi_1, \chi_2)$ constructed in section 3.6 using the Weil representation. 
+Indeed, we defined another (and simpler) Whittaker model in the proof of Proposition \ref{intcomp}. 
+However, the one constructed by means of Weil representation is much more helpful to prove this. 
+It allows us to express local zeta integral of the principal series representation as a product of two local zeta integrals corresponds to two quasicharacters $\xi\chi_1$ and $\xi\chi_2$ naturally, and the result directly follows from this. For details, see p. 548 of \cite{bu}.
+\end{proof}
