@@ -1,7 +1,62 @@
 \newpage
 \section{Jacquet-Langlands correspondence}
 
-\subsection{Quaternionic modular forms and Basis problem}
-\cite{martin2020basis}
+\subsection{Basis problem and quaternionic modular forms}
+
+Here's a fundamental question that we can ask about modular forms.
+
+\begin{question}
+Find a basis of a space $S_{k}(N)$ for given $k, N$.
+\end{question}
+
+For $N = 1$, it is possible to construct a basis using the Eisenstein series $E_{4}$ and $E_{6}$.
+In particular, they are algebraically independent over $\mathbb{C}$ (i.e. there's no nonzero polynomial $p(x, y) \in \mathbb{C}[x, y]$)
+such that $p(E_{4}, E_{6}) = 0$ identically), and they generate the space of modular forms of level 1 (with trivial characters).
+We have $\Delta = \frac{1}{1728}(E_{4}^{3} - E_{6}^{2})$, where $\Delta(z) = e^{2\pi i z}\prod_{n\geq 1}(1 - e^{2\pi i n z})^{24}$ is a 
+discriminant function, and multiplying $\Delta$ induces an isomorphism $M_{k}(1)$ to $S_{k+6}(1)$.
+With $S_{k}(1) = 0$ for $k = 2, 4, 6, 8, 10$, we can inductively construct the basis of $S_{k}(1)$.
+(See \cite{serre2012course} or Zagier's article in \cite{bruinier20081} for details.)
+
+For general $N$, Hecke \cite{Hecke1940AnalytischeAD} conjectured that one can construct a basis using \emph{theta series associated to
+orders in certain quaternion algebra}.
+Before we give definition of such theta series, let's introduce some notations.
+For a prime $p$, let $B_{p}$ be a quaternion algebra over $\mathbb{Q}$ which is ramified at $p$ and infinity.
+It known that quaternion algebra over $\mathbb{Q}$ is uniquely determined by the set of primes that ramify.
+
+\cite{eichler1973basis}
+
 
 \subsection{Jacquet-Langlands correspondence}
+
+\subsection{Basis problem by means of Jacquet-Langlands correspondence}
+In this section, we will give a solution to the basis problem by using Jacquet-Langlands correspondence.
+Our goal is to prove the following theorem.
+\begin{theorem}[Kimball, \cite{martin2020basis}]
+    Let $F$ be a totally real number field of degree $d = [F:\mathbb{Q}]$ and $B$ be a quaternion algebra over $F$ with discriminant $\mathfrak{D}$.
+    Let $\mathcal{O}$ be a special order of level $\mathfrak{N}$.
+    This means that $\mathcal{O}_{\mathfrak{p}}$ is an Eichler order for $\mathfrak{p}\nmid \mathfrak{D}$
+    and $\mathcal{O}_{\mathfrak{p}}$ contains the ring of integers of a quadratic extension
+    $E_{\mathfrak{p}} / F_{\mathfrak{p}}$ for $\mathfrak{p} | \mathfrak{D}$, 
+    and that the product of levels of the local orders is $\mathfrak{N}$.
+    Let $\mathbf{k} = (k_{1}, \dots, k_{d}) \in (\mathbb{Z}_{\geq 0})^{d}$ and $S_{\mathbf{k}}(\mathcal{O})$
+    be the space of quaternionic cusp forms of level $\mathbf{k}$.
+
+    There is a Hecke-module homomorphism 
+    $$\mathrm{JL}: S_{\mathbf{k}}(\mathcal{O}) \to S_{\mathbf{k} + \mathbf{2}}(\mathfrak{N})$$
+    such that 
+    \begin{enumerate}
+        \item any newform $f \in S_{\mathbf{k} + \mathbf{2}}(\mathfrak{N})$ which is $\mathfrak{p}$-primitive 
+        for $\mathfrak{p}|\mathfrak{D}$ is contained in the image;
+        \item if $v_{\mathfrak{p}}(\mathfrak{N})$ is odd for all $\mathfrak{p}|\mathfrak{D}$,
+        then $\mathrm{JL}$ is injective and yields an isomorphism
+        $$
+            S_{\mathbf{k}}(\mathcal{O}) \simeq \bigoplus_{\mathfrak{d}} S_{\mathbf{k} + \mathbf{2}}^{\mathfrak{d}- new}(\mathfrak{dM})
+        $$
+        where $\mathfrak{d}$ runs over all divisors of $\mathfrak{N}'$ such that $v_{\mathfrak{p}}(\mathfrak{d})$ 
+        is odd for all $\mathfrak{p} | \mathfrak{D}$, and $\mathfrak{M}$ is $\mathfrak{D}$-prime part of $\mathfrak{N}$.
+        Here $S_{\mathbf{k} + \mathbf{2}}^{\mathfrak{d}-new}$ is the subspace of $S_{\mathbf{k} + \mathbf{2}}(\mathfrak{N})$consisting of forms that are $\mathfrak{p}$-new
+        for all $\mathfrak{p} | \mathfrak{d}$.
+    \end{enumerate}
+
+\end{theorem}
+This section closely follow Kimball's article \cite{martin2020basis}.
