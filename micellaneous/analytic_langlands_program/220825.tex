@@ -1,0 +1,133 @@
+\newpage
+\section{Introduction to Langlands correspondence (August 25)}
+
+This course is on a new aspect of Langlands program, so-called \emph{Analytic Langlands Program}.
+The classical Langlands program is originated from Langlands' letter to Andr\'e Weil in 1967,
+and also from Andr\'e Weil's letter to his sister  (Simone Weil) on his conjecture (Weil's conjecture on
+zeta functions of curves over finite fields, which was resolved by Dwork, Grothendieck, and Deligne) in 1940.
+Weil's \emph{Rosetta stone} relates two different topics in mathematics: number theory and complex curves (Riemann surfaces).
+A goal is to find something happens in parallel between two, and we need another bridge - curves over finite fields.
+The difference between complex curves and curves over finite fields is the fact that those are defined over different fields.
+A similarity between number theory sied and the curves over finite fields side is that 
+the number fields (finite extensions of $\mathbb{Q}$) are similar to the function fields of curves (over finite fields - we denote it as $\mathbb{F}_{q}(X)$ for a curve $X/\mathbb{F}_{q}$).
+The most simplest example is a comparison between $\mathbb{Q}$ and $\mathbb{F}_{q}(\mathbb{P}^{1}) \simeq \mathbb{F}_{q}(t)$:
+\begin{align*}
+    \mathbb{Q} = \left\{ \frac{p}{q}\,:\,p, q\,\text{rel. prime} \in \mathbb{Z}\right\} &\leftrightarrow \mathbb{F}_{q}(t) = \left\{ \frac{P(t)}{Q(t)}\,:\, P, Q\,\text{rel. prime} \in \mathbb{F}_{q}[t]\right\} \\
+    \text{ring of integers: }\mathbb{Z} &\leftrightarrow \mathbb{F}_{q}[t] \\
+    \text{completions: }\mathbb{Q}_{p} &\leftrightarrow \mathbb{F}_{q}((t))
+\end{align*}
+Sometimes we include one more topic in this Rosetta stone, which originates from Physics -
+Quantum Field Theory, Electro-Magnetic Duality, and Gauge Theory (developed by Edward Witten and other physicists).
+
+The (classical) Langlands correspondence is about interplays between the Galois representations and Automorphic representations.\footnote{The \emph{geometric} Langlands correspondence is about curves over $\mathbb{C}$, which is mainly developed by Drinfeld, Laumon, Beilinson, Gaitsgory, ...}
+It dealts with two different (but similar) types of fields - number fields and function fields of curves over finite fields.
+Fix such a field $F$.
+Then we can describe a Langlands correspondence for $\GL_{n}$ over $F$ as follows:
+\begin{enumerate}
+    \item \textbf{Galois side:} Let $\overline{F}$ be a (separable) algebraic closure of $F$, and $\Gal(\overline{F}/F)$ 
+    be the absolute Galois group of $F$ (i.e. the group of automorphisms of $\overline{F}$ that fix $F$ pointwisely).
+    This is one of the most important groups in number theory, and its structure is higly complicated.
+    Hence, instead of studying the group $\Gal(\overline{F}/F)$ directly, we study the representations of it.
+    Especially, we are going to consider the (equivalence) classes of $n$-dimensional representations of $\Gal(\overline{F} / F)$ over some field that would be determined later.    
+    This is just an equivalence class of homomorphisms
+    $$
+        \sigma: \Gal(\overline{F} / F) \to \GL_{n}(?).
+    $$
+    \item \textbf{Automorphic side:} We first need to define the notion of \emph{Adele}.
+    Let $\mathscr{V} = \mathscr{V}_{F}$ be the set of equivalent classes of the norms (places) on $F$.
+    For each $v \in \mathscr{V}$, we can define a completion $F_{v}$ with respect to $v$.
+    For example, when $F = \mathbb{Q}$, Ostrowski's theorem states that the places of $\mathbb{Q}$ corresponds to
+    the set of primes (each prime $p$ gives $p$-adic norms, which is non-archimedean) along with the ``infinite'' prime (corresponds to the usual archimedean norm).
+    In this case, we have two types of completions, either $p$-adic numbers $\mathbb{Q}_{p}$ or real numbers $\mathbb{R}$.
+    And we have the ring of $p$-adic integers $\mathbb{Z}_{p}$ as a subring of $\mathbb{Q}_{p}$.
+
+    In case of function field $F =\mathbb{F}_{q}(\mathbb{P}^{1}) \simeq \mathbb{F}_{q}(t)$ of $X = \mathbb{P}^{1}$,
+    the places of $F$ corresponds to the closed points of $X$, which again corresponds to
+    the maximal ideals of $\mathbb{F}_{q}[t]$ (and the point at infinity).
+    For example, any $a \in \mathbb{F}_{q}$ actually gives a closed point that corresponds to
+    the maximal ideal $(x-a)$.
+    Any other irreducible polynomials over $\mathbb{F}_{q}$ of higher degree also give closed points in $X$.
+    Completion of $F$ at $x \in X$ is isomorphic to the field of formal Laurent series $(\mathbb{F}_{q})_{x}((t_{x}))$,
+    where $(\mathbb{F}_{q})_x$ is the residue field at $x$ and $t_{x}$ is some parameter.
+    We also have a ring of integers in these completions, which is $(\mathbb{F}_{q})_{x}[[t_{x}]]$.
+
+    The ring of adeles is defined as a restricted product of all completions of $F$, which is
+    $$
+        \quad\quad\quad\quad \mathbb{A}_{F} = \prod_{v \in \mathscr{V}_{F}} F_{v} = \left\{(f_{v})\,:\, f_{v} \in F_{v}, f_{v} \in \mathcal{O}_{v}\text{ for all but finitely many $v$.}\right\}
+    $$
+    where $\mathcal{O}_{v} \subset F_{v}$ is the ring of integers of $F_{v}$, which is the set of elements with norm at most 1.
+    Then we have a diagonal embedding $F \hookrightarrow \mathbb{A}_{F}$ that sends $a \in F$ to $(a, a, \dots) \in \mathbb{A}_{F}$,
+    and this induces an embedding $\GL_{n}(F) \hookrightarrow \GL_{n}(\mathbb{A}_{F})$.
+    Now we can think of a Hilbert space $\mathscr{H}(\GL_{n}(F) \backslash \GL_{n}(\mathbb{A}_{F}))$ of $\L2$-functions on the quotient space $\GL_{n}(F) \backslash \GL_{n}(\mathbb{A}_{F})$,
+    with the Haar measure on the quotient space.
+    Then we have a right regular representation of $\GL_{n}(\mathbb{A}_{F})$ on $\mathscr{H}$, and it is known that this representation decomposes
+    into continuous part and discrete part:
+    $$
+        \mathscr{H} = \mathscr{H}_{\mathrm{cont}} \oplus \mathscr{H}_{\mathrm{disc}}
+    $$
+    and the discrete part decomposes into irreducible representations as 
+    $$\mathscr{H}_{\mathrm{disc}} = \oplus_{\pi}\pi$$
+    without multiplicity (multiplicity one theorem).\footnote{
+        It is not always the case that any representation decomposes into irredubiles - 
+        consider the regular representation of $\mathbb{R}$ on $\L2(\mathbb{R})$ that acts as a translation.
+        The irreducible sub-representations of it correspons to the exponential function $\exp(i\lambda x)$ for $\lambda \in \mathbb{R}$,
+        but we can't write a function $f(x)$ as a discrete sum of these in general. 
+        We can only write it as an integral of these, which is the Fourier transform.
+        Note that the regular representation on $\L2(\mathbb{Z}\backslash \mathbb{R})$ decomposes into irreducibles (which gives Fourier series),
+        and the reason behind is that the circle group $\mathbb{S}^{1} = \mathbb{Z} \backslash\mathbb{R}$ is compact.
+    }
+    The irreducible constituents of $\mathscr{H}_{\mathrm{disc}}$ is called \emph{cuspidal automorphic rerpesentations of $\GL_{n}(\mathbb{A}_{F})$},
+    up to technical conditions on the center of the group and the archimedean places.
+    \item \textbf{Correspondence:} The Langlands correspondence states that there is a one-to-one correspondence between these two different objects that preserves some special invariants.
+    More precisely, the equivalence classes of $n$-dimensional Galois representation $\sigma$ of $\Gal(\overline{F}/F)$ (over some field)
+    corresponds to an irreducible automorphic representation $\pi = \pi(\sigma)$ of $\GL_{n}(\mathbb{A}_{F})$, and vice versa.
+    The irreducibility of $\sigma$ corresponds to cuspidality of $\pi$.
+
+    One of the invariant of Galois representation $\sigma$ is the conjugacy classes of $\sigma(\mathrm{Fr}_{x})$ in $\GL_{n}$, where
+    $\mathrm{Fr}_{x}$ is the \emph{Frobenius} element corresponds to a closed point $x \in X$ (for almost all $x$).
+    On the automorphic side, there is so-called \emph{Hecke operators} $h_{x}$ for each $x \in X$.
+    Then the conjectural Langlands correspondence should give correspondences between these two invariants.
+    
+\end{enumerate}
+
+A celebrated example of Langland's correspondence is the Shimura-Taniyama-Weil conjecture, which is now a theorem by Andrew Wiles and Richard Taylor (modularity theorem).
+It is a special case of Langland's correspondence for $n = 2$ that  relates an elliptic curve and a modular form.
+
+Let $E$ be an elliptic curve over $\mathbb{Q}$, i.e. a smooth projective curve defined over $\mathbb{Q}$ by equation
+$$
+    y^{2} = x^{3} + ax + b
+$$
+for $a, b \in \mathbb{Q}$ and $\Delta = 4a^{3} + 27b^{2} \neq 0$ (the discriminant of $E$).
+Then for each prime $\ell$ not dividing $\Delta$ (or any $\ell \neq p = \mathrm{char}(F)$ when $F$ is a function field),  the first \'etale cohomology $\mathrm{H}^{1}_{\text{\'et}}(E_{\overline{\mathbb{Q}}}, \mathbb{Q}_{\ell})$ is isomorphic to $\mathbb{Q}_{\ell}^{2}$,
+2-dimensional vector space over $\mathbb{Q}_{\ell}$.
+Since $E$ is defined over $\mathbb{Q}$, we have a natural action of $\Gal(\overline{\mathbb{Q}}/\mathbb{Q})$ on $E_{\mathbb{Q}} = E \otimes_{\mathbb{Q}}\overline{\mathbb{Q}}$ which
+induces an action on $\mathrm{H}^{1}_{\text{\'et}}(E_{\overline{\mathbb{Q}}}, \mathbb{Q}_{\ell})$i, i.e. a 2-dimensional representation $\sigma_{E, \ell}$ over $\mathbb{Q}_{\ell}$
+(so the mysterious field where the representation is defined that we didn't defined before is $\mathbb{Q}_{\ell}$ in this case).
+For $p \nmid \Delta$, Frobenious conjugacy class $\sigma_{E, \ell}(\mathrm{Fr}_{p})$ has a trace
+$$
+    \mathrm{Tr}(\sigma_{E, \ell}(\mathrm{Fr}_{p})) = p + 1 - \# E(\mathbb{F}_{p})
+$$
+and determinant $p$, which completely determines the conjugacy class of $\sigma_{E, \ell}(\mathrm{Fr}_{p})$ for $\GL_{2}$.
+Here $\#E(\mathbb{F}_{p})$ is the number of $\mathbb{F}_{p}$-points on $E$.
+
+Assuming Langlands' correspondence, such $\sigma_{E, \ell}$ (or family of $\sigma_{E, \ell})$ for varying $\ell$'s) should corresponds
+to an irreducible automorphic representation of $\GL_{2}(\mathbb{A}_{\mathbb{Q}})$.
+In case of $\GL_{2}$, an automorphic representation $\pi$ corresponds to certain holomorphic function $f_{\pi}$ called \emph{modular form} on
+the complex upper half plane $\mathfrak{H}$ satisfying a functional equation
+$$
+    f_{\pi} \left(\frac{a\tau + b}{c\tau + d}\right) = (c\tau + d)^{2}f_{\pi}(\tau)
+$$
+for $(\begin{smallmatrix} a & b \\ c & d\end{smallmatrix}) \in \Gamma_{0}(N) = \{(\begin{smallmatrix} a &b \\ c & d\end{smallmatrix}) \in \mathrm{SL}_{2}(\mathbb{Z}), c\equiv 0\,(\mathrm{mod}\,N)\}$
+where $N = N_{E}$ is the conductor of $E$.
+Also, $f_{\pi}(\tau)  \to 0$ as $\tau \to \infty$ (in other words, $f_{\pi}$ is a cusp form).
+It admits a Fourier expansion
+$$
+    f_{\pi}(\tau) = \sum_{n\geq 1} a_{n} q^{n}, \quad q = e^{2 \pi i \tau}
+$$
+and the Langlands correspondence for this case becomes the equality
+$$
+a_{p} = \mathrm{Tr}(\sigma_{E, \ell}(\mathrm{Fr}_p)) = p + 1 - \$ E(\mathbb{F}_{p}).
+$$
+for all $p \nmid \ell N$.
+
+Langlands correspondence for $\GL_n$ is now a theorem when $F$ is a function field of some curve, and this is proven by Drinfeld ($n = 2$) and Laurent Lafforgue ($n>2$).\footnote{Lafforgue got a Fields medal for this work.}
