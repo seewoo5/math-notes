@@ -1,2 +1,103 @@
 \newpage
-\section{(August 30)}
+\section{More on Classical Langlands Correspondence (August 30)}
+
+We are going to give more detailed explanations on the classical Langlands correspondence
+and give an explicit example of a correspondence between elliptic curves and modular forms
+(Taniyama-Shimura-Weil conjecture, now a theorem by Wiles-Taylor and Breuil-Conrad-Diamond-Taylor).
+
+First, irreducible cuspidal automorphic representations $\pi$ of $\GL_{n}(\mathbb{A}_{F})$
+always decomposes into \emph{local} representations as\footnote{this is called Flath's theorem.}
+$$
+\pi = \bigotimes_{v \in \mathscr{V}}\pi_{v}
+$$
+(this is also a kind of restricted product).
+When $F = \mathbb{F}_{q}(X)$ is a function field, then there is a 1-1 correspondence between
+the set of places (completions) $\mathscr{V} = \mathscr{V}_{F}$ and the set of closed points $|X|$ of a curve $X$.
+(There are only non-archimedean places.)
+If a place $v \in \mathscr{V}$ corresponds to a point $x\in |X|$, and the completion of $F$
+by $v$ is isomorphic to $(\mathbb{F}_{q})_{x}((t_{x}))$, where $t_{x}$ is a local coordinate at $x$.
+In this case, each $\pi_{v}$ becomes a representation of $\GL_{n}(F_{v})$.
+When $F$ is a number field, there exist archimedean places, which has a different nature from nonarchimedean places.
+For example, when $F = \mathbb{Q}$, we have $\mathscr{V}_{\mathbb{Q}} = \{p\,:\,p\text{ prime}\} \cup \{\infty\}$, and
+$\pi$ decomposes as
+$$
+\pi = \left(\bigotimes_{p < \infty} \pi_{p}\right) \otimes \pi_{\infty}.
+$$
+Although $\pi_{p}$'s are representations of $\GL_{2}(\mathbb{Q}_{p})$, $\pi_{\infty}$ is \emph{not} an
+irreducible representation of $\GL_{2}(\mathbb{R})$.
+It is acually a representation of $(\mathfrak{gl}_{2}(\mathbb{R}), \mathrm{O}_{2}(\mathbb{R}))$ - in other words,
+it is a representation of Lie algebra $\mathfrak{gl}_{2}(\mathbb{R)}$ and a (maximal compact subgroup) $\mathrm{O}_{2}(\mathbb{R})$
+with compatibility condition on their actions.
+
+Recall that the classical Langlands correspondence for $\GL_{n}$ is a correspondence between (equivalence classes of)
+$n$-dimensional irreducible ($\ell$-adic) Galois representations $\sigma$ of $\Gal(\overline{F}/F)$
+and (equivalence classes of ) cuspidal automorphic representations of $\GL_{n}(\mathbb{A}_{F})$.
+It is not an arbitrary 1-1 correspondence - certain \emph{invariants} should match.
+The Galois-side invariant is semisimple Frobenius conjugacy classes in $\GL_{n}(\overline{\mathbb{Q}_{\ell}})$: it is
+$$
+    \{\sigma(\mathrm{Fr}_v), v\in \mathscr{V}\backslash S_{\sigma}\}
+$$
+where $S_{\sigma}$ is a finite subset of $\mathscr{V}$.
+Note that the topology matters for Galois side - we have Krull topology (profinite topology) on $\Gal(\overline{F}/F)$
+and we only consider continuous representations.
+On the automorphic side, there are certain semisimple conjugacy classes in $\GL_{n}(\mathbb{C})$, which we call
+Hecke conjugacy classes.
+These record eigenvalues of the (spherical) Hecke algebra associated to each $v\in \mathscr{V}$.
+We denote it as
+$$
+    \{\pi(h_{v}),v\in \mathscr{V}\backslash S_{\pi}\}
+$$
+where $S_{\pi}$ is a finite subset of $\mathscr{V}$.
+Note that we can identify $\overline{\mathbb{Q}_{\ell}}$ and $\mathbb{C}$ since they have
+the same transcendence degree over $\overline{\mathbb{Q}}$, and the correspondence is independent of
+the choice of identification.
+Also, the invariants uniquely determine representation themselves.
+
+
+Now, we will introduce an explicit correspondence between a certain elliptic curve and a modular form.
+Let $E$ be an elliptic curve over $\mathbb{Q}$ defined by
+$$
+y^{2} + y = x^{3} - x^{2}.
+$$
+Then the only bad prime of reduction is 11, and the conductor of the elliptic curve is also 11.
+We can count the number of $\mathbb{F}_{p}$-points on the curve.
+For example, when $p = 5$, there are exactly 5 points: $\{(0, 0), (1, 0), (0, 4), (1, 4), \infty\}$.
+Now, consider the following function defined as an infinite product:
+$$
+    f(\tau) = q\prod_{n=1}^{\infty} (1 - q^{n})^{2}(1-q^{11n})^{2}, \quad q = e^{2\pi i \tau}.
+$$
+It turns out that this is a modular frm of weight 2 and level 11. Its expansion is
+$$
+    f(\tau) = q - 2q^{2} - q^{3} + 2q^{r} + q^{5} + 2q^{6} - 2q^{7} + \cdots
+$$
+and the 5th coefficient of $f$ is $a_{5}(f) = 1$, which equals to $a_{5}(E) = 5 + 1 - 5 = 1$.
+In fact, this is the modular form corresponds to $E$, and $a_{p}(E) = a_{p}(f)$ holds for all $p\neq 11$.
+
+As an aside, Langlands correspondence for $\GL_{1}$ has long been known as \emph{abelian class field theory}.
+Since $\GL_{1}$ is an abelian group, 1-dimensional Galois represention should factor through $\Gal(F^{\mathrm{ab}}/F)$
+and the structure of the latter group is well known for some cases.
+For example, we have a Kronecker-Weber theorem when $\mathbb{Q}$, which states that $\mathbb{Q}^{\mathrm{ab}} = \cup_{n\geq 1}\mathbb{Q}(\zeta_{n})$.
+
+
+Now we will explain Frobenius automorphisms and conjugacy classes in detail.
+The Galois group of finite extension of finite fields has a simple structure.
+For the extension $\mathbb{F}_{q^{n}} /\mathbb{F}_{q}$, its Galois group is just
+a cyclic group of order $n$ generated by the Frobenius automorphism $x \mapsto x^{q}$.
+Now let $K/F$ be a finite extension of number fields, and $\mathcal{O}_{F} \subset \mathcal{O}_{K}$ be the ring of integers.
+These are Dedekind domain: any ideal admits a prime ideal factorization.
+For a prime ideal $v \subset \mathcal{O}_{F}$, regarding it as an ideal $\mathcal{O}_{K}$, it splits as a
+product of prime ideals in $\mathcal{O}_{K}$ as $v = w_{1}\cdots w_{g}$.
+Then $\mathcal{O}_{F}/v \subset \mathcal{O}_{K} / w_{j}$ is a finite extension of finite fields, so is cyclic.
+Although we can't directly link $\Gal(K/F)$ with $\Gal((\mathcal{O}_{K}/w_{j})/(\mathcal{O}_{F}/v))$, there exists
+a \emph{decomposition group} $D_{w_{j}} \subset \Gal(K/F)$ defined as
+$$
+    D_{w_{j}}:=\{g \in \Gal(K/F)\,:\, gw_{j} = w_{j}\} \xrightarrow{\alpha_{w_{j}}} \Gal((\mathcal{O}_{K}/w_{j})/(\mathcal{O}_{F}/v))
+$$
+where $\alpha_{w_j}$ is surjective.
+We also define \emph{inertia subgroup} $I_{w_{j}}$ as $\ker \alpha_{w_{j}}$, so that $D_{w_{1}}/I_{w_{1}} \simeq \mathbb{Z}/n\mathbb{Z}$
+for some $n$.
+Now, when $I_{w_{j}} = 1$, we have $D_{w_{j}} \simeq \mathbb{Z}/n\mathbb{Z}$ and we can define a Frobenius
+conjugacy class in $\GL_{n}(\overline{\mathbb{Q}_{\ell}})$ by composing the isomorphism with $\sigma|_{D_{w_{j}}}$.
+It is known that $I_{w_{j}} = 1$ for all but finitely many $v$ (we call such $v$ \emph{unramified}),
+and since different choices of $w_{j}$ gives conjugated decomposition groups,
+the Frobenius conjugacy class $\sigma(\mathrm{Fr}_{w_{j}})$ does not depend on the choice of $w_{j}$ and only on $v$. 
