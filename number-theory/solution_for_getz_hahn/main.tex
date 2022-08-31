@@ -1,0 +1,59 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{url}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+% \newtheorem*{conjecture*}{Conjecture}[section]
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+
+
+\newtheoremstyle{problemstyle}  % <name>
+        {3pt}                                               % <space above>
+        {3pt}                                               % <space below>
+        {\normalfont}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries\itshape}                 % <theorem head font>
+        {\normalfont\bfseries}
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+\theoremstyle{problemstyle}
+\newtheorem{problem}{Problem}[section]
+
+\DeclareMathOperator{\GL}{\mathrm{GL}}
+\DeclareMathOperator{\SL}{\mathrm{SL}}
+\DeclareMathOperator{\PGL}{\mathrm{PGL}}
+\DeclareMathOperator{\Ad}{\mathrm{Ad}}
+\DeclareMathOperator{\Oo}{\mathrm{O}}
+\DeclareMathOperator{\Gal}{\mathrm{Gal}}
+\DeclareMathOperator{\AI}{\mathrm{AI}}
+\DeclareMathOperator{\L2}{\mathrm{L}^{2}}
+\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+\DeclareMathOperator{\Hom}{\mathrm{Hom}}
+
+\title{Solution for ``An Introduction to Automorphic Representation"}
+\author{Seewoo Lee}
+
+
+\begin{document}
+
+\begin{abstract}
+This is a solution for the exercises in J. Getz and H. Hahn's book \emph{An Introduction to Automorphic 
+Representation with a view toward Trace Formulae}.
+\end{abstract}
+
+\maketitle
+% \tableofcontents
+
+\input{chapter1.tex}
+
+
+\bibliographystyle{acm}
+\bibliography{ref}
+\end{document}
