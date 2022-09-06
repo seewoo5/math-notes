@@ -5,6 +5,116 @@
 \end{problem}
 \begin{problem} ***
 \end{problem}
+
+\begin{problem}
+It is compact since it is an intersection of closed subset $G(F)$ of $\GL_{n}(F)$ ($G \hookrightarrow \GL_{n}$ is closed immersion)
+and intersection of closed set with compact set is again compact.
+Openness follows from continuity of $G(F) \hookrightarrow \GL_{n}(F)$: $\rho(G(F)) \cap K$ is an inverse image of $K$ under $G(F) \hookrightarrow \GL_{n}(F)$.
+\end{problem}
+
+\begin{problem} ***
+\end{problem}
+
+\begin{problem} Using the anti-equivalence of category $\mathbf{AffSch}_{k}$ and $\mathbf{Alg}_{k}$,
+we can reformulate the situation in terms of algebra as follows.
+Let $A = \mathcal{O}(Y)$ be $\mathfrak{o}$-algebra and $A_F:= A\otimes_{\mathfrak{o}} F$.
+Let $X = \Spec (A_F/I)$ and $\mathcal{X}$ be schematic closure of $X$ in $Y$, so that
+$\mathcal{O}(\mathcal{X}) = \mathrm{Im}(\pi^{I}\iota)$ where $\iota: A\hookrightarrow A_F$ and $\pi^{I}: A_F \twoheadrightarrow A_F / I$.
+Let $\mathcal{Z} = \Spec A/J$ (we have closed immersion $\mathcal{Z} \hookrightarrow \mathcal{Y}$),
+and we assume that the map on generic fibre, which corresponds to $A_F \twoheadrightarrow (A/J)_F$, induces an isomorphism
+$A_F / I = \mathcal{O}(X) \simeq \mathcal{O}(\mathcal{Z}) = (A/J)_F$.
+This means that there exists an isomorphism $\phi: A_F/I \to (A/J)_F$ such that the following diagram commutes:
+\begin{center}
+    \begin{tikzcd}
+        (A/J)_F \\
+        A_F / I \arrow[u, "\phi"]
+        &  A_F \arrow[lu, "\pi^{J}_{F}",swap, twoheadrightarrow] \arrow[l, "\pi^{I}", twoheadrightarrow]
+    \end{tikzcd}
+\end{center}
+Now our goal is to show that there exists a unique map
+$$
+f: \mathcal{O}(\mathcal{X}) = \mathrm{Im}(\pi^{I}\iota) \to \mathcal{O}(\mathcal{Z}) = A/J
+$$
+such that the following diagram commutes:
+\begin{center}
+    \begin{tikzcd}
+        A/J \\
+        \mathrm{Im}(\pi^{I}\iota) \arrow[u, "f"]
+        &  A \arrow[lu, "\pi^{J}",swap, twoheadrightarrow] \arrow[l, "\pi^{I}\iota", twoheadrightarrow]
+    \end{tikzcd}
+\end{center}
+The only way to define $f$ that the above diagram commutes is following: for $x \in \mathrm{Im}(\pi^{I}\iota)$, 
+choose $a\in A$ with $x = \pi^{I}\iota(a)$ and define $f(x):= \pi^{J}(a)$.
+Then we only need to show that the map is well-defined regardless of the choice of $a$.
+Let $a_{1}, a_{2} \in A$ such that $\pi^{I}\iota(a_1) = \pi^{I}\iota(a_2) = x$.
+Since $\iota^{J}: A/J \hookrightarrow (A/J)_F$ is an injection, it is enough to show that $\iota^{J}\pi^{J}(a_1) =\iota^{J}\pi^{J}(a_2)$.
+By the commutativity of the following diagram
+\begin{center}
+    \begin{tikzcd}
+        A/J \arrow[d, hookrightarrow, "\iota^{J}", swap] & A \arrow[d, hookrightarrow, "\iota"] \arrow[l, twoheadrightarrow, "\pi^{J}", swap]\\
+        (A/J)_F & A_F \arrow[l, twoheadrightarrow, "\pi^{J}_F", swap]
+    \end{tikzcd}
+\end{center}
+we have $\iota^{J}\pi^{J} = \pi_{F}^{J} \iota = \phi\pi^{I}\iota$, and this proves
+$$
+\iota^{J}\pi^{J}(a_1) = \phi\pi^{I}\iota(a_1) = \phi(x) = \phi\pi^{I}\iota(a_2) = \iota^{J}\pi^{J}(a_2),
+$$
+i.e. the map is well-defined.
+
+\end{problem}
+\begin{problem} ***
+\end{problem}
+\begin{problem} ***
+\end{problem}
+
+\begin{problem}
+Note that the coordinate ring of $\GL_{n,\mathbb{Q}}$ is 
+$$
+B =\mathcal{O}(\GL_{n, \mathbb{Q}}) = \mathbb{Q}[x_{ij}, y]_{1\leq i,j \leq n} / (\det(x_{ij})y - 1).
+$$
+To show that $\mathcal{G}$ is a model of $\GL_{n, \mathbb{Q}}$ over $\mathbb{Z}$, we need to show that
+$A \hookrightarrow B$ and $A \otimes_{\mathbb{Z}} \mathbb{Q} \simeq B$.
+Latter isomorphism easily follows from 
+$$
+A \otimes \mathbb{Q} = \mathbb{Q}[x_{ij}, t_{ij}, y] / (\det(x_{ij})y - 1, \{x_{ij} - \delta_{ij} - mt_{ij}\}) \simeq B
+$$
+since we can invert $m > 1$ in $\mathbb{Q}$ and get an isomorphism $A\otimes\mathbb{Q} \to B$ via $t_{ij} \mapsto (1 - x_{ij})/m$.
+Shoing $A \hookrightarrow B \simeq A \otimes_{\mathbb{Z}}\mathbb{Q}$ is equivalent to
+showing that $A$ is a torsion-free $\mathbb{Z}$-module.
+Assume that we have $z\in \mathbb{Z}[x_{ij}, t_{ij}, y]$ and $0 \neq a\in\mathbb{Z}$
+such that $az = 0$ in $A$.
+Then there exists $\alpha, \beta_{ij} \in \mathbb{Z}$ for $1 \leq i, j \leq n$ s.t.
+\begin{align*}
+az &= \alpha(\det(x_{ij})y - 1) + \sum_{ij}\beta_{ij}(x_{ij} - \delta_{ij} - mt_{ij}) \\
+\Leftrightarrow z &= \frac{\alpha}{a} \det(x_{ij})y + \sum_{i, j} \frac{\beta_{ij}}{a}x_{ij} - \sum_{i, j} \frac{m\beta_{ij}}{a}t_{ij} - \frac{\alpha + \sum_{i}\beta_{ii}}{a}
+\end{align*}
+which implies $a |\alpha$ and $a|\beta_{ij}$, i.e. $z = 0$ in $A$.
+Hence $\mathcal{G}$ is a model of $\GL_{n,\mathbb{Q}}$ over $\mathbb{Z}$.
+
+The set of $\mathbb{Z}$-points $\mathcal{G}(\mathbb{Z}) = \Hom(A, \mathbb{Z})$ can be identified with the set via map
+\begin{align*}
+\Hom(A, \mathbb{Z}) &\to \{g \in \GL_{n}(\mathbb{Z})\,:\,g \equiv I_{n} \,(\mathrm{mod}\, m \mathrm{M}_{n}(\mathbb{Z}))\} \\
+\phi &\mapsto (g_{ij} = \phi(x_{ij}))
+\end{align*}
+since $\phi(x_{ij}) = \delta_{ij} + m\phi(t_{ij}) \Rightarrow g - I_{n} \in m\mathrm{M}_{n}(\mathbb{Z})$.
+\end{problem}
+
+\begin{problem} ***
+It is not hard to prove that if $Z_{1}, Z_{2}$ are dense subsets of a topological space $Y_{1}, Y_{2}$ respectively, then
+$Z_{1} \times Z_{2}$ is dense in $Y_{1} \times Y_{2}$.
+Combining with Exercise 1.6 and Theorem 2.2.1 (b), we get the desired results for both weak and strong approximation.
+
+\textcolor{red}{NOT FINISHED}
+\end{problem}
+
+
+\begin{problem}
+By Exercise 2.7 and 2.9, $\mathrm{M}_{n} \simeq \mathbb{G}_{a}^{n^{2}}$ admits weak approximation over $F$.
+With embedding $\GL_{n} \hookrightarrow \mathrm{M}_{n}$ with $\GL_{n}(F) = \mathrm{M}_{n}(F) \cap \GL_{n}(F_S) \subset \mathrm{M}_{n}(F_{S})$,
+we also have $\GL_{n}(F)$ dense in $\GL_{n}(F_S)$.
+\end{problem}
+
+
 \begin{problem} ***
 \end{problem}
 \begin{problem} ***
@@ -21,21 +131,30 @@
 \end{problem}
 \begin{problem} ***
 \end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
-\end{problem}
-\begin{problem} ***
+
+\begin{problem}
+Let $N = p_{1}^{e_{1}}\cdots p_{r}^{e_r}$ be a prime factorization of $N$. Define $K_N \leq \GL_{n}(\mathbb{A}_{\mathbb{Q}}^{\infty})$ as
+$$
+K_N = \prod_{i=1}^{r} (I_{n} + p_{i}^{e_{i}}\mathrm{M}_n(\mathbb{Z}_{p_i})) \times  \prod_{p \neq p_{i}} \GL_{n}(\mathbb{Z}_p).
+$$
+Then $K_N$ is an open compact subgroup of $\GL_{n}(\mathbb{A}_{\mathbb{Q}}^{\infty})$ such that $K_N \cap \GL_{n}(\mathbb{Q}) = \Gamma(N)$.
+
+($\Rightarrow$) Let $H$ be a congruence subgroup of $\GL_{n}(\mathbb{Q})$, which means that there exists an open compact subgroup $K_H \leq \GL_{n}(\mathbb{A}_{\mathbb{Q}}^{\infty})$
+such that $H = K_H \cap \GL_{n}(\mathbb{Q})$.
+Then we can find an open compact neighborhood $U \leq K_H$ of $I_n$  which has a form of
+$$
+U = \prod_{p\in S} (I_n + p^{e_p}\mathrm{M}_n(\mathbb{Z}_p)) \times \prod_{p \not \in S} \GL_n(\mathbb{Z}_p)
+$$
+for some finite set of primes $S$ (Note that $\{I_n + p^{k}\mathrm{M}_{n}(\mathbb{Z}_{p})\}_{k\geq 1}$ is a decreasing sequence of open compact neighborhoods of $I_n$, which is also a subgroup of $\GL_{n}(\mathbb{Z}_p)$).
+Then $U = K_N$ for $N = \prod_{p \in S}p^{e_p}$, i.e. $U$ is also an open compact subgroup of $\GL_{n}(\mathbb{A}_{\mathbb{Q}}^{\infty})$, and it is a finite index subgroup of $K_H$
+since $K_H$ is open and compact (consider all the cosets of $K_N$ in $K_H$, which are all homeomorphic to $K_N$).
+Then $[H: \Gamma(N)] = [K_H: K_N]$ implies that $H$ contains $\Gamma(N)$ as a finite index subgroup.
+
+($\Leftarrow$) 
+Let $H$ be a subgroup of $\GL_{n}(\mathbb{Q})$ contains $\Gamma(N)$ with $[H:\Gamma(N)] < \infty$.
+Let $K_H$ be an image of $H$ in $\GL_{n}(\mathbb{A}_{\mathbb{Q}}^{\infty})$ under the diagonal embedding $\GL_{n}(\mathbb{Q}) \hookrightarrow \GL_{n}(\mathbb{A}_{\mathbb{Q}}^{\infty})$
+so that $K_H \cap \GL_{n}(\mathbb{Q}) = H$.
+Then $K_H$ contains $K_N$ and $[K_H: K_N] = [H:\Gamma(N)]$, so $K_N$ is a finite index subgroup of $K_H$.
+for coset representatives $g_{1}, g_{2}, \dots, g_{t}$ of $K_{H} / K_{N}$, $K_{H} = \cup_{j=1}^{t} g_{j}K_{N}$ and by openness (resp. compactness) of $K_N$, $K_H$ is also open (resp. compact) subgroup.
+
 \end{problem}
