@@ -1,0 +1,184 @@
+\newpage
+\section{Chapter 3}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem}
+Since $G$ is compact, the image of the modular quasi-character $\delta_{G}: G \to \mathbb{R}_{>0}^{\times}$ is a compact subgroup of $\mathbb{R}_{>0}^{\times}$.
+Then it should be trivial - otherwise, there exists $g \in G$ with $\delta_{G}(g) > 1$ (we can choose $g$ or $g^{-1}$), and then $\delta_{G}(g^{n}) = \delta_{G}(g)^{n} \to \infty$
+as $n\to\infty$, i.e. the image is not bounded.
+Hence $G$ is unimodular.
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem}
+Let $k$ be a residue field and $\varpi$ be a uniformizer of $F$.
+We have $\mathcal{O}_{F}^{\times} = \coprod_{a\in k^{\times}} (a + \varpi \mathcal{O}_{F})$ and
+\begin{align*}
+    d^{\times}x(\mathcal{O}_{F}^{\times}) &= \int_{\mathcal{O}_{F}^{\times}} \frac{dx}{|x|} \\
+    &= \int_{\mathcal{O}_{F}^{\times}} dx \\
+    &= dx(\mathcal{O}_{F}^{\times}) \\
+    &= \sum_{a\in k^{\times}} dx(a + \varpi \mathcal{O}_{F}) \\
+    &= \sum_{a\in k^{\times}} q^{-1}dx(\mathcal{O}_{F}) \\
+    &= (q - 1)q^{-1}dx(\mathcal{O}_{F}) = (1 - q^{-1}) dx(\mathcal{O}_F).
+\end{align*}
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+\begin{problem} \notfinish
+\end{problem}
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem}
+Let $x, g, y \in \GL_n(F)$ with $y = xg$ (regard $g$ as a constant matrix).
+Then we have $y_{ij} = \sum_{1\leq k \leq n} x_{ik}g_{kj}$ and $dy_{ij} = \sum_{1\leq k \leq n} g_{kj}dx_{ik}$.
+This gives
+\begin{align*}
+&dy_{11} \wedge dy_{12} \wedge \cdots \wedge dy_{1n} \\
+&= (g_{11}dx_{11} + g_{21}dx_{12} + \cdots + g_{n1}dx_{1n}) \wedge \cdots \wedge (g_{1n}dx_{11} + \cdots + g_{nn}dx_{1n}) \\
+&= |\det(g^{t})| dx_{11} \wedge \cdots \wedge dx_{1n} \\
+&= |\det(g)| dx_{11} \wedge \cdots \wedge dx_{1n}
+\end{align*}
+and along with $\det(xg) = \det(x) \det(g)$, we have
+\begin{align*}
+    \frac{\wedge_{i, j}dy_{ij}}{|\det(y)|^{n}} = \frac{|\det(g)|^{n} \wedge_{i, j} dx_{ij}}{|\det(xg)|^{n}} = \frac{\wedge_{i, j} dx_{ij}}{|\det(x)|^{n}}
+\end{align*}
+so $d(x_{ij})$ is right Haar measure. Since $\GL_{n}$ is reductive, it is unimodular and so $d(x_{ij})$ is also a left Haar measure.
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+Consider a reduction map $\GL_n(\mathcal{O}_{F_v}) \twoheadrightarrow \GL_n(k_v)$ where $k_v$ is a residue field of $F_v$ with $\#k_v = q_v$,
+which is surjective.
+The kernel $H$ of the map is $1 + \varpi_v\mathrm{M}_{n}(\mathcal{O}_{F_v})$ where $\varpi_v$ is a uniformizer of $F_v$.
+Then we have 
+$$
+|\omega|_v(\GL_{n}(\mathcal{O}_{F_v})) = |\omega|_v(H) \cdot \# \GL_{n}(k_v).
+$$
+The order of $\GL_n(k_v)$ is $(q_v^2 - 1)(q_v^2 - q_v)$: there are $q_v^2 - 1$ choices for the first column vector (all but zero vector), and $q_v^2 - q_v$
+choices for the second column vector (all but vectors which are multiples of the first column vector).
+Also, for $h \in H$, we have
+\begin{align*}
+h &= \begin{pmatrix}
+    1 + \varpi_v x_{11} & \varpi_v x_{12} \\ 
+    \varpi_v x_{21} & 1 + \varpi_v x_{22}
+\end{pmatrix}  \\
+\Rightarrow |\det(h)|_v &= |1 + \varpi_v(x_{11} + x_{22}) + \varpi_v^{2} (x_{11}x_{22} - x_{12}x_{21})|_v = 1
+\end{align*}
+So
+\begin{align*}
+    |\omega|_v(H) &= \int_{\mathcal{O}_{F_v}^{4}} d(\varpi_v x_{11}) \wedge \cdots \wedge d(\varpi_v x_{22}) \\
+    &= q_{v}^{-4}\int_{\mathcal{O}_{F_v}^{4}} dx_{11} \wedge \cdots \wedge dx_{22} = q_{v}^{-4}
+\end{align*}
+and the measure is $|\omega|_{v}(\GL_n(\mathcal{O}_{F_v})) = (1 - q_{v}^{-1})(1 - q_{v}^{-2})$.
+
+When $F$ is a number field, then the \emph{Dedekind zeta function} of $F$, defined as
+$$
+\zeta_F(s) := \sum_{0 \neq I \subseteq \mathcal{O}_F} \frac{1}{N_{F/\mathbb{Q}}(I)^{s}}
+$$
+admits an Euler product for $\Re s > 1$:
+$$
+\zeta_F(s) = \prod_{\mathfrak{p} \subseteq \mathcal{O}_{F}} \frac{1}{1 - N_{F/\mathbb{Q}}(\mathfrak{p})^{s}}.
+$$
+Then the product is 
+$$
+\prod_{v\nmid \infty} \left( 1 - \frac{1}{q_v}\right) \left(1 - \frac{1}{q_{v}^{2}}\right)
+$$
+and this diverges since $\prod_{v\nmid \infty} (1 - q_{v}^{-1})$ does and $\prod_{v\nmid \infty}(1 - q_{v}^{-2}) = \zeta_F(2)^{-1}$ does not.
+However, the normalized product
+$$
+\prod_{v\nmid \infty} (1 - q_{v}^{-1})^{-1} |\omega|_{v}(\GL_{n}(\mathcal{O}_{F_v})) = \prod_{v\nmid \infty} (1 - q_{v}^{-2})
+$$
+conveges to $\zeta_{F}(2)^{-1}$.
+
+Now assume that $F$ is a function field.
+\end{problem}
+
+\begin{problem}
+(Note that this is a theorem of Maschke.)
+It is enough to show the following:
+
+\textbf{Claim.} Let $\rho: G \to \GL(V)$ be a complex representation of finite group $G$, and let $U$ be a subrepresentation of $\rho$,
+i.e. invariant under $\rho$.
+Then there exists $W \leq V$ such that $U \cap W = \{0\}$ and $U \oplus W = V$.
+
+Applying the above claim repeatedly shows that any representation of a finite group is completely decomposable.
+To show the lemma, let $W'$ be \emph{any} subspace of $V$ such that $U \cap W' = \{0\}$ and $U \oplus W' = V$.
+Let $\pi': V \to U$ be a corresponding projection.
+Then define $\pi: V \to V$ as
+$$
+\pi(v) = \frac{1}{|G|} \sum_{g \in G} g^{-1} \pi'(gv)
+$$
+whose image is in $U$ ($gv:=\rho(g)v$).
+Our claim is that $W = \ker\pi$ is the desired subspace: $W$ is $\rho$-invariant and $U \oplus W = V$.
+First of all, since $\pi'|_U$ is identity on $U$ and $U$ is $\rho$-invariant, $\pi|_U$ is also an identity map on $U$.
+Then we have $W \cap U = 0$, and by dimension counting we get $V = U \oplus W$.
+Hence we only need to show that $W$ is $\rho$-invariant: for $h \in G$ and $v \pi W = \ker \pi$, 
+\begin{align*}
+    \pi(hv) &= \frac{1}{|G|} \sum_{g \in G} g^{-1} \pi'(ghv) \\
+    &= \frac{1}{|G|} \sum_{g' \in G} hg'^{-1}\pi'(g'v) \quad (g' =gh) \\
+    &= h \pi(v) = 0
+\end{align*}
+so $hv \in W$.
+\end{problem}
+
+\begin{problem}
+Assume that the representation $\rho: B(\mathbb{C}) \to \GL_{2}(\mathbb{C})$ is completely reducible.
+Since the representation is 2-dimensional, it should be decomposed as $\chi_{1} \oplus \chi_{2}$ for some 
+characters $\chi_1, \chi_2 : \mathbb{C}^{\times} \to \mathbb{C}^{\times}$.
+In other words, there exists $g_{0} \in \GL_{2}(\mathbb{C})$ such that
+$$
+\rho(g) = g_{0} \begin{pmatrix}
+    \chi_1(g) & 0 \\ 0 & \chi_2(g)
+\end{pmatrix} g_{0}^{-1}.
+$$
+This implies $\rho(gh) = \rho(hg)$, which is not true since $B(\mathbb{C})$ is not commutative.
+\end{problem}
+
+\begin{problem}
+For any $g \in G$,
+\begin{align*}
+    ((f_1 * f_2) * f_3)(g) &= \int_{G}(f_1 * f_2)(gh_1^{-1})f_{3}(h_{1})d_{r}h_{1} \\
+    &= \int_{G} \int_{G} f_{1}(gh_{1}^{-1}h_{2}^{-1})f_{2}(h_{2})d_{r}h_{2}f_{3}(h_{1})d_{r}h_{1} \\
+    &= \int_{G} \int_{G} f_{1}(gh_{1}^{-1}h_{2}^{-1})f_{2}(h_{2})f_{3}(h_{1}) d_{r}h_{2} d_{r}h_{1} \\
+    &= \int_{G} \int_{G} f_{1}(gh_{3}^{-1})f_{2}(h_{3}h_{1}^{-1})f_{3}(h_{1}) d_{r}h_{3}d_{r}h_{1} \quad (h_{3} = h_{2}h_{1},\,d_{r}h_{3} = d_{r}h_{2}) \\
+    &= \int_{G} \int_{G} f_{1}(gh_{3}^{-1})f_{2}(h_{3}h_{1}^{-1})f_{3}(h_{1}) d_{r}h_{1}d_{r}h_{3} \quad (\text{Fubini's theorem}) \\
+    &= \int_{G} f_{1}(gh_{3}^{-1}) \left(\int_{G} f_{2}(h_{3}h_{1}^{-1})f_{3}(h_{1}) d_{r}h_{1}\right) d_{r}h_{3} \\
+    &= \int_{G} f_{1}(gh_{3}^{-1}) (f_{2} * f_{3})(h_{3})d_{r}h_{3} \\
+    &= (f_{1} * (f_{2} * f_{3}))(g).
+\end{align*}
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem}
+\begin{align*}
+    \pi(f_1 * f_2)\varphi &= \int_G (f_1 * f_2)(g) \pi(g) \varphi d_{r}g \\
+    &= \int_G \int_G f_1(gh^{-1})f_{2}(h)\pi(g)\varphi d_{r}h d_{r}g \\
+    &= \int_G \int_G f_1(gh^{-1})f_{2}(h)\pi(g)\varphi d_{r}g d_{r}h \quad (\text{Fubini's theorem}) \\
+    &= \int_G \int_G f_{1}(g_{1})f_{2}(h)\pi(g_{1}h)\varphi d_{r}g_{1} d_{r}h\quad (g_1 = gh^{-1}, d_{r}g_1 = d_{r}g) \\
+    &= \int_G \int_G f_{1}(g_{1})f_{2}(h)\pi(g_{1}h)\varphi d_{r}h d_{r}g_1\quad (\text{Fubini's theorem}) \\
+    &= \int_G f_1(g_1) \pi(g_1) \left(\int_G f_2(h)\pi(h)\varphi d_{r}h \right)d_{r}g_{1} \\
+    &= \int_G f_1(g_1) \pi(g_1) \pi(f_2)\varphi d_{r}g_1 \\
+    &= (\pi(f_1) \circ \pi(f_2))\varphi
+\end{align*}
+\end{problem}
