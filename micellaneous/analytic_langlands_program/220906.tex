@@ -1,0 +1,162 @@
+\newpage
+\section{More on Hecke algebra and Langlands correspondence for general reductive groups (September 6)}
+
+We said that Langlands correspondence for $\GL_{n}$ gives a correspondence between invariants,
+which are the Frobenius conjugacy classes (on Galois side) and the Hecke conjugacy classes (on automorphic side).
+We are going to explain about Hecke conjugacy classes more in detail.
+
+Let $F = \mathbb{F}_{q}(X)$ be a function field for a curve over finite field.
+Let $\pi$ be an automorphic representation of $\GL_n(\mathbb{A}_F)$.
+It decomposes as a restricted product of local representations of $\GL_{n}(F_x)$ as $\pi = \otimes'_{x\in |X|}\pi_x$.
+Then there exists a finite set of (closed) points $S_\pi \subset |X|$ such that
+$\pi_{x}^{\GL_{n}(\mathcal{O}_x)}\neq 0$, i.e. there exists $\GL_{n}(\mathcal{O}_{x})$-fixed vector in $\pi_x$.
+We define Hecke algebra $\mathcal{H}_x$ as a convolution algebra on the set of 
+compactly supported $\GL_{n}(\mathcal{O}_{x})$-bi-invariant functions with Haar measure on $\GL_n(F_x)$
+normalized by $\mu(\GL_n(\mathcal{O}_x))=1$.
+Then the Hecke algebra is actually commutative, and using this we can show that $\pi_x^{\GL_n(\mathcal{O}_x)}$ is actually 1-dimensional,
+i.e. there exists a unique vector (up to scaling) $v_x \in \pi_x$ fixed by $\GL_n(\mathcal{O}_x)$.
+The restricted product $\otimes_{x\in |X|}' \pi_x$ of local representations are defined as a span of vectors $\otimes_x w_x$
+where $w_x\in \pi_x$ and $w_x = v_x$ for all but finitely many $x$.
+In this case, the group $\GL_n(\mathbb{A}_F) = \otimes_x' \GL_n(F_x)$ acts on the space componenti-wise
+$g.\otimes w_x := \otimes_x (g_x.w_x)$
+and the previous argument this actually gives an action on the space $\otimes_{x}'\pi_x$.
+
+Now for given local representation $\pi_x$, we can attach a representation of the Hecke algebra $\mathcal{H}_x$
+where the representation space is $\pi_x^{\GL_n(\mathcal{O}_x)}$ action is given by (we use the same notation $\pi_x$ for the representation of $\mathcal{H}_x$)
+$$
+f \mapsto \pi_x(f): v \mapsto \int_{\GL_n(F_x)} f(g) \pi_x(g)v dg.
+$$
+The integral is well-defined since $f$ is compactly supported and $\GL_n(\mathcal{O}_x)$ preserves $\pi^{\GL_n(\mathcal{O}_x)}$.
+This gives a functor from the category of representations of $\GL_n(F_x)$ and the category of representations of $\mathcal{H}_x$.
+In fact, this sets up bijection between irreducible unramified representations of $\GL_n(F_x)$
+and irreducible representations of $\mathcal{H}_x$.
+Since $\mathcal{H}_x$ is commutative, irreducible representations of $\mathcal{H}_x$ are just characters of $\mathcal{H}_x$,
+which we denote it as $\chi_x: \mathcal{H}_x \to \mathbb{C}$.
+
+We can describe the structure of $\mathcal{H}_x$ more precisely as follows, which is a special case of so-called \emph{Satake isomorphism}.
+
+\begin{theorem}
+    $$
+    \mathcal{H}_x \simeq \mathbb{C}[x_1^{\pm}, \dots, x_n^{\pm}]^{S_n}
+    $$
+    where the RHS is a space of symmetric Laurent polynonmials in $n$-variables.
+\end{theorem}
+Here's a sketch of proof.
+First, the double coset space $\GL_n(\mathcal{O}_x) \backslash \GL_n(F_x) / \GL_n(\mathcal{O}_x)$ can be identified with $\mathbb{Z}^{n}/S_n$ as follows.
+We have a map 
+$$
+\mathbb{Z}^{n} \to \GL_n(\mathcal{O}_x) \backslash \GL_n(F_x) / \GL_n(\mathcal{O}_x)
+$$
+that maps $(\lambda_1, \dots, \lambda_n) \in \mathbb{Z}^{n}$ to the double coset of the diagonal matrix
+$$
+\begin{pmatrix}
+    t_{x}^{\lambda_1} & & & \\
+    & t_{x}^{\lambda_@} & & \\
+    & & \ddots & \\
+    & & & t_{x}^{\lambda_n}
+\end{pmatrix}
+$$
+where $t_x$ is a choosen uniformizer of $F_x$, so that $F_x \simeq (\mathbb{F}_q)_x((t_x))$ 
+and $\mathcal{O}_x \simeq (\mathbb{F}_{q})_x[[t_x]]$.
+Such a map is well-defined in the sense tha the double coset is independent of the choice of uniformizer $t_x$ - any other choice $t_x'$ satisfies $t_x'/t_x \in \mathcal{O}_x$.
+The map is surjective, and it factors through $\mathbb{Z}^{n}/S_n$ with permutation on $\mathbb{Z}^n$ since
+$(\lambda_1, \dots, \lambda_n)$ and $(\lambda_1', \dots, \lambda_n')$ with $\tau\lambda = \lambda'$ maps to the diagonal matrices
+that are conjugate to each other by permutation matrix (corresponds to $\tau\in S_n$).
+
+Using the identification, we can get the Satake isomorphism as follows.
+Any $f \in \mathcal{H}_{x}$ as a form of $\sum_{\lambda} a_{\lambda} c_{\lambda}$
+where $c_{\lambda}$ is a characteristic function on a double coset corresponds to an unordered set $\lambda = (\lambda_1, \dots, \lambda_n)$.
+This sum is a finite sum since $f$ is compactly supported.
+And the function $f$ corresponds to a symmetrized Laurent polynomial
+$\sum_{\tau\in S_n} \tau(\sum a_{\lambda}x_1^{\lambda_1}\cdots x_{n}^{\lambda_n})$.
+
+As we said before, Langlands correspondence for $\GL_n$ over a global function field is now a theorem.
+\begin{theorem}[Deligne, Lafforgue]
+   Let $F$ be a function field of a curve over a finite field.
+   There is such a bijection between $n$-dimensional continuous irreducible representations of the Weil group $W(\overline{F}/F)$
+   (with some technical conditions mentioned before) and irreducible cuspidal automorphic representations of $\GL_n(\mathbb{A}_F)$.
+   This also gives a bijection between the Frobenius conjugacy classes and the Hecke conjugacy classes, and also these conjugacy classes
+   are actually in $\GL_n(\overline{\mathbb{Q}})$.
+\end{theorem}
+$n=2$ case is proven by Delign, and $n > 2$ is by L. Lafforgue.
+The difference between two cases are on the existence of \emph{nice} moduli space.
+Lafforgue invented objects called \emph{Shutuka} and use moduli space of them for the cases $n >2$.
+
+
+How can we state the Langlands correspondence for general reductive group $G$ (over function fields)?
+First, the concepts we defined (Galois representations, automorphic representations, Hecke algebra, Frobenius conjugacy classes, ...)
+generalizes to general reductive groups.
+For example, Hecke algebra $\mathcal{H}_{x}$ is a convolution algebra of compactly supported functions on $G(F_x)$
+which is bi-invariant under $G(\mathcal{O}_{x})$.
+Then it is a commutative algebra for $x \in |X|$ with $\pi_x^{G(\mathcal{O}_x)}\neq 0$ (unramified), and
+the invariant subspace $\pi_{x}^{G(\mathcal{O}_{x})}$ is 1-dimensional.
+Also, we have a Satake isomorphism for $G$.
+
+But if $\chi_x : \mathcal{H}_x \to \mathbb{C}$ is a character of $\mathcal{H}_{x}$, then where the corresponding
+conjugacy class would live in?
+For general reductive group $G$, Hecke conjugacy classes does not live in $G(\mathbb{C})$, but in different group called \emph{dual group} of $G$.
+To define the notion of dual group, we have to define a \emph{root datum} first.
+
+Let $T$ be a maximal torus of $G$, i.e. maximal commutative subgroup of $G$.
+For $\GL_n$, it is a set of diagonal matrices.
+For now, we will regard $G$ and $T$ as a group over $\mathbb{C}$.
+Then we define the latteices of characters and cocharacters of $T$ as
+\begin{align*}
+X^{*}(T) = \mathrm{Hom}(T, \mathbb{G}_{m}) \\
+X_{*}(T) = \mathrm{Hom}(\mathbb{G}_{m}, T)
+\end{align*}
+which are free abelian groups of finite rank.
+We have a pairing $X^{*}(T)\times X_{*}(T) \to \mathbb{Z}$ defined by composition (note that all the morphisms $\mathbb{G}_{m} \to \mathbb{G}_{m}$
+has a form of $x \mapsto x^{n}$).
+We also have roots $\Delta \subset X^{*}(T)$ and coroots $\Delta ^{\vee} \subset X_{*}(T)$
+which are nonzero eigenvalues of adjoint action of $T$ (and their duals).
+Then we can associate a quadruple $(X^{*}(T), X_{*}(T), \Delta, \Delta^{\vee})$, a \emph{root datum} of $G$,
+and it determines a group $G$ upto isomorphism when $G$ is split (i.e. admits a split maximal torus).
+By simply flipping a root datum, we get another root datum
+$$
+(X_*(T), X^{*}(T), \Delta^{\vee}, \Delta)
+$$
+called dual root datum, and the group determined by this new root datum is called the \emph{dual} group of $G$, denoted by $\widehat{G}$.
+
+Now let's get back to the Hecke algebra.
+In case of $\GL_{n}$, we have a map $\mathbb{Z}^{n} \to \GL_2(\mathcal{O}_{x}) \backslash \GL_2(F_{x}) / \GL_2(\mathcal{O}_x)$ 
+that induces an isomorphism 
+$$
+\mathbb{Z}^{n}/S_{n} \to \GL_2(\mathcal{O}_x) \backslash \GL_2(F_x) / \GL_2(\mathcal{O}_x).
+$$
+For general reductive group $G$, we have a map $X_{*}(T) \to G(\mathcal{O}_x) \backslash G(F_x) / G(\mathcal{O}_x)$ defined as an evaluation of character at uniformizer $t_{x}$.
+Then this map factors through the quotient of $X_{*}(T)$ by the \emph{Weyl group} $W = W(G, T)$, the symmetry group of a root datum.
+This induces an isomorphism 
+$$
+X_{*}(T) / W \simeq G(\mathcal{O}_{x}) \backslash G(F_x) / G(\mathcal{O}_x)
+$$
+which gives $\mathcal{H}_{x} \simeq \mathbb{C}[X_{*}(T)/W]$.
+This saids that the character of $\mathcal{H}_x$ corresponds to an element in $X_{*}(T)/W$.
+In this case, which kind of a conjugacy would corresponds to the element?
+In fact, we have a canonical isomorphism $\mathbb{C}[X^{*}(T)/W] \simeq \mathbb{C}[T]^{W}$.
+which gives a correspondence between $X^{*}(T)/W$ and semisimple conjugacy class in $G$.
+However, we have $X_{*}(T)/W$ instead, and since $X_{*}(T)$ is a character group of the dual group $\widehat{G}$, 
+we can concludes that $X_{*}(T)/W$ corresponds to semisimple conjugacy classes in $\widehat{G}$.
+
+Based on this observation, the Langlands correspondence for a reductive group $G$ (over a function field) 
+is a correspondence between
+\begin{align*}
+    \boxed{
+        \text{irreducible representation } \sigma:W(\overline{F}/F) \to \widehat{G}(\overline{\mathbb{Q}_{\ell}})
+    }
+\end{align*}
+and
+\begin{align*}
+    \boxed{
+        \text{irreducible cuspidal automorphic representation of }G(\mathbb{A}_F)
+    }
+\end{align*}
+where the invariants match: the Frobenius conjugacy classes 
+$$
+[\sigma(\mathrm{Fr}_{x})] \subset \widehat{G}(\overline{\mathbb{Q}_{\ell}}), \quad x \in |X| \backslash S_{\sigma}
+$$
+and the Hecke conjugacy classes (corresponds to characters of Hecke algebra $\mathcal{H}_x$)
+$$
+\pi(h_x) \subset \widehat{G}(\mathbb{C}),\quad x \in |X| \backslash S_\pi
+$$
+with a choice of identification $\iota: \mathbb{C} \simeq \overline{\mathbb{Q}_{\ell}}$, where $S_\sigma = S_\pi$ is a finite subset of $|X|$.
