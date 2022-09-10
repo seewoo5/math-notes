@@ -1,0 +1,57 @@
+\newpage
+\section{Satake isomorphism (September 8)}
+
+% \subsection{Preliminaries on affine group schemes}
+% Before we rigorously state the Satake isomorphism, we'll go through some basics on affine group schemes.
+
+
+\subsection{Satake isomorphism}
+Recall that for given cocharacter $\lambda \in X_{*}(T)$, we can associate an element in $T(F_x)$ 
+by evaluating $\lambda$ at chosen uniformizer $t_x \in F_x$.
+Then it defines a well-defined double coset in $G(\mathcal{O}_x) \backslash G(F_x) / G(\mathcal{O}_x)$
+since the choice of uniformizer is only differ by $\mathcal{O}_x^{\times}$.
+Now we can state the Satake isomorphism for genral (split) reductive groups.
+\begin{theorem}
+We have an isomorphism of $\mathbb{C}$-algebra
+$$
+\mathcal{H}_{x} \simeq \mathbb{C}[X_{*}(T)]^{W} \simeq \mathbb{C}[X^{*}(\widehat{T})]^{W}.
+$$
+\end{theorem}
+As a consequence, Hecke algebras are commutative.
+\begin{proof}
+Satake provided explicit isomorphism from $\mathcal{H}_{x}$ to $\mathbb{C}[X_{*}(T)]^{W}$, which is
+$$
+f \mapsto \sum_{\lambda \in X_{*}(T)} \left(q_{x}^{\langle \rho, \lambda\rangle} \int_{N(F_x)}f(u \lambda(t_x))du \right) \lambda
+$$
+Here $\rho = (1/2)\sum_{\alpha \in \Delta^{+}}\alpha$ is the half-sum of the positive roots
+and $du$ is the Haar measure on $N(F_x)$ normalized as $du(N(\mathcal{O}_x)) = 1$.
+Since $f \in \mathcal{H}_x$ is compactly supported, the image under Satake's map is actually a finite sum.
+He showed that this is an injective algebra homomorphism whose image is $\mathbb{C}[X_*(T)]^W$.
+\end{proof}
+Now, observe that we have following isomorphisms
+$$
+\mathbb{C}[X_{*}(T)]^{W} \simeq \mathbb{C}[T]^{W} \simeq \mathbb{C}[G]^{G}
+$$
+where the last space is the space of class functions on $G$, i.e. functions on $G$ that are invariant under conjugation.
+The second isomorphism comes from Chevalley's restriction theorem.
+Hence the characters of $\mathcal{H}_x$ correspond to the characters of $\mathbb{C}[G]^{G}$, which again correspond to
+the semisimple conjugacy classes in $G$.
+This is the way how we associate ``Hecke conjugacy class $\pi(h_x)$''\footnote{Usually, it is called as \emph{Satake parameters}.} to an automorphic representation $\pi$.
+
+\subsection{Why Weil group?}
+On the Galois side, why do we care about representations of Weil groups, not the whole Galois group?
+The reason can be found from the $n=1$ case, i.e. Langlands correspondence for $\GL_1 = \mathbb{G}_m$, which is also
+called \emph{Abelian Class Field Theory}.
+
+Let $\rho : \Gal(\overline{F}/F) \to \GL_1(\overline{\mathbb{Q}}_\ell) = \overline{\mathbb{Q}_{\ell}}^{\times}$
+be an irreducible representation.
+Since $\GL_1$ is abelian, the map factors through the abelianization of $\Gal(\overline{F}/F)$, which equals
+$\Gal(F^{\mathrm{ab}}/F)$, the Galois group of maximal abelian extension.
+On the automorphic side, (cuspidal) automorphic representations of $\GL_1$ are essentially the characters of $\GL_1(F) \backslash \GL_1(\mathbb{A}_F) = F^{\times} \backslash \mathbb{A}_F^{\times}$.
+Then the Langlands correspondence is given through Artin reciprocity map
+$$
+\theta: F^{\times} \backslash \mathbb{A}_F^{\times} \to \Gal(F^{\mathrm{ab}} / F).
+$$
+By the way, this map is injective but not surjective, and the image is exactly the ablianization of Weil group, $W(F^{\mathrm{ab}}/F)$.
+Hence, generalizing this idea for $n > 1$ makes us to consider representations of Weil group instead of the
+full absolute Galois group.
