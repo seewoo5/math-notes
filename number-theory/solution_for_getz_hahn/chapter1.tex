@@ -148,8 +148,51 @@ $$
 (they are central isogenies) so we get $\widehat{\GL_{n}} = \GL_{n\mathbb{C}}$.
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+We will show that complex dual of $\SL_n$ is $\PGL_n$, and vice versa.
+Let's compute root datum for $\SL_n$.
+We choose a maximal torus $T = T_{\SL_n} \leq \SL_n$ of diagonal matrices, so that
+$$
+T(R) = \left\{\begin{pmatrix}t_1 & & & \\ & t_2 & & \\ & & \ddots & \\ & & & t_n\end{pmatrix}\,:\, t_k \in R, \prod_{1\leq k \leq n}t_k =1 \right\}.
+$$
+Then the characters $X^*(T)$ is almost same as the $\GL_n$ case, but we get a quotient of it.
+For given $\lambda = (\lambda_1, \dots, \lambda_n), \lambda' = (\lambda'_1, \dots, \lambda'_n) \in \mathbb{Z}^{n}$, 
+two characters $\alpha_{\lambda}, \alpha_{\lambda'}$ are the same when $\lambda' -\lambda \in \mathbb{Z}\cdot (1, \dots, 1)$.
+Hence we have
+$$
+X^{*}(T) \simeq \{\lambda = (\lambda_1, \dots, \lambda_n) \in \mathbb{Z}^{n}\}/ \sim
+$$
+where $\lambda \sim \lambda'$ if $\lambda' - \lambda \in \mathbb{Z} \cdot (1, \dots, 1)$.
+Similarly, cocharacter $\beta_{\lambda}(t) = \diag(t^{\lambda_1}, \dots, t^{\lambda_1})$ is well-defined only
+when $\sum_{k=1}^{n} \lambda_{k} = 0$, so that 
+$$
+X_{*}(T) \simeq \left\{\lambda = (\lambda_1, \dots, \lambda_n)\,:\, \sum_{k=1}^{n} \lambda_k = 0\right\} =: H\subset \mathbb{Z}^{n}.
+$$
+The set of roots and coroots for $\SL_{n}$ is the same as that of $\GL_n$: only Cartan subalgebra $\mathfrak{t}$ is changed from
+diagonal matrices in $\mathfrak{gl}_n$ to traceless diagonal matrices.
+
+For $\PGL_n$, we choose the maximal torus $T' = T_{\PGL_n}$ of diagonal matrices, and characters
+of $T'$ has a form of $\alpha_{\lambda}':\diag(t_1, \dots, t_n) \mapsto \prod_{k=1}^{n} t_k^{\lambda_k}$
+for $\lambda = (\lambda_1, \dots, \lambda_n) \in \mathbb{Z}^{n}$, and we should have $\sum_{k=1}^{n} \lambda_{k} = 0$ for the character to be well-defined
+on $T'$. Hence we have $X^*(T') \simeq H \subset \mathbb{Z}^n$.
+Similarly, any cocharacter on $T'$ has a form of $\beta_{\lambda}':t \mapsto \diag(t^{\lambda_1}, \dots, t^{\lambda_n})$, and two different $\lambda, \lambda \in \mathbb{Z}^{n}$
+define same cocharacter as a map to $T'$ if $\lambda' -\lambda \in \mathbb{Z}\cdot (1, \dots, 1)$, so 
+$X_{*}(T)'$ is isomorphic to the quotient of $\mathbb{Z}^{n}$ by $\mathbb{Z} \cdot (1, \dots, 1)$.
+The set of roots and coroots are the same as $\GL_n$ and $\SL_n$.
+Note that the Lie algebra $\mathfrak{pgl}_n$ of $\PGL_n$ can be thought 
+as a quotient of $\mathfrak{gl}_n(R)$ by $R\cdot I_n$, where $I_n$ is the $n\times n$ identity matrix.
+
+Observe that we can natually identify $X^{*}(T) \simeq \mathbb{Z}^{n}/(\mathbb{Z} \cdot (1, \cdots, 1)) \simeq X_{*}(T')$ and $X_{*}(T) \simeq H \simeq  X^{*}(T')$.
+We can define a map between two root data of $\SL_n$ and $\widehat{\PGL_n}$ as follows:
+\begin{align*}
+    f&:X^{*}(T)\to X_{*}(T'), \quad \alpha_{\lambda} \mapsto \beta_{\lambda}' \\
+    f^{\vee}&: X_{*}(T) \to X^{*}(T'), \quad \beta_{\lambda} \mapsto \alpha_{\lambda}' \\
+    \iota&: \Phi(\SL_n, T) \to \Phi^{\vee}(\PGL_n, T'), \quad e_{ij} \mapsto e_{ij}^{\vee} \\
+    \iota^{\vee}&: \Phi^{\vee}(\SL_n, T) \to \Phi(\PGL_n, T'), \quad e_{ij}^{\vee} \mapsto e_{ij}
+\end{align*}
 \end{problem}
+and this gives $\SL_n \simeq \widehat{\PGL_n}$.
+Similarly, we have $\PGL_n \simeq \widehat{\SL_n}$.
 
 \begin{problem} \notfinish
 \end{problem}

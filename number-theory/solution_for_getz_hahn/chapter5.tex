@@ -1,0 +1,73 @@
+\newpage
+\section{Chapter 5}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem}
+One direction is clear.
+For the other direction, assume that $(\pi, V)$ is admissible and let $U$ be an open subgroup of $G$.
+Then we can choose compact open subgroup $K$ such that $K\leq U \leq G$, and we have $V^U \leq V^K$.
+Now $\dim V^K <\infty$ gives $\dim V^U <\infty$.
+\end{problem}
+
+\begin{problem}
+Let $v \in V_{\mathrm{sm}}$, so that $v\in V^K$ for some open compact subgroup $K\leq G$.
+Then for $g\in G$ and $k \in K$, we have $\pi(k)v = v \Rightarrow \pi(gkg^{-1})\pi(g)v = \pi(g)v$.
+Hence $\pi(g)v$ is fixed by $gkg^{-1}$ for all $k\in K$, hence $\pi(g)v \in V^{gKg^{-1}}\subseteq V_\mathrm{sm}$.
+Hence $V_{\mathrm{sm}}$ is preserved by $G$.
+
+Now let $H = \mathrm{Stab}(v) \leq G$ be a stabilizer of $v\in V_{\mathrm{sm}}$.
+There exists an open compact subgroup $K$ with $v \in V^K \leftrightarrow K\leq \mathrm{Stab}(v)$,
+so $\mathrm{Stab}(v)$ is a union of open cosets homeomorphic to $K$, which is also open.
+Hence $(\pi_{V_\mathrm{sm}}, V_{\mathrm{sm}})$ is smooth.
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem}
+The proof is essentially same as that of Problem 4.5, and we also use Schur's lemma (Problem 5.6).
+\end{problem}
+
+\begin{problem}
+Take $x = p^k$. Then $|p^k|_p = p^{-k}$ and $|p^{k}|_\infty = p^k$, so we have
+$c_{1}\cdot p^{k} \leq p^{-k} \Leftrightarrow c_{1} \leq p^{-2k}$ for all $k$.
+Now taking limit $k\to\infty$ gives $c_1 = 0$, which gives a contradiction.
+We can do similarly for the other direction with $k\to-\infty$.
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem}
+See the argument in Problem 5.3 for showing $G$-invariance.
+To show denseness, let $v\in V$ and let $\epsilon > 0$.
+By continuity of $G \times V \to V$, there exists open neighborhood $U$ of 1 such 
+that $\|\pi(u)v - v\| < \epsilon$ for all $u \in U$.
+Now we can choose open compact subgroup $K$ of $G$ lies in $U$ (by totally connectedness),
+and we have
+\begin{align*}
+\|e_{K}v - v\| &= \left\|\frac{1}{\mathrm{meas}_{dg}(K)} \int_{G}(\mathds{1}_{K}(g)\pi(g)v - v)dg\right\| \\
+&\leq \frac{1}{\mathrm{meas}_{dg}(K)}\int_K ||\pi(k)v - v||dk <\epsilon
+\end{align*}
+and from $e_K v \in V^K$, we get denseness of $V_\mathrm{sm}$ in $V$.
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
+
+\begin{problem} \notfinish
+\end{problem}
