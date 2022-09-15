@@ -1,0 +1,73 @@
+\newpage
+\section{Glimpse on analytic langlands (September 13)}
+
+Now, our goal is to formulate Langlands correspondence in geometric terms, so that we could
+find their analogues when a curve $X$ is over $\mathbb{C}$, rather than a finite field $\mathbb{F}_q$.
+For simplicity, we'll assume that everything is unramified, i.e. the ``Galois representations'' and ``automorphic representations''
+are unramified everywhere ($S_\sigma = S_\pi = \emptyset$), whatever it means.
+
+On the Galois side, our slogan is the following: the geometric object corresponds to 
+Galois group is essentially the (\'etale) \emph{fundamental group} of $X$.
+In this case, extensions of a function field corresponds to (\'etale) coverings $Y \to X$.
+For example, if we have a curve $X$ (over a base field $k = \mathbb{C}$ or $\mathbb{F}_q$) and a covering $Y \to X$,
+then we get a field extension $k(X) \hookrightarrow k(Y)$.
+Then the Galois group $\Gal(k(Y) / k(X))$ is essentially the group of deck transformations of this covering.
+Hence the Galois group of maximal unramified extension of $F = k(X)$, $\Gal(F^{\mathrm{un}}/F)$,
+is the group of deck transformations of maximal unramified cover $\widetilde{X}$, which is a fundamental group $\pi_1(X)$ of $X$.
+
+% Recall that, for topological spaces and their (universal) coverings, fundamental group is defined with a base point
+
+Now, let $X$ be a smooth projective connected algebraic curve over $\mathbb{C}$, or in other words, 
+a compact Riemann surface.
+Then our analogy for the Galois representations becomes
+\begin{align*}
+    \boxed{
+        \text{Equivalence class of } \sigma: \pi_1(X) \to \widehat{G}(\overline{\mathbb{Q}_{\ell}})
+    }
+\end{align*}
+Now, such a collection has a correspondence with flat connections:
+\begin{align*}
+    \boxed{
+        (E, \nabla): C^{\infty} \text{ principal } \widehat{G} \text{-bundles with } C^{\infty}\text{ flat connection}
+    }
+\end{align*}
+where $C^{\infty}$ principal $G$-bundle is a principal $G$-bundle where transition maps are smooth.
+By decomposing it into holomorphic and anti-holomorphic part ($\nabla = \nabla^{(1, 0)} + \nabla^{(0, 1)}$), one can see that this also has a correspondence with
+\begin{align*}
+    \boxed{
+        (E^{\mathrm{hol}}, \nabla^{(1, 0)}): \text{ flat holomorphic $\widehat{G}$-bundle with a holomorphic connection $\nabla^{(1, 0)}$}
+    }
+\end{align*}
+Note that, on a curve, any such connection becomes automatically flat.
+
+For example, let $X = \mathbb{C}$ and consider trivial $\GL_1 = \mathbb{G}_{m}$-bundle on $X$, $\mathbb{C}^{\times} \times \mathbb{C}$.
+Let $\nabla^{(1, 0)} = \frac{\partial}{\partial z} + \frac{\lambda}{z}$ be a connection on $X$.
+Then the solution of $\nabla^{(1, 0)}\phi = 0$ is $\phi(z) = z^{-\lambda} = e^{-\lambda \log z}$, 
+and this gives a monodromy action where a generator of $\pi(\mathbb{C}^{\times}, 1) \simeq \mathbb{Z}$ acts as multiplication by $e^{-2\pi i \lambda}$.
+
+Now let's move on to the automorphic side.
+Recall that automorphic representation $\pi$ can be thought as a space of compactly supported
+smooth (i.e. locally constant) functions on $G(F)\backslash G(\mathbb{A}_F)$.
+If it is unramified everywhere, then its $G(\mathcal{O}_F) = \prod_{v}' G(\mathcal{O}_{F_v})$-invariant subspace 
+$\pi^{G(\mathcal{O}_F)}$ is a subspace of functions on a double coset 
+$$
+G(F) \backslash G(\mathbb{A}_F) / G(\mathcal{O}_F).
+$$
+Upshot is, the above double coset space is on bijection with the set of isomorphism lasses of principal (holomorphic or algebraic) $G$-bundles on $X$.
+For example, in case of $G = \mathrm{GL}_1$, the double coset space is
+$$
+F^{\times} \backslash \mathbb{A}_F^{\times} / \sideset{}{'}\prod_{x} \mathcal{O}_{F_x}^{\times} \simeq F^{\times} \backslash \sideset{}{'}\prod_{x}(F_{x}^{\times} / \mathcal{O}_{F_{x}}^{\times}) \simeq F^{\times} \backslash \sideset{}{'}\prod_{v}\mathbb{Z}.
+$$
+On the other hand, $\GL_1$-bundles on $X$ are the same as line bundles on $X$, 
+and this again corresponds to (Weil) divisors on $X$.
+Divisor is just a formal $\mathbb{Z}$ combination of closed points on $X$.
+To divisors are equivalent when the difference is principal divisor, i.e. divisor of a form
+$$
+\mathrm{div}(f):= \sum_{x \in |X|} \mathrm{ord}_{x}(f)\cdot [x]
+$$
+and the set of equivalence classes of divisors is in bijection with the divisor class group, which is
+$$
+\mathrm{Cl}(X) = \mathrm{Div}(X) / \mathrm{PDiv}(X)
+$$
+(quotient of group of divisors by group of principal divisors).
+One can find natural bijection between $\mathrm{Cl}(X)$ and the above double coset space.
