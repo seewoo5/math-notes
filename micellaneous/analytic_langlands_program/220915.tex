@@ -1,0 +1,68 @@
+\newpage
+\section{On vector bundles and flat connections (September 15)}
+
+
+Let $X$ be a smooth real manifold.
+A (complex) rank $n$ vector bundle $\mathcal{P}$ on $X$ is a manifold with projection map $\mathcal{P} \to X$ such that
+there exists a covering $\{ U_{\alpha}\}$ of $X$ with local trivializations $u_{\alpha}: \mathcal{P}|_{U_\alpha} \to U_\alpha \times \mathbb{C}^{n}$.
+On the intersections $U_\alpha \cap U_\beta$, we have two trivializations
+$u_\alpha|_{U_\alpha \cap U_\beta}$ and $u_\beta|_{U_\alpha \cap U_\beta}$, and this gives $\GL_n(\mathbb{C})$-valued functions
+$g_{\alpha\beta}$ comes from $u_{\beta}u_{\alpha}^{-1}: (U_\alpha \cap U_\beta) \times \mathbb{C}^n \to (U_\alpha\cap U_\beta)\times\mathbb{C}^n$.
+We assume that such a transition function is smooth. Also, on triple intersections $U_\alpha \cap U_\beta \cap U_\gamma$, 
+we assume that transition functions are compatible, in the sense that they satisfy cocycle conditions $g_{\alpha\gamma} = g_{\beta\gamma}g_{\alpha \beta}$.
+Hence giving a vector bundle is equivalent to giving a covering $\{U_\alpha\}$ and smooth transition functions $\{g_{\alpha\beta}\}$
+satisfying cocycle conditions.
+
+We call that a vector bundle $\mathcal{P}$ is \emph{flat} if $g_{\alpha\beta}:U_{\alpha}\cap U_{\beta}\to \GL_n(\mathbb{C})$is a \emph{constant} function.
+It means that we have an identification of all nearby fibers $\mathcal{P}_{x} \simeq \mathcal{P}_{x'}$ for all $x, x'\in U_\alpha$.
+Equivalent way to say this is using a \emph{flat connection}.
+Connection is a way of differentiating sections of vector bundles.
+If a vector bundle is trivial, then this corresponds to an ordinary differentiation of a vector-valued function on $X$.
+Hence we can do the same thing for general vector bundles locally, but this may depends on the choice of local trivializations.
+
+\emph{Connection} is a map between between a sheaf of smooth vector fields on $X$ and a sheaf of smooth sections
+of $\mathrm{End}(\mathcal{P})$, satisfying some linearity and Leibniz rules.
+More precisely, it is a map
+$$
+\nabla: \mathcal{T}\to \mathcal{E}nd_{\mathbb{C}}(\mathcal{P})
+$$
+with $\xi \mapsto \nabla_{\xi}$, such that 
+\begin{enumerate}
+    \item ($\mathcal{O}_X$-linear) $\nabla_{\xi + \eta} = \nabla_{\xi} + \nabla_{\eta}$ and $\nabla_{f\xi} = f\nabla_{\xi}$
+    for all $f \in \mathcal{O}_{X}$ and $\xi \in \mathcal{T}$.
+    \item (Leibniz rule) $\nabla_{\xi}(f\cdot \phi) = f\cdot \nabla_{\xi}(\phi) + (\xi\cdot f)\phi$
+    for all $f\in\mathscr{O}_X, \xi \in\mathcal{T}$, and $\phi \in \mathcal{P}$.
+\end{enumerate}
+A connection is called \emph{flat} if $\nabla$ is a Lie algebra homomorphism, i.e. 
+$$
+\nabla_{[\xi, \eta]} = [\nabla_{\xi}, \nabla_{\eta}].
+$$
+In other words, the connection form $R_{\xi\eta}:= \nabla_{[\xi, \eta]} - [\nabla_{\xi}, \nabla_{\eta}]$ is identically 0.
+If $U\subset X$ is an open subset fih local coordinates $x_1, \dots, x_k$ and trivialization $\mathcal{P}|_U \simeq U \times \mathbb{C}^n$, it can be written as
+$$
+\nabla_{\frac{\partial}{\partial x_i}} = \frac{\partial}{\partial x_i} + A_i
+$$
+fomr some $\mathrm{M}_n(\mathbb{C})$-valued function $A_i$.
+Then flatness of $\nabla$ is equivalent to 
+$$
+\frac{\partial A_{j}}{\partial x_{i}} - \frac{\partial A_{i}}{\partial x_{j}} + [A_i, A_j] =0
+$$
+for all $i, j$.
+
+Let $\mathcal{S}_U$ be a set of all trivializations of $\mathcal{P}|_U$.
+Then $\mathcal{G}_U:=\{f:U \to \GL_n(\mathbb{C})\}$ acts simply transitively on $\mathcal{S}_U$ (i.e. $\mathcal{S}_U$
+is $\mathcal{G}_U$-torsor) via conjugation:
+$$
+g\left(\frac{\partial}{\partial x_i} + A_i\right)g^{-1} = \frac{\partial}{\partial x_i} + gA_i g^{-1} - \left(\frac{\partial g}{\partial x_i}\right)g^{-1},
+$$
+we call $A_i \mapsto gA_i g^{-1} - \left(\frac{\partial g}{\partial x_i}\right)g^{-1}$ as \emph{gauge} transform.
+
+One can prove that flatness of a vector bundle is equivalent to imposing a flat connection on the vector bundle.
+For example, if a flat connection $\nabla$ of $\mathcal{P}$ is given, then we can obtain local identification of nearby fibers
+by solving a differential equation $\nabla \phi = 0$ locally, and connect from $p \in \mathcal{P}_{x}$ to $p' \in \mathcal{P}_{x'}$ along $\phi$.
+By the theory of PDE, such $\phi$ (called \emph{horizontal section}) always uniquely exists (locally) for given initial condition.
+Also, this gives a monodromy action of fundamental group.
+For $p \in \mathcal{P}_x$ and a loop $\gamma$, we can ``solve'' $\nabla \phi = 0$ locally along a loop
+and coming back to $x$, which gives $\rho_{\mathcal{P}}: \pi_1(X, x) \to \GL_n(\mathbb{C})$.
+Since changing initialization gives conjugated representation, and we get a bijection between
+equivalence classes of flat vector bundles of rank $n$ and equivalence classes of representations $\pi_1(X, x) \to \GL_n(\mathbb{C})$.
