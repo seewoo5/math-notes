@@ -1,0 +1,98 @@
+\newpage
+\section{Principal $G$-bundles and topologies (September 20)}
+
+Let $G$ be a reductive group over $\mathbb{C}$, and let $\mathcal{P}$ be a principal
+$G$-bundle on a curve $X$ over $\mathbb{C}$ (which is also a $G$-torsor on $X$).
+Tannaka's theorem tells us that we can reconstruct $G$ from its category of representations $\mathsf{Rep}_{G}$
+which is naturally a tensor category (for given two representations of $G$, we have a tensor product representation of them).
+Using this, we can prove that there's a natural bijection between 
+\begin{align*}
+    \boxed{
+        \text{principal $G$-bundles on $X$ (w.r.t. particular topology) with connection}
+    }
+\end{align*}
+and
+\begin{align*}
+    \boxed{
+        \text{Tensor functors $\mathsf{Rep}_{G}(\mathbb{C}) \to \mathsf{VecBun}^{\nabla}(X)$ (w.r.t. same topology)}
+    }
+\end{align*}
+where the map is given by
+$$
+(\mathcal{P}, \nabla) \mapsto \mathcal{F}_{\mathcal{P}}: (\rho, V) \mapsto \mathcal{P} \times V
+$$
+where $\mathcal{P}$ acts on $V$ via $\rho$.
+Note that tensor product on the category $\mathsf{VecBun}^{\nabla}$ (vector bundle with connection) is defined as
+$$
+(V, \nabla_V) \otimes (W, \nabla_W) := (V \otimes W, \nabla_V \otimes \mathrm{id}_W + \mathrm{id}_V \otimes \nabla_W).
+$$
+
+Last week, we gave a correspondence between (flat) holomorphic/algebraic $\hat{G}$-bundles on $X$ with 
+a double coset space $G(F)\backslash G(\mathbb{A}_F) / G(\mathcal{O}_F)$, for everywhere-unramified cases.
+What if we allow ramifications? What kind of geometric objects would correspond to the flat $\hat{G}$-bundles?
+Before we give an answer, we need to specify what kind of topology are we going to impose on $X$.
+
+In algebraic geometry, there's a versatile notion of \emph{Grothendieck topology}
+in which open set $U\subset X$ is replaced by morphisms $U \to X$ of certain type.\footnote{To be more precise, Grothendieck topology is a topology
+on a certain category of morphisms associated to $X$}
+For example, Grothendieck topology defined with \'etale morphisms $U \to X$ is called \emph{\'etale topology}.
+We have the following inclusion of topologies: $A \rightarrow B$ means that $B$ is finer than $A$.\footnote{fppf: flat and locally of finite presentation, fpqc: faithfully-flat and quasi-compact.}
+\begin{align*}
+    \boxed{
+        \text{Zariski $\rightarrow$ \'etale $\rightarrow$ fppf $\rightarrow$ fpqc}
+    }
+\end{align*}
+With Grothendieck topology on $X$, principal $G$-bundle is a scheme $\mathcal{P}$ with $G$-equivariant morphism $\pi: \mathcal{P} \to X$
+such that 1) it is locally trivial in the sense that we have a covering of $X$ with (certain type of) morphisms
+$\{\iota_{\alpha}:U_{\alpha} \to X\}_{\alpha}$ such that pullback of $\mathcal{P}$ to $U_\alpha$, $\iota_{\alpha}^{*}\mathcal{P}=\mathcal{P}\times_{X} U_{\alpha}$, is 
+isomorphic to $G \times U_{\alpha}$ (i.e. trivial), and 2) the morphism $\iota_{\alpha}$ ``agree on intersections'' in the sense that pullback of $\mathcal{P}$
+along two morphisms
+\begin{align*}
+U_{\alpha} \times_X U_{\beta} \xrightarrow{\iota_{\alpha\beta}} U_{\alpha} \xrightarrow{i_{\alpha}} X \\
+U_{\alpha} \times_X U_{\beta} \xrightarrow{\iota_{\beta\alpha}} U_{\beta} \xrightarrow{i_{\alpha}} X
+\end{align*}
+are isomorphic.
+
+Notion of a principal $G$-bundle depends on the topology.
+For example, consider a double covering 
+
+\begin{center}
+    \begin{tikzcd}
+        Y = \mathrm{Spec}\mathbb{C}[y, y^{-1}] \simeq \mathbb{A}^{1} \backslash \{0\}\arrow[d]  \\
+        X = \mathrm{Spec}\mathbb{C}[x, x^{-1}] \simeq \mathbb{A}^{1} \backslash \{0\}
+    \end{tikzcd}
+\end{center}
+corresponds to a map $\mathbb{C}[x, x^{-1}] \to \mathbb{C}[y, y^{-1}], x \mapsto y^2$.
+We have a $\mathbb{Z}/2$-action on $Y$ given by $y \mapsto -y$.
+With \'etale topology, this automorphic imposes a $\mathbb{Z}/2$-bundle structure on $Y\to X$.
+However, this can't be a $\mathbb{Z}/2$-bundle with Zariski topology.
+In fact, any open subset of $X$ in Zariski topology has a form of $X \backslash S$ for some finite set $S \subset X$, 
+and there's no $U\subset X$ such that $Y|_{U} \simeq U \coprod U$ (i.e. it can't be locally trivial).
+
+There are some \emph{special} groups $G$ where local triviality of principal $G$-bundle on Zariski topology is equivalent to
+that on \'etale topology, such as $G = \GL_n, \SL_n, \mathrm{Sp}_n$.
+For such groups, it is also true that local triviality with Zariski topology is also equivalent to that on fpqc topology.
+
+In case of $\GL_n$, we have the following 1-1 correspondences:
+\begin{center}
+    \begin{tikzcd}
+        \boxed{\text{Locally free sheaves of } \mathcal{O}_X\text{-mod of rank }n } \arrow[d, leftrightarrow] \\
+        \boxed{\text{Vector bundles of rank }n} \arrow[d, leftrightarrow]\\
+        \boxed{\text{Principal }\GL_n\text{-bundles}}
+    \end{tikzcd}
+\end{center}
+this follows from Grothendieck's faithful flat descent.
+Grothendieck also proved that the notion of $G$-bundle coincides on fpqc and \'etale topology
+when $G$ is a reductive group.
+When $X$ is a projective curve over an algebraically closed field, the notion of $G$-bundle with \'etale, Zariski, and analytic topology all coincides, and this implies that
+we have a bijection
+\begin{center}
+    \begin{tikzcd}
+        \boxed{G(F) \backslash G(\mathbb{A}_F) / G(\mathcal{O}_F)} \arrow[d, leftrightarrow] \\
+        \boxed{\text{equivalence classes of principal }G\text{-bundles loc. triv. in Zariski topology}}
+    \end{tikzcd}
+\end{center}
+which is due to Drinfeld-Simpson.
+
+
+
