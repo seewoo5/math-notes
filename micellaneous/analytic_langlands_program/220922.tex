@@ -1,0 +1,104 @@
+\newpage
+\section{Principal $G$-bundles and topologies (September 22)}
+
+Let $X$ be a curve over $\mathbb{F}_q$ or $\mathbb{C}$, and
+let $G$ be a (split) reductive group over a same ground field.
+Our goal is to find a bijection between the double coset space
+$$
+G(F) \backslash G(\mathbb{A}_F) / G(\mathcal{O}_F)
+$$
+and the set of equivalence classes of principal $G$-bundles on $X$.
+For this, we shall use a covering of $X$ of the form
+$$
+X = \left(\coprod_{1\leq i \leq n} D_{x_{i}}\right) \cup \left(X \backslash \{x_1, \dots, x_n\}\right)
+$$
+for a finite set of points $x_1, \dots, x_n \in X$.
+Here each $D_{x_{i}}$ is a \emph{small disc} centered at $x_{i}$, which is defined as $D_{x_{i}}:= \Spec \mathcal{O}_{x_{i}}$.
+Note that it is a spectrum of formal power series ring, and it is not a Zariski open subset of $X$ but $D_{x_{i}} \hookrightarrow X$ is a fpqc morphism.\footnote{Sometimes $D_{x_{i}}$ is called
+\emph{formal disc} centered at $x_{i}$. However, we are not going to use this terminology since it can be confused with the notion of formal scheme.}
+Using faithfully flat descent, Grothendieck proved that the following amount of information determines a principal $G$-bundle $\mathcal{P}$ on $X$:\footnote{Note that we can only use faithful descent when a base scheme is Noetherian. Beauville and Laszlo provided an alternative
+proof that does not assume Noetherianess of a base scheme.}
+\begin{itemize}
+    \item $G$-bundle $\mathcal{P}_i$ on each disc $D_{x_i}$,
+    \item $G$-bundle $\mathcal{P}_{X^*}$ on $X^{*} = X \backslash \{x_1, \dots, x_n\}$,
+    \item identification on overlaps, i.e. a transition function $f_{x_i}: \mathcal{P}_i|_{D_{i}^{*}} \simeq \mathcal{P}_{X^*}|_{D^{*}_i}$
+    where $D_{i}^{*} = \Spec F_{x_{i}}$ is a \emph{puctured disc} at $x_i$.
+\end{itemize}
+It is easy to show that any principal $G$-bundle trivializes when it is restricted to a disc $D_x$ for any $x$.
+Suppose that any $G$-bundle on $X$ also trivializes to a sufficiently small Zariski open subset of $X$, i.e.
+$X \backslash S$ for a sufficiently large finite subset $S \subset X$.
+Such a condition is satisfied when $X$ is a complex curve, or $G = \GL_n$, or $X$ is a curve over a finite field and $G$ is a split semisimple group.
+Then, with identification of local trivialization, $f_{x_i}: D_{x_{i}}^{*} \times G \to D_{x_{i}}^{*} \times G$ can be thought as an element of $G(F_{x_i})$, and we get
+an associated element
+$$
+g = (g_{x}) \in G(\mathbb{A}_F) = \prod_{x}{}^{'}G(F_{x}), \quad g_{x} = \begin{cases} f_{x_{i}}& x = x_i \\ 1 & \text{otherwise}\end{cases}.
+$$
+Changing the trivialization on $D_{x_i}$ has an effect of multiplying an element of $G(\mathcal{O}_F) = \prod_x G(\mathcal{O}_x)$.
+Also, changing the trivialization on $X^{*}$ has an effect of multiplying an element in $G(F)$ on left.
+Hence this gives a map from the set of equivalence classes of principal $G$-bundles on $X$ to the double coset space
+$G(F) \backslash G(\mathbb{A}_F) / G(\mathcal{O}_F)$, which is a bijection.
+We already saw the case when $G = \GL_1$ before.
+Note that $\GL_1$-bundle (or equivalently a vector bundle) is Zariski locally trivial if and only if its restriction on a generic point is trivial.
+
+Based on the bijection, for a curve $X$ over a finite field, we get a 1-1 correspondence between equivalence classes of (unramified) Weil group representations
+\begin{align*}
+    \boxed{
+        \sigma: W(F^{\mathrm{un}} /F) \to {}^{L}G
+    }
+\end{align*}
+and 
+\begin{align*}
+    \boxed{
+        \text{Hecke eigenfunctions on the set of equivalence classes of Zariski }G\text{-bundles on $X$}
+    }
+\end{align*}
+for the everywhere unramified case.
+How about the curves over $\mathbb{C}$?
+We saw that the objects on Galois side becomes
+\begin{align*}
+    \boxed{
+        \text{hol. (or alg.) }{}^{L}G\text{-bundles on }X\text{ with hol. (or alg.) connection}
+    }
+\end{align*}
+and on the automorphc side, we expect something with $G$-bundles on $X$.
+In this case, there's no function-like object, but there \emph{is} a sheaf-like object which would be the candidate for the objects on the automorphic side.
+(We'll see next time.)
+
+When $G = \GL_1$ and $X$ is a curve over finite field, we can describe the correspondence between invariants (conjugacy classes) as follows.
+Since $G$ is abelian, any irreducible representation of Weil group $W(F^{\mathrm{un}} / F)$ is a character that factors through $W(F^{\mathrm{ab}, \mathrm{un}} / F)$
+(Weil group of maximal unramified abelian extension of $F = \mathbb{F}_q(X)$).
+The equivalence classes of line bundles on $X$ forms a variaty over $\mathbb{F}_q$ called \emph{Picard variety}, and we denote it by $\mathrm{Pic}_X$.
+Then the automorphic sides is just a set of Hecke eigenfunctions on $\Pic_X(\mathbb{F}_q)$.
+We can decompose $\Pic_X$ as
+$$
+\Pic_X = \coprod_{n \in \mathbb{Z}} \Pic_X^{n}
+$$
+in terms of degree of a line bundle. For a fixed point $x\in X$, it defins a map
+$$
+h_{x}: \Pic_{X}^{n} \to \Pic_X^{n+1}, \quad \mathcal{L} \mapsto \mathcal{L}(x).
+$$
+It is known that the Hecke operator $H_x$ at $x \in X$ that acts on the space of functions on $\Pic_X(\mathbb{F}_q)$ is just $h_{x}^{*}$, the pullback of $h_{x}$ (as a map $\Pic_X \to \Pic_X$).
+Now let $f$ be a Hecke eigenfunction with eigenvalues $(a_x)_{x \in X}$.
+Then
+$$
+(H_x \cdot f)(\mathcal{L}) = f(\mathcal{L}(x)) = a_{x} f(\mathcal{L}),
+$$
+and repeating this gives
+$$
+f(\mathcal{O}_X(D)) = \prod_{i} a_{x_i}^{n_{x_i}}, \quad D = \sum_{i} n_{x_i} [x_i]
+$$
+Here we used the identification between line bundles and divisors.
+Also, we assume that $f$ is normalized as $f(\mathcal{O}_X) = 1$.
+Since it is a function on $\Pic_X = \mathrm{Div}_X /\mathrm{PDiv}_X$, it should be trivial on $\mathrm{PDiv}_X$.
+In other words, for any $g \in F^{\times}$ with $(g) = \sum_{x}  \mathrm{ord}_x(g)[x]$, 
+the set of eigenvalues $(a_x)_{x\in X}$ should satisfy
+$$
+\prod_x a_{x}^{\mathrm{ord}_{x}(g)} = 1. \quad (*)
+$$
+So Hecke eigenfunctions are just a set of eigenvalues $(a_x)$ satisfying the condition (*).
+On the Galois side, we have a set of Frobenius conjugacy classes $(\sigma(\mathrm{Fr}_x))_{x \in X}$ (which are just numbers in $\overline{\mathbb{Q}}_{\ell}^\times$),
+and it is a nontrivial fact that we have 
+$$
+\prod_{x\in X} \sigma(\mathrm{Fr}_x)^{\mathrm{ord}_{x}g} = 1
+$$
+for all $g \in F$ and $\sigma: W(F^{\mathrm{ab,un}}/F) \to \overline{\mathbb{Q}}_{\ell}^{\times}$.
