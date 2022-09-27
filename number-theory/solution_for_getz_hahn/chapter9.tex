@@ -2,7 +2,24 @@
 \section{Chapter 9}
 
 
-\begin{problem} \notfinish
+\begin{problem}
+Let $\mathcal{B} = \{\varphi_i\}$ and $\mathcal{B}' = \{ \varphi_i'\}$ be two orthonormal basis.
+Let $C:V \to V$ be a transition operator from $\mathcal{B}$ to $\mathcal{B}'$, so that
+$\varphi_{i}' = \sum_{k}c_{ik}\varphi_k$ for all $i$.
+From $\langle \varphi_{i}', \varphi_{j}' \rangle = \delta_{ij}$, one can check that $C$ is an isometry (i.e. $C^{*}C = I$),
+and since $C$ is surjective it is a unitary operator. 
+In other words, we also have $CC^{*} = I$ which implies
+\begin{align*}
+    \sum_{i} c_{ij}\overline{c_{ik}} = \delta_{j, k}.
+\end{align*}
+Now, we have
+\begin{align*}
+    \sum_{i} \|A\varphi_{i}'\|^{2}_{2} = \sum_{i} \langle A\varphi_i', A\varphi_i' \rangle = \sum_{i, j, k}c_{ij}\overline{c_{ik}} \langle A\varphi_j, A\varphi_k \rangle = \sum_{j, k} \delta_{jk} \langle A\varphi_j, A\varphi_k \rangle = \sum_{j} \|A\varphi_i\|_{2}^{2}
+\end{align*}
+so $\| A\|_{\mathrm{HS}}$ does not depends on the choice of basis.
+We can prove the same property of $\| A\|_{\mathrm{tr}}$ and $\mathrm{tr}\,A$ by the same way (using the fact that $C$ is unitary).
+
+
 \end{problem}
 
 \begin{problem} \notfinish
