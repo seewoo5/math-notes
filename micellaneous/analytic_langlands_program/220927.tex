@@ -1,0 +1,65 @@
+\newpage
+\section{Abelian Class Field Theory, Grothendieck's Dictionary (September 27)}
+
+Last time, we saw the example on \emph{abelian class field theory},
+which is Langlands correspondence for $G = \mathrm{GL}_1 = \mathbb{G}_m$ over a 
+function field $F = \mathbb{F}_q(X)$.
+It is almost equivalent to the following statement:
+a collection $\{b_{x}\}_{x\in |X|}$ of numbers in $\overline{\mathbb{Q}}_{\ell}^{\times}$
+corresponds to an 1-dimensional representation (character) $\sigma: W(F^{\mathrm{ab,un}}/F) \to \overline{\mathbb{Q}}_{\ell}^{\times}$
+by $b_{x} = \sigma(\mathrm{Fr}_{x})$ if and only if for all $g \in F^{\times}$, we have
+$$
+\prod_{x} b_{x}^{\mathrm{ord}_{x}(g)} = 1.\qquad (*)
+$$
+Note that the set $\{\sigma(\mathrm{Fr}_{x})\}_{x}$ determines $\sigma$ by Chebotarev's density theorem.
+
+This is very close to the following theorem due to Lang and Rosenlicht.
+\begin{theorem}[Lang, Rosenlicht]
+    Let $X$ be a smooth projective geometrically connected curve over a perfect field $k$, and let $A$ be an 
+    abelian algebraic group over $k$. Assume that $X(k)\neq\emptyset$ and choose $x_{0} \in X(k)$.
+    Then any morphism $\psi: X \to A$ factors through the Jacobian variety $\mathrm{Jac}_X = \Pic_{X}^{\circ}$
+    (neutral componenet of $\Pic_X$) via Abel-Jacobi map $X\to \mathrm{Jac}_X, x \mapsto \mathcal{O}([x]-[x_0])$,
+    and the corresponding map $\mathrm{Jac}_X \to A$ is also a homomorphism up to translation.
+    In other words, there exists $a \in A$ and $\tilde{\psi}: \mathrm{Jac}_{X} \to A$ such that $\psi(x) = \tilde{\psi}(\iota_X(x)) + a$
+    for all $x\in X$, where $\iota_X: X\to \mathrm{Jac}_X$ is an Abel-Jacobi map.
+\end{theorem}
+Once we ``apply'' the theorem to $|X|\to \overline{\mathbb{Q}}_{\ell}^{\times}, x\mapsto \sigma(\mathrm{Fr}_{x})$, we get the one direction of ACFT (although we can't do this naively).
+
+Here's another example of a consequence of the theorem.
+Let both $X$ and $A$ equals to an Elliptic curve $E$ over $\mathbb{C}$, and let $\phi= \mathrm{id}_E:E \to E$ be the identity function.
+Then the Jacobian of $E$ is just $E$ itself, and the theorem implies that, for any nonzero rational function $g$ on $E$ with $(g) = \sum_{i}n_{i}[x_i]$,
+we have $\sum_i n_i \cdot x_i = 0$ (in an additive form).
+This is quite non-trivial and it could be also deduced from residue theorem:
+when $E \simeq \mathbb{C}/\Lambda$ for a suitable lattice $\Lambda \subset \mathbb{C}$, applying residue theorem to
+the integration of $\frac{zg'}{g}$ along a boundary of fundamental domain gives the result.
+
+How can we understand the equation (*)? This follows from \emph{Grothendieck's dictionary}
+that relates functions and sheaves on a curve.
+Let $Y$ be an algebraic variety over $\mathbb{F}_{q}$ and let $\ell$ be a prime coprime to $q$. 
+Let $\mathbf{Sh}_{\ell}(Y)$ be a category of $\ell$-adic sheaves on $Y$, which are inverse limit of sheaves of $\mathbb{Z}/\ell^n$-modules (tensored with $\mathbb{Q}_\ell$).
+Then this category has usual operations like direct sum, tensor product, pullback, and pushforward.
+Now let $y \in Y(\mathbb{F}_{q})$ be a $\mathbb{F}_{q}$-point of $Y$, which can be regarded as a map $y: \Spec \mathbb{F}_q \to Y$.
+For an $\ell$-adic sheaf $\mathcal{F}$ on $Y$, the pullback $y^{*}(\mathcal{F})$, which is a sheaf on $y$ is a ``stalk of $\mathcal{F}$ at $y$''.
+This is an $\overline{\mathbb{Q}}_{\ell}$-vector space with Frobenius action.
+Then taking a trace of the Frobenius defines a function 
+$$
+Y(\mathbb{F}_q) \to \overline{\mathbb{Q}}_{\ell}, \qquad y\mapsto \mathrm{Tr}(\mathrm{Fr}_{y}|_{\mathcal{F}_{y}}).
+$$
+This function nicely behaves under the operations in $\mathbf{Sh}_{\ell}(Y)$: for example, if we have a short exact sequence
+$$
+0 \to \mathcal{F} \to \mathcal{G} \to \mathcal{H} \to 0
+$$
+of $\ell$-adic sheaves, then the additivity holds: 
+$$
+\mathrm{Tr}(\mathrm{Fr}_{y}|_{\mathcal{G}_{y}}) = \mathrm{Tr}(\mathrm{Fr}_{y}|_{\mathcal{F}_{y}}) + \mathrm{Tr}(\mathrm{Fr}_{y}|_{\mathcal{H}_{y}}).
+$$
+It also behaves nicely under tensor product, pullback, and pushforward.\footnote{We need Grothendieck-Lefschetz formular to prove that it behaves well under pushforward.}
+
+Then we can ask a following question. 
+If we have a Hecke eigenfunction $f$ on $\Pic_X(\mathbb{F}_{q})$ (that was defined above), can we find an $\ell$-adic sheaf $\mathcal{F}$ whose corresponding function
+equals to $f$?
+In other words, does there exists $\mathcal{F}$ such that $\mathrm{Tr}(\mathrm{Fr}_x|_{\mathcal{F}_x}) = f(x)$ for all $x\in \Pic_X (\mathbb{F}_q)$?
+Suprisingly, this is true! Deligne proved that we can find such $\mathcal{F}$ which is a local system on $\Pic_X$ and locally constant of rank 1.
+Such a sheaf is called \emph{Hecke eigensheaf}, and we'll see more about this in the next lecture.
+
+
