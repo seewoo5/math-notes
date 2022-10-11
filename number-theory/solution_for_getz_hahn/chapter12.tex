@@ -19,7 +19,33 @@
 \begin{problem} \notfinish
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+Let $V_i = \oplus_{n \geq 0} V_{n}^{(i)} \otimes \Sym^{n}$ be the decompositions of $V_1$ and $V_2$
+into $\Sym^n$-isotypic components for $i = 1, 2$.
+Then that for $V_1 \oplus V_2$ is $\oplus_{n \geq 0} (V_n^{(1)} \oplus V_n^{(2)}) \otimes \Sym^n$, and the
+corresponding $L$-function becomes
+$$
+L(s, \rho_1 \oplus \rho_2) = \prod_{n \geq 0} \det\left(1 - (\rho_1 \oplus \rho_2)(\Fr)q^{-(s + n/2)}|_{(V_{n}^{(1)} \oplus V_{n}^{(2)})^{I_F}}\right)^{-1}.
+$$
+By choosing a basis of $V_n^{(1)}$ and $V_n^{(2)}$, we can express 
+$$
+(1 - (\rho_1 \oplus \rho_2)(\Fr)q^{-(s+n/2)})|_{(V_n^{(1)} \oplus V_{n}^{(2)})^{I_F}}
+$$
+as a following block diagonal matrix form
+$$
+1 - \begin{pmatrix}
+    \rho_1(\Fr) q^{-(s+n/2)} & 0 \\ 0 & \rho_2(\Fr) q^{-(s+n/2)}
+\end{pmatrix}
+= \begin{pmatrix}
+    1 - \rho_1(\Fr) q^{-(s+n/2)} & 0 \\ 0 & 1 - \rho_2(\Fr) q^{-(s+n/2)}
+\end{pmatrix}
+$$
+which gives
+\begin{align*}
+&\det \left(1 - (\rho_1 \oplus \rho_2)(\Fr)q^{-(s+n/2)}|_{(V_n^{(1)} \oplus V_{n}^{(2)})^{I_F}}\right) \\
+&= \det\left(1 - \rho_1(\Fr)q^{-(s + n/2)}|_{V_{n}^{(1)I_F}}\right) \det\left(1 - \rho_2(\Fr)q^{-(s + n/2)}|_{V_{n}^{(2)I_F}}\right)
+\end{align*}
+and this implies $L(s, \rho_1 \oplus \rho_2) = L(s, \rho_1) L(s, \rho_2)$.
 \end{problem}
 
 \begin{problem} \notfinish
