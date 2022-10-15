@@ -1,0 +1,57 @@
+\newpage
+\section{Frobeinus functor and statement for general $G$ (October 13)}
+
+As we saw before, Fourier-Mukai transform gives equivalence between two bounded derived categories, $\mathcal{O}$-modules on 
+$\Loc_{\GL_1}(X)$ and $D$-modules on $\Jac_X$.
+Also, it sends a skyscraper sheaf $\mathcal{O}_{\mathcal{E}} =\mathcal{O}_{(L, \nabla)}$ for $\mathcal{E} = (L, \nabla)$ (on $\Loc_{\GL_1}(X)$) to a line bundle $\mathcal{F}_{\mathcal{E}}^{0}$ on $\Jac_X$,
+which extends to $\mathcal{F}_{\mathcal{E}}$ as a Hecke eigensheaf.
+Then we can ask the following question - what is the corresponding operator on $\Loc_{\GL_1}(X)$-side that is compatible with Fourier-Mukai transform?
+The answer is the \emph{Frobenius functor}, which we'll explain now.
+
+Choose a point $p \in X$, and consider a map $\bar{h}_p: X \times \Jac_X \to \Jac_X$ defined by
+$(x, L) \mapsto L(x-p)$.
+Then $\mathcal{F}_{\mathcal{E}}^{0}$ is a Hecke eigensheaf in the sense that $\bar{\mathbf{H}}_p\mathcal{F}_{\mathcal{E}} \simeq \mathcal{E} \boxtimes \mathcal{F}_{\mathcal{E}}^{0}$.
+\footnote{Note that we can choose suitable trivialization at a point $p \in X$ so that we can ignore $\otimes \mathcal{L}_p^{-1}$.}
+where $\bar{\mathbf{H}}_p = \bar{h}_p^{*}$.
+This also induces a functor from $D^{b}(D_{\Jac_X}\text{-}\mathbf{Mod})$ to $D^{b}(D_{X \times \Jac_X}\text{-}\mathbf{Mod})$.
+Now, the Frobenius functor
+$$
+\mathbf{F}_p: D^{b}(\mathcal{O}_{\Loc_{\GL_1}(X)}\text{-}\mathbf{Mod}) \to D^{b}(D_X \boxtimes \mathcal{O}_{\Loc_{\GL_1}(X)}\text{-}\mathbf{Mod})
+$$
+is defined as
+$$
+\mathbf{F}_p(\mathcal{K}):= (\mathcal{O}_X \boxtimes \mathcal{K}) \otimes \left(\mathcal{P}|_{X \times \Loc_{\GL_1}(X)}\right)
+$$
+for $\mathcal{O}_{\Loc_{\GL_1}(X)}$-module $\mathcal{K}$.
+Note that $\mathcal{O}_X$ is a $D_X$-module with de Rham differential, and $\mathcal{P}$ is the Poincare bundle
+on $\Jac_X \times \Loc_{\GL_1}(X)$ (that is the universal bundle for $\Loc_{\GL_1}(X)$, where the order is swapped compared to the last note)
+and we restrict it to $X \times \Loc_{\GL_1}(X)$ via $X \hookrightarrow \Jac_X$.
+Especially when $\mathcal{K} = \mathcal{O}_{\mathcal{E}}$ for $\mathcal{E} = (L, \nabla)$, we have
+$$
+\mathbf{F}_p(\mathcal{O}_{\mathcal{E}}) = \mathcal{E} \boxtimes \mathcal{O}_{\mathcal{E}}
+$$
+which follows from universality of $\mathcal{P}$ (this is a tautological statement).
+Hence $\mathcal{O}_{\mathcal{E}}$ is a Frobenius eigensheaf and we have a following commutative diagram:
+\begin{center}
+    \begin{tikzcd}
+        D^{b}(\mathcal{O}_{\Loc_{\GL_1}(X)}\text{-}\mathbf{Mod}) \arrow[d, "\mathbf{F}_p", swap] \arrow[r, "G", swap, shift right=1] & D^{b}(D_{\Jac_X}\text{-}\mathbf{Mod}) \arrow[l, "F", swap, shift right=1] \arrow[d, "\bar{\mathbf{H}}_p"]\\
+        D^{b}(D_X \boxtimes \mathcal{O}_{\Loc_{\GL_1}(X)}\text{-}\mathbf{Mod}) \arrow[r, "G", swap, shift right = 1]& D^{b}(D_{X\times \Jac_X}\text{-}\mathbf{Mod}) \arrow[l, "F", swap, shift right=1]
+    \end{tikzcd}
+\end{center}
+
+For general reductive group $G$, this can be generalized as follows (which is proven by Gaitsgory and some other people).
+Instead of $\Jac_X$, we consider $\Bun_G(X)$, the moduli stack of principal $G$-bundles on $X$ (we have $\Bun_{\GL_1}(X) = \Jac_X$).
+On the other side, we consider $\Loc_{{}^{L}G}(X)$ - the moduli stack of flat ${}^{L}G$-bundles on $X$ where ${}^{L}G$ is the (Langlands) dual group of $G$.
+Then for a chosen ${}^{L}G$-representation $V$, one have Hecke functor $\mathbf{H}_V$ and Frobenius functor $\mathbf{F}_V$
+\begin{align*}
+    \mathbf{H}_V &: D^{b}(D_{\Bun_G(X)}\text{-}\mathbf{Mod}) \to D^{b}(D_{X \times \Bun_G(X)}\text{-}\mathbf{Mod}) \\
+    \mathbf{F}_V &: D^{b}(\mathcal{O}_{\Loc_{{}^{L}G}(X)}\text{-}\mathbf{Mod}) \to D^{b}(D_X \boxtimes \mathcal{O}_{\Loc_{{}^{L}G}(X)}\text{-}\mathbf{Mod})
+\end{align*}
+that are compatible under Fourier-Mukai transform (for $G$):
+
+\begin{center}
+    \begin{tikzcd}
+        D^{b}(\mathcal{O}_{\Loc_{{}^{L}G}(X)}\text{-}\mathbf{Mod}) \arrow[d, "\mathbf{F}_V", swap] \arrow[r, swap, leftrightarrow] & D^{b}(D_{\Bun_G(X)}\text{-}\mathbf{Mod}) \arrow[d, "\mathbf{H}_V"]\\
+        D^{b}(D_X \boxtimes \mathcal{O}_{\Loc_{{}^{L}G}(X)}\text{-}\mathbf{Mod}) \arrow[r, swap, leftrightarrow]& D^{b}(D_{X\times \Bun_G(X)}\text{-}\mathbf{Mod})
+    \end{tikzcd}
+\end{center}

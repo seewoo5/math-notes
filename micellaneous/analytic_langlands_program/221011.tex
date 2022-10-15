@@ -8,29 +8,29 @@ $$
 $$
 (The first isomorphism is Hurwicz' theorem, the second one is from Poincare duality, and the third one follows from
 $\Jac_X \simeq \rH^{1}(X, \mathcal{O}_x) / \rH^{1}(X,\mathbb{Z})$.)
-Also, we studied about the modulispace of rank 1 local systems on $X$, $\Loc_{\GL_1, X}$, 
+Also, we studied about the modulispace of rank 1 local systems on $X$, $\Loc_{\GL_1}(X)$, 
 and view it as the universal extension of $\Jac_X$ by a vector space:
 $$
-0 \to \rH^{0}(X, K_X) \to \Loc_{\GL_1, X} \to \Jac_X \to 0.
+0 \to \rH^{0}(X, K_X) \to \Loc_{\GL_1}(X) \to \Jac_X \to 0.
 $$
 The \emph{moduli space} of some objects means an object that represents some functor that describes given moduli problem.
-For example, $\Loc_{\GL_1, X}$ is a scheme\footnote{it might be a stack - I'm not sure about this point.} that represents the functor
+For example, $\Loc_{\GL_1}(X)$ is a scheme\footnote{it might be a stack - I'm not sure about this point.} that represents the functor
 from $\mathbb{C}$-schemes $\mathbf{Sch}_{\mathbb{C}}$ to the category of abelian groups $\mathbf{Ab}$,
 $$
 S \mapsto \{\text{abelian group of line bundles on }S \times X\text{ with partial connection along }X\}.
 $$
-(In other words, the above functor isomorphic to the hom functor $\mathrm{Hom}(S, \Loc_{\GL_1, X})$.)
+(In other words, the above functor isomorphic to the hom functor $\mathrm{Hom}(S, \Loc_{\GL_1}(X))$.)
 By the (geometric) Langlands correspondence for $\GL_1$, we have a bijection between
-flat line bundles on $X$ and those on $\Jac_X$, so that we can interprete $\Loc_{\GL_1, X}$ as a moduli space
+flat line bundles on $X$ and those on $\Jac_X$, so that we can interprete $\Loc_{\GL_1}(X)$ as a moduli space
 of flat line bundles on $\Jac_X$.
-Now, when $S = \Loc_{\GL_1, X}$, there's the universal bundle $\mathcal{P}$ on $\Loc_{\GL_1, X} \times \Jac_X$
-that corresponds to the identity map in $\mathrm{Hom}(\Loc_{\GL_1, X}, \Loc_{\GL_1, X})$.
+Now, when $S = \Loc_{\GL_1}(X)$, there's the universal bundle $\mathcal{P}$ on $\Loc_{\GL_1}(X) \times \Jac_X$
+that corresponds to the identity map in $\mathrm{Hom}(\Loc_{\GL_1}(X), \Loc_{\GL_1}(X))$.
 We have the following diagram:
 \begin{center}
     \begin{tikzcd}
         & \mathcal{P} \arrow[d] & \\
-        & \Loc_{\GL_1, X} \times \Jac_X \arrow[dl, "p_1", swap] \arrow[dr, "p_2"] & \\
-        \Loc_{\GL_1, X} & & \Jac_X
+        & \Loc_{\GL_1}(X) \times \Jac_X \arrow[dl, "p_1", swap] \arrow[dr, "p_2"] & \\
+        \Loc_{\GL_1}(X) & & \Jac_X
     \end{tikzcd}
 \end{center}
 Fourier-Mukai transform gives us the following \emph{derived} Langlands correspondence:
@@ -42,11 +42,11 @@ Fourier-Mukai transform gives us the following \emph{derived} Langlands correspo
     \end{align*}
     give an equivalence of two derived categories
     $$
-    D^{b}(\mathcal{O}_{\Loc_{\GL_1, X}}\text{-}\mathbf{Mod}) \simeq D^{b}(D_{\Jac_X}\text{-}\mathbf{Mod})
+    D^{b}(\mathcal{O}_{\Loc_{\GL_1}(X)}\text{-}\mathbf{Mod}) \simeq D^{b}(D_{\Jac_X}\text{-}\mathbf{Mod})
     $$
     (up to sign and cohomological shift).
 \end{theorem}
-The transform sends skyscraper sheaves $\mathcal{O}_{(L, \nabla)}$ of $\Loc_{\GL_1, X}$ supported at $(L, \nabla)$ to 
+The transform sends skyscraper sheaves $\mathcal{O}_{(L, \nabla)}$ of $\Loc_{\GL_1}(X)$ supported at $(L, \nabla)$ to 
 the corresponding $\mathcal{F}_{(L,\nabla)}^{0}$ on $\Jac_X$.
 Mukai's original transformation is defined between the categories of coherent sheaves on an abelian 
 variety $A$ and its dual $A^{\vee}$, and there's a categorical generalization between $\mathcal{O}$-modules and $D$-modules.

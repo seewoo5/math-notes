@@ -13,12 +13,12 @@ In the last lecture, we defined the Hecke operator $H_{x}$ as $H_{x}:= h_{x}^{*}
 In fact, $h_{x}$ can be defined as a morphism of Picard variety $\tilde{h}_{x}: \Pic_X \to \Pic_X$,
 and pullback along the morphism define Hecke \emph{functor}
 $$
-\mathbb{H}_{x}:= (\tilde{h}_{x})^{*}: \mathbf{Sh}_{\ell}(\Pic_X) \to \mathbf{Sh}_{\ell}(\Pic_X)
+\mathbf{H}_{x}:= (\tilde{h}_{x})^{*}: \mathbf{Sh}_{\ell}(\Pic_X) \to \mathbf{Sh}_{\ell}(\Pic_X)
 $$
 This is compatible with sheaf-function assignment in the sense of the following commuting diagram:
 \begin{center}
     \begin{tikzcd}
-        \mathbf{Sh}_{\ell}(\Pic_X) \arrow[d, "\mathcal{F}\mapsto f_{\mathcal{F}}", swap] \arrow[r,"\mathbb{H}_{x}"] & \mathbf{Sh}_{\ell}(\Pic_X) \arrow[d, "\mathcal{F} \mapsto f_{\mathcal{F}}"] \\
+        \mathbf{Sh}_{\ell}(\Pic_X) \arrow[d, "\mathcal{F}\mapsto f_{\mathcal{F}}", swap] \arrow[r,"\mathbf{H}_{x}"] & \mathbf{Sh}_{\ell}(\Pic_X) \arrow[d, "\mathcal{F} \mapsto f_{\mathcal{F}}"] \\
         \mathrm{Fun}(\Pic_X(\mathbb{F}_{q}), \overline{\mathbb{Q}}_{\ell}) \arrow[r, "H_{x}"]& \mathrm{Fun}(\Pic_X(\mathbb{F}_q), \overline{\mathbb{Q}}_{\ell})
     \end{tikzcd}
 \end{center}
@@ -28,7 +28,7 @@ This is an example of \emph{categorification}. We have the following dictionary 
 \end{center}
 
 \begin{definition} An $\ell$-adic sheaf $\mathcal{F}$ on $\Pic_X$ is called \emph{Hecke eigensheaf} if
-$\mathbb{H}_{x}\mathcal{F} \simeq \mathcal{A}_{x} \otimes \mathcal{F}$ for some $\mathcal{A}_{x}$ for all $x\in |X|$.\footnote{To be more precise, it is a sheaf with \emph{compatible} collection of isomorphisms $\iota_{x}: \mathbb{H}_{x}\mathcal{F} \simeq \mathcal{A}_{x}\otimes \mathcal{F}$.}
+$\mathbf{H}_{x}\mathcal{F} \simeq \mathcal{A}_{x} \otimes \mathcal{F}$ for some $\mathcal{A}_{x}$ for all $x\in |X|$.\footnote{To be more precise, it is a sheaf with \emph{compatible} collection of isomorphisms $\iota_{x}: \mathbf{H}_{x}\mathcal{F} \simeq \mathcal{A}_{x}\otimes \mathcal{F}$.}
 \end{definition}
 In this case, the corresponding function becomes Hecke eigenfunction as $H_{x}f_{\mathcal{F}} = a_{x}f_{\mathcal{F}}$ where $a_{x} = \mathrm{Tr}(\mathrm{Fr}_{x}|\mathcal{F}_x)$.
 However, this does not tell us how the eigenvalues $a_{x}$'s are related.
@@ -36,8 +36,8 @@ Instead, we consider a family of line bundles: define a map $\tilde{h}$ as
 $$
 \tilde{h}: X \times \Pic_X \to \Pic_X, \quad (x, \mathcal{L}) \mapsto \mathcal{L}(x).
 $$
-Then its pullback defines a functor $\mathbb{H} = \tilde{h}^{*}: \mathbf{Sh}_{\ell}(\Pic_X) \to \mathbf{Sh}_{\ell}(X \times \Pic_X)$, and being $\mathcal{F}$ an $\ell$-adic sheaf
-on $\Pic_X$ is equivalent to have a sheaf $\mathcal{A}$ on $X$ such that $\mathbb{H}\mathcal{F} \simeq \mathcal{A} \boxtimes \mathcal{F}$.
+Then its pullback defines a functor $\mathbf{H} = \tilde{h}^{*}: \mathbf{Sh}_{\ell}(\Pic_X) \to \mathbf{Sh}_{\ell}(X \times \Pic_X)$, and being $\mathcal{F}$ an $\ell$-adic sheaf
+on $\Pic_X$ is equivalent to have a sheaf $\mathcal{A}$ on $X$ such that $\mathbf{H}\mathcal{F} \simeq \mathcal{A} \boxtimes \mathcal{F}$.
 This formulation is much better and natural since one can prove that $\mathcal{A}$ is actually a rank 1 local system on $X$.
 This also tells us how such an $\ell$-adic sheaf would corresponds to a Galois representation
 $\sigma: W(F^{\mathrm{ab, un}}/F) \to \overline{\mathbb{Q}}_{\ell}^{\times}$ - which has 1-to-1 correspondence with local system on $X$.
