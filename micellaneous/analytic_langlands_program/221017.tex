@@ -1,0 +1,55 @@
+\newpage
+\section{Enhanced Fourier-Mukai transform (October 17)}
+
+We'll explain about enhanced Fourier-Mukai transform in detail.
+For an abelian variety $A$ over $\mathbb{C}$, the original Fourier-Mukai transform is between 
+bounded derived category of coherent sheaves of $\mathcal{O}_A$-modules and that of $\mathcal{O}_{A^\vee}$-modules.
+It is defined in a same way as before (using Poincare bundle, pullback, and pushforward).
+For a line bundle $L$ on $A$, a sheaf of sections of $L$ (which is a coherent $\mathcal{O}_A$-module)
+sends to the skyscraper sheaf $\mathcal{O}_L$ supported at $L \in A^\vee$, that is a coherent
+$\mathcal{O}_{A^\vee}$-module.
+
+For \emph{enhanced} version of Fouier-Mukai transform, we need to define $A^\natural$ first.
+It is a moduli space of line bundles on $A$ with flat connection. 
+For such a bundle $(L, \nabla)$, degree of $L$ is always zero.
+Then one has (enhanced) Poincare bunde $\mathcal{P}$ on $A^\natural \times A$
+defined by the universal property of $A^\natural$ (the bundle corresponds to the identity map in $\mathrm{Hom}(A^\natural, A^\natural)$).
+For the below diagram
+\begin{center}
+    \begin{tikzcd}
+        & \mathcal{P} \arrow[d] & \\
+        & A^\natural \times A \arrow[dl, "p_1", swap] \arrow[dr, "p_2"] & \\
+        A^\natural & & A
+    \end{tikzcd}
+\end{center}
+we can define functors between the bounded derived category of coherent $\mathcal{O}_{A^\natural}$-modules and  
+that of $D$-modules on $A$.
+We obtain geometric Langlands for $\GL_1$ when $A = \Jac_X$.
+
+As we did for $\Loc_{\GL_1}(X)$, we have a map $A^\natural \to A^\vee$ defined by $(L, \nabla)$, 
+and the fiber of the map is the space of all flat connections on $L$, which is a torsor over $\rH^0(A, \Omega_A^{1, 0})$.
+In other words, $A^\natural$ is an affine bundle on $A^\vee$ modeled on $\rH^0(A, \Omega_A^{1, 0}) = T_{0}^*A$.
+When $A = V /\Lambda$ for $g$-dimensional complex vector space $V \simeq \mathbb{C}^g$ and a lattice
+$\Lambda$ (rank $2g$ free $\mathbb{Z}$-module) in $V$, we can express $A^\vee$ and $A^\natural$ as follows.
+
+\begin{theorem}[Arinkin]
+Let $A = V / \Lambda$ be an abelian variety of dimension $g$.
+\begin{enumerate}
+    \item $A^\vee \simeq \overline{V}^{*} / \Lambda^{*}$, where $\Lambda^{*}$ is a dual lattice of $\Lambda$ in $\overline{V}^{*}$.
+    \item $A^\natural \simeq (\overline{V}^{*} \oplus V) / \Lambda^{*}_{\mathrm{diag}}$, where $\Lambda^{*}_{\mathrm{diag}}$ is a diagonal lattice
+    defined as an image of $\Lambda^{*} \hookrightarrow \overline{V}^{*} \oplus V^{*}$
+    \item The natural extension 
+    \begin{center}
+        \begin{tikzcd}
+            0 \arrow[r] & V^{*} \arrow[r] \arrow[d, "\simeq"] & (\overline{V}^{*} \oplus V^{*}) / \Lambda_{\mathrm{diag}}^{*} \arrow[r] \arrow[d, "\simeq"] & \overline{V}^{*} / \Lambda^{*} \arrow[r] \arrow[d, "\simeq"] & 0 \\
+            0 \arrow[r] & \rH^{0}(A, \Omega_{A}^{1, 0}) \arrow[r] & A^{\natural} \arrow[r] & A^{\vee} \arrow[r] & 0
+        \end{tikzcd}
+    \end{center}
+    is a universal extension.
+\end{enumerate}
+\end{theorem}
+Note that when $A = V /\Lambda$, $V \simeq T_{0}A$ and $V^{*} \simeq \rH^{0}(A, \Omega^{1,0})$ and $\overline{V}^{*} \simeq \rH^{0}(A, \Omega^{0,1}) \simeq \rH^{1}(A, \mathcal{O}_A)$
+and $\Lambda^{*} \simeq \rH_1(A, \mathbb{Z})^{*} \simeq \rH^{1}(A, \mathbb{Z})$ by Poincare duality.
+This is compatible with $A^\vee \simeq \rH^{1}(A, \mathcal{O}_A) / \rH^{1}(A, \mathbb{Z})$ obtained by cohomology sequence
+induced from $0 \to \mathbb{Z} \to \mathcal{O}_A \to \mathcal{O}_A^{\times} \to 0$.
+
