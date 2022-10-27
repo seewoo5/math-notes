@@ -1,0 +1,79 @@
+\newpage
+\section{Sneak peek of the analytic Langlands (October 25)}
+
+Finally, analytic Langlands.
+The goal of analytic Langlands correspondence is the following.
+Let $X$ be a complex curve.
+For $G = \GL_1$, we have found a correspondence between holomorphic/algebraic line bundles with (flat) connections
+on $X$ and Hecke eigen\emph{sheaves} on $\Jac_X = \Pic_X^{0}$.
+This is a special case of enhanced Fourier-Mukai transform applied to $A = \Jac_X$.
+Now, here's a question: can we develop function-theoretic correspondence for curves over $\mathbb{C}$?
+In other words, can we find some sort of Hecke eigen\emph{functions} corresponds 
+to the line bundles, instead of sheaves?
+The answer would be YES, and we are going to see this from now.
+
+Our guess is that the function-theoretic side would contain
+Hecke eigenfunctions on $\Pic_X$, or $\Jac_X = \Pic_X^0$.
+Hecke operators are defined almost the same as before, but for simplicity, we are going to 
+normalize them by choosing a reference point $p_0 \in X$.
+Define $h_p : \Pic^{d}_X \to \Pic^{d+1}_X$ as $h_p(\mathcal{L}) = \mathcal{L}(p)$,
+and define Hecke operator $H_p$ as a pullback $h_p^*$, which is a map from the space of 
+functions on $\Pic^{d+1}_X$ to that on $\Pic^{d}_X$.
+Then any function $f$ on $\Pic_X$ can be decomposed as $f = \sum_d f_d$ for $f_d = f|_{\Pic^{d}_X}$, 
+and it becomes Hecke eigenfunction if $H_p(f) = \mu_p f \Leftrightarrow h_{p}^{*}(f_{d+1}) = \mu_p f_{d}$
+for all $d \in \mathbb{Z}$, for some nonzero constant $\mu_p \in \mathbb{C}^{\times}$.
+By choosing a reference point $p_0 \in X$, we can identify $\Pic^d_X$ and $\Pic^0_X$ via 
+$i_d: \Pic_X^d \to \Pic^0_X$, $\mathcal{L} \mapsto \mathcal{L}(-dp_0)$.
+Define ${}_{p_0}h_{p}: \Pic_X^0 \to \Pic_X^0$ as $\mathcal{L} \mapsto \mathcal{L}(p - p_0)$, 
+and the corresponding normalized Hecke operator ${}_{p_{0}}H_p$ as the pullback of it.
+Then $f_0 = f|_{\Pic^0_X}$ is an eigenfunction of ${}_{p_0}H_p$ with eigenvalue $\lambda_p = \mu_p\mu_{p_0}^{-1}$.
+This allows us to consider eigenfunctions on the neutral component $\Jac_X = \Pic_X^0$ instead of whole $\Pic_X$.
+
+Let's try to compute eigenfunctions for the cases when $X$ is an elliptic curve.
+For example, let's assume that $X = E_i = \mathbb{C} / (\mathbb{Z} + i\mathbb{Z})$.
+We chooose $p_0 = 0 \in E_i$, and the Jacobian of $E_i$ is the same as $E_i$ itself.
+Any points on $E_i$ can be written as $z_p = x_p + iy_p$ for $x_p$, $y_p \in \mathbb{R}$, 
+and Hecke operators on the space of functions on $E_i$ are just translations.
+Hence they are functions on $\mathbb{C} / (\mathbb{Z} + i\mathbb{Z})$ such that 
+$H_p(f)(x + iy) = f(x + x_i + i(y + y_p)) = \lambda_p f(x + iy)$ for all $x, y, x_p, y_p \in \mathbb{R}$ and a nonzero constant $\lambda_p$.
+We can regard functions on $E_i$ as functions on $\mathbb{C}$ that are $(\mathbb{Z} + i\mathbb{Z})$-invariant, and 
+one can prove that such a functions are the exponentials
+$$
+f_{m, n}(x + iy) = e^{2\pi i mx + 2\pi i ny}
+$$
+for each $m, n \in \mathbb{Z}$.
+There eigenvalues are just the functions values at a point $p$.
+We can also consider the $L^2$ space on $E_i$ (using Haar measure on $E_i$),
+and the above functions $\{f_{m, n}\}_{m, n \in \mathbb{Z}}$ form a basis of $L^2(E_i)$.
+For the latter purpose, we express $f_{m, n}$ as functions of $z, \bar{z}$ instead of $x, y$:
+$$
+f_{m,n}(z, \bar z) = e^{\pi z(n + im)}e^{-\pi \bar z (n - im)}.
+$$
+More generally, if $X = E_\tau:= \mathbb{C}/(\mathbb{Z} + \tau \mathbb{Z})$ is an elliptic curve associated to lattice $\mathbb{Z} + \tau\mathbb{Z}$,
+the Hecke eigenfunctions are
+$$
+f_{m,n}^\tau = e^{2\pi i m \left(\frac{z \bar \tau - \bar z \tau}{\tau - \bar \tau}\right)} e^{2\pi i n \left(\frac{z - \bar z}{\tau - \bar \tau}\right)}
+$$
+for $m, n \in \mathbb{Z}$.
+From this, our (conjectural) goal would be: associating flat holomorphic line bundles on $E_\tau$ to these eigenfunctions.
+
+When $X$ is a curve with genus $g$ (not necessarily 1), 
+then $A = \Jac_X$ will be a higher dimensional abelian variety.
+In this case, how could we write down the explicit formula of the eigenfunctions?
+Let $\gamma \in \rH^1(A, \mathbb{Z})$.
+Then its image in $\rH^1_{\mathrm{dR}}(A, \mathbb{C})$ is a harmonic 1-form, and it has a Hodge decomposition
+$\alpha_\gamma +\bar\alpha_\gamma \in \rH^0(A, \Omega_A^{1, 0})\oplus \rH^0(A, \Omega_A^{0, 1})$.
+Also, we have an isomorphism $\rH^0(A, \Omega^{1, 0}_A) \simeq \rH^0(X, \Omega_X^{1, 0})$, and let $\omega_\gamma \in \rH^0(X, \Omega_X^{1, 0})$
+be the holomorphic form which is the image of $\alpha_\gamma$ via the isomorphism.
+Then the following theorem (that will be proved in future) describes Hecke eigenfunctions on $\Jac_X$.
+\begin{theorem}
+    Hecke eigenfunctions on $\Jac_X$ are
+    $$
+    \phi_\gamma(Q) = \exp \bigg(2 \pi i \int_0^Q (\alpha_\gamma + \bar\alpha_\gamma)\bigg)
+    $$
+    for each $\gamma \in \rH^1(A, \mathbb{Z})$.
+    The eigenvalue of $H_p$ for $\phi_\gamma$ is given by the similar function on the curve $X$:
+    $$
+    \psi_\gamma(p) = \exp \bigg(2\pi i \int_{p_0}^{p} (\omega_\gamma + \bar\omega_\gamma)\bigg).
+    $$
+\end{theorem}
