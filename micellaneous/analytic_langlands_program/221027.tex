@@ -1,0 +1,52 @@
+\newpage
+\section{Proof of the theorem (October 27)}
+
+Last time we defined functions $\phi_\gamma : \Jac_X \to \mathbb{C}$ and $f_\gamma : \Jac_X \to \mathbb{C}$
+for each $\gamma \in \rH^1(X, \mathbb{Z})$.
+Our goal is to show that $\phi_\gamma$'s are Hecke eigenfunctions of $H_p$ with eigenvalue $f_\gamma(p)$.
+They were defined as follows:
+\begin{align*}
+    \phi_\gamma(L) &= \exp \bigg(2 \pi i \int_0^{L} (\alpha_\gamma + \bar\alpha_\gamma) \bigg) \\
+    f_\gamma(p) &= \exp \bigg(2 \pi i \int_{p_0}^{p} (\omega_\gamma + \bar\omega_\gamma) \bigg).
+\end{align*}
+We'll use \emph{Abel-Jacobi map} for the proof. 
+Recall that we can describe $\Jac_X$ using divisors as $\mathrm{Div}(X) / \mathrm{PDiv}(X)$.
+Let $X^{(d)}:= \Sym^d X$ be a symmetric $d$-th power of $X$.
+This is a space of unordered (multi-)set of $d$ points on $X$, which can be thought as a set of degree $d$ effective divisors on $X$.
+For each $d \in \mathbb{Z}_{\geq 1}$, Abel-Jacobi map $\AJ_d: X^{(d)} \to \Jac_X$ is defined as
+\[
+    \AJ_d\left(\sum_{i=1}^{d} [x_i]\right) = \mathcal{O}_X\left(\sum_{i=1}^{d} [x_i] - d[p_0]\right)
+\]
+for a reference $p_0$ we have chosen.
+Then this map is compatible with Hecke operators - we have a following commutative diagram
+\begin{center}
+    \begin{tikzcd}
+        X^{(d)} \arrow[r, "\widetilde{h}_p"] \arrow[d, swap, "\AJ_d"] & X^{(d+1)} \arrow[d, "\AJ_{d+1}"] \\
+        \Jac_X \arrow[r, "{}_{p_0}h_{p}"] & \Jac_X
+    \end{tikzcd}.
+\end{center}
+Using this, we can reduce our theorem as the following proposition.
+
+\begin{proposition}
+    Define $\widetilde{f}_{\gamma, d}: X^{(d)} \to \mathbb{C}$ as
+    \[
+    \widetilde{f}_{\gamma, d}\left(\sum_{i=1}^{d} [x_i]\right) = \prod_{i=1}^{d} f_{\gamma}(x_i)
+    \]
+    Then $\AJ_{d}^{*}(\phi_\gamma) = \widetilde{f}_{\gamma,d}$.
+\end{proposition}
+
+Hecke operators can be also defined on $X^{(d)}$'s as a pullback of $\widetilde{h}_p$, and one can 
+easily show that $\widetilde{f}_{\gamma, d}$ is an eigenfunction with eigenvalue $f_{\gamma}(p)$.
+Since $\AJ_d$ is surjective for sufficiently large $d$ (in fact, for $d \geq g$), the above Proposition implies that
+$\phi_\gamma$ is also an eigenfunction with same eigenvalue as $\widetilde{f}_{\gamma, d}$.
+To prove it, we'll use Abel-Jacobi theorem, which describes $\AJ_d$ in terms of integration of holomorphic forms.
+
+\begin{theorem}[Abel-Jacobi]
+Let $\Jac_X = \rH^{0}(X, K_X)^{*} / \rH_1(X, \mathbb{Z})$.
+For $\eta \in \rH^{0}(X, K_X)$, we have
+\[
+    \left(\AJ_d \left(\sum_{i=1}^{d} [x_i]\right)\right)(\eta) = \sum_{i=1}^{d} \int_{p_0}^{x_i} \eta
+\]
+where $\AJ_d(\sum_{i=1}^{d}[x_i])$ is well-defined function on $\rH^{0}(X, K_X)$ up to addition of $\rH_1(X, \mathbb{Z})$.
+\end{theorem}
+Proof can be found in Bost \cite{bost1992introduction}.
