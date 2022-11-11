@@ -42,10 +42,25 @@ and we can ``cancel out'' $g_1$ from two equations to get $g_{2}^{-1}\sigma(\gam
 It is obvious that the map is a homomorphism.
 The map is injective since when $g_2 = 1$, $g_{1}^{-1}\gamma g_{2} = g_{1}^{-1}\gamma = \gamma$ implies $g_{1} = 1$.
 Also, surjectivity follows from $(\gamma g_2 \gamma^{-1}, g_2)\mapsto g_2$.
-
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+For well-definedness, wee need to show that a) the map $\sigma \mapsto h\sigma(h^{-1})$ is 1-cocycle,
+b) the map lies in the kernel of $\rH^{1}(k, I) \to \rH^1(k, H)$, and c)
+it does not depend on the choice of the right coset representative.
+a) follows from the direct computation, and b) is also clear from the definition of cohomologousness and neutral element.
+For c), assume that $h_2 = ih_1$ for $h_1, h_2 \in H(k^{\sep})$ and $i \in H(k^{\sep})$.
+Then from $(ih_1)\sigma(ih_1)^{-1} = i h_1 \sigma(h_1)^{-1} \sigma(i)^{-1}$, we have $c_1(\sigma) = i^{-1} c_{2}(\sigma) \sigma(i)$
+for $c_i(\sigma):= h_i \sigma(h_i)^{-1}$, hence they lies in the same equivalence class in $\rH^{1}(k, I)$.
+
+For surjectivity, if $c \in \mathcal{D}(k, I, H)$, then $c: \Gal_k \to I(k^{\sep}) \to H(k^{\sep})$ that is cohomologous to the neutral element,
+and this implies that there exist $h \in H(k^{\sep})$ such that $c(\sigma) = h\sigma(h)^{-1}$.
+
+Now, let's assume that $h_1$ and $h_2$ maps to the same element in $\mathcal{D}(k, I, H)$, so that there exists $i \in I(k^{\sep})$ s.t.
+$h_{2}\sigma(h_{2})^{-1} = ih_{1}\sigma(h_{1})^{-1}\sigma(i)^{-1} = ih_{1} \sigma(ih_1)^{-1}$.
+This gives $\sigma((ih_{1})^{-1}h_{2}) = (ih_{1})^{-1}h_{2}$ for all $\sigma \in \Gal_k$, hence $h_{0}:=(ih)^{-1}h_{2}$ is in $H(k^{\sep})^{\Gal_k} = H(k)$,
+and implies that $I(k^{\sep})h_1$ and $I(k^{\sep})h_2$ are in the same $H(k)$-orbit (under the action by right multiplication).
+
 \end{problem}
 
 \begin{problem} \notfinish
