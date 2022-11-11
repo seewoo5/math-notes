@@ -31,7 +31,18 @@
 \begin{problem} \notfinish
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+For well-definedness, we only need to check that $g_2 \in C_{B_{\sigma}(\gamma), G}(R)$ when $(g_1, g_2) \in H_\gamma(R)$.
+(Note that $(g_1, g_2) \in H_{\gamma}(R)$ automatically implies $g_{2} \in G^{\sigma}(R)$.)
+We have 
+$$
+g_1^{-1}\gamma g_{2} = \gamma \Rightarrow g_{1}^{-1}\sigma(\gamma)g_{2} = \sigma(g_{1}^{-1}\gamma g_{2}) = \sigma(\gamma)
+$$
+and we can ``cancel out'' $g_1$ from two equations to get $g_{2}^{-1}\sigma(\gamma)^{-1}\gamma g_{2} = \sigma(\gamma)^{-1}\gamma$, i.e. $g_{2} \in C_{\sigma(\gamma)^{-1}\gamma, G}(R) = C_{B_{\sigma}(\gamma), G}(R)$.
+It is obvious that the map is a homomorphism.
+The map is injective since when $g_2 = 1$, $g_{1}^{-1}\gamma g_{2} = g_{1}^{-1}\gamma = \gamma$ implies $g_{1} = 1$.
+Also, surjectivity follows from $(\gamma g_2 \gamma^{-1}, g_2)\mapsto g_2$.
+
 \end{problem}
 
 \begin{problem} \notfinish
