@@ -63,17 +63,48 @@ and implies that $I(k^{\sep})h_1$ and $I(k^{\sep})h_2$ are in the same $H(k)$-or
 
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+First, $I_{h, k^{\sep}}$ is a form of $I_{k^{\sep}}$: for any $k^{\sep}$-algebra $R$, if we denote $h_R$ for the
+image of $h$ in $H(R)$ under the natural map $H(k^{\sep}) \to H(R)$, then $\varphi(R): I_{k^{\sep}}(R) \to I_{h, k^{\sep}}(R)$
+is given by $\varphi(R)(i):= h_{R}^{-1}ih_{R}$ gives an isomorphism.
+Under this $\varphi$, we can check that $(\varphi^{-1}\circ \sigma \circ \varphi \circ \sigma^{-1})(i) = (h\sigma^{-1}(h))i (h\sigma^{-1}(h))^{-1}$,
+hence it is an inner automorphism and $I_{h}$ is an inner form of $I$.
 \end{problem}
 
 \begin{problem} \notfinish
 \end{problem}
 
 
-\begin{problem} \notfinish
+\begin{problem}
+For each $x \in \Omega$, choose a compact open neighborhood $U_x$ (note that $X_\alpha$ are locally compact).
+Then $\cup_{x\in \Omega} U_x = \Omega$, and compactness of $\Omega$ implies that $\Omega = \cup_{1\leq i \leq n} U_i$ for some $U_i = U_{x_i}$.
+For each $i$, $U_i$ is a form of
+$$
+U_i = U_{A_i} \times \prod_{\alpha \in A - A_i} K_{\alpha}
+$$
+for some finite set $A_i$ and compact open $U_{A_i} \subseteq \prod_{\alpha \in A_i}X_\alpha$.
+If we put $A' = \cup_{1\leq i \leq n} A_i$, then we can rewrite $U_i$ as
+$$
+U_i = \left(U_{A_i} \times \prod_{\alpha \in A' - A_i} K_{\alpha}\right) \times \prod_{\alpha \in A - A'} K_\alpha =: U_{i}' \times \prod_{\alpha \in A - A'} K_\alpha
+$$
+and this gives $\Omega = \Omega_{A'} \times \prod_{\alpha \in A - A'} K_\alpha$ for $\Omega_{A'} = \cup_{1\leq i \leq n} U_{i}' \subseteq \prod_{\alpha \in A'} X_\alpha$.
 \end{problem}
 
-\begin{problem} \notfinish
+
+\begin{problem}
+For $\sigma, \sigma'\in \Gal_k$, we have
+$$
+c_1(\sigma\sigma')c_2(\sigma\sigma') = c_1(\sigma) \sigma(c_1(\sigma')) c_2(\sigma) \sigma(c_2(\sigma')) = c_1(\sigma)c_2(\sigma) \sigma(c_1(\sigma')c_2(\sigma'))
+$$
+so $\sigma\mapsto c_1(\sigma)c_2(\sigma)$ is a 1-cocycle.
+This gives a well-defined abelian group structure on $\rH^1(k, G)$ as follows: if $c_1 \sim c_1'$ and $c_2 \sim c_2'$, there exists
+$g_1, g_2\in G$ such that $c_i'(\sigma) = c_i(\sigma) g_i^{-1} \sigma(g_i)$ for all $\sigma \in \Gal_k$ and $i=1,2$.
+Then 
+$$
+(c_1'c_2')(\sigma) = c_1(\sigma) g_{1}^{-1}\sigma(g_1) c_2(\sigma) g_2^{-1} \sigma(g_2) = (c_1 c_2)(\sigma)(g_1g_2)^{-1} \sigma(g_1g_2)
+$$
+so the multiplication is well-defined. It is easy to check that the multiplication is commutative and associative.
+Also, for $[c] \in \rH^1(k, G)$, its inverse is given by $[c]^{-1}:=[c^{-1}]$, $c^{-1}(\sigma):=c(\sigma)^{-1}$.
 \end{problem}
 
 \begin{problem} \notfinish
