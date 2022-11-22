@@ -1,7 +1,32 @@
 \newpage
 \section{Appendix B}
 
+\begin{problem}
+Since $\mathrm{tr}$ is additive, it is enough to show when $F = \mathbb{R}, \mathbb{Q}_p, \mathbb{F}_p((t^{-1}))$, or $\mathbb{F}_p((t))_\varpi$
+for some $\varpi \in \mathbb{F}_p((t))$.
+\begin{itemize}
+    \item $F =\mathbb{R}$. $\psi_\mathbb{R}(a+b) = e^{-2\pi i (a+b)} = e^{-2\pi i a}e^{-2\pi i b} = \psi_\mathbb{R}(a)\psi_\mathbb{R}(b)$.
+    \item $F = \mathbb{Q}_p$. Note that $\psi_{\mathbb{Q}_p}(a)$ is well-defined, since differences between two different choices of $\mathrm{pr}(a)$ are integers, 
+    and $e^{2\pi i n} = 1$ for all $n\in\mathbb{Z}$.
+    Now, $\psi_{\mathbb{Q}_p}$ becomes a character since $\mathrm{pr}(a+b) - \mathrm{pr}(a) -\mathrm{pr}(b)$ is integer for any $a, b\in\mathbb{Q}_p$
+    (and for any choices of $\mathrm{pr}(a), \mathrm{pr}(b)$).
+    \item $F = \mathbb{F}_p((t^{-1}))$.
+    First, it is well-defined since $\exp(2\pi i a_1 / p)$ does not depend on the choice of a representative $a_1 \in \mathbb{F}_p$ in $\mathbb{Z}$.
+    For $f = \sum_{n} a_n t^n$ and $g = \sum_n b_n t^n$, we have
+    $$
+        \psi_{\mathbb{F}_p(t^{-1}))}\left(f + g\right)  = e^{2\pi i (a_1 + b_1)/p} = e^{2\pi i a_1 / p} e^{2\pi i b_1 / p} = \psi_{\mathbb{F}_p((t^{-1}))}(f) \psi_{\mathbb{F}_p((t^{-1}))}(g)
+    $$
+    so it is a character.
+    \item $F = \mathbb{F}_p((t))_\varpi$ for $\varpi \in \mathbb{F}_p((t))$.
+    This case is similar as the case of $F = \mathbb{F}_p((t^{-1}))$. Note that $\mathrm{tr}_{k/\mathbb{F}_p}$ is additive.
+
+\end{itemize}
+\end{problem}
+
 \begin{problem} \notfinish
+(Injectivity) Since $\psi$ is nontrivial, there exists $x_0 \in F$ such that $\psi(x_0) \neq 1$.
+Now if $\alpha \neq 0$, then for $\psi_\alpha(x):=\psi(\alpha x)$, $\psi_{\alpha}(x_0 / \alpha) = \psi(x_0) \neq 1$, so $\psi_\alpha$ is not trivial. \\
+(Surjectivity) Let $\phi: F \to \mathbb{C}^\times$ be a nontrivial character.
 \end{problem}
 
 \begin{problem} \notfinish
@@ -17,7 +42,15 @@
 \end{problem}
 
 \begin{problem} \notfinish
-\end{problem}
-
-\begin{problem} \notfinish
+We have
+\begin{align*}
+    \hat{\mathds{1}}_{\mathcal{O}_F}(x) = \int_F \mathds{1}_{\mathcal{O}_F}(y) \psi_F(xy) dy = \int_{\mathcal{O}_F} \psi_F(xy) dy
+\end{align*}
+If $x \in \mathcal{O}_F$, then $xy \in \mathcal{O}_F$  for all $y \in \mathcal{O}_F$ and $\psi_F(xy) = 1$
+(note that $\mathcal{O}_F \subseteq \ker \psi_F$). Hence
+$\int_{\mathcal{O}_F}\psi_F(xy)dy = \int_{\mathcal{O}_F} dy = dy(\mathcal{O}_F) = 1$.
+If $x \not \in \mathcal{O}_F$, choose 
+$$
+\int_{\mathcal{O}_F} \psi_F(xy)dy= \int_{\mathcal{O}_F} \psi_F(x(y + a)) dy = \psi_F(xa) \int_{\mathcal{O}_F}\psi_F(xy) dy
+$$
 \end{problem}
