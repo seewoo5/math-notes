@@ -10,7 +10,21 @@
 \begin{problem} \notfinish
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+($\Rightarrow$) Let $V_i$ be representation space of $\pi_i$ for $i = 1, 2$.
+Then $\pi_1 \times \pi_2$ acts on $V_1 \times V_2$ via $(\pi_1 \times \pi_2)(g_1, g_2)(v_1, v_2) := (\pi_1(g_1)v_1, \pi_2(g_2)v_2)$.
+Since it is $H$-distinguished, there exists a nonzero linear map $\phi: V_1 \times V_2 \to \mathbb{C}$ such that 
+$\phi((\pi_1 \times \pi_2)(g, g)(v_1, v_2)) = \phi(v_1, v_2)$ for all $(g, g) \in H \leq G \times G$ and $(v_1, v_2) \in V_1 \times V_2$.
+From $\phi(\pi_1(g)v_1, \pi_2(g)v_2) = \phi(v_1, v_2)$, we can define a map $V_2 \to V_1^{*}$ as
+$v_2 \mapsto (v_1 \mapsto \phi(v_1, v_2))$, which is $G$-equivariant.
+Hence it defines an isomorphism  $\pi_2 \simeq \pi_1^{\vee}$ since both $\pi_1, \pi_2$ are irreducible. \\
+($\Leftarrow$) We want to show that $\pi \times \pi^{\vee}$ is $H$-distinguished for $(\pi, V)= (\pi_1, V_1)$.
+Define $\phi: V \times V^{*} \to \mathbb{C}$ as $\phi(v, v^{*}) = v^{*}(v)$, the evaluation map.
+Then this is $H(F)$-invariant:
+$$
+\phi(\pi(g)v, \pi^{\vee}(g)(v^{*})) = (\pi^{\vee}(g)(v^{*}))(\pi(g)v) = v^{*}(\pi(g^{-1})\pi(g)v) = v^{*}(v) = \phi(v, v^*).
+$$
+Hence $\pi \times \pi^\vee$ is $H$-distinguished.
 \end{problem}
 
 \begin{problem} \notfinish
