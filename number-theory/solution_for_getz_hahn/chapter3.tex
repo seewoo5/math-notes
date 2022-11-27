@@ -14,10 +14,21 @@ Hence $G$ is unimodular.
 \begin{problem} \notfinish
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+By invariance of Haar measure, $dx(a + \varpi^k \mathcal{O}_F) = dx(\varpi^k \mathcal{O}_F)$ for all $a$.
+From $\mathcal{O}_F = \cup_{a \in \mathcal{O}_F / \varpi^k \mathcal{O}_F}(a + \varpi^k \mathcal{O}_F)$, we have $dx(\mathcal{O}_F) = \sum_{a \in \mathcal{O}_F / \varpi^k \mathcal{O}_F} dx(a + \varpi^k \mathcal{O}_F) = |\mathcal{O}_F / \varpi^k \mathcal{O}_F| dx(\varpi^k \mathcal{O}_F)$.
+Since the absolute value is normalized, $q = |\varpi|^{-1} = |\mathcal{O}_F/\varpi\mathcal{O}_F|$ and
+$$
+|\mathcal{O}_F / \varpi^k \mathcal{O}_F| = |\mathcal{O}_F / \varpi \mathcal{O}_F| \cdots |\varpi^{k-1} \mathcal{O}_F / \varpi^{k} \mathcal{O}_F| = q^{k}
+$$
+which shows $dx(a + \varpi^k \mathcal{O}_F) = dx(\varpi^k \mathcal{O}_F) = q^{-k} dx(\mathcal{O}_F)$.
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+Since $G$ is reductive, $G(\mathbb{A}_F)$ is unimodular by Lemma 3.6.4.
+$P(\mathbb{A}_F)$ and $K$ are both closed in $G(\mathbb{A}_F)$.
+At last, $P(\mathbb{A}_F) \cap K$ is compact since $K$ is.
+Hence we can normalize the Haar measure so that $dg = d_{\ell}p dk$ holds by Proposition 3.2.1.
 \end{problem}
 
 \begin{problem} \notfinish
@@ -167,7 +178,16 @@ For any $g \in G$,
 \end{align*}
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+By Corollary 3.3.2, for $\varphi_1 ,\varphi_2 \in V$ and $f \in L^1(G)$ we have
+\begin{align*}
+    \|\pi(f)(\varphi_1 - \varphi_2)\| &= \bigg\|\int_G f(g)\pi(g)(\varphi_1 - \varphi_2)\bigg\|_2 dg \\
+    & \leq \int_G \| f(g) \pi(g) (\varphi_1 - \varphi_2)\|_2 dg \\
+    & = \int_G |f(g)| \| \pi(g) (\varphi_1 - \varphi_2)\|_2 dg \\
+    & = \int_G |f(g)| \| \varphi_1 - \varphi_2 \|_2 dg \\
+    &= \| \varphi_1 - \varphi_2\|_2 \|f\|_1
+\end{align*}
+and so $\pi(f): V \to V$ is continuous.
 \end{problem}
 
 \begin{problem}
