@@ -131,8 +131,32 @@ Hence the largest $\mathbb{F}_{p}(t)$ split torus in $\Res_{F/\mathbb{F}_{p}(t)}
 is just $\Res_{F/\mathbb{F}_{p}(t)}Z_{\GL_2}$ itself which has degree $d = [F:\mathbb{F}_q(t)]$.
 \end{problem}
 
-\begin{problem} \notfinish
+\begin{problem}
+By Lemma 2.6.2, if $G$ is such an example, then $G^\circ$ should not be the direct product of
+a reductive and a unipotent group. 
+From this, we may suspect that the Borel subgroup $G = B = \{(\begin{smallmatrix} * & * \\ 0 & * \end{smallmatrix})\}$ over $\mathbb{Q}$ would work.
+We have $A_B = \mathbb{R}^{\times}_{>0}\cdot  I_2$.
+Also, any character $\chi \in X^{*}(B)$ has a form of $\chi(\begin{smallmatrix}
+    a & b\\ 0 & d
+\end{smallmatrix}) = \chi_1(a)\chi_2(b) = a^{n_1} b^{n_2}$ for $\chi_i: \mathbb{A}_\mathbb{Q}^\times \to \mathbb{A}_\mathbb{Q}^\times, a \mapsto a^{n_i}$ for $n_1, n_2 \in \mathbb{Z}$,
+so $B(\mathbb{A}_\mathbb{Q})^1 = \{(\begin{smallmatrix} a & b \\ 0 & d \end{smallmatrix}) \in B(\mathbb{A}_\mathbb{Q}), |a| = |d| = 1\}$.
+Now consider the elements of the form $(\begin{smallmatrix}
+    a & 0 \\ 0 & 1
+\end{smallmatrix})$ for $a\in \mathbb{R}_{>0}^\times \hookrightarrow \mathbb{A}_\mathbb{Q}^\times$.
+If two such matrices $(\begin{smallmatrix}a & 0 \\ 0 & 1\end{smallmatrix}), (\begin{smallmatrix}a' & 0 \\ 0 & 1\end{smallmatrix})$ are in the same coset of $A_B B(\mathbb{A}_\mathbb{Q})^1$, then
+$$
+\begin{pmatrix}
+    a' & 0 \\ 0 & 1
+\end{pmatrix} = \begin{pmatrix} z & 0  \\ 0 & z \end{pmatrix} \begin{pmatrix} a_0 & b_0 \\ 0 & d_0 \end{pmatrix}\begin{pmatrix}
+    a & 0 \\ 0 & 1
+\end{pmatrix}
+$$
+for $z \in \mathbb{R}_{>0}^\times$ and $a_0, b_0, d_0 \in \mathbb{A}_\mathbb{Q}$ with $|a_0| = |d_0| = 1$.
+This implies $1 = zd_0 \Rightarrow z = 1/d_0$ and $a' = za_0 a = (a_0 / d_0) a$, so $|a'| = |(a_0/d_0)a| = |a|$.
+It means that all such elements are in the different coset, so $A_B B(\mathbb{A}_\mathbb{Q})^1$ has infinite index in $B(\mathbb{A}_\mathbb{Q})$.
 \end{problem}
+
+
 \begin{problem} \notfinish
 \end{problem}
 
