@@ -8,3 +8,11 @@
 *.out
 *.toc
 .DS_Store
+*.acn
+*.bcf
+*.glo
+*.idx
+*.ilg
+*.ind
+*.ist
+*.run.xml
