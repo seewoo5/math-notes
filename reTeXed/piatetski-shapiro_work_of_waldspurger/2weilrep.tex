@@ -1,0 +1,165 @@
+\section{The Oscillator Representation Over a Local Field}
+
+
+Let $k$ be a local field, and let $X$ be a $2n$-dimensional vector space over $k$ with a symplectic form $\langle\,,\,\rangle$.
+If $X = X_1 \oplus X_2$ is a polarization of $X$, let $P$ be the subgroup of $\Sp(X)$ which preserves $X_2$.
+If $\psi$ is a non-trivial character of $k$, let $\omega_\psi$ be the oscillator representation of $\Mp_{2n}(k) = \Mp(X)$, the double cover of $\Sp_{2n}(k) = \Sp(X)$, acts on the Schwartz-Bruhat space $\cS(X_1)$.
+
+Let us now consider the 3-dimensional vector space $M = \{m \in \rM_2(k): \trace(m) = 0\}$.
+$\PGL_2$ acts on $M$ by conjugation:
+\[
+m \mapsto g^{-1} m g \qquad(g \in \PGL_2, m \in M).
+\]
+This conjugation action preserves the symmetric form $q(x) = -\det(x)$.
+Let $Y$ be a 2-dimensional vector space over $k$ with a symplectic form $\langle\,,\,\rangle$.
+Define a symplectic vector space $X$ by $X = M \otimes_k Y$,
+$\langle m_1 \otimes y_1, m_2 \otimes y_2\rangle = (m_1, m_2) \langle y_1, y_2 \rangle$.
+Since $\PGL_2$ and $\SL_2$ preserve
+the forms $(\,,\,)$ and $\langle\,,\,\rangle$ respectively, there is a natural embedding of $\PGL_2 \times \SL_2$ into $\Sp(X) = \Sp_6$.
+Our aim is to use the oscillator representation of $\Mp_6$ to define a correspondence between certain irreducible representations of $\PGL_2$ and certain irreducible representations of $\widetilde{\SL}_2$.
+Waldspurger has given a different definition of the correspondence based on explicit integral formulas.
+These integral formulas, though complicated and defined only for the case $\PGL_2$, $\widetilde{\SL}_2$, yield much more information about the correspondence.
+
+Let $T$ be a subgroup of $G = \PGL_2$ and let $N$ a subgroup of $H = \SL_2$.
+Let $\alpha$ and $\beta$ be characters of $T$ and $N$ respectively.
+Let $X = X_1 \oplus X_2$ be a polarization of $X$ such that $T \times N \subset P$.
+Let us suppose that $x_1 \in X_1$ is a vector such that the linear functional
+\[
+\phi \mapsto \phi(x_1) \qquad (\phi \in \cS(X_1))
+\]
+transforms under $T\times N$ by $\alpha \times \beta$, i.e.,
+\[
+\omega_\psi(t, n)\phi(x_1) = \alpha(t) \beta(n) \phi(x_1).
+\]
+Let $(\pi, V)$ be an irreducible admissible representation of $\PGL_2$ and let us assume that $\ell$ is a linear functional on $V$ such that $\ell(\pi(t)v) = \alpha(t)^{-1}\ell(v)$ ($t \in T$).
+If the integral
+\[
+F(h) = \int_{T\backslash G} \omega_\psi(g, h) \phi(x_1) \ell(\pi(g)v)  \dd g \qquad (h \in H)
+\]
+converges, then $F(nh) = \beta(n)F(h)$ ($n \in N$).
+Let $W$ be the space of all the functions $F$ obtained in this fashion by varying $\phi$ and $v$.
+$\widetilde{\SL}_2$ acts on $W$ by right translation. We shall denote this representation by $\theta(\pi, \psi)$.
+Conversely, given an irreducible admissible genuine representation $\sigma$ of $\widetilde{\SL}_2$ it is possible to define a representation
+$\theta(\sigma, \psi)$ of $\PGL_2$, which may be a zero representation.
+
+In order to explain Waldspurger's integral formulas for the correspondence, we have to consider two polarizations of $X$. For the first polarization, let $y_1, y_2 \in Y$ be a symplectic basis, i. e., $\langle y_1, y_2 \rangle = 1$,
+and put $X_1 = M \otimes y_1, X_2 = M \otimes y_2$.
+Let $m_1$ be an element of $M$ such that $\det m_1 \neq 0$ and let $T = \stab(m_1)$.
+$T$ is a torus in $G$.
+Let $N$ be the unipotent subgroup of $\SL_2$ which preserves $Y_2$.
+Let $\alpha$ be the trivial character, and $\beta$ the character $\beta\left(\begin{smallmatrix} 1 & n \\ 0 & 1\end{smallmatrix}\right) = \psi(q(m_1)n)$.
+We now describe the second polarization which has the property that the unipotent subgroups of $\PGL_2$ and $\widetilde{\SL}_2$ both lie in $P$.
+Let $e_1, e_2, e_3$ be a basis of $M$ such that the matrix of the symmetric form is
+\[
+\begin{pmatrix}
+0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0
+\end{pmatrix}.
+\]
+Define $X_1 = e_1 \otimes Y + e_2 \otimes ky_1$ and $X_2 = e_3 \otimes Y + e_2 \otimes ky_2$.
+It is clear that the unipotent subgroup of $G = \PGL_2$ which preserves $e_3$ also preserves $X_2$.
+We shall denote this subgroup by $T$. Similarly, the unipotent subgroup $N$ of $\SL_2$ which preserves $y_2$ preserves $X_2$.
+Let $x_1 = e_1 \otimes y_2 + \lambda e_2 \otimes y_1$ and define $\alpha$ and $\beta$ by
+\begin{align*}
+    \alpha\begin{pmatrix}
+        1 & t \\ 0 & 1
+    \end{pmatrix} &= \psi(-\lambda t) \\
+    \beta\begin{pmatrix}
+        1 & n \\ 0 & 1
+    \end{pmatrix} &= \psi(\lambda^2 n).
+\end{align*}
+Waldspurger has proved the following theorems:
+\begin{theorem}[\cite{waldspurger80shimura}]
+\label{thm:2.1}
+Let $T$ and $N$ be as above.
+If $(\pi, V)$ (respectively $(\sigma, V)$) is an irreducible admissible representation of $\PGL_2$ (respectively $\widetilde{\SL}_2$), then the representation of $\widetilde{\SL}_2$ (respectively $\PGL_2$) obtained from the above integral formulas is irreducible admissible and depends only on the additive character $\psi$.
+It is independent of the choice of the subgroups $T$ and $N$ and the characters $\alpha$ and $\beta$.
+\end{theorem}
+\begin{theorem}[\cite{waldspurger91quaternion}]
+\label{thm:2.2}
+Let $\xi \in k^\times$, and let $\chi_\xi$ be the quadratic character of $k^\times$ associated to $k(\sqrt{\xi})$.
+If and $\theta(\sigma, \psi)$ and $\theta(\sigma, \psi^\xi)$ are both nonzero representations of $\PGL_2$, then $\theta(\sigma, \psi^\xi) = \theta(\sigma, \psi) \otimes \chi_\xi$.
+\end{theorem}
+\begin{remark*}
+$\theta(\pi, \psi)$ is non-zero for any irreducible admissible representation $\pi$ of $\PGL_2$ and any $\psi$.
+It follows from this that any irreducible admissible representation of $\PGL_2$ admits a linear functional which is invariant with respect to the split torus.
+$\theta(\sigma, \psi)$ is nonzero if and only if $\sigma$ admits a linear functional which transforms under $N$ by $\psi^{-1}$.
+\end{remark*}
+
+Let us now make a few remarks about a similar construction for the quaternion algebra $D$ over $k$.
+Let $M'$ be the elements of trace zero in $D$, and let $q$ be the symmetric form on $M'$ given by $q(m) = -\rN_D(x)$.
+$\rP D^\times$ acts on $M'$ by conjugation, and this action preserves the form $q$.
+We can introduce a symplectic space $X' = M'\otimes_k Y$ and as above, we have an embedding $\rP D^\times \times \SL_2 \hookrightarrow \Sp_6$.
+In an analogous fashion,
+we can also introduce integral formulas to describe a correspondence between some of the irreducible admissible representations of $\rP D^\times$ and some of the irreducible genuine admissible representations of $\widetilde{\SL}_2$
+The analogues of Theorems \ref{thm:2.1} and \ref{thm:2.2} are also true for the quaternion algebra.
+If $\sigma$ (respectively $\pi$) is an irreducible admissible representation of $\widetilde{\SL}_2$ (respectively $\rP D^\times$), we shall denote the corresponding representation of $\rP D^\times$ (respectively $\widetilde{\SL}_2$) by $\theta'(\sigma, \psi)$ (respectively $\theta'(\pi,\psi)$).
+
+From the explicit integral formulas, it is easy to show that
+$\theta'(\pi, \psi)$ does not admit a linear functional which transforms under $N$ by $\psi^{-1}$.
+This together with the remark after Theorem \ref{thm:2.2} implies that the representations $\theta(\sigma, \psi)$ and $\theta'(\sigma, \psi)$ cannot both be non-zero representations.
+However, Waldspurger has the following result.
+\begin{theorem}[\cite{waldspurger91quaternion}]
+\label{thm:2.3}
+One of the representations $\theta(\sigma, \psi)$ and $\theta'(\sigma, \psi)$ is always non-zero.
+\end{theorem}
+
+\begin{claim}
+$\theta'(\pi', \psi')$ is non-zero if and only if $\pi'$ is a spherical representation, i.e., $\pi'$ possesses a $T$-invariant vector for some $T \subset \rP D^\times$.
+\end{claim}
+
+\begin{proof}(Waldspurger)
+Consider for the moment, an irreducible admissible representation $\pi$ of $\PGL_2$.
+If $\chi$ is a quadratic character of $k^\times$, we define the Waldspurger symbol as follows.
+Let $\varepsilon(\pi, s, \psi)$ be the $\varepsilon$-factor introduced in \cite{jl70gl2}.
+It is easy to check that $\varepsilon(\pi, \frac{1}{2}, \psi) = \pm 1$ does not depend on $\psi$.
+Let $\varepsilon(\pi, \frac{1}{2})$ denote $\varepsilon(\pi, \frac{1}{2}, \psi)$.
+We then define $\left(\frac{\chi}{\pi}\right)$ by
+\[
+\varepsilon\left(\pi \otimes \chi, \frac{1}{2}\right) = \left( \frac{\chi}{\pi} \right) \chi(-1) \varepsilon\left( \pi, \frac{1}{2}\right).
+\]
+$\left(\frac{\chi}{\pi}\right) = 1$, and if $\chi$ is the trivial character, then $\left(\frac{\chi}{\pi}\right) = 1$.
+It is easy to see that if $\pi$ is an irreducible principal series representation, then $\left(\frac{\chi}{\pi}\right) =1$ for all $\chi$.
+On the other hand, if $\pi$ is a discrete series representation, then there exists a $\chi$ such that $\left(\frac{\chi}{\pi}\right) = -1$ \cite{waldspurger91quaternion}.
+Let us now return to the proof of the claim.
+Let $\pi$ be the discrete series representation of $\PGL_2$ associated to $\pi'$ under the Jacquet-Langlands map.
+Let $\chi$ be a quadratic character of $k^\times$ such
+that $\left(\frac{\chi}{\pi}\right) = -1$, and denote by $K = k(\sqrt{\xi})$ the field corresponding to $\chi$.
+Put
+\[
+\sigma_1 = \theta(\pi \otimes \chi, \psi^{\xi}),\qquad \sigma = \theta(\pi, \psi).
+\]
+Waldspurger has proved that 
+\[
+\sigma_1\begin{pmatrix}
+    -1 & 0 \\ 0 & -1
+\end{pmatrix} = \left(\frac{\chi}{\pi}\right) \sigma\begin{pmatrix}
+    -1 & 0 \\ 0 & -1
+\end{pmatrix}.
+\]
+Since $\left(\frac{\chi}{\pi}\right) = -1$, $\sigma_1 \neq \sigma$.
+This means that $\sigma$ does not admit a $\psi^\xi$-linear functional, for if it did, $\theta(\sigma, (\psi^{\xi})^{-1}) \neq 0$, so $\theta(\sigma_1, (\psi^{\xi})^{-1}) = \theta(\sigma, \psi^{-1}) \otimes \chi_\xi$ which would imply $\sigma_1 = \sigma$, a contradiction.
+Now, Theorem \ref{thm:2.3} tells us that $\theta'(\sigma, (\psi^{\xi})^{-1}) \neq 0$ and so $\theta(\pi', \psi^{\xi}) \neq 0$ which means $\pi'$ is spherical.
+\end{proof}
+
+The next theorem defines Waldspurger's involution.
+
+\begin{theorem}[\cite{waldspurger91quaternion}]
+\label{thm:2.4}
+Let $\sigma$ be an irreducible representation of $\widetilde{\SL}_2$, and let $\psi$ be a character of $k$ such that $\theta(\sigma, \psi) \neq 0$.
+The composition of 3 maps
+\[
+    \sigma \mapsto \theta(\sigma, \psi) = \pi \xmapsto{\JL} \pi' \mapsto \theta(\pi', \psi^{-1})
+\]
+(where $\JL$ means the Jacquet-Langlands map) is independent of $\psi$ and defines an involution.
+\end{theorem}
+
+Finally, it is not difficult to prove
+\begin{theorem}
+\label{thm:2.5}
+If $\pi = \theta(\sigma, \psi) \neq 0$, then
+\[
+\theta(\pi \otimes \chi_\xi, \psi^\xi) = \begin{cases} \sigma & \text{if } \left(\frac{\chi_\xi}{\pi}\right) = 1 \\
+\sigma^W & \text{if } \left(\frac{\chi_\xi}{\pi}\right) = -1\end{cases}
+\]
+where $\chi_\xi$ is the character associated to $k(\sqrt{\xi})$.
+\end{theorem}
