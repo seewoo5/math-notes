@@ -24,3 +24,9 @@ List of notes:
 * Miscellaneous
     * Probabilities in poker game
     * Similarity of matrices and field extension
+
+### ReTeX-ed articles
+
+I re-TeXed some of the existing articles with old typesets for my own study. Let me know if there are any issues.
+
+* I. Piatetski-Shapiro, *Work of Waldspurger*, Lie group representations, II (College Park, Md., 1982/1983), 280–302. Lecture Notes in Math., 1041 Springer-Verlag, Berlin, 1984
