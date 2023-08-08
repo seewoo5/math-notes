@@ -1,0 +1,107 @@
+\section{Automorphic Forms on $\widetilde{\SL}_2$}
+\label{sec:1}
+
+Let $k$ be a global field.
+The ad\'ele group $\SL_2(\bA)$ has a unique non-trivial two-fold covering $\widetilde{\SL}_2(\bA)$:
+\[
+1 \to \{\pm 1\} \to \widetilde{\SL}_2(\bA) \to \SL_2(\bA) \to 1.
+\]
+There is a unique embedding of $\SL_2(k)$ into $\widetilde{\SL}_2(\bA)$ such that the following diagram commutes.
+
+\begin{center}
+\begin{tikzcd}
+ & \widetilde{\SL}_2(\bA) \arrow[d] \\
+\SL_2(k) \arrow[r] \arrow[ru] & \SL_2(\bA)
+\end{tikzcd}
+\end{center}
+
+This means covering splits over $\SL_2(k)$.
+Similarly, there is an embedding of $N(\bA)$ into $\widetilde{\SL}_2(\bA)$, where $N$ is the upper unipotent subgroup of $\SL_2$.
+
+Let $A_0$ denote the space of genuine cuspidal functions on $\widetilde{\SL}_2(\bA)$.
+In particular, if $f \in A_0$, then
+
+\begin{enumerate}
+    \item $f(\xi \gamma g) = \xi f(g)$ \qquad ($\xi \in \{ \pm 1 \}, \gamma \in \SL_2(k), g \in \widetilde{\SL}_2(\bA)$)
+\end{enumerate}
+
+Under right translation, $A_0$ decomposes discretely into a countable number of irreducible subspaces.
+An irreducible representation of $\widetilde{\SL}_2(\bA)$ which occurs in $A_0$ is called a genuine automorphic cuspidal
+representation.
+Let $A_{00}$ denote the subspace of forms in $A_0$ orthogonal to the Weil representations of $\widetilde{\SL}_2(\bA)$.
+
+\begin{theorem}[Multiplicity One \cite{waldspurger80shimura}]
+The multiplicity of an irreducible genuine automorphic cuspidal representation in $A_{00}$ is one.
+\end{theorem}
+\begin{remark*}
+If a is a genuine irreducible automorphic cuspidal representation lying in a Weil representation of $\widetilde{\SL}_2(\bA)$, then multiplicity one is obvious.
+\end{remark*}
+
+If $\psi$ is a character of $k \backslash \bA$, and $f \in A_{00}$, the $\psi$-Fourier coefficient of $f$ is defined to be
+\[
+f_\psi(g) = \int_{k \backslash \bA} f\left(\begin{pmatrix} 1 & n \\ & 1\end{pmatrix}g\right) \psi(n) \dd n \qquad (g \in \widetilde{\SL}_2(\bA))
+\]
+The multiplicity result follows from the uniqueness of Whittaker models for $\widetilde{\SL}_2(\bA)$, and the following result of Waldspurger.
+
+\begin{theorem}[\cite{waldspurger81demientier,waldspurger84shimura}]
+\label{thm:1.2}
+Let $(\sigma, V)$ be a genuine irreducible automorphic cuspidal representation of $\widetilde{\SL}_2(\bA)$.
+If $v \mapsto \varphi(v)$ ($v \in V, \varphi(v) \in A_{00}$)
+is an embedding of $(\sigma, V)$ into $A_{00}$, then the vanishing of the $\psi$-Fourier coefficient $\varphi(v)_\psi$ depends only on $(\sigma, V)$ as an abstract representation, and not on the embedding $\varphi$.
+\end{theorem}
+
+
+\begin{proof}[Proof of the multiplicity one]
+Suppose $v \mapsto \varphi'(v)$ and $v \mapsto \varphi''(v)$
+($v \in v$) are two distinct embeddings of an irreducible genuine automorphic cuspidal representation $(\sigma, V)$ into $A_0$.
+We may select a character $\psi$ of $k \backslash \bA$ so that the $\psi$-Fourier coefficient $\varphi'(v)_\psi$ does
+not vanish for some $v \in V$.
+Let us consider the $\psi$-Fourier coefficient
+$\varphi''(v)_\psi$.
+If $\varphi''(v)_\psi$ vanishes, then Theorem \ref{thm:1.2} says $\varphi'(v)_\psi$ must also vanish, a contradiction.
+If $\varphi''(v)$ does not vanish, then the uniqueness of Whittaker models for $\widetilde{\SL}_2(\bA)$ tells us that $\varphi''(v) = c\varphi'(v)$ for some constant c.
+Since $\varphi'$ and $\varphi''$ are assumed to be distinct
+embeddings of $(\sigma, V)$ into $A_{00}$, the map $w \mapsto \varphi''(w) - c\varphi'(w)$ is a non-trivial embedding of 
+ $(\sigma, V)$ into $A_{00}$.
+The $\psi$-Fourier coefficient of $\varphi''(v) - c\varphi'(v)$ vanishes.
+This again contradicts Theorem \ref{thm:1.2}; therefore $(\sigma, V)$ must occur in $A_{00}$ with multiplicity one.
+\end{proof}
+
+Two irreducible genuine automorphic cuspidal representations of $\widetilde{\SL}_2(\bA)$, $\sigma = \otimes_v \sigma_v$ and $\sigma' = \otimes_v \sigma_{v}'$, are said to be nearly equivalent if $\sigma_v \simeq \sigma_v'$ for almost all places $v$.
+Let $\ell(\sigma)$ denote the set of irreducible genuine automorphic cuspidal representations nearly equivalent to $\sigma$.
+$\ell(\sigma)$, of course, just measures departure from strong multiplicity one.
+In order to determine the set $\ell(\sigma)$, Waldspurger
+has defined an involution $\sigma \mapsto \sigma^W$ whenever $\sigma$ is a discrete series representation of $\widetilde{\SL}_2(k_v)$.
+If $\sigma = \otimes_v \sigma_v \subset A_{00}$, define
+\[
+\Sigma = \{ v: \sigma_v\text{ is a discrete series representation}\}.
+\]
+If $M \subseteq \Sigma$, and $|M|$ is even, put
+\[
+\sigma^M = \otimes_v \sigma_v^M \text{ where } \sigma_v^M = \begin{cases} \sigma_v & \text{if }v\in M \\ \sigma_V^W & \text{if }v \not\in M.\end{cases}
+\]
+
+The relationship of the $\sigma^M$'s and $\ell(\sigma)$ is given in the following theorem.
+
+\begin{theorem}[\cite{waldspurger91quaternion}]
+\label{thm:1.3}
+Any representation in $\ell(\sigma)$ is of the form $\sigma^M$ for some $M \subseteq \Sigma$.
+\end{theorem}
+
+\begin{corollary}
+$|\ell(\sigma)| = 2^{|\Sigma| - 1}$.
+\end{corollary}
+
+\begin{remark*}
+Recall that $\left(\begin{smallmatrix}
+    -1 & 0 \\ 0 & -1
+\end{smallmatrix}\right)$ lies in the center of $\widetilde{\SL}_2(k_v)$.
+Waldspurger has shown that $\sigma_v^M\left(\begin{smallmatrix}
+    -1 & 0 \\ 0 & -1
+\end{smallmatrix}\right) = - \sigma_v\left(\begin{smallmatrix}
+    -1 & 0 \\ 0 & -1
+\end{smallmatrix}\right)$.
+Since $\left(\begin{smallmatrix}
+    -1 & 0 \\ 0 & -1
+\end{smallmatrix}\right) \in \SL_2(k)$, it follows that if $M \subseteq \Sigma$ has an odd number of elements, $\sigma^M$ cannot be an automorphic representation.
+\end{remark*}
