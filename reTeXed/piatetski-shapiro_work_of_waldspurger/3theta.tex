@@ -20,7 +20,7 @@ If $f \in \pi \subset A_0$, put
 \varphi(h) := \int_{G(k) \backslash G(\bA)} \vartheta_\psi^\phi(g, h) f(g) \dd g.
 \]
 In the case $G = \rP D^\times$, we assume that $\int_{G(k)\backslash G(\bA)} f(g) \dd g = 0$.
-The fact that $\vartheta_\psi^\phi$ is a function of moderate grwoth on $(G(k) \times \SL_2(k)) \backslash (G(\bA) \times \widetilde{SL}_2(\bA))$ means that the integral is well-defined, and that $\varphi$ is a function on $\SL_2(k) \backslash \widetilde{\SL}_2(\bA)$.
+The fact that $\vartheta_\psi^\phi$ is a function of moderate grwoth on $(G(k) \times \SL_2(k)) \backslash (G(\bA) \times \widetilde{\SL}_2(\bA))$ means that the integral is well-defined, and that $\varphi$ is a function on $\SL_2(k) \backslash \widetilde{\SL}_2(\bA)$.
 
 \begin{claim}
 $\varphi$ is a cusp form.
@@ -33,10 +33,10 @@ It is enough to show that $\int_{k\backslash \bA} \varphi\left(\begin{smallmatri
 \begin{align*}
 \int_{k \backslash \bA} \varphi \begin{pmatrix}
     1 & z \\ 0 & 1
-\end{pmatrix} \dd z &= \int_{k \backslash \bA} \int_{G(k) \backslash G(\bA)}  \sum_{x \in X(k)} \omega_\psi\left(g \begin{pmatrix}
+\end{pmatrix} \dd z &= \int_{k \backslash \bA} \int_{G(k) \backslash G(\bA)}  \sum_{x \in X_1(k)} \omega_\psi\left(g, \begin{pmatrix}
     1 & z \\ 0 & 1
 \end{pmatrix}\right)\phi(x) f(g) \dd g \dd z \\
-&= \int_{G(k) \backslash G(\bA)} \sum_{x \in X(k)} \omega_\psi(g) \phi(x) f(g) \int_{k \backslash \bA} \psi(z q(x)) \dd z \dd g.
+&= \int_{G(k) \backslash G(\bA)} \sum_{x \in X_1(k)} \omega_\psi(g, 1) \phi(x) f(g) \int_{k \backslash \bA} \psi(z q(x)) \dd z \dd g.
 \end{align*}
 The inner integral $\int_{k \backslash \bA} \psi(z q(x)) \dd z$ is zero unless $q(x) = 0$.
 If $G = \rP D^\times$, then $q(x) = 0$ if and only if $x = 0$, and the integral becomes
@@ -50,10 +50,10 @@ If $G = \PGL_2$, then $q(x)=0$ means either $x = 0$ or $x$ is a non-zero nilpote
     \int_{k \backslash \bA} \varphi \begin{pmatrix}
         1 & z \\ 0 & 1
     \end{pmatrix} \dd z &= \int_{G(k) \backslash G(\bA)} \phi(0) f(g) \dd g \\
-    &+ \int_{G(k) \backslash G(\bA)} \sum_{N(k) \backslash G(k)} \phi \left(g^{-1} \gamma^{-1} \begin{pmatrix}
+    &+ \int_{G(k) \backslash G(\bA)} \sum_{\gamma \in N(k) \backslash G(k)} \phi \left(g^{-1} \gamma^{-1} \begin{pmatrix}
         0 & 1 \\ 0 & 0
     \end{pmatrix} \gamma g\right) f(g) \dd g \\
-    &= 0 + \int_{N(\bA) \backslash G(\bA)} \phi(g^{-1} xg) f(\gamma^{-1} g) \dd g \\
+    &= 0 + \int_{N(k) \backslash G(\bA)} \phi(g^{-1} xg) f(\gamma^{-1} g) \dd g \\
     &= \int_{N(\bA) \backslash G(\bA)} \omega_\psi(g) \phi(x) \int_{N(k) \backslash N(\bA)} f(ng) \dd n \dd g = 0.
 \end{align*}
 Here $N$ is centralizer in $G$ of $\left(\begin{smallmatrix}
@@ -87,7 +87,7 @@ Put
 \[
 U(f, g) := \int_{T^a(k) \backslash T^a(\bA)} f(tg) \dd t\qquad (g \in G(\bA), f \in \pi).
 \]
-The function $U(f, -)$ satisfies the property $U(f, tg) = U(f, g)$ for $t \in T^a(\bA)$, and the linear function $\ell: f \mapsto U(f, 1)$ is a linear functional on $(f\in \pi)$ for which $\ell(\pi(t)f) = \ell(f)$ ($t \in T^a(\bA)$).
+The function $U(f, -)$ satisfies the property $U(f, tg) = U(f, g)$ for $t \in T^a(\bA)$, and the linear function $\ell: f \mapsto U(f, 1)$ is a linear functional on $\{f\in \pi\}$ for which $\ell(\pi(t)f) = \ell(f)$ ($t \in T^a(\bA)$).
 Locally, such a linear functional is unique, hence $\ell$ is globally unique and
 \[
 U(f, -) = \otimes_v U_v(-),
@@ -103,7 +103,7 @@ W_{\psi^a}(h) := \int_{T^a \backslash G_v} \omega_{\phi, v}(g, h) \phi(x_a) U(g)
 \]
 then $W_{\psi^a}\left(\left(\begin{smallmatrix}
     1 & z \\ 0 & 1
-\end{smallmatrix}\right)h\right) = \psi_v(za) W_{\psi_a}(h)$.
+\end{smallmatrix}\right)h\right) = \psi_v(za) W_{\psi^a}(h)$.
 \end{proof}
 
 \begin{theorem}[\cite{waldspurger80shimura}]
@@ -122,7 +122,7 @@ Let $G = \PGL_2$. Suppose $\sigma \subset A_{00}$, and $\pi$ is an automorphic c
 \end{theorem}
 
 \begin{proof}
-In order to prove this theroem, we must use a polarization for which the usual subgroups of $\PGL_2(\bA)$ and $\widetilde{\SL}_2(\bA)$ lie inside $P$.
+In order to prove this theorem, we must use a polarization for which the usual subgroups of $\PGL_2(\bA)$ and $\widetilde{\SL}_2(\bA)$ lie inside $P$.
 As before, let $M$ be the elements of $M_2(k)$ of trace zero, and let $q(m) = -\det(m)$.
 Let $Y$ be a 2-dimensional symplectic vector spcaes over $k$ with form $\langle\,,\,\rangle$ and symplectic basis $y_1, y_2$.
 Let $e_1, e_2, e_3$ be a basis of $M$ such that $q$ has the matrix $\left(\begin{smallmatrix}
@@ -143,7 +143,7 @@ where
 \end{align*}
 In the formula for $F_2$, $\omega_\psi'$ is the 1-dimensional Weil representation.
 \begin{align*}
-    f(1) &= \int_{\SL_(k) \backslash \SL_2(\bA)} \phi_1(0) F_2(h) \varphi(h) \dd h + \int_{N(k) \backslash \SL_2(\bA)} \phi_1(y_2 h) F_2(h) \varphi(h) \dd h.
+    f(1) &= \int_{\SL_2(k) \backslash \SL_2(\bA)} \phi_1(0) F_2(h) \varphi(h) \dd h + \int_{N(k) \backslash \SL_2(\bA)} \phi_1(y_2 h) F_2(h) \varphi(h) \dd h.
 \end{align*}
 Since $\sigma \in A_{00}$, and $F_2$ lies in the space of the Weil representation of $\widetilde{\SL}_2(\bA)$, the first integral is zero.
 It follows that $\theta(\sigma, \psi^{-1}) \neq 0$ if and only if the second integral does not vanish identically.
@@ -157,20 +157,20 @@ Since $\phi_1(y_2 nh) = \phi_1(y_2 h)$ and $\omega_\psi'(nh) \phi_2(t) = \psi(t^
 \[
 f(1) = \sum_{t \in k} \int_{N(\bA) \backslash \SL_2(\bA)} \phi_1(y_2 h) \omega_\psi'(h) \phi_2(t) \varphi_{\psi^{t^2}}(h) \dd h.
 \]
-Thus, if $\theta(\sigma, \psi^{-1}) \neq 0$, then there exists a $t$ for which $\varphi_{t^2}$ is non-zero.
+Thus, if $\theta(\sigma, \psi^{-1}) \neq 0$, then there exists a $t$ for which $\varphi_{\psi^{t^2}}$ is non-zero.
 This means $\sigma$ possesses a non-zero $\psi$-Fourier coefficient.
 Conversely, now suppose $\sigma$ possesses a non-vanishing $\psi$-Fourier coefficient.
 Let
 \begin{align*}
     f_t(1) &= \int_{N(\bA) \backslash \SL_2(\bA)} \phi_1(y_2 h) \omega_\psi'(h) \phi_2(t) \varphi_{\psi^{t^2}}(h) \dd h \\
-    &= \int_{N(\bA) \backslash \SL_2(\bA)} \omega_\psi(h) \phi(y_2, t)  \varphi_{\psi^{t^2}}(h) \dd h.
+    &= \int_{N(\bA) \backslash \SL_2(\bA)} \omega_\psi(1, h) \phi(y_2, t)  \varphi_{\psi^{t^2}}(h) \dd h.
 \end{align*}
 The latter formula allows us to define $f_t(1)$ for arbitrary $\phi$.
 In this situation, we still have $f(1) = \sum_{t \in k^\times} f_t(1)$. ($f_0(1) = 0$, since $f$ is a cusp form).
 Let $N$ be the unipotent subgroup of $\PGL_2$.
 For $n \in N$
 \[
-\omega_\psi(n) \phi(y_2, t) = \psi(tn) \phi(y_2, t).
+\omega_\psi(1, n) \phi(y_2, t) = \psi(tn) \phi(y_2, t).
 \]
 It follows form this formula that $f_t(1)$ is a Fourier coefficient of $f$.
 Therefore, if $\varphi_\psi \neq 0$, then $f_t(1) \neq 0$ and so $\theta(\sigma, \psi^{-1}) \neq 0$.

@@ -21,8 +21,11 @@ Similarly, there is an embedding of $N(\bA)$ into $\widetilde{\SL}_2(\bA)$, wher
 Let $A_0$ denote the space of genuine cuspidal functions on $\widetilde{\SL}_2(\bA)$.
 In particular, if $f \in A_0$, then
 
-\begin{enumerate}
+\begin{enumerate}[label=\roman*)]
     \item $f(\xi \gamma g) = \xi f(g)$ \qquad ($\xi \in \{ \pm 1 \}, \gamma \in \SL_2(k), g \in \widetilde{\SL}_2(\bA)$)
+    \item $\int_{k\backslash \bA} f\left(\left(\begin{smallmatrix}
+        1 & n \\ 0 & 1
+    \end{smallmatrix}\right)g\right) \dd n = 0$.
 \end{enumerate}
 
 Under right translation, $A_0$ decomposes discretely into a countable number of irreducible subspaces.
@@ -34,7 +37,7 @@ Let $A_{00}$ denote the subspace of forms in $A_0$ orthogonal to the Weil repres
 The multiplicity of an irreducible genuine automorphic cuspidal representation in $A_{00}$ is one.
 \end{theorem}
 \begin{remark*}
-If a is a genuine irreducible automorphic cuspidal representation lying in a Weil representation of $\widetilde{\SL}_2(\bA)$, then multiplicity one is obvious.
+If $\sigma$ is a genuine irreducible automorphic cuspidal representation lying in a Weil representation of $\widetilde{\SL}_2(\bA)$, then multiplicity one is obvious.
 \end{remark*}
 
 If $\psi$ is a character of $k \backslash \bA$, and $f \in A_{00}$, the $\psi$-Fourier coefficient of $f$ is defined to be
@@ -59,7 +62,7 @@ not vanish for some $v \in V$.
 Let us consider the $\psi$-Fourier coefficient
 $\varphi''(v)_\psi$.
 If $\varphi''(v)_\psi$ vanishes, then Theorem \ref{thm:1.2} says $\varphi'(v)_\psi$ must also vanish, a contradiction.
-If $\varphi''(v)$ does not vanish, then the uniqueness of Whittaker models for $\widetilde{\SL}_2(\bA)$ tells us that $\varphi''(v) = c\varphi'(v)$ for some constant c.
+If $\varphi''(v)$ does not vanish, then the uniqueness of Whittaker models for $\widetilde{\SL}_2(\bA)$ tells us that $\varphi''(v)_\psi = c\varphi'(v)_\psi$ for some constant $c$.
 Since $\varphi'$ and $\varphi''$ are assumed to be distinct
 embeddings of $(\sigma, V)$ into $A_{00}$, the map $w \mapsto \varphi''(w) - c\varphi'(w)$ is a non-trivial embedding of 
  $(\sigma, V)$ into $A_{00}$.
@@ -78,7 +81,7 @@ If $\sigma = \otimes_v \sigma_v \subset A_{00}$, define
 \]
 If $M \subseteq \Sigma$, and $|M|$ is even, put
 \[
-\sigma^M = \otimes_v \sigma_v^M \text{ where } \sigma_v^M = \begin{cases} \sigma_v & \text{if }v\in M \\ \sigma_V^W & \text{if }v \not\in M.\end{cases}
+\sigma^M = \otimes_v \sigma_v^M \quad \text{where}\quad \sigma_v^M = \begin{cases} \sigma_v & \text{if }v\not\in M \\ \sigma_V^W & \text{if }v \in M.\end{cases}
 \]
 
 The relationship of the $\sigma^M$'s and $\ell(\sigma)$ is given in the following theorem.
