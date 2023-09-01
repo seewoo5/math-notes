@@ -1,0 +1,30 @@
+\section{The Local Conjectures}
+
+\subsection{The groups}
+
+Let $E/F$ be a quadratic extension of local fields of characteristic zero.
+We therefore have either $E/F = \bC / \bR$ or that $E$ and $F$ are finite extensions of the field of $p$-adic numbers $\bQ_p$ for a certain prime number $p$ ($\bQ_p$ is the completion of $\bQ$ by the $p$-adic absolute value $|\cdot|_p$ defined by $|p^k \frac{a}{b}|
+_p = p^{-k}$ for $a$ and $b$ integers prime to $p$).
+We denote by $\sigma$  the unique non-trivial element of the Galois
+group $\Gal(E/F)$ and $\sgn_{E/F}$ the quadratic character of $F$ associated with the extension $E/F$ by the class field theory (it is therefore the unique quadratic character with kernel $\rN_{E/F}(E^\times)$, the image of the norm map).
+Finally, we will fix two non-trivial additive characters $\psi_0: F \to \bS^1$ and $\psi: E \to \bS^1$ with the property that $\psi$ is trivial on $F$.
+
+Let $V$ be a finite dimensional vector space of dimension $n$ over $E$ and $\varepsilon \in \{ \pm 1 \}$.
+We assume $V$ is equipped with a non-degenerate $\varepsilon$-hermitian form
+\[
+    \langle -, -\rangle: V \times V \to E.
+\]
+By definition a $\varepsilon$-hermitian form satisfies
+\begin{align*}
+    \langle \lambda v + \mu w, u \rangle &= \lambda \langle v, u \rangle + \mu \langle w, u \rangle \\
+    \langle v, u \rangle &= \varepsilon \langle u, v \rangle^\sigma
+\end{align*}
+for all $u, v, w \in V$ and $\lambda, \mu \in E$.
+Depending on whether $\varepsilon = 1$ or $-1$ we call it hermitian or skew-hermitian.
+Let $W$ be a non-detenerate subspace of $V$ with
+\[
+    \dim(V) - \dim(W) = \begin{cases} 1 &\text{if }\varepsilon = 1 \\ 0 & \text{if } \varepsilon = -1. \end{cases}
+\]
+Let $\rU(V) \subset \GL(V)$ and $\rU(W) \subset \GL(W)$ be the algebraic subgroups (defined over $F$) of linear automorphisms of $V$ and $W$ preserving the form $\langle -, - \rangle$.
+Then $\rU(V)$ and $\rU(W)$ are unitary groups and we have a natural embeddign $\rU(W) \hookrightarrow \rU(V)$ where $\rU(W)$ acts trivially on $W^\perp$ (which of dimension at most 1).
+In the following we will (abusively) identify an algebraic group defined on $F$ with the group of $F$-points corresponding to it.
