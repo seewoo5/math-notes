@@ -36,3 +36,60 @@ We then have a natural identifications $\rU(V) \simeq \GL(V_0)$ and $\rU(W) \sim
 In all cases, we put $G = \rU(W) \times \rU(V)$, $H = \rU(W)$ and we embed $H$ into $G$ diagonally.
 The groups $H$ and $G$ inherit from the field $F$ topologies which make them Lie groups in the archimedean case (i.e. when $F = \bR$) and locally profinite groups in the non-archimedean case (i.e. when $F$ is a finite extension of $\bQ_p$; recall that a topological group is locally profinite if it has a basis of neighborhoods of the identity element consist of compact subgroups).
 
+
+\subsection{The restriction problem}
+
+Let $(\pi, \scV)$ be a smooth and irreducible complex representation of $G$.
+In the $p$-adic case, this means that $\pi$ is a representation of $G$ on a $\bC$-vector space $\scV$ (typically of infinite dimension) all of whose vectors have a open stabilizer, irreducibility is then
+an algebraic notion (i.e. no non-trivial subspace stable under $G$).
+In the archimedean case, this means that $\scV$ is a Fréchet space and that $\pi$ is a smooth representation (in the $C^\infty$ sense), admissible (i.e. the irreducible representations of a maximal compact subgroup appear with finite multiplicities) on $\scV$ satisfying a certain condition of “moderate growth” (which was introduced by Casselman and Wallach, see \cite{casselman1989canonical} and \cite{wallachreal} Chap. 11); irreducibility is then a topological notion (ie no non-trivial closed subspace stable by $G$).
+In any case, such an irreducible representation decomposes as a tensor product $\pi = \pi_W \boxtimes \pi_V$ where $\pi_W$ and $\pi_V$ are irreducible (smooth) representations of $\rU(W)$ and $\rU(V)$ respectively (and where the tensor product is a topological tensor product in the archimedean case).
+We will denote as $\Irr(G)$ for the set of isomorphism classes of smooth irreducible representations of $G$.
+
+To define the restriction problem that will interest us, we must also introduce a certain “small” representation $\nu$ of $H$.
+In the hermitian case (i.e. if $\varepsilon = 1$), $\nu$ is the trivial representation that we will denote as $1$ or simply $\bC$ in the following.
+In the skew-hermitian case (i.e. if $\varepsilon = -1
+$), we have an inclusion
+\[
+    \rU(W) \subset \Sp(\Res_{E/F}W)
+\]
+where $\Res_{E/F}W$ denotes the restriction of the scalars from $E$ to $F$ of $W$ equipped with the symplectic form $\Tr_{E/F} \circ \langle -, -\rangle$ and $\Sp(\Res_{E/F}W)$ denotes the corresponding symplectic group.
+Let $\Mp(\Res_{E/F}W)$ be the metaplectic group associated with this symplectic space (it is a $\bZ/2\bZ$-extension of $\Sp(\Res_{E/F}W)$).
+The metaplectic covering splits over $\rU(W)$ but this splitting is not unique (because there are non-trivial characters $\rU(W) \to \{\pm 1\}$).
+We can, however, fix such a splitting by choosing a character $\mu: E^\times \to \bS^1$ with $\mu|_{F^\times} = \sgn_{E/F}$ from now on.
+Let $\omega_{\psi_0, W}$ be the Weil representation of $\Mp(\Res_{E/F} W)$ associated to the character $\psi_0$ (c.f. \cite{moeglin2006correspondances} Chap. 2. II).
+Then $\nu = \omega_{\psi_0, W, \mu}$ is the restriction of this Weil representation to $\rU(W)$ via the splitting that we have just fixed.
+
+For every case, the space of intertwining maps which is of our interest is the following
+\begin{equation}
+    \label{eqn:2}
+    \Hom_H(\pi, \nu)
+\end{equation}
+where implicitly we only consider the continuous maps in the archimedean case (for the underlying Fr\'echet topologies).
+We denote $m(\pi)$ for the dimension of this space
+\[
+    m(\pi):= \dim \Hom_H(\pi, \nu).
+\]
+Note that in the hermitian case we have identifications
+\[
+    \Hom_H(\pi, \nu) = \Hom_{\rU(W)}(\pi_W \boxtimes \pi_V, \bC) = \Hom_{\rU(W)}(\pi_V, \pi_W^\vee)
+\]
+where $\pi_W^\vee$ denotes the (smooth) contragredient representation of $\pi_W$.
+
+An element of space \eqref{eqn:2} is called a Bessel functional if $\varepsilon = 1$ and a Fourier-Jacobi functional if $\varepsilon =-1$.
+We will then talk in parallel about the Bessel and Fourier-Jacobi cases of the conjecture.
+
+
+\subsection{Multiplicity $1$}
+
+The following theorem is due to Aizenbud--Gourevitch--Rallis--Schiffmann \cite{aizenbud2010multiplicity} and Sun \cite{sun2012multiplicity} in the $p$-adic case and to Sun--Zhu \cite{sun2012multiplicityarchimedean} in the archimedean case.
+
+\begin{theorem}
+For any smooth irreducible representations $\pi$ of $G$ we have
+\[m(\pi) \leq 1.\]
+\end{theorem}
+
+The local Gan--Gross--Prasad conjecture then essentially provides an answer to the following simple question: when do we have $m(\pi) = 1$? 
+Just as for the law of branching between real compact unitary groups discussed in the introduction, any comprehensible answer to this question requires knowing how to parameterize the (isomorphism classes of) irreducible representations of $G$.
+Such a parameterization is precisely the object of the local Langlands correspondence (for unitary groups) whose main properties we now recall.
+
