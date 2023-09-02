@@ -21,3 +21,60 @@ Fix a model of $G$ on $\scO_k[1/N]$ for some integer $N \geq 1$ where $\scO_k$ d
 Then for almost all place $v \in |k|$, the group of points $G(\scO_v)$ of this model over $\scO_v$ is a maximal compact subgroup of $G(k_v)$ and $G(\bA)$ is the restricted product of $G(k_V)$, $v \in |k|$ with respect to $G(\scO_v)$ which is the set of families $(g_v)_{v \in |k|}$ with $g_v \in G(k_v)$ for all $v \in |k|$ and $g_v \in G(\scO_v)$ for almost all $v \in |k|$.
 A similar description obviously applies to $H(\bA)$.
 
+
+\subsection{Automorphic forms and periods}
+
+Recall that the automorphic forms on $G(\bA)$ is a function $\varphi: G(\bA)\to \bC$ satisfying the following conditions:
+\begin{itemize}
+    \item[--] $\varphi$ is left invariant by $G(k)$.
+    \item[--] $\varphi$ is right invariant by an open compact subgroup $K_f \subset G(\bA_f)$.
+    \item[--] For all $g \in G(\bA)$ the function $g_\infty \in G(k_\infty) \mapsto \varphi(gg_\infty)$ is $C^\infty$, in particular we have an action of Lie algebra $\frg_\infty$ of $G(k_\infty)$ on $\varphi$ by $(X.\varphi)(g) = \frac{\dd}{\dd t}\varphi(g e^{tX})|_{t=0}$ that extends to the complexified universal enveloping algebra $\scU(\frg_\infty)$.
+    \item[--] $\varphi$ satisfies a certain \emph{moderate growth} at infinity (cf. \cite{moeglin1994decomposition} \S 1.2.3).
+\end{itemize}
+
+We denote by $\scA(G)$ the space of automorphic forms over $G(\bA)$.
+Let us point out that the definition above differs from the one usually admitted which imposes an additional condition of $K_\infty$-finitness where $K_\infty$ is a maximal compact subgroup of $G(k_\infty)$ fixed in advance.
+This definition has however the advantage of providing a stable space $\scA(G)$ under the right translation action of $G(\bA)$ (whereas with the usual definition one only obtains a structure of $(\frg_\infty, K_\infty)$-module at archimedean places) and seems more natural for the questions we are going to discuss.
+We denote $\scA_\cusp(G) \subset \scA(G)$ the subspace of cusp forms, i.e. automorphic forms which are rapidly decreasing as well as all their derivatives (in a sense which we will not make precise here).
+This space is stable under the action by the right translation of $G(\bA)$ and admits a decomposition
+\[
+    \scA_\cusp(G) = \bigoplus_\pi \pi
+\]
+as a direct sum of irreducible representations of $G(\bA)$.
+Each of these irreducible representations decomposes as a restricted tensor product $\pi = \otimes_{v \in |k|}' \pi_v$.
+More precisely, there exists a family of smooth irreducible representations $(\pi_v)_{v \in |k|}$ of local groups $G(k_v)$ that are unramified at almost all places $v \in |k|$ (which means $\pi_v^{G(\scO_v)} \neq 0$ and it is one-dimensional by the \emph{Satake isomorphis}) and the nonzero vectors $\varphi_v^\circ \in \pi_v^{G(\scO_v)}$ such that $\pi$ is isomorphic to the natural representation of $G(\bA)$ on
+\[
+    \lim_{\substack{\longrightarrow \\ S}} \bigotimes_{v \in S}\pi_v
+\]
+where the limit is over the sufficiently ``large'' finite sets of places of $k$ (i.e. containing the archimedean places and the ramified finite places) and the transition maps $\bigotimes_{v \in S} \pi_v \to \bigotimes_{v \in T} \pi_v$ for $S \subset T$ are defined by $\varphi_S \mapsto \varphi_S \otimes \bigotimes_{v \in T\backslash S} \varphi_v^\circ$ (to be precise, one needs to consider topological tensor products at archimedean places).
+
+The constructions of section 1.2 provide for every $v$ a representation $\nu_v$ of the local group $H(k_v)$ (the trivial representation in the hermitian case and a certain Weil representation in the skew-hermitian case).
+We can form their restricted tensor product $\nu = \otimes_v' \nu_v$ and it turns out that there exists a natural realization $\nu \hookrightarrow \scA(H)$ in the space of automorphic forms on $H$ (in the hermitian case the trivial representation is realized
+as the space of constant functions on $H(k) \backslash H(\bA)$ while in the skew-hermitian case $\nu$ is a certain global Weil representation and the embedding $\nu \hookrightarrow \scA(H)$ is obtained via the
+theta series).
+In particular, in the skew-hermitian case we must choose local data $(\psi_{0, v}, \mu_v)$ for all $v \in |k|$ as in 1.2 in order to specify the representations $\nu_v$.
+To obtain the embedding $\nu \hookrightarrow \scA(H)$ we must assume  that these local data come by localization of global characters $\psi_0: \bA/k \to \bC^\times$ and $\mu: \bA^\times_{k'} / (k')^\times \to \bC^\times$.
+
+We define an \emph{automorphic period}
+\[
+    \cP_H: \scA_\cusp(G) \otimes \overline{\nu} \to \bC,
+\]
+where $\overline{\nu}$ denotes the complex conjugation of the realization of $\nu$ in $\scA(H)$, by
+\[
+    \cP_H(\varphi \otimes \overline{\theta}) := \int_{H(k) \backslash H(\bA)} \varphi(h) \overline{\theta(h)} \dd h
+\]
+for all $\varphi \in \scA_\cusp(G)$ and $\overline{\theta} \in \overline{\nu}$.
+The integral is absolutely convergent due to the rapid decrease of $\varphi$ and the measure $\dd h$ for which we are integrating is a $H(\bA)$-invariant measure which can be obtained as the quotient of a Haar measure on $H(\bA)$ because $H(k)$ is a discrete subgroup.
+For the global Gan--Gross--Prasad conjecture the specific choice of this Haar measure does not matter because we are only interested in questions of non-vanishing of the period.
+On the other hand, this choice matters for the Ichino--Ikeda conjecture which predicts an explicit formula for (the square of) the period above.
+Note that in the hermitian case, the representation $\nu$ being trivial, the period $\cP_H$ is simply the linear form $\scA_\cusp(G) \to \bC$ given by
+\[
+    \cP_H(\varphi) = \int_{H(k) \backslash H(\bA)} \varphi(h) \dd h.
+\]
+In any case, if $\pi \subset \scA_\cusp(G)$ is a cuspidal irreducible representation, the restriction of the preiod $\cP_H$ to $\pi$ defines an element of the space of intertwining maps
+\[
+    \Hom_{H(\bA)}(\pi \otimes \overline{\nu}, \bC) = \Hom_{H(\bA)}(\pi, \nu)
+\]
+which decomposes into a (restricted) tensor product of the local spaces of intertwining maps $\Hom_{H_v}(\pi_v, \nu_v)$ for all $v \in |k|$.
+Thus, a necessary condition for this restriction to be nonzero is that these local spaces is nontrivial (a condition which is itself made explicit by the local conjecture).
+
