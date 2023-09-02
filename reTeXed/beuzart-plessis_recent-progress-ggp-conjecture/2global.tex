@@ -1,0 +1,23 @@
+\section{The Global Conjectures}
+
+
+Through this section we fix a quadratic extension $k'/k$ of number fields.
+We denote the set of places of $k$ as $|k|$ and for all $v \in |k|$ the corresponding completion as $k_v$.
+We also have $k_v' = k' \times_k k_v$.
+Thus $k_v' \simeq k_v \times k_v$ if $v$ splits in $k'$ and $k_V'$ is a unique quadratic extension of $k_v$ otherwise.
+Let $\bA$ the ring of ad\`eles of $k$.
+Recall that it is a restricted product of $k_v$ over all places $v \in |k|$ which is the set of families $(x_v)_{v\in |k|}$ with $x_v \in k_v$ for all $v$ and $x_v \in \scO_v$ for almost all non-archimedean $v$ where $\scO_v$ is the ring of integers of $k_v$.
+We have a diagonal embedding $k \hookrightarrow \bA$ and we will also denote $\bA_f$ the ring of finite adeles (i.e. the restricted product of non-archimedean completions of $k$) and $k_\infty = k \otimes_\bQ \bR \simeq \prod_{v|\infty}k_v$ the archimedean part of $\bA$.
+We denote by $\sgn_{k'/k}$ the quadratic character of the id\`ele class group $\bA^\times / k^\times$ associated with, by the class field theory, the extension $k'/k$.
+For all $v \in |k|$, the restriction of $\sgn_{k'/k}$ to $k_v^\times$ coincides with $\sgn_{k_v'/k_v}$ (and it is trivial if $v$ splits in $k'$).
+Let $W \subset V$ be two hermitian or skew-hermitian spaces over $k'$ with
+\[
+    \dim(V) - \dim(W) = \begin{cases} 1 & \text{in the hermitian case} \\ 0 & \text{in the skew-herimitian case},
+    \end{cases}
+\]
+and set $G = \rU(W) \times \rU(V)$, $H = \rU(W)$ (algebraic groups defined over $k$).
+As in the local case we have a ``diagonal'' inclusion $H \hookrightarrow G$ and the group of adelic points $G(\bA)$ is a locally compact group admitting the following more explicit description.
+Fix a model of $G$ on $\scO_k[1/N]$ for some integer $N \geq 1$ where $\scO_k$ denotes the ring of algebraic integers of $k$.
+Then for almost all place $v \in |k|$, the group of points $G(\scO_v)$ of this model over $\scO_v$ is a maximal compact subgroup of $G(k_v)$ and $G(\bA)$ is the restricted product of $G(k_V)$, $v \in |k|$ with respect to $G(\scO_v)$ which is the set of families $(g_v)_{v \in |k|}$ with $g_v \in G(k_v)$ for all $v \in |k|$ and $g_v \in G(\scO_v)$ for almost all $v \in |k|$.
+A similar description obviously applies to $H(\bA)$.
+
