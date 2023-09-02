@@ -256,3 +256,59 @@ This follows from the Langlands classification which makes it possible to obtain
 
 Finally, a Langlands parameter $\phi: \WD_F \to {}^L \rU(V)$ is said to be \emph{discrete} if the centralizer of its image in $\widehat{\rU(V)}$ is finite.
 A discrete parameter is automatically tempered (therefore also generic) and determines an $L$-packet of representations of the discrete series which appear as submodules of $L^2(\rU(V))$.
+
+
+
+\subsection{The conjecture}
+
+
+
+We return to the situation introduced in 1.1 and 1.2.
+Let us call \emph{pure inner form} of $(G, H)$ a pair $(G_\alpha,H_\alpha)$ obtained in the following way.
+Let $\alpha \in \rH^1(F, H)$ and $W_\alpha$ the corresponding (skew-)hermitian space.
+We then set $V_\alpha = W_\alpha \oplus L$, where $L$ is a space such as $V = W \oplus L$, $H = \rU(W_\alpha)$ and $G_\alpha = \rU(W_\alpha) \times \rH(V_\alpha)$.
+We again have an injection $H_\alpha \hookrightarrow G_\alpha$ and we define as in section 1.2 a “small” representation $\nu_\alpha$ of $H_\alpha$ (which depends, like $\nu$, in the Fourier=-Jacobi case on the choices of $\psi_0$ and $\mu$) as well as a multiplicity function $\pi\in \Irr(G_\alpha) \mapsto m(\pi)$ by
+\[
+    m(\pi) = \dim \Hom_{H_\alpha} (\pi, \nu_\alpha).
+\]
+Note that $G_\alpha$ is then a pure inner form of $G$ but that in general we do not obtain all the pure inner forms of $G$ in this way.
+The pure inner forms of $G$ thus obtained will be called \emph{relevant}.
+There always happens to be a relevant pure inner form which is quasi-split.
+By changing our initial pair if needed, we will therefore assume that $G$ itself is quasi-split.
+Then we fix the Langlands correspondence for $\rU(V)$ and $\rU(W)$ (and their pure inner forms) as in 1.4.7.
+
+Let $\phi: \WD_F \to {}^L \rU(V)$ and $\phi': \WD_F \to {}^L \rU(W)$ be two Langlands parameters identified with complex representations $\varphi: \WD_E \to \GL(M)$ and $\varphi': \WD_E \to \GL(N)$ of dimensions $d_V = \dim(V)$ and $d_W = \dim(W)$ and which are $(-1)^{d_V + 1}$- and $(-1)^{d_W + 1}$-conjugate-dual respectively.
+According to Gan, Gross and Prasad, we define two characteristics
+\[
+    \chi_{\phi, \phi'}: S_\phi \to \{ \pm 1\}\text{ and } \chi_{\phi', \phi}:S_{\phi'} \to \{\pm1\}
+\]
+as follows.
+Fix non-degenerate forms $B$ and $B'$ on $M$ and $N$ which are $(-1)^{d_V + 1}$ and $(-1)^{d_W + 1}$-conjugate-dual respectively so we have identifications
+\[
+    S_\phi = \Aut(\varphi, B) / \Aut(\varphi, B)^\circ \text{ and } S_{\phi'} = \Aut(\varphi', B) / \Aut(\varphi', B)^\circ.
+\]
+Let $s \in S_\phi$ and $s' \in S_{\phi'}$, regarding as elements of $\Aut(\varphi, B)$ and $\Aut(\varphi', B')$ respectively.
+In the Bessel case (i.e. $\varepsilon = 1$), we set
+\[
+    \chi_{\phi, \phi'}(s) = \varepsilon\left(\frac{1}{2}, \varphi^{s = -1} \otimes \varphi', \psi_{-2\delta}\right) \text{ and } \chi_{\phi', \phi}(s') = \varepsilon\left(\frac{1}{2}, \varphi \otimes (\varphi')^{s' = -1}, \psi_{-2\delta}\right)
+\]
+where $\varphi^{s=-1}$ (resp. $(\varphi')^{s' = -1}$) denote the subrepresentation of $\varphi$ (resp. $\varphi'$) where $s$ (resp. $s'$) acts as $-1$, $\delta$ is the discriminant of the unique odd-dimensional hermidian space in the pair $(W, V)$ and $\psi_{-2\delta}(x) = \psi(-2\delta x)$.
+In the Fourier-Jacobi case (i.e. $\varepsilon = -1$), we set
+\[
+    \chi_{\phi, \phi'}(s) = \varepsilon\left(\frac{1}{2}, \varphi^{s = -1} \otimes \varphi' \otimes \mu^{-1}, \psi_\lambda\right) \text{ and } \chi_{\phi', \phi}(s) = \varepsilon\left(\frac{1}{2}, \varphi \otimes (\varphi')^{s=-1} \otimes \mu^{-1}, \psi_\lambda\right)
+\]
+where $\mu$ is the multiplicative character of $E^\times$ that we fixed to define the representation $\nu$, $\lambda = 1$ in the case where $\dim(V)$ is even and $\lambda$ is the unique element of $F^\times$ such that $\psi(\lambda x) = \psi_0(\Tr_{E/F}(ex))$ for all $x \in E$ with $e$ the discriminant of the skew-hermitian space $V$ in the case where $\dim(V)$ is odd.
+In any case, we show that the result does not depend on the choices of representatives of $s$ and $s'$ and thus we have defined the characters of $S_\phi$ and $S_{\phi'}$ (\cite{gan2011symplectic} Theorem 6.1).
+
+
+\begin{conjecture}[Gan--Gross--Prasad]
+Let $\phi$ and $\phi'$ be generic Langlands parameters.
+Then
+\begin{enumerate}
+    \item We have $\sum_{\alpha \in \rH^1(F, H)} \sum_{\pi \in \Pi^{G_\alpha}(\phi \times \phi')} m(\pi) = 1$.
+    \item More precisely, for all pair of charaters $(\chi, \chi') \in \widehat{S_\phi} \times \widehat{S_{\phi'}}$ such that $\pi(\phi, \chi) \boxtimes \pi(\phi', \chi')$ is a representation of a pure inner form of $G$, we have
+    \[
+        m(\pi(\phi, \chi) \boxtimes \pi(\phi', \chi')) = 1 \Leftrightarrow \chi = \chi_{\phi, \phi'}\text{ and }\chi = \chi_{\phi', \phi}.
+    \]
+\end{enumerate}
+\end{conjecture}
