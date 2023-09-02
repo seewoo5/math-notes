@@ -93,3 +93,76 @@ The local Gan--Gross--Prasad conjecture then essentially provides an answer to t
 Just as for the law of branching between real compact unitary groups discussed in the introduction, any comprehensible answer to this question requires knowing how to parameterize the (isomorphism classes of) irreducible representations of $G$.
 Such a parameterization is precisely the object of the local Langlands correspondence (for unitary groups) whose main properties we now recall.
 
+
+\subsection{Local Langlands correspondence for unitary groups}
+
+In this section we consider a hermitian or skew-hermitian space $V$ of finite dimension $n$ over $E$ and we denote by $\rU(V)$ the corresponding unitary group.
+
+\subsubsection{Weil-Deligne group}
+
+Let $W_F$ be the Weil group of $F$.
+If $F$ is non-archimedean, we have the following commutative diagram where each row are exact
+\begin{center}
+\begin{tikzcd}
+    1 \arrow[r] & I_F \arrow[r] \arrow[d, equal] &  \Gal(\overline{F} / F) \arrow[r] & \Gal(\overline{k_F} / k_F) \simeq \widehat{\bZ} \arrow[r] & 1 \\
+    1 \arrow[r] & I_F \arrow[r] & W_F \arrow[u] \arrow[r] & \bZ \arrow[r] \arrow[u] & 1
+\end{tikzcd}
+\end{center}
+where $\overline{F}$ is an algebraic closure of $F$, $k_F$ is the residue field of $F$, the isomorphism $\Gal(\overline{k_F} / k_F) \simeq \widehat{\bZ}$ correspond to the choice of the geometric Frobeinus $\Frob_F$ as a topological generator of $\Gal(\overline{k_F} / k_F)$ and $I_F$ is the inertia subgroup (i.e. the kernel of the arrow $\Gal(\overline{F}/ F) \to \Gal(\overline{k_F} / k_F)$).
+We then equip $W_F$ with the topology that mesk $I_F$ as an open subgroup (the topology induced from that of $\Gal(\overline{F} / F)$).
+If $F$ is archimedean, we have
+\[
+    W_F = \begin{cases} \bC^\times \cup \bC^\times j & \text{if }F = \bR \\ \bC^\times & \text{if }F = \bC,
+\end{cases}
+\]
+where $j^2 = -1$ and $jzj^{-1} = \bar{z}$ for all $z \in \bC^\times$.
+The Weil-Deligne group $\WD_F$ of $F$ is defined by 
+\[
+    \WD_F = \begin{cases} W_F \times \SL_2(\bC) & \text{if }F\text{ is non-archimedean} \\ W_F & \text{if }F \text{ is archimedean}. \end{cases}
+\]
+
+
+\subsubsection{Langlands parameters}
+
+Langlands associates with $\rU(V)$, and more generally with any connected reductive group over $F$, an \emph{$L$-group} ${}^L \rU(V)$ that is a semi-direct product of a complex reductive group $\widehat{\rU(V)}$ with the Weil group $W_F$: ${}^L \rU(V) = \widehat{\rU(V)} \rtimes W_F$.
+Here, the $L$-group is explicitly described as follows: we have $\widehat{\rU(V)} = \GL_n(\bC)$ and the action of $W_F$ factors through $W_F \to W_F / W_E = \Gal(E/F)$ with $\sigma$ acts as $\sigma(g) = J^{t}g^{-1} J^{-1}$, where
+\[
+J = \begin{pmatrix} & & & 1 \\
+& & -1 & \\
+& \iddots & & \\
+(-1)^{n-1} & & & 
+\end{pmatrix}.
+\]
+
+A Langlands parameter for $\rU(V)$ is then a $\widehat{\rU(V)}$-conjugacy class of "admissible" homomorphisms (i.e. satisfying certain properties of continuity, semi-simplicity and algebraicity)
+\[
+    \phi: \WD_F \to {}^L \rU(V)
+\]
+commuting with projections on $W_F$.
+We denote $\Phi(\rU(V))$ the set of Langlands parameters for $\rU(V)$.
+For the unitary groups we have the following more explicit description (c.f. \cite{gan2011symplectic} Theorem 8.1): the restriction to $\WD_E$ induces a bijection between $\Phi(\rU(V))$ and the set of isomorphism classes of the complex continuous semi-simple and algebraic representations on $\SL_2(\bC)$ of dimension $n$ of $\WD_E$ which are $(-1)^{n+1}$-conjugate dual.
+Let's recall what this last term means.
+Fix $c \in W_F \backslash W_E$ maps to $\sigma$.
+A representation $\varphi: \WD_E \to \GL(M)$ is called \emph{conjugate dual} if there exists a non-degenerate bilinear form
+\[
+    B: M \times M \to \bC
+\]
+satisfying
+\[
+    B(\varphi(\tau)u, \varphi(c\tau c^{-1})v) = B(u, v), \quad \forall u, v \in M, \tau \in \WD_E.
+\]
+It is equivalent to ask if $M$ is isomorphic to $(M^c)^\vee$ where $M^c$ is the $c$-conjugate of $M$ and $(-)^\vee$ is the contragredient representation.
+We further say that $\varphi: \WD_E \to \GL(M)$ is $\varepsilon$-conjugate-dual, where $\varepsilon \in \{\pm 1\}$, if we can choose a bilinear form satisfying the additional condition
+\[
+    B(u, \varphi(c^2)v) = \varepsilon B(v, u), \quad \forall u, v \in M.
+\]
+We will call such a form an $\varepsilon$-conjugate-dual form.
+
+To state the Langlands correspondence in its most complete version, it is necessary to introduce for all $\phi \in \Phi(\rU(V))$ a certain finite group $S_\phi$.
+The latter is defined as the group of connected components of the centralizer in $\widehat{\rU(V)}$ of the image of $\phi$.
+If we identify $\phi$ with a $(-1)^{n+1}$-conjugate-dual representation $\varphi: \WD_E \to \GL(M)$, we have the following more concrete description of $S_\phi$.
+Let $B$ be a conjugate-dual form of sign $(-1)^{n+1}$ as above and denote $\Aut(\varphi, B)$ the group of linear automorphisms of $M$ commutes with the image of $\varphi$ and preserve the form $B$.
+We then have (canonically)
+\[S_\phi = \Aut(\varphi, B) / \Aut(\varphi, B)^\circ\]
+where we denote as $\Aut(\varphi, B)^\circ$ for the connected component of the identity element.
+Moreover, this group is always abelian and isomorphic to a product of finitely many copies of $\bZ / 2\bZ$.
