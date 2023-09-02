@@ -166,3 +166,50 @@ We then have (canonically)
 \[S_\phi = \Aut(\varphi, B) / \Aut(\varphi, B)^\circ\]
 where we denote as $\Aut(\varphi, B)^\circ$ for the connected component of the identity element.
 Moreover, this group is always abelian and isomorphic to a product of finitely many copies of $\bZ / 2\bZ$.
+
+
+\subsubsection{Pure inner forms}
+
+Following an idea from Vogan \cite{vogan1993local}, the Langlands correspondence should be formulated more simply if we consider several groups at the same time.
+More precisely, we must take account the pure inner forms of $\rU(V)$.
+These forms are naturally parameterized by the Galois cohomology set $\rH^1(F, \rU(V))$ and all admit the same $L$-group as $\rU(V)$ (so that a Langlands parameter for $\rU(V)$ can also be considered as Langlands parameter of all its pure inner forms).
+For unitary groups we know how to describe the pure inner forms explicitly: $\rH^1(F, \rU(V))$ naturally classifies the isomorphism classes of (skew-)Hermitian spaces of dimension $n$ and the pure inner forms of $\rU(V)$ are then the unitary groups of the latter spaces.
+For a class $\alpha \in \rH^1(F, \rU(V))$, we denote $V_\alpha$ the (skew-)hermitian space it determines and $\rU(V_\alpha)$ the corresponding pure inner form.
+
+In the non-archimedean case, and for $n \neq 0$, there exist exactly two isomorphism classes of (skew-)hermitian spaces of dimension $n$, which can be distinguished by their discriminants, and therefore as many pure inner forms.
+In the archimedean case, there are $n+1$ pure interior forms of $\rU(V)$ corresponding to $\rU(p, q)$ for $p + q = n$.
+Note that two distinct pure inner forms of $\rU(V)$ can be isomorphic (e.g. $\rU(p, q) \simeq \rU(q,p)$) but from the point of view of the Langlands correspondence these must be considered separately.
+
+
+\subsubsection{The correspondence}
+
+We can now state the local Langlands correspondence for $\rU(V)$ (and its pure inner forms) in the following informal way.
+For all $\alpha \in \rH^1(F, \rU(V))$, there should exist a partition
+\[
+    \Irr(\rU(V_\alpha)) = \bigsqcup_{\phi \in \Phi(\rU(V))} \Pi^{\rU(V_\alpha)}(\phi) 
+\]
+into finite (possibly empty) subsets called \emph{$L$-packets} and for all $\phi \in \Phi(\rU(V))$ there should exists a bijection
+\begin{equation}
+\label{eqn:3}
+\begin{aligned}
+    \bigsqcup_{\alpha \in \rH^{1}(F, \rU(V))} \Pi^{\rU(V_\alpha)}(\phi) &\simeq \widehat{S_\phi} \\
+    \pi(\varphi, \chi) &\mapsfrom \chi
+\end{aligned}
+\end{equation}
+where $\widehat{S_\phi}$ is the group of characters of the finite abelian group $S_\phi$.
+This data must of course satisfy a certain number of properties.
+In fact, the famous \emph{endoscopic relations}, which we will not explain here, characterize, if it exists, the local Langlands correspondence for the unitary groups from the known correspondence (\cite{harris2001geometry,henniart2000preuve,scholze2013local}), for linear groups.
+These endoscopic relations depend however on a certain choice corresponding to the normalization of \emph{transfer factors}.
+The composition of the $L$-packets does not depend on this choice but the bijection \eqref{eqn:3} depends on it.
+We will give more details about the choices involved in this normalization in section 1.4.7.
+
+
+\subsubsection{Status}
+
+In the archimedean case, the local correspondence was constructed by Langlands himself \cite{langlands1989irreducible} for all real reductive groups from the results of Harish-Chandra.
+This correspondence verifies the expected endoscopic relations follows from  the work of Shelstad \cite{shelstad1982indistinguishability,shelstad2008tempered,shelstad2010tempered} and Mezo \cite{mezo2016tempered} (see also \cite{clozel1982changement} for the case of unitary groups).
+
+In the non-archimedean case, the correspondence was obtained much more recently by Mok \cite{mok2015endoscopic} for quasi-split unitary groups and then by Kaletha--Minguez--Shin--White \cite{kaletha2014endoscopic} for all unitary groups following the founding work of Arthur \cite{arthur2013endoscopic} on symplectic and orthogonal groups.
+Until recently these results were still conditional on the stabilization of the twisted trace formula now established in full generality by Waldspurger and Moeglin--Waldspurger in an impressive series of papers \cite{moeglin2016stabilisation}.
+
+
