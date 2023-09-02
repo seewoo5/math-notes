@@ -335,3 +335,120 @@ For $p$-adic fields and shortly after the proof of the conjecture in the Bessel 
 This method was later adapted by Hiraku Atobe \cite{atobe2018local} to establish the analogue of conjecture \ref{conj:localggp} for symplectic/metaplectic groups (analogue that only exists in the Fourier--Jacobi case) over a $p$-adic field.
 On the other hand, the Fourier--Jacobi case of the conjecture remains completely open for archimedean fields.
 
+
+\subsection{Brief overview of proofs}
+
+\subsubsection{The Bessel case}
+
+We present here a rapid overview of the method initiated by Waldspurger, and adapted by the author to the case of unitary groups, to prove the local conjecture in the Bessel case for tempered representations.
+This method is based on an integral formula calculating the multiplicity $m(\pi)$ when $\pi$ is tempered.
+Let us first present this formula in the simplest case, i.e. when the groups $G$ and $H$ are compact (this can happen at any rank for the real groups but over the $p$-adic fields it implies $\dim(V) \leq 2$).
+The representation $\pi$ is then of finite dimension and has a character $\theta_\pi$ defined by $\theta_\pi(g) = \Tr(\pi(g))$ for all $g \in G$.
+By the orthogonality relations between characters we immediately get
+\[
+    m(\pi) = \int_H \theta_\pi(h) \dd h
+\]
+where $\dd h$ is the unique Haar measure on $H$ of total mass $1$.
+By the Weyl's integration formula, this can be written as
+\begin{equation}
+\label{eqn:4}
+    m(\pi) = \sum_{T \in \scT(H)} |W(H, T)|^{-1} \int_T D^H(t) \theta_\pi(t) \dd t
+\end{equation}
+where $\scT(H)$ denotes a set of representatives of the conjugacy classes of maximal tori in $H$, $W(H, T)$ is the Weyl group $N_H(T) / T$ where $N_H(T)$ is the normalizer of $T$ in $H$ and $D^H(t) = |\det(1 - \Ad(t))_{\frh / \frt}|$ is the Weyl discriminant (with $\frh$ and $\frt$ the Lie algebras of $H$ and $T$ respectively).
+In the case of real compact groups, we know explicit formulas (also due to Weyl) for the characters $\theta_\pi$ and the above formula then makes it possible to find directly the branching law presented in the introduction (note that in this case $\scT(H)$ is reduced to one element).
+
+Waldspurger's method makes it possible to generalize formula \eqref{eqn:4} to groups that are not necessarily compact.
+Several difficulties then arise.
+First of all, the character $\theta_\pi$ no
+longer has any meaning \emph{a priori} since the representation $\pi$ is in general of infinite dimension and the operators $\pi(g)$, $g \in G$ are not trace-class. 
+A very deep result of Harish-Chandra nevertheless allows us to define such a character $\theta_\pi(g)$.
+More precisely, Harish-Chandra first defines a character distribution $f \in C_c^\infty(G) \mapsto \theta_\pi(f):= \Tr(\pi(f))$ where $\pi(f) = \int_G f(g)\pi(g) \dd g$ (we show without too much difficulty that these
+operators are of trace-class; they even have finite rank for $p$-adic groups) and proves that this distribution is representable by a locally integrable function $\theta_\pi$ on $G$ with nice properties.
+In particular, this function is smooth (i.e. locally constant in the $p$-adic case) on the open locus $G_{\reg}$ of regular semi-simple elements and Harish-Chandra even described the singularities that $\theta_\pi$ can have in the neighborhood of the singular elements. 
+Since intersections of maximal tori of $H$ with $G_\reg$ are open and have negligible complements, the formula \eqref{eqn:4} makes sense in general (modulo convergence issue).
+However, the Waldspurger's formula differs from \eqref{eqn:4} by two aspects.
+First, not all maximal tori contribute to it, but only those that are compact (which essentially settles questions of convergence)
+Secondly, certain tori are not maximal (but still compact).
+This last property implies in particular the existence of non-negligible contributions from certain singular conjugacy classes which requires defining a regularization $x \mapsto c_\pi(x)$ of the character $\theta_\pi$  at these points.
+When $\dim(V) = 2$ (so that $\dim(W) = 1$ and $H$ is itself a torus) but when the group $G$ is not compact the formula has the following form
+\begin{equation}
+\label{eqn:5}
+    m(\pi) = \int_H \theta_\pi(t) \dd t + c_\pi(1).
+\end{equation}
+Thus, here the only singular contribution comes from the trivial conjugacy class.
+We refer to the introductions of \cite{waldspurger2010formule} (for the case of orthogonal groups) and \cite{beuzart2016conjecture} for more details on the formula in the general case.
+Now let's explain briefly how we can deduce from formulas \eqref{eqn:4} and \eqref{eqn:5} the first part of conjecture \ref{conj:localggp} in the case of $\dim(V) = 2$ and $F$ is $p$-adic.
+More precisely, we denote $(G_i, H_i)$ for the unique pure inner form with quasi-split $G_i$ (hence non-compact) and $(G_a, H_a)$ the only other pure inner form which is, in contrary, compact.
+Let $\phi: \WD_F \to {}^L G_i = {}^L G_a$ be a tempered Langlands parameter.
+Then each of the $L$-packets $\Pi^{G_i}(\phi)$ and $\Pi^{G_a}(\phi)$ can contain at most two elements (and $\Pi^{G_a}(\phi)$ can be empty).
+Let $\theta_{\phi, \natural} = \sum_{\pi \in \Pi^{G_\natural}(\phi)}\theta_\pi$ for $\natural \in \{i, a\}$.
+By \eqref{eqn:4} and \eqref{eqn:5}, we have $\sum_{\pi \in \Pi^{G_a}(\phi)} m(\pi) = \int_{H_a} \theta_{\phi, a}(h) \dd h$ and $\sum_{\pi \in \Pi^{G_i}(\phi)} m(\pi) = \int_{H_i} \theta_{\phi, i}(h) \dd h + c_{\phi, i}(1)$ where $c_{\phi, i}(1)$ is a certain regularization of $\theta_{\phi, i}$ at $1$.
+Since the groups $H_i$ and $H_a$ are unitary groups of rank one, we have a natural isomorphism $H_i \simeq H_a$ and furthermore via this isomorphism we have the equality $\theta_{\phi, i}(h) = -\theta_{\phi, a}(h)$ (this is the simplest example of the famous \emph{endoscopic relations}).
+By summing the two formulas, we therefore obtain
+\[
+    \sum_{\pi \in \Pi^{G_i}(\phi) \cup \Pi^{G_a}(\phi)} m(\pi) = c_{\phi, i}(1).
+\]
+Finally, according to a result of Rodier \cite{rodier2006modele} and the definition of $c_{\phi, i}(1)$ (which we have not given here), this last term counts the number of generic representations in the $L$-packet $\Pi^{G_i}(\phi)$ corresponding to a certain Whittaker datum.
+Since $\phi$ is generic this number becomes $1$, which concludes the proof.
+The same idea (slightly more elaborate) leads to a proof for genera ranks of the first part of conjecture \ref{conj:localggp} from Waldspurger's formula.
+
+To obtain the second part of the conjecture, Waldspurger introduces a second essential ingredient: an integral formula, analogous to the previous one, expressing certain epsilon factors of pairs.
+In the context of the conjecture for unitary groups, this formula expresses more precisely a factor of the form $\varepsilon(\frac{1}{2}, \pi \times \pi', \psi)$, where $\pi$ and $\pi'$ are tempered irreducible representations of $\GL_k(E)$ and $\GL_l(E)$ which are conjugate-dual (i.e. $\pi^\sigma \simeq \pi^\vee$ and $(\pi')^\sigma \simeq (\pi')^\vee$) with $k\not\equiv l\,\mathrm{mod}\,2$ as a function of “twisted” characters associated with $\pi$ and $\pi'$ (more precisely the restriction to the connected component of the identity of the extension of characters of $\pi$ and $\pi'$ to $\GL_i^+(E) = \GL_i(E) \rtimes \langle \theta_i\rangle$ where $\theta_i g \theta_i^{-1} = {}^t(g^\sigma)^{-1}$ for $i = k, l$).
+Here $\varepsilon(s, \pi \times \pi', \psi)$ is a certain epsilon factor defined by Jacquet, Piatetski-Shapiro, and Shalika \cite{jacquet1983rankin} and which is equal to the Artin's epsilon factor $\varepsilon(s, \phi \otimes \phi', \psi)$ where $\phi: \WD_E \to \GL_k(\bC)$ and $\phi': \WD_E \to \GL_l(\bC)$ are the Langlands parameters of $\pi$ and $\pi'$ obtained via the local Langlands correspondence for linear groups (proved by Harris-Taylor \cite{harris2001geometry}, Henniart \cite{henniart2000preuve} and more recently Scholze \cite{scholze2013local}; this compatibility with the $\varepsilon$ factors of pairs is moreover an essential ingredient to characterize this correspondence).
+We will not give more details on this formula (nor on its proof) and we will simply refer the reader to the introductions of \cite{waldspurger2012calcul} and \cite{beuzart2014expression} for more details.
+This formula for the epsilon factors of pairs has not yet been proved in the archimedean case and is the missing part to finish the proof of conjecture \ref{conj:localggp} in general.
+
+
+Finally, the last part of the proof for tempered representations \cite{waldspurger2012conjecture}, \cite{beuzart2015endoscopie} consists of relating the two previous formulas, for the multiplicity $m(\pi)$ and for the epsilon factors of pairs, via the \emph{endoscopic relations} between characters.
+Indeed, these relations which, let us recall, characterize the local correspondence for unitary groups, essentially make it possible to express the character of any tempered representation of $G$ from “twisted” characters on linear groups as above.
+Then we come across, quite miraculously, an expression of $m(\pi)$, for a tempered representation $\pi$ of $G$, in terms of epsilon factors of pairs which is exactly the formula predicted by the Gan--Gross--Prasad conjecture.
+
+
+\subsubsection{The Fourier--Jacobi case}
+
+We explain here the outline of the proof by Gan and Ichino \cite{gan2016gross} of conjecture \ref{conj:localggp} in the Fourier--Jacobi case.
+For this, we need to make some reminders about the local theta correspondence for unitary groups.
+For simplicity, we will restrict ourselves to the case of tempered representations.
+
+
+Recall that a \emph{reductive dual pair} of a symplectic group $\Sp(\scW)$ is a pair $(\rU_1, \rU_2)$ of reductive subgroups of $\Sp(\scW)$ which are centralizers of each other.
+Let $W_n$ be an $n$-dimensional skew-hermitian space, $V_{n+1}$ an ($n+1$)-dimensional hermitian space, $V_n \subset V_{n+1}$ a non-degenerate hyperplane and $V_1$ the orthogonal complement of $V_n$ in $V_{n+1}$.
+Then in the symplectic group $\Sp(\Res_{E/F} W_n \otimes V_{n+1})$ we have the following two dual reductive pairs
+\[
+    (\rU(W_n), \rU(V_{n+1}))\text{ and } (\rU(W_n) \times \rU(W_{n}), \rU(V_n) \times \rU(V_{1}))
+\]
+where the action of the first pair on $W_n \otimes V_{n+1}$ is the obvious action while the action of the second pair respects the decomposition $W_n \otimes V_{n+1} = (W_n \otimes V_n) \oplus (W_n \otimes V_1)$.
+Moreover, we have inclusions $\rU(W_n) \subset \rU(W_n) \times \rU(W_n)$ and $\rU(V_n) \times \rU(V_1) \subset \rU(V_{n+1})$.
+We summarize the situation in the form of the following diagram, called ``see-saw'' diagram (or \emph{scissor} diagram),
+
+\begin{equation}
+\label{diag:6}
+\begin{tikzcd}
+    \rU(W_n) \times \rU(W_n) \arrow[d, dash] \arrow[dr, dash] & \rU(V_{n+1}) \arrow[d, dash] \arrow[dl, dash]\\
+    \rU(W_n) & \rU(V_n) \times \rU(V_1).
+\end{tikzcd}
+\end{equation}
+The character $\mu: E^\times \to \bC^\times$ which we have fixed, and whose restriction to $F^\times$ coincides with $\sgn_{E/F}$, makes it possible to identify all these groups in the metaplectic covering $\Mp(\Res_{E/F} W_n \otimes V_{n+1})$.
+Let $\omega_{\psi_0, W_n, V_{n+1}}$ be the Weil representation of $\Mp(\Res_{E/F} W_n \otimes V_{n+1})$ associated with the additive character $\psi_0$.
+For any irreducible representation $\sigma$ of $\rU(W_n)$, the maximal $\sigma$-isotypic quotient of $\omega_{\psi_0, W_n, V_{n+1}}$ is of the form $\sigma \boxtimes \Theta_{W_n, V_{n+1}}(\sigma)$ where $\Theta_{W_n, V_{n+1}}(\sigma)$ is a representation of $\rU(V_{n+1})$ which always happens to be of finite length.
+Moreover, if this representation is non zero then it admits a unique irreducible quotient according to \cite{waldspurger1990demonstration} and \cite{gan2016howe} (this is the famous “Howe's duality conjecture”).
+Let's denote this irreducible quotient as $\theta_{W_n, V_{n+1}}(\sigma)$ when it exists.
+Then, the partially defined map $\sigma \mapsto \theta_{W_n, V_{n+1}}(\sigma)$ gives a bijection between a part of $\Irr(\rU(W_n))$ and a part of $\Irr(\rU(V_{n+1}))$: this is what called the local theta correspondence.
+We define in the same way a map $\pi \in\Irr(\rU(V_n)) \mapsto \Theta_{W_n, V_{n}}(\pi)$ with values in the representations of finite lengths of $\rU(W_n)$ and a partially defined map $\pi \in \Irr(\rU(V_n)) \mapsto \theta_{W_n, V_n}(\pi) \in \Irr(\rU(W_n))$ by realizing $(\rU(V_n), \rU(W_n))$ as a dual reductive pair in $\Sp(\Res_{E/F} V_n \otimes W_n)$ (also in the metaplectic cover as before).
+The restriction of the Weil representation $\omega_{\psi_0, W_n, V_{n+1}}$ to $\Mp(\Res_{E/F}W_n \otimes V_n) \times \Mp(\Res_{E/F} W_n \otimes V_1)$ via the natural morphism $\Mp(\Res_{E/F} W_n \otimes V_n) \times \Mp(\Res_{E/F} W_n \otimes V_1) \to \Mp(\Res_{E/F} W_n \otimes V_{n+1})$ is isomorphic to the tensor product $\omega_{\psi_0, W_n, V_n} \boxtimes \omega_{\psi_0, W_n, V_1}$.
+It follows by the diagram \eqref{diag:6} that there is a natural isomorphism (the ``see-saw'' identity)
+\begin{equation}
+    \label{eqn:7}
+    \Hom_{\rU(W_n)}(\Theta_{W_n, V_n}(\pi) \otimes \omega_{\psi_0, W_n, V_1}, \sigma) \simeq \Hom_{\rU(V_n)}(\Theta_{W_n, V_{n+1}}(\sigma), \pi)
+\end{equation}
+for all representations $\pi \in \Irr(\rU(V_n))$ and $\sigma \in \Irr(\rU(W_n))$.
+The contragredient of the Weil representation $\omega_{\psi_0, W_n, V_1}$ is $\omega_{\psi_0^{-1}, W_n, V_1}$, the space on the left hand side is essentially the space of Fourier--Jacobi functionals on the representation $\Theta_{W_n, V_n}(\pi) \boxtimes \sigma^\vee$ of the group $\rU(W_n) \times \rU(W_n)$ while the space on the right hand side is the space of the Bessel functionals on the representation $\pi^\vee \boxtimes \Theta_{W_n, V_{n+1}}(\sigma)$ of the group $\rU(V_n) \times \rU(V_{n+1})$.
+Thus the identity \eqref{eqn:7} relates the Bessel and Fourier--Jacobi cases of the conjecture and to deduce the Fourier-Jacobi case from the Bessel case, at least for tempered representations, it is roughly sufficient to
+\begin{itemize}
+    \item[--] Show that for tempered $\pi$ and $\sigma$ the representations $\Theta_{W_n, V_n}(\pi)$ and $\Theta_{W_n, V_{n+1}}(\sigma)$ are zero or irreducible (in which case they coincide with $\theta_{W_n, V_n}(\pi)$ and $\theta_{W_n, V_{n+1}}(\sigma)$ respectively).
+    \item[--] Explain the local theta correspondences $\pi \mapsto \theta_{W_n, V_n}(\pi)$ and $\sigma\mapsto \theta_{W_n, V_{n+1}}(\sigma)$ in terms of the local Langlands correspondence.
+    \item[--] Show that by changing the hermitian space $V_n$ if necessary, the local theta correspondence $\pi \mapsto \theta_{W_n, V_n}(\pi)$ restricted to tempered representations is surjective.
+\end{itemize}
+The first and third points had already been established by Gan and Ichino in \cite{gan2014formal} for another purpose.
+Moreover, Prasad \cite{prasad1993local,prasad2000theta} had stated precise conjectures concerning the second point.
+These conjectures are demonstrated in \cite{gan2016gross} by Gan and Ichino by methods that we will not describe here.
