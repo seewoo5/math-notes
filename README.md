@@ -25,8 +25,11 @@ List of notes:
     * Probabilities in poker game
     * Similarity of matrices and field extension
 
-### ReTeX-ed articles
+### Re-TeXed articles
 
-I re-TeXed some of the existing articles with old typesets for my own study. Let me know if there are any issues.
+I re-TeXed some of the existing articles with old typesets or non-English (e.g. French) for my own study. Let me know if there are any issues.
 
 * I. Piatetski-Shapiro, *Work of Waldspurger*, Lie group representations, II (College Park, Md., 1982/1983), 280–302. Lecture Notes in Math., 1041 Springer-Verlag, Berlin, 1984
+
+* R. Beuzart-Plessis, *PROGRÈS RÉCENTS
+SUR LES CONJECTURES DE GAN-GROSS-PRASAD (d'après Jacquet-Rallis, Waldspurger, W. Zhang, etc.).* Séminaire BOURBAKI (2018): 70e.
