@@ -385,3 +385,43 @@ These two statements are easy to prove at split places $v \in |k|$ hence the ess
 Let us point out that once the comparison has been made, it is still necessary to separate the contributions from the spectral side (in order to obtain an identity directly relates $J_\pi$ and $I_{\BC(\pi)}$).
 For this, in addition to the local conjecture (which ensures that given $\Pi$ there exists at most one cuspidal representation $\pi$ satisfying $\Hom_{H(k_v)}(\pi_v, \bC) \neq 0$ everywhere and $\Pi = \BC(\pi)$) we need \emph{a priori} an extended version of the fundamental lemma for all the elements of certain spherical Hecke algebras (this is what really allows us to separate the spectral contributions by applying Stone--Weierstrass theorem).
 However, this fundamental lemma for spherical Hecke algebras is also very easy to establish at split places and Zhang remarked that this was sufficient to isolate all spectral terms from a recent result of Ramakrishnan \cite{ramakrishnan2015mild}.
+
+
+\subsubsection{Work of Z. Yun}
+
+In \cite{yun2011fundamental}, Zhiwei Yun establishes the Jacquet--Rallis fundamental lemma for function fields.
+His proof uses geometric methods close to those introduced by Ngô Bao Châu in his thesis to demonstrate the fundamental lemma of Jacquet--Ye (which is the fundamental lemma resulting from another relative trace formula).
+In the appendix of \cite{yun2011fundamental} and by methods of model theory, Julia Gordon shows how one can transfer this result to number fields and deduce from it the fundamental lemma in any place $v$ of sufficiently large residual characteristic.
+
+
+\subsubsection{Work of W. Zhang}
+
+The main result demonstrated by Zhang in \cite{zhang2014fourier} is the existence of transfer at non-archimedean places.
+The main steps are as follows:
+
+\begin{itemize}
+    \item[--] Using the partition of unity and a decent inspired by Harish--Chandra, Zhang localizes the problem to the neighborhoods of semi-simple (not necessarily regular) elements $\gamma \in G(k_v)$ and $\delta \in G'(k_v)$.
+    Then it shows that if $\gamma$ and $\delta$ are not central we reduce a transfer problem to smaller groups, which allow us to treat these cases inductively.
+
+    \item[--] At neighborhoods of central elements, via Cayley transform, it suffices to consider an analogous problem on Lie algebras.
+    More precisely, the problem is reduced to compare orbital integrals for the adjoint action of $\rU(V)$ on $\fru(V)$ (the Lie algebra of $\rU(V)$) with orbital integrals for the adjoint action of $\GL_{n+1}$ on $\frgl_{n+1}$.
+
+    \item[--] The same descent method inspired by Harish-Chandra makes it possible to show the desired result for the functions on these Lie algebras with disjoint support of the nilpotent cone (i.e. the set of elements whose orbits contain the origin in their closure).
+
+    \item[--] Zhang shows that if $f$ and $f'$ are functions on $\fru(V)$ and $\frgl_{n+1}$ respectively, whose orbital integrals match then so do some of their partial Fourier transforms up
+    to an explicit multiplicative constant (in fact we must consider four Fourier transforms, including the identity).
+    This is the heart of the proof and this step is based on local analogues for the Lie algebras of the Jacquet--Rallis trace formulas as well as an ingenious induction which uses the fact that the adjoint representations of $\rU(W)$ and $\GL_n$ on $\fru(V)$ and $\frgl_{n+1}$ respectively are reducible.
+    
+    \item[--] Finally, according to a result of Aizenbud \cite{aizenbud2013partial}, one can write any smooth function with compact support on Lie algebras as a sum of images of the various Fourier transforms of functions whose supports are disjoint  nilpotent cone and of a function whose orbital integrals are all zero.
+    According to the previous steps, this concludes the proof of the existence of the transfer.
+\end{itemize}
+
+
+\subsubsection{Work of H. Xue and Chaudouard--Zydor}
+
+In \cite{xue2019global}, H. Xue adapted Zhang's proof to archimedean places and obtained the existence of the transfer for a dense subspace of the space of test functions.
+Indeed, in this case only the dual assertion of Aizenbud's result is known (i.e. there is no invariant distribution on the Lie algebra of which all the Fourier transforms have support in the nilpotent cone) which only implies that any test function is approximable by sums of Fourier transforms of functions with disjoint support of the nilpotent cone and of a function of zero orbital integrals.
+Besides this difference, Xue's proof is similar to that in the non-archimedean case and allows remove Zhang's hypothesis at archimedean places.
+
+At the same time, Zydor \cite{zydor2016variante,zydor2018variante} and Chaudouard--Zydor \cite{chaudouard2021transfert} began to develop Jacquet--Rallis trace formulas in complete generality (i.e. without restriction on the test functions).
+As a corollary of their first results, we can apply and compare these trace formulas for ``good'' functions a little more general than those of Zhang, which in particular makes it possible to remove the hypothesis of the existence of a split place where the representation $\pi$ is tempered.
