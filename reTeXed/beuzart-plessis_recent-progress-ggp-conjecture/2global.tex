@@ -12,7 +12,7 @@ We denote by $\sgn_{k'/k}$ the quadratic character of the id\`ele class group $\
 For all $v \in |k|$, the restriction of $\sgn_{k'/k}$ to $k_v^\times$ coincides with $\sgn_{k_v'/k_v}$ (and it is trivial if $v$ splits in $k'$).
 Let $W \subset V$ be two hermitian or skew-hermitian spaces over $k'$ with
 \[
-    \dim(V) - \dim(W) = \begin{cases} 1 & \text{in the hermitian case} \\ 0 & \text{in the skew-herimitian case},
+    \dim(V) - \dim(W) = \begin{cases} 1 & \text{in the hermitian case} \\ 0 & \text{in the skew-hermiitian case},
     \end{cases}
 \]
 and set $G = \rU(W) \times \rU(V)$, $H = \rU(W)$ (algebraic groups defined over $k$).
@@ -71,10 +71,317 @@ Note that in the hermitian case, the representation $\nu$ being trivial, the per
 \[
     \cP_H(\varphi) = \int_{H(k) \backslash H(\bA)} \varphi(h) \dd h.
 \]
-In any case, if $\pi \subset \scA_\cusp(G)$ is a cuspidal irreducible representation, the restriction of the preiod $\cP_H$ to $\pi$ defines an element of the space of intertwining maps
+In any case, if $\pi \subset \scA_\cusp(G)$ is a cuspidal irreducible representation, the restriction of the period $\cP_H$ to $\pi$ defines an element of the space of intertwining maps
 \[
     \Hom_{H(\bA)}(\pi \otimes \overline{\nu}, \bC) = \Hom_{H(\bA)}(\pi, \nu)
 \]
 which decomposes into a (restricted) tensor product of the local spaces of intertwining maps $\Hom_{H_v}(\pi_v, \nu_v)$ for all $v \in |k|$.
 Thus, a necessary condition for this restriction to be nonzero is that these local spaces is nontrivial (a condition which is itself made explicit by the local conjecture).
 
+
+\subsection{Automorphic $L$-functions and base change}
+
+Let $\pi \subset \scA_\cusp(G)$ be an irreducible cuspidal representation that we assume to be almost everywhere generic, i.e. the representation $\pi_v$ is generic in the sense of \S 1.4.8 for almost all $v \in |k|$.
+We also say that $\pi$ is of \emph{Ramanujan type} because these are the representations for which we hope to have a generalized Ramanujan conjecture (i.e. $\pi_v$ is tempered for all $v \in |k|$).
+This assumption also allows us to define global $L$-functions only in terms of the local Langlands correspondence (whereas in general one should consider more general packets of representations called \emph{Arthur packets}).
+Moreover, the two conjectures that will interest us only relate, for the moment, to this type of cuspidal representation.
+
+Let $\rho: {}^L G \to \GL(M)$ be an algebraic representation of the $L$-group of G.
+According to the section 1.4.6, we can associate, at any place $v \in |k|$, to the representation $\pi_v$ a local $L$-function $L(s, \pi_v, \rho)$.
+We then define a global function $L(s, \pi, \rho)$ by
+\[
+    L(s, \pi, \rho) = \prod_{v \in |k|} L(s, \pi_v, \rho).
+\]
+The product converges for $\Re(s) \gg 1$ and conjecturally $L(s, \pi, \rho)$ admits a meromorphic continuation to the complex plane and a functional equation relating $L(s, \pi, \rho)$ to $L(1 - s, \pi, \rho^\vee)$.
+In what follows, only two global $L$-functions will appear.
+The first, which plays a minor role, is the adjoint $L$-function $L(s, \pi, \Ad)$ associated to the adjoint representation of ${}^L G$.
+The second $L$-function, the one that will interest us the most, es associated to the following representation $R$ of ${}^L G$:
+\[
+    R = \begin{cases} \Ind_{\widehat{G} \times W_{k'}}^{{}^L G}(M_W \otimes M_V) & \text{hermitian case}; \\
+        \Ind_{\widehat{G} \times W_{k'}}^{{}^L G} ((M_W \otimes M_V) \otimes \mu^{-1}) & \text{skew-hermitian case},
+    \end{cases}
+\]
+where $M_W$ and $M_V$ denote the standard representations of $\widehat{\rU(W)}$ and $\widehat{\rU(V)}$ (recall that these are linear groups over $\bC$) respectively and we have identified $\mu$ with a character of the Weil group $W_k$ via the class field theory.
+We can also describe the local factors of this $L$-function in the following explicit way.
+Since $G = \rU(W) \times \rU(V)$, we can decompose $\pi$ as a tensor product $\pi = \pi_1 \boxtimes \pi_2$ where $\pi_1$ (resp. $\pi_2$) is an irreducible cuspidal representation of $\rU(W)$ (resp. $\rU(V)$).
+
+According to the section 1.4.2, for all $v \in |k|$ not split in $k'$ the Langlands parameters of $\pi_{1, v}$ and $\pi_{2, v}$ can be identified with conjugate-dual representations $\varphi_{1, v}: \WD_{k_v'} \to \GL(M_1)$ and $\varphi_{2, v}: \WD_{k_v'} \to \GL(M_2)$ of a certain sign.
+Then we have $L(s, \pi_v, R) = L(s, \varphi_{1, v} \otimes \varphi_{2, v})$ in the hermitian case and $L(s, \pi_v, R) = L(s, \varphi_{1, v} \otimes \varphi_{2, v} \otimes \mu_v^{-1})$ in the skew-hermitian case.
+For a place $v$ splits in $k'$, the groups $\rU(W)_v$ and $\rU(V)_v$ are linear groups over $k_v$ and the Langlands parameters of $\pi_{1, v}$ and $\pi_{2, v}$ can be identified with the representations $\varphi_{1, v}$ and $\varphi_{2, v}$ of $\WD_{k_v}$.
+Then we have $L(s, \pi_v, R) = L(s, \varphi_{1, v} \otimes \varphi_{2, v}) L(s, \varphi_{1, v}^\vee \otimes \varphi_{2, v}^\vee)$ in the hermitian case and $L(s, \pi_v, R) = L(s, \varphi_{1, v} \otimes \varphi_{2, v} \otimes \mu_{v}') L(s, \varphi_{1, v}^\vee \otimes \varphi_{2, v}^\vee \otimes (\mu_v')^{-1})$ in the skew-hermitian case where we write $mu_v = (\mu_v')^{-1} \boxtimes \mu_v'$ under the identification $k_v' \simeq k_v \times k_v$.
+
+By the results of Mok \cite{mok2015endoscopic} and Kaletha--Minguez--Shin--White \cite{kaletha2014endoscopic} on the classification of automorphic representations of unitary groups as well as the works of Jacquet, Piatetski-Shapiro and Shalika \cite{jacquet1983rankin} and Shahidi on the $L$-functions of pairs and Asai for linear groups respectively, we know that $L(s, \pi, \Ad)$ and $L(s, \pi, R)$ admit analytic continuations to $\bC$ and satisfy the expected functional equations.
+To be more precise, according to \cite{mok2015endoscopic} and \cite{kaletha2014endoscopic} there exist, with the above notations, irreducible automorphic representations $\BC(\pi_1)$ and $\BC(\pi_2)$ ($\BC$ for \emph{base change}) of $\GL_{d_W}(\bA_{k'})$ and $\GL_{d_V}(\bA_{k'})$ respectively (where we denote $\bA_{k'}$ for the ad\`eles over $k'$, $d_W = \dim(W)$ and $d_V = \dim(V)$) whose local components at $v \in |k|$ have Langlands parameters $\varphi_{1, v}$, $\varphi_{2, v}$ respectively if $v$ does not split in $k'$ and $\varphi_{1, v} \times \varphi_{1, v}^\vee$ and $\varphi_{2, v} \times \varphi_{2, v}^\vee$ respectively if $v$ splits in $k'$ (which is the case $\GL_{d_W}(k_v') \simeq \GL_{d_W}(k_v) \times \GL_{d_W}(k_v)$ and $\GL_{d_V}(k_v') \simeq \GL_{d_V}(k_v) \times \GL_{d_V}(k_v)$).
+Moreover, $L(s, \pi, R)$ coincides with the $L$-function of the pair $L(s, \BC(\pi_1) \times \BC(\pi_2))$ defined by Jacquet, Piatetski-Shapiro, and Shalika \cite{jacquet1983rankin} in the hermitian case and with $L(s, \BC(\pi_1) \times \BC(\pi_2) \otimes \mu^{-1})$ in the skew-hermitian case while $L(s, \pi, \Ad)$ coincides with the product of Asai $L$-functions of $\BC(\pi_1)$ and $\BC(\pi_2)$ defined by Shahidi.
+Note that $\BC(\pi) = \BC(\pi_1) \boxtimes \BC(\pi_2)$.
+It is an automorphic representation of $G(bA_{k'}) \simeq \GL_{d_W}(\bA_{k'}) \times \GL_{d_V}(\bA_{k'})$ which is called the (quadratic) \emph{base change} of $\pi$, and we set $L(s, \BC(\pi)) = L(s, \BC(\pi_1) \times \BC(\pi_2))$.
+Thus, in the hermitian case we simply have
+\[
+    L(s, \pi, R) = L(s, \BC(\pi)).
+\]
+
+
+\subsection{The conjecture}
+
+We now have all the ingredients to state the global Gan--Gross--Prasad conjecture.
+
+
+\begin{conjecture}[Gan--Gross--Prasad]
+\label{conj:global}
+Let $\pi \subset \scA_\cusp(G)$ be a cuspidal irreducible almost everywhere generic representation.
+Then the following are equivalent:
+\begin{enumerate}
+    \item The restriction of the period $\cP_H$ to $\pi$ is nonvanishing.
+    \item We have $L(\frac{1}{2}, \pi, R) \neq 0$ and for all $v \in |k|$ we have $\Hom_{H_v}(\pi_v, \nu_v) \neq 0$.
+\end{enumerate}
+\end{conjecture}
+
+
+\subsection{The refinement of Ichino--Ikeda}
+
+
+There is a refinement of conjecture 2.1 in the form of an identity directly linking $L(\frac{1}{2}, \pi, R)$ to the period $\cP_H$.
+This conjecture is due to Ichino and Ikeda \cite{ichino2010periods} in the case of orthogonal groups and was extended to unitary groups by N. Harris \cite{harris2014refined} (in the hermitian case) and
+H. Xue \cite{xue2017refined} (in the skew-hermitian case).
+To simplify the exposition, we will limit ourselves here to the Bessel case of the conjecture (i.e. $W$ and $V$ are hermitian spaces).
+
+
+Let $v \in |k|$ and $\pi_v$ a smooth irreducible tempered representation of $G(k_v)$.
+In particular, $\pi_v$ is unitary and we can fix a $G(k_v)$-invariant inner product $(-,-)_v$ on (the space of) $\pi_v$.
+Thanks to this inner product, we can define a \emph{local period}
+\[
+    \cP_{H, v}: \pi_v \times \pi_v \to \bC
+\]
+by
+\[
+    \cP_{H, v}(\varphi_v, \varphi_v') = \int_{H(k_v)} (\pi_v(h_v) \varphi_v, \varphi_v')_v \dd h_v, \quad \varphi_v, \varphi_v' \in \pi_v
+\]
+where $\dd h_v$ is a Haar measure on $H(k_v)$.
+The above integral is absolutely convergent by the assumption that $pi_v$ is tempered and moreover $\cP_{H, v}$ induces a $H(k_v) \times H(k_v)$-invariant hermitian form on $\pi_v$.
+In particular, if the local period $\cP_{H, v}$ is nonzero on $\pi_v$ then $\Hom_{H(k_v)}(\pi_v, \bC) \neq 0$.
+An important step in the proof of the local Gan--Gross--Prasad conjecture is to show the reverse implication (cf. \cite{beuzart2015local} Theorem 8.2.1): $\cP_{H, v}$ is nonzero on $\pi_v$ if and only if $\Hom_{H(k_v)}(\pi_v, \bC) \neq 0$.
+
+Now let $\pi \subset \scA_\cusp(G)$ be an irreducible cuspidal representation.
+We can equip the ad\`elic groups $G(\bA)$ and $H(\bA)$ with canonical Haar measures $\dd g_\Tam$, $\dd h_\Tam$ called Tamagawa measures (cf. \cite{weil2012adeles} Chap.II).
+We normalize the global period $\cP_H$ through the Tamagara measure on $H(\bA)$ and we normalize the local periods $\cP_{H, v}$ by the local measures which factorizes the Tamagawa measure:
+\[
+    \dd h_\Tam = \prod_{v \in |k|} \dd h_v.
+\]
+We endow $\pi$ with the following inner product (the \emph{Petersson} inner product)
+\[
+    (\varphi_1, \varphi_2) \in \pi \times \pi \mapsto \langle \varphi_1, \varphi_2 \rangle_\Pet = \int_{G(k) \backslash G(\bA)} \varphi_1(g) \overline{\varphi_2(g)} \dd g_\Tam
+\]
+and we choose the local inner products $(-, -)_v$, $v \in |k|$, so they factor the global inner product $\langle-, -\rangle_\Pet$:
+\[
+    \langle \varphi, \varphi \rangle_\Pet = \prod_{v \in |k|} (\varphi_v, \varphi_v)_v, \quad \forall \varphi = \otimes_{v}' \varphi_v \in \pi = \otimes_v' \pi_v.
+\]
+We associate to $\pi$ the following quotient of $L$-functions
+\[
+    \scL(s, \pi) := \Delta_{n+1} \frac{L(s, \BC(\pi))}{L(s + 1/2, \pi, \Ad)}
+\]
+where
+\[
+    \Delta_{n+1} := \prod_{i=1}^{n+1} L(i, \sgn_{k'/k}^i)
+\]
+is a finite product of special values of Hecke $L$-functions.
+We define a local analogue $\scL(s, \pi_v)$ of $\scL(s, \pi)$ for all place $v \in |k|$.
+Suppose $\pi$ is tempered everywhere, which means that $\pi_v$ is tempered for all $v \in |k|$.
+Then, for almost all place $v \in |k|$ and for all vector $\varphi_v^\circ \in \pi_v^{G(\scO_v)}$, we have (\cite{harris2014refined} Theorem 2.12)
+\[
+    \cP_{H, v}(\varphi_v^\circ, \varphi_v^\circ) = \scL\left(\frac{1}{2}, \pi_v \right) \vol(H(\scO_v)) (\varphi_v^\circ, \varphi_v^\circ)_v.
+\]
+This leads us to define the \emph{normalized local periods} by
+\[
+    \cP_{H, \pi_v}^{\natural} := \scL\left(\frac{1}{2}, \pi_v\right)^{-1} \cP_{H, v}|_{\pi_v}, \quad v\in |k|.
+\]
+Now we can state the Ichino--Ikeda conjecture for hermitian unitary groups in the following slightly informal way:
+\begin{conjecture}
+\label{conj:ichinoikeda}
+Let $\pi \subset \scA_\cusp(G)$ be a cuspidal irreducible tempered representation.
+For all factorizable vector $\varphi = \otimes_v' \varphi_v\in\pi$, we have
+\[
+    |\cP_H(\varphi)|^2 = \frac{1}{|S_\pi|} \scL\left(\frac{1}{2}, \pi\right) \prod_{v \in |k|} \cP_{H, \pi_v}^\natural(\varphi_v, \varphi_v)
+\]
+where $S_\pi$ is the centralizer of the ``Langlands parameter'' of $\pi$ (this is a global analogue of the group $S_\phi$ introduced in section 1.4.2 which we will not try to define here).
+\end{conjecture}
+
+\begin{remark}
+\begin{itemize}
+    \item[--] By the equivalence mentioned
+    \[
+        \cP_{H, v}|_{\pi_v} \neq 0 \Leftrightarrow \Hom_{H(k_v)}(\pi_v, \bC) \neq 0,
+    \]
+    and since $L(s, \pi, \Ad)$ has no pole at $s = 1$, the above conjecture implies conjecture \ref{conj:global} in the case where $\pi_v$ is tempered everywhere.
+    \item[--] By the generalized Ramanujan conjecture we expect to be able to replace the hypothesis ``$\pi$ is tempered everywhere'' by the hypothesis ``$\pi$ is almost everywhere generic''.
+    However, even if the generalized Ramanujan conjecture is far from being established in full generality, one can state a similar conjecture under the (\emph{a priori}) weaker hypothesis ``$\pi$ is almost everywhere generic'' to extend the definition of normalized local periods $\cP_{H, \pi_v}^\natural$ (which is no longer \emph{a priori} defines absolutely convergent integrals) by a certain ``analytic continuation''.
+    Existence of such extension follows from the main results of \cite{beuzart2021comparison} and \cite{beuzart2017factorisations}.
+    In this more general form (which we will not state) conjecture \ref{conj:ichinoikeda} then becomes strictly stronger than conjecture \ref{conj:global}.
+    \item[--] In the case where $\dim(W) = 1$ (and therefore $\dim(V) = 2$), conjecture \ref{conj:ichinoikeda} is essentially equivalent to a well-known formula of Waldspurger \cite{waldspurger1985valeurs} for toric periods on quaternion algebras (see \cite{harris2014refined} Sect.3 for a formal reduction) of which we gave an example in the introduction.
+    It also seems that this formula of Waldspurger was one of the main inspirations of Ichino and Ikeda to state their conjecture.
+\end{itemize}
+\end{remark}
+
+\subsection{Status}
+
+
+
+Even before the Gan-Gross-Prasad conjectures were extended to all classical groups in \cite{gan2011symplectic}, Ginzburg, Jiang and Rallis showed in a series of papers \cite{ginzburg488models,ginzburg2004nonvanishing,ginzburg2005nonvanishing} the implication $1 \Rightarrow 2$ of the conjecture \ref{conj:global} under the assumption that $\pi$ is globally generic, i.e. there exists a global Whittaker datum $(N, \theta)$ of $G$ with $\theta$ trivial on $N(k)$ and for $\varphi \in \pi$ we have $\int_{N(k) \backslash N(\bA)} \varphi(u) \theta(u) \dd u \neq 0$, in particular this implies that the group $G$ is quasi-split (because otherwise $G$ has no Whittaker datum).
+It is not clear whether the Ginzburg--Jiang--Rallis approach could be able to establish the reverse implication (at least in the globally generic case).
+
+As we have already indicated, in the hermitian case and where $\dim(W) = 1$ conjectures \ref{conj:global} and \ref{conj:ichinoikeda} arise from the Waldspurger formula \cite{waldspurger1985valeurs}.
+The same Waldspurger formula also covers the analogues of these conjectures for a pair of orthogonal special groups $\SO(W) \subset \SO(V)$ with $\dim(W) = 2$ and $\dim(V) = 3$.
+For the special orthogonal groups of the case $\dim(W) = 3$ and $\dim(V) = 4$, the analogue of conjecture \ref{conj:ichinoikeda} has been established by Ichino \cite{ichino2008trilinear} (then the $L$-function  appears in the numerator of the right hand side of the formula is essentially associated with the triple product of three cuspidal representations of $\PGL_2$).
+
+More recently, following an approach proposed by Jacquet--Rallis \cite{jacquet2011gross} for comparing relative trace formulas and thanks to the fundamental lemma proved by Z. Yun \cite{yun2011fundamental}, W. Zhang proved conjecture \ref{conj:global} in the hermitian case under the following simplifying assumptions (\cite{zhang2014fourier} Theorem 1.1):
+\begin{itemize}
+    \item[--] All the archimedean places of $k$ split in $k'$ .
+    \item[--] There are two distinct non-archimedean places $v_0, v_1 \in |k|$ splits in $k'$ such that $\pi_{v_0}$ is supercuspidal and $\pi_{v_1}$ is tempered.
+\end{itemize}
+
+Subsequent work by H. Xue \cite{xue2019global} on the one hand and by Chaudouard--Zydor \cite{chaudouard2021transfert} on the other hand now allows all these restrictions to be removed except the existence of a split place $v \in |k|$ in which $\pi_v$ is supercuspidal.
+This last hypothesis seems inevitable by Zhang's method which uses simple versions of the Jacquet--Rallis trace formulas.
+The ongoing work of M. Zydor and P.-H. Chaudouard to establish complete versions of these relative trace formulas (work already initiated in \cite{zydor2016variante,zydor2018variante,zydor2020formules}) should make it possible to remove this last hypothesis.
+
+
+Following his first paper, Zhang \cite{zhang2014automorphic} tackled the conjecture \ref{conj:ichinoikeda}.
+His main result is a proof of this conjecture essentially under the following assumptions (we leave aside a technical detail):
+\begin{itemize}
+    \item[--] Every archimedean place of $k$ split in $k'$.
+    \item[--] There is a non-archimedean place $v\in |k|$ split in $k'$ where $\pi$ is supercuspidal.
+    \item[--] For any place $v \in |k|$ not split in $k'$ either $\pi_v$ is supercuspidal or unramified.
+\end{itemize}
+
+
+This third hypothesis is much more restrictive than the others and comes from the following problem: in addition to the global comparison of relative trace formulas proposed by Jacquet and Rallis, Zhang must also compare certain local periods which he can only do for unramidied or supercuspidal representations at non-split places.
+In \cite{beuzart2021comparison}, the author managed to extend this comparison to all tempered representations at non-archimedean places, which finally allows us to remove the third hypothesis.
+Furthermore, in a work currently being written \cite{beuzart2017factorisations}, the author obtained, by another method, the desired comparison between local periods at archimedean places modulo an indeterminate sign which should make it possible to establish without the first hypothesis the formula conjectured by Ichino--Ikeda up to a single sign.
+Finally, let us point out that modulo this sign problem the current work of Chaudouard--Zydor should also make it possible to remove the second hypothesis.
+
+Following the work of Zhang, conjectures \ref{conj:global} and \ref{conj:ichinoikeda} have also been partially established in the Fourier--Jacobi case (i.e. skew-hermitian).
+More precisely, in \cite{liu2014relative} Y. Liu proposed a comparison of relative trace formulas analogous to that of Jacquet--Rallis to attack these conjectures.
+Following Zhang's method, Hang Xue \cite{xue2014gan,xue2016fourier,xue2017fourier} was then able to demonstrate conjectures 2.1 and 2.2 in the Fourier-Jacobi case, under the same hypothesis of the existence of two distinct split places in which $\pi$ is supercuspidal and temperate respectively (which allows him, like Zhang, to consider only simple forms of relative trace formulas).
+
+
+\subsection{Sketch of the proof of the global conjecture in the hermitian case}
+
+
+In this section, we give an outline of the proof by Zhang \cite{zhang2014fourier} of the Gan--Gross--Prasad conjecture (Conjecture \ref{conj:global}) under certain local assumptions in the hermitian case.
+In particular, we will not talk about the proof of the Ichino--Ikeda conjecture (Conjecture 2.2) nor of the skew-hermitian case.
+
+\subsubsection{Jacquet--Rallis' approach}
+In \cite{jacquet2011gross} Jacquet and Rallis propose an approach to conjecture \ref{conj:global} via a comparison of ``relative trace formulas''.
+The latter, which generalize the famous Arthur--Selberg trace formula, were introduced and studied in many cases by Jacquet and his co-authors (see \cite{lapid2006relative} for an introduction to this subject).
+In its purest version, a relative trace formula consists of expressing in two ways an integral of the following form
+\begin{equation}
+\label{eqn:8}
+    \int_{H_1(k) \backslash H_1(\bA) \times H_2(k) \backslash H_2(\bA)} K_f(h_1, h_2)\eta_1(h_1) \eta_2(h_2) \dd h_1 \dd h_2
+\end{equation}
+where $G_0$ is a connected reductive group over $k$, $H_1$ and $H_2$ are algebraic subgroups of $G_0$ defined over $k$, $\eta_1: H_1(k) \backslash H_1(\bA) \to \bC^\times$ and $\eta_2: H_2(k) \backslash H_2(\bA) \to \bC^\times$ are automorphic characters, $f$ is a compactly supported function on $G_0(\bA)$ and
+\[
+    K_f(x, y) = \sum_{\gamma \in G_0(k)} K_f(x^{-1} \gamma y), \quad x,  y \in G_0(\bA)
+\]
+is  the kernel of the action by convolution to the right of $f$ on $L^2(G_0(k) \backslash G_0(\bA))$.
+The trace formulas introduced by Jacquet and Rallis correspond to the following two cases:
+
+\begin{itemize}
+    \item[--] $G_0 = G = \rU(W) \times \rU(V)$ where $W \subset V$ are hermitian spaces over $k'$ with $\dim(W) = \dim(V) - 1$, $H_1 = H_2 = H = \rU(W)$ (equipped with the diagonal inclusion $H \hookrightarrow G$) and $\eta_1$, $\eta_2$ are trivial.
+    \item[--] $G_0 = G' = \Res_{k'/k} \GL_n \times \Res_{k'/k} \GL_{n+1}$ where $\Res_{k'/k}$ denotes the Weil restriction of scalar and $n = \dim(W)$, $H_1 = H_1' = \Res_{k'/k} \GL_n$ equipped with the natural inclusion $H_1' \hookrightarrow G'$, $H_2 = H_2' = \GL_n \times \GL_{n+1}$ equipped with the natural inclusion $H_2' \hookrightarrow G'$, $\eta_1$ trivial and $\eta_2 = \eta$ a certain quadratic character of $H_2'(\bA)$.
+\end{itemize}
+
+
+Even in these particular cases, the expression \eqref{eqn:8} can't be done as is because the integral is in general divergent and it must be regularized (for example by introducing truncations as Arthur does).
+To circumvent this problem, Zhang only considers ``good'' functions $f$ for which expression \eqref{eqn:8} is absolutely convergent and which also allow him to obtain absolutely convergent geometric and spectral expansions.
+This is called a \emph{simple} trace formula (because of the restriction on test functions).
+Let $J(f)$ and $I(f')$ be the Jacquet--Rallis relative trace formulas applied to ``good'' functions $f \in C_c^\infty(G(\bA))$ and $f' \in C_c^\infty(G'(\bA))$ respectively.
+Then simple formal manipulations which are justified by the choice of ``good'' test functions gives the equalities
+\begin{align}
+    \sum_{\gamma \in H(k) \backslash G_\rs(k) / H(k)}  \cO(\gamma, f) &= J(f) = \sum_{\pi \subset \scA_\cusp(G)} J_\pi(f) \label{eqn:9} \\
+    \sum_{\delta \in H_1'(k) \backslash G_\rs'(k) / H_2'(k)} \cO(\delta, f') &=  I(f') = \sum_{\substack{\Pi \subset \scA_\cusp(G') \\ \omega_\Pi|_{\bA^\times \times \bA^\times = 1}}} I_\Pi(f') \label{eqn:10}
+\end{align}
+where
+\begin{itemize}
+    \item[--] $G_\rs \subset G$ denotes the Zariski open subset of regular semisimple elements for the action by bimultiplication of $H \times H$ i.e. $g \in G_\rs$ if and only if the double coset $HgH$ is closed under the Zariski topology and $g^{-1} Hg \cap H = \{1\}$ (that is, the stabilizer of $g$ in $H \times H$ is trivial).
+    We define in the same way the open subset $G_\rs' \subset G'$ of regular semisimple elements for the action of $H_1' \times H_2'$ by bimultiplication.
+    \item[--] For $\gamma \in G_\rs(k)$,
+    \[
+        \cO(\gamma, f) = \int_{H(\bA) \times H(\bA)} f(h_1^{-1} \gamma h_2) \dd h_1 \dd h_2
+    \]
+    denotes the corresponding relative orbital integral.
+    For $\delta \in G_\rs'(k)$, we define $\cO(\delta, f')$ in a similar way by twisting by the character $\eta$ on $H_2'(\bA)$.
+    \item[--] The right summation of the first formula is over all irreducible cuspidal representations of $G(\bA)$ and the right summation of the second formula is over the set of irreducible cuspidal representations $\Pi$ of $G(\bA)$ whose central character (here we denote $\omega_\Pi$) is trivial on $\bA^\times \times \bA^\times = Z_{H_2'}(\bA)$ (the center of $H_2'(\bA)$).
+    \item[--] The distributinos $f \mapsto J_\pi(f)$ and $f'\mapsto I_\Pi(f')$ are the \emph{relative characters} defined by
+    \begin{align*}
+        J_\pi(f) &= \sum_{\varphi \in \scB_\pi} \cP_H(\pi(f) \varphi) \overline{\cP_H(\varphi)} \\
+        I_\Pi(f') &= \sum_{\varphi \in \scB_\Pi} \cP_{H_1'}(\Pi(f')\varphi) \overline{\cP_{H_2', \eta}(\varphi)}
+    \end{align*}
+    where $\scB_\pi$, $\scB_\Pi$ denote (good) orthonormal bases of $\pi$, $\Pi$ respectively for Peterssen scalar products, $\cP_H$ is the Gan--Gross--Prasad period, $\cP_{H_1'}$ (resp. $\cP_{H_2', \eta}$) is the period that maps a cusp form to the integral over $H_1'(k) \backslash H_1'(\bA)$ (resp. over $Z_{H_2'}(\bA) H_2'(k) \backslash H_2'(\bA)$ against the character $\eta$).
+\end{itemize}
+
+
+The relative characters $H_\pi$ and $I_\Pi$ are immediately related to the periods $\cP_H$ and $\cP_{H_1'}$, $\cP_{H_2', \eta}$.
+In fact, we can show without too much difficulty that
+\begin{align*}
+    J_\pi \neq 0 &\Leftrightarrow \cP_H|_\pi \neq 0 \\
+    I_\Pi \neq 0 &\Leftrightarrow \cP_{H_1'}|_{\Pi} \neq 0 \text{ and } \cP_{H_2', \eta}|_\Pi \neq 0.
+\end{align*}
+
+According to the work of Rallis and Flicker \cite{flicker1988twisted} on the period $\cP_{H_2', \eta}$ and the classification of the 
+automorphic representations of unitary groups by Mok \cite{mok2015endoscopic} and Kaletha--Minguez--Shin--White \cite{kaletha2014endoscopic}, the period $\cP_{H_2', \eta}|_\Pi$ is nonzero if and only if $\Pi$ comes from a basis change of a product of unitary groups $\rU(W') \times \rU(V')$.
+On the other hand, according to the work of
+Jacquet, Piatetski-Shapiro and Shalika \cite{jacquet1983rankin} on the Rankin--Selberg convolution, the period $\cP_{H_1'}|_\Pi$ is non-zero if and only if $L(\frac{1}{2}, \Pi) \neq 0$ (where, recall that $L(s, \Pi)$ is the $L$-function of the pair).
+
+To prove the conjecture \ref{conj:global}, it is enough to show that
+\[
+    J_\pi \neq 0 \Leftrightarrow I_{\BC(\pi)} \neq 0
+\]
+and the strategy proposed by Jacquet-Rallis to establish this equivalence consists of comparing formulas \eqref{eqn:9} and \eqref{eqn:10}.
+More precisely, it involves comparing the geometric sides (i.e. the left hand sides) to deduce an identity between the spectral sides (i.e. the right hand sides).
+To this end, Jacquet and Rallis begin by defining an injection
+\[
+    H(k) \backslash G_\rs(k) / H(k) \hookrightarrow H_1'(k) \backslash G_\rs'(k) / H_2'(k)
+\]
+and more generally
+\begin{equation}
+    \label{eqn:11}
+    H(F) \backslash G_\rs(F) / H(F) \hookrightarrow H_1'(F) \backslash G_\rs'(F) / H_2'(F)
+\end{equation}
+for all extension $F$ of $k$ (in particular the completions $k_v$ of $k$).
+We will then say that two elements $(\gamma, \delta) \in G_\rs(F) \times G_\rs'(F)$ \emph{match} if $H_1'(F) \delta H_2'(F)$ is the image of $H(F) \gamma H(F)$ under \eqref{eqn:11}.
+In order to compare formulas \eqref{eqn:9} and \eqref{eqn:10}, we look for functions $f \in C_c^\infty(G(\bA))$ and $f' \in C_c^\infty(G'(\bA))$ such that
+\[
+    \cO(\gamma, f) = \cO(\delta, f')
+\]
+for the matching pair of elements $(\gamma, \delta) \in G_\rs(F) \times G_\rs'(F)$.
+When $f$ (resp. $f$) decomposes as a product $f = \prod_v f_v$ (resp. $f' = \prod_v f_v'$) of local functions $f_v \in C_c^\infty(G(k_v))$ (resp. $f_v' \in C_c^\infty(G'(k_v))$) (we have $f_v = \mathbf{1}_{G(\scO_v)}$, resp. $f_v' = \mathbf{1}_{G'(\scO_v)}$ for almost all $v \in |k|$), we have a corresponding factorization of orbital integrals:
+\[
+    \cO(\gamma, f) = \prod_v \cO(\gamma, f_v) \quad(\text{resp. } \cO(\delta, f') = \prod_v \cO(\delta, f_v'))
+\]
+and we can first try to compare the local orbital integrals $\cO(\gamma, f_v)$ and $\cO(\delta, f_v')$.
+For this, Jacquet and Rallis introduce a family of ``transfer factors''
+\[
+    \Delta_v: G_\rs(k_v) \times G_\rs'(k_v) \to \bC
+\]
+for all $v \in |k|$ which are defined by explicit formulas and have the following essential properties:
+\begin{itemize}
+    \item[--] $\Delta_v(\gamma, \delta) = 0$ unless $\gamma$ and $\delta$ match.
+    \item[--] $\Delta_v(h_1 \gamma h_2, h_1' \delta h_2') = \eta_v(h_2')\Delta_v(\gamma, \delta)$ for all $h_1, h_2 \in H(k_v)$, $h_1' \in H_1'(k_v)$, and $h_2' \in H_2'(k_v)$ and $\eta_v$ denotes the local component of $\eta$ at $v$.
+    \item[--] If $\gamma \in G_\rs(k)$ and $\eta \in G_\rs'(k)$ match then
+    \[
+        \prod_{v \in |k|} \Delta_v(\gamma, \delta) = 1.
+    \]
+\end{itemize}
+
+Following Jacquet and Rallis, we then say that two functions $(f_v, f_v') \in C_c^\infty(G(k_v)) \times C_c^\infty(G'(k_v))$ \emph{match} or they are \emph{transfer} of each other if
+\[
+    \cO(\gamma, f_v) = \Delta_v(\gamma, \delta) \cO(\delta, f_v')
+\]
+for all matching pair of elements $(\gamma, \delta) \in G_\rs(k_v) \times G_\rs'(k_v)$.
+In order to construct sufficient pairs of global functions $(f, f')$ that allow us to compare formulas \eqref{eqn:9} and \eqref{eqn:10} effectively, we are naturally led to consider the following two local problems:
+\begin{itemize}
+    \item[--] Fundamental lemma: Show that $f = \mathbf{1}_{G(\scO_v)}$ and $f' = \mathbf{1}_{G'(\scO_v)}$ match for almost all place $v$.
+    \item[--] Existence of transfer: Show that for any function $f_v \in C_c^\infty(G(k_v))$ there exists a matching function $f_v' \in C_c^\infty(G'(k_v))$ and vice versa.
+\end{itemize}
+These two statements are easy to prove at split places $v \in |k|$ hence the essential problem therefore lies in the non-split places.
+Let us point out that once the comparison has been made, it is still necessary to separate the contributions from the spectral side (in order to obtain an identity directly relates $J_\pi$ and $I_{\BC(\pi)}$).
+For this, in addition to the local conjecture (which ensures that given $\Pi$ there exists at most one cuspidal representation $\pi$ satisfying $\Hom_{H(k_v)}(\pi_v, \bC) \neq 0$ everywhere and $\Pi = \BC(\pi)$) we need \emph{a priori} an extended version of the fundamental lemma for all the elements of certain spherical Hecke algebras (this is what really allows us to separate the spectral contributions by applying Stone--Weierstrass theorem).
+However, this fundamental lemma for spherical Hecke algebras is also very easy to establish at split places and Zhang remarked that this was sufficient to isolate all spectral terms from a recent result of Ramakrishnan \cite{ramakrishnan2015mild}.
