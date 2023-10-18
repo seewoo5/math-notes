@@ -1,0 +1,54 @@
+\section{Some Fourier Expansions and Hypercuspidality}
+\label{sec:2}
+
+
+Now $F$ is a global field not of characteristic 2, and $\pi$ is an automorphic cuspidal representation of $G(\bA)$ which we suppose realized in some subspace of cusp forms $H_\pi$ in $L_0^2(G(F) \backslash G(\bA))$.
+To attach an $L$-function to $\pi$, it is useful to take forms $f$ in $H_\pi$ and examine their Fourier coefficients along the maximal unipotent subgroup $N$.
+When such coefficients are non-zero, $\pi$ is non-degenerate, and we are led back to the local Whittaker models of \ref{sec:1.5}; in this case, we can (and eventually do) introduce $L$-functions using Jacquet's generalization of the ``Rankin--Selberg method''.
+
+
+On the other hand, if these Fourier coefficients represent zero, then $\pi$ is \underline{hypercuspidal}; in this case, looking at Fourier expansions \underline{along $Z$} will bring us back to the generalized Whittaker models of \ref{sec:1.6}, and ultimately allow us to introduce an $L$-function for $\pi$ using the so-called ``Shimura method''.
+
+
+Henceforth, let us fix a non-trivial character $\psi$ of $F \backslash \bA$, and define characters $\psi_N$ and $\psi_Z$ of $N = N(\bA)$ and $Z = Z(\bA)$ by
+\[
+    \psi_N \left(\begin{bmatrix}
+        1 & a & z \\ 0 & 1& -\bar{a} \\ 0 &0 & 1
+    \end{bmatrix}\right) = \psi(\Im a)
+\]
+and
+\[
+    \psi_Z \left(\begin{bmatrix}
+        1 & 0 & z \\ 0 & 1& 0 \\ 0 & 0 & 1
+    \end{bmatrix}\right) = \psi(\Im z).
+\]
+
+
+\subsection{}
+\label{sec:2.1}
+
+
+Fix $f$ in $H_\pi$.
+To obatin a Fourier expansion of $f$ ``along $N$'', we introduce the familiar $\psi$-th coefficient
+\[
+    W_f^\psi(g) = \int_{N(F) \backslash N(\bA)} f(ng) \overline{\psi_N(n)} \dd n.
+\]
+The transitivity of $T(\bA) = \left\{\left[\begin{smallmatrix}\delta & & \\ & 1 & \\ & & \bar\delta^{-1}\end{smallmatrix}\right]\right\}$ acting on $N(\bA) \backslash Z(\bA)$ implies - as in the local theory - that
+\begin{align*}
+    W_f^{\psi^\delta}(g) &= \int_{N(F) \backslash N(\bA)} f(ng) \overline{\psi_N^\delta(n)} \dd n \\
+    &= \int_{N(F) \backslash N(\bA)} f(ng) \psi_N \left(\begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix} n\begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix}^{-1}\right) \dd n \\
+    &= W_f^{\psi} \left(\begin{bmatrix}
+        \delta & & \\ & 1&  \\ & & \bar{\delta}^{-1}
+    \end{bmatrix}g\right).
+\end{align*}
+In other words, knowing $W_f^\psi$ determines $W_f^{\psi^\delta}$ for all $\psi^\delta, \delta \in E^\times$.
+
+However, through $N(F) \backslash N(\bA)$ is compact, it is \underline{not} abelian; to obtain a nice Fourier expansion, we must bring into play the compact abelian group $N(F) Z(\bA) \backslash N(\bA)$.
+
+
+\subsection{}
+\label{sec:2.2}
