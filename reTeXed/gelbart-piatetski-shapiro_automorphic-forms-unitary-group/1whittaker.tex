@@ -1,1 +1,155 @@
 \section{Whittaker Models (Ordinary and Generalized)}
+\label{sec:1}
+
+
+Some kind of Whittaker model is needed in order to introduce $L$-functions on $G$.
+
+Fix $F$ local (not of characteristic two), and suppose $(\pi, H_\pi)$ is an irreducible admissible representation of $G$.
+Naively, we should look for functionals on $H_\pi$ which·transform under $N$ according to a one-dimensional
+representation.
+However, since such functionals need not exist in general, and since there are irreducible representations of N which are not 1-dimensional, it is natural to pursue a more general approach.
+
+
+\subsection{}
+
+Recall $N$ is the maximal unipotent subgroup of $G$ and $E$ is a quadratic extension of $F$.
+We fix, once and for all, an element $i$ in $E$ such that $\bar{i} = -i$, so $\Im(z) = (z - \bar{z}) / 2i$.
+Regarding $E$ as a 2-dimensional \underline{symplectic} space over $F$ with skew-form $\langle z_1, z_2\rangle = \Im(z_1\bar{z_2})$ we have
+\[
+    N = \left\{\begin{bmatrix}1 & b& z \\ 0 & 1 & -\bar{b} \\ 0 & 0 & 1\end{bmatrix}: z, b \in E, z + \bar{z} = -b\bar{b}\right\} \simeq H(E),
+\]
+the \underline{Heisenberg group} attached to $E$ over $F$.
+In particular, $N$ is non-abelian, with commutator subgroup
+\[
+    [N, N] =\left\{\begin{bmatrix} 1 & 0 & z \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix}\right\} = Z,
+\]
+the center of $N$.
+The maximal abelian subgroup of $N$ is
+\[
+    N' = \left\{\begin{bmatrix} 1 & b& z \\ 0 & 1 & -b \\ 0 & 0 & 1\end{bmatrix} \in N: b \in F\right\}.
+\]
+
+
+\subsection{}
+\label{sec:1.2}
+The irreducible representations of the \underline{Heisenberg group}, and hence those of $N$, are well known:
+\begin{enumerate}[label=(\roman*)]
+    \item \underline{$\sigma$ is 1-dimensional.} 
+    
+    In this case, $\sigma$ must be trivial on 
+    \[
+        Z = [N, N]
+    \]
+    and define a character of $N/Z$. So
+    \[
+        N/Z \simeq \left\{\begin{bmatrix} 1 & a & 0 \\ 0 & 1 & -\bar{a} \\ 0 & 0 & 1 \end{bmatrix}\right\} \simeq E
+    \]
+    implies $\sigma$ corresponds to a character of $E$, i.e.
+    \[
+        \sigma = \psi_N\left(\begin{bmatrix}
+            1 & a & z \\ 0 & 1 & -\bar{a} \\ 0 & 0 & 1
+        \end{bmatrix}\right) = \psi(\Im a)
+    \]
+    with $\psi$ a character \underline{of $F$}.
+    \item \underline{$\sigma$ is infinite-dimensional.}
+    
+    In this case (by the Stone-von Neumann uniqueness theorem), $\sigma$ is completely determined by its ``central'' character. In particular, if
+    \[
+        \sigma\left(\begin{bmatrix}
+            1 & 0 & z \\ 0 & 1 & 0 \\ 0 & 0 & 1
+        \end{bmatrix}\right) = \psi(\Im z) I
+    \]
+    for some (additive) character $\psi$ of $F$, then
+    \[
+        \sigma = \rho_\psi = \Ind_{N'}^{N} \psi_{N'},
+    \]
+    with $\psi_{N'}$ the character of (the maximal abelian subgroup) $N'$ obtained by trivially extending $\psi$ from $Z$ to $N'$.
+\end{enumerate}
+
+
+\subsection{}
+\label{sec:1.3}
+
+
+\underline{Definition}. By a (generalized) Whittaker functional for $(\pi, H_\pi)$ we understand $N$-map from $N_\pi$ to some irreducible representation of $(\sigma, L_\sigma)$ of $N$ (possibly infinite dimensional).
+
+
+\subsection{}
+\label{sec:1.4}
+
+
+\underline{Remark}. The torus
+\[
+    T = \left\{\begin{bmatrix} \delta & 0 & 0 \\ 0 & 1& 0 \\ 0 & 0 & \bar{\delta}^{-1}\end{bmatrix}: \delta \in E^\times\right\}
+\]
+acts by conjugation on $N$, taking
+\[
+    \begin{bmatrix}
+        1 & b& z \\ 0 & 1& -\bar{b} \\ 0 & 0 & 1
+    \end{bmatrix} \quad \text{to} \quad
+    \begin{bmatrix}
+        1 & \delta b & \delta \bar{\delta} z \\ 0 & 1 & -\overline{\delta b} \\ 0 & 0 & 1
+    \end{bmatrix}.
+\]
+So if $\psi_N$ denotes the 1-dimensional representation of $N$ corresponding to the fixed character of $F$ as in \ref{sec:1.2} (i), Pontrygin duality for $E \simeq N/Z$ implies that any other 1-dimensional representation is trivial or of the form
+\[
+    \psi_N^\delta (n) = \psi_N \left(\begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix} n \begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix}^{-1}\right)
+\]
+for some $\delta \in E^\times$.
+
+
+\subsection{}
+\label{sec:1.5}
+
+If $\sigma$ is a one-dimensional representation of $N$ of the form $\psi_N$, a given irreducible admissible representation $(\pi, H_\pi)$ need \underline{not} possess a nontrivial $\psi_N$-Whittaker functional $\scL$.
+However, if it does, then by \ref{sec:1.4} it possesses a $\sigma$-Whittaker functional for \underline{any} one-dimensional representation $\psi_N^\delta$, given by the formula
+\[
+    \scL^\delta(v) = \scL\left(\pi\left(\begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix}\right)v\right), \quad v \in H_\pi.
+\]
+In this case, we call $(\pi, H_\pi)$ \underline{non-degenerate}.
+By a well-known theorem of Shalika and Gelfand-Kazhdan (cf. [Sha1]), the space of such $\sigma$-Whittaker functionals is one-dimensional.
+In particular, the corresponding Whittaker models
+\[
+    \cW(\pi, \psi) = \{ W(g) = \scL(\pi(g) v): v \in H_\pi \}
+\]
+are unique.
+
+
+\subsection{}
+\label{sec:1.6}
+In general, $(\pi, H_\pi)$ is not non-degenerate, examples being provided by the Weil representations discussed in \S \ref{sec:6}.
+Thus it is necessary to consider $\sigma$-Whittaker models for infinite dimensional $\sigma$ as well.
+Such $\sigma$, however, are completely determined by their central character $\psi_Z$, so it is convenient to work with a slight thickening of $N$.
+More precisely, consider the stabilizer $R$ in $P$ of the central character $\psi_Z$ of $Z$.
+Because 
+$\left[\begin{smallmatrix}
+    \delta & & \\ & \beta & \\ & & \bar{\delta}^{-1}
+\end{smallmatrix}\right]$
+conjugates
+$
+\left[\begin{smallmatrix}
+    1 & 0 & z \\ 0 & 1 & 0 \\ 0 & 0 & 1 
+\end{smallmatrix}\right]
+$
+to
+$
+\left[\begin{smallmatrix}
+    1 & 0 & \delta \bar{\delta}z \\ 0 & 1 & 0 \\ 0 & 0 & 1 
+\end{smallmatrix}\right],
+$
+\[
+R = \left\{ \begin{bmatrix} \delta & * & * \\ 0 & \beta & * \\ 0 & 0 & \delta\end{bmatrix} \in P: \delta, \beta \in E^1\right\} \simeq (E^1 \times E^1) \ltimes N.
+\]
+In particular, each irreducible infinite dimensional representation $\rho_\psi$ of $N$ extends to a like representation $\rho_\psi^\alpha$ of $R$ with $\alpha$ a character of $E^1 \times E^1$.
+
+\begin{theorem*}[Existence and Uniqueness of Generalized Whittaker Models: [PS3]]
+Any $(\pi, H_\pi)$ possesses a $\rho_\psi^\alpha$-Whittaker functional for some choice of $\rho_\psi^\alpha$; moreover, the space of such functionals is at most one dimensional.
+\end{theorem*}
+
+We shall discuss this result in more detail in the global context of \S \ref{sec:7}.

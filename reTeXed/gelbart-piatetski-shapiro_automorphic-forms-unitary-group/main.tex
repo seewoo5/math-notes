@@ -134,7 +134,7 @@
 % E.g. to write $\{A_n\}_{n\geq 1}$, do $\bk{A_n}{n\geq 1}$
 \newcommand{\bk}[2]{\{#1\}_{#2}}
 
-\setcounter{section}{-1}
+% \setcounter{section}{-1}
 
 \newcommand{\SL}{\mathrm{SL}}
 \newcommand{\Sp}{\mathrm{Sp}}
@@ -150,6 +150,7 @@
 \newcommand{\rO}{\mathrm{O}}
 \newcommand{\rP}{\mathrm{P}}
 \newcommand{\JL}{\mathrm{JL}}
+\newcommand{\Ind}{\mathrm{Ind}}
 \newcommand{\stab}{\mathrm{Stab}}
 
 \newcommand{\dd}{\mathrm{d}}
@@ -160,7 +161,10 @@
 \newcommand{\bC}{\mathbb{C}}
 \newcommand{\bQ}{\mathbb{Q}}
 \newcommand{\cS}{\mathcal{S}}
+\newcommand{\cL}{\mathcal{L}}
 \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\scL}{\mathscr{L}}
 
 % Math mode symbols for common sets and spaces. Example usage: $\R$
 \newcommand{\R}{\mathbb{R}}	% Real numbers
@@ -230,7 +234,7 @@
 \fancyhead[R]{\small\textit{\nouppercase{\rightmark}}}
 
 % Left header text: Short course title, hyperlinked to table of contents
-\fancyhead[L]{\hyperref[sec:contents]{\small Work of Waldspurger}}
+\fancyhead[L]{\hyperref[sec:contents]{\small Automorphic forms on unitary groups}}
 
 % --- Document starts here ---
 
@@ -260,6 +264,7 @@
 
 \input{intro}
 
+\setcounter{tocdepth}{1}
 \tableofcontents\label{sec:contents}
 
 \input{notation}
