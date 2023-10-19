@@ -33,7 +33,7 @@ To obatin a Fourier expansion of $f$ ``along $N$'', we introduce the familiar $\
 \[
     W_f^\psi(g) = \int_{N(F) \backslash N(\bA)} f(ng) \overline{\psi_N(n)} \dd n.
 \]
-The transitivity of $T(\bA) = \left\{\left[\begin{smallmatrix}\delta & & \\ & 1 & \\ & & \bar\delta^{-1}\end{smallmatrix}\right]\right\}$ acting on $N(\bA) \backslash Z(\bA)$ implies - as in the local theory - that
+The transitivity of $T(\bA) = \left\{\left[\begin{smallmatrix}\delta & & \\ & 1 & \\ & & \bar\delta^{-1}\end{smallmatrix}\right]\right\}$ acting on $Z(\bA) \backslash N(\bA)$ implies - as in the local theory - that
 \begin{align*}
     W_f^{\psi^\delta}(g) &= \int_{N(F) \backslash N(\bA)} f(ng) \overline{\psi_N^\delta(n)} \dd n \\
     &= \int_{N(F) \backslash N(\bA)} f(ng) \psi_N \left(\begin{bmatrix}
@@ -52,3 +52,117 @@ However, through $N(F) \backslash N(\bA)$ is compact, it is \underline{not} abel
 
 \subsection{}
 \label{sec:2.2}
+
+We compute
+
+\begin{align*}
+    W_f^\psi(g) &= \int_{N(F) \backslash N(\bA)} f(ng) \overline{\psi_N(n)} \dd n \\
+    &= \int_{N(F) Z(\bA) \backslash N(\bA)} \int_{Z(F) \backslash Z(\bA)} f(nzg) \dd z \overline{\psi_N(n)}\dd n \\
+    &= \int_{N(F) Z(\bA) \backslash N(\bA)} f_{00}(ng) \overline{\psi_N(n)} \dd n
+\end{align*}
+with
+\begin{equation}
+\label{eqn:2.2.1}
+    f_{00}(g) = \int_{Z(F) \backslash Z(\bA)} f(zg) \dd z
+\end{equation}
+the \underline{constant term} (in the Fourier expansion) of $f(zg)$ \underline{along $Z$}.
+
+
+Fix $g$ in $G(\bA)$.
+As a function on the \underline{compact abelian} group $N(F) Z(\bA) \backslash N(\bA)$, $f_{00}(ng)$ has a Fourier expansion
+\begin{equation}
+    \label{eqn:2.2.2}
+    f_{00}(g) = \sum_{\delta \in E^\times} W_{F}^{\psi^\delta}(g) + \int_{N(F) Z(\bA) \backslash N(\bA)} f_{00}(n'g) \dd n'.
+\end{equation}
+Indeed, the last paragraph says precisely that $W_f^\psi(g)$ is the $\psi$-th Fourier coefficient of $f_{00}(ng)$ along $Z \backslash N \simeq E$. Moreover, the constant term is actually zero since $f$ cuspidal implies
+\begin{align*}
+    \int_{N(F)Z(\bA) \backslash N(\bA)} f_{00}(n'g) \dd n' &= \int_{N(F)Z(\bA) \backslash N(\bA)} \int_{Z(F) \backslash Z(\bA)} f(zn'g) \dd z \dd n' \\
+    &= \int_{N(F) \backslash N(\bA)} f(ng) \dd n = 0.
+\end{align*}
+
+
+\subsection{}
+\label{sec:2.3}
+
+Let $\cW(\pi, \psi)$ denote the space of $\psi$-th Fourier coefficients $W_f^\psi(g)$, $f \in H_\pi$.
+
+\begin{proposition}
+The vanishing or nonvanishing of $\cW(\pi, \psi)$ is independent of $\psi$; in particular, $\cW(\pi, \psi) = 0$ if and only if
+\[
+    f_{00}(g) = 0 \quad \forall f \in H_\pi.
+\]
+\end{proposition}
+\begin{proof}
+According to \eqref{eqn:2.2.1} and \eqref{eqn:2.2.2},
+\begin{equation}
+\begin{split}
+\label{eqn:2.3.1}
+    f_{00}(g) &= \sum_{\delta \in E^\times} W_{f}^{\psi^\delta}(g) \\
+    &= \sum_{\delta \in E^\times} W_{f}^{\psi} \left(\begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix} g\right)
+\end{split}
+\end{equation}
+with
+\[
+    W_f^\psi(g) = \int_{N(F)Z(\bA) \backslash N(\bA)} f_{00}(ng) \overline{\psi_N(n)} \dd n.
+\]
+\end{proof}
+
+
+\subsection{}
+\label{sec:2.4}
+
+\begin{definition}
+We call $(\pi, H_\pi)$ \underline{hypercuspidal} if $f \in H_\pi$ implies $f_{00} = 0$.
+\end{definition}
+
+\begin{proposition}
+Let $L_{0, 1}^{2}$ be the orthogonal complement in $L_{0}^{2}$ of all cusp forms. Then    
+\begin{enumerate}[label=(\roman*)]
+    \item $L_{0, 1}^{2}$ has \underline{multiplicity 1}.
+    \item each $(\pi, H_\pi)\subset L_{0, 1}^{2}$ is non-degenerate, and
+    \item for any $f \in H_\pi \subset L_{0, 1}^{2}$, the constant term
+    \[
+        f_{00}(g) = \sum_{\delta \in E^\times}W_{f}^{\psi^\delta}(g)
+    \]
+    completely determines $f$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We start with (iii).
+Suppose $f$ and $f'$ are in $H_{\pi}$ such that $f_{00} = f_{00}'$.
+Then $(f - f')_{00} = 0$ implies $f - f' = 0$ (by the hypothesis $H_\pi \in L_{0, 1}^{2}$). This proves (iii).
+To prove (i) and (ii), suppose there exists $H_\pi' \subset L_{0, 1}^{2}$ such that the right regular representation restricted to $H_{\pi}'$ again realizes $\pi$.
+If $f \in H_\pi$ and $f' \in H_{\pi}'$, then
+\begin{equation}
+\label{eqn:2.4.1}
+    f_{00}(g) = \sum_{\delta \in E^\times} W_f^\psi\left(\begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix}g\right)
+\end{equation}
+and
+\[
+    f'_{00}(g) = \sum_{\delta \in E^\times} W_{f'}^\psi\left(\begin{bmatrix}
+        \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+    \end{bmatrix}g\right).
+\]
+
+Note that each $W_f^\psi$ (or $W_{f'}^\psi$) satisfies the condition $W_f^\psi(ng) = \psi(n) W_f^\psi(g)$, $n \in N$, i.e. the spaces $(W_f^\psi)$ and $W_{f'}^\psi$ afford Whittaker models for $\pi$.
+But by \S \ref{sec:2.3} these spaces are nonzero (which proves (ii)) and by the uniqueness of Whittaker models quoted in \S \ref{sec:1.5}, these spaces coincide.
+Thus by \eqref{eqn:2.4.1}, the spaces $(f_{00})$ and $(f_{00}')$ coincide; by (iii) the spaces $H_\pi = (f)$ and $H_{\pi}' = (f')$ also coincide, thereby proving (i).
+\end{proof}
+
+
+\subsection{}
+\label{sec:2.5}
+
+\begin{remark*}
+\begin{enumerate}[label=(\roman*)]
+    \item It is conjectured (c.f. [Flicker]) that multiplicity one holds for the entire space of cusp forms; however, at the present time, we can prove this only for $L_{0, 1}^{2}$.
+    \item Hypercuspforms \underline{do} exist; again, the examples are provided by the Weil representation discussed in \S \ref{sec:6}.
+    \item Although $\cW(\pi, \psi) \neq \{0\}$ implies $\pi$ non-degenerate (in the sense that an abstract functional exists), the converse is not clear.
+    Indeed, the work of [Wald] indicates that characterizing the nonvanishing of a space of Fourier coefficients is a delicate matter.
+\end{enumerate} 
+\end{remark*}
