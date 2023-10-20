@@ -15,3 +15,184 @@ Recall $V$ is a 3-dimensional vector space over $E/F$ and $(-,-)_V$ is a hermiti
     0 & 0 & 1 \\ 0 & 1& 0 \\ 1 & 0 & 0
 \end{smallmatrix}\right]$.
 
+Let $H \subset G$ denote the stabilizer of the anisotropic line $\langle \ell_0 \rangle$.
+Then $H$ also preserves the orthocomplement of $\langle \ell_0 \rangle$, namely
+\[
+    W = \langle \ell_{-1}, \ell_{1}\rangle.
+\]
+Regarding $W$ as a 2-dimensional Hermitian space (whose matrix with respect to the basis $\{\ell_{-1}, \ell_{1}\}$ is $\left[\begin{smallmatrix}
+    0 & 1 \\ 1& 0
+\end{smallmatrix}\right]$), we have $H \simeq \rU(W) \simeq \rU_{1, 1}$ via the embedding
+\[
+    \begin{bmatrix}
+        * & * \\ * & *
+    \end{bmatrix} \mapsto \begin{bmatrix}
+        * & 0 & * \\ 0 & 1 & 0 \\ * & 0 & *
+    \end{bmatrix}.
+\]
+
+Let $B$ denote the standard maximal parabolic (Borel) subgroup
+\[
+    \left\{
+    \begin{bmatrix}
+        \alpha & 0 & \beta \\ 0 & 1 & 0 \\ 0 & 0 & \bar{\alpha}^{-1}
+    \end{bmatrix}
+    \right\} \text{ of }H
+\]
+so that $B \simeq T \ltimes Z$, with $T$ the torus
+\[
+    T = \left\{
+        \begin{bmatrix}
+            \alpha & & \\ & 1 & \\ & & \bar{\alpha}^{-1}
+        \end{bmatrix}: \alpha \in E^\times
+    \right\}
+\]
+and $Z$ is the center of $N$.
+
+
+\subsection{}
+\label{sec:3.2}
+
+Given an automorphic cuspidal realization $(\pi, H_\pi)$ of $G(\bA)$, and $f \in H_\pi$, we shall analyze a global zeta-integral of the form
+
+\begin{equation}
+    \label{eqn:3.2.1}
+    L^\mu(f, F, s) = \int_{H(F) \backslash H(\bA)} f(h) E^\mu(h, F, s) \dd h.
+\end{equation}
+First we need to describe the (as yet) undefined terms $\mu, F, E$ etc.
+
+Fix a (not necessarily unitary) character $\mu$ of the id\`ele class group $E^\times \backslash \bA_E^\times$ of $E$, and $s \in \bC$, define a character $\omega_\mu^s$ of the Borel subgroup $B$ by the formula
+\begin{equation}
+\label{eqn:3.2.2}
+    \omega_\mu^s\left(
+        \begin{bmatrix}
+            \alpha & 0 & \beta \\ 0 & 1 & 0 \\ 0 & 0 & \bar{\alpha}^{-1}
+        \end{bmatrix}
+    \right) = \mu(\alpha) |\alpha|_E^s, \quad \alpha \in \bA_E^\times.
+\end{equation}
+
+Fixing an arbitrary Schwartz-Bruhat function $\phi$ in the space $\cS(W({\bA_E}))$, set
+\begin{equation}
+    \label{eqn;3.2.3}
+    F_\phi(h) = \int_{\bA_E^\times} (h\cdot \phi)(t \ell_{-1})\mu(t) |t|_E^s \dd^\times t
+\end{equation}
+where $(h \cdot \phi)(w) = \phi(h^{-1} \cdot w)$, and $h \cdot w$ denotes the natural action of $H(\bA)$ on $W(\bA) \subset V(\bA)$;
+as usual, this integral converges for $\Re(s)$ sufficiently large, and continues meromorphically to define a function of $h$ on $H(\bA)$ for all $s$ in $\bC$.
+Note
+\[
+    F(bh) = \omega_{\mu}^{s}(b)F(h) \text{ for } b \in B(\bA), h \in H(\bA).
+\]
+
+Finally, the Eisenstein series $E^\mu(h, F, s)$ is defined by the familiar series
+\[
+    E^\mu(h, F, s) = \sum_{\gamma \in B(F) \backslash H(F)} F(\gamma h);
+\]
+it converges initially only for $\Re(s)$ large, but the Selberg--Langlands theory of Eisenstein series implies that the function it defines continues meromorphically in $s$ and defines an automorphic form on $H(\bA)$.
+
+
+\subsection{}
+\label{sec:3.3}
+\begin{remark*}
+\begin{enumerate}[label=(\roman*)]
+    \item Because $E(h,F,s)$ is a automorphic form on $H$, and the restriction of the cusp form $f$ from $G(\bA)$ to $H(\bA)$ is still rapidly decreasing, the integral defining $L^\mu(f, F, s)$ (cf. \eqref{eqn:3.2.1}) is convergent.
+    The resulting function of $s$ - the global zeta-function of $f$ - has poles which can arise only from poles of $E(h,F,s)$.
+    \item The function $E(h, F, s)$ is essentially the familiar $\GL_2$-Eisenstein series discussed (for example) in [Jacquet].
+    Indeed, $\SL_2$ is isomorphic to a subgroup of $H$, namely $\SU_{2, 1}$, and $H \simeq \SU_{2, 1} \rtimes \rU_{1}$, where $\rU_{1}\simeq \{\left[\begin{smallmatrix} \alpha & 0 \\ 0 & 1 \end{smallmatrix}: \alpha \in E^1\right]\}$ and $\left[\begin{smallmatrix}
+        \alpha & 0 \\ 0 & 1
+    \end{smallmatrix}\right]$ acts on $\SU_{2, 1}$ by conjugation.
+    Thus the restriction of $E(h, F, s)$ to $\SU_{2, 1}$ is the familiar Eisenstein series on $\SL_2(\bA)$ with functional equation and non-trivial residue given by the constant function (arising from the pole at $s = 1$).
+    At the $\rU_{2, 1}$ level, these residues become proportional to $\mu(\det h)$, and the functional equation relates $E(h, F, s)$ to a ``partially Fourier transformed'' Eisenstein series at $1 - s$.
+\end{enumerate}
+\end{remark*}
+
+
+\subsection{}
+\label{sec:3.4}
+
+From the theory above, we conclude that $L^\mu(f, F, s)$ is meromorphic in $\bC$ with funcitonal equation relating values at $s$ and $1 - s$; more significantly for the sequel, the only possible residues of $L^\mu(f, F, s)$ are proportional to 
+\begin{equation}
+    \label{eqn:3.4.1}
+    \int_{H(F) \backslash H(\bA)} f(h) \mu(\det h) \dd h.
+\end{equation}
+In particular, if this last integral vanishes, then the zeta-function $L^\mu(f, F, s)$ is entire.
+
+Regarding $H(F) \backslash H(\bA)$ as an (algebraic) cycle in $G(F)\backslash G(\bA)$, we (ultimately) obtain the following statement: The existence of a pole for $L^\mu(f, F, s)$ (and ultimately the $L$-function $L(s, \pi, \mu)$) is related to the non-vanishing integral of $f$ in $H_\pi$ (suitably tensored with $\mu$) over the cycle coming from $\rU_{1, 1}$.
+
+We shall return to these considerations in \S \ref{sec:5}.
+For the moment, we content ourselves with a factorization of $L^\mu(f, F, s)$ into local integrals.
+
+
+\subsection{}
+\begin{proposition*}
+\[
+    L^\mu(f, F, s) = \int_{Z(\bA) \backslash H(\bA)} W_f^\psi(h) F(h) \dd h.
+\]
+\end{proposition*}
+\begin{proof}
+From the definition of the series $E$,
+\begin{align*}
+    L^\mu(f, F, s) &= \int_{H(F) \backslash H(\bA)} \sum_{B(F) \backslash H(F)} f(\gamma h) F(\gamma h) \dd h \\
+    &= \int_{B(F) \backslash H(\bA)} f(h) F(h) \dd h.
+\end{align*}
+Recall our subgroups
+\[
+    Z = \left\{
+        \begin{bmatrix}
+            1 & 0 & z \\ 0 & 1& 0 \\ 0 & 0 & 1
+        \end{bmatrix}
+    \right\} \subset H = \left\{
+        \begin{bmatrix}
+            * & 0 & * \\ 0 & 1 & 0 \\ * & 0 & *
+        \end{bmatrix}
+    \right\}
+\]
+Since $F(h)$ is invariant by $Z(\bA)$ (c.f. \eqref{eqn:3.2.2}),
+\begin{align*}
+    L^\mu(f, F, s) &= \int_{B(F) Z(\bA) \backslash H(\bA)} F(h) \left(\int_{Z(F) \backslash Z(\bA)} f(zh) \dd z\right) \dd h \\
+    &= \int_{B(F) Z(\bA) \backslash H(\bA)} F(h) f_{00}(h) \dd h
+\end{align*}
+Now recall the Fourier expansion
+\[
+    f_{00}(h) = \sum_{\delta \in E^\times} W_{f}^{\psi} \left(
+        \begin{bmatrix}
+            \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+        \end{bmatrix}h
+    \right),
+\]
+c.f. \eqref{eqn:2.2.1}. Since
+\[
+    B_F = \left\{
+        \begin{bmatrix}
+            \delta & & z \\0 & 1& 0 \\0 & 0 & \bar{\delta}^{-1}
+        \end{bmatrix}: \delta \in E^\times, z \in E
+    \right\}
+\]
+we have
+\[
+    Z(\bA)\backslash B(F)Z(\bA) = \left\{
+        \begin{bmatrix}
+            \delta & & \\ & 1 & \\ & & \bar{\delta}^{-1}
+        \end{bmatrix}: \delta \in E^\times
+    \right\}
+\]
+and therefore
+\begin{align*}
+    L^\mu(f, F, s) &= \int_{B(F) Z(\bA) \backslash H(\bA)} \left(\sum_{b \in Z(\bA) \backslash B(F) Z(\bA)} W_f^\psi(bh)\right) F(h) \dd h \\
+    &= \int_{Z(\bA) \backslash H(\bA)} W_f^\psi(h) F(h) \dd h
+\end{align*}
+as was to be shown.
+\end{proof}
+    
+
+\begin{remark*}
+\begin{enumerate}[label=(\roman*)]
+    \item We defined $L^\mu(f, F, s)$ for any $f \in H_\pi$ without assuming $H_\pi$ orthogonal to all hypercuspforms.
+    However, this last proposition shows tha t$L^\mu(f, F, s)$ is identically $0$ if $\cW(\pi, \psi) =\{0\}$, i.e. if $f$ is a hypercuspform.
+    This is wy the Rankin--Selberg method fails for arbitrary $\pi$, and why (in \S \ref{sec:9}) we need ot use Shimura's method.
+    \item The significance of this Proposition is that it allows to factor $L^\mu(f, F, s)$ into local zeta-integrals, one for each place $v$ of $F$.
+    Note that whenever $v$ splits in $E$, i.e. whenever $E\otimes_F F_v$ splits as the direct sum of two fields $E_{w_1}$ and $E_{w_2}$ (isomorphic to $F_v$), we have
+    \[
+        G_v = G(F_v) \simeq \GL_3(F_v).
+    \]
+\end{enumerate} 
+\end{remark*}
