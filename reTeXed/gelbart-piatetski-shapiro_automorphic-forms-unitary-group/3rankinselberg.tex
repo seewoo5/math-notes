@@ -196,3 +196,48 @@ as was to be shown.
     \]
 \end{enumerate} 
 \end{remark*}
+
+
+\subsection{}
+\label{sec:3.6}
+\begin{proposition}
+Suppose $\Phi = \prod_v \Phi_w$ in $\cS(W(\bA_E))$, the product being taken over all the primes $w$ of $E$.
+Assuming $f$ is not hypercuspidal, we have
+\[
+    L^\mu(f, F, s) = \prod_v \int_{Z_v \backslash H_v} W_v(h) F_v(h) \dd h
+\]
+where $v$ is an arbitrary place \underline{of $F$}, $W_v$ belongs to the local Whittaker space $W(\pi_v, \psi_v)$, and
+\[
+    F_v(h_v) = \prod_{w|v} \int_{E_w^\times} (h_v \cdot \Phi_w) (t \ell_{-1}) \mu_w(t) |t|_w^{s} \dd^\times t.
+\]
+\end{proposition}
+\begin{proof}
+Since the domain of the integration factors, we need only check that the integrand does also.
+By uniqueness of Whittaker models, $W(h)$ in $\cW(\pi, \psi)$ with $\psi =\prod_v \psi_v$ implies $W(h) = \prod_v W_v(h_v)$, with each $W_v \in\cW(\pi_c, \psi_c)$.
+Also, from the definition of $F_\Phi(h)$, it follows
+\[
+    F_\Phi(h) = \prod_v \left(\prod_{w|v} \int_{E_w^\times} (h_v \cdot \Phi_w) (t \ell_{-1}) \mu_w(t) |t|^{s}_w \dd^\times t\right)
+\]
+as claimed.
+\end{proof}
+
+
+\subsection{}
+\label{sec:3.7}
+
+When $v$ splits in $E$, each integral
+\[
+    \int_{E_{w_i} \simeq F_v} (h_v \cdot \Phi)(t \ell_{-1}) \mu_{w_i} (t) |t|_{w_i}^{s} \dd^\times t
+\]
+reduces to the distribution $z(\alpha^s\mu, h \cdot \Phi)$ treated in \S 14 of [Jacquet].
+Indeed, in this case, $H_v \simeq \rU_{1, 1} \simeq \GL_2(F_v)$, and $\ell_{-1}$ corresponds to the vector $(0, 1)$ in $F_v^2$ fixed by the unipotent subgroup of $\GL_2(F_v)$ (under the action $(x,y) \left(\begin{smallmatrix}
+    a & b \\ c & d
+\end{smallmatrix}\right)$).
+
+In this case, our local zeta-integral takes the form
+\[
+    \int_{\GL_2} W_v(h) z(\alpha^s \mu_{w_1}, h\cdot \Phi_{w_1}) z(\alpha^s \mu_{w_2}, h \cdot \Phi_{w_2}) \dd h
+\]
+where $W_v(h)$ is a Whittaker function on $\GL_3$ restricted to $\GL_2$ (via the embedding $\left[\begin{smallmatrix}
+    * &* \\ * &* 
+\end{smallmatrix}\right] \mapsto \left[\begin{smallmatrix} * & 0 & * \\ 0 & 1 & 0 \\ * &0 & * \end{smallmatrix}\right]$), and $w_1$, $w_2$ are the two primes of $E$ which divide $v$.
