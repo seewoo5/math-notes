@@ -48,3 +48,54 @@ Suitably moddifying the problem in \S 14 of [Jacquet] on can obtain the followin
         \]
     \end{enumerate}
 \end{proposition}
+
+\subsection{}
+\label{sec:4.3}
+
+
+\begin{remark*}
+\begin{enumerate}[label=(\roman*)]
+    \item If we deman that $Q_0(0) = 1$, then $L(s, \pi, \mu) = Q_0(q^{-s})^{-1}$ is the unique Euler factor such that
+    \[
+        \frac{L^\mu(W, \Phi, s)}{L(s, \pi, \mu)}
+    \]
+    is entire (actually polynomial in $q^s$ and $q^{-s}$) for all $W$ and $\Phi$, and equal to $1$ for appropriately chosen $W$ and $\Phi$.
+    A similar statement holds for $L(s, \tilde{\pi}, \mu)$ and $\tilde{L}^{\mu^{-1}}(W, \Phi, s)$.
+    As usual, we regard $L(s, \pi, \mu)$ as the normalized g.c.d. of the zeta-functions $L^\mu(W, \Phi, s)$, and as the local component of a (soon to be defined) global $L$-function $L(s, \pi, \mu)$.
+    \item If we let
+    \[
+        \varepsilon(s, \pi, \psi) = \frac{L(1 - s, \tilde{\pi}, \mu^{-1})\gamma(s)}{L(s, \pi, \mu)},
+    \]
+    then $\varepsilon$ is the monomial factor relating
+    \[
+        \frac{L^{\mu^{-1}}(W, \widehat{\Phi}, 1 - s)}{L(s, \tilde{\pi}, \mu^{-1})} \text{ and } \frac{L^\mu(W, \Phi, s)}{L(s, \pi)}.
+    \]
+    \item Throughout this section, we are implicitly dealing only with nonarchimedean fields; the case of $\bR$ (or $\bC$) is an unfortulately thorny yet unavoidable reality.
+\end{enumerate} 
+\end{remark*}
+
+
+\subsection{}
+\label{sec:4.4}
+
+\underline{Unfamified computations}.
+
+In the next few sections we shall compute $L(s, \pi, \mu)$ when \underline{everything} in sight is unfamified.
+
+Thus we suppose $F$ is a local \underline{non}archimedean field of characteristic $\neq 2$, and $E$ is an \underline{unramified} quadratic extension of $F$.
+Let $\cO_F$ (resp. $\cO_E$) denote the ring of integers of $F$ (resp. $E$), $\varpi$ (resp. $\varpi_E$) a generator of the prime ideal $\frp$ (resp. $\frp_E$) of $\cO_F$ (resp. $\cO_E$), and $\psi$ a character of $F$ trivial on $\cO_F$ but not on $\frp^{-1} \cO_F$.
+
+Let $K$ denote the standard maximal compact subgroup of $G(F)$ consisting of ``integral'' matrices (entries in $\cO_E$, determinant in $\cO_E^\times$).
+Because $E$ is unramified over $F$, we have
+\[
+    G = NAK
+\]
+where
+\[
+    A = \left\{
+        \begin{bmatrix}
+            t & 0 & 0 \\ 0 & 1& 0 \\ 0 & 0 & t^{-1}
+        \end{bmatrix}: t \in F^\times
+    \right\}
+\]
+is the maximal $F$-split torus of $G(F)$.
