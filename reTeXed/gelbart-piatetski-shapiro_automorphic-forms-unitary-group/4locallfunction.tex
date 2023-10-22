@@ -177,3 +177,141 @@ with
     &= \frac{1}{1 - \mu(\varpi_E) |\varpi_E|^{s}} = L_E(s, \mu).
 \end{align*}
 Here $L_E(s, \mu)$ is the local Hecke--Tate factor attached to the quasi-character $\mu$ of $E^\times$; c.f. [Goldstein], \S 8.1.
+
+
+\subsection{}
+\label{sec:4.7}
+
+
+It remains to compute the integral of our class 1 Whittaker function. 
+From the formula \S \ref{sec:4.5} (iii), we have
+\begin{align*}
+    \int_{F^\times} &W\left(\begin{bmatrix}
+        a & & \\ & 1 & \\ & & a^{-1}
+    \end{bmatrix}\right) \mu(a) |a|^{2s-2} \dd^\times a \\
+    &= \frac{1}{\nu(\varpi) - \nu(\varpi)^{-1}} \sum_{n=0}^{\infty} |\varpi^n|^2 \mu(\varpi^n) |\varpi^n|^{2s-2} (\nu(\varpi)^{n+1} - \nu(\varpi)^{-(n+1)}) \\
+    &= \sum_{n=0}^{\infty} \mu(\varpi^n) |\varpi^n|^{2s} \sum_{i+j=n} \nu(\varpi)^i \nu(\varpi^{-1})^{j} \\
+    &= \left(\sum_{n=0}^{\infty}\mu(\varpi^n)|\varpi^n|^{2s}\nu(\varpi)^n\right) \left(\sum_{m=0}^{\infty} \mu(\varpi^m) |\varpi^m|^{2s} \nu(\varpi^{-1})^{m}\right) \\
+    &= \left(\frac{1}{1 - \mu(\varpi)\nu(\varpi)|\varpi|^{2s}}\right)\left(\frac{1}{1 - \mu(\varpi)\nu^{-1}(\varpi)|\varpi|^{2s}}\right) \\
+    &= L_F(2s,\mu\nu) L_F(2s, \mu\nu^{-1}).
+\end{align*}
+Summing up,
+\begin{align*}
+    L^\mu(W, F_\Phi, s) &= L(s, \pi, \mu)\\
+    &= L_E(s, \mu) L(2s, \mu\nu) L(2s, \mu \nu^{-1}).
+\end{align*}
+Here $\mu$ is regarded as a character of $E^\times$ in the $L$-factor and (by restriction - along with $\nu$) as a character of $F^\times$ in the remaining two $L$-factors. Altogether,
+\[
+    L(s, \pi, \mu) = Q_0(q^{-s})^{-1}
+\]
+with $Q_0$ a polynomial \underline{of degree 6} in $q^{-s} = |\varpi_F|^s$.
+
+
+\subsection{}
+\label{sec:4.8}
+
+To which conjugacy class and representation of the $L$-group ${}^L G$ does $L(s, \pi, \mu)$ correspond?
+
+Recall ${}^L G$ is a semi-direct product
+\[
+    {}^L G = \GL_3(\bC) \rtimes W_{E/F}
+\]
+where $W_{E/F}$ fits into the exact sequence
+\[
+    1 \to E^\times \to W_{E/F} \to \Gal(E/F) \to 1
+\]
+and $\tau$ in $W_{E/F}$ acts on $\GL_3(\bC)$ through its projection onto $\Gal(E/F)$.
+In particular, in the present context, $\Gal(E/F) = \{1, \Fr\}$, with $\Fr$ taking
+\[
+    g \in \GL_3(\bC) \mapsto \begin{bmatrix}
+        0 & 0 & 1 \\ 0 & -1 & 0 \\ 1 & 0 & 0
+    \end{bmatrix} (g^\intercal)^{-1} \begin{bmatrix}
+        0 & 0 & 1 \\ 0 & -1 & 0 \\ 1 & 0 & 0
+    \end{bmatrix}.
+\]
+
+Now let $\rho_0$ denote the standard representation of $\GL_3(\bC)$ and set
+\[
+    \rho = \Ind_{\GL_3(\bC) \times E^\times}^{{}^L G} (\rho_0).
+\]
+Since $W_{E/F}$ acts non-trivially on $\rho_0$ (taking it to its ``twisted'' contragredient), is an irreducible six-dimensional representation of ${}^L G$ whose restriction to ${}^L G^\circ = \GL_3(\bC)$ is the direct sum of $\rho_0(g)$ and $\tilde{\rho}_0(g) = \rho_0\left(\left[\begin{smallmatrix}
+    & & 1 \\ & -1 & \\ 1 & & 
+\end{smallmatrix}\right] (g^\intercal)^{-1} \left[\begin{smallmatrix}
+    & & 1 \\ & -1 & \\ 1 & & 
+\end{smallmatrix}\right] \right)$.
+
+\begin{proposition}
+\label{prop:4.8}
+Let $t_\nu$ denote the conjugacy class in ${}^L G$ determined (via the Satake isomorphism) by the unramified representation $\pi(\nu)$ of $G(F)$.
+Then
+\[
+    L(s, \pi, 1)^{-1} = \det(I - \rho(t_v)|\varpi|^s_F)^{-1},
+\]
+the (local) $L$-function Langlands attaches to the data $\{t_\nu, \rho\}$.
+\end{proposition}
+\begin{proof}
+The conjugacy class $t_\nu$ determined by $\pi(\nu)$ is
+\[
+    \begin{bmatrix}
+        \nu(\varpi) & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+    \end{bmatrix} \rtimes \Fr \in {}^L G,
+\]
+so
+% https://tex.stackexchange.com/questions/323297/typing-block-matrices-with-zero-blocks-and-separators
+\[
+    \rho(t_\nu) = 
+    \begin{bNiceArray}{ccc|ccc}
+        \Block{3-3}{} &&& 1 &  &  \\
+        &&&  & 1 &  \\
+        &&&  &  & \nu^{-1}(\varpi) \\
+        \hline
+        \nu(\varpi) &  &  & \Block{3-3}{} \\
+         & 1 & \\
+         &  & 1\\
+    \end{bNiceArray}.
+\]
+A straightforward calculation with determinants then shows
+\[
+    \det(I - \rho(t_\nu)|\varpi_F|^{s})^{-1} = L_E(s, 1) L(2s, \nu) L(2s, \nu^{-1}),
+\]
+as claimed.
+\end{proof}
+
+
+\subsection{}
+\label{sec:4.9}
+
+
+Finally, we relate to the standard $L$-functions on $\GL_3$ over $E$.
+Still working locally, let
+\[
+    G' = \Res_{F}^{E} G_F = \Res_{F}^{E} (\GL_3).
+\]
+Then $G'(F) = \GL_3(E)$,
+\[
+    {}^L G'_F = \GL_3(\bC) \times \GL_3(\bC) \rtimes W_{E/F}
+\]
+and
+\[
+    {}^L (\GL_3)_E = \GL_3(\bC) \times W_{E/E}.
+\]
+Now consider the representation $\pi^\nu \otimes \mu$ of $G'(F) = \GL_3(E)$ induced from the unramified character
+\[
+    \begin{bmatrix}
+        a_1 & * & * \\ 0 & a_2 & * \\ 0 & 0 & a_3        
+    \end{bmatrix} \mapsto \mu\nu(a_1)\mu(a_2)\mu\nu^{-1}(a_3),
+\]
+of the standard Borel subgroup of $\GL_3(E)$.
+The conjugacy class in ${}^L (\GL_3)_E$ corresponding to $\pi^\nu \otimes \mu$ is
+\[
+    \begin{bmatrix}
+        \mu\nu(\varpi) & 0 & 0 \\ 0 & \mu(\varpi) & 0 \\ 0 & 0 & \mu\nu^{-1}(\varpi)
+    \end{bmatrix} \rtimes \Fr.
+\]
+Therefore, the following $L$-factors coincide:
+\begin{enumerate}[label=(\roman*)]
+    \item $L(s, \pi^\nu \otimes \mu, \rho_0)$, as an $L$-factor for $\GL_3$ \underline{over $E$}, and
+    \item $L(s, \pi(\nu), \mu)$, our $L$-factor attached to $G$ over $F$.
+\end{enumerate}
+Note that $\pi^\nu$ is clearly a \underline{base change lift} of $\pi(\nu)$ on $G$ to $G'$.
+
