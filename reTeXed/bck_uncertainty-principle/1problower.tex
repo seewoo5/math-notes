@@ -1,6 +1,6 @@
 \section{Statement of the problem and lower bound of $B_{1}$}
 
-Consider a pair of functions $(f, \what{f})$ on reals: they are Fourier pairs if
+Consider a pair of functions $(f, \what{f})$ on the real line: it is a Fourier pair if
 \[
     \begin{cases}
     \what{f}(y) = \int f(x) e^{-2 i \pi x y} \dd x, \quad f \in L^{1}(\mathbb{R}) \\
@@ -11,7 +11,7 @@ So $f$ and $\what{f}$ are continuous and converges to $0$ at infinity.
 We are interested in the Fourier pairs $(f, \what{f})$ such that
 \begin{enumerate}
     \item $f$ and $\what{f}$ are real-valued, even, and not identically zero,
-    \item $f(0) \leq 0$ and $\what{f}(0) \geq 0$,
+    \item $f(0) \leq 0$ and $\what{f}(0) \leq 0$,
     \item $f(x) \geq 0$ for $x \geq a_f$ and $\what{f}(y) \geq 0$ for $y \geq a_{\what{f}}$.
 \end{enumerate}
 Note that the condition 2 and the non-vanishing assumptions on $f$ and $\what{f}$ imply $a_f$ and $a_{\what{f}} > 0$.
@@ -34,8 +34,8 @@ Since
 \[
     B_1 = \inf A(f) A(\what{f})
 \]
-for all Fourier pairs satisfying 1--3, we only consider pairs satisfying $A(f) = A(\what{f})$.
-Then $f + \what{f} \neq 0$ (consider their values at points near $A(f)$), and
+for all Fourier pairs satisfying 1--3, we limit ourselves to those which $A(f) = A(\what{f})$.
+Then $f + \what{f} \neq 0$ (consider their values at points near $A(f)$ and greater than it), and
 \[
     A(f + \what{f}) \leq A(f) = A(\what{f}).
 \]
@@ -43,7 +43,7 @@ So $B_1 = \inf A^{2}(f + \what{f})$. Hence we see that
 \[
     B_1 = A^2, \quad A = \inf A(f)
 \]
-where infimum is taken over all functions $f \in L^{1}(\mathbb{R})$, real-valued and even, not identically zero, equal to their own Fourier transforms, and $f(0) < 0$.
+where the infimum is taken over all functions $f \in L^{1}(\mathbb{R})$, real-valued and even, not identically zero, equal to their own Fourier transforms, and $f(0) < 0$.
 
 Let
 \[
@@ -54,12 +54,12 @@ If $f(0) < 0$, $f - f(0)\gamma$ satisfies the same conditions as $f$, and
 \[
     A(f - f(0)\gamma) \leq A(f).
 \]
-Finally,
+As a result,
 \begin{equation}
 \label{eqn:1.1}
     A = \inf A(f)
 \end{equation}
-\textbf{where infimum is taken over all $f \in L^{1}(\mathbb{R})$, real-valued, even, not identically zero, $f = \what{f}$, and $f(0) = 0$.}
+\textbf{where the infimum is taken over all $f \in L^{1}(\mathbb{R})$, real-valued, even, not identically zero, $f = \what{f}$, and $f(0) = 0$.}
 
 Here is an important result.
 
@@ -69,7 +69,7 @@ Then
 \[
     A \geq \frac{1}{2(1 + \lambda)} = 0.4107\cdots
 \]
-so
+and so
 \[
     B \geq 0.1687\cdots.
 \]
@@ -80,8 +80,8 @@ Write $A = A(f)$.
 Put $f = f^{+} - f^{-}$, $|f| = f^{+} + f^{-}$.
 Since $\int_{\mathbb{R}}f = \what{f}(0) = 0$, we have $\int_{\mathbb{R}} f^{+} = \int_{\mathbb{R}} f^{-} = \int_{-A}^{A} f^{-} = \frac{1}{2}$.
 So $\int_{-A}^{A} |f| \geq \frac{1}{2}$.
-From $|f(x)| \leq \int |\what{f}| = 1$, $2A \geq \frac{1}{2}$ and we obtain a first bound $A \geq \frac{1}{4}$.
-We will see that this argument extends to higher dimensions.
+From $|f(x)| \leq \int |\what{f}| = 1$, $2A \geq \frac{1}{2}$ and we obtain the first bound $A \geq \frac{1}{4}$.
+We will see that this argument generalizes to higher dimensions.
 
 In dimension $1$, we can refine it in the following way.
 From $f = \what{f}$,
@@ -89,13 +89,13 @@ From $f = \what{f}$,
     f(x) &= \int f(y) \cos 2 \pi y x \dd y = \int f(y) (\cos 2 \pi y x - 1) \dd y \\
     &= \int f^{-}(y) (1 - \cos 2 \pi y x) \dd y - \int f^{+}(y) (\cos 2 \pi y x - 1) \dd y.
 \end{align*}
-This implies, ???
+This implies, both integrals being positive,
 \[
     f^{-}(x) \leq \int f^{+}(y) (1 - \cos 2 \pi y x) \dd y
 \]
 and
 \[
-    \frac{1}{4} = \int_{0}^{A} f^{-} \leq \int_{-\infty}^{\infty} f^{+}(y) \left(A - \frac{\sin 2 \pi y A}{2 \pi y}\right) \dd y
+    \frac{1}{4} = \int_{0}^{A} f^{-} \leq \int_{0}^{\infty} f^{+}(y) \left(A - \frac{\sin 2 \pi y A}{2 \pi y}\right) \dd y
 \]
 so
 \[
@@ -118,7 +118,7 @@ Let
 \[
     B_{1}^{-} = \inf \{A^{2}: f(0) < 0, f = \what{f}\text{ even} \neq 0, f \in L^{1}(\mathbb{R})\}.
 \]
-Hence $B_{1}^{-}$ is defined by \eqref{eqn:1.1}, with additional assumption $f(0) < 0$.
+Hence $B_{1}^{-}$ is defined by \eqref{eqn:1.1}, where we impose $f(0) < 0$.
 Define $\mathcal{B}_{1}^{-}$ similarly for $f \in \mathcal{S}$.
 Clearly,
 \begin{equation}
@@ -137,13 +137,13 @@ We have $\what{g} = \what{f} \what{\psi}^{2}$; by applying the same operation on
     \label{eqn:1.5}
     \mathcal{B}_{1}^{-} = B_{1}^{-}.
 \end{equation}
-Note that the argument does not work if $f(0) = 0$.
+Note that the argument fails when $f(0) = 0$.
 We will show
 \begin{equation}
     \label{eqn:1.6}
     B_{1}^{-} \leq 2B_{1};
 \end{equation}
-combining \eqref{eqn:1.4} and \eqref{eqn:1.6} we obtain
+combining \eqref{eqn:1.4} and \eqref{eqn:1.6} gives
 \begin{equation}
     \label{eqn:1.7}
     B_{1} \leq \mathcal{B}_{1} \leq 2 B_{1}.
@@ -154,7 +154,7 @@ Let $b > 0$ be such a number, and consider the distribution
 \[
     T = \delta_{b} + \delta_{-b} + 2 \delta_{0}.
 \]
-It is a positive measure with positive Fourier transform
+It is a positive measure with nonnegative Fourier transform
 \[
     \what{T} = 2 \cos (2 \pi b y) + 2 \geq 0.
 \]
