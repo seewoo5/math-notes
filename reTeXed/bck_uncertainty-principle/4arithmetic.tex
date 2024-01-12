@@ -1,0 +1,225 @@
+\section{Arithmetic arguments}
+
+Let $F$ be a number field of degree $d$ over $\mathbb{Q}$.
+We denote as $v$ for the places of $F$ (finite or archimedean), and $F_{v}$ for the corresponding completion; for finite $v$, $\mathcal{O}_{v} \subset F_{v}$ is the ring of integers of $F_{v}$ and $\mathcal{O}_{v}^\times$ is the group of unities; $q_{v}$ is the cardinality of the residue field.
+Let
+\[
+    \mathbb{A}_{F} = \prod_{v}^{}{}' F_{v}
+\]
+(restricted product) be the ring of ad\`eles of $F$, and $\mathbb{A}_{F}^\times = I_{F}$ the group of id\`eles.
+Let $x: I_{F} \mapsto \prod_{v} |x|_{v}$ be the id\`ele norm,
+\begin{align*}
+    I_F^{1} &= \{ x \in I_F: |x| = 1\} \\
+    \text{and }I_{F}^{+} &= \{ x \in I_F: |x| \geq 1\}.
+\end{align*}
+Consider an invariant measure $\dd x = \prod \dd x_v$ on $\mathbb{A}_F$, where $\dd x_v$ is Haar measure on $F_v$.
+At finite places, $\dd x_v$ are self-dual measures of Tate \cite{tate1967fourier}; at a real place, $\dd x_v$ is a Lebesgue measure; at a complex place, if we write variable $z = x + iy$, $\dd z =2 \dd x \dd y$.
+At real place, the Fourier transform $\hat{f}(y)$ of a function $f$ is defined as before.
+
+If $z = x + iy$ is a complex variable and $w = \xi + i \eta$, Tate define the transfom $\what{f}(w)$ of a function $f(z)$ by
+\begin{align*}
+    \what{f}(w) &= \int f(z) e^{-2 i \pi \Tr(zw)} \dd z \\
+    \text{where } \Tr(zw) &= 2 \Re(zw) = 2(x \xi - y \eta).
+\end{align*}
+For \textcolor{red}{???}
+The self-dual measure $\dd z$ of Tate is the normalized measure considered in the beginning of \S 3 for abstract Euclidean spaces.
+
+Let $f$ be a function in the Schwartz space of $\mathbb{A}_F$ given by
+\begin{equation}
+    \label{eqn:4.1}
+    f(x) = \prod_{v|\infty} f_{v}(x_{v}) \prod_{v\text{ finite}} f_{v}^{0}(x_{v})
+\end{equation}
+where $f_{v}^{0}$ is the characteristic function of $\mathcal{O}_{v}$ and, for archimedean $v$, $f_{v}$ is an arbitrary Schwartz function.
+Tate's zeta function associated to $f$ is defined for $\Re(s) > 1$ by
+\[
+    Z(f, s) = \int_{I_F} f(x) |x|^{s} \dd^\times x,
+\]
+where $\dd^\times x$ is the product of $\dd^\times x_v = \frac{\dd x_v}{|x_v|}$ (multiplied by $(1 - q_{v}^{-1})^{-1}$ at finite places).
+
+Instead of considering the decomposable functions in \eqref{eqn:4.1}, we will consider the functions of the form $g_{a}(x)$ (\S 3) on $\mathbb{R}^{d}$, where $\mathbb{R}^{d}$ is regarded as an inner product space by
+\[
+    \|x_\infty\|^{2} = \sum_{v \text{ real}} |x_v|^{2} + \sum_{v \text{ complex}} 2 \|z_{v}\|^{2}
+\]
+where $\|z\|$ is the usual absolute value of a complex number (We denote $|z| = \|z\|^{2}$ the normalized absolute norm as in Tate's theory).
+More generally,
+\begin{equation}
+    \label{eqn:4.2}
+    f(x) = f_\infty(x_\infty) \prod_{v\text{ finite}} f_v^0(x_v)
+\end{equation}
+where $f_\infty(x_\infty) \in \mathcal{S}(\mathbb{R}^{d})$.
+The conditions imposed by Tate (i.e., $(z_1), (z_2), (z_3)$ in \cite[\S 4.4]{tate1967fourier}) are satisfied by these functions.
+For example, $(z_3)$ says that the integral
+\[
+    \int_{F_\infty} f_\infty(x_\infty) \prod_{v|\infty} |x_v|_v^{\sigma - 1} \dd x
+\]
+where $F_\infty = \prod_{v|\infty}F_v$, converges absolutely for $\sigma > 1$.
+In fact, it holds for $\sigma > 0$ and all $f_\infty \in \mathcal{S}(F_\infty)$.
+Hence the same condition holds for $\what{f}$.
+
+In the case where $f_\infty = \prod f_v^0$ with
+\begin{align*}
+    f_v^0(x) &= e^{-\pi x^2} \quad (\text{real variable}) \\
+    f_v^0(x) &= e^{-2 \pi \|z\|^{2}} \quad (\text{complex variable}),
+\end{align*}
+$Z(f, s)$ is the zeta function $\zeta_F(s)$, multiplied by the usual archimedean factors (product of $\Gamma$ functions) and $|D_F^{-1/2}|$.
+Following Tate \cite{tate1967fourier}, we write
+\begin{equation}
+    \label{eqn:4.3}
+    Z(f, s) = \int_{I_F^{+}} f(x) |x|^{s} \dd^\times x + \int_{I_F^{+}} \what{f}(x)|x|^{1-s} \dd^\times x + \kappa \frac{\what{f}(0)}{s - 1} - \kappa \frac{f(0)}{s}
+\end{equation}
+following the usual notations \cite[Th\'eor\`eme 4.3.2]{tate1967fourier}
+\[
+    \kappa = \frac{2^{r_1}(2 \pi)^{r_2} h R}{\sqrt{|D_F|}w}
+\]
+is the residue of $\zeta_F(s)$ at $s = 1$.
+In particular, $D_F$ is the absolute discriminant of $F$, and $d = r_1 + 2 r_2$, where $r_1$ is the number of real places and $r_2$ is the number of complex places.
+Then the two integrals in \eqref{eqn:4.3} converges absolutely for all $s \in \mathbb{C}$.
+
+
+\begin{lemma}
+\label{lem:4.1}
+Let $s$ be a zero of $\zeta_F(s)$ with $\Re(s) > 0$.
+Then $Z(f, s)$ vanishes for all $f_\infty \in \mathcal{S}(F_\infty)$.
+\end{lemma}
+In fact one can write $Z(f, s)$ for $\Re(s) > 1$ as
+\[
+    Z(f, s) = |D_F|^{-1/2} Z(f_\infty, s) \zeta_F(s).
+\]
+Since $Z(f, s)$, $\zeta_F(s)$, and $Z(f_\infty, s)$ are holomorphic for $s \neq 1$ and $\Re (s) > 0$, the Lemma follows.
+
+For every finite place $v$, $\what{f_v^0}$ is equal to $|\mathfrak{d}_v|^{-1/2} \mathds{1}_{\mathfrak{d}_{v}^{-1}}$.
+Here $\mathfrak{d}_v \subset F_v$ is the different, $\mathfrak{d}_v^{-1}$ is inverse, $\mathds{1}_{\mathfrak{d}_v^{-1}}$ is the characteristic function, and $|\mathfrak{d}_v|$ is the ideal norm (positive power of $q_v$).
+Recall that
+\[
+    \prod_{v\text{ finite}} |\mathfrak{d}_v| = |D_F|.
+\]
+
+Consider the first integral of \eqref{eqn:4.3}:
+\begin{equation}
+\label{eqn:4.4}
+    \int_{I_F^+} f(x) |x|^{s} \dd^\times x.
+\end{equation}
+If $f(x) \neq 0$ for $x = (x_\infty, x_f)$, the decomposition $f_f = \prod_{v\text{ finite}}f_v$ shows $|x_f| \leq 1$; since $|x_\infty x_f| \geq 1$,
+\begin{equation}
+\label{eqn:4.5}
+    |x_\infty| = \prod_{v | \infty} |x_v| \geq 1.
+\end{equation}
+For the second integral, we have $|x_v| \leq |\mathfrak{d}_v|$ if $x_v \in \mathfrak{d}_v^{-1}$, so $|x_f| \leq \prod_v |\mathfrak{d}_v| = |D_F|$ and
+\begin{equation}
+\label{eqn:4.6}
+    |x_\infty| \geq |D_F|^{-1}.
+\end{equation}
+
+\begin{lemma}
+\label{lem:4.2}
+Suppose that there exists a Fourier pair $(f, \what{f})$ on $F_\infty = \mathbb{R}^{d}$ such that $f(x_\infty) \geq 0$ if $|x_\infty| \geq 1$, $f$ is strictly positive on the neighborhood of $1$ in the set $|x_\infty| \geq 1$, $\what{f}(y_\infty) \geq 0$ if $|y_\infty| \geq D_F^{-1}$ and $f(0) = \what{f}(0) = 0$.
+Then $\zeta_F(s) \neq 0$ for all $s$ in the interval $(0, 1)$.
+\end{lemma}
+
+\eqref{eqn:4.3}
+
+So $Z(f, s) > 0$ and $\zeta_F(s) \neq 0$ by Lemma \ref{lem:4.1}.
+
+Let $x = (x_v) \in F_\infty$.
+The Euclidean norm compatible with Fourier and Tate's transform is
+\[
+    \|x\|^{2} = \sum_{v\text{ real}} |x_v|^2 + 2 \sum_{v\text{ complex}} \|x_v\|^2.
+\]
+Since
+\[
+    |x|^{2} = \prod_{v\text{ real}} |x_v|^{2} \prod_{v\text{ complex}} \|x_v\|^{4},
+\]
+arithmetic-geometric mean inequality gives
+\[
+    |x|^{2/d} \leq \frac{1}{d}\|x\|^{2}
+\]
+For $r = \|x\|$, $\rho = \|y\|$ ($y \in F_\infty$) we see that
+\begin{align*}
+    |x| \geq 1 &\Rightarrow r \geq \sqrt{d} \\
+    |y| \geq |D_F|^{-1} &\Rightarrow \rho \geq |D_F|^{-1/d} \sqrt{d}
+\end{align*}
+
+\begin{proposition}
+\label{prop:4.3}
+Suppose that there exists a number field of degree $d$ and discriminant $D$ such that $\zeta_F$ has a zero in $(0, 1)$.
+Then
+\[
+    \mathcal{B}_{d} \geq d |D|^{-1/d}.
+\]
+\end{proposition}
+
+Conversely, $\zeta_F$ has no zero if
+\[
+    d |D|^{-1/d} > \mathcal{B}_{d}.
+\]
+The proof is clear.
+Suppose $d |D|^{-1/d} > \mathcal{B}_{d}$.
+As in \S 3, we can find radial $f$ and $\what{f}$ that are nonnegative for $r \geq \sqrt{d}$ and $\rho \geq |D|^{-1/d} \sqrt{d}$.
+We can assume that $f$ is strictly positive for $x$ with $\sqrt{d} \leq \|x\| \leq \sqrt{d} + \varepsilon$.
+Then the assumptions for Lemma \ref{lem:4.2} are satisfied since $\|1\| = \sqrt{d}$.
+
+It is difficult to find a field $F$ satisfying the hypothesis of Proposition \ref{prop:4.3}.
+However, $\zeta_F(s)$ decomposes in terms of Artin $L$-functions of Galois extensions $E$ over $F$, which is proven to have zero by Armitage (which is $s = 1/2$, does not conflict with Riemann's hypothesis).
+More precisely, Armitage considered an explicit extension $F$ over $E = \mathbb{Q}(\sqrt{3(1+i)})$ of degree $12$ constructed by Serre \cite{serre1971conducteurs}, which is of degree $48$ over $\mathbb{Q}$ and satisfies $\zeta_F\left(\frac{1}{2}\right) = 0$ \cite[\S 4]{armitage1971zeta}.
+
+As a consequence, we have a weaker version of Theorem \ref{thm:3.1} from number theory.
+
+\begin{proposition}
+\label{prop:4.4}
+For $d$ multiple of $48$, $\mathcal{B}_{d}$ is strictly positive.
+\end{proposition}
+
+For $d = 48$, this follows from the existence of $F$.
+Assume that $d = 48c$.
+There exists a cyclotomic extension $L$ over $\mathbb{Q}$ linearly disjoint with $F$.
+Then $LF$ has degree $d$ over $\mathbb{Q}$, and $\zeta_F$ divides $\zeta_{LF}$ since $LF/F$ is abelian, and $\zeta_{LF}$ factors as a product of Dirichlet $L$-functions over $F$.
+The result follows.
+
+
+You may wonder if Proposition \ref{prop:4.4} provides any restriction on the discriminant of a number field where $\zeta_F$ has a real zero.
+In this case, we have
+\begin{equation}
+    \label{eqn:4.7}
+    |D|^{1/d} \geq \frac{d}{\mathcal{B}_d}.
+\end{equation}
+By Theorem \ref{thm:3.1},
+\[
+    \frac{d}{\mathcal{B}_d} < 2 \pi e = 17.079\cdots.
+\]
+Odlyzyko \cite{odlyzko1977lower} proved a general unconditional bound 
+\[
+    |D|^{1/d} \geq 22.2(1 + o(d))
+\]
+for $d \to \infty$.
+As result we get \eqref{eqn:4.7}, at least for large enough $d$.
+
+Hence Proposition \ref{prop:4.4} does not give any interesting improvement of the lower bound of $\mathcal{B}_{d}$.
+However, it is striking to note that, at least for some degrees, number theory provides \textcolor{red}{linear improvement} of Theorem \ref{thm:3.1}.
+Let $p$ be a prime number
+By theorems of Golod-Shafarevi\v{c} and Brumer, there exists a tower of number fields
+\[
+    E_p^1 \subset E_p^2 \subset \cdots \subset E_p^n \subset \cdots
+\]
+where $E_p^1$, that has degree $p(p-1)$ over $\mathbb{Q}$, is a degree $p$ extension of $\mathbb{Q}(\zeta_p)$, and $E_{p}^{n+1} / E_{p}^{n}$ is unramified are unramified extensions of degree $p$.
+See \cite[Cor 7]{towers1967peter}; we adjoint $\zeta_p$ by two successive abelian extensions of $\mathbb{Q}$ to obtain $E_p^1$.
+
+Consider the series of extensions $F_i = F E_p^i$ of $F_i$, where $F_{i+1}/F_{i}$ is abelian with \textcolor{red}{degree $1$ at $p$}.
+Observing the relative ramification degree, a classical formula for absolute discriminants gives
+\begin{equation}
+    \label{eqn:4.8}
+    D_{F_m} = D_{F_0}^{p^m} =: D^{p^m}.
+\end{equation}
+The successive extensions of $F$ are abelian, so $\zeta_F$ divides $\zeta_{F_m}$ for all $m$.
+Then Proposition \ref{prop:4.3} shows that for $d = d_0 p^m$, $d_0 = [F_0:\mathbb{Q}]$:
+\begin{equation}
+    \label{eqn:4.9}
+    \mathcal{B}_d \geq C d, \quad C = |D|^{-1/d_0}.
+\end{equation}
+
+For such degress, \eqref{eqn:3.11} and \eqref{eqn:4.9} shows that the growth of $\mathcal{B}_d$ - so is $B_d \geq \frac{1}{2}\mathcal{B}_d$, is linear in $d$.
+If $p$ does not divide $D_F$, $F$ and $\mathbb{Q}(\zeta_p)$ are linearly disjoint and we can choose $E_p^1$ to be linearly disjoint with $F$.
+Then $F_0 = F E_p^1$ and the inequality \eqref{eqn:4.8} is valid for $d = 48(p-1)p^n$, $n \geq 1$.
+Of course, the $(p-1)$ term is not necessary if one use Artin' conjecture or Dedekind's divisibility conjecture. (Dedekind's conjecture claims that $\zeta_F(s)$ is divisible by $\zeta_E(s)$ for all extensions $E/F$. Then you can choose $E_p^1$, perhaps non-Galois, to be degree $p$ over $\mathbb{Q}$.
+Then the Artin's conjecture on the holomorphicity of non-abelian $L$-functions implies Dedekind's conjecture.)
+
+

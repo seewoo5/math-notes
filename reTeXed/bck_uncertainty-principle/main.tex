@@ -170,6 +170,7 @@
 \newcommand{\Ind}{\mathrm{Ind}}
 \newcommand{\BC}{\mathrm{BC}}
 \newcommand{\Ad}{\mathrm{Ad}}
+\newcommand{\chf}{\mathrm{char}}
 
 \newcommand{\what}{\widehat}
 
@@ -278,6 +279,8 @@
 % Left header text: Short course title, hyperlinked to table of contents
 % \fancyhead[L]{\hyperref[sec:contents]{\small Gan-Gross-Prasad conjecture}}
 
+\numberwithin{equation}{section}
+
 % --- Document starts here ---
 
 \begin{document}
@@ -316,13 +319,15 @@ In the last section the question, and its solution, are shown to be naturally re
 \input{intro}
 \input{1problower}
 \input{2upper}
+\input{3higherdim}
+\input{4arithmetic}
 
 % --- Bibliography ---
 
 % Start a bibliography with one item.
 % Citation example: "\cite{williams}".
 
-\nocite{*}
+% \nocite{*}
 \bibliographystyle{acm} % We choose the "plain" reference style
 \bibliography{refs} % Entries are in the refs.bib file
 

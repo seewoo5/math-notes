@@ -1,3 +1,119 @@
-\section{The Global Conjectures}
+\section{Upper bound of $B_{1}$}
 
+An important idea is to use Hermite series
+\[
+    f(x) \sim \sum_{n = 0}^{\infty}a_n h_n(x)
+\]
+associated to $f$, where $h_n$ are eigenvectors of the Fourier transform $\mathcal{F}$ corresponding to the eigenvalues $i^n$.
+Since $f = \what{f}$ the expression becomes
+\[
+    f(x) \sim \sum_{m=0}^{\infty} a_{4m} h_{4m}(x).
+\]
+Each $h_{n}$ has a form of $h_{n} = e^{-\pi x^2} P_{n}(x)$ where $P_{n}$ is a polynomial of degree $n$.
+A suitable linear combination of $h_{0}$ and $h_{4}$ (satisfying $f(0) = 0$) gives $\pi A^{2} \leq 3$.
+The calculations seem difficult and we will not proceed in this direction further.
 
+We can also consider the functions
+\begin{equation}
+    \label{eqn:2.1}
+    g_{a}(x) = a \gamma(ax) + \gamma\left(\frac{x}{a}\right) - (1 + a) \gamma(x),\quad  a > 1
+\end{equation}
+which satisfy the requirements for \eqref{eqn:1.1}.
+Then any expression of the form
+\begin{equation}
+    \label{eqn:2.2}
+    \int_{1}^{\infty} g_{a}(x) \dd \tau(a)
+\end{equation}
+where $\tau$ is a measure on $[1, \infty)$ such that the integral converges absolutely and positive is our candidates (it seems difficult to characterize such measures where \eqref{eqn:2.2} converges absolutely and positive).
+
+We first study $A(g_{a})$.
+It is convenient to put $X = \pi x^2$, and $G_{a}(X) = g_{a}(x)$, so
+\[
+    G_{a}(X) = a e^{-a^{2}X} + e^{-a^{-2}X} - (1 + a)e^{-X}.
+\]
+The function
+\begin{equation}
+    \label{eqn:2.3}
+    H_{a}(X) = e^{X} G_{a}(X) = a e^{(1 - a^{2})X} + e^{(1 - a^{-2})X} - 1 - a
+\end{equation}
+is convex and satisfying
+\[
+    H_{a}(0) = 0, \quad H_{a}'(0) = -a^{2}(a^{2} - 1)(a^{3} - 1) < 0
+\]
+and tends to $+\infty$ as $X \to \pm \infty$.
+So it has a unique zero $X_{a} > 0$, and
+\[
+    A(g_{a}) = \sqrt{\frac{X_{a}}{\pi}}.
+\]
+It is natural to study with varying $X_{a}$, and we first consider those for $a$ near $1$.
+Put $a = 1 + h$, $h > 0$, then $H_{a}(X)$ can be written as
+\[
+    H_{a}(X) = (1 + h)(e^{-X(2h + h^2)} - 1) + e^{X(2h - 3h^{2} + 3h^{3} - 4h^{4})X} - 1
+\]
+modulo $O(h^{5})$.
+It can be written as $P_{1}h + P_{2}h^{2} + P_{3}h^{3} + P_{4}h^{4} + O(h^{5})$, where the polynomials $P_{i}$ are
+\begin{align*}
+    P_{1} &= 0 \\
+    P_{2} &= 2X(2X - 3)\\
+    P_{3} &= -X(2X - 3) \\
+    P_{4} &= -5X + 15 X^{2} - \frac{28}{3} X^{3} + \frac{4}{3}X^{4}.
+\end{align*}
+From the expression of $P_{2}$, for sufficiently small $h$, $H_a(X) > 0$ if $X > \frac{3}{2}$ and $H_a(X) < 0$ if $X < \frac{3}{2}$.
+As a result,
+\begin{equation}
+    \label{eqn:2.4}
+    \lim_{a \to 1^+} X_a = \frac{3}{2}.
+\end{equation}
+This provides an explicit bound
+\begin{equation}
+    \label{eqn:2.5}
+    A \leq \sqrt{\frac{3}{2 \pi}}.
+\end{equation}
+
+But this simple bound cannot be the true value of $A$.
+For $X = \frac{3}{2}$, $P_2$ and $P_3$ cancel out, and
+\[
+    P_4\left(\frac{3}{2}\right) = \frac{3}{2}.
+\]
+For nonzero small $h$, we therefore have $X_a < \frac{3}{2}$.
+
+If $a \to +\infty$, $X_a \to +\infty$; in fact, a simple calculation shows that
+\[
+    X_a = \log a + O(1) \quad (a \to +\infty).
+\]
+We have not determined the minimum value of $X_a$, but it is easy to estimate it, in a semi-heuristic way.
+The value $a = \sqrt{2}$ satisfies, for $q = e^{\frac{1}{2}X_a}$,
+\[
+    q^3 - (1+\sqrt{2})q^2 + \sqrt{2} = 0;
+\]
+if $q \neq 1$, it becomes the quadratic equation
+\[
+    q^2 - \sqrt{2} q - \sqrt{2} = 0
+\]
+with a zero $q = \frac{\sqrt{2}}{2}(1 + \sqrt{1+2\sqrt{2}})$,
+\[
+    X_a = 2 \log q = 1.4749\cdots < \frac{3}{2}\quad(a = \sqrt{2}).
+\]
+The value $a = 2$ gives, for $q = e^{\frac{3}{4}X}$,
+\[
+    q^4 - 2 \frac{q^4 - 1}{q - 1} = 0.
+\]
+The unique zero $q > 1$ is $q = 2.9744\cdots$, where
+\[
+    X_a = 1.4534\cdots\quad(a = 2).
+\]
+It seems that we can approximate the optimal value by this method.
+Indeed, if we solve $H_a(X) = 0$ for $H_a$ given by \eqref{eqn:2.3}, and if we assume $a \geq 2$, the first term is negligible.
+So $X_a$ is approximately
+\[
+    \frac{\log(1+a)}{1 - a^{-2}}.
+\]
+The extremal value of this expression is attained when $a(1-a) = 2 \log(1+a)$, which gives
+\[
+    a = 2.08137\cdots.
+\]
+
+In all cases, the minimum value of $A(g_a)$ we obtain is not the value for \eqref{eqn:1.1} that we are looking for.
+Consider $a_0$ such that $X_0 = X_{a_0}$ is minimal, and $H_0 = H_{a_0}$ is positive on $[X_a, \infty)$.
+Let $a$ be a number (for example, near $1$) such that $X_a > X_0$.
+On $[X_a, \infty)$, $H_a \geq 0$ and 
