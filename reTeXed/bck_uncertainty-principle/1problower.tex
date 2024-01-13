@@ -1,0 +1,178 @@
+\section{Statement of the problem and lower bound of $B_{1}$}
+
+Consider a pair of functions $(f, \what{f})$ on the real line: it is a Fourier pair if
+\[
+    \begin{cases}
+    \what{f}(y) = \int f(x) e^{-2 i \pi x y} \dd x, \quad f \in L^{1}(\mathbb{R}) \\
+    f(x) = \int \what{f}(y) e^{2 i \pi x y} \dd y, \quad \what{f} \in L^{1}(\mathbb{R}).
+    \end{cases}
+\]
+So $f$ and $\what{f}$ are continuous and converges to $0$ at infinity.
+We are interested in the Fourier pairs $(f, \what{f})$ such that
+\begin{enumerate}
+    \item $f$ and $\what{f}$ are real-valued, even, and not identically zero,
+    \item $f(0) \leq 0$ and $\what{f}(0) \leq 0$,
+    \item $f(x) \geq 0$ for $x \geq a_f$ and $\what{f}(y) \geq 0$ for $y \geq a_{\what{f}}$.
+\end{enumerate}
+Note that the condition 2 and the non-vanishing assumptions on $f$ and $\what{f}$ imply $a_f$ and $a_{\what{f}} > 0$.
+
+\begin{problem*}
+What is the infimum of the product $a_{f} a_{\what{f}}$ for the Fourier pairs $(f, \what{f})$ satisfying 1--3?
+\end{problem*}
+
+We denote the infimum as $B_1 \geq 0$ (note that the pair attaining infimum clearly exists).
+We will show, which is not obvious a priori, that $B_1$ is strictly positive.
+
+Until section 3, we will focus on dimension $1$.
+For a Fourier pair $(f, \what{f})$ satisfying 1--3 let
+\begin{align*}
+    A(f) &= \inf\{x > 0: f((x, \infty)) \subset \mathbb{R}^{+}\} \\
+    A(\what{f}) &= \inf\{y > 0: \what{f}((t, \infty)) \subset \mathbb{R}^{+}\} .
+\end{align*}
+The product $A(f)A(\what{f})$ is invariant under scaling, i.e. replacing $f(x)$, $\what{f}(y)$ by $f(x /\lambda)$, $\lambda \what{f}(\lambda y)$, $\lambda > 0$.
+Since
+\[
+    B_1 = \inf A(f) A(\what{f})
+\]
+for all Fourier pairs satisfying 1--3, we limit ourselves to those which $A(f) = A(\what{f})$.
+Then $f + \what{f} \neq 0$ (consider their values at points near $A(f)$ and greater than it), and
+\[
+    A(f + \what{f}) \leq A(f) = A(\what{f}).
+\]
+So $B_1 = \inf A^{2}(f + \what{f})$. Hence we see that
+\[
+    B_1 = A^2, \quad A = \inf A(f)
+\]
+where the infimum is taken over all functions $f \in L^{1}(\mathbb{R})$, real-valued and even, not identically zero, equal to their own Fourier transforms, and $f(0) < 0$.
+
+Let
+\[
+    \gamma(x) = e^{-\pi x^2}
+\]
+so that $\gamma = \what{\gamma}$.
+If $f(0) < 0$, $f - f(0)\gamma$ satisfies the same conditions as $f$, and
+\[
+    A(f - f(0)\gamma) \leq A(f).
+\]
+As a result,
+\begin{equation}
+\label{eqn:1.1}
+    A = \inf A(f)
+\end{equation}
+\textbf{where the infimum is taken over all $f \in L^{1}(\mathbb{R})$, real-valued, even, not identically zero, $f = \what{f}$, and $f(0) = 0$.}
+
+Here is an important result.
+
+\begin{theorem}
+\label{thm:1.1}
+Let $\lambda = -\inf\left( \frac{\sin x}{x}\right) = 0.2712\cdots$.
+Then
+\[
+    A \geq \frac{1}{2(1 + \lambda)} = 0.4107\cdots
+\]
+and so
+\[
+    B \geq 0.1687\cdots.
+\]
+\end{theorem}
+\begin{proof}
+Choose $f = \what{f}$, $f(0) = 0$, and $\int_{\mathbb{R}} |f(x)| \dd x := \int_{\mathbb{R}} |f| = 1$.
+Write $A = A(f)$.
+Put $f = f^{+} - f^{-}$, $|f| = f^{+} + f^{-}$.
+Since $\int_{\mathbb{R}}f = \what{f}(0) = 0$, we have $\int_{\mathbb{R}} f^{+} = \int_{\mathbb{R}} f^{-} = \int_{-A}^{A} f^{-} = \frac{1}{2}$.
+So $\int_{-A}^{A} |f| \geq \frac{1}{2}$.
+From $|f(x)| \leq \int |\what{f}| = 1$, $2A \geq \frac{1}{2}$ and we obtain the first bound $A \geq \frac{1}{4}$.
+We will see that this argument generalizes to higher dimensions.
+
+In dimension $1$, we can refine it in the following way.
+From $f = \what{f}$,
+\begin{align*}
+    f(x) &= \int f(y) \cos 2 \pi y x \dd y = \int f(y) (\cos 2 \pi y x - 1) \dd y \\
+    &= \int f^{-}(y) (1 - \cos 2 \pi y x) \dd y - \int f^{+}(y) (\cos 2 \pi y x - 1) \dd y.
+\end{align*}
+This implies, both integrals being positive,
+\[
+    f^{-}(x) \leq \int f^{+}(y) (1 - \cos 2 \pi y x) \dd y
+\]
+and
+\[
+    \frac{1}{4} = \int_{0}^{A} f^{-} \leq \int_{0}^{\infty} f^{+}(y) \left(A - \frac{\sin 2 \pi y A}{2 \pi y}\right) \dd y
+\]
+so
+\[
+    \frac{1}{4} \leq \frac{A}{2}\sup_{u \in \mathbb{R}} \left(1 - \frac{\sin u}{u}\right) = \frac{A}{2}(1 + \lambda)
+\]
+and we obtain the theorem.
+\end{proof}
+Later, we will need to consider functions that are regular enough.
+A natural class is the Schwartz space $\mathcal{S}$.
+It is not obvious that the infimum $A$ defined by \eqref{eqn:1.1}, taken only over the functions in $\mathcal{S}$, coincides with that over all $f \in L^{1}(\mathbb{R})$.
+
+Let $\mathcal{B}_{1}$ be $A^{2}$, where $A$ is defined by \eqref{eqn:1.1} for $f \in \mathcal{S}$.
+We will see that $B_{1}$ and $\mathcal{B}_{1}$ are not much different.
+Clearly, we have
+\begin{equation}
+    \label{eqn:1.2}
+    B_{1} \leq \mathcal{B}_{1}.
+\end{equation}
+Let
+\[
+    B_{1}^{-} = \inf \{A^{2}: f(0) < 0, f = \what{f}\text{ even} \neq 0, f \in L^{1}(\mathbb{R})\}.
+\]
+Hence $B_{1}^{-}$ is defined by \eqref{eqn:1.1}, where we impose $f(0) < 0$.
+Define $\mathcal{B}_{1}^{-}$ similarly for $f \in \mathcal{S}$.
+Clearly,
+\begin{equation}
+    \label{eqn:1.3}
+    B_{1}^{-} \leq \mathcal{B}_{1}^{-}
+\end{equation}
+\begin{equation}
+    \label{eqn:1.4}
+    \mathcal{B}_{1} \leq \mathcal{B}_{1}^{-}, \quad B_{1} \leq B_{1}^{-}.
+\end{equation}
+To prove $\mathcal{B}_{1}^{-} \leq B_{1}^{-}$, let $f \in L^{1}(\mathbb{R})$ be a function satisfying the conditions for \eqref{eqn:1.1} but $f(0) < 0$, and let $a = A(f)$.
+Let $\varphi = \psi \ast \psi$, where $\psi$ is $C^{\infty}$, even, positive, and compactly supported near $0$, and $g = f \ast \varphi$.
+Then $A(g) \leq a + \varepsilon$ and $g(0) < 0$.
+We have $\what{g} = \what{f} \what{\psi}^{2}$; by applying the same operation on $\what{g}$ we obtain a function $h \in \mathcal{S}$ such that $h = \what{h}$, $h(0) < 0$, and $A(h) \leq a + \varepsilon$; from this we get $\mathcal{B}_{1}^{-} \leq B_{1}^{-}$ and
+\begin{equation}
+    \label{eqn:1.5}
+    \mathcal{B}_{1}^{-} = B_{1}^{-}.
+\end{equation}
+Note that the argument fails when $f(0) = 0$.
+We will show
+\begin{equation}
+    \label{eqn:1.6}
+    B_{1}^{-} \leq 2B_{1};
+\end{equation}
+combining \eqref{eqn:1.4} and \eqref{eqn:1.6} gives
+\begin{equation}
+    \label{eqn:1.7}
+    B_{1} \leq \mathcal{B}_{1} \leq 2 B_{1}.
+\end{equation}
+Let $f$ be a function satisfying the conditions for \eqref{eqn:1.1} and $a = A(f)$.
+Since $\what{f}(0) = \int f(x) \dd x = 0$, $f$ takes a negative value on $[-a, a]$.
+Let $b > 0$ be such a number, and consider the distribution
+\[
+    T = \delta_{b} + \delta_{-b} + 2 \delta_{0}.
+\]
+It is a positive measure with nonnegative Fourier transform
+\[
+    \what{T} = 2 \cos (2 \pi b y) + 2 \geq 0.
+\]
+We have
+\[
+    (T \ast f)(0) = f(b) + f(-b) < 0.
+\]
+Since $b < a$, $g = T \ast f$ satisfies
+\[
+    g(0) < 0, \quad g \geq 0 \text{ on }(2a, \infty).
+\]
+Moreover $\what{g} = \what{T}\what{f}$ is nonnegative on $[0, \infty)$, and $\what{g}(0) = 0$.
+By scaling, we obtain a function $h$ such that
+\begin{align*}
+    h &\geq 0 \text{ on } [a \sqrt{2}, \infty),\quad h(0) < 0 \\
+    \what{h} &\geq 0 \text{ on } [a \sqrt{2}, \infty),\quad \what{h}(0) = 0. \\
+\end{align*}
+The functions $h$ and $\what{h}$ are real-valued and even.
+Hence $h + \what{h}$ satisfy the conditions defining $B_{1}^{-}$.
+So $B_{1}^{-} \leq (a \sqrt{2})^{2} = 2a^{2}$; by varying $f$, we obtain \eqref{eqn:1.6}.
