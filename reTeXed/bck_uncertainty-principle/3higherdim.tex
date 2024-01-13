@@ -9,31 +9,31 @@ Fourier transform is defined by
     \label{eqn:3.1}
     \what{f}(y) = \int f(x) e^{-2 i \pi x \cdot y} \dd x
 \end{equation}
-where $\dd x = \dd x_1 \cdots \dd x_d$ is the Lebesgue measure; then
+where $\dd x = \dd x_1 \cdots \dd x_d$ is the Lebesgue measure; so
 \begin{equation}
     \label{eqn:3.2}
     f(x) = \int \what{f}(y) e^{2 i \pi x \cdot y} \dd y.
 \end{equation}
 We suppose that $f$ and $\what{f}$ are continuous and integrable.
-More generally, if $E$ is a Euclidean space of dimension $d$, if the invariant measure $\dd x$ on $E$ is chosen so that the cube formed by the orthonormal basis has measure $1$, and if $x\cdot y$ is the corresponding inner product, Fourier transform and its inverse is defined by \eqref{eqn:3.1} and \eqref{eqn:3.2}.
+More generally, if $E$ is a Euclidean space of dimension $d$, if the invariant measure $\dd x$ on $E$ is chosen so that the cube formed by the orthonormal basis has measure $1$, and if $x\cdot y$ is the inner product, Fourier transform and its inverse are defined by \eqref{eqn:3.1} and \eqref{eqn:3.2}.
 
 Consider the Fourier pairs $(f, \what{f})$ satisfying
 \begin{enumerate}
     \item $f$, $\what{f}$ are not identically zero,
-    \item $f(0) \leq 0$ and $\what{f}(0) \leq 0$,
+    \item $f(0) \leq 0$ and $\what{f}(0) \leq 0$, \hfill\eqnum\label{eqn:3.2}
     \item $f(x) \geq 0$ for $\|x\| \geq a_f$, $\what{f}(0) \geq 0$ for $\|y\| \geq a_{\what{f}}$.
 \end{enumerate}
 Define $A(f)$ and $A(\what{f})$ as in \S 1:
 \[
-    A(f) = \inf\{r >0: f(x) \geq 0 \text{ if } \|x\| > r\},
+    A(f) = \inf\{r > 0: f(x) \geq 0 \text{ if } \|x\| > r\},
 \]
 and
 \[
     B_d = \inf A(f) A(\what{f})
 \]
 for pairs satisfying 1--3.
-Let $f^\natural(x)$ be the (invariant) integral of $f$ on the sphere of radius $\|x\|$: $\what{f}^\natural = (\what{f})^{\natural}$ and $f^\natural$ and $\what{f}^{\natural}$ are nonzero; otherwise $f$ and $\what{f}$ are compactly supported from 3.
-Since $A(f^\natural) \leq A(f)$ and $A(\what{f}^{\natural}) \leq A(\what{f})$, we can limit ourselves to the radial functions.
+Let $f^\sharp(x)$ be the (invariant) integral of $f$ on the sphere of radius $\|x\|$: $\what{f}^\sharp = (\what{f})^{\sharp}$ and $f^\sharp$ and $\what{f}^{\sharp}$ are nonzero; otherwise $f$ and $\what{f}$ are compactly supported from 3.
+Since $A(f^\sharp) \leq A(f)$ and $A(\what{f}^{\sharp}) \leq A(\what{f})$, we can limit ourselves to the radial functions.
 Since
 \[
     (f(x/\lambda))^\wedge = \lambda^d \what{f}(\lambda y)\quad (\lambda > 0),
@@ -43,9 +43,9 @@ we can follow the argument in \S 1 and we have
     \label{eqn:3.4}
     B_d = A^2, \quad A = \inf A(f)
 \end{equation}
-\textbf{where the infimum is over the functions $f \in L^1(\mathbb{R}^d)$, radial, not identically zero, such that $f = \what{f}$ and $f(0) = 0$.}
+\textbf{where the infimum is taken over the functions $f \in L^1(\mathbb{R}^d)$, radial, not identically zero, such that $f = \what{f}$ and $f(0) = 0$.}
 
-We have, as in \S 1, can add multiple of the following radial and self-dual function if necessary
+We can, as in \S 1, if necessary, add a multiple of the following radial and self-dual function
 \[
     \gamma(x) = e^{-\pi \|x\|^2}.
 \]
@@ -83,7 +83,7 @@ The derivative in $X$ at the origin is
 \]
 the convexity argument in \S 2 shows that $H_a$ has a unique positive zero $X_a$.
 As before, we compute the expansion of $H_a(X)$ in $k$ up to order $4$.
-It is
+It becomes
 \[
     H_a(X) = P_1 k + P_2 k^2 + P_3 k^3 + P_4 k^4 + O(k^5)
 \]
@@ -94,7 +94,7 @@ where
     P_3 &= \frac{1}{2}(c - 2)X(X-c-1) \\
     P_4 &= \frac{1}{12} X(X^3 - (2c + 6)X^2 + (3c(c-1) + 18)X - (2c(c-1)(c-2) + 12)).
 \end{align*}
-As in dimension $1$ case, we see that $P_2$ and $P_3$ cancel out for
+As in the dimension $1$ case, we see that $P_2$ and $P_3$ cancel out for
 \begin{equation}
     \label{eqn:3.5}
     X = X(d) := \frac{d}{2} + 1.
@@ -104,16 +104,16 @@ Taking the limit $k \to 0$ gives
 \[
     \lim_{a \to 1} X_a = \frac{d}{2} + 1.
 \]
-To understand the location of $X_a$ with respect to $X(d)$ as $a \to 1$, compute $Q_4(X(d))$ or $P_4 = \frac{X}{12}Q_4$.
+To understand the location of $X_a$ with respect to $X(d)$ as $a \to 1$, we compute $Q_4(X(d))$ or $P_4 = \frac{X}{12}Q_4$.
 Calculation gives
 \[
     Q_4(c+1) = -c^2 + 1.
 \]
-For $d > 2$, the term is $<0$, so $H_a(X(d)) < 0$ for $a$ close to $1$, which shows that
+For $d > 2$, this term is $<0$, so $H_a(X(d)) < 0$ for $a$ close to $1$, which shows that
 \[
     X_a > \frac{d}{2} + 1 \quad(a > 1, \text{ close to }1).
 \]
-Therefore it is possible that the value in \eqref{eqn:3.5} is optimal.
+Therefore it is possible that the value \eqref{eqn:3.5} is optimal.
 This is not the case when $d = 1$ as we saw in \S 2.
 
 For $d = 2$, $Q_4(c+1) = 0$, so we need to compute up to degree $5$, where
@@ -126,7 +126,7 @@ The Taylor series at $0$ of
     f(z) &= e^{2(1 - \frac{1}{1+z})} = e^{2\frac{z}{1+z}},\\
     f(z) &= \sum_{n=0}^{\infty} q_n z^n,
 \end{align*}
-can be calculated using the residue theorem.
+can be calculated by the residue theorem.
 Let
 \[
     w = \frac{z}{1+z}, \,\,z = \frac{w}{1-w}, \,\,\dd z = \frac{\dd w}{(1-w)^2},
@@ -147,7 +147,7 @@ coming from the first term of \eqref{eqn:3.6}, and the coefficient of $w^5$ in $
     \label{eqn:3.8}
     \frac{2^5}{5!} - 4 \cdot \frac{2^4}{4!} +  6 \cdot \frac{2^3}{3!} - 4 \cdot \frac{2^2}{2!} + 2.
 \end{equation}
-We found that $q_5 = 0$.
+We find that $q_5 = 0$.
 
 Similarly, $q_6$ is the sum of
 \begin{equation}
@@ -166,16 +166,16 @@ which is
 When $a$ is sufficiently close to $1$, we therefore have $H_a(2) < 0$ and $X_a > X(2) = 2$.
 Again, the bound given by \eqref{eqn:3.5} could be optimal.
 
-Concluding this section, note that for all $d \geq 2$ we obtain the upper bound
+To conclude this section, note that for all $d \geq 2$ we obtain the upper bound
 \begin{equation}
     \label{eqn:3.11}
     B_d \leq \mathcal{B}_{d} \leq \frac{d+2}{2\pi}
 \end{equation}
 where $\mathcal{B}_{d}$ is defined, as in \S 1, by the functions in the space $\mathcal{S}(\mathbb{R}^{d})$.
 Also following the argument in the end of \S 1, relating the bounds for $L^1$ and $\mathcal{S}$ applies.
-To prove the inequality \eqref{eqn:1.6}, we have to consider $T = \delta_b + \delta_{-b} + 2 \delta_{0}$, where $\|b\| < a = A(f)$ and $f(b) < 0$; $\what{T} = 2 \cos(2 \pi b \cdot y) + 2$ is a positive plane wave function.
-The rest of the argument is the same, replacing $h + \what{h}$ with the spherical average of $h + \what{h}$ if we want to limit ourselves to the radial functions.
-In conclusion,
+To prove the inequality \eqref{eqn:1.6}, we have to consider $T = \delta_b + \delta_{-b} + 2 \delta_{0}$, where $\|b\| < a = A(f)$ and $f(b) < 0$; $\what{T} = 2 \cos(2 \pi b \cdot y) + 2$ is a positive plane wave.
+The rest of the argument is the same, replacing $h + \what{h}$ with the spherical average of $h + \what{h}$ if we want to stick to the radial functions.
+In conclusion, comparing with Theorem \ref{thm:3.1},
 \begin{theorem}
 \label{thm:3.2}
 We have

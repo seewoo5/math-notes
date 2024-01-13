@@ -281,6 +281,9 @@
 
 \numberwithin{equation}{section}
 
+\makeatletter
+\newcommand{\eqnum}{\refstepcounter{equation}\textup{\tagform@{\theequation}}}
+\makeatother
 % --- Document starts here ---
 
 \begin{document}
