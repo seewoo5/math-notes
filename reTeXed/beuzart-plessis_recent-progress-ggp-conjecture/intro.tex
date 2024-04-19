@@ -1,0 +1,104 @@
+\section*{Introduction}
+
+
+The Gan--Gross--Prasad \cite{gan2011symplectic} conjectures have two aspects: local and global.
+Locally, these relate to certain branching laws between representations of real or $p$-adic Lie groups while globally, they characterize the non-vanishing of certain explicit integrals of automorphic forms that are commonly called (automorphic) periods.
+What makes these predictions interesting is that they involve fine arithmetic invariants: local epsilon factors on the one hand and values of automorphic $L$-functions at their center of symmetry on the other.
+These conjectures, which relate to all the classical groups (hermitian or skew-hermitian unitary spaces, symplectic and special orthogonal; this last case had moreover been considered long before by Gross and Prasad \cite{gross1992decomposition,gross1994irreducible}), have known many recent advances.
+More precisely, the local conjecture is now demonstrated in almost all cases after the seminal work of Waldspurger \cite{waldspurger2010formule,waldspurger2012calcul,waldspurger2012conjecture,waldspurger2012formule} and Mœglin--Waldspurger \cite{moeglin2012conjecture} followed by the author \cite{beuzart2014expression,beuzart2015endoscopie,beuzart2016conjecture,beuzart2015local}, Gan-Ichino \cite{gan2016gross}, Hiraku Atobe \cite{atobe2018local} and finally Hongyu He \cite{he2017gan}.
+The global conjecture has been established for unitary groups of hermitian spaces under certain local restrictions in a breakthrough by Wei Zhang \cite{zhang2014fourier} following the work of Jacquet-Rallis \cite{jacquet2011gross} and Zhiwei Yun \cite{yun2011fundamental}.
+Similar results have been obtained for unitary groups of skew-hermitian spaces by Hang Xue \cite{xue2014gan} following Yifeng Liu \cite{liu2014relative}.
+There is also a refinement of the global conjecture, initially due to Ichino-Ikeda \cite{ichino2010periods} in the case of orthogonal groups then extended to unitary and symplectic groups by Neal Harris \cite{harris2014refined} and Hang Xue \cite{xue2016fourier,xue2017refined}, under the form of an identity explicitly linking periods and central values of automorphic $L$-functions.
+This refinement is now also proven for unitary groups under certain local assumptions after \cite{zhang2014automorphic}, the author \cite{beuzart2021comparison}, and Hang Xue \cite{xue2016fourier,xue2017fourier}.
+
+In this text, we propose the precise statements of these conjectures and the recent results mentioned above as well as to give brief overviews of the proofs that it would be very difficult to fully describe here as the techniques used vary (relative trace formulae, theta correspondence, endoscopy theory...).
+Moreover, as we have already explained, these conjectures relate to all the types of classical groups each having its own specificities. 
+For reasons of space, we will focus on the case of unitary groups for which the results obtained are the most exhaustive.
+Finally, we also refer to \cite{gan2014recent} for a very good introduction to this subject (dating from 2013, this article unfortunately does not mention the most recent advances).
+
+The arithmetic applications of these conjectures will not be discussed here but let us cite recent works \cite{harris2001geometry}, \cite{prasanna2021automorphic} as examples of such applications.
+
+We finish this introduction by giving two examples of previous results which are special cases of the Gan-Gross-Prasad conjectures.
+
+\emph{Branching law from $\rU(n+1)$ to $\rU(n)$}.
+We begin by giving a classical example of a branching law (due to H. Weyl \cite{weyl1946classical}) constituting a particular case of local conjectures.
+For any integer $k\geq 1$, we denote
+\[
+    \rU(k) := \{g \in \GL_k(\bC) : {}^t \bar{g} g = \bfi_k \}
+\]
+the real compact unitary group of rank $k$.
+Let $n \geq 1$ be an integer.
+We have a natural embedding
+\[
+    \rU(n) \hookrightarrow \rU(n+1), g \mapsto \left(\begin{smallmatrix}  g & \\ & 1 \end{smallmatrix}\right).
+\]
+Let $\pi$ be an irreducible complex representation of $\rU(n+1)$. Such a representation is necessarily of finite dimension (because $\rU(n+1)$ is compact) and we are interested in the restriction of $\pi$ to $\rU(n)$.
+The explicit description of this restriction, or rather of its decomposition into irreducible representations, what are the consititues is called a branching law.
+Obviously, any comprehensible answer to this problem requires knowing how to independently parameterize (or name) the irreducible representations (up to isomorphism) of $\rU(n)$ and $\rU(n+1)$.
+Such a parametrization is precisely provided by the Cartan--Weyl highest weight theory.
+In the cases that interest us this theory provides natural bijections
+\begin{align*}
+    \Irr(\rU(n+1)) &\simeq \{ \underline{\alpha} = (\alpha_1, \dots, \alpha_{n+1}) \in \bZ^{n+1}: \alpha_1 \geq \alpha_2 \geq \dots \geq \alpha_{n+1} \} \\
+    \pi_{\underline{\alpha}} &\leftrightarrow \underline{\alpha} \\
+    \Irr(\rU(n)) & \simeq \{ \underline{\beta} = (\beta_1, \dots, \beta_n) \in \bZ^{n}: \beta_1 \geq \beta_2 \geq \dots \geq \beta_n \} \\
+    \sigma_{\underline{\beta}} &\leftrightarrow \underline{\beta}
+\end{align*}
+where $\Irr(\rU(n+1))$ and $\Irr(\rU(n))$ are the set of isomorphism classes of irreducible complex representations of $\rU(n+1)$ and $\rU(n)$, respectively.
+Using these parametrizations, the solution to the initial problem is formulated as follows (see \cite{goodman2009symmetry} Chap. 8 for
+example):
+for all $n+1$-tuple $\underline{\alpha} = (\alpha_1, \dots, \alpha_{n+1}) \in \bZ^{n+1}$ with $\alpha_1 \geq \alpha_2 \geq \dots \alpha_{n+1}$, we have
+\[
+    \pi_{\underline{\alpha}} = \bigoplus_{\substack{\underline{\beta}  = (\beta_1, \dots, \beta_n)\in \bZ^{n} \\ \alpha_1 \geq \beta_1 \geq \dots \geq \alpha_n \geq \beta_n \geq \alpha_{n+1}}} \sigma_{\underline{\beta}}.
+\]
+In other words, for any pair of irreducible representations $(\pi_{\underline{\alpha}}, \sigma_{\underline{\beta}}) \in \Irr(\rU(n+1)) \times \Irr(\rU(n))$ the space of intertwining maps
+\[
+    \Hom_{\rU(n)} (\pi_{\underline{\alpha}}, \sigma_{\underline{\beta}})
+\]
+has dimension at most 1 and is non-zero if and only if $\underline{\alpha}$ and $\underline{\beta}$ satisfy the branching condition $\alpha_1 \geq \beta_1 \geq \dots \geq \beta_n \geq \alpha_{n+1}$.
+In this form the local Gan-Gross-Prasad conjecture generalizes to pairs of real unitary groups $\rU(p, q) \subset \rU(p+1, q)$ or $p$-adic $\rU(W) \subset \rU(V)$ or more generally.
+More precisely, we will see in the section 1.3 that for irreducible representations $\pi$ and $\sigma$ (in a sense to be specified) of $\rU(p+1, q)$ and $\rU(p, q)$ the intertwining space $\Hom_{\rU(p,q)}(\pi, \sigma)$ is always of dimension at most one and the same is true if we consider $p$-adic unitary groups.
+The local Gan-Gross-Prasad conjecture then gives (in almost all cases) a necessary and sufficient condition, generalizing the above branching relation, for this space to be nonzero.
+
+\emph{Waldspurger's formula for the Maass forms of level 1.}
+Let us now state a particular case of a result of Waldspurger \cite{waldspurger1985valeurs} whose global conjectures give a generalization.
+Let $\bH = \{z = x + iy \in \bC: y > 0\}$ be the Poincaré upper half plane and $f: \SL_2(\bZ) \backslash \bH \to \bC$ a Maass eigenform of level $1$.
+Let's recall what this means: $f$ is a $C^\infty$ (and even real analytic) which is an eigenvector for the hyperbolic Laplacian $\Delta := -y^2 \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)$ with an eigenvalue $\lambda$ (i.e. $\Delta f = \lambda f$), invariant under the $\SL_2(\bZ)$-action (given by $\left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right) z := \frac{az + b}{cz + d}$), has a moderate growth in the sense that $|f(x + iy)| \ll Cy^N$ for some $N$ as $y \to \infty$ and eigenform for all Hecke operators $T_p$ for prime $p$, defined by
+\[
+    (T_p f)(z) = f\left(\left(\begin{smallmatrix}
+        p&\\&1
+    \end{smallmatrix}\right)z\right) + \sum_{u=0}^{p-1} f\left(\left(\begin{smallmatrix}
+        1&u\\&p
+    \end{smallmatrix}\right)z\right).
+\]
+Since $\left(\begin{smallmatrix}
+    1&1\\&1
+\end{smallmatrix}\right)z = z + 1$, such a function admits a Fourier expansion of the form
+\[
+    f(x + iy) = \sum_{n \in \bZ} a_n(y) e^{2\pi i n x}, \quad x + iy \in \bH.
+\]
+Moreover, the differential equation satisfied by $f$ as well as the moderate growth implies that the functions $a_n(y)$ are, for $n \neq 0$, of the form $a_n(y) = a_n \sqrt{y} K_\nu(2 \pi |n| y)$ for $a_n \in \bC$ and $K_\nu$ is the Bessel function of second kind with parameter $\nu \in \bC$ satisfying $\lambda = \frac{1}{4} - \nu^2$.
+We assume that $f$ is even (i.e. $f(-\bar{z}) = f(z)$) and cuspidal (i.e. $a_0(y) = 0$).
+We then have $a_{-n} = a_n$ for $n\neq 0$ and we define the complete $L$-function of $f$ by
+\[
+    L(s, f) = \pi^{-s} \Gamma\left(\frac{s + \nu}{2}\right) \Gamma\left(\frac{s - \nu}{2}\right) \sum_{n=1}^{\infty} \frac{a_n}{n^s}, \quad \Re(s) \gg 1.
+\]
+For a quadratic Dirichlet character $\chi$ with $\chi(-1) = -1$ we also define a completed $L$-function twisted by $\chi$ by the following way
+\[
+    L(s, f \times \chi) = \pi^{-s} \Gamma \left(\frac{s - 1 + \nu}{2}\right) \Gamma \left(\frac{s - 1 - \nu}{2}\right) \sum_{n=1}^{\infty} \frac{\chi(n) a_n}{n^s}, \quad \Re (s) \gg 1.
+\]
+Then $L(s, f)$ and $L(s, f \times \chi)$ admit analytic continuations to $\bC$ and satisfy the functional equations $L(1 - s, f) = L(s, f)$ and $L(1 - s, f \times \chi) = L(s, f \times \chi )$.
+Let $F$ be an imaginary quadratic extension of $\bQ$ with fundamental discriminant $d$ (i.e. if $F = \bQ(\sqrt{d_0})$ with $d_0$ a square-free integer then $d = d_0$ if $d_0$ is congruent to $1$ modulo $4$, $4d_0$ otherwise).
+We call Heegner point (relative to $F$) the unique root $z_d$ in $\bH$ of a quadratic equation of the form $aX^2 + bX + c$ with $a, b, c \in \bZ$ satisfying $b^2 - 4ac = d$.
+We then have the following formula, which is a special case of a result of Waldspurger \cite{waldspurger1985valeurs}
+\begin{equation}
+    \label{eqn:1}
+\left(\sum_{z_d / \SL_2(\bZ)} f(z_d)\right)^2 = \frac{\sqrt{|d|}}{2} L\left(\frac{1}{2}, f\right) L\left(\frac{1}{2}, f \times \chi_d\right),
+\end{equation}
+where the sum is over the set of orbits of Heegner points under $\SL_2(\bZ)$-action and $\chi_d$ denotes the unique quadratic Dirichlet character of conductor $|d|$ with $\chi_d(-1) = -1$.
+
+Applied to this particular case, the global Gan-Gross-Prasad conjecture predicts the equivalence
+\[
+    \sum_{z_d / \SL_2(\bZ)} f(z_d) \neq 0 \Leftrightarrow L\left(\frac{1}{2}, f\right) L\left(\frac{1}{2}, f \times \chi\right) \neq 0,
+\]
+while the refinement of the global conjecture by Ichino and Ikeda makes it possible to derive formula \eqref{eqn:1} directly.
+

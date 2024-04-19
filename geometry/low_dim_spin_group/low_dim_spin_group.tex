@@ -17,6 +17,7 @@
 \newtheorem{proposition}{Proposition}
 
 \newcommand{\Mod}[1]{(\text{mod }#1)}
+\newcommand{\bC}{\mathbb{C}}
 \newcommand{\PSL}{\mathrm{PSL}}
 \newcommand{\SO}{\mathrm{SO}}
 \newcommand{\SL}{\mathrm{SL}}
@@ -32,7 +33,23 @@
 \begin{document}
 \maketitle
 
-\emph{Spin group} is a universal cover of an orthogonal group. In this note, we will show that low dimensional complex spin groups, $\Spin(3, \mathbb{C}), \Spin(4, \mathbb{C}), \Spin(5, \mathbb{C})$ and $\Spin(6, \mathbb{C})$ are isomorphic to familiar groups. 
+\section{Introduction}
+\emph{Spin group} is a universal cover of an orthogonal group. In this note, we will show that low dimensional complex spin groups are isomorphic to 
+\begin{align*}
+    \Spin(3, \bC) &\simeq \SL(2, \bC) \\
+    \Spin(4, \bC) &\simeq \SL(2, \bC) \times \SL(2, \bC) \\
+    \Spin(5, \bC) &\simeq \Sp(4, \bC) \\
+    \Spin(6, \bC) &\simeq \SL(4, \bC).
+\end{align*}
+
+For each case, we'll approach in the following way.
+To prove $\Spin(n, \bC) \simeq G$ for some $G$, we'll first ``compute'' the group $\SO(n, \bC)$ first, i.e. find another group $G'$ isomorphic to $\SO(n, \bC)$.
+To do this, we construct nondegenerate bilinear forms and the corresponding quadratic forms $Q$ explicitly for each $n \in \{3, 4, 5, 6\}$.
+Then we construct $G'$-action on the quadratic space, preserving the quadratic, so we get a map $G' \to \SO(Q) \simeq \SO(n, \bC)$, and show that the map is an isomorphism.
+Then $G$ would be the universal cover of $G'$.
+
+Note that we only need to find a bilinear form, since every nondegenerate quadratic spaces over an algebraically closed fields are isomorphic.
+For the general theory of quadratic spaces, see \cite{lam}.
 
 \section{$\Spin(3, \mathbb{C})\simeq \SL(2, \mathbb{C})$} 
 First, we are going to prove the following theorem:
@@ -72,7 +89,7 @@ $$
 is a surjective homomorphism whose kernel is the center of $\SL(2, \mathbb{C})$. 
 \end{proof}
 
-Our main question is: where does the isomorphism come from? This map seems very complicated and unnatural. 
+One may ask where does the isomorphism come from, which looks quite unnatural. 
 It is not even trivial that $\phi$ is a group homomorphism and surjective. 
 We will construct such homomorphism by using the \emph{adjoint} action of a Lie group on a Lie algebra. 
 
@@ -132,7 +149,7 @@ If $\phi_{g} = \mathrm{id}$, then we should have $b = c = 0$ and $a^{2} = d^{2} 
 So the only possible choice is $(a, d) = (1, 1)$ or $(-1, -1)$, which corresponds to elements in the center.
 Hence we have an induced map $\PSL(2, \mathbb{C})\to \SO(3, \mathbb{C})$, which is an embedding. 
 
-Now we only need to show that this map is an isomorphism. First, both have dimension 3: since $\SL(2, \mathbb{C})\to \PSL(2, \mathbb{C})$ is a finite cover, both group have a same dimension, which is 3 since $\dim_{\mathbb{C}} \mathfrak{sl}(2, \mathbb{C}) = 3$. 
+We need to show that this map is an isomorphism. First, both have dimension 3: since $\SL(2, \mathbb{C})\to \PSL(2, \mathbb{C})$ is a finite cover, both group have a same dimension, which is 3 since $\dim_{\mathbb{C}} \mathfrak{sl}(2, \mathbb{C}) = 3$. 
 For $\SO(3, \mathbb{C})$, one can check that $\mathfrak{so}(3, \mathbb{C}) = \{X\in M_{3\times 3}(\mathbb{C})\,:\, X^{T}+X = 0\}$, and this space also has dimension 3 over $\mathbb{C}$. 
 We need the following lemma:
 \begin{lemma}
@@ -179,7 +196,7 @@ $$\Spin(4, \mathbb{C})\simeq \SL(2, \mathbb{C})\times \SL(2, \mathbb{C}).$$
 By the Theorem 2, there exists a surjective homomorphism $\SL(2, \mathbb{C})\times \SL(2, \mathbb{C})\to \SO(4, \mathbb{C})$, which is a double cover of $\SO(4, \mathbb{C})$. Since $\SL(2, \mathbb{C})$ is simply connected, $\SL(2, \mathbb{C})\times \SL(2, \mathbb{C})$ is also simply connected. 
 \end{proof}
 
-To prove the Theorem 2, we may find some appropriate $\SL(2, \mathbb{C})\times \SL(2, \mathbb{C})$ on a 4-dimensional $\mathbb{C}$-vector space. 
+To prove the Theorem 2, we need construct a 4-dimensional quadratic space over $\mathbb{C}$ where $\SL(2, \mathbb{C}) \times \SL(2, \mathbb{C})$ acts on and preserves the quadratic form.
 Consider the action of the group on a space $\Ma_{2\times 2}(\mathbb{C})$ (the space of complex $2\times 2$ matrices) defined as 
 $$
 (g, h)\cdot v: = gvh^{-1}, \quad (g, h)\in \SL(2, \mathbb{C})\times\SL(2, \mathbb{C}), \, v\in \Ma_{2\times 2}(\mathbb{C}). 
@@ -198,14 +215,13 @@ We can check that $\det(A_{g, h}) = (ad-bc)(\alpha\delta - \beta\gamma) = 1$, so
 Now we need a bilinear map and a (non-degenerate) quadratic form on $\Ma_{2\times 2}(\mathbb{C})$ so that $\phi_{g, h}$ preserves the quadratic form. 
 Define $Q:\Ma_{2\times 2}(\mathbb{C})\to \mathbb{C}$ as the \emph{determinant}, i.e. $Q(v) = \det(v)$. 
 Then we have $$Q(\phi_{g, h}(v)) = \det(gvh^{-1}) = \det(g)\det(v)\det(h)^{-1} = \det(v) = Q(v),$$ so it is preserved by the action. 
-The corresponding inner product can be defined as
-$$
-\langle v, w\rangle = \frac{1}{2}\left( Q(v+w)-Q(v)-Q(w)\right) = \frac{1}{2}(\det(v+w) - \det(v) - \det(w))
-$$
-which satisfies $\langle v, v\rangle = Q(v)$. Simple computation shows that the inner product is given as
-$$
-\langle v, w\rangle = \frac{1}{2}(x_{1}w_{2} - y_{1}z_{2} + x_{2}w_{1}- y_{2}z_{1}), \quad v = \begin{pmatrix} x_{1} & y_{1} \\ z_{1} & w_{1}\end{pmatrix}, \,\, w = \begin{pmatrix} x_{2} & y_{2} \\ z_{2} & w_{2}\end{pmatrix} \in \Ma_{2\times 2}(\mathbb{C}).  
-$$
+The corresponding bilinear form is
+\begin{align*}
+    \langle v, w\rangle &= \frac{1}{2}\left( Q(v+w)-Q(v)-Q(w)\right) \\
+    &= \frac{1}{2}(\det(v+w) - \det(v) - \det(w)) \\
+    &= \frac{1}{2}(x_{1}w_{2} - y_{1}z_{2} + x_{2}w_{1}- y_{2}z_{1}),
+\end{align*}
+where $v = \left(\begin{smallmatrix} x_1 & y_1 \\ z_1 & w_1 \end{smallmatrix}\right)$ and $w = \left(\begin{smallmatrix} x_2 & y_2 \\ z_2 & w_2 \end{smallmatrix}\right)$.
 Hence we obtain a map $\phi:\SL(2, \mathbb{C})\times \SL(2, \mathbb{C})\to \SO(4, \mathbb{C})$. 
 If $(g, h)\in \ker\phi$, then $gvh^{-1} = v$ for any $v\in \Ma_{2\times 2}(\mathbb{C})$. If we put $v = h$, we get $g = h$ and $gvg^{-1} = v$. Thus $g\in Z(\Ma_{2\times 2}(\mathbb{C})) = \mathbb{C}I_{2}$. 
 Since $\det(g) = 1$, we should have $g = h = \pm I_{2}$, and $\phi$ induces an injection 
@@ -218,10 +234,10 @@ One can check that both groups has dimension 6 (by computing dimensions of Lie a
 
 
 \section{$\Spin(6, \mathbb{C})\simeq \SL(4, \mathbb{C})$}
-We are going to see $\Spin(6, \mathbb{C})$ first since $\Spin(5, \mathbb{C})$ uses similar technic but slightly more difficult. 
+We are going to look at $\Spin(6, \mathbb{C})$ first, since $\Spin(5, \mathbb{C})$ is slightly more involved.
 For $\Spin(6, \mathbb{C})$, we have the following isomorphism
 \begin{theorem}
-$$\SL(4, \mathbb{C})/\langle -I\rangle \simeq \SO(6, \mathbb{C}).$$
+$$\PSL(4, \bC) = \SL(4, \mathbb{C})/\langle -I\rangle \simeq \SO(6, \mathbb{C}).$$
 \end{theorem}
 \begin{corollary}
 $$
@@ -230,7 +246,7 @@ $$
 \end{corollary}
 
 \begin{proof}
-More generally, we will prove that $\SL(n, \mathbb{C})$ is simply connected for $n\geq 2$. 
+In general, we can prove that $\SL(n, \mathbb{C})$ is simply connected for $n\geq 2$. 
 The natural action of $\SL(n, \mathbb{C})$ on $\mathbb{C}^{n}\backslash \{0\}$ is transitive, so we have a diffeomorphism 
 $$
 \SL(n, \mathbb{C})/\Stab(\mathbf{e}_{1}) \simeq \mathbb{C}^{n}\backslash \{0\}. 
@@ -244,38 +260,60 @@ which is diffeomorphic to $\SL(n-1, \mathbb{C})\times \mathbb{C}^{n-1}$, so is h
 Thus by induction with the Lemma \ref{simply}, $\SL(n, \mathbb{C})$ is simply connected for any $n\geq 2$. 
 \end{proof}
 
-What is a 6-dimensional $\mathbb{C}$-vector space that $\SL(4, \mathbb{C})$ can act on?  $\SL(4, \mathbb{C})$ naturally acts on $\mathbb{C}^{4}$, and this induces an action on $\wedge^{2}\mathbb{C}^{4}$, which has a dimension $\binom{4}{2}= 6$. The action is defined as
+What is a 6-dimensional quadratic space over $\bC$ with $\SL(4, \mathbb{C})$ action?
+$\SL(4, \mathbb{C})$ naturally acts on $\mathbb{C}^{4}$, and this induces an action on $\wedge^{2}\mathbb{C}^{4}$, which has a dimension $\binom{4}{2}= 6$.
+If we write $e_1, e_2, e_3, e_4$ for the standard basis, then the corresponding ``standard'' basis of $\wedge^2 \bC^4$ as
 $$
-g(v_{1}\wedge v_{2}) = gv_{1}\wedge gv_{2},\quad g\in \SL(4, \mathbb{C}), \,v_{1}, v_{2}\in \mathbb{C}^{4}. 
+e_1 \wedge e_2, \quad e_1 \wedge e_3, \quad e_1 \wedge e_4, \quad e_2 \wedge e_3, \quad e_2 \wedge e_4, \quad e_3 \wedge e_4.
+$$
+The action of $\SL(4, \bC)$ on $\wedge^2 \bC^4$ is defined as
+$$
+g(v_{1}\wedge v_{2}) = gv_{1}\wedge gv_{2},\quad g\in \SL(4, \mathbb{C}), \,v_{1}, v_{2}\in \mathbb{C}^{4}.
 $$
 It is easy to prove that this action has determinant 1. Recall that for any finite $d$-dimensional $\mathbb{C}$-vector space $V$, we have the determinant map $\det:\GL(V)\to \mathbb{C}^{\times}$ defined as $g\mapsto \det(g) = \wedge^{d}g$, where $\wedge^{d}g$ is the induced map on $\wedge^{d}V$ which is isomorphic to $\mathbb{C}$. 
 Now we define $\SL(V) = \ker(\det)$. 
 In our case, for $g\in \SL(4, \mathbb{C}) = \SL(\mathbb{C}^{4})$, we have to check that $\wedge^{2}g\in \SL(\wedge^{2}\mathbb{C}^{4})$, which trivially follows from $\wedge^{4}g \in \ker(\det:\GL(\wedge^{4}\mathbb{C}^{4})\to \mathbb{C}^{\times})$: then $\wedge^{4}g$ acts on $\wedge^{4}\mathbb{C}^{4}$ trivially, and then $\wedge^{6}(\wedge^{2}g) = \wedge^{3}(\wedge^{4}g)$ also acts on $\wedge^{6}(\wedge^{2}\mathbb{C}^{4})$ trivially.  
 
-For a bilinear pairing on $\wedge^{2}\mathbb{C}^{4}$, define it as 
+We define a natural bilinear pairing on $\wedge^2\bC^4$ as 
 $$
 \langle v_{1}\wedge v_{2}, w_{1}\wedge w_{2}\rangle = v_{1}\wedge v_{2}\wedge w_{1}\wedge w_{2}\in \wedge^{4}\mathbb{C}^{4}\simeq \mathbb{C}, \quad v_{1}, v_{2}, w_{1}, w_{2}\in \mathbb{C}^{4}
 $$
-This is a symmetric pairing on $\wedge^{2}\mathbb{C}^{4}$ since $(13)(24)\in S_{4}$ is an even permutation. Actually, this pairing can be considered as a determinant of the matrix with column vectors $v_{1}, v_{2}, w_{1}, w_{2}$, and linearly extends to $\wedge^{2}\mathbb{C}^{4}$. 
+This is a symmetric pairing on $\wedge^{2}\mathbb{C}^{4}$ since $(13)(24)\in S_{4}$ is an even permutation. 
+In terms of the above standard basis, if we write $e_{ij} := e_i \wedge e_j$ for $1 \leq i < j \leq 4$ and $v = \sum_{1 \leq i < j \leq 4} a_{ij} e_{ij}, w = \sum_{1 \leq i < j \leq 4} b_{ij} e_{ij}$, then
+\begin{align*}
+    \langle v, w \rangle &= \langle \sum_{1 \leq i < j \leq 4} a_{ij} e_{ij}, \sum_{1 \leq i < j \leq 4} b_{ij} e_{ij} \rangle \\
+    &= (a_{12}b_{34} + a_{34}b_{12} - a_{13} b_{24} - a_{24}b_{31} + a_{14}b_{23} + a_{23} b_{14}) e_{1} \wedge e_{2} \wedge e_{3} \wedge e_{4}.
+\end{align*}
+This pairing can be considered as a determinant of the matrix with column vectors $v_{1}, v_{2}, w_{1}, w_{2}$, and linearly extends to $\wedge^{2}\mathbb{C}^{4}$.
+In other words, we have
+\begin{align*}
+    v_1 \wedge v_2 \wedge w_1 \wedge w_2 &= \det(A) e_1 \wedge e_2 \wedge e_3 \wedge e_4, \\
+    A &= \begin{pmatrix}
+        | & | & | & | \\
+        v_1 & v_2 & w_1 & w_2 \\
+        | & | & | & |
+    \end{pmatrix}.
+\end{align*}
+Especially, the previous $\SL(4, \bC)$-action preserves the bilinear form since $\det(gA) = \det(g) \det(A) = \det(A)$ for $g \in \SL(4, \bC)$.
 One can check that this is a nondegenerate paring on $\wedge^{2}\mathbb{C}^{4}$, so we get a map 
 $$
-\phi:\SL(4, \mathbb{C})\to \SO(Q, \wedge^{2}\mathbb{C}^{4}) \simeq \SO(6, \mathbb{C}). 
+\phi:\SL(4, \mathbb{C})\to \SO(Q, \wedge^{2}\mathbb{C}^{4}) \simeq \SO(6, \mathbb{C}) 
 $$
-where the nondegenerate quadratic form $Q$ on $\wedge^{2}\mathbb{C}^{4}$ corresponds to the above pairing is 
+where the correponding quadratic form $Q$ on $\wedge^{2}\mathbb{C}^{4}$ is
 $$
-Q(v) = \langle v, v\rangle = 2(a_{12}a_{34}-a_{13}a_{24}+a_{14}a_{23}), \quad v = \sum_{i<j}a_{ij}(e_{i}\wedge e_{j}). 
+Q(v) = \langle v, v\rangle = 2(a_{12}a_{34}-a_{13}a_{24}+a_{14}a_{23}), \quad v = \sum_{i<j}a_{ij}e_{ij}. 
 $$
-To show that the kernel of $\phi$ is $\langle -I\rangle$, assume that $g = (b_{ij})_{1\leq i, j\leq 4}\in SL(4, \mathbb{C})$ trivially acts on $\wedge^{2}\mathbb{C}^{4}$. From $ge_{1}\wedge ge_{2} = e_{1}\wedge e_{2}$, we get, for example, the following equations:
+To show that the kernel of $\phi$ is $\langle -I\rangle$, assume that $g = (b_{ij})_{1\leq i, j\leq 4}\in \SL(4, \mathbb{C})$ trivially acts on $\wedge^{2}\mathbb{C}^{4}$. From $ge_{1}\wedge ge_{2} = e_{1}\wedge e_{2}$, we get, for example, the following equations:
 \begin{align*}
 b_{11}b_{22}-b_{21}b_{12} = 1 \\
 b_{11}b_{32} - b_{31}b_{12} = 0 \\
 b_{21}b_{32}-b_{31}b_{22} = 0
 \end{align*}
-by comparing coefficients of each basis elements $e_{i}\wedge e_{j}$ ($i<j$). Then 
+by comparing coefficients of each basis elements $e_{ij} = e_{i}\wedge e_{j}$ ($i<j$). Then 
 $$
 b_{31} = b_{31}b_{11}b_{22} - b_{31}b_{21}b_{12} = b_{21}b_{32}b_{11} - b_{11}b_{21}b_{32} = 0.
 $$
-By the similar way, we can prove that all off-diagonal entries of $g$ are zero, and $b_{ii}b_{jj}  = 1$ for all $i<j$ gives $b_{11} = b_{22} = b_{33} = b_{44} = \pm 1$. 
+Similarly, we can prove that all the off-diagonal entries of $g$ are zero, and $b_{ii}b_{jj}  = 1$ for all $i<j$ gives $b_{11} = b_{22} = b_{33} = b_{44} = \pm 1$. 
 
 
 
@@ -416,5 +454,7 @@ Now we have to show that $\overline{\phi(v_{1})}\wedge\cdots\wedge \overline{\ph
 P. Deligne, \emph{Notes on Spinors}, Quantum fields and strings: a course for mathematicians 1 (1999):2. 
 \bibitem{mse}
 Eric Wofsey, Answer to the MSE question \emph{"$\Sp(4, \mathbb{C})$ is simply connected"}, \url{https://math.stackexchange.com/a/2931022/350772}. 
+\bibitem{lam}
+Tsit-Yuen Lam. Introduction to quadratic forms over fields. Vol. 67. American Mathematical Soc., 2005.
 \end{thebibliography}
 \end{document}

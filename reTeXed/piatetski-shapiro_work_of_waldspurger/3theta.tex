@@ -1,0 +1,193 @@
+\section{The $\theta$-correspondence}
+\label{sec:3}
+
+Let $k$ be a global field.
+We shall use the same notion globally as was previously introduced locally.
+The global Weil (oscillator) representation $\omega_\psi$ acts on $\cS(X_1(\bA))$.
+It is easy to see that it is the tensor product of the local Weil representations.
+Let $X = X_1 \oplus X_2$ be the standard polarization of $X$, and identify $X_1$ wiht $M$.
+For $\phi \in \cS(X_1(\bA))$,
+\[
+\vartheta_\psi^\phi(g, h) = \sum_{x \in X_1(k)} \omega_\psi(g, h) \phi(x)\qquad (g \in G(\bA), h \in \widetilde{\SL}_2(\bA)).
+\]
+Here, $G$ is either $\PGL_2$ or $\rP D^\times$.
+It is well known that $\vartheta_\psi^\phi$ is an automorphic function on $G(\bA) \times \widetilde{\SL}_2(\bA)$ of moderate growth.
+
+The theta function $\vartheta_\psi^\phi$'s can be used to define a correspondence between the automorphic representation of $G(\bA)$ and those of $\widetilde{\SL}_2(\bA)$.
+To describe this correspondence, let $\pi$ be an irreducible automorphic cuspidal representation of $G(\bA)$.
+If $f \in \pi \subset A_0$, put
+\[
+\varphi(h) := \int_{G(k) \backslash G(\bA)} \vartheta_\psi^\phi(g, h) f(g) \dd g.
+\]
+In the case $G = \rP D^\times$, we assume that $\int_{G(k)\backslash G(\bA)} f(g) \dd g = 0$.
+The fact that $\vartheta_\psi^\phi$ is a function of moderate grwoth on $(G(k) \times \SL_2(k)) \backslash (G(\bA) \times \widetilde{\SL}_2(\bA))$ means that the integral is well-defined, and that $\varphi$ is a function on $\SL_2(k) \backslash \widetilde{\SL}_2(\bA)$.
+
+\begin{claim}
+$\varphi$ is a cusp form.
+\end{claim}
+
+\begin{proof}
+It is enough to show that $\int_{k\backslash \bA} \varphi\left(\begin{smallmatrix}
+    1 & z \\ 0 & 1
+\end{smallmatrix}\right)\dd z = 0$.
+\begin{align*}
+\int_{k \backslash \bA} \varphi \begin{pmatrix}
+    1 & z \\ 0 & 1
+\end{pmatrix} \dd z &= \int_{k \backslash \bA} \int_{G(k) \backslash G(\bA)}  \sum_{x \in X_1(k)} \omega_\psi\left(g, \begin{pmatrix}
+    1 & z \\ 0 & 1
+\end{pmatrix}\right)\phi(x) f(g) \dd g \dd z \\
+&= \int_{G(k) \backslash G(\bA)} \sum_{x \in X_1(k)} \omega_\psi(g, 1) \phi(x) f(g) \int_{k \backslash \bA} \psi(z q(x)) \dd z \dd g.
+\end{align*}
+The inner integral $\int_{k \backslash \bA} \psi(z q(x)) \dd z$ is zero unless $q(x) = 0$.
+If $G = \rP D^\times$, then $q(x) = 0$ if and only if $x = 0$, and the integral becomes
+\[
+\int_{k \backslash \bA} \varphi \begin{pmatrix}
+    1 & z \\ 0 & 1
+\end{pmatrix} \dd z = \int_{G(k) \backslash G(\bA)} \phi(0) f(g) \dd g = 0.
+\]
+If $G = \PGL_2$, then $q(x)=0$ means either $x = 0$ or $x$ is a non-zero nilpotent element of $M_2(k)$. The integral in this situation is
+\begin{align*}
+    \int_{k \backslash \bA} \varphi \begin{pmatrix}
+        1 & z \\ 0 & 1
+    \end{pmatrix} \dd z &= \int_{G(k) \backslash G(\bA)} \phi(0) f(g) \dd g \\
+    &+ \int_{G(k) \backslash G(\bA)} \sum_{\gamma \in N(k) \backslash G(k)} \phi \left(g^{-1} \gamma^{-1} \begin{pmatrix}
+        0 & 1 \\ 0 & 0
+    \end{pmatrix} \gamma g\right) f(g) \dd g \\
+    &= 0 + \int_{N(k) \backslash G(\bA)} \phi(g^{-1} xg) f(\gamma^{-1} g) \dd g \\
+    &= \int_{N(\bA) \backslash G(\bA)} \omega_\psi(g) \phi(x) \int_{N(k) \backslash N(\bA)} f(ng) \dd n \dd g = 0.
+\end{align*}
+Here $N$ is centralizer in $G$ of $\left(\begin{smallmatrix}
+    0 & 1 \\ 0& 0
+\end{smallmatrix}\right)$, and $\int_{N(k) \backslash N(\bA)} f(ng) \dd n = 0$, $\int_{N(\bA) \backslash G(\bA)} f(g) \dd g = 0$  since $f$ is a cusp form.
+\end{proof}
+
+Let $\theta(\pi, \psi)$ denote the representation of $\widetilde{\SL}_2(\bA)$ spanned by the $\varphi$'s ($\phi \in \cS(X_1(\bA)), f \in \pi$).
+$\theta(\pi, \psi)$ is a genuine automorphic cuspidal representation of $\widetilde{\SL}_2(\bA)$.
+
+\begin{theorem}[\cite{waldspurger80shimura}]
+\label{thm:3.1}
+The $\theta$-correspondence $\pi \mapsto \theta(\pi, \psi)$ is compatible with the local correspondences introduced in \S \ref{sec:2}.
+\end{theorem}
+
+\begin{proof}
+Let $\pi$ be an irreducible automorphic cuspidal representation of $G(\bA)$. For $f \in \pi$, and $\phi \in \cS(X_1(\bA))$, let $\varphi$ again be the cusp form
+\[
+\varphi(h) = \int_{G(k) \backslash G(\bA)} \vartheta_{\psi}^\phi(g, h) f(g) \dd g.
+\]
+If $a \in k^\times$, then a calculation similar to the one used to show $\varphi$ is a cusp form shows
+\begin{align}
+    \varphi_a(1) &:= \int_{k \backslash \bA} \varphi \begin{pmatrix}
+        1 & z \\ 0& 1
+    \end{pmatrix} \overline{\psi(az)} \dd z \nonumber \\ 
+    &= \int_{T^a(\bA) \backslash G(\bA)} \omega_\psi(g) \phi(x_a) \int_{T^a(k) \backslash T^a(\bA)} f(tg) \dd t \dd g. \label{eqn:F}
+\end{align}
+Here, $x_a$ is any element in $X$, such that $q(x_a) = a$ (if $G = \rP D^\times$, we assume $a$ is representable by $q$), and $T^a$ is the stabilizer of $x_a$.
+$T^a$ is a torus in $G$.
+Put
+\[
+U(f, g) := \int_{T^a(k) \backslash T^a(\bA)} f(tg) \dd t\qquad (g \in G(\bA), f \in \pi).
+\]
+The function $U(f, -)$ satisfies the property $U(f, tg) = U(f, g)$ for $t \in T^a(\bA)$, and the linear function $\ell: f \mapsto U(f, 1)$ is a linear functional on $\{f\in \pi\}$ for which $\ell(\pi(t)f) = \ell(f)$ ($t \in T^a(\bA)$).
+Locally, such a linear functional is unique, hence $\ell$ is globally unique and
+\[
+U(f, -) = \otimes_v U_v(-),
+\]
+where $U_v$ is a function on $G_v$ such that $U_v(t_v g_v) = U_v(g_v)$ ($t_v \in T^a(k_v), g_v \in G(k_v)$).
+Under right translations by $G_v$ on $T^a_v \backslash G_v$, $U_v$ generates a representation equivalent to $\pi_v$. In analogy with the global formula
+\[
+\varphi_a(h) = \int_{T^a(\bA) \backslash G(\bA)} \omega_\psi(g, h) \phi(x_a) U(f, g) \dd g,
+\]
+if $U$ is an element in the space generated by $U_v$, and if
+\[
+W_{\psi^a}(h) := \int_{T^a \backslash G_v} \omega_{\phi, v}(g, h) \phi(x_a) U(g) \dd g
+\]
+then $W_{\psi^a}\left(\left(\begin{smallmatrix}
+    1 & z \\ 0 & 1
+\end{smallmatrix}\right)h\right) = \psi_v(za) W_{\psi^a}(h)$.
+\end{proof}
+
+\begin{theorem}[\cite{waldspurger80shimura}]
+\label{thm:3.2}
+The $\theta$-correspondence  is a 1-1 correspondence between certain automorphic cuspidal irreducible representations of $G(\bA)$ and certain genuine automorphic cuspidal irreducible representations of $\widetilde{\SL}_2(\bA)$.
+\end{theorem}
+
+
+\begin{theorem}[\cite{waldspurger80shimura,hps83sp4}]
+\label{thm:3.3} 
+Let $G = \PGL_2$. Suppose $\sigma \subset A_{00}$, and $\pi$ is an automorphic cuspidal representation of $\PGL_2(\bA)$. Then
+\begin{enumerate}
+    \item $\theta(\sigma, \psi^{-1}) \neq 0$ if and only if $\sigma$ possesses a nonvanishing $\psi$-Fourier coefficient.
+    \item $\theta(\pi, \psi) \neq 0$ if and only if $L(\pi, \frac{1}{2}) \neq 0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+In order to prove this theorem, we must use a polarization for which the usual subgroups of $\PGL_2(\bA)$ and $\widetilde{\SL}_2(\bA)$ lie inside $P$.
+As before, let $M$ be the elements of $M_2(k)$ of trace zero, and let $q(m) = -\det(m)$.
+Let $Y$ be a 2-dimensional symplectic vector spcaes over $k$ with form $\langle\,,\,\rangle$ and symplectic basis $y_1, y_2$.
+Let $e_1, e_2, e_3$ be a basis of $M$ such that $q$ has the matrix $\left(\begin{smallmatrix}
+    0 & 0 & 1 \\0 &1 & 0 \\1 & 0 & 0
+\end{smallmatrix}\right)$.
+Put $X_1 = e_1 \otimes Y +e_2 \otimes ky_1, X_2 = e_3 \otimes Y + e_2 \otimes ky_2$.
+Suppose $\sigma$ is an irreducible genuine automorphic representation of $\widetilde{\SL}_2(\bA)$ lying in $A_{00}$.
+If $\varphi \in \sigma$, let $f(g) = \int_{\SL_2(k) \backslash \SL_2(\bA)} \vartheta_\psi^\phi(g, h) \varphi(h) \dd h$.
+We can identify $X_1$ with $Y \oplus k$, and we can choose $\phi$ in the form $\phi = \phi_1 \phi_2$, where $\phi_1 \in \cS(Y(\bA)), \phi_2 \in \cS(\bA)$.
+In this situation,
+\[
+\vartheta_\psi^\phi(1, h) = F_1(h) F_2(h)
+\]
+where
+\begin{align*}
+    F_1(h) &= \sum_{Y(k)} \phi_1(yh) = \phi_1(0) + \sum_{\gamma \in B(k) \backslash \SL_2(k)} \phi_1(y_2 \gamma) \\
+    F_2(h) &= \sum_{t \in k} \omega_{\psi}'(h) \phi_2(t)
+\end{align*}
+In the formula for $F_2$, $\omega_\psi'$ is the 1-dimensional Weil representation.
+\begin{align*}
+    f(1) &= \int_{\SL_2(k) \backslash \SL_2(\bA)} \phi_1(0) F_2(h) \varphi(h) \dd h + \int_{N(k) \backslash \SL_2(\bA)} \phi_1(y_2 h) F_2(h) \varphi(h) \dd h.
+\end{align*}
+Since $\sigma \in A_{00}$, and $F_2$ lies in the space of the Weil representation of $\widetilde{\SL}_2(\bA)$, the first integral is zero.
+It follows that $\theta(\sigma, \psi^{-1}) \neq 0$ if and only if the second integral does not vanish identically.
+\begin{align*}
+    f(1) &= \int_{N(k) \backslash \SL_2(\bA)} \phi_1(y_2 h) F_2(h) \varphi(h) \dd h \\
+    &= \sum_{t \in k} \int_{N(k) \backslash \SL_2(\bA)} \phi_1(y_2 h) \omega_\psi'(h) \phi_2(t) \varphi(h) \dd h.
+\end{align*}
+Since $\phi_1(y_2 nh) = \phi_1(y_2 h)$ and $\omega_\psi'(nh) \phi_2(t) = \psi(t^2 n) \phi_2(t)$ ($n = \left(\begin{smallmatrix}
+    1 & n \\ 0 & 1
+\end{smallmatrix}\right) \in N(\bA)$) it follows that
+\[
+f(1) = \sum_{t \in k} \int_{N(\bA) \backslash \SL_2(\bA)} \phi_1(y_2 h) \omega_\psi'(h) \phi_2(t) \varphi_{\psi^{t^2}}(h) \dd h.
+\]
+Thus, if $\theta(\sigma, \psi^{-1}) \neq 0$, then there exists a $t$ for which $\varphi_{\psi^{t^2}}$ is non-zero.
+This means $\sigma$ possesses a non-zero $\psi$-Fourier coefficient.
+Conversely, now suppose $\sigma$ possesses a non-vanishing $\psi$-Fourier coefficient.
+Let
+\begin{align*}
+    f_t(1) &= \int_{N(\bA) \backslash \SL_2(\bA)} \phi_1(y_2 h) \omega_\psi'(h) \phi_2(t) \varphi_{\psi^{t^2}}(h) \dd h \\
+    &= \int_{N(\bA) \backslash \SL_2(\bA)} \omega_\psi(1, h) \phi(y_2, t)  \varphi_{\psi^{t^2}}(h) \dd h.
+\end{align*}
+The latter formula allows us to define $f_t(1)$ for arbitrary $\phi$.
+In this situation, we still have $f(1) = \sum_{t \in k^\times} f_t(1)$. ($f_0(1) = 0$, since $f$ is a cusp form).
+Let $N$ be the unipotent subgroup of $\PGL_2$.
+For $n \in N$
+\[
+\omega_\psi(1, n) \phi(y_2, t) = \psi(tn) \phi(y_2, t).
+\]
+It follows form this formula that $f_t(1)$ is a Fourier coefficient of $f$.
+Therefore, if $\varphi_\psi \neq 0$, then $f_t(1) \neq 0$ and so $\theta(\sigma, \psi^{-1}) \neq 0$.
+To prove the second part of the theorem, we use the standard polarization.
+If $\sigma =\theta(\pi, \psi) \neq 0$, then $\theta(\sigma, \psi^{-1})$ equals $\pi$.
+This means by part 1 that $\sigma$ possesses a non-zero $\psi$-Fourier coefficient.
+If $T$ is the split torus in $\PGL_2$, then formula \eqref{eqn:F} in the proof of Theorem \ref{thm:3.1} tells us that
+\[
+\int_{T(k) \backslash T(\bA)} f(t) \dd t \neq 0.
+\]
+From the Jacquet-Langlands theory of L-functions, it is known that for an appropriate choice of $f$,
+\[
+L(\pi, s) = \int_{T(k) \backslash T(\bA)} f(t) |t|^{s - \frac{1}{2}} \dd t.
+\]
+In particular,
+\[
+L\left(\pi, \frac{1}{2}\right) = \int_{T(k)\backslash T(\bA)} f(t) \dd t \neq 0.
+\]
+Conversely, if $L(\frac{1}{2}, \pi) \neq 0$, then it is clear that $\int_{T(k) \backslash T(\bA)} f(t) \dd t \neq 0$, and hence that $\theta(\pi, \psi) \neq 0$.
+\end{proof}

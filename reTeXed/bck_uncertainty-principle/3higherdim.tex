@@ -1,0 +1,187 @@
+\section{Higher dimensions}
+
+On Euclidean space $\mathbb{R}^{d}$ with inner product
+\[
+    x \cdot y = \sum_{i=1}^{d} x_i y_i, \quad \|x\| = (x \cdot x)^{1/2},
+\]
+Fourier transform is defined by
+\begin{equation}
+    \label{eqn:3.1}
+    \what{f}(y) = \int f(x) e^{-2 i \pi x \cdot y} \dd x
+\end{equation}
+where $\dd x = \dd x_1 \cdots \dd x_d$ is the Lebesgue measure; so
+\begin{equation}
+    \label{eqn:3.2}
+    f(x) = \int \what{f}(y) e^{2 i \pi x \cdot y} \dd y.
+\end{equation}
+We suppose that $f$ and $\what{f}$ are continuous and integrable.
+More generally, if $E$ is a Euclidean space of dimension $d$, if the invariant measure $\dd x$ on $E$ is chosen so that the cube formed by the orthonormal basis has measure $1$, and if $x\cdot y$ is the inner product, Fourier transform and its inverse are defined by \eqref{eqn:3.1} and \eqref{eqn:3.2}.
+
+Consider the Fourier pairs $(f, \what{f})$ satisfying
+\begin{enumerate}
+    \item $f$, $\what{f}$ are not identically zero,
+    \item $f(0) \leq 0$ and $\what{f}(0) \leq 0$, \hfill\eqnum\label{eqn:3.2}
+    \item $f(x) \geq 0$ for $\|x\| \geq a_f$, $\what{f}(0) \geq 0$ for $\|y\| \geq a_{\what{f}}$.
+\end{enumerate}
+Define $A(f)$ and $A(\what{f})$ as in \S 1:
+\[
+    A(f) = \inf\{r > 0: f(x) \geq 0 \text{ if } \|x\| > r\},
+\]
+and
+\[
+    B_d = \inf A(f) A(\what{f})
+\]
+for pairs satisfying 1--3.
+Let $f^\sharp(x)$ be the (invariant) integral of $f$ on the sphere of radius $\|x\|$: $\what{f}^\sharp = (\what{f})^{\sharp}$ and $f^\sharp$ and $\what{f}^{\sharp}$ are nonzero; otherwise $f$ and $\what{f}$ are compactly supported from 3.
+Since $A(f^\sharp) \leq A(f)$ and $A(\what{f}^{\sharp}) \leq A(\what{f})$, we can limit ourselves to the radial functions.
+Since
+\[
+    (f(x/\lambda))^\wedge = \lambda^d \what{f}(\lambda y)\quad (\lambda > 0),
+\]
+we can follow the argument in \S 1 and we have
+\begin{equation}
+    \label{eqn:3.4}
+    B_d = A^2, \quad A = \inf A(f)
+\end{equation}
+\textbf{where the infimum is taken over the functions $f \in L^1(\mathbb{R}^d)$, radial, not identically zero, such that $f = \what{f}$ and $f(0) = 0$.}
+
+We can, as in \S 1, if necessary, add a multiple of the following radial and self-dual function
+\[
+    \gamma(x) = e^{-\pi \|x\|^2}.
+\]
+
+\begin{theorem}
+\label{thm:3.1}
+We have
+\[
+B_d \geq \frac{1}{\pi}\left(\frac{1}{2}\Gamma\left(\frac{d}{2} + 1\right)\right)^{2/d} > \frac{d}{2 \pi e}.
+\]
+\end{theorem}
+\begin{proof}
+Follow the argument of the case $d = 1$, where we replace the interval $(-A(f), A(f))$ with the ball of radius $A(f)$ centered at the origin, whose volume ($\geq \frac{1}{2}$) is $\frac{1}{\Gamma(\frac{d}{2} + 1)}(A(f))^{d} \pi^{d/2}$.
+\end{proof}
+
+Put $X = \pi \|x\|^2$, the argument in \S 2 natually leads us to consider the functions
+\[
+    g_a(x) = G_a(X) \quad (x \in \mathbb{R}^{d})
+\]
+where
+\[
+    G_a(X) = a^d e^{-X a^2} + e^{-X a^2} - (1 + a^d) e^{-X},
+\]
+and set
+\[
+    H_a(X) = a^d e^{(1-a^2)X} + e^{(1 - a^{-2})X} - (1 + a^d), \quad a > 1.
+\]
+It is convenient to define $a^2 = 1 + k$, $d = 2c$, which gives
+\[
+    H_a(X) = (1 + k)^{c} e^{-kX} + e^{(1 - (1+k)^{-1})X} - 1 - (1 + k)^{c}.
+\]
+The derivative in $X$ at the origin is
+\[
+    \frac{k}{1 + k}\left(1 - (1+k)^{c+1}\right) < 0;
+\]
+the convexity argument in \S 2 shows that $H_a$ has a unique positive zero $X_a$.
+As before, we compute the expansion of $H_a(X)$ in $k$ up to order $4$.
+It becomes
+\[
+    H_a(X) = P_1 k + P_2 k^2 + P_3 k^3 + P_4 k^4 + O(k^5)
+\]
+where
+\begin{align*}
+    P_1 &= 0 \\
+    P_2 &= X(X - c - 1) \\
+    P_3 &= \frac{1}{2}(c - 2)X(X-c-1) \\
+    P_4 &= \frac{1}{12} X(X^3 - (2c + 6)X^2 + (3c(c-1) + 18)X - (2c(c-1)(c-2) + 12)).
+\end{align*}
+As in the dimension $1$ case, we see that $P_2$ and $P_3$ cancel out for
+\begin{equation}
+    \label{eqn:3.5}
+    X = X(d) := \frac{d}{2} + 1.
+\end{equation}
+Moreover, $P_2 > 0$  for $X > X(d)$, $<0$ for $X < X(d)$.
+Taking the limit $k \to 0$ gives
+\[
+    \lim_{a \to 1} X_a = \frac{d}{2} + 1.
+\]
+To understand the location of $X_a$ with respect to $X(d)$ as $a \to 1$, we compute $Q_4(X(d))$ or $P_4 = \frac{X}{12}Q_4$.
+Calculation gives
+\[
+    Q_4(c+1) = -c^2 + 1.
+\]
+For $d > 2$, this term is $<0$, so $H_a(X(d)) < 0$ for $a$ close to $1$, which shows that
+\[
+    X_a > \frac{d}{2} + 1 \quad(a > 1, \text{ close to }1).
+\]
+Therefore it is possible that the value \eqref{eqn:3.5} is optimal.
+This is not the case when $d = 1$ as we saw in \S 2.
+
+For $d = 2$, $Q_4(c+1) = 0$, so we need to compute up to degree $5$, where
+\begin{equation}
+    \label{eqn:3.6}
+    H_a(2) = (1+k)e^{-2k} + e^{2(1 - \frac{1}{1+k})} - 2 - k.
+\end{equation}
+The Taylor series at $0$ of
+\begin{align*}
+    f(z) &= e^{2(1 - \frac{1}{1+z})} = e^{2\frac{z}{1+z}},\\
+    f(z) &= \sum_{n=0}^{\infty} q_n z^n,
+\end{align*}
+can be calculated by the residue theorem.
+Let
+\[
+    w = \frac{z}{1+z}, \,\,z = \frac{w}{1-w}, \,\,\dd z = \frac{\dd w}{(1-w)^2},
+\]
+by taking a small contour around $0$:
+\begin{align*}
+    q_n &= \Res_{z=0} \frac{f(z)}{z^{n+1}} = \frac{1}{2 i \pi} \oint e^{\frac{2z}{1+z}} \frac{\dd z}{z^{n+1}} \\
+    &= \frac{1}{2 i \pi} \oint e^{2w} \frac{(1-w)^{n+1}}{w^{n+1}} \frac{\dd w}{(1-w)^{2}} \\
+    &= \Res_{w=0} \frac{(1-w)^{n-1}}{w^{n+1}} e^{2w}.
+\end{align*}
+In particular, $q_5$ is the sum of
+\begin{equation}
+    \label{eqn:3.7}
+    \frac{2^4}{4!} - \frac{2^5}{5!}
+\end{equation}
+coming from the first term of \eqref{eqn:3.6}, and the coefficient of $w^5$ in $e^{2w}(1-w)^{4}$, equal to
+\begin{equation}
+    \label{eqn:3.8}
+    \frac{2^5}{5!} - 4 \cdot \frac{2^4}{4!} +  6 \cdot \frac{2^3}{3!} - 4 \cdot \frac{2^2}{2!} + 2.
+\end{equation}
+We find that $q_5 = 0$.
+
+Similarly, $q_6$ is the sum of
+\begin{equation}
+    \label{eqn:3.9}
+    -\frac{2^5}{5!} + \frac{2^6}{6!}
+\end{equation}
+and
+\begin{equation}
+    \label{eqn:3.10}
+    \frac{2^6}{6!} - 5 \cdot \frac{2^5}{5!} + 10 \cdot \frac{2^4}{4!} - 10 \cdot \frac{2^3}{3!} + 5 \cdot \frac{2^2}{2!} - 2,
+\end{equation}
+which is
+\[
+    q_6 = -\frac{4}{45} < 0.
+\]
+When $a$ is sufficiently close to $1$, we therefore have $H_a(2) < 0$ and $X_a > X(2) = 2$.
+Again, the bound given by \eqref{eqn:3.5} could be optimal.
+
+To conclude this section, note that for all $d \geq 2$ we obtain the upper bound
+\begin{equation}
+    \label{eqn:3.11}
+    B_d \leq \mathcal{B}_{d} \leq \frac{d+2}{2\pi}
+\end{equation}
+where $\mathcal{B}_{d}$ is defined, as in \S 1, by the functions in the space $\mathcal{S}(\mathbb{R}^{d})$.
+Also following the argument in the end of \S 1, relating the bounds for $L^1$ and $\mathcal{S}$ applies.
+To prove the inequality \eqref{eqn:1.6}, we have to consider $T = \delta_b + \delta_{-b} + 2 \delta_{0}$, where $\|b\| < a = A(f)$ and $f(b) < 0$; $\what{T} = 2 \cos(2 \pi b \cdot y) + 2$ is a positive plane wave.
+The rest of the argument is the same, replacing $h + \what{h}$ with the spherical average of $h + \what{h}$ if we want to stick to the radial functions.
+In conclusion, comparing with Theorem \ref{thm:3.1},
+\begin{theorem}
+\label{thm:3.2}
+We have
+\begin{equation}
+    \label{eqn:3.12}
+    B_d \leq \mathcal{B}_{d} \leq \frac{d+2}{2 \pi}, \quad B_d \geq \frac{1}{2} \mathcal{B}_d.
+\end{equation}
+\end{theorem}
+

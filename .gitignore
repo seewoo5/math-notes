@@ -7,4 +7,12 @@
 *.synctex.gz
 *.out
 *.toc
+*.acn
+*.bcf
+*.glo
+*.idx
+*.ilg
+*.ind
+*.ist
+*.xml
 .DS_Store

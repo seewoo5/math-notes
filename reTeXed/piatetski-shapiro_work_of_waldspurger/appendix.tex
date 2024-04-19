@@ -1,0 +1,84 @@
+\begin{appendices}
+\section{Appendix: A Conjecture of Howe}
+
+R. Howe introduced in his Corvallis talk "$\theta$-series and invariant theory" (1977) the notion of a dual reductive pair and defined a duality correspondence between the irreducible admissible representations of the members of a dual reductive pair.
+Howe also conjectured the following: Let $(G, H)$ be a dual reductive pair over a global field $k$.
+Suppose that $\pi = \otimes_v \pi_v$ is an automorphic representation of $G(\bA)$, and suppose that locally at each place $v$, $\sigma_v$ is the associated representation of $H(k_v)$ under the local duality correspondence.
+Then, $\sigma = \otimes_v \sigma_v$ is an automorphic representation of $H(\bA)$.
+
+The pair $G = \PGL_2, H = \widetilde{\SL}_2$ is one of the simplest examples of a dual reductive pair.
+If $D$ is a quaternion algebra over $k$, then the pair $(\rP D^\times, \widetilde{\SL}_2)$ is also a dual reductive pair. 
+We shall see that if $\sigma$ is an automorphic representation of $\widetilde{\SL}_2(\bA)$ then the associated representation $\pi$ of $\PGL_2(\bA)$ is automorphic.
+However, we will give an example which the correspondence in the opposite direction does not send an automorphic representation of $\PGL_2(\bA)$ to an automorphic representation of $\widetilde{\SL}_2(\bA)$.
+Finally, we shall show that Howe's conjecture in weak
+form is true for $(\rP D^\times, \widetilde{\SL}_2)$, i.e. there exists a nearly equivalent automorphic representation.
+
+By the definition of the Waldspurger map, we have that $W(\sigma, \psi) = \otimes_v \theta(\sigma_v, \psi_v)$ where $\sigma_v \mapsto \theta(\sigma_v, \psi_v)$ is the local Waldspurger map.
+The Waldspurger map is always defined; thus, the Howe conjecture is true in the direction from $\widetilde{\SL}_2$ to $\PGL_2$ or $\rP D^\times$.
+
+Let us now consider the other direction.
+If $\pi$ is an automorphic cuspidal representation of $\PGL_2(\bA)$, and denote by $H(\pi, \psi)$ the
+corresponding representation of $\widetilde{\SL}_2(\bA)$ under the Howe correspondence.
+The following theorems are consequences of Waldspurger's works.
+
+\begin{theorem}
+\label{thm:a.1}
+$\sigma = H(\pi, \psi)$ is an automorphic representation of $\widetilde{\SL}_2(\bA)$ if and only if there is a quadratic character $\chi_\xi$ such that 1) $L(\frac{1}{2}, \pi \otimes \chi_\xi) \neq 0$, and 2) $\left(\frac{\chi_{\xi, v}}{\pi_v}\right) = 1$ for all local place $v$.
+If 2) is not satisfied then there exists $\sigma'$ which is an automorphic and nearly equivalent to $\sigma$.
+\end{theorem}
+
+\begin{proof}
+Assume that $\sigma$ is automorphic.
+The L-function $L_\psi(s, \sigma,\omega)$ ($\omega$ any id\'ele class character) is entire since $\pi$ is automorphic cuspidal for $\GL_2$.
+This means, since $\sigma$ is automorphic, that it must be cuspidal and in fact $\sigma \subset A_{00}$.
+$\pi$ is equal to $W(\sigma, \psi^{-1})$.
+If $\psi^\xi$ is a character for which $\sigma$ possesses a non-zero $\psi^\xi$-Fourier coefficient, then $\pi \otimes \chi_\xi = \theta(\sigma, \psi^\xi)$.
+By Theorem \ref{thm:3.3}, we have $L(\pi \otimes \chi_\xi, \frac{1}{2}) \neq 0$.
+Conversely, if $L(\pi \otimes \chi_\xi, \frac{1}{2}) \neq 0$, then $\sigma' = \theta(\pi \otimes \chi_\xi, (\psi^\xi)^{-1})$ and so $\sigma' \subset A_{00}$.
+It is easy to see that $\sigma'$ is nearly equivalent to $\sigma$ and $\sigma' \simeq \sigma$ iff $\left(\frac{\chi_{\xi, v}}{\pi_v}\right) = 1$ for all $v$.
+\end{proof}
+
+\begin{theorem}
+\label{thm:a.2}
+Let $\pi = \otimes_v \pi_v$ be an automorphic cuspidal representation of $\PGL_2(\bA)$.
+If either of the following conditions satisfied,
+\begin{enumerate}[label=\roman*)]
+    \item there is a $v$ for which $\pi_v$ lies in a discrete series
+    \item $\varepsilon(\frac{1}{2}, \pi) = 1$ (see \S \ref{sec:2}),
+\end{enumerate}
+then there is $\chi_\xi$ such that $L(\chi_\xi, \frac{1}{2}) \neq 0$.
+Also, if $L(\chi_\xi, \frac{1}{2}) \neq 0$, then $\pi$ satisfies one of the above two conditions.
+\end{theorem}
+\begin{proof}
+We shall show that $L( \pi \otimes \chi_\xi,\frac{1}{2}) = 0$ for all $\chi_\xi$ equivalent to all the $\pi_v$'s being in the principal series, and $\varepsilon(\pi, \frac{1}{2}) = -1$.
+If $\varepsilon(\pi, \frac{1}{2}) = -1$ and all the $\pi_v$'s are principal series, then $\varepsilon(\pi \otimes \chi_\xi, \frac{1}{2}) = -1$ for any $\chi_\xi$.
+This means $L(\pi \otimes \chi_\xi, \frac{1}{2}) = 0$.
+The converse result was proved by Waldspurger using the result of Flicker \cite{flicker80covering} formulated in \S \ref{sec:4}.
+\end{proof}
+
+We shall now construct a counterexample to Howe's conjecture.
+Let $\pi = \otimes_v \pi_v$ be an automorphic representation of $\PGL_2(\bA_{\bQ})$ for which $\pi_\infty$ lies in the holomorphic discrete series, and $\pi_v$ for $v$ finite is unramified.
+In classical language, such a representation corresponds to a holomorphic modular form with respect to the full modular group $\PSL_2(\bZ)$.
+Let $K$ be any imaginary quadratic extension of $\bQ$ and denote by $\Pi$, the base change lift of $\pi$ to $\PGL_2(\bA_K)$.
+$\Pi_v$ lies in the principal series for all $v$, and $\varepsilon(\Pi, \frac{1}{2}) = -1$.
+Thus, $\varepsilon(\Pi \otimes \chi_\xi, \frac{1}{2}) =-1$ for all $\chi_\xi$.
+By Theorem \ref{thm:a.1}, $\sigma = H(\pi, \psi)$ is not an automorphic representation of $\widetilde{\SL}_2(\bA_K)$.
+
+
+Let us now consider the dual-reductive pair $(\rP D^\times, \widetilde{\SL}_2)$.
+Let $\pi'$ be an infinite dimensional automorphic representation of $\rP D^\times$.
+Denote by $\pi = \otimes_v \pi_v$ the automorphic cuspidal representation $\PGL_2$ associated to $\pi'$ by the Jacquet-Langlands correspondence.
+For some place $v$, $\pi_v$ will lie in the discrete series. It follows from Theorem \ref{thm:a.2} that there is $\chi_\xi$ for which $L(\pi \otimes \chi_\xi, \frac{1}{2}) \neq 0$.
+This means that there exists $\sigma \subset A_{00}$, which is nearly equivalent to $H(\pi', \psi)$.
+
+\emph{Additional note on Theorem \ref{thm:a.1}}
+Waldspurger's results \cite{waldspurger91quaternion} imply that assumptions (1) and (2) of \ref{thm:a.1} are equivalent to saying that $\varepsilon(\pi, \frac{1}{2}) = 1$, where $\varepsilon(\pi, \frac{1}{2})$ was defined after Theorem \ref{thm:2.3}.
+For all $v$ such that $\pi_v$ is unramified, we have $\varepsilon(\pi_v, \frac{1}{2}) = 1$.
+Hence, in order to verify this assumption, we have to check that
+\[
+\prod_{v \in S} \varepsilon\left(\pi_v, \frac{1}{2}\right) = 1
+\]
+where $S$ is a certain finite set.
+
+I want to thank J. Waldspurger for conversations in which he explained his results to me. Finally I thank A. Moy for help in the preparation of this manuscript.
+\end{appendices}
