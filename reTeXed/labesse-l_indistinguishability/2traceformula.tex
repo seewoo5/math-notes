@@ -1,0 +1,32 @@
+\section{The trace formula}
+\label{sec:traceformula}
+
+We shall denote by $\scS(S(\bA))$ the space of Schwartz-Bruhat functions with compact support on $S(\bA)$.
+It follows from \cite{duflo1971formule} that for any $f \in \scS(S(\bA))$, the operator $\rho(f)$ is of trace class and its trace is given by Selberg's Trace Formula.
+Given $f \in \scS(S(\bA))$ and $g \in G(\bA)$ we define a function $f^g$ on $S(\bA)$ by
+\[
+    f^g(s) = f(g s g^{-1});
+\]
+we have $\Tr \rho^g(f) = \Tr \rho(f^{g^{-1}})$; moreover the function
+\[
+    g \mapsto \Tr \rho(f^{g})
+\]
+is continuous and constant on the cosets modulo $S(\bA)Z(\bA)G(F)$, so that one can define
+\[
+    I_\varepsilon(f) = \int_{G(\bA) / S(\bA) Z(\bA) G(F)} \varepsilon(\det g) \Tr \rho(f^g) \dd g.
+\]
+This integral is merely a finite sum, and is zero except for finitely many values of $\varepsilon \in \mathscr{E}$.
+On the other hand we have
+\[
+    \Tr \rho(f) = \sum_{U \in \widehat{S(\bA)}} m(U) \Tr U(f),
+\]
+the series being absolutely convergent. It is then clear that
+\[
+    I_\varepsilon(f) = \sum_{U \in \widehat{S(\bA)}} m_\varepsilon(U) \Tr U(f)
+\]
+and that
+\[
+    \Tr \rho(f) = \sum_{\varepsilon \in \mathscr{E}} I_\varepsilon(f).
+\]
+The values of the factors $m_\varepsilon(U)$ will be deduced from the explicit knowledge of the integrals $I_\varepsilon(f)$ for sufficiently many functions $f$, in application of the principle that a representation is determined by its trace.
+Before we explain the computation of the integrals $I_\varepsilon(f)$, let us state the result.

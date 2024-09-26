@@ -1,0 +1,50 @@
+\section{The formula for $I_\varepsilon(f)$}
+\label{sec:formulaI}
+
+Throughout this paragraph we fix a nontrivial character $\varepsilon \in \mathscr{E}$.
+Global class field theory associates to $\varepsilon$ a separable quadratic extension $L$ of $F$.
+We shall denote by $E$ the kernel of the norm mapping $\rN_{L/F}$.
+The algebraic group $E$ is an $F$-anisotropic torus of dimension one; we shall denote by $\Theta(\varepsilon)$ the dual group of the compact group $E(\bA) / E(F)$.
+If $\psi$ is a nontrivial character of $\bA/F$, then using the Weil representation one can define for any character $\theta$ of $E(\bA)$, a representation $U(\psi, \theta)$ of $S(\bA)$ (cf. Shalika and Tanaka \cite{shalika1969explicit}).
+The equivalence class of $U(\psi, \theta)^{g}$ depends only on $d = \det(g)$ and we shall denote it by $U(\psi, \theta, d)$; moreover two such equivalence classes for $d$ and $d'$ in $\bI$ coincide if and only if $d'd^{-1} \in \rN_{L/F}(\bI_L)$.
+We recall that $\rN_{L/F}(\bI_L)$ is an open subgroup of $\bI$.
+Let us now define
+\[
+U^+_\theta = \sum_{\substack{d \in \bI / \rN_{L/F}(\bI_L) \\ \varepsilon(d) = 1}} U(\psi, \theta, d)
+\]
+and
+\[
+U^-_\theta = \sum_{\substack{d \in \bI / \rN_{L/F}(\bI_L) \\ \varepsilon(d) = -1}} U(\psi, \theta, d).
+\]
+The representations $U^+_\theta$ and $U^-_\theta$, are independent of the choice of $\psi$; moreover their intertwining number is zero. We can now state the
+
+\begin{theorem}
+Let $\varepsilon$ be a nontrivial character of $\bI / \bI^2 F^\times$, and let $f \in \scS(S(\bA))$, then:
+\begin{enumerate}[(i)]
+    \item The operators $U^+_\theta(f)$ and $U^-_\theta(f)$ are of trace class.
+    \item The function $\theta \mapsto [\Tr U^+_\theta(f) - \Tr U^-_\theta(f)]$ is a Schwartz--Bruhat function on the dual $\widehat{E(\bA)}$ of $E(\bA)$.
+    \item $$I_\varepsilon(f) = \frac{1}{4} \sum_{\substack{\theta \in \Theta(\varepsilon) \\ \theta \ne 1}} [\Tr U^+_\theta(f) - \Tr U^-_\theta(f)].$$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The proof of assertion (iii) will be outlined in Section \ref{sec:computation}; let us only observe now that assertion (ii) implies the absolute convergence of the series.
+To prove (i) and (ii) we may asume that $f$ is adecomposable function $f = \otimes_v f_v$ where for almost all $v$ (the places of $F$) $f_v = \chi_v$ the characteristic function of the standard maximal compact subgroup $K_v$ of $S_v = \SL(2, F_v)$.
+Now if $v$ is a finite place of $F$ and if $U_v$ is an irreducible unitary representation of $S$, then $U_v(\chi_v) = 0$ unless $U_v$ contains the trivial representation of $K_v$.
+The representation $U(\psi, \theta, d)$ is a tensor product of representations $U(\psi_v, \theta_v, d_v)$ and if $v$ is finite then $U(\psi_v, \theta_v, d_v)(\chi_v) = 0$ if $\theta_v$ is ramified (i.e. if $\theta_v$ is nontrivial on the maximal compact subgroup of $E_v$).
+If $v$ is finite and if $\theta_v$ is unramified then $\Tr U(\psi_v, \theta_v, d_v)(\chi_v)$ is independent of $\theta_v$ and can only assume the values +1 or 0 if the local Haar measure is such that $\vol(K_v) = 1$, depending on the choice of $\psi_v$, $d_v$, and the structure of $L_v$.
+In any case $\theta_v \mapsto \Tr U(\psi_v, \theta_v, d_v)$ is a Schwartz--Bruhat function on $\widehat{E_v}$.
+We deduce from these facts that $\theta \mapsto \Tr U(\psi, \theta, d)$ is a Schwartz--Bruhat function on $\widehat{E(\bA)}$.
+But one can show that outside a finite subgroup of $\bI / \rN_{L/F}(\bI_L)$, independent of $\theta$ then $U(\psi, \theta, d)(f) = 0$, and hence the assertions (i) and (ii) are proved.
+\end{proof}
+
+\begin{corollary}
+Let $U \in \widehat{S(\bA)}$ then $m_\varepsilon(U) = 0$ or $|m_\varepsilon(U)| \ge 1/4$.
+\end{corollary}
+
+Using a slightly generalized form of the Lemma 16.1.1, p. 195 in \cite{jacquet1970automorphic} one see that if $m_\varepsilon(U) \ne 0$ then $U$ is equivalent to an irreducible part of some $U(\psi, \theta, d)$, and the corollary is proved.
+More precise information can be obtained from the knowledge of the decomposition of the representations $U(\psi, \theta, d)$ and of the intertwining operators between $U(\psi, \theta, d)$ and $U(\psi, \theta', d')$, so that one obtains a complete classification of the unstable representations and the exact value of $m_\varepsilon(U)$.
+Let us simply say here that the local representations $U(\psi_v, \theta_v, d_v)$ are irreducible if $\theta_v = 1$ or if $\theta_v^2 \ne 1$ and that the intertwining number between $U(\psi_v, \theta_v, d_v)$ and $U(\psi_v, \theta_v', d_v')$ is zero unless $d_v = d_v'$ and $\theta_v = \theta_v'$ or $\theta_v^{-1} = \theta_v'$ in which case they are equivalent.
+If $\theta_v \ne 1$ and $\theta_v^2 = 1$ then $U(\psi_v, \theta_v, d_v)$ splits into two inequivalent irreducible parts.
+One must remark that if $U \in \widehat{S(\bA)}$, and if $m_\varepsilon(U) \ne 0$ for some $\varepsilon \in \mathscr{E}$ then there exists at least one $g \in G(\bA)$ such that $m(U^g) \ne 0$ and we thus get a new proof (but in a less explicit way) of the result of Shalika and Tanaka \cite{shalika1969explicit} according ot which certain representations of $S(\bA)$ attached ot global characters of a nonsplit $F$-torus occur in $\rho$. (See also \cite{jacquet1970automorphic} p. 396.)
+
