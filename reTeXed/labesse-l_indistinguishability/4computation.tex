@@ -1,0 +1,143 @@
+\section{Computation of $I_\varepsilon(f)$}
+\label{sec:computation}
+
+We shall denote by $r$ the natural representation of $S(\bA)$ on the space $L^2$ of square integrable functions on $S(\bA) / S(F)$; the representation $\rho$ is the restriction of $r$ to the invariant subspace $L^2_0$.
+The orthogonal complement of $L^2_0$ in $L^2$ is the direct sum of the one dimensional space of constant functions, and of a space $L^2_1$ on which $r$ induces a representation equivalent to a continuous integral of representations of the global principal series (i.e. representations associated to unitary Hecke characters of a $F$-split torus).
+This spectral decomposition is constructed by the use of Eisenstein series (cf. \cite{godement1964analyse}, see also \cite{duflo1971formule}, \cite{gelfand1966} and \cite{jacquet1970automorphic}) in an explicit way, and one finds that if $\delta$ denotes the unit representation of $S(\bA)$, then
+\[
+    \Tr \rho(f) + \Tr \delta(f) = \int_{[S]} [K_f(s, s) - H_f(s, s)] \, \dd s
+\]
+where
+\[
+K_f(x, y) = \sum_{\gamma \in S(F)} f(x \gamma y^{-1})
+\]
+is the kernel of $r(f)$ in $L^2$ and where $H_f(x, y)$ is the kernel of the operator $r(f)$ restricted to $L^2_1$.
+Let us denote by $S_e$ the set of elliptic elements in $S(F)$ (i.e. the set of elements whose eigenvalues do not lie in $F$) and by $S_p$ its complementary set, the set of parabolic elements.
+The above integral can be split into two convergent parts.
+In fact it is easy to show that the integral
+\[
+J(f) = \int_{[S]}  \sum_{\gamma \in S_e} f(s \gamma s^{-1}) \, \dd s
+\]
+is absolutely convergent.
+The other part is
+\[
+C(f) = \int_{[S]}  \sum_{\gamma \in S_p} f(s \gamma s^{-1}) - H_f(s, s)\, \dd s
+\]
+and is called the complementary term (c.f. \cite{duflo1971formule}).
+We now introduce the integrals
+\[
+J_\varepsilon(f) = \int_{G(\bA) / Z(\bA)E(F)} \varepsilon(\det g) \sum_{\gamma \in S_e} f(g s\gamma g^{-1}) \, \dd g.
+\]
+The invariant measures are chosen in such a way that
+\[
+J(f) = \sum_{\varepsilon \in \mathscr{E}} J_\varepsilon(f).
+\]
+Now fix some non-trivial $\varepsilon \in \mathscr{E}$, and taking over the notations of \S \ref{sec:formulaI} choose some embedding of $L^\times$ in $G(F)$; it is not difficult to prove that
+\[
+J_\varepsilon(f) = \frac{1}{4} \vol([E]) \sum_{g \in G(\bA) / S(\bA) \bI_L} \varepsilon(\det g) \int_{S(\bA) / E(\bA)} \sum_{\substack{\gamma \in E(F) \\ \gamma \ne \pm 1}} f(g s \gamma s^{-1} g^{-1}) \, \dd s.
+\]
+We now introduce local factors:
+\[
+F_{f_v}^{\varepsilon}(e_v) = \sum_{g \in G_v / S_v L_v^\times} \varepsilon_v(\det g) \int_{S_v / E_v} a_v(e_v) f_v(gse_v s^{-1}g^{-1})\, \dd s
+\]
+where
+\[
+a_v(e_v) = b_v(e_v) |\rN_{L/F}(e_v - e_v^{-1})|_v^{1/2}
+\]
+and
+\[
+b_v\begin{pmatrix}
+    x & y \\ z & t
+\end{pmatrix} = \varepsilon_v(y).
+\]
+The function $e_v \mapsto F_{f_v}(e_v)$ is a priori defined only when $e_v \ne \pm 1$ but it can be continued in a Schwartz--Bruhat function on $E_v$.
+This can be checked directly or by computing its Fourier transform, namely
+\[
+\widehat{F_{f_v}^{\varepsilon}}(\theta_v) = \lambda(L_v / F_v, \psi_v) \sum_{d \in F_v / \rN_{L/F}(L_v^\times)} \varepsilon_v(d) \Tr U(\psi_v, \theta_v, d)(f_v)
+\]
+(c.f. \cite{gelfand1966}) where $\lambda(L_v / F_v, \psi_v)$ is a factor of absolute value one defined in \cite{jacquet1970automorphic} p. 6. Using the assertions (i) and (ii) of the theorem in \S 3, we have then proved that
+\[
+\widehat{F_{f}^{\varepsilon}}(\theta) = \prod_v \widehat{F_{f_v}^{\varepsilon}}(\theta_v) = \Tr U^+_\theta(f) - \Tr U^-_\theta(f)
+\]
+is a Schwartz-Bruhat function. (We recall that the factors $\lambda(L_v / F_v, \psi_v)$ have a product equal to 1.)
+Now applying Poisson's summation formula we obtain
+\[
+J_\varepsilon(f) = \frac{1}{4} \sum_{\theta \in \Theta(\varepsilon)} [\Tr U^+_\theta(f) - \Tr U^-_\theta(f)] - (F_f^{\varepsilon}(1) + F_f^{\varepsilon}(-1)) \frac{\vol([E])}{4}
+\]
+if the base field is of characteristic zero or $p \ne 2$; if the characteristic is 2 one should read $F^{\varepsilon}_f(1)$ instead of $F^{\varepsilon}_f(1) + F^{\varepsilon}_f(-1)$.
+
+Let $K = \prod_v K_v$ be the maximal compact subgroup of $S(\bA)$.
+If $s = k \left(\begin{smallmatrix}
+    t & \\ & t^{-1}
+\end{smallmatrix}\right) \left( \begin{smallmatrix}
+    1 & u \\ & 1
+\end{smallmatrix}\right)$ is an Iwasawa decomposition of $s \in S(\bA)$, a Haar measure on $S(\bA)$ will be given by $\dd s = |t|^2\dd k \dd^\times t \dd u$.
+The measures $\dd k$ and $\dd^\times t$ are left arbitrary but $\dd u$ wil be the Tamagawa measure on $\bA$ (i.e. $\vol(\bA/ F) = 1$).
+If we now choose the measure on $E(\bA)$ in such a way that $\vol([E]) = 2$ we find
+\[
+F_f^{\varepsilon}(\pm 1) = \prod_v F_{f_v}^{\varepsilon}(\pm 1) = \lim_{\sigma \to 1} \int_{\bI} f^{K} \begin{pmatrix} \pm 1 & 0 \\ 0 & \pm 1 \end{pmatrix} \varepsilon(t) |t|^{\sigma} \, \dd^\times t
+\]
+where
+\[
+f^K(s) = \int_{K} f(ksk^{-1}) \, \dd k.
+\]
+
+We now have to study the complementary term $C(f)$.
+One can exhibit expressions $C_\varepsilon(f)$ such that
+\[
+C(f) = \sum_{\varepsilon \in \mathscr{E}} C_\varepsilon(f)
+\]
+with
+\[
+C_\varepsilon(f^g) = \varepsilon(\det g) C_\varepsilon(f)\quad \text{for all } g \in G(\bA).
+\]
+Let $(\varphi_i)$ be a sequence of Schwartz--Bruhat functions on $S(\bA)$ converging to the constant function 1 in $L^2$ defined like in \cite{duflo1971formule} p. 235 and put
+\[
+C'(f, \varphi_i) = \int_{[S]} \varphi_i(s)\sum_{\gamma \in S_p} f(s \gamma s^{-1}) \, \dd s.
+\]
+The evaluation of such integrals leads to the computation of the residue at $z = 1$ of the analytic continuation of the functions
+\[
+Z(f, z;a) = \int_{\bA} \int_{\bI / F^\times} \sum_{\eta \in F^\times} f^K\begin{pmatrix}
+    a & (a - a^{-1})u + t^2 u \\ 0 & a^{-1}
+\end{pmatrix} \frac{|t|^{z + 1}}{R(u)^{z + 1}} \dd^\times t \dd u
+\]
+if $\Re(z) > 1$ where $R(u)$ is defined in \cite{duflo1971formule} p. 244.
+One sees immediately that
+\[
+Z(f, z; a) = \sum_{\varepsilon \in \mathscr{E}} \widetilde{Z}(f, z, \varepsilon; a)
+\]
+where
+\[
+\widetilde{Z}(f, z, \varepsilon; a) = \frac{1}{2} \int_{\bA} \int_{\bI} f^K\begin{pmatrix}
+    a & (a - a^{-1})u + t \\ 0 & a^{-1}
+\end{pmatrix} \frac{\varepsilon(t) |t|^{\frac{z + 1}{2}}}{R(u)^{z + 1}} \, \dd^\times t \dd u
+\]
+if $\Re z > 1$.
+These integrals are introduced in \cite{duflo1971formule} p. 243 with similar notation and are studied in detail when $\varepsilon = 1$, the trivial character.
+When $\varepsilon \ne 1$ one can show that if $a \ne a^{-1}$ then $\widetilde{Z}(f, z, \varepsilon; a)$ is holomorphic at $z = 1$ and hence gives no contribution.
+If $\varepsilon \ne 1$ and $a = a^{-1}$ then $\widetilde{Z}(f, z, \varepsilon; a)$ has a simple pole at $z = 1$ and gives a contribution to $C(f', \varphi_i)$ which with our choice of the Haar measures is
+\[
+\frac{1}{2}\lim_{z \to 1} \int_{\bI} f^K \begin{pmatrix}
+    a & t \\ 0 & a
+\end{pmatrix} |t|^{\frac{z + 1}{2}} \varepsilon(t) \, \dd^\times t
+\]
+and is in $C_\varepsilon(f)$.
+(This contribution is Independent of $\varphi_i$ because we assume that $\int_{[S]} \varphi_i(s) \dd s = \vol([S])$ for all $i$.)
+
+The computation of the remaining part
+\[
+C''(f, \varphi_i) = - \int_{[S]} \varphi_i(s) H_f(s, s) \, \dd s
+\]
+can be done exactly as in \cite{duflo1971formule}.
+In the result appears, among other terms, the expression $-\frac{1}{4} \Tr \widehat{f}(\varepsilon) M(\varepsilon)$ where $\widehat{f}(\varepsilon)$ is the convolution operator by $f$ in the space of the representation of the global principal series for $S(\bA)$ relative to the character $\varepsilon$; and $M(\varepsilon)$ is an intertwining operator of that representation.
+One can show that this term is in $C_\varepsilon(f)$ and that if $\varepsilon \ne 1$ then
+\[
+C_\varepsilon(f) = \frac{1}{2} \lim_{\sigma \to 1} \int_{\bI} \sum_{\substack{a^2 = 1 \\ a \in F^\times}} f^K\begin{pmatrix}
+    a & t \\ 0 & a
+\end{pmatrix} \varepsilon(t) |t|^{\sigma} \, \dd^\times t - \frac{1}{4} \Tr (\widehat{f}(\varepsilon) M(\varepsilon)).
+\]
+Assertion (iii) of the theorem in \S 3 then is the consequence of the relation
+\[
+\Tr \widehat{f}(\varepsilon) M(\varepsilon) = \Tr U^+_{\theta_0}(f) - \Tr U^-_{\theta_0}(f)
+\]
+where $\theta_0$ is the unit element of $\Theta(\varepsilon)$.

@@ -1,0 +1,64 @@
+\section{Arithmetic equivalence}
+\label{sec:arithmetic}
+
+The group $S(\bA)$ is an invariant subgroup in $G(\bA)$, so that if $g$ is an element of $G(\bA)$ and $U$ any unitary representation of $S(\bA)$, we can define a unitary representation $U^g$ of $S(\bA)$ by
+\[
+    U^g(s) = U(g s g^{-1}), \quad s \in S(\bA).
+\]
+The two representations $U$ and $U^g$ will be called \emph{arithmetically equivalent}. 
+If $U$ is irreducible then $U$ and $U^g$ will also sometimes be called \emph{L-indistinguishable};
+in fact from some arithmetical points of view they seem indistinguishable despite the fact they are not in general equivalent in the ordinary sense.
+One must remark that if $U$ occurs in the restriction $V$ to $S(\bA)$ of some representation $\widetilde{V}$ of $G(\bA)$, then $U^g$ will occur in $V$ with the same multiplicity for any $g \in G(\bA)$.
+
+There is an obvious local analogue of this global arithmetical equivalence.
+For instance a member of the discrete series of representations of $\SL(2, \bR)$ and its complex conjugate are arithmetically equivalent in the local sense.
+It is well known that the representation $\rho$ of $S(\bA)$ in $L_0^2$, splits into a direct sum of irreducible representations with finite multiplicities.
+Let us denote by $\widehat{S(\bA)}$, the set of equivalence classes of irreducible unitary representations of $S(\bA)$, and by $m(U)$ the multiplicity of $U \in \widehat{S(\bA)}$ in $\rho$, so that
+\[
+    \rho = \sum_{U \in \widehat{S(\bA)}} m(U) U.
+\]
+In the same way, given any $g \in G(\bA)$, we have
+\[
+    \rho^g = \sum_{U \in \widehat{S(\bA)}} m(U) U^g = \sum_{U \in \widehat{S(\bA)}} m(U^{g^{-1}}) U.
+\]
+
+We see that the comparison of $\rho$ and $\rho^g$ amounts to comparing $m(U)$ and $m(U^g)$.
+Our problem can be restated ni the folowing way: do $U$ and $U^g$ occur with the same multiplicity (may be zero) in $\rho$?
+We are thus led to study the continuous functions
+\[
+    g \mapsto m(U^g)
+\]
+from $G(\bA)$ to the set $\bN$ of natural numbers.
+If this function is constant (resp. non-constant) the representation $U$ will be called \emph{stable} (resp. \emph{unstable}).
+
+Denoting by $Z$ with the center of $G$, we have
+
+\begin{lemma}
+If $g$ belongs to $Z(\bA)S(\bA)G(F)$, then $\rho^g$ is equivalent to $\rho$.
+\end{lemma}
+
+\begin{proof}
+If $g$ lies in $S(\bA)$ or in $Z(\bA)$ the statement is obvious.
+If $g$ lies in $G(F)$ the conjugation by $g$ defines an automorphism of the space $S(\bA) / S(F)$, and so determines an intertwining operator between $\rho$ and $\rho^g$, hence the lemma.
+\end{proof}
+
+As a corollary we see that the function $g \mapsto m(U^g)$ is constant on the invariant subgroup $S(\bA) Z(\bA) G(F)$ of $G(\bA)$.
+If we denote by $\bI$ the group of ideles of $F$, by $\bI^2$ the group of square ideles and by $F^\times$ the multiplicative group of F, then $G(\bA) / Z(\bA)S(\bA) G(F)$ is isomorphic via the determinant mapping to the compact abelian group $\bI / \bI^2 F^\times$.
+Now the function $g \mapsto m(U^g)$ induces a discrete valued continuous function on a compact group and hence assumes only finitely many values.
+
+Now let $\varepsilon$ be an element of $\mathscr{E}$ the group of characters of $\bI / \bI^2 F^\times$. We can define
+\[
+    m_\varepsilon(U) = \int_{G(\bA) / S(\bA) Z(\bA) G(F)} \varepsilon(\det g) m(U^g) \dd g
+\]
+where $\dd g$ is the Haar measure with total mass one.
+
+We have the following
+\begin{lemma}
+\begin{enumerate}
+    \item A representation $U \in \widehat{S(\bA)}$ is stable if and only if $m_\varepsilon(U) = 0$ for any nontrivial $\varepsilon \in \mathscr{E}$.
+    \item A representation $U \in \widehat{S(\bA)}$ is unstable if and only if $m_\varepsilon(U) \neq 0$ for some nontrivial $\varepsilon \in \mathscr{E}$.
+    \item $m(U) = \sum_{\varepsilon \in \mathscr{E}} m_\varepsilon(U)$, the series benig only a sum over a finite subgroup of $\mathscr{E}$ depending on $U$.
+\end{enumerate}
+\end{lemma}
+
+The study of the numbers $m_{\varepsilon}(U)$ will now be made using Selberg's trace formula.
