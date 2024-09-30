@@ -3,90 +3,87 @@
 \section{Introduction}
 \subsection{}
 
-We are going to give a new proof of a remarkable result of Waldspurger~\cite{waldspurger1985valeurs}.
-Waldspurger's proof is based on the properties of Weil's representation.
-Ours is based on a variant of the trace formula.
-We hope it will not be without interest.
+We present a new proof of a remarkable result by Waldspurger~\cite[Theorem 2]{waldspurger1985valeurs}.
+While Waldspurger's original proof relies on the properties of Weil's representation, our approach is based on a variant of the trace formula.
+We believe that this alternative perspective offers some interest.
 
-Let's recall the result first.
-Let $F$ be a number field, $E$ be a quadratic extension of $F$, $\eta$ the character of the id\'ele class group of $F$ attached to $E$.
+We begin by recalling the statement of the result.
+Let $F$ be a number field, and $E$ a quadratic extension of $F$.
+Denote by $\eta$ the character of the id\'ele class group of $F$ associated with $E$.
 Consider the group $\GL(2)$ as an algebraic group $G$ defined over $F$, and let $Z$ be its center.
-Let $T$ be a maximal torus in $G$, say,  the group of diagonal matrices.
-Let $\pi$ be an automorphic representation of $G(\Aa_F)$ trivial on the center $Z(\Aa_F)$.
-We'll say that $\pi$ satisfies the Waldspurger's first condition (in short W1) if there exist automorphic forms $\phi_1$ and $\phi_2$ in the space of $\pi$ such that the following integrals are nonzero:
-\begin{equation}
-    \int_{T(\Aa_F) / Z(\Aa_F)} \phi_1(a) da, \qquad \int_{T(\Aa_F) / Z(\Aa_F)} \phi_2(a) \eta(\det a) da.
-\end{equation}
-Define the set $X(E:F)$, or simply $X$, as a set of isomorphic classes of pairs $(G', T')$, where $G'$ is an inner form of $G$ and $T'$ a maximal torus of $G'$, isomorphic to $E^\times$ over $F$.
-Recall that such a pair is obtained by means of another pair $(H, L)$, the quaternion algebra $H$ over $F$ and a subfield $L$ of $H$ that is isomorphic to $E$ over $F$, by taking $G'$ as the multiplicative group of $H$ and $T'$ as that of $L$.
-The center of $G'$ will be denoted as $Z'$.
+Let $T$ be a maximal torus in $G$, namely the group of diagonal matrices.
+Let $\pi$ be an automorphic representation of $G(\Aa_F)$ that is trivial on the center $Z(\Aa_F)$.
 
-We will identify the set $X$ with a set of representatives of each class in $X$.
-Let us also denote $X(\pi)$ the set of triples $(G', T', \pi')$, where the pair $(G', T')$ is in $X$ and $\pi'$ is a cuspidal automorphic representation of $G'(\Aa_F)$ attached to $\pi$ via the condition of~\cite{jacquet2006automorphic}, which can be stated as following: there exists a finite set $S$ of places of $F$ such that, for $v$ not in $S$, the groups $G_v$ and $G_v'$ are isomorphic and the representations $\pi_v$ and $\pi_v'$ are equivalent under this isomorphism.\footnote{Jacquet-Langlands correspondence}
-We will say that $\pi$ satisfies the Waldspurger's second condition (W2) if there exists a triple $(G', T', \pi')$ in $X(\pi)$ and an automorphic form $\phi'$ in the space of $\pi'$ such that the following integral is nonzero:
+We say that $\pi$ satisfies Waldspurger's first condition (denoted \textbf{W1}) if there exist automorphic forms $\phi_1$ and $\phi_2$ in the space of $\pi$ such that the following integrals are nonzero:
 \begin{equation}
-    \int_{T'(\Aa_F) / Z'(\Aa_F)} \phi'(t) dt.
+    \int_{T(\Aa_F) / Z(\Aa_F)} \phi_1(a) \dd a, \qquad \int_{T(\Aa_F) / Z(\Aa_F)} \phi_2(a) \eta(\det a) \dd a.
 \end{equation}
-Then we have the following result:
-\begin{theorem}[Waldspurger]
-Two conditions W1 and W2 are equivalent. 
-\end{theorem}
+Next, define the set $X(E:F)$, or simply $X$, as the set of isomorphism classes of pairs $(G', T')$, where $G'$ is an inner form of $G$ and $T'$ is a maximal torus in $G'$ isomorphic to $E^\times$ over $F$.
+Such a pair arises from another pair $(H, L)$, where $H$ is a quaternion algebra over $F$ and $L$ is a subfield of $H$ isomorphic to $E$ over $F$, by taking $G'$ as the multiplicative group of $H$ and $T'$ as that of $L$.
+We denote the center of $G'$ by $Z'$.
+
+We identify the set $X$ with a set of representatives for each isomorphism class in $X$.
+Let $X(\pi)$ be the set of triples $(G', T', \pi')$, where the pair $(G', T')$ lies in $X$ and $\pi'$ is a cuspidal automorphic representation of $G'(\Aa_F)$ associated with $\pi$ through the condition outlined in~\cite{jacquet2006automorphic}.
+This condition can be stated as follows: there exists a finite set of places $S$ of $F$ such that, for $v \notin S$, the groups $G_v$ and $G_v'$ are isomorphic, and the representations $\pi_v$ and $\pi_v'$ are equivalent under this isomorphism.\footnote{Jacquet--Langlands correspondence.}
+We say that $\pi$ satisfies Waldspurger's second condition (denoted \textbf{W2}) if there exists a triple $(G', T', \pi')$ in $X(\pi)$ and an automorphic form $\phi'$ in the space of $\pi'$ such that the following integral is nonzero:
+\begin{equation}
+    \int_{T'(\Aa_F) / Z'(\Aa_F)} \phi'(t) \dd t.
+\end{equation}
+
+We now state the result:
+\begin{theorem}[Waldspurger] Conditions \textbf{W1} and \textbf{W2} are equivalent. \end{theorem}
 
 \subsection{}
-Let's sketch main ideas of our proof.
-First of all we can identify the set of double cosets $T\backslash G / T$ with the disjoint union of the double cosets $T' \backslash G / T'$ (\S 1).
-In fact, we have to limit ourselves to the ``regular'' double cosets for such an identification.
-This leads us to consider a compactly supported smooth function $f$ on $G(\Aa_F) / Z(\Aa_F)$, and for each $(G', T')$, a compactly supported smooth function $f'$ on $G'(\Aa_F) / Z'(\Aa_F)$.
-In fact $f'$ will be zero for almost all $(G', T')$.
-We associate a cuspidal kernel $K_c$ to $f$  and similarly a cuspidal kernel $K_v'$ to each function $f'$.
-The conditions imposed on these functions are (\S 7 and 10)
+We now outline the main ideas behind our proof.
+First, we identify the set of double cosets $T \backslash G / T$ with the disjoint union of the double cosets $T' \backslash G / T'$ (\S 1).
+For this identification, we restrict to ``regular'' double cosets.
+This motivates the introduction of a compactly supported smooth function $f$ on $G(\Aa_F) / Z(\Aa_F)$, and for each $(G', T')$, a corresponding compactly supported smooth function $f'$ on $G'(\Aa_F) / Z'(\Aa_F)$.
+In fact, $f'$ will be zero for almost all $(G', T')$.
+We associate a cuspidal kernel $K_c$ to $f$, and similarly, a cuspidal kernel $K_c'$ to each $f'$.
+The relevant conditions imposed on these functions are (\S 7 and \S 10):
 \begin{equation}
-    \int_{[T]}\int_{[T]} K_{c}(a, b) \eta(\det b) dbda = \sum_{(G', T')} \int_{[T']} \int_{[T']} K_{c}'(s, t) dtds.
+    \label{eqn:0.2.1}
+    \int_{[T]} \int_{[T]} K_{c}(a, b) \eta(\det b) \dd b \dd a = \sum_{(G', T')} \int_{[T']} \int_{[T']} K_{c}'(s, t) \dd t \dd s.
 \end{equation}
-The relation between $f$ and $f'$ is as follows.
-Of course, these functions are products of local functions.
-If $v$ is a place of $F$ which splits in $E$ then for all $(G', T')$ the groups $G_v'$ and $G_v$ are the ``same'' and we set $f_v$ and $f_v'$ as the ``same'' function.
-Then the set $X(E_v: F_v)$ is defined as before but it becomes a set of two elements $(G'_{vi}, T'_{vi})$, $i =1, 2$ with $G'_{v1}$ splits.
-We can still identify the regular double cosets of $T_v$ with the disjoint union of the regular double cosets of $T'_1$ and $T'_2$.
-We show that for a given function $f$ there are functions $f'_i$ on $G'_i$ such that
-\begin{equation*}
-\label{eqn:0.2.1}
-    \int_{T_{v} / Z_{v}} \int_{T_v / Z_v} f(agb) \eta_v(\det b) db da = \int_{T'_{iv} / Z'_{iv}} \int_{T'_{iv}/Z'_{iv}} f'_{i} (sg't) dt ds,
-\end{equation*}
-if $g$ corresponds to $g'$ (\S 2 and  \S 4) (the exact statement is a little different since the LHS is not exactly a function on the double cosets).
-If $v$ is unramified and $f_v$ is a Hecke function\footnote{Characteristic function of the spherical subgroup} then we can take $f'_1 = f_v$ and $f'_2 = 0$ (\S 5).
-The condition becomes $f_v' = f'_i$ if $G_v' = G_i'$.
-Then Waldspurger's result follows easily from identity~\eqref{eqn:0.2.1}.
-Section 6 contains auxiliary results.
 
-The proof of the formula~\eqref{eqn:0.2.1} is based on a generalization of the trace formula which can be stated as follows.
-Let $G$ be a semi-simple group defined over $F$ and $A$, $B$ be subgroups of $G$ defined over $F$, $\lambda$ and $\mu$ be characters of $A (\Aa_F) / A(F)$ and $B(\Aa_F) / B(F)$ respectively.
-Let $f$ be a compactly supported smooth function on $G(\Aa_F) / G(F)$ and compute the following integral:
+The relation between $f$ and $f'$ is as follows.
+These functions are products of local functions.
+If $v$ is a place of $F$ that splits in $E$, then for all $(G', T')$, the groups $G_v'$ and $G_v$ are isomorphic, and we define $f_v$ and $f_v'$ to be identical.
+In this case, the set $X(E_v: F_v)$ consists of two elements $(G'_{v_i}, T'_{v_i})$, $i = 1, 2$, with $G'_{v_1}$ being split.
+We can still identify the regular double cosets of $T_v$ with the disjoint union of the regular double cosets of $T'_1$ and $T'_2$.
+We show that for a given function $f$, there are functions $f'_i$ on $G'_i$ such that:
+\begin{equation*}
+    \int_{T_v / Z_v} \int_{T_v / Z_v} f(agb) \eta_v(\det b) \dd b \dd a = \int_{T'_{v_i} / Z'_{v_i}} \int_{T'_{v_i} / Z'_{v_i}} f'_{i}(sg't) \dd t \dd s,
+\end{equation*}
+whenever $g$ corresponds to $g'$ (\S 2 and \S 4). If $v$ is unramified and $f_v$ is a Hecke function\footnote{The characteristic function of the spherical subgroup.}, then we can set $f'_1 = f_v$ and $f'_2 = 0$ (\S 5). The condition simplifies to $f'_v = f'_i$ if $G_v' = G_i'$. Waldspurger's result then follows easily from identity~\eqref{eqn:0.2.1}. Auxiliary results can be found in Section 6.
+
+The proof of formula~\eqref{eqn:0.2.1} relies on a generalization of the trace formula, which can be stated as follows.
+Let $G$ be a semisimple group defined over $F$, and let $A$ and $B$ be subgroups of $G$ defined over $F$.
+Let $\lambda$ and $\mu$ be characters of $[A]$ and $[B]$, respectively.\footnote{i.e. the characters of $A(\bA_F)$ and $B(\bA_F)$ that are trivial on $A(F)$ and $B(F)$, respectively.}
+Let $f$ be a compactly supported smooth function on $[G]$, and consider the integral:
 \[
-\int_{[A]} \int_{[B]} K_c(a, b) \lambda(a) \mu(b) db da
+\int_{[A]} \int_{[B]} K_c(a, b) \lambda(a) \mu(b) \dd b \dd a
 \]
 where $K_c$ is the cuspidal kernel attached to $f$.
-This kernel has a complicated expression which contains in any case the sum
+This kernel has a complex expression, which involves the sum:
 \[
 \sum_{\zeta \in G(F)} f(x^{-1} \zeta y).
 \]
-Let's choose a system of representatives for the double cosets of the groups $A(F)$ and $B(F)$.
+Choose a system of representatives for the double cosets of the groups $A(F)$ and $B(F)$.
 For an element $\eta$  of $G(F)$ let $H_\eta$ the subgroup of $H = A\times B$ of tuples $(\alpha, \beta)$ such that $\alpha^{-1} \eta \beta = \eta$.
 Then any element of $G(F)$ can be uniquely written in the form:
 \[
 \zeta = \alpha^{-1} \eta \beta, \qquad \eta \in A(F) \backslash G(F) / B(F), \quad (\alpha, \beta) \in H_{\eta}(F) \backslash (A(F) \times B(F)).
 \]
-\textcolor{red}{
-By formal computation we immediately arrive at the following expression for the above integral:
+By formal computation, we arrive at the following expression for the integral:
 \[
-\sum_{\eta} \mathrm{vol}(H_{\eta}(F) \backslash H(\Aa_F)) \int_{A(F) \backslash A(\Aa_F)} \int_{B(F) \backslash B(\Aa_F)} f(a^{-1} \eta b) \lambda(a) \mu(b) db da
+\sum_{\eta} \mathrm{vol}(H_{\eta}(F) \backslash H(\Aa_F)) \int_{[A]} \int_{[B]} f(a^{-1} \eta b) \lambda(a) \mu(b) \dd b \dd a
 \]
-where sum on the left hand side is over all $\eta$ such that $\lambda(a) \mu(b) = 1$ if $a^{-1} b = 1$.
-}
-Of course we ignored convergence problems and the existence of other terms in the expression of $K_c$.
+where sum on the left hand side is over all $\eta$ such that $\lambda(a) \mu(b) = 1$ if $a^{-1} \eta b = 1$.
+Note that we have ignored convergence issues and other terms in the expression of $K_c$.
 
 \subsection{}
-Thank for the Institute for Advanced Study and its permanent members for their hospitality, the major part of this work having been written during my stay at the institute, on the occasion of the special year 1983--1984 on $L$-functions.
-In particular, I thank Langlands for his interest in this work.
-Finally, I owe a lot of gratitude to Piatetski-Shapiro who was also at the institute the same year.
-His in-depth knowledge of the work of Waldspurger was very useful to me; moreover a conversation with Piatetski-Shapiro was the starting point of this work.
+I extend my sincere thanks to the Institute for Advanced Study and its permanent members for their hospitality, as the majority of this work was completed during my stay there during the special year 1983-1984 on $L$-functions.
+I am particularly grateful to Langlands for his interest in this work.
+Lastly, I owe a great debt of gratitude to Piatetski-Shapiro, whose deep understanding of Waldspurger's work proved invaluable.
+A conversation with him was, in fact, the starting point of this work.
