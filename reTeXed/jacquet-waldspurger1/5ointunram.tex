@@ -1,0 +1,315 @@
+\section{Orbital integrals: unramified case}
+
+\subsection{}
+In this section, $F$ is a non-archimedean local field and $E$ is an unramified quadratic extension of $F$.
+Assume that the residual characteristic of $F$ is not 2 and the order of character $\psi$ is 0.\footnote{Order of a character $\psi$ is a smallest integer $r\geq 0$ such that $\varpi ^r R \subseteq \ker \psi$.}
+Consider a tuple $(G, T)$ of a group $\GL(2)$ and a diagonal subgroup $T$.
+We denote by $R$ the ring of integers of $F$, $\mathfrak{p}$ a maximal ideal of $R$, $\varpi$ a  uniformizer and $K = \GL(2, R)$.
+The set $X = X(E:F)$ reduces to a set of two elements $(G_1', T_1')$ and $(G_2', T_2')$.
+Now suppose $G_1' = G$ and $T_1'$ is contained in the subgroup $ZK$.
+We will simply write $T'$ for $T_1'$.
+The measures of $T\cap K / Z \cap K$ and $T' \cap K / Z\cap K$ are therefore equal to 1.
+The goal of this section is to prove the following proposition.
+
+\begin{proposition}\label{prop:5.1}
+Lef $f$ be a $K$ bi-invariant compactly supported function on $G/Z$.
+The $f$ matches with the pair $(f, 0)$.
+Also, 
+\begin{align*}
+    H(n_+: f: \eta) = H(n_-: f: \eta) = \frac{1}{2} \mathrm{vol}(T'/Z) \int_{T'/Z} f(t')dt'.
+\end{align*}
+\end{proposition}
+It will be convenient to consider functions with compact support on $G$ rather than functions with compact support on $G/Z$.
+Of course the measures of the sets $T\cap K$, $T'\cap K$, and $Z\cap K$ are therefore equal to 1.
+If $f$ is a $K$ bi-invariant function with compact support on $G$, then we set
+\begin{align}
+    H'(g:f:T') = \int_{T'/Z} \int_{T'} f(s'gt') ds'dt'.
+\end{align}
+Since $T'$ is contained in $ZK$ this reduces to
+\begin{align}
+    H'(g:f:T') = \int_{Z} f(zg) dz.
+\end{align}
+Likewise, we define
+\begin{align}
+    H(g:f:\eta) = \int_{T/Z} \int_{T} f(agb) \eta(\det b) dadb.
+\end{align}
+We write $H(x:f:\eta)$ again for $H(g(x):f:\eta)$.
+Then we have to prove the following identities
+\begin{align}
+    H(x:f:\eta) &= \int_{Z} f(zg) dz \quad \text{if } v(x) \text{ is even and } P(g:T') = x \label{eqn:5.1.4}\\
+    H(x:f:\eta) &= 0 \quad \text{if } v(x) \text{ is odd}. \label{eqn:5.1.5}
+\end{align}
+By linearity we can assume that $f$ is either the characteristic function $f_0$ of $K$, or the characteristic function $f_m$ of the set
+\begin{align}
+    K \bmat{\varpi^m}{0}{0}{1}K, \quad m > 0.
+\end{align}
+Note that $f_m(g) \neq 0$ if and only if the following conditions hold:
+\begin{itemize}
+    \item the entries of $g$ are integers,
+    \item $v(\det g) = m$,
+    \item at least one of the entries of $g$ is a unit.
+\end{itemize}
+Note that the condition trivially holds when $m = 0$.
+
+\subsection{}
+We will first compute $H(x:f_m:\eta)$ which, for simplicity, denote by $H(x:m)$.
+Let's assume $m >0$ first.
+\begin{proposition}\label{prop:5.2}
+Suppose $m > 0$.Then $H(x:m)$ is given by the following formulas:
+\begin{enumerate}
+    \item if $v(x)$ is odd then $H(x:m)=0$.
+    \item if $v(x)$ is even then $H(x:m)=0$, unless $v(x)=0$ and $v(1-x)=m$ in which case $H(x:m )=1$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+We will use the following lemma:
+\begin{lemma}
+Let
+\[
+S = \sum_{i, j} (-1)^{i+j}
+\]
+where the summation is over all the pairs of integers $(i, j)$ on the edge of the rectangle defined by the inequalities
+\[
+0 \leq i \leq P, \quad 0 \leq j \leq Q.
+\]
+Then $S$ is given by the following formulas:
+\begin{enumerate}
+    \item if $PQ > 0$ then $S =0$,
+    \item if $P = 0$ and $Q >0$, then $S=1$ if $Q$ is even and $S=0$ if $Q$ is odd,
+    \item if $Q=0$ and $P >0$, the $S=1$ if $P$ is even and $S=0$ if $P$ is odd,
+    \item if $P=Q=0$ then $S=1$.
+\end{enumerate}
+\end{lemma}
+We not prove the proposition.
+We write $\mathrm{Mat}[a, b, c, d]$ for the matrices with entries $a, b, c, d$.
+With this notation we have
+\begin{align}
+\label{5.2.7}
+    H(x:m) = \sum_{i, j, k} f_{m}(\mathrm{Mat}[\varpi^{i+k}, x\varpi^{j+k}, \varpi^{i}, \varpi^{j}]) (-1)^{i+j},
+\end{align}
+where the sum is over all triples of integers $(i, j, k)$.
+As the determinant of the matrices in~\eqref{5.2.7} has valuations equal to $i+j+k+v(1-x)$, from the condition $v(\det g) = m$ we can restrict ourselves to triples $(i, j, k)$ with 
+\begin{align*}
+    i+j+k+v(1-x) = m.
+\end{align*}
+This allows us to eliminate $k$ and, by the previous conditions on the integrality of entries of $g$,
+\begin{align}
+    H(x:m) = \sum_{i, j}(-1)^{i+j}
+\end{align}
+where the summation is over all the pairs of integers $(i, j)$ such that
+\begin{gather}
+    0 \leq i \leq m - v(1-x) + v(x) \\
+    0 \leq j \leq m - v(1-x) \\
+    ij(m-v(1-x)+v(x)-i)(m-v(1-x)-j)=0.
+\end{gather}
+The sum is empty and $H(x:m)$ is zero unless
+\begin{align}
+\label{5.2.12}
+    m - v(1-x) \geq 0 \quad \text{and} \quad m - v(1-x) + v(x) \geq 0.
+\end{align}
+Suppose~\eqref{5.2.12} holds.
+Then we can apply the lemma, and we have $H(x:m)=0$ unless
+\begin{align}
+    (m-v(1-x))(m-v(1-x)+v(x)) =0.
+\end{align}
+Then the proposition follows from elementary calculations.
+\end{proof}
+
+\subsection{}
+Let's compute $H(x:0)$.
+\begin{proposition}\label{prop:5.3}
+    $H(x:0)$ is given by the following formulas:
+    \begin{enumerate}
+        \item if $v(x)$ is odd then $H(x:0) =0$,
+        \item if $v(x)$ is even then $H(x:0) =1$, unless $v(x)=0$ and $v(1-x)>0$ in which case $H(x:0)=0$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+We have
+\begin{align}
+    H(x:0) = \sum_{i, j, k} f_{0}(\mathrm{Mat}[\varpi^{i+k}, x\varpi^{j+k}, \varpi^i, \varpi^j]) (-1)^{i+j},
+\end{align}
+where the sum is over all triples of integers $(i, j, k)$.
+As above, based on the conditions on $g$ to be $f_0(g)\neq 0$, we can eliminate $k$ and write
+\begin{align}
+    H(x:0) = \sum_{i, j} (-1)^{i+j}
+\end{align}
+where the sum is over all pairs of integers $(i, j)$ such that
+\begin{align}
+    0 \leq i \leq v(x) - v(1-x) \\
+    0 \leq j \leq -v(1-x).
+\end{align}
+Then the proposition follows from elementary calculations.
+\end{proof}
+
+\subsection{}
+We will compute $\int_Z f_m(zg) dz$.
+It only depends on $x = P(g:T')$ and we denote $H'(x:m:T')$ for its value.
+Recall that by definition $x$ is a norm, in other words the valuation of $x$ is even.
+We will start with the case $m > 0$.
+\begin{proposition}\label{prop:5.4}
+    Suppose $m > 0$.
+    Then $H'(x:m:T')=0$, unless $v(x) = 0$ and $v(1-x)=m$ in which case $H'(x:m:T')=1$.
+\end{proposition}
+\begin{proof}
+We can assume that $E$ is an extension generated by the square root of $\tau$, where $\tau$ is a unit.
+Then we can take for $T'$ the multiplicative group of the following algebra
+\begin{align}
+    L = \left\{\bmat{a}{b}{b\tau}{a}\right\}
+\end{align}
+and $\varepsilon$ is a matrix
+\begin{align}
+    \varepsilon = \bmat{1}{0}{0}{-1}.
+\end{align}
+Let's compute $H'(x:m:T')$ for $x = P'(g:T')$.
+We can assume that 
+\begin{align}
+    g = \bmat{1}{0}{0}{1} + \varepsilon \bmat{u}{v}{v\tau}{u}.
+\end{align}
+so $\det g = 1 - x$ and $x = y^2 - v^2 \tau$.
+We have
+\begin{align}
+    H'(x:m:T') = \sum_{k}f_{m}(\varpi^k g)
+\end{align}
+and
+\begin{align}
+    \label{5.4.5}
+    \varpi^k g = \bmat{\varpi^k(1+u)}{\varpi^k v}{-\varpi^k v\tau}{\varpi^k(1-u)}.
+\end{align}
+By the integrality condition of entries of $g$, this sum consists of a single term where $k$ is determined by the equation
+\begin{align}
+    \label{5.4.6}
+    k = \frac{1}{2}(m - v(1-x)).
+\end{align}
+In particuler $H'(x:m:T') = 0$ or 1.
+By the integrality conditions again and $\det g = m$, $H(x:m:T') = 1$ if and only if the followings hold:
+\begin{itemize}
+    \item $m = v(1-x) \,\mathrm{\mod}\,2$,
+    \item the entries of the matrix in~\eqref{5.4.5} with $k$ given by~\eqref{5.4.6} are integers,
+    \item at least one of the entries of this matrix is a unit.
+\end{itemize}
+First assume $v(x) <0$.
+We have $v(1-x) = v(x)$.
+Since $x =u^2 - v^2 \tau$ and $\tau$ is not a square $v(x)$ is even.
+Then $H'(x:m:T')=0$ unless $m$ is even.
+So let's assume that this is the case.
+We can write
+\begin{align*}
+    u = u_0 \varpi^{v(x) /2}, \quad v = v_0 \varpi^{v(x) / 2},
+\end{align*}
+where $u_0, v_0$ are integrals, with at least one being a unit.
+Then the entries of the matrix~\eqref{5.4.5} are:
+\begin{align*}
+    \varpi^{(m  - v(x)) / 2} (1 + u_0 \varpi^{v(x) / 2}), \quad \varpi^{m/2}v_0 \\
+    -\varpi^{m/2} v_0 \tau, \quad \varpi^{(m - v(x))/2} (1 - u_0 \varpi^{v(x) / 2}).
+\end{align*}
+All of these are in $\mathfrak{p}$ so $H'(x:m:T') = 0$.
+
+Supose $v(x) > 0$. We have $v(1 - x) = 0$.
+From $m \equiv v(1-x)\,(\mathrm{\mod}\,2)$ we have $H'(x:m:T') = 0$ unless $m$ is even.
+Assume $m$ is even.
+Since $k = m / 2$, $u$ and $v$ are integral.
+The entries of the matrix in~\eqref{5.4.5} are
+\begin{align*}
+    \varpi^{m/2} (1+u), \quad \varpi^{m/2} v, \\
+    -\varpi^{m/2} v\tau, \quad \varpi^{m/2} (1 - u).
+\end{align*}
+All of these are in $\mathfrak{p}$ so $H'(x:m:T') =0$.
+
+Lastly, assume $v(x) = 0$. We have $v(1 - x) \geq 0$.
+If $m - v(1-x)$ is odd, then $H'(x:m:T') =0$. Let's assume that $m - v(1-x)$ is even.
+Then the entries of the matrix in~\eqref{5.4.5} are
+\begin{align*}
+    \varpi^{(m - v(1-x))/2} (1 +u), \quad \varpi^{(m - v(1-x))/2} v \\
+    -\varpi^{(m - v(1-x)) /2} v\tau, \quad \varpi^{(m - v(1-x)) / 2} (1 - u).
+\end{align*}
+Since $x$ is a unit, $u$ and $v$ are both integral and at least one is a unit.
+If $1 + u$ and $1 - u$ are both in $\mathfrak{p}$ we would have $2 \in \mathfrak{p}$, a contradiction.
+So at least one of the numbers $1 +u$ and $1 - u$ is a unit.
+If $H(x:m:T')$ is not zero, integrality condition gives $m = v(1-x)$.
+The entries of the matrix~\eqref{5.4.5} are therefore reduced to
+\begin{align*}
+    1+u, \quad v, \quad -v\tau, \quad 1 -u.
+\end{align*}
+These are all integral and at least one of them is a unit. Hence $H'(x:m:T') = 1$.
+
+So we have computed $H'$ completely and the proposition follows.
+\end{proof}
+
+\subsection{}
+Let's compute $H'(x:0:T')$.
+Recall that $v(x)$ is even.
+\begin{proposition}\label{prop:5.5}
+$H'(x:0:T')=1$, unless $v(x)=0$ and $v(1-x)>0$ in which case $H'(x:0:T')=0$.
+\end{proposition}
+\begin{proof}
+As above we have
+\begin{align}
+    H'(x:m:T') = \sum_{k} f_{0}(\varpi^k g).
+\end{align}
+The sum has at most one term whose index $k$ is given by
+\begin{align}
+\label{eqn:5.5.2}
+    k = - \frac{v(1-x)}{2}.
+\end{align}
+In particular, $H'(x:0:T')=0$ or $1$.
+Moreover $H'(x:0:T')=1$ if and only if $v(1-x)$ is even and the matrix
+\begin{align}
+\label{eqn:5.5.3}
+    \varpi^k g = \bmat{\varpi^k(1+u)}{\varpi^k v}{-\varpi^k v\tau}{\varpi^k(1-u)}
+\end{align}
+with $k$ given by~\eqref{eqn:5.5.2} is in $\GL(2, R)$.
+
+Assume that $v(x) < 0$ and $v(1-x)$ is even.
+Then $v(1-x) = v(x)$, $v(x)$ is even and
+\begin{align*}
+    u = u_0 \varpi^{v(x)/2}, \quad v = v_0 \varpi^{v(x) / 2}
+\end{align*}
+where $u_0$ and $v_0$ are integral, at least one being unit.
+Then the entries of the matrix~\eqref{eqn:5.5.3} are the numbers
+\begin{align*}
+    \varpi^{-v(x) / 2} + u_0, \quad v_0, \quad -v_0 \tau, \quad \varpi^{-v(x) / 2} - u_0.
+\end{align*}
+They are integral.
+As the determinant of the matrix~\eqref{eqn:5.5.3} is a unit according to the choice of $k$ the matrix~\eqref{eqn:5.5.3} is in $\GL(2, R)$ and $H'(x:0:T')=1$.
+
+Suppose $v(x) \geq 0$ and $v(1-x)=0$ (of course $v(x) > 0$ leads to $v(1-x)=0$).
+Then $k=0$ and the entries of the matrices~\eqref{eqn:5.5.3} reduce to the numbers
+\begin{align*}
+    & \varpi^{-v(1-x) / 2} (1+u), \quad \varpi^{-v(1-x)/2}v \\
+    & \varpi^{-v(1-x)/2}v\tau, \quad \varpi^{-v(1-x)/2}(1-u).
+\end{align*}
+As $1+u$ or $1-u$ is a unit at least one of these numbers is not integral so~\eqref{eqn:5.5.3} is not in $\GL(2,R) $ and $H'(x:0:T')=0$.
+\end{proof}
+
+\subsection{}
+By comparing the propositions~\eqref{prop:5.2},~\eqref{prop:5.3}, 
+~\eqref{prop:5.4} and~\eqref{prop:5.5} we see that we have proved the identities~\eqref{eqn:5.1.4} and~\eqref{eqn:5.1.5}.
+This therefore completes the proof of the first assertion of proposition~\eqref{prop:5.1}.
+The second then follows from proposition~\eqref{prop:4.1}.
+
+\subsection{}
+To establish the convergence of the global orbital integrals we will need an additional result, the proof of which we will leave to the reader.
+
+\begin{lemma}
+Suppose $h$ in $KZ$ and let $x = P(h:T)$.
+Suppose $v(x) = 0$ and $v(1-x)=0$.
+Then the relation
+\begin{align*}
+ahb \in KZ, \quad a \in T, \quad b \in T
+\end{align*}
+leads to
+\begin{align*}
+a \in Z(K \cap T), \quad b \in Z(K \cap T).
+\end{align*}
+\end{lemma}
+The lemma implies the following proposition.
+\begin{proposition}
+Let $f$ be the characteristic function of $KZ$.
+Suppose $E$ is an unramifeid quadratic extension and $T'$ contained in $KZ$.
+Let $h$ be an element of $KZ$ and $x = P(h:T)$.
+If $x$ and $1-x$ are units then
+\begin{align*}
+H(h:f:T) =1, \quad H(h:f:\eta) = 1.
+\end{align*}
+\end{proposition}

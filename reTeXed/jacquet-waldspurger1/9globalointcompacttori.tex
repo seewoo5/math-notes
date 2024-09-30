@@ -1,0 +1,151 @@
+\section{Global orbital integrals: compact torus}
+
+\subsection{}
+
+In this section $F$ is again a number field and $E$ a quadratic extension of $F$.
+We will fix an element $(G', T')$ of the set $X(E:F)$ and an element $\varepsilon$ of $N(T')-T'$.
+Then the square $c$ of $\varepsilon$ is an element of $F^\times$ and the class $cN$ of the group of norms $N$ of $E$ 
+determines the isomorphism class of $(G', T')$.
+Let $f'$ be a compactly supported smooth function on the group $G'(\Aa_F) /Z'(\Aa_F)$.
+We have a cuspidal kernel $K_c'$ attached to $f'$.
+Let $\phi_i'$ be an orthonormal basis of the space of automorphic forms which are cuspidal and orthogonal to the functions s$g \mapsto \chi(\det g)$, 
+where $\chi$ is a character of id\'ele class group whose square is trivial.
+By definition:
+\begin{equation}\label{eqn:9.1.1}
+    K_c'(x, y) = \sum_j \rho(f') \phi_j'(x) \overline{\phi_j'}(y).
+\end{equation}
+We will give a useful expression of the integral
+\begin{equation}\label{eqn:9.1.2}
+    \int_{[T']}\int_{[T']} K_c'(s, t) dsdt.
+\end{equation}
+Of course $\psi\circ\mathrm{tr}$ is a character of $\Aa_E /E$ and we therefore have for each place $v$ of $E$ the Tamagawa measure on the group $E_v^\times$ a
+and an induced measure on $T_v'$.
+We also have the product measure on the group $T'(\Aa_E)$ and the quotient measure on $T'(\Aa_F)/Z'(\Aa_F)$. 
+We will denote by $S$ a finite set of places of $F$ containing the places at infinity, 
+the ramified places in $E$, 
+the places where $G'$ does not split, the places where $\psi_v'$  is not of order 0 and places of residual characteristic 2.
+We choose for all $v$ a maximal compact subgroup $K_v'$ of $G_v'$ such that $T_v'$ is contained in $K_v' Z_v'$ if $v$ does not split in $E$ and $G'(\Aa_F)$ be 
+the restricted product of $G_v'$ with respect to $K_v'$. 
+We suppose that $f'$ is the product of compactly supported smooth local functions $f_v'$ on $G_v'/Z_v'$.
+We assume $f_v'$ bi-$K_v'$-invariant for each $v$ not in $S$.
+For $v$ that does not split in $E$ we replace $f_v$ for~\eqref{eqn:9.1.1} as $f_v'$ defined by
+\begin{equation*}
+    f_{v0}'(g') = \frac{1}{\mathrm{vol}(T_v)} \int_{T_v'} \int_{T_v'} f_v'(s_v g' t_v) ds_v dt_v.
+\end{equation*}
+We can therefore assume that each $v$ which does not split in $E$ the function $f_v'$ is bi-$T_v'$-invariant, in particular 
+bi-$K_v'$-finite. 
+At last we assume that $f_v'$ is bi-$K_v'$-finite at $v$'s split in $E$. 
+Then we have:
+\begin{equation}
+    K_c'(x, y) = \sum_{\gamma \in G'(F)/Z'(F)} f'(x^{-1}\gamma y) - K_{\mathrm{sp}}' (x, y) - K_{\mathrm{ei}}' (x, y).
+\end{equation}
+where $K_{\mathrm{sp}}'$ denote the special kernel and $K_{\mathrm{ei}}'$ is the Eisenstein kernel.
+The Eisenstein kernel is zero if $G'$ does not split.
+The kernel $K_{\mathrm{sp}}'$ is defined by the following sum
+\begin{equation}
+    \label{eqn:9.1.4}
+    K_{\mathrm{sp}}'(x, y) = \sum_{\chi} \frac{1}{\mathrm{vol}([G'])} \int f'(\det g') dg' \cdot \chi(\det x)\chi^{-1}(\det y)
+\end{equation}
+where the sum is over all the quadratic characters $\chi$ of the id\'ele class group of $F$.
+We define two other kernels
+\begin{align}
+    K_{r}'(x, y) &= \sum_{\gamma\text{ is }T'\text{-regular}} f(x^{-1}\gamma y) \\
+    K_{s}'(x, y) &= \sum_{\gamma\text{ is }T'\text{-singular}} f(x^{-1}\gamma y),
+\end{align}
+then $K_c'$ can be written as a sum
+\begin{equation}
+    \label{eqn:9.1.7}
+    K_c' = K_r' + K_s' - K_{\mathrm{sp}}' - K_{\mathrm{ei}}'.
+\end{equation}
+Since $[T']$ is compact,~\eqref{eqn:9.1.2} is simply an integral of each term in~\eqref{eqn:9.1.7}.
+
+
+\subsection{}
+Let's consider $K_r'$ first. 
+Each $T'$-regular element $\gamma \in G'(F)/Z'(F)$ can be uniquely written as
+a form 
+\begin{equation}
+    \gamma = \sigma^{-1} \mu \tau,
+\end{equation} 
+where $\sigma$ and $\tau$ are in $T'(F)/Z'(F)$ and $\mu$ is a representative of a $T'$-regular double coset of $T'(F)$ in $G'(F)$ (Proposition (1.2)).
+Then we get\footnote{Of course, the summation on the RHS is over $T'(F)$-regular double coset representatives of $T'(F)$ in $G'(F)$.}
+\begin{equation}
+    \iint K_r'(s, t)dsdt = \sum_{\mu} \iint f'(s^{-1} \mu t) ds dt,
+\end{equation}
+where the integral on the RHS is over $T'(\Aa_F) / Z'(\Aa_F)$.
+The double integral of the right-hand side only depends on $\zeta=P'(\mu:T')$ and we will note $H'(\zeta:f':T')$ its value.
+Then we can write as
+\begin{equation}
+    \iint K_r'(s, t)dsdt = \sum_{\zeta \in cN - \{1\}} H(\zeta: f': T'),
+\end{equation}
+since the function $P'$ parametrizes the regular double cosets and its values, on the regular elements, 
+are all the points of the class $cN$ associated with the pair $(G', T')$ minus identity (Proposition (1.1)). 
+Of course the orbital integral $H'(\zeta:f':T')$ is the product of the local orbital integrals:
+\begin{equation}
+    H'(\zeta:f':T') = \prod_v H'(\zeta:f_v':T_v').
+\end{equation}
+Almost all the factors are equal to 1.
+Indeed when $v$ be a place of $F$ which is not in $S$; suppose that $f_v'$ is the characteristic function of $Z_v' K_v'$.
+If $v$ does not split in $E$, then $T_v'$ is contained in $Z_v' K_v'$ and the integral is 1.
+If $v$ splits in $E$ then the local integral is still 1 by Proposition (5.7).
+
+
+\subsection{}
+Let's consider the integral of the term $K_s'$.
+There are only two singular double cosets, $T'(F)$ and $\varepsilon T'(F)$.
+Then we get
+\begin{equation}
+    \iint K_s'(s, t) = \mathrm{vol}([T']) \int_{T'(\Aa_F)/Z'(\Aa_F)} f'(t)dt + \mathrm{vol}([T']) \int_{T'(\Aa_F)/Z'(\Aa_F)} f'(\varepsilon t) dt.
+\end{equation}
+
+
+\subsection{}
+Consider $K_{\mathrm{sp}}'$.
+By~\eqref{eqn:9.1.4}, we have
+\begin{equation}
+    \iint K_{\mathrm{sp}}'(s, t)dsdt = \sum_{\chi} \frac{1}{\mathrm{vol}([G'])} \int f'(g) \chi(\det g) dg \int \chi(\det s) ds \int \chi^{-1}(\det t) dt,
+\end{equation}
+each of the integral of characters over $[T']$ is 0 unless $s\mapsto \chi(\det s)$ is trivial over $T'(\Aa_F) $; 
+this is the case if and only if $\chi=1$ or $\chi=\eta$.
+The integral of $K_{\mathrm{sp}}$ therefore reduces to two terms:
+\begin{equation}
+    \iint K_{\mathrm{sp}}'(s, t) dsdt = \frac{\mathrm{vol}([T'])^2}{\mathrm{vol}([G'])} \left(\int f'(g)\chi(\det g)dg + \int f'(g) dg\right)
+\end{equation}
+In particular, let's choose as in (8.1) a place $z$ of $F$ not in $S$, fix the components of $f$ at places other than $z$ and look at the integral as a function of $\hat{f_z'}$.
+Then \textcolor{red}{the integral (5)} is of the form $c \hat{f_z'}(q_{z}^{-1})$ for a constant $c$.
+
+
+
+\subsection{}
+Consider $K_{\mathrm{ei}}$.
+It vanishes if $G'$ does not split over $F$.
+Suppose $G'$ splits and recall the notations in (8.4).
+we have:
+\begin{equation}
+    K_{\mathrm{ei}}'(x, y) = \frac{1}{i\pi} \int_{-i\infty}^{i\infty} A(x, y, u)
+\end{equation}
+where
+\begin{equation}\label{eqn:9.5.2}
+    A(x, y, u) = \sum_{\chi, j} (\rho(f')E)(x, j, u, \chi) \overline{E(y, j, u, \chi)}.
+\end{equation}
+Note that the maximal compact subgroup implicit in the definition of Eisenstein series is now the product of the groups $K_v'$, with $K_v' Z_v' =T_v'$ if $v$ is infinite.
+In particular the series~\eqref{eqn:9.5.2} is finite.
+As we integrate over a compact set we get:
+\begin{equation}
+    \int_{[T']}\int_{[T']} K_{\mathrm{ei}}'(s, t)dsdt = \frac{1}{i\pi} \int_{-i\infty}^{i\infty} A(u:f') du,
+\end{equation}
+where
+\begin{equation}
+    A(u:f') = \sum_{\chi, j} \int_{[T']} (\rho(f')E)(s, j, u,\chi)ds \int_{[T']} \overline{E(t, j, u, \chi)} dt.
+\end{equation}
+Now $(\rho(f')E)(x, j, u, \chi)$ is zero unless $\phi_j'$ is $K_v'$-invariant for all places $v$ not in $S$.
+In particular, let's choose as above a place $z$ of $F$ which is not in $S$ and splits in $E$.
+Then $f' =f^{z}{'} f_{z}'$ where $f^{z}{'}$ is the product of $f_v'$ for $v\neq z$ and
+\begin{equation}
+    (\rho(f')E)(x, j, u, \chi) = \hat{f_z'} (q_z^{-2iu}) (\rho(f^z{'})E)(x, j, u, \chi).
+\end{equation}
+Hence we get
+\begin{equation}
+    \int_{[T']}\int_{[T']} K_{\mathrm{ei}}'(s, t)dsdt = \frac{1}{2i\pi} \int_{-i\infty}^{i\infty} \hat{f_z'}(q_{z}^{-2iu}) A(u:f^z{'}) du,
+\end{equation}
+where $A(u:f^z{'})$ is integrable, a result which will be sufficient for our purpose.

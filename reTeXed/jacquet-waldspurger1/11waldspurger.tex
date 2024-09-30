@@ -1,0 +1,134 @@
+\section{Waldspurger's result}
+
+
+\subsection{}
+We can finally prove Waldspurger's result using the identites from section 10.
+We will denote by $S$ a finite set of places of $F$ satisfying the conditions of section 10.
+By taking $S$ sufficiently large, we can only consider the cuspidal representations of $G$ unramified outside of $S$, pairs $(G', T')$ belongto $X(S)$ and, for such a pair, cuspidal representations of $G'$ unramified outside $S$.
+We will denote by $K$ (resp. $K^S$) for the product of the compact subgroups $K_v$ for all $v$ (resp.\ all $v$ not in $S$) and $G^S$ the restricted product of $G_v$ for $v$ not in $S$.
+For a pair $(G', T')$ in $X(S)$, we denote as $K', K'^S$ and $G'^S$ for the analogous groups.
+
+To describe Waldspurger's first condition, note that if
+\begin{equation*}
+    \int \phi_1(a)da \quad \text{and} \quad \int \phi_2(b)\eta(\det b)db
+\end{equation*}
+is nonzero for some pair $(\phi_1, \phi_2)$ of smooth vectors, then it is also nonzero for some $K$-finite vectors $(\phi_1, \phi_2)$; moreover, if $S$ is large enough, then $\phi$ and $\phi'$ are $K^S$-invariant.
+Similarly if there exists a pair $(G', T')$ in $X$, a cuspidal representation $\pi'$ and a smooth vector $\phi'$ in the space of $\pi'$ such that the integral $\int \phi'(t')dt'$ is nonzero, then we can take $\phi'$ to be $K'$-finite; moreover, if $S$ is large enough, $(G', T')$ is in $X(S)$ and $\phi'$ is invariant under $K'^S$.
+
+
+\subsection{}
+Consider a set $S$ and functions $f$ and $f'$ satisfying the conditions in section 10.
+In particular $f_v$ (resp. $f_v'$) is bi-invariant under $K_v$ (resp. $K_v'$).
+Consider the kernel $K_c$.
+We can write as
+\begin{equation}
+    \label{eqn:11.2.1}
+    K_c = \sum_{\pi} K_\pi
+\end{equation}
+where, for each cuspidal automorphic representation $\pi$ (unramified outside of $S$), we have
+\begin{equation}
+    \label{eqn:11.2.2}
+    K_\pi(x, y) = \sum_{j} \rho(f) \phi_j(x) \overline{\phi_j}(y),
+\end{equation}
+where $\{\phi_j\}$ is an orthonormal basis of the subspace of $K^S$-invariant vectors in the space of $\pi$.
+The series~\eqref{eqn:11.2.1} not only converges in the Hilbert space of square integrable functions on the quotient $[G]$, but also in the space of rapidly decreasing functions on the quotient $[G]$.
+Moreover, since $f_v$ is $K_v$-finite for all $v$ infinite, the series~\eqref{eqn:11.2.2} has only a finite number of nonzero terms for given $f$.
+Denote by $H(S)$ the Hecke algebra of the group $G^S$ relative to the subgroup $K^S$. 
+Write $f = f_S f^S$, where $f_S$ (resp. $f^S$) is the product of $f_v$ for $v$ in $S$ (resp.\ not in $S$).
+Let $\Lambda_\pi$ be the character of $H(S)$ attached to a representation $\pi$.
+Then we have
+\begin{equation}
+    \iint K_c(a, b) \eta(\det b) dadb = \sum_{\pi} a(\pi, f_S) \Lambda_\pi(f^S),
+\end{equation}
+where $a(\pi, f_S)$ is
+\begin{equation}
+    a(\pi, f_S) = \sum_j \int \rho(f_S) \phi_j(a) da \int \overline{\phi_j}(b) \eta(\det b) db.
+\end{equation}
+
+
+\subsection{}
+Consider $(G', T') \in X(S)$.
+We have a similar decomposition
+\begin{align}
+    K_c' &= \sum_{\pi'} K_{\pi'}, \label{eqn:11.3.1} \\
+    K_{\pi'}(x, y) &= \sum_j \rho(f') \phi_j'(x) \overline{\phi_j'}(y), \label{eqn:11.3.2}
+\end{align}
+where $\{\phi_j'\}$ is an orthonormal basis of the subspace of $K'^S$-invariant vectors in the space of $\pi'$.
+The series~\eqref{eqn:11.3.1} also converges in the space of rapidly decreasing functions and the series~\eqref{eqn:11.3.2} has only finitely many nonzero terms.
+By integrating term by term, we get
+\begin{equation}
+    \iint K_\pi'(s, t)dsdt = a(\pi', f_S') \Lambda_\pi'(f'^S)
+\end{equation}
+where $a(\pi', f_S')$ is given by
+\begin{equation}
+    a(\pi', f_S') = \sum_j \int \rho(f) \phi_j'(s) ds \int \overline{\phi_j'}(t) dt.
+\end{equation}
+Then the whole integral of $K_c'$ becomes
+\begin{equation*}
+    \iint K_c'(s, t) dsdt = \sum_{\pi'}a(\pi', f_S') \Lambda_{\pi'}(f'^S).
+\end{equation*}
+
+
+
+\subsection{}
+Now let's use our fundamental lemma.
+Note that if $\pi'$ is a cuspidal representation of $G'$ and $\pi$ the corresponding cuspidal representation of $G$, then $\Lambda_\pi(f_S) = \Lambda_{\pi'}( f_{S}')$.
+Since $\pi'$ determines $\pi$ we can write $a(\pi, f_S')$ for $a(\pi', f_S')$.
+On the other hand, for a representation $\pi$ of the group $G$, it will be convenient to set $a(\pi, f_S')=0$ if there is no representation $\pi'$ of $G'$ corresponding to $\pi$.
+Then our fundamental lemma is written as
+\begin{equation}
+    \label{eqn:11.4.1}
+    \sum_{\pi} a(\pi, f_S)\Lambda_{\pi}(f^S) = \sum_{\pi} \sum_{(G', T')} a(\pi, f_S') \Lambda_{\pi}(f^S)
+\end{equation}
+Here $f^S$ is an arbitrary element of $H(S)$.
+Let $v$ be a place in $S$.
+Then the function $f_v$ is an arbitrary $K_v$-finite function.
+The function $f_v'$ matches with $f_v$ by the conditions (10.1.1) and (10.1.2).
+If $v$ splits then $f_v'$ is in fact can be chosen as an arbitrary $K_v'$-finite function.
+If $v$ does not split, then $f_v'$ is no longer arbitrary but satisfies a density condition: if a function $h$ is bi-$T_v$-invariant on $G_v/Z_v$ and orthogonal to all $f_v'$ then $h$ is zero (Proposition 4.2).
+Suppose that $\pi$ satisfies Waldspurger's first condition; then there exist $K$-finite vectors $\phi_1$ and $\phi_2$ in the space of $\pi$ such that:
+\begin{equation*}
+    \int \phi_1(a)da \neq 0 \quad \text{and}\quad \int \phi_2(b) \eta(\det b) db \neq 0,
+\end{equation*}
+and we can assume $\phi_1$ and $\phi_2$ to be $K^S$-invariant.
+Choose a basis $\{\widetilde{\phi_j}\}$ such that $\widetilde{\phi_1} = \phi_2 / \|\phi_2\|$.
+There exists $f_S$ such that $\rho(f_S)\widetilde{\phi_1} = \phi_1$ and $\rho(f_S) \widetilde{\phi_j} = 0$ if $j\neq 1$.
+Then we have
+\begin{equation*}
+    a(\pi, f_S) = \int \phi_1(a) da  \overline{\int \widetilde{\phi_1}(b) \eta(\det b)db}\neq 0.
+\end{equation*}
+
+According to the principle of \emph{infinite} linear independence of the characters of $H(S)$~\cite{langlands1980base}, 
+there exists a pair $(G', T')$ such that $a(\pi, f_S')$ is nonzero.
+It clearly follows that there exists $\phi'$ in the space of $\pi'$ such that $\int \phi'(t') dt'$ is nonzero.
+Thus $\pi$ satisfies the second condition of Waldspurger.
+
+Now assume that there exists a pair $(G', T')$, a representation $\pi'$ and a $K'$-finite vector $\phi'$ in the space of $\pi'$ such that the integral $\int \phi'(t')dt'$ is nonzero; we can assume that $(G', T')$ is in $X(S)$ and $\phi'$ is invariant under $K'^S$.
+We will see that we can choose $f_S'$ so that $a(\pi', f_S')$ is nonzero.
+The integral over $T'$ defines a continuous linear functional on the space of smooth vectors of $\pi'$ fixed by $K'^S$.
+Let's write it as the dot product with a \emph{generalized} vector $e_{T'}$:
+\begin{equation*}
+    \int \phi'(t') dt' = (\phi', e_{T'}).
+\end{equation*}
+If $h$ is a compactly supported smooth function on $G_S / Z_S$, then $\pi'(h)(e_{T'})$ is defined: it is a smooth vector satisfies $(\phi, \pi'(h)e_{T'}) = (\pi'(h^*)\phi, e_{T'})$ for any vector $\phi$, smooth or not.
+With this notation we have
+\begin{equation*}
+    a(\pi, f_S') = (\pi'(f_S')e_{T'}, e_{T'}).
+\end{equation*}
+The subspace of $K'^S$-invariant vectors of $\pi'$ is isomorphic to the tensor product of the spaces of $\pi_v'$ with $v$ in $S$.
+For each $v$ in $S$, there exists a continuous linear functional on the space of smooth vectors of $\pi'$ nonzero at $e_v'$ which is invariant under $T_v'$.
+This functional is unique up to scalar (cf. (6.1) and (6.2)), and we can therefore write:
+\begin{equation*}
+    a(\pi', f_S') = (\pi'(f_S')e_{T'}, e_{T'}) = C \prod_{v\in S} (\pi_v'(f_v')e_v', e_v'),
+\end{equation*}
+where $C$ is a nonzero constant.
+We want to show that we can choose $f_v'$ so that $(\pi_v(f_v')e_v', e_v')$ is nonzero.
+It is obvious when $v$ splits since $f_v'$ is then arbitrary $K_v'$-finite.
+If $v$ splits $e_v'$ is in fact an ordinary vector since $T_v'$ is compact.
+Then $(\pi_v(f_v')e_v', e_v')$ is the scalar product of the function $f_v'$ with the continuous matrix coefficient $(\pi'(g)e_v', e_v')$; therefore it cannot be zero for any $f_v'$ according to the density property of $f_v'$.
+On the other hand if $(G'', T'')$ is another element of $X(S)$, then $a(\pi, f_S'')=0$; otherwise there would exist at least one place $v$ in $S$ where the groups $G_v'$ and $G_v''$ are not isomorphic and the representations $\pi_v'$ and $\pi_v''$ admit nonzero vectors that are invariant under $T_v'$ and $T_v''$ respectively.
+But this is impossible (Proposition (6.3)).
+The coefficient of $\Lambda_\pi$ in the RHS of~\eqref{eqn:11.4.1} is therefore nonzero, for a suitable choice of $f_S'$ (i.e. $f_S$).
+This results that $a(\pi, f_S)$ is not zero.
+This obviously implies that $\pi$ satisfies Waldspurger's first condition.
+Therefore this completes the proof of the equivalence of the two Waldspurger conditions.

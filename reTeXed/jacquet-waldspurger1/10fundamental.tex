@@ -1,0 +1,226 @@
+\section{Fundamental lemma}
+
+
+\subsection{}
+In this section, we again assume that $F$ is a number field, $E$ is a quadratic extension of $G$,
+and $\eta$ is a quadratic character attached to $E$.
+We consider the pair $(G, T)$ of a group $\GL(2)$ and a subgroup $T$ of diagonal matrices;
+fix an element $\varepsilon$ in the normalizer of $T$ which is not in $T$.
+We denote by $K_v$ the usual maximal compact subgroup of $G_v$ and we assume $\varepsilon$ contained in $K_v$ for all $v$.
+We define a finite set $S$ of places of $F$, containing the infinite places, the places which ramify in $E$, the places where $\psi$ has no order 0 and the places of residual characteristic 2.
+It will be convenient to assume that $S$ has an even number of elements.
+Let $X(S)$ be the set of pairs $(G', T')$ in $X(E:F)$ such that $G'$ splits outside $S$.
+For each $(G', T')$ in $X(S)$ and each place $v$, we choose a maximal compact subgroup $K_v'$ of $G_v'$ so that $G'(\Aa_F)$ is the restricted product of $G_v'$ with respect to $K_v'$.
+We assume that if $v$ does not split in $E$ then $T_v'$ is contained in $K_v' Z_v'$.
+For all $v$ not in $S$ the measures of $T_v' \cap K_v' / K_v' \cap Z_v'$ and $T_v \cap K_v / K_v \cap Z_v$ are 1.
+We fix an element in the normalizer of $T'$ which is not in $T'$, and assume that  $\varepsilon'$ is in $K_v'$ for all $v$ not in $S$.
+Let $f$ be a compactly supported smooth function on $G(\Aa_F)/Z(\Aa_F)$ and, for each $(G', T')$ in $X(S)$, $f'$ be a compactly supported smooth function on $G'(\Aa_F) / Z'(\Aa_F)$.
+Of course, these functions are assumed to be products of local functions.
+We also make the following assumptions:
+\begin{enumerate}
+    \item Let $v\in S$ be a place that does not split in $E$.
+    Then $f_v'$ is $T_v'$-bi-invariant.
+    Moreover if $x$ is an element of $F_v$ that is not 1 or zero, $(G', T') \in X(S)$ and $g' \in G_v'$ with $x = P'(g': T_v')$ then
+    \begin{equation*}
+        H(x:f_v:\eta_v) = H(g':f_v':T_v').
+    \end{equation*}
+    \item Let $v \in S$ be a place that splits in $E$.
+    Then $f_v$ is $K_v$-finite and $f_v'$ is $K_v'$-finite.
+    Let $g$ be a $A_v$-regular element in $G_v$.
+    If $(G', T') \in X(S)$ and $g' \in G_v$ satisfy
+    \begin{equation*}
+        P(g:T_v) = P(g':T_v')
+    \end{equation*}
+    then
+    \begin{enumerate}
+        \item \begin{equation*}
+            H(g:f_v:T_v) = H(g':f_v':T_v')
+        \end{equation*}
+        \item \begin{equation*}
+            \int_{T_v} f_v(a_v) da_v = \int_{T_v'} f_v'(t_v') dt_v'
+        \end{equation*}
+        \item \begin{equation*}
+            \int_{T_v} f_v(\varepsilon a_v) da_v = \int_{T_v'} f_v'(\varepsilon't_v') dt_v'.
+        \end{equation*}
+    \end{enumerate}
+    \item If $v$ is not in $S$ then $f_v$ is $K_v$-bi-invariant, $f_v'$ is $K_v'$-bi-invariant and the isomorphism between $(G_v, K_v)$ and $(G_v', K_v')$ induces a map from $f_v$ to $f_v'$.
+    \item \emph{Remark}. In the situation of assumption (2) there is an isomorphism between $(G_v, T_v)$ and $(G_v', T_v')$.
+    Condition (2) is satisfied if we take for $f_v'$ the image of $f_v$ under the isomorphism.
+    Indeed this is clear for (2.a) and (2.b).
+    For (2.c), the integral of the right hand side does not change if we replace $\varepsilon'$ by the image of $\varepsilon$ under the isomorphism in question and then our assertion is obvious.
+\end{enumerate}
+
+For given function $f$, we have a cuspidal kernel $K_c$ for the group $G$ associated to it.
+Similarly, for each $(G', T')$, theres a cuspidal kernel $K_c'$ for the group $G'$ attached to the function $g'$.
+In this section we will prove the following result:
+\begin{theorem}
+With the previous assumptions, we have
+\begin{equation}
+    \iint K_c(a, b) \eta(\det b) dadb = \sum_{(G', T') \in X(S)} \iint K_{c}'(s, t)dsdt.
+\end{equation}
+\end{theorem}
+
+
+\subsection{}
+To prove the identity, as in the section 7 and 9, we write
+\begin{align}
+    K_c &= K_r + K_s - K_{\mathrm{sp}} - K_{\mathrm{ei}}, \\
+    K_c' &= K_r' + K_s' - K_{\mathrm{sp}}' - K_{\mathrm{ei}}'.
+\end{align}
+We will first prove the following identities:
+\begin{align}
+    \iint K_r(a, b) \eta(\det b) dadb &= \sum_{(G', T') \in X(S)} \iint K_{r}'(s, t) dsdt, \label{eqn:10.2.3} \\
+    \iint K_s(a, b) \eta(\det b) dadb &= \sum_{(G', T') \in X(S)} \iint K_{s}'(s, t) dsdt. \label{eqn:10.2.4}
+\end{align}
+We first assume these identities and will show how the theorem follows from.
+Consider the difference
+\begin{equation}
+\label{eqn:10.2.5}
+    \iint K_c(a, b)\eta(\det b)dadb - \sum_{(G', T') \in X(S)} \iint K_c'(s, t)dsdt.
+\end{equation}
+Considering~\eqref{eqn:10.2.3} and~\eqref{eqn:10.2.4}, we write 
+\begin{align*}
+    -\iint K_{\mathrm{sp}}(a, b) \eta(\det b) dadb + \sum_{(G', T') \in X(S)} \iint K_{\mathrm{sp}}'(s, t)dsdt \\
+    -\iint K_{\mathrm{ei}}(a, b) \eta(\det b) dadb + \sum_{(G', T') \in X(S)} \iint K_{\mathrm{ei}}'(s, t)dsdt.
+\end{align*}
+Recall that these are weak integrals for the group $G$.
+
+Now choose a place $z$ of $E$ which is not in $S$ and splits in $E$.
+Fix local factors of $f$ and $f'$ at the other places.
+At the place $z$ the Satake transforms of $f_z$ and $f_z'$ are the same.
+Hence we can regard our integrals as functions of $\hat{f_z}$.
+Then by (8.1), (9.3) and (9.4) the above sum has the form of
+\begin{equation}
+    \int_{-\infty}^{\infty} \phi(t) \hat{f_z}(q_{z}^{-2it})dt + c \hat{f_z}(q_z^{-1}),
+\end{equation}
+where $\phi$ is integrable.
+We finish the proof as in~\cite{langlands1980base} by using the fact that the integrals of $K_c$ and $K_c'$ also have the form
+\begin{equation}
+    \sum_{t} a_{t} \hat{f_z}(t),
+\end{equation}
+where the complex numbers $t$ are either on the unit circle or on the real axis between $q_z^{-1}$ and $q_z$ and the series $\sum_t a_t$ absolutely converges.
+The uniqueness of the decomposition of a measure into an atomic measure and a continuous measure implies that the difference~\eqref{eqn:10.2.5} is zero.
+
+
+\subsection{}
+Let's prove~\eqref{eqn:10.2.3}.
+LHS can be written as
+\begin{equation*}
+    \sum_{\zeta} H(\zeta:f:\eta), \quad \zeta \neq 0, 1,
+\end{equation*}
+where RHS can be written as a double sum
+\begin{equation*}
+    \sum_{(G', T')}\sum_{\zeta}H'(\zeta:f':T')
+\end{equation*}
+the inner sum is over all $1 \neq \zeta \in cN$, determined by the pair $(G', T')$.
+We can combine the two sums and write RHS as a sum
+\begin{equation*}
+    \sum_{\zeta} H(\zeta:f':T'), \quad \zeta \in N(S) - \{1\},
+\end{equation*}
+where $N(S)$ is the union of the classes $cN$ corresponds to  the elements of $X(S)$.
+According to the class field theory the elements of $F^\times - N(S)$ are exactly the $\zeta$ in $F^\times$ which satisfy the following condition: there exists a place $v$ of $F$, which is not in $S$, \textcolor{red}{inert} in $E$ and not a norm of the quadratic extension $E_v$ of $F_v$.
+By Proposition (5.1) we have, for such a $\zeta$, $H(\zeta:f_v:\eta_v)=0$ if $v$ is the place in question.
+This results in $H(\zeta:f:\eta)=0$.
+Therefore it is sufficient to show the equality of the orbital integrals $H(\zeta:f:\eta)$ and $H(\zeta:f':T')$ when $\zeta$ is in $N(S)$.
+Decompose these integrals into products of local integrals $H(\zeta:f_v:\eta_v)$ and $H(\zeta:f_v':T_v')$ respectively.
+For $v$ in $S$ the equality of these integrals results from hypotheses (1) and (2).
+For $v$ not in $S$ the equality follows from hypothesis (3) and proposition (5.1).
+This proves the equality of the global orbital integrals, and the formula (3).
+
+
+\subsection{}
+Let's prove~\eqref{eqn:10.2.4}.
+We can use (7.3.7) to compute LHS and (9.3.1) to compute RHS.
+The equality~\eqref{eqn:10.2.4} will then be a consequence of the following two identities
+\begin{align}
+    H(n_+: f: \eta) + H(n_-:f:\eta) &= \sum_{(G',T') \in X(S)} \mathrm{vol}([T']) \int_{[T']} f'(t')dt', \label{eqn:10.4.1}\\
+    H(\varepsilon n_+: f:\eta) + H(\varepsilon n_-:f:\eta) &= \sum_{(G',T')\in X(S)} \mathrm{vol}([T']) \int_{[T']} f'(\varepsilon't')dt'.
+\end{align}
+
+The second identity results from the first identity applied to the function $f_1$ defined by $f_1'(g) = f'(\varepsilon' g)$.
+It is indeed easy to verify that the conditions (10.1.1) to (10.1.3) are satisfied by $f_1$ and $f_1'$.
+Therefore let's prove the first identity.
+
+Let's compute~\eqref{eqn:10.4.1}.
+Let $a$ and $b$ be id\'eles of $E$ and $F$.
+The analytic continuation of the Tate integral is 
+\begin{equation}\label{eqn:10.4.3}
+    \int \phi(t) |t|^{s} \eta(t) dt
+\end{equation}
+where $\phi$ is a Schwartz-Bruhat function, whose value at $s=0$ is
+\begin{equation*}
+    L(0, \eta) \prod_{v\in W} \int_{T_v} \phi_v(t_v) \eta(t_v) dt_v L(0, \eta_v)^{-1} \prod_{v\in V} \phi_v(0) |a_v|^{1/2},
+\end{equation*}
+where $W$ is a set of places of $F$ that do not split in $E$ and $V$ is a set of places split in $E$.
+
+Apply this formula to the functions $\phi_{+}$ and $\phi_{-}$ defined as
+\begin{align*}
+    \phi_{+}(x) &= \int_{T(\Aa_F) / Z(\Aa_F)} f\left(a \bmat{1}{x}{0}{1}\right) da, \\
+    \phi_{-}(x) &= \int_{T(\Aa_F) / Z(\Aa_F)} f\left(a \bmat{1}{0}{x}{1}\right) da.
+\end{align*}
+
+The local components of $\phi_{+}$ and $\phi_{-}$ are defined analogously in terms of the local decomponents of $f$.
+Then the right hand side of~\eqref{eqn:10.4.1} is nothing but the sum of the values of the Tate integrals~\eqref{eqn:10.4.3} of $\phi_{+}$ and $\phi_{-}$ at the point $s=0$.
+Moreover we obviously have for each $v$ in $V$:
+\begin{equation*}
+    \phi_{+v}(0) = \phi_{-v}(0) = \int_{T_v/Z_v} f_v(a_v) da_v.
+\end{equation*}
+On the other hand, for each $v$ in $W$ the values at point 0 of the Tate integrals of $\phi_{+v}$ and $\phi_{-v}$ are nothing but the singular orbital integrals 
+of the points $n_+$ and $n_-$.
+To simplify the notations, define
+\begin{align*}
+    M_v &= \int_{T_v/Z_v} f_v(a_v) da_v, \quad v\in V, \\
+    M_{v\pm} &= 2 H(n_{\pm}:f_v:\eta_v), \quad v\in W.
+\end{align*}
+Then the LHS of~\eqref{eqn:10.4.1} can be written as
+\begin{equation}\label{eqn:10.4.4}
+    L(0, \eta) \prod_{v\in W} \frac{1}{2L(0, \eta_v)} \prod_{v \in V}|a_v|^{1/2} \times \prod_{v\in V}M_v  \left(\prod_{v\in W}M_{v+} + \prod_{v\in W}M_{v-}\right).
+\end{equation}
+Note that all but finitely many factors of each product are equal to 1.
+
+Let's move on to RHS of~\eqref{eqn:10.4.1}.
+The integral is obviously the product of similar local integrals:
+\begin{equation*}
+    \int_{T'(\Aa_F) / Z'(\Aa_F)} f'(t')dt' = \prod_{v} \int_{T_v' / Z_v'} f'_v(t_v') dt_v'.
+\end{equation*}
+If $v\in V$, the local integral is $M_v$ by the assumption (2.b).
+If $v\in W$ the integral equals to
+\begin{equation*}
+    \frac{1}{2\mathrm{vol}(T_v'/Z_v')} (M_{v-} + \eta_v(c) M_{v+})
+\end{equation*}
+by Proposition (4.1) and Proposition (5.1).
+The volume that appears in this formula is $|b_w|^{1/2}|a_v|^{-1/2}$, where $w$ is the only place of $E$ above $v$.
+Hence RHS of~\eqref{eqn:10.4.1} is equal to the product
+\begin{equation}
+    2L(1,\eta) \sum_{c \in N(S)/N}\prod_{v\in W}\frac{1}{2L(0, \eta_v)} \prod_{v\in W} \bigg|\frac{a_v}{b_w}\bigg|^{1/2} \prod_{v\in V} M_v \prod_{v\in W} \frac{1}{2} (M_{v-} + \eta_v(c)M_{v-}).
+\end{equation}
+Comparing with~\eqref{eqn:10.4.4}, we can find that it suffices to prove the following identities:
+\begin{align}
+    L(0, \eta) \prod_{v\in V}|a_v|^{1/2} &= L(1, \eta) \prod_{v\in W} \bigg|\frac{a_v}{b_w}\bigg|^{1/2}, \label{eqn:10.4.6}\\
+    \prod_{v\in W}M_{v+} + \prod_{v\in W} M_{v-} &= 2 \sum_{c \in N(S) / N} \prod_{v\in W} \frac{1}{2}(M_{v-} + \eta_v(c) M_{v+}). \label{eqn:10.4.7}
+\end{align} 
+
+The equality~\eqref{eqn:10.4.6} immediately follows from the functional equations of the terms $L(s, 1_E)$ and $L(s, 1_F)$ and their relation to $L(s, \eta)$.
+
+
+Let's move on to~\eqref{eqn:10.4.7}.
+For $v \in W-S$ we have $\eta_v(c)=1$ by the definition of $N(S)$ and $M_{v+} = M_{v-}$ (Proposition (5.1)); moreover for almost all $v \in W-V$, $M_{v+} = M_{v-} = 1$.
+For $U = W \cap S$, we see that the identity~\eqref{eqn:10.4.7} reduces to
+\begin{equation*}
+    \prod_{v\in U} M_{v+} + \prod_{v\in U}M_{v-} = 2 \sum_{c\in N(S)/N} \prod_{v\in U} \frac{1}{2} (M_{v-} + \eta_v(c)M_{v+}).
+\end{equation*}
+Let $H = \{1, -1\}^{U}$.
+For a place $v \in U$ define a character $\chi_v$ of $H$ by the formula $\chi_v(h) = h_v$.
+Let $H'$ be a subgroup of $H$ defined by the equation $\prod_{v\in U}\chi_v(h) = 1$.
+Then the map $c \mapsto (\eta_v(c))$ defines a bijection between $N(S)/N$ and $H'$.
+Then the formula that we want to prove can be written as
+\begin{equation*}
+    \prod_{v\in U} M_{v+} + \prod_{v\in U} M_{v-} = 2 \sum_{h\in H} \prod_{v\in U} \frac{1}{2}(M_{v-} + \chi_v(h)M_{v+}).
+\end{equation*}
+Since $|H| = 2|H'|$, RHS can be written as
+\begin{equation*}
+    \frac{1}{|H'|} \sum_{Y} \sum_{h\in H'} \prod_{v\in Y} \chi_v(h) \prod_{v \in Y} M_{v+} \prod_{v\in U-Y} M_{v-},
+\end{equation*}
+where the outer sum is over the subset $Y$ of $U$.
+The character $\prod_{v\in Y} \chi_v$ is nontrivial on $H'$, unless $Y$ is empty or equal to $U$.
+Therefore only the terms corresponding to the empty set and $U$ contributes to the sum; this gives us our equality.

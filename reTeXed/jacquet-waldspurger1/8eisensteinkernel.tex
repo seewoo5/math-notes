@@ -1,0 +1,440 @@
+\section{Eisenstein kernel}
+
+\subsection{}
+We continue with the same notations in section 7.
+We will see that the integral
+\begin{align}
+\label{eqn:8.1.1}
+    \int_{[T]}\int_{[T]} K_{\mathrm{ei}}(a, b) \eta(\det b) dadb
+\end{align}
+weakly converges.
+For the value of the integral, that is a classic application of the trace formula, we will only need a fairly small result.
+Choose a place $u$ not in $S$ that splits in $E$.
+Fix the components of $f$ at the other places and view the integral~\eqref{eqn:8.1.1} as a function of $f_u$.
+Denote $\hat{f_u}$ for the Satake transform of $f_u$.
+We prove the following result:
+\begin{proposition}\label{prop:8.1}
+There exists an integrable function $\phi$ on $\mathbb{R}$ and a constant $c$ such that
+\begin{align}
+    \int_{[T]} \int_{[T]} K_{\mathrm{ei}}(a, b) \eta(\det b) dadb = \int_{-\infty}^{\infty} \phi(t) \hat{f_u}(q_{u}^{-it}) dt + c \hat{f_u}(q^{-1}).
+\end{align}
+\end{proposition}
+
+
+\subsection{}
+We need standard results on the Mellin transform of an Eisenstein series.
+We fix a subgroup $C$ of $\Aa_F^\times$ isomorphic to the group of real numbers $>0$ such that $\Aa_F^\times$ is the product of $C$ and $\Aa_F^{1}$,
+the group of id\'eles of norm 1.
+The group $C$ is equipped with the pullback measure of the measure $t^{-1} dt$ by the map $c \to |c|$ and $\Aa_F^1$ admits the quotient measure.
+We assume that all characters on the id\'ele class group are trivial on $C$.
+Let $\chi$ be such a character and $V(\chi)$ the space of functions $\phi$ on $K$ (the product of $K_v$) such that
+\begin{align}
+    \phi\left(\bmat{a}{x}{0}{b}k\right) = \chi(ab^{-1})\phi(k)
+\end{align}
+if 
+\begin{align*}
+    \bmat{a}{x}{0}{b} \in K.
+\end{align*}
+Now consider a function $\phi$ on $K\times \mathbb{C}$ such that for each $u \in\mathbb{C}$ the function $\phi(\cdot, u)$ is in $V(\chi)$.
+The function is assumed to be holomorphic, or at least meromorphic with respect to $u$; for example it can be independent of $u$.
+We will extend $\phi$ into a function $\phi(g, u, \chi)$ on $G(\Aa_F)$ such that
+\begin{align}
+    \phi\left(\bmat{a}{x}{0}{b}g, u, \chi\right) = \chi(ab^{-1}) |ab^{-1}|^{u+ 1/2}\phi(g, u, \chi).
+\end{align}
+Then the Eisenstein series is the analytic continuation of the series
+\begin{align}
+    E(g, \phi, u, \chi) = \sum_{\gamma \in G(F) / T(F) N_+(F)} \phi(\gamma g, u, \chi).
+\end{align}
+The series converges absolutely if $\Re u > 1/2$.
+The constant term of $E$ along $N_{+}$, the group of strictly upper triangular matrices, is by definition the integral
+\begin{align}
+    E_{N_{+}}(g, \phi, u, \chi) = \int_{N_+(\Aa_F) / N_+(F)} E(ng, \phi, u, \chi) dn.
+\end{align}
+It has a form of 
+\begin{align}
+    E_{N_{+}}(g, \phi, u, \chi) = \phi(g, u, \chi) + M(u, \chi)\phi(g, -u, \chi^{-1})
+\end{align}
+where $M(u, \chi)$ is the intertwining operator from $V(\chi)$ to $V(\chi^{-1})$.
+We also need another Fourier coefficient of $E$, namely
+\begin{align}
+    W(g, \phi, u, \chi) = \int_{\Aa_F /F} E\left(\bmat{1}{x}{0}{1}g, \phi, u, \chi\right)\psi(-x)dx,
+\end{align}
+where $\psi$ is a fixed character on the group $\Aa_F/F$.
+Then the Fourier series of $E$ is written as
+\begin{align}
+    E(g, \phi, u, \chi) = \phi(g, u, \chi) + M(u, \chi) \phi(g, -u, \chi^{-1}) + \sum_{\alpha\in T(F)/Z(F)} W(\alpha g, \phi, u, \chi).
+\end{align}
+We can also consider a Fourier series for the group $N_{-}$ of strictly lower triangular matrices.
+Since
+\begin{align}
+    N_- = wN_{+}w^{-1}, \quad w = \bmat{0}{-1}{1}{0},
+\end{align}
+the Fourier series is written as
+\begin{align}
+    E(g, \phi, u, \chi) = \phi(wg, u, \chi) + M(u, \chi) \phi(wg, -u, \chi^{-1}) + \sum_{\alpha\in A(F)/Z(F)} W(\alpha w g, \phi, u, \chi).
+\end{align}
+The Mellin transform $L(s, \lambda:\phi:u, \chi)$ of $E$ is defined by the following integral (or its analytic continuation)
+\begin{align}
+    L(s, \lambda:\phi:u, \chi) = \int_{\Aa_F^\times /F^\times} \left( E\left(\bmat{a}{0}{0}{1}\right) - E_{N_{+}}\left(\bmat{a}{0}{0}{1}\right)\right) |a|^{s-1/2} \lambda(a) da.
+\end{align}
+Let's ignore the variables of $E$ for simplification.
+By replacing $E$ with its Fourier series, we immediately obtain the following in the Mellin transform
+\begin{align}
+    \int_{\Aa_F^\times /F^\times} W\left(\bmat{a}{0}{0}{1}\right) |a|^{s-1/2} \lambda(a) da.
+\end{align}
+We can also write the Mellin transform of $E$ as follows:
+\begin{align}
+\label{eqn:8.2.12}
+    L(s, \dots) =\int_{1}^{\infty} (E-E_{N_{+}}) + \int_{0}^{1} (E-E_{N_{-}}) + \int_{1}^{\infty} E_{N_+} + \int_{0}^{1} E_{N_{-}}
+\end{align}
+In each of these integrals, the function is evaluated at the point $\mathrm{diag}(a, 1)$ and integrated against $|a|^{s-1/2}\lambda(a)$ on a subset of the id\'ele class group.
+For the first integral, for example, we integrate over the subset of $a$ with $1<|a|$.
+Using the Fourier series of $E$ we easily obtain another expression for the Mellin transform:
+\begin{equation}
+\begin{aligned}
+    &\int_{1}^{\alpha} W\left(\bmat{a}{0}{0}{1}\right)|a|^{s-1/2} \lambda(a) da \\
+    &+ \int_{1}^{a} W\left(\bmat{a}{0}{0}{1}w\right)|a|^{s-1/2} \lambda(a) da  \\
+    &+ \int_{1}^{\alpha} (|a|^{s+u}(\lambda \chi)(a)\phi(e) + |a|^{s-u}(\lambda\chi^{-1})(a)M(u, \chi)\phi(e)) da  \\
+    &+ \int_{0}^{1} (|a|^{s-u-1} (\lambda \chi^{-1})(a) \phi(w) + |a|^{s+u-1}(\lambda\chi)(a) M(u, \chi)\phi(w)) da. 
+\end{aligned}
+\end{equation}
+The first two integrals converge for all $s$ and the last two for $\Re s > 1/2$.
+The last two integrals can be easily computed.
+In particular, for $s = 1/2$ and $u \in i\mathbb{R}$, 
+we obtain the following expression for the Melline transform of $E$ at the point $s = 1/2$:
+\begin{equation}
+\begin{aligned}
+\label{eqn:8.2.14}
+    L(1/2, \lambda: \phi:u, \chi) &= \int_{1}^{\infty} W\left(\bmat{a}{0}{0}{1}\right) \lambda(a) da \\
+    &+ \int_{1}^{\infty} W\left(\bmat{a}{0}{0}{1}w\right) \lambda(a) da \\
+    &- \frac{1}{u + 1/2} (\phi(w)\delta(\lambda\chi^{-1}) + \phi(e) \delta(\lambda \chi)) \\
+    &+ \frac{1}{u - 1/2} (M(u, \chi)\phi(w) \delta(\lambda\chi) + M(u, \chi)\phi(e) \delta(\lambda\chi^{-1})),
+\end{aligned}
+\end{equation}
+where 
+\begin{align*}
+    \delta(\chi) = \int_{\Aa_F^{1} / F^\times} \chi(a) da
+\end{align*}
+for a character $\chi$ on the id\'ele class group.
+We have to compute the difference between the Mellin transform and the following integral
+\begin{align}
+\label{eqn:8.2.15}
+    \int_{c^{-1}}^{c} E\left(\bmat{a}{0}{0}{1}\right) \lambda(a) da.
+\end{align}
+Recall that this notation means that the integral is taken over the compact subset of id\'ele classes a such that $c^{-1} < |a|< c$.
+Instead of~\eqref{eqn:8.2.12} we have for the integral~\eqref{eqn:8.2.15} the expression:
+\begin{align}
+    \int_{1}^{c} (E - E_{N_+}) + \int_{c^{-1}}^{1} (E - E_{N_-}) + \int_{1}^{c} E_{N_+} + \int_{c^{-1}}^{1} E_{N_-}.
+\end{align}
+Replacing $E$ again by its Fourier series we obtain for~\eqref{eqn:8.2.15} the expression:
+\begin{equation}
+\begin{aligned}
+    &\int_{1}^{c} W\left(\bmat{a}{0}{0}{1}\right)\lambda(a) da \\
+    &+ \int_{1}^{c} W\left(\bmat{a}{0}{0}{1}w\right)\lambda(a)da \\
+    &+ \int_{1}^{c} (|a|^{1/2 + u}(\lambda\chi)(a)\phi(e) + |a|^{1/2 - u}(\lambda \chi^{-1})(a) M(u, \chi)\phi(e)) da \\
+    &+ \int_{c^{-1}}^{1} (|a|^{-u-1/2}(\lambda\chi^{-1})(a) \phi(w) + |a|^{u-1/2} (\lambda\chi)(a) M(u, \chi) \phi(w)) da
+\end{aligned}
+\end{equation}
+Calculating the last two integrals and comparing to~\eqref{eqn:8.2.14} we finally get the expression we had in mind:
+\begin{equation}
+    \label{eqn:8.2.18}
+    \begin{aligned}
+        &\int_{c^{-1}}^{c} E\left(\bmat{a}{0}{0}{1}\right) \lambda(a)da \\
+        &=L(1/2, \lambda :\phi: u, \chi) \\
+        &+ \frac{c^{u+1/2}}{u + 1/2} \delta(\chi\lambda) \phi(e) + \frac{c^{-u+1/2}}{-u+1/2} \delta(\chi^{-1}\lambda) M(u, \chi)\phi(e) \\
+        &+ \frac{c^{u+1/2}}{u  +1/2} \delta(\chi^{-1}\lambda) \phi(w) +\frac{c^{-u+1/2}}{-u+1/2} \delta(\chi\lambda) M(u, \chi)\phi(w) + R(c)
+    \end{aligned}
+\end{equation}
+where $R(c)$ is defined as
+\begin{align}
+    \label{eqn:8.2.19}
+    -R(c) = \int_{c}^{\infty} W\left(\bmat{a}{0}{0}{1}\right) \lambda(a) da + \int_{c}^{\infty} W\left(\bmat{a}{0}{0}{1}w\right) \lambda(a) da.
+\end{align}
+It is clear that $R(c)$ tends to zero as $c$ goes to infinity.
+
+\subsection{}
+We need precise estimates for $R(c)$.
+Recall that $R$ depends not only on $c$, but also on $u$, $\lambda$ and $\phi$.
+Our estimates will be a consequence of the following lemma:
+
+\begin{lemma}
+Assume that $\phi$ is independent of $u$.
+There exists a Schwartz-Bruhat function $\Phi$ such that, for $u \in i\mathbb{R}$, we have
+\begin{align*}
+    \Bigg|W\left(\bmat{a}{0}{0}{1}, \phi, u, \chi\right)\Bigg| \leq \Phi(a) |a|^{-1/2} |L(2u+1, \chi^{2S})|^{-1}
+\end{align*}
+\end{lemma}
+Here $L(s, \chi^{S})$ is defined as a product of local factors $L(s, \chi_v)$ for $v \not\in S$
+We also assume that $\phi$ is invariant under $K_v$ for $v\not\in S$.
+
+\begin{proof}
+There is a two-variable Schwartz-Bruhat function $\Phi$ such that
+\begin{align*}
+    \phi(g, u, \chi) = \int \Phi((0, t)g) \chi^2(t) |t|^{2u+1} dt \times \chi(\det g)|\det g|^{u + 1/2} \times L(2u+1, \chi^{2S})^{-1}.
+\end{align*}
+A formal computation (see~\cite{jacquet2006automorphic}, chapter 3 for details) gives
+\begin{align*}
+    W\left(\bmat{a}{0}{0}{1}, \dots \right) = L(2u+1, \chi^{2S}) \chi(a)|a|^{u+1/2} \int \hat{\Phi}(at, t^{-1}) \chi^{2}(t)|t|^{2u+1} dt,
+\end{align*}
+where $\hat{\Phi}$ is a Fourier transform with respect to the second variable.
+Hence it is suffice to prove the following assertion: given a Schwartz-Bruhat function $\Phi\geq 0$ with two variables,
+there exists a Schwartz-Bruhat function with one variable $\phi\geq 0$ such that for id\'ele $a$ we have
+\begin{align*}
+    \int \Phi(at, t^{-1}) dt \leq \phi(a) |a|^{-1}.
+\end{align*}
+Consider the analogous local problem.
+To be precise, let us first consider the case where the local field $F$ is non-archimedean and the function $\Phi$ is the characteristic function of the integers.
+{\color{red}
+Then the integral is 0 except for the set defined by the inequalities $|a|\leq|t|\leq 1$.
+The integral is therefore 0 unless $a$ is integral.
+In this case the integral is $1+v(a)$.
+Since $q\geq a$ this is smaller than $q^{v(a)}$.
+}
+So our integral is at most $\phi(a)|a|^{-1}$, where $\phi$ is the characteristic function of the integers.
+Then the integral, considered as a function of $a$, has the form
+\begin{align*}
+    \int \Phi(at, t^{-1})dt = \phi_1(a) + \phi_2(a) \log |a|
+\end{align*}
+for some Schwartz-Bruhat functions $\phi_i$ (cf. (4.3)).
+It is clear that the right hand side is bounded by $\phi(a)|a|^{-1}$, where $\phi$ is a suitable Schwartz-Bruhat function.
+By multiplying these local inequalites we easily obtain the required global inequality.
+\end{proof}
+
+It is well known that the function $L(2u+1, \chi^{2S})^{-1}$ has polynomial growth on the line $\Re(u)=0$.
+On the other hand, if $\phi$ is a Schwartz-Bruhat function, there exists for all $N>0$ a constant $C(N)$ such that
+\begin{align*}
+    \int_{c}^{\infty} \phi(a)|a|^{-1}da \leq C(N) c^{-N}.
+\end{align*}
+By comparing with definition~\eqref{eqn:8.2.19} of $R$ we immediately obtain the following:
+
+\begin{lemma}
+For all $N$ there exist constants $C(N)$ and $M$ such that for all imaginary $u$ we have
+\begin{align*}
+    |R(c, u)| \leq C(N)|c|^{-N} |u|^{M}.
+\end{align*}
+\end{lemma}
+In the same way using the expression for the Mellin transform and the fact that the operator $M(u, \chi)$ is unitary on the imaginary axis we obtain the following estimate:
+
+\begin{lemma}\label{lem:8.3}
+On the imaginary axis $M(u, \chi)\phi(k)$ and $L(1/2, \lambda:\phi:u, \chi)$ have polynomial growth.
+\end{lemma}
+
+
+\subsection{}
+Let's study the integral of the kernel $K_{\mathrm{et}}$.
+Let's recall its definition.
+For any character $\chi$ choose an orthonormal basis $\phi_i$ of the Hilbert space $V(\chi)$;
+denote by $\rho(u, \chi)$ the representation of $G(\Aa_F)$ by right translations in the space of functions $\phi$ such that
+\begin{align}
+    \phi\left(\bmat{a}{x}{0}{b} g\right) = \chi(ab^{-1}) |ab^{-1}|^{u + 1/2} \phi(g).
+\end{align}
+We can identify the space of $\rho(u, \chi)$ with $V(\chi)$ and set:
+\begin{align}
+    F(u, \chi:i, j) = (\rho(u, \chi)\phi_i, \phi_j).
+\end{align}
+We will write $E_{\mathrm{ei}}(x, i, \dots)$ for $E_{\mathrm{ei}}(x, \phi_i, \dots)$.
+With these notations
+\begin{align}
+    \label{eqn:8.4.3}
+    K_{\mathrm{ei}}(x, y) = \sum_{\chi} K_{\chi}(x, y)
+\end{align}
+where, for each character of the id\'ele class group, 
+\begin{align}
+    \label{eqn:8.4.4}
+    K_{\chi}(x, y) = \frac{1}{2i\pi} \sum_{i, j} \int_{-i\infty}^{i\infty} F(u, \chi: i, j) E(x, j, u, \chi) \overline{E(y, i, u, \chi)} du.
+\end{align}
+For a given $f$ the sum~\eqref{eqn:8.4.3} and~\eqref{eqn:8.4.4} are finite.
+Define
+\begin{align}
+    I(c, \chi) = \int_{c^{-1}}^{c} \int_{c^{-1}}^{c} K_\chi(a, b) \eta(\det b) dadb.
+\end{align}
+We can obviously change the order of integrations for $u$ and the tuple $(a, b)$.
+Using~\eqref{eqn:8.2.12} we obtain the following expression on $I(c, \chi)$:
+\begin{equation}
+\label{eqn:8.4.6}
+\begin{aligned}
+    &\frac{1}{i\pi} \sum_{i, j} \int_{-i\infty}^{i\infty} F(u, \chi: i, j) \\
+    &\times \bigg( L(1/2, 1:j, u, \chi) + R(c, u) 
+    + \frac{c^{u+ 1/2}}{u + 1/2}\delta(\chi)\phi_j(e)
+    + \frac{c^{-u+1/2}}{-u+1/2}\delta(\chi^{-1})M(u, \chi)\phi_j(c) \\
+    &+ \frac{c^{u+1/2}}{u + 1/2} \delta(\chi^{-1}) \phi_j(w) + \frac{c^{-u+1/2}}{-u+1/2} \delta(\chi) M(u, \chi) \phi_j(w) \bigg) \\
+    &\times \bigg( \overline{L(1/2, \eta, i, u, \chi)} + R'(c, u) 
+    + \frac{c^{-u+1/2}}{-u+1/2} \delta(\eta \chi)\overline{\phi_i}(e) 
+    + \frac{c^{u+1/2}}{u + 1/2} \delta(\chi^{-1}\eta) M(u, \chi) \overline{\phi_i}(e) \\
+    &+ \frac{c^{-u+1/2}}{-u+1/2}\delta(\chi^{-1}\eta)\overline{\phi_i}(w) + \frac{c^{u+1/2}}{u+1/2} \delta(\chi\eta) M(u, \chi)\overline{\phi_i}(w)\bigg) du
+\end{aligned}
+\end{equation}
+
+For each $(i, j)$, the terms $R(c, u)$ and $R'(c, u)$ satisfy the conclutions of the Lemma~\ref{lem:8.3}.
+For each $f$,  $F(u, \chi: i, j)$ is zero for all but finitely many $(i, j)$. 
+In particular, $F(u, \chi: i, j)$ is zero unless $\phi_i$ and $\phi_j$ are both invariant under all $K_v$ with $v$ not in $S $.
+Moreover, on the imaginary axis, $F(u, \chi: i, j)$ rapidly decreases (faster than the inverse of a polynomial in $u$).
+On the other hand, according to (8.3), the terms $L(\dots)$ and the terms containing the powers of $c$ moderately grows (at most polynomial in $u$).
+It follows that when we expand expression~\eqref{eqn:8.4.6} we find a number of terms which tend to zero as $c$ tends to infinity, and we can ignore these terms.
+The remaining terms become an  integral independent of $c$:
+\begin{align}
+    \label{eqn:8.4.7}
+    \sum_{i, j}\int_{-i\infty}^{i\infty} F(u, \chi: i, j) L(1/2, 1:j:u, \chi) \overline{L(1/2, \eta, i, u, \chi)} du.
+\end{align}
+The other terms does not vanish only if $\chi=1$ or $\chi=\eta$.
+Each of these terms is of one of the following types:
+\begin{align}
+    &\int F(u,1:i, j)\overline{L(1/2, \eta:i:u, 1)} \frac{c^{1/2+u}}{1/2+u}(\phi_j(e) + \phi_j(w))du, \label{eqn:8.4.8} \\
+    &\int F(u, \eta:i, j) L(1/2, 1: j: u, \eta) \frac{c^{1/2-u}}{1/2-u} (\overline{\phi_i}(e) + \overline{\phi_i}(w)) du, \label{eqn:8.4.9} \\
+    &\int F(u, 1:i, j) \overline{L(1/2, \eta:i:u, 1)} \frac{c^{1/2-u}}{1/2-u} M(u, 1)(\phi_j(e) +\phi_j(w)) du, \label{eqn:8.4.10}\\
+    &\int F(u, \eta:i, j)L(1/2, 1:j:u, \eta) \frac{c^{1/2+u}}{1/2+u} M(u, \eta)(\overline{\phi_i}(e) +\overline{\phi_i}(w)) du. \label{eqn:8.4.11}
+\end{align}
+
+Integral~\eqref{eqn:8.4.7} obviously has the properties required by Proposition~\ref{prop:8.1}.
+To prove the proposition, it suffices to show that each of the expressions~\eqref{eqn:8.4.8} to~\eqref{eqn:8.4.11} converges when $c$ tends to infinity
+and that, moreover, the limit is zero if the Satake transform of the function $f_u$ is zero at $q^{-1}$.
+This last condition implies that the integral of $f_u$ over $G_u/Z_u$ is zero and  $F(u, 1:u, j)$ and $F(u, \eta:i, j)$ cancel out at points $u =1/2$ and $u=-1/2$.
+
+
+\subsection{}
+Let's study~\eqref{eqn:8.4.8}.
+We will move the contour of integration from line $\Re u = 0$ to line $\Re u = -1/2$; 
+but for the latter one, we will replace the segment joining the point $-1/2-i\varepsilon$ and the point $-1/2+i\varepsilon$ by the semi-circle centered at $-1/2$ and of radius $\varepsilon$
+which passes through the points $-1/2-\varepsilon i$, $\varepsilon-1/2$ and $-1/2+i\varepsilon$.
+Let's prove that such a transformation of cantour is valid.
+The factor
+\begin{align*}
+    F(u) = F(u, 1:i, j)(\phi_j(e) + \phi_j(w))
+\end{align*}
+and its derivatives, are holomorphic and rapidly decreasing on the vertical strip $-1/2\leq \Re u \leq 0$.
+The exponential function remains bounded.
+The factor $(1/2+u)^{-1}$ also remains bounded at infinity on this vertical strip.
+Now we study the Mellin transform.
+Recall that we have an integral representation of $\phi_i(g, u, 1)$:
+\begin{align*}
+    \phi_i(g, u, 1) = \int \Phi((0, t) g) |t|^{2u+1} dt \times |\det g|^{u+1/2} L(2u+1, 1^{S})^{-1}.
+\end{align*}
+A formal computation gives the following expression of the Mellin transform (denoted as $L(u)$ in short):
+\begin{align}
+    L(u) = L(2u+1, 1^{S})^{-1} \iint \hat{\Phi}(a, b) |a|^{1/2+u} \eta(a) |b|^{1/2-u} \eta(b) dadb,
+\end{align}
+where $\hat{\Phi}$ is the Fourier transform of $\Phi$ with respec to the second variable.
+By taking the complex conjugation of the second variable we obtain
+\begin{align}
+    \overline{L(-\bar{u})} = L(-2u+1, 1^{S})^{-1}T(u),
+\end{align}
+where
+\begin{align}
+    T(u) = \iint \Phi_1(a, b)|a|^{1/2-u} \eta(a) |b|^{1/2+u} \eta(b) dadb.
+\end{align}
+Here $\Phi_1$ is a Schwartz-Bruhat function; the \emph{Tate's double integral} $T(u)$, as well as all its derivatives, is bounded on the vertical strip $-1/2 \le \Re u \le 0$.
+At last, on the vertical strip we have $1\leq \Re(-2u+1) \leq 2$ and the function $L(-2u+1, 1^S)^{-1}$ is holomorphic and bounded by a polynomial in $\Im u$.
+We can write the integral as
+\begin{align*}
+    \int F(u)L(1-2u, 1^{S})^{-1} T(u) c^{1/2+u} (1/2+u)^{-1} du.
+\end{align*}
+Hence our transformation of the contour of the integration is valid.
+By replacing $u$ with $u-1/2$, we obtain the following expression for~\eqref{eqn:8.4.8}:
+
+\begin{align}
+    \label{eqn:8.5.4}
+    \int F(u-1/2) L(2-2u, 1^{S})^{-1} T(u-1/2) c^{u} u^{-1}du
+\end{align}
+In~\eqref{eqn:8.5.4} the contour of the integration is the line $\Re u = 0$,
+except that the segment joining the point $-i\varepsilon$ to the point $i\varepsilon$ is replaced by the semicircle centered at 0 which goes through the points $-i\varepsilon$, $\varepsilon$, $i\varepsilon$.
+Now let $\varepsilon \to 0$.
+Then the integral over the semicircle tends to
+\begin{align*}
+    i\pi F(-1/2) L(2, 1^{S})^{-1} T(-1/2)
+\end{align*}
+while the integral on the linnear part of the contour tends to the Cauchy's principal value.
+In terms of the real variable $t$ the integral~\eqref{eqn:8.5.4} is also equal to
+\begin{align}
+    \label{eqn:8.5.5}
+    \int_{-\infty}^{\infty} F(it-1/2)L(2-2it, 1^{S})^{-1} T(it-1/2)c^{it}t^{-1}dt + i\pi F(-1/2)L(2, 1^{S})^{-1} T(-1/2).
+\end{align}
+For real $r$ the function $L(-2it+2, 1^S)$ is given by an absolutely and uniformly convergent infinite product (or a Dirichlet series).
+Its derivatives are therefore bounded and its inverse is also bounded.
+The derivatives of the factor $L(-2it+2, 1^S)^{-1}$ are therefore bounded.
+In~\eqref{eqn:8.5.5} the product of the first three terms is therefore a Schwartz function of $t$.
+When $c$ tends to infinity the Cauchy integral tends to $i\pi$ times the value of the Schwartz function at point 0.
+In total we see that~\eqref{eqn:8.5.5}, i.e. the term~\eqref{eqn:8.4.8}, converges as $c \to \infty$, to
+\begin{align*}
+    2i \pi F(-1/2)L(2, 1^S)^{-1} T(-1/2),
+\end{align*}
+where the limit vanishes if and only if $F(-1/2, 1: i, j)$ does.
+This is what we had to prove.
+Similar argument holds for~\eqref{eqn:8.4.9}.
+
+
+\subsection{}
+Let's move on to~\eqref{eqn:8.4.10}.
+We'll simplify the notation as
+\begin{align*}
+    F(u) = F(u, 1:i, j).
+\end{align*}
+We are going to use a slightly different expression from the one we have used so far for the Mellin transform.
+
+Write $\phi$ for $\phi_j$ and suppose that $\phi$ is a product of local functions $\phi_v$.
+We can also assume that, for each place $v$, $\phi_v$ is either $K_v$ invariant, or has a vanishing integral over $K_v$.
+Let $S_0$ denote the set of places where this last condition is satisfied.
+Then $S_0$ is finite and contains $S$. 
+We can find an integral representation for $\phi(g, u, 1)$ of the form
+\begin{align}
+    \phi(g, u, 1) = \int \Phi((0, t)g) |t|^{2u+1} dt \times |\det g|^{u+1/2} L(2u+1, 1^{S_0})^{-1}
+\end{align}
+We can conclude that, as before, the Mellin transform in~\eqref{eqn:8.4.10} can be written as
+\begin{align}
+    \label{eqn:8.6.2}
+    L(-2u+1, 1^{S_0}) T(u)
+\end{align}
+where $T(u)$ is defined as a Tate's double integral, holomorphic in $u$.
+On the other hand we can write the intertwining operator $M(u, 1)$ as a product
+\begin{align}
+    \label{eqn:8.6.3}
+    M(u, 1) = L(2u, 1) L(2u+1, 1)^{-1}N(u, 1)
+\end{align}
+where $N$ is the normalized intertwining operator.
+Now the quotient of $L(2u, 1)$ by $L(-2u+1, 1)$ is an exponential function $ab^u$.
+It follows that the product of factors~\eqref{eqn:8.6.2} and~\eqref{eqn:8.6.3} reduces to
+\begin{align}
+    ab^u L(-2u + 1, 1_{S_0}) L(2u+1, 1_{S_0})^{-1} L(2u+1, 1^{S_0})^{-1} T(u)N(u, 1).
+\end{align}
+Then~\eqref{eqn:8.4.10} is given by the following integral
+\begin{equation}
+    \int F(u) L(2u+1, 1^{S_0})^{-1} T(u) c^{1/2-u} (1/2-u)^{-1} A(u) du,
+\end{equation}
+with
+\begin{align*}
+    A(u) = ab^{u}L(-2u+1, 1_{S_0}) L(2u+1, 1_{S_0})^{-1} N(u, 1)(\phi(e) + \phi(w)).
+\end{align*}
+We are going to move the contour of integration.
+The present contour is the line $\Re u = 0$.
+The new contour will be the line $\Re u = 1/2$,
+except that the segment joining the points $1/2-i\varepsilon$ and $1/2+i\varepsilon$ will be replaced by the semicircle passing through the points $1 /2-i\varepsilon$, $1/2-\varepsilon$, $1/2+i\varepsilon$. 
+Remaining part of the proof will then be the same as in the previous case, except that we have to show that the factor $A(u)$ is holomorphic and has a moderate growth on the strip $0\leq \Re u \leq 1/2$.
+The ratio of the factors $L$ which appears in $A$ is the product of the ratios
+\begin{equation*}
+    L(-2u+1, 1_v) L(2u+1, 1_v)^{-1}
+\end{equation*}
+for all $v$ in $S_0$.
+If $v$ is finite, then the ratio is a rational function in $q_v^{-u}$ and has a moderate growth.
+If $v$ is infinite, then the Stirling's formula implies that the ratio has a moderate growth.
+Recall that $\phi_v$ equals to 1 on $K_v$ for all $v$ not in $S_0$.
+For such $v$, we have $N(u, 1_v)\phi_v(k_v)=1$ for all $u$. 
+So $N(u, 1)\phi(e)$  is in fact the product over all $v$ in $S_0$ of
+\begin{equation*}
+    N(u, 1_v) \phi_v(e).
+\end{equation*}
+If $v$ is finite this is still has a moderate growth.
+If $v$ is infinite, this is a polynomial in $u$, and so $A$ has a moderate growth.
+At last, let's prove that $A$ is holomorphic at the poles of the factor $L(-2u+1, 1_{S_0})$ on the strip.
+Let's prove, for example, holomorphy at $1/2$ of 
+\begin{equation*}
+    L(-2u+1, 1_{S_0})L(2u+1, 1_{S_0})^{-1} N(u, 1)\phi(e).
+\end{equation*}
+The previous product can be written as
+\begin{equation*}
+    \prod_{v\in S_0}L(-2u+1, 1_v)L(2u+1, 1_v)^{-1} N(u, 1_v) \phi_v(e).
+\end{equation*}
+Take a $v$ in $S_0$.
+As the integral of $\varphi_v$ over $K_v$ is zero,
+$N(u, 1_v)\phi_v(e)$ vanishes at the point $u=1/2$ and this zero cancel out the pole of the factor $L (-2u+1, 1_v)$ at the same point.
+The product is therefore holomorphic at the point $1/2$ and this concludes our proof for the term~\eqref{eqn:8.4.10}.
+A similar argument applies to the term~\eqref{eqn:8.4.11}.
+Hence we complete the proof of the assertions in (8.1).

@@ -1,0 +1,242 @@
+\section{Orbital integrals: split torus}
+
+\subsection{}
+In this section, $F$ is a local field, $E$ a quadratic extension, $\eta$ the quadratic character of $F^\times$ attached to $E$, $G$ the group $\GL(2)$ and $T$ the subgroup of diagonal matrices.
+We give the Tamagawa measure on $F^\times$ and product measure of itself on ${(F^{\times})}^2$.
+This induces a measure on $T$ and we give $T/Z$ the quotient measure.
+For a compactly supported smooth function $f$ on $G/Z$ and $T$-regular element $g \in G$, we set
+\begin{align}
+    H(g:f:A) = H(g:f:1) = \int_{T/Z} \int_{T/Z} f(agb) dadb \\
+    H(g:f:\eta) = \int_{T/Z} \int_{T/Z} f(agb) \eta(\det b) dadb.
+\end{align}
+The first integral depends only on $P(g:T)$ and we denote $H(x:f:T)$ or $H(x:f:1)$ for its value at a point $g$ such that $P(g:A) = x$.
+We also set $H(1:f:T) = H(1:f:1) = 0$.
+For $x$ in $F$ neither 0 nor 1,   define a matrix $g(x)$ by
+\begin{align}
+    g(x) = \begin{bmatrix}
+    1 & x \\ 1 & 1
+    \end{bmatrix}.
+\end{align}
+Then $P(g(x)) = x$ so $g(x)$ defines a section of the space of double cosets of $A$ in $G$.
+We set $H(x:f:\eta) = H(g(x):f:\eta)$ for $x \neq 0, 1$, and $H(x:f:\eta) = 0$ when $x = 1$.
+Let
+\begin{align}
+    w = \begin{bmatrix}
+        0 & -1 \\ 1 & 0        
+    \end{bmatrix}.
+\end{align}
+Let $N_{+}$ be the group of strict upper triangular matrices and $N_{-}$ the group of strict lower triangular matrices.
+Then we have a covering of $G$ by two open sets
+\begin{align}
+\label{3.1.5}
+    G = TN_{+}N_{-} \cup TN_{+}wN_{+}.
+\end{align}
+We can therefore write $f$ as a sum $f_1 + f_2$ where $f_1$ is supported on the first open set and $f_2$ on the second.
+Let
+\begin{align}
+    \phi(g) = \int_{T/Z} f(ag)da,
+\end{align}
+and define $\phi_1$ and $\phi_2$ in a similar way.
+Then $\phi$ is left invariant under $T$ and compactly supported modulo $T$.
+The same holds for $\phi_1$ and $\phi_2$.
+Moreover, the functions $\Phi_1$ and $\Phi_2$ defined by 
+\begin{align}
+    \Phi_1(u, v) = \phi_1 \left(\begin{bmatrix} 1 & u \\ 0 & 1\end{bmatrix}\begin{bmatrix}1 & 0 \\ v& 1\end{bmatrix}\right), \\
+    \Phi_1(u, v) = \phi_1 \left(\begin{bmatrix} 1 & u \\ 0 & 1\end{bmatrix}w\begin{bmatrix}1 & 0 \\ v& 1\end{bmatrix}\right)
+\end{align}
+are compactly supported on $F \times F$.
+Since
+\begin{equation}
+\begin{aligned}
+    g(x) \bmat{a}{0}{0}{1} &= \bmat{a(1-x)}{0}{0}{1} \bmat{1}{a^{-1}{(1-x)}^{-1}x}{0}{1} \bmat{1}{0}{a}{1} \\
+    &= \bmat{1-x}{0}{0}{a} \bmat{1}{a{(1-x)}^{-1}}{0}{1} w \bmat{1}{a^{-1}}{0}{1},
+\end{aligned}
+\end{equation}
+for $x \neq 0, 1$, we have
+
+\begin{equation}
+\begin{aligned}
+\label{3.1.10}
+    H(x:f:T) &= \int_{T/Z} \Phi_1(a^{-1}(1-x)^{-1}x, a) d^{x}a \\
+    &+ \int_{T/Z} \Phi_1 (a(1-x)^{-1}, a^{-1}) d^{\times}a. 
+\end{aligned}
+\end{equation}
+
+To prove the convergence of our integral, we can assume $f$ positive.
+Then the RHS of~\eqref{3.1.10} are compactly supported in $F^\times$ and therefore the integral converges.
+Similarly, for $x$ different from 0 and 1,
+
+\begin{equation}
+\begin{aligned}
+\label{3.1.11}
+    H(x:f:\eta) &= \int_{T/Z} \Phi_1(a^{-1}(1-x)^{-1}x, a) \eta(a) d^\times a \\
+    &+ \int_{T/Z} \Phi_2(a(1-x)^{-1}, a^{-1}) \eta(a) d^{\times} a.
+\end{aligned}
+\end{equation}
+
+\subsection{}
+We are going to study the properties of the functions $H(f:\eta)$.
+The equation~\eqref{3.1.11} already shows that $H(x:f:\eta)$ is a smooth function at any point $x$ not equal to 0 or 1.
+On the other hand, if $\Phi_1$ and $\Phi_2$ are supported on the set of $(x, y)$ such that $|x| < C$ and $|y| < C$, then in the second integral we have, on the support of $\Phi_2$, $|a(1-x)^{-1}| < C$ and $|a^{-1}| <C$ which gives $C^{-2} < |1-x|$ if the second integral is not zero.
+Similarly if the first integral is not zero we have $|(1-x)^{-1}x| < C^2$, which also implies $D < |1 - x|$ for a suitable constant $D > 0$.
+It follows that $H(x:f:\eta)$ is zero in the neighborhood of 1.
+Therefore the equation~\eqref{3.1.11} holds for all nonzero $x$.
+
+Now, let's study $H(f:\eta)$ in the neighborhood of 0.
+In~\eqref{3.1.11} the second integral is obviously a smooth function on $x$ at 0.
+To study the first integral we will use the following lemma, the proof of which is left to the reader:
+\begin{lemma}\label{lem:3.2}
+    Let $\Phi$ be a two variable Schwarts-Bruhat function on $F \times F$.
+    There exist two Schwartz-Bruhat functions $A_1(x)$ and $A_2(x)$ on $F$  such that for all $x \neq 0$ in $F$, we have
+    \[
+    \int_{F^\times} \Phi(a^{-1}x, a)\eta(a) d^\times a = A_1(x) + A_2(x) \eta(x).
+    \]
+    If $\Phi$ is real valued and compactly supported, then we can take $A_1$ and $A_2$ to be compactly supported.
+\end{lemma}
+
+Let's go back to the first integral of~\eqref{3.1.11}.
+With the notations used in the lemma, the integral is equal to
+\begin{align}
+    A_1(x(1-x)^{-1}) + A_2(x(1-x)^{-1})\eta(x(1-x)^{-1}).
+\end{align}
+If $x$ is close enough to 0 then 1 - $x$ is a norm and $\eta(x(1-x)^{-1}) = \eta(x)$.
+On the other hand, $A_i(x(1-x)^{-1})$ are smooth functions of $x$ in a neighborhood of 0 for $i = 1,2$.
+As the second integral of~\eqref{3.1.11} is obviously smooth at point 0 we conclude that, in a neighborhood of 0, $H(x:f:\eta)$ has the following form:
+\begin{equation}
+    H(x:f:\eta) = A_1(x) + A_2(x) \eta(x)
+\end{equation}
+where $A_i$ are smooth for $i = 1, 2$.
+
+
+To study $H(x:f:\eta)$ for large $|x|$ note that
+\begin{align*}
+    \varepsilon g(x) = g(x^{-1}) \bmat{1}{0}{0}{x}\quad \text{if } \varepsilon = \bmat{0}{1}{1}{0}.
+\end{align*}
+Then we get
+\begin{align}
+    H(x^{-1}: f: \eta) = H(x:f_0:\eta)\eta(x), \quad f_0(g) = f(\varepsilon g).
+\end{align}
+Then there exists functions $B_i$, $i = 1, 2$, defined on the neighborhood of 0 and smooth, such that
+\begin{align}
+    H(x:f:\eta) = B_1(x^{-1}) + B_2(x^{-1})\eta(x)
+\end{align}
+for $x$ with sufficiently large $|x|$.
+
+\subsection{}
+In summary,
+\begin{proposition}\label{prop:3.1}
+Let $H$ be a function on $F^\times$ such that there exists a compactly supported smooth function $f$ on $G/Z$ with $H(x:f:\eta) =H(x)$.
+We have:
+\begin{enumerate}
+    \item $H$ is smooth on $F^\times$,
+    \item $H$ vanishes on a neighborhood of 1,
+    \item there exists a neighborhood $U$ of 0 and smooth functions $A_i$ on $U$ for $i = 1, 2$ such that, for $x \in U$, we have
+    \[
+    H(x) = A_1(x) + A_2(x) \eta(x),
+    \]
+    \item there exists a neighborhood $U$ of 0 and smooth functions $B_i$ on $U$ for $i = 1, 2$ such that, for $x$ with sufficiently large $|x|$, we have
+    \[
+    H(x) = B_1(x^{-1}) + B_{2}(x^{-1}) \eta(x).
+    \]
+\end{enumerate}
+\end{proposition}
+
+
+\subsection{}
+We are going to discuss the significance of the zero sets of the  functions $A_i$ and $B_i$ of the proposition \ref{prop:3.1}.
+For this purpose let us first recall that, if $\phi$ is a Schwartz-Bruhat function on $F$, then the integral
+\[
+\int_{F^\times} \phi(x) |x|^{s} d^\times x,
+\]
+or rather its analytic continuation, has a pole at the point $s = 0$; the residue at this point has the form $C\phi(0)$, where the constant $C$ depends on the choice of the Haar measure on the group $F^\times$.
+On the other hand the integral
+\[
+\int_{F^\times} \phi(x) |x|^{s} \eta(x) d^\times x
+\]
+admits analytic continuation at $s = 0$ and its value at this point will again be denoted as an integral
+\[
+\int_{F^\times} \phi(x) \eta(x) d^\times x.
+\]
+Define the following quantities:
+\begin{align}
+    H(n_+: f: \eta) &= \int_{F^\times}\int_{F^\times} f \left( \bmat{a}{0}{0}{1} \bmat{1}{b}{0}{1} \right) \eta(b) d^\times a d^\times b, \label{3.4.1} \\
+    H(n_-: f: \eta) &= \int_{F^\times}\int_{F^\times} f \left( \bmat{a}{0}{0}{1} \bmat{1}{0}{b}{1} \right) \eta(b) d^\times a d^\times b, \label{3.4.2} \\
+    H(\varepsilon n_+: f: \eta) &= \int_{F^\times}\int_{F^\times} f \left( \bmat{a}{0}{0}{1} \varepsilon \bmat{1}{b}{0}{1} \right) \eta(b) d^\times a d^\times b, \label{3.4.3} \\
+    H(\varepsilon n_-: f: \eta) &= \int_{F^\times}\int_{F^\times} f \left( \bmat{a}{0}{0}{1} \varepsilon \bmat{1}{0}{b}{1} \right) \eta(b) d^\times a d^\times b. \label{3.4.4}
+\end{align}
+In general, these integrals are divergent, but they can be interpreted as above.
+For example, the first integral is the value at point 0 of the meromorphic function which, for $\Re s > 0$, is given by the convergent integral
+\begin{align}
+    \int_{F^\times} \int_{F^\times} f\left( \bmat{a}{0}{0}{1} \bmat{1}{b}{0}{1} \right) \eta(b) |b|^{s} d^\times a d^\times b.
+\end{align}
+However, note that if $f$ is supported in the open set $TN_{+}wN_{+}$ then the integrals~\eqref{3.4.1} and~\eqref{3.4.2} are convergent.
+In fact the integral~\eqref{3.4.1} is zero since $TN_{+}$ and $TN_{+}wN_{+}$ are disjoint.
+\textcolor{red}{On the other hand the intersection of $TN_{-}$ with a compact set contained in $TN_{+}wN_{+}$ is a disjoint compact of $T$.}
+It follows that in~\eqref{3.4.2} the integrand is compactly support in $F^\times \times F^\times$ and the integral clearly converges.
+Similarly the integrals~\eqref{3.4.3} and~\eqref{3.4.4} converge if $f$ is supported in $TN_{+}N_{+}$.
+\begin{proposition}\label{prop:3.2}
+With the notations in the proposition \ref{prop:3.1} we have:
+\begin{align}
+    H(n_+:f:\eta) &= A_2(0) \label{3.4.6} \\
+    H(n_-:f:\eta) &= A_1(0) \label{3.4.7} \\
+    H(\varepsilon n_+:f:\eta) &= B_1(0)\label{3.4.8} \\
+    H(\varepsilon n_-:f:\eta) &= B_2(0). \label{3.4.9}
+\end{align}
+\end{proposition}
+\begin{proof}
+We will prove~\eqref{3.4.6} and~\eqref{3.4.7}.
+By the decomposition~\eqref{3.1.5}, it is sufficient to prove when $f$ is supported on $TN_+ N_-$ or $AN_{+}wN_{+}$.
+Then we have
+\begin{align}
+    H(x:f:\eta) = \int_{F^\times} \Phi(a(1-x)^{-1}, a^{-1}) \eta(a) d^\times a
+\end{align}
+where
+\begin{align}
+    \Phi(u, v) = \phi\left(\bmat{1}{u}{0}{1} w \bmat{1}{a^{-1}}{0}{1}\right), \\
+    \phi(g) = \int_{T/Z} f(ag) da.
+\end{align}
+Since $H$ is smooth at zero we have $A_2 = 0$ and $A_1 = H(f:\eta)$.
+Hence
+\[
+A_1(0) = \int_{F^\times} \phi\left(\bmat{1}{a}{0}{1} w \bmat{1}{a^{-1}}{0}{1}\right).
+\]
+Using the fact that $f$ is invariant under the center, we can rite the integral as follows:
+\[
+A_1(0) = \int_{F^\times} \int_{F} f\left(b \bmat{a^2}{0}{a}{1}\right) \eta(a) db d^\times a.
+\]
+Change of variable shows that this is nothing but $H(n_-:f:\eta)$.
+~\eqref{3.4.6} also holds as both $A_2$ and $H(n_+:f:\eta)$ vanish.
+
+Now assume that $f$ is supported in $TN_+ N_-$.
+Then we have
+\begin{align}
+    H(x:f:\eta) = \int_{F^\times} \Phi(a^{-1}(1-x)^{-1}x, a) \eta(a) d^\times a
+\end{align}
+where
+\begin{align}
+    \Phi(u, v) = \phi\left(\bmat{1}{u}{0}{1} \bmat{1}{0}{v}{1} \right), \label{3.4.14} \\
+    \phi(g) = \int_{T/Z} f(ag) da. \label{3.4.15}
+\end{align}
+Recall the definitions of $A_1$ and $A_2$:
+\begin{align}
+    H(x) = A_1(x) + A_2(x)\eta(x),
+\end{align}
+on the other hand, lemma~\eqref{lem:3.2} implies
+\begin{align}
+    \int_{F^\times} \Phi(a^{-1} x, a) \eta(a) d^\times a = C_1(x) + C_2(x) \eta(x).
+\end{align}
+Comparing with~\eqref{3.4.4} we get $C_i((1-x)^{-1}x) = A_i(x)$.
+Hence $C_i$ and $A_i$ vanish on the same set.
+By taking the Mellin transform of the above equation we get
+\[
+\int_{F^\times} \int_{F^\times} \Phi(x, a) |x|^{s} \eta(a) |a|^{s} d^\times a d^\times x = \int_{F^\times} C_1(x) |x|^{s} d^\times x + \int_{F^\times} C_2(x) |x|^{s} \eta(x) d^\times x.
+\]
+Comparing the residue of both sides at $s = 0$ we get
+\[
+\int_{F^\times} \Phi(0, a) \eta(a) d^\times a = C_1(0).
+\]
+By~\eqref{3.4.14} and~\eqref{3.4.15} the left hand side is nothing but $H(n_-:f:\eta)$.
+On the other hand the right hand side equals to $A_1(0)$, hence~\eqref{3.4.7} is proven.
+~\eqref{3.4.6} can be proved in a similar way.
+Equations~\eqref{3.4.8} and~\eqref{3.4.9} follow from the equations~\eqref{3.4.6} and~\eqref{3.4.7} applied to the function $f_0$ defined as $f_0(g) = f(\varepsilon g)$.
+\end{proof}

@@ -1,0 +1,187 @@
+\section{Global orbital integrals: split torus}
+
+\subsection{}
+In the rest of this work $F$ will be a number field and $E$ a quadratic extension of $F$, $\eta$ the quadratic character of the ideles of $F$ attached to $E$.
+In this and the next section we will consider the pair $(G, T)$ and a compactly supported smooth function $f$ on $G(\Aa_F) /Z(\Aa_F)$.
+Denote $K_c$ for the cuspidal kernel attached to $f$.
+Let $\phi_j$ be an orthonormal basis of the space of cusp forms of the group $G/Z$.
+
+Then, by definition
+\begin{align}
+    K_c(x, y) = \sum_{j} \rho(f) \phi_{j}(x) \overline{\phi}_{j}(y)
+\end{align}
+and
+\begin{align}
+    \rho(f) \phi(x) = \int f(g) \phi(xg) dg.
+\end{align}
+In this and the following section we will give a nice expression of the integral
+\begin{align}
+    \int_{[T]} \int_{[T]} K_c(a, b) \eta(\det b) da db
+\end{align}
+We have chosen a nontrivial character $\psi$ of $\Aa_F / F$.
+Then for each place $v$ we have the Tamagawa measure attached to $\psi_v$ induced on $A_v$ and $Z_v$.
+We therefore have the product measure on $A(\Aa_F/F)$ and the quotient measure on $T(\Aa_F) / Z(\Aa_F)$.
+We will denote by $S$ a finite set of places containing the infinite places, the ramified places in $E$ and the places of residual characteristic 2.
+For each place $v$ of $F$ we will denote $K_v$ for the usual maximal compact subgroup.
+In particular $K_v = \GL(2, R_v)$ if $v$ is finite.
+We will take the function $f$ product of local functions $f_v$ which are $K_v$-finite at all places.
+We will assume that $f_v$ is bi-$K_v$-invariant for all $v$ not in $S$.
+We have a decomposition of $K_c$ as a following sum:
+\begin{align}
+    K_c(x, y) = \sum_{\gamma \in G(F) / Z(F)} f(x^{-1}\gamma y) - K_{\mathrm{sp}}(x, y) - K_{\mathrm{ei}}(x, y),
+\end{align}
+where $K_{\mathrm{sp}}$ denotes the special kernel and $K_{\mathrm{ei}}$ the Eisenstein kernel (the definition will be recalled later).
+We can write the first term of this sum as the sum of two other terms $K_r$ and $K_s$ where
+\begin{align}
+    K_{r}(x, y) &= \sum_{\gamma \in G(F) / Z(F)} f(x^{-1}\gamma y), \quad \gamma\text{ is }T\text{-regular} \\
+    K_{s}(x, y) &= \sum_{\gamma \in G(F) / Z(F)} f(x^{-1}\gamma y), \quad \gamma\text{ is }T\text{-singular}
+\end{align}
+Then $K_c$ can be written as
+\begin{align}
+    K_c = K_r + K_s - K_{\mathrm{sp}} - K_{\mathrm{et}}.
+\end{align}
+
+\subsection{}
+We first consider the integral of $K_r$.
+Any $T$-regular element $\gamma$ of $G(F) /Z(F)$ can be uniquely written in the form
+\begin{align}
+    \gamma = \alpha g(\xi) \beta, \quad \alpha, \beta \in T(F) /Z(F)\text{ and } \xi \neq 0, 1
+\end{align}
+(cf. (3.1.3) for the notation and \S 1)
+This implies
+\begin{align}
+    \int_{T(\Aa_F) / Z(\Aa_F)} \int_{T(\Aa_F) / Z(\Aa_F)} K_r(a, b) \eta(\det b) da db = \sum_{\xi \in F^\times - \{1\}} H(\xi: f: \eta),
+\end{align}
+where
+\begin{align}
+\label{eqn:7.2.3}
+    H(\xi: f: \eta) = \int_{T(\Aa_F) / Z(\Aa_F)}\int_{T(\Aa_F)/Z(\Aa_F)} f(ag(\xi)b) \eta(\det b) da db.
+\end{align}
+Let's justify our formal computations.
+Assme that the support of $f$ has only a finite number of regular classes.
+The function $X$ introduced in the section 1 (equation~\eqref{eqn:1.1.4}) defines a continuous function of the group $G(\Aa_F)/Z(\Aa_F)$ over $\Aa_F$.
+Hence it only takes a finite number of values on the intersection of the support of $f$ with the set of rational points:
+the same is therefore true for the function $P(\cdot:A)$, which gives us our assertion.
+On the other hand, each of the integrals~\eqref{eqn:7.2.3} converges absolutely: it suffices to prove it for the integral
+\begin{align}
+    \label{eqn:7.2.4}
+    H(\xi:f:T) = \int_{T(\Aa_F) / Z(\Aa_F)} \int_{T(\Aa_F) / Z(\Aa_F)} f(ag(\xi)b) dadb.
+\end{align}
+Each of the local integrals $H(\xi: f_v: T_v)$ converges; almost all are equal to 1 (cf. (5.7)).
+Hence~\eqref{eqn:7.2.4} converges.
+It is true for (3) and (3) is the product of the corresponding local integrals
+\begin{align}
+    H(\xi:f:\eta) = \prod_v H(\xi: f_v: \eta_v).
+\end{align}
+All but finitely many local integrals in the product are equal to 1 (cf. (5.7)).
+
+\subsection{}
+Consider the integral of $K_s$.
+It is not absolutely convergent, but it is weakly convergent in the following sense.
+Let $c$ be a number greater than 1.
+Define
+\begin{align}
+    \label{eqn:7.3.1}
+    \int_{c^{-1}}^{c} \int_{c^{-1}}^{c} K_{s}(a, b) \eta(\det b) da db,
+\end{align}
+the integral of $K_s(a, b)\eta(\det b)$ over the set of pairs $(a, b)$ satisfying $c^{-1} < |a_1 / a_2| < c$, $c^{-1} < |b_1 / b_2| < c$; where $a_1$ and $a_2$ are the diagonal entries $a$ (and similar for $b_1$ and $b_2$).
+The integral exists since it is over a compact set.
+We will see that the integral~\eqref{eqn:7.3.1} converges as $c$ goes to infinity.
+Then we define the weak integral of $K_s(a, b) \eta(\det b)$ as the limit.
+We have seen in (1.3) that there are 6 singular double cosets in $T$, namely the double cosets of the following elements: $e, n_+, n_-, \varepsilon, \varepsilon n_+, \varepsilon n_-$.
+Let's number them from 1 to 6.
+Then we have a decomposition of $K_s$ into 6 terms $K_i$, $1\leq i\leq 6$, where $K_i$ is the sum of the $f(x^{-1} \gamma y)$ for all $\gamma$ in the $i$-th double coset.
+Let's study the integral of $K_1$ for example.
+We have
+\begin{align*}
+    K_1(x, y) = \sum_{\alpha \in T(F) / Z(F)} f(x^{-1} \alpha y).
+\end{align*}
+We have
+\begin{align*}
+    \int_{c^{-1}}^{c} \int_{c^{-1}}^{c} K_{1}(a, b) \eta (\det b) da db = \int_{c^{-1}}^{c} \int_{c^{-1}}^{c} f(ab) \eta (\det b) da db,
+\end{align*}
+in the left integral $a$ and $b$ vary in the compact subset of $[T]$ defined above;
+in the right integral $b$ still varies in the compact subset of $[T]$ defined by $c^{-1} < |b_1 / b_2| < c$, but $a$ varies in the subset of $T(\Aa_F)/Z(\Aa_F)$ defined by $c^{-1} < |a_1/a_2| < c$.\footnote{The integral with respect to $a$ over $[T] = T(\Aa_F) / T(F)Z(\Aa_F)$ and the summation over $T(F)$ are combined as an integral over $T(\Aa_F)/Z(\Aa_F)$.}
+Apply change of variable from $a$ to $ab^{-1}$ in the left integral.
+We get a double integral, with the inner integral only depending on $|b_1 / b_2|$.
+This inner integral is written as\footnote{Integration over the elements $b = \smat{b_1}{}{}{b_2} \in [T]$ satisfying $c^{-1} < |b_1 / b_2| < c^2$.}
+\begin{align*}
+    \int_{c^{-1}}^{c} \eta(\det b) db.
+\end{align*}
+It is 0 because the restriction of $\eta$ to the group of id\'eles of absolute value 1 is nontrivial.
+The integral of $K_1$ is therefore weakly convergent and its value is 0.
+The same holds for the integral of $K_4$.
+
+Let's examie the integrals of the other terms, $K_2$ for example.
+We have
+\begin{align}
+    K_2(x, y) = \sum_{\alpha, \beta \in T(F) / Z(F)} f(x^{-1} \alpha n_+ \beta y).
+\end{align}
+It follows that
+\begin{align*}
+    \int_{c^{-1}}^{c} \int_{c^{-1}}^{c} K_2(a, b) \eta(a, b) da db = \int_{c^{-1}}^{c} \int_{c^{-1}}^{c} \sum_{\beta \in T(F)/Z(F)} f(a n_+ \beta b) \eta (\det b) da db;
+\end{align*}
+in the right integral $b$ still varies in the compact subset of $[T]$ defined by $c^{-1} < |b_1 / b_2| <c$, but $a$ varies the subset of $T(\Aa_F) / Z(\Aa_F)$ defined by $c^{-1} < |a_1 / a_2| < c$.
+Let's introduce the function $\phi$ on $\Aa_F^\times \times \Aa_F$ defined by
+\begin{align}
+    \phi(x, y) = f\left(\bmat{x}{0}{0}{1} \bmat{1}{y}{0}{1}\right).
+\end{align}
+It has a compact support. 
+{\color{red}
+Write our integral as
+\begin{align*}
+    \int_{\Aa_F^\times / F^\times} \sum_{\zeta \in F^\times} \int_{\Aa_F^\times} \phi(ab^{-1}, b\zeta) \eta(b) da db, \quad c^{-1} < |a| < c, \,\, c^{-1} < |b| < c.
+\end{align*}
+}
+Using the Poisson summation formula with respect to the second variable and taking the Fourier transform with respect to the second variable we obtain for this integral the expression
+\begin{align*}
+    \int_{\Aa_F^\times / F^\times} \sum_{\zeta \in F^\times} \int_{\Aa_F^\times} \phi(ab^{-1}, b\zeta) \eta(b)dadb + \int_{\Aa_F^\times /F^\times} \sum_{\zeta \in F^\times} \int_{\Aa_F^\times} \hat{\phi} (ab, b\zeta) |b| \eta(b) dadb
+\end{align*}
+with $c^{-1} < |a| < c$ and $1 < |b| < c$.
+It is obvious that the integrals extend to the domain
+\begin{align*}
+    a\in\Aa_F^\times, \quad b\in \Aa_F^\times / F^\times, \quad 1 < |b|,
+\end{align*}
+that converges absolutely.
+Moreover in the integrals with extended domains we can change a variable $a$ into $ab^{\pm 1}$.
+We conclude that the integral of $K_2$ is weakly convergent and that its value is the following sum:
+\begin{align*}
+    \int_{\Aa_F^\times / F^\times}\int_{\Aa_F^\times} \sum_{\zeta \in F^\times} \phi(a, b\zeta) \eta(b) da db + \int_{\Aa_F^\times /F^\times} \int_{\Aa_F^\times} \sum_{\zeta \in F^\times} \hat{\phi}(a, b\zeta) |b| \eta(b) da db,
+\end{align*}
+with $1 < |b|$.
+The integral is nothing but the value of the analytical continuation of the following integral at $s=0$:
+\begin{align}
+    \int_{\Aa_F^\times} \int_{\Aa_F^\times} \phi(a, b) |b|^s \eta(b) dadb.
+\end{align}
+The value will be denoted as an integral
+\begin{align}
+    \int_{\Aa_F^\times} \int_{\Aa_F^\times} \phi(a, b) \eta(b) dadb.
+\end{align}
+With this convention we can write that the weak integral of $K_2$ as
+\begin{align}
+    \label{eqn:7.3.6}
+    H(n_+: f:\eta) = \int_{\Aa_F^\times}\int_{\Aa_F^\times} f\left(\bmat{a}{0}{0}{1} \bmat{1}{b}{0}{1} \right) \eta(b) dadb.
+\end{align}
+An analogous result is valid for the integrals of the other $K_i$.
+Finally we see that the weak integral of $K_s$ exists and is equal to the sum
+\begin{align}
+    H(n_+:f:\eta) + H(n_-:f:\eta) + H(n\varepsilon_+ :f:\eta) + H(\varepsilon n_-:f:\eta),
+\end{align}
+where the first term is defined by~\eqref{eqn:7.3.6} and the others are defined similarly:
+\begin{align}
+    H(n_-:f:\eta) &= \iint f\left(\bmat{a}{0}{0}{1} \bmat{1}{0}{b}{1} \right) \eta(b) da db, \\
+    H(\varepsilon n_+:f:\eta) &= \iint f\left(\bmat{a}{0}{0}{1} \varepsilon \bmat{1}{b}{0}{1} \right) \eta(b) da db, \\
+    H(\varepsilon n_-:f:\eta) &= \iint f\left(\bmat{a}{0}{0}{1} \varepsilon \bmat{1}{0}{b}{1} \right) \eta(b) da db.
+\end{align}
+
+\subsection{}
+Let's move on to the integral of $K_{\mathrm{sp}}$.
+Recall the definition of $K_{\mathrm{sp}}$:
+\begin{align*}
+    K_{\mathrm{sp}}(x, y) = \mathrm{vol([G])}^{-1} \sum_{\chi} \int f(g) \chi(\det g) dg \cdot \chi(\det x)\chi(\det y^{-1})
+\end{align*}
+where the sum over all the quadratic characters $\chi$ of the group of id\'ele classes of $F$ and $\mathrm{vol}([G])$ is the volume of the quotient $[G]$.
+If $\chi$ is such a character then either $\chi$ or $\chi\eta$ has a non-trival restriction to the groups of id\'ele classes of norm 1.
+Reasoning as for $K_1$ we immediately see that $K_\mathrm{sp}$ is weakly integrable and the integral vanishes.
+
+
