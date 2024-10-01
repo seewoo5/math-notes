@@ -1,51 +1,50 @@
 \section{Double cosets}
 
 \subsection{}
-In this paragraph $F$ will be any field of characteristic zero and $E$ be a quadratic extension of $F$.
-We will denote $N(E:F)$ or simply $N$ the subgroup of norms of $E$ in the multiplicative group of $F$.
-The set $X(E:F)$ or simply $X$ is defined as before.
-Consider one of its elements $(G', T')$.
-There exists a quaternion algebra $H$ over $F$ and a subfield $L$ of $H$ isomorphic to $E$ such that $G$ is the multiplicative group of $H$ and $T$ is that of $L$.
-We are going to parametrize the double cosets $T' \backslash G' / T'$.
-For this purpose let's choose an element $\varepsilon$ of the normalizer $N(T')$ of $T'$ which is not in $T'$.
-Then every $h$ in $H$ can be uniquely written as:
-\begin{equation}
-h = h_1 + \varepsilon h_2, \qquad h_i \in L.
-\end{equation}
-On the other hand, if $z \to \bar{z}$ denotes the unique non-trivial $F$-automorphism of $L$ then:
-\begin{equation}
-\varepsilon z \varepsilon^{-1} = \bar{z}.
-\end{equation}
-The square $c = \varepsilon^2$ is in $Z'$, or, in other words, in $F$.
-Moreover the class of $c$ modulo $N$ is determined by the isomorphism class of the pair $(G', T')$ and, conversely, determines it.
 
-Define two involutions $j^+$ and $j^-$ of $H$ by the following fomulae:
+In this section, let $F$ be any field of characteristic zero, and let $E$ be a quadratic extension of $F$. Denote by $\rN(E:F)$, or simply $\rN$, the subgroup of norms from $E$ to the multiplicative group of $F$.
+The set $X(E:F)$, or simply $X$, is defined as in the previous section.
+Consider an element $(G', T')$ from this set.
+There exists a quaternion algebra $H$ over $F$ and a subfield $L$ of $H$ isomorphic to $E$, such that $G'$ is the multiplicative group of $H$, and $T'$ is the group of units of $L$.
+We now aim to parametrize the double cosets $T' \backslash G' / T'$.
+To this end, choose an element $\varepsilon$ from the normalizer $N(T')$ of $T'$ that is not in $T'$.
+Then, every element $h \in H$ can be uniquely written as:
 \begin{equation}
-j^{\pm}(h) = \bar{h}_1 \pm \varepsilon h_2, \quad h = h_1 + \varepsilon h_2.
+    h = h_1 + \varepsilon h_2, \qquad h_i \in L.
 \end{equation}
-It is easy to verify that these are the only involutions of $H$ which induce the unique non-trivial $F$-automorphism of $L$.
-For $h$ in $G$ we will set\footnote{$\tr$ is a trace map from $H$ to $F$, given as $\tr(h_1 + \varepsilon h_2) = h_1 + \bar{h}_1$.}
+Moreover, if $\bar{z}$ denotes the non-trivial $F$-automorphism of $L$, then:
 \begin{equation}
-\label{eqn:1.1.4}
-X'(h) = \frac{\frac{1}{2}\tr(hj^+(h))}{\frac{1}{2}\tr(hj^{-}(h))}.
-\end{equation}
-As the denominator of this faction is nothing but the reduced norm of $h$, $X(h)$ is a well-defined element of $F$ only depends on the double coset of $h$ modulo $T'$.
-We also introduce the function $P'(h:T')$ or simply $P'(h)$ defined by
+    \varepsilon z \varepsilon^{-1} = \bar{z}.
+\end{equation} 
+The square $c = \varepsilon^2$ lies in $Z'$, i.e., in $F$.
+Furthermore, the class of $c$ modulo $\rN$ is determined by the isomorphism class of the pair $(G', T')$, and conversely, it determines this class.
+
+Next, define two involutions $j^+$ and $j^-$ on $H$ by:
 \begin{equation}
-X'(h) = \frac{1 + P'(h)}{1 - P'(h)}
+    j^{\pm}(h) = \bar{h}_1 \pm \varepsilon h_2, \quad h = h_1 + \varepsilon h_2.
 \end{equation}
-or
+It is easy to verify that these are the only involutions of $H$ that induce the non-trivial $F$-automorphism of $L$.
+For any $h \in G'$, we define\footnote{Here, $\tr$ is the trace map from $H$ to $F$, given by $\tr(h_1 + \varepsilon h_2) = h_1 + \bar{h}_1$.}
 \begin{equation}
-P'(h) = ch_{2}\bar{h}_2{(h_{1}\bar{h}_1)}^{-1}, \qquad c = \varepsilon^2.
+    \label{eqn:1.1.4}
+    X'(h) = \frac{\frac{1}{2}\tr(hj^+(h))}{\frac{1}{2}\tr(hj^{-}(h))}.
 \end{equation}
-Thus $P'$ is a function \textcolor{red}{with values in the projective line} which is constant on the double cosets of $T'$ in $G'$.
-Note that according to the previous formula, if $P'(h)$ is neither zero nor infinite, then it is an element of the class $cN'$ determined by the tuple $(G', T')$.
-Moreover $P'(h)$ can't be 1, otherwise $X'(h)$ would be infinity.
-We will say that $h$ (or its double coset) is $T'$-singular if $P'(h)$ is zero or infinity, $T'$-regular otherwise.
+Since the denominator in this expression is the reduced norm of $h$, $X'(h)$ is a well-defined element of $F$, depending only on the double coset of $h$ modulo $T'$. We also introduce the function $P'(h:T)$, or simply $P'(h)$, by:
+\begin{equation}
+    X'(h) = \frac{1 + P'(h)}{1 - P'(h)},
+\end{equation}
+or equivalently,
+\begin{equation}
+    P'(h) = c h_2 \bar{h}_2 (h_1 \bar{h}_1)^{-1}, \qquad c = \varepsilon^2.
+\end{equation}
+Thus, $P'$ is a function valued in the projective line\footnote{$F \cup \{\infty\}$}, constant on the double cosets of $T'$ in $G'$.
+According to the above formula, if $P'(h)$ is neither zero nor infinity, then it belongs to the class $c\rN'$ determined by the tuple $(G', T')$.
+Additionally, $P'(h)$ cannot be equal to $1$, otherwise $X'(h)$ would be infinite.
+We say that $h$ (or its double coset) is $T'$-singular if $P'(h)$ is either zero or infinity, and $T'$-regular otherwise.
 
 \begin{proposition}
 Two elements $h$ and $h'$ in $G'$ are in the same double coset of $T'$ if and only if $P'(h) = P'(h')$.
-Moreover, if $x$ is in $cN$ and not 1 then there exists a $h$ in $G'$ such that $P'(h) = x$.
+Moreover, if $x$ is in $c\rN$ and is not equal to $1$, then there exists an element $h \in G'$ such that $P'(h) = x$.
 \end{proposition}
 The proof is left to the reader.
 
@@ -65,43 +64,42 @@ s \in Z',\quad t\in Z',\quad st = z.
 The proof is left to the reader.
 
 \subsection{}
-The above applies \emph{mutatis mutandis} to a tuple of the form $(G, T)$ where $G$ is the group $\GL(2)$ and $T$ is a maximal split torus, say the group diagonal matrices in $G$.
-Then $H$ is the algrebra of 2 by 2 matrices, $L$ the subalgebra of diagonal matrices and we can take\footnote{In this case, the non-trivial automorphism on $L$ is a map that swaps two diagonal elements, i.e. $\smat{a}{0}{0}{d}\mapsto \smat{d}{0}{0}{a}$.}
+The above results apply \emph{mutatis mutandis} to a tuple of the form $(G, T)$ where $G$ is the group $\GL(2)$ and $T$ is a maximal split torus, say the group diagonal matrices in $G$.
+In this case, $H$ is the algebra of $2 \times 2$ matrices, and $L$ is the subalgebra of diagonal matrices. We may take\footnote{Here, the non-trivial automorphism of $L$ swaps the two diagonal elements, i.e., $\smat{a}{0}{0}{d} \mapsto \smat{d}{0}{0}{a}$.}
 \[
 \epsilon = \begin{bmatrix}
     0 & 1 \\ 1 & 0
 \end{bmatrix},
 \quad c = 1.
 \]
-The functions $X$ and $P(\cdot :T)$ (or simply $P$) are defined as above.
+The functions $X$ and $P(\cdot :T)$ (or simply $P$) are defined analogously.
 In particular:
 \[
 P(h)  = bc{(ad)}^{-1}, \quad h = \begin{bmatrix}
     a & b \\ c & d
 \end{bmatrix}.
 \]
-They are constant on the double cosets of $T$ in $G$.
-Again $P$ cannot be 1.
-We will also say that an element $h$ of $G$ is $T$-singular if $P(h)$ is zero or infinity, $T$-regular otherwise.
-There are now 6 $T$-singular double cosets: the cosets on which $P$ takes the value zero:
+These functions are constant on the double cosets of $T$ in $G$.
+As before, $P(h)$ cannot be equal to $1$.
+We will also say that an element $h \in G$ is $T$-singular if $P(h)$ is either zero or infinity, and $T$-regular otherwise.
+There are six $T$-singular double cosets, corresponding to the cosets where $P(h)$ takes the value zero:
 \begin{equation}
     T, \quad Tn_+T, \quad Tn_{-}T, \quad \text{where } n_{+} = \begin{bmatrix}
         1 & 1 \\ 0 & 1
-    \end{bmatrix},  \begin{bmatrix}
+    \end{bmatrix}, n_{-} = \begin{bmatrix}
         1 & 0 \\ 1 & 1
     \end{bmatrix},
 \end{equation}
-and the classes on which $P$ takes the infinite value
+and the cosets where $P(h)$ takes the value infinity:
 \begin{equation}
 \varepsilon T, \quad T \varepsilon n_{+} T, \quad T\varepsilon n_{-} T.
 \end{equation}
-Thus these classes cannot be distinguished from each other with $P$.
+Thus, these singular cosets cannot be distinguished using the function $P$.
 
 \subsection{}
-However, $P$ distinguishes $T$-regular cosets:
+However, $P$ distinguishes between $T$-regular cosets:
 \begin{proposition}
-Let $h$ and $h'$ be $T$-regular element of $G$.
-Then $h$ and $h'$ are in the same coset if and only if $P(h) = P(h')$.
-If $x \in F$ is neither 1 nor 0, there exists an $T$-regular element $h$ such that $P(h) = x$.
+Let $h$ and $h'$ be $T$-regular elements of $G$.
+Then $h$ and $h'$ are in the same double coset if and only if $P(h) = P(h')$. Moreover, if $x \in F$ is neither 1 nor 0, there exists a $T$-regular element $h$ such that $P(h) = x$.
 \end{proposition}
 The proof is left to the reader.
