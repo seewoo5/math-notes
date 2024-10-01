@@ -57,7 +57,7 @@ It has a form of
 where $M(u, \chi)$ is the intertwining operator from $V(\chi)$ to $V(\chi^{-1})$.
 We also need another Fourier coefficient of $E$, namely
 \begin{align}
-    W(g, \phi, u, \chi) = \int_{\Aa_F /F} E\left(\bmat{1}{x}{0}{1}g, \phi, u, \chi\right)\psi(-x)dx,
+    W(g, \phi, u, \chi) = \int_{\Aa_F /F} E\left(\bmat{1}{x}{0}{1}g, \phi, u, \chi\right)\psi(-x)\dd x,
 \end{align}
 where $\psi$ is a fixed character on the group $\Aa_F/F$.
 Then the Fourier series of $E$ is written as
@@ -265,7 +265,7 @@ Using~\eqref{eqn:8.2.12} we obtain the following expression on $I(c, \chi)$:
 \end{aligned}
 \end{equation}
 
-For each $(i, j)$, the terms $R(c, u)$ and $R'(c, u)$ satisfy the conclutions of the Lemma~\ref{lem:8.3}.
+For each $(i, j)$, the terms $R(c, u)$ and $R'(c, u)$ satisfy the conclutions of the Lemma \ref{lem:8.3}.
 For each $f$,  $F(u, \chi: i, j)$ is zero for all but finitely many $(i, j)$. 
 In particular, $F(u, \chi: i, j)$ is zero unless $\phi_i$ and $\phi_j$ are both invariant under all $K_v$ with $v$ not in $S $.
 Moreover, on the imaginary axis, $F(u, \chi: i, j)$ rapidly decreases (faster than the inverse of a polynomial in $u$).
@@ -285,7 +285,7 @@ Each of these terms is of one of the following types:
     &\int F(u, \eta:i, j)L(1/2, 1:j:u, \eta) \frac{c^{1/2+u}}{1/2+u} M(u, \eta)(\overline{\phi_i}(e) +\overline{\phi_i}(w)) du. \label{eqn:8.4.11}
 \end{align}
 
-Integral~\eqref{eqn:8.4.7} obviously has the properties required by Proposition~\ref{prop:8.1}.
+Integral~\eqref{eqn:8.4.7} obviously has the properties required by Proposition \ref{prop:8.1}.
 To prove the proposition, it suffices to show that each of the expressions~\eqref{eqn:8.4.8} to~\eqref{eqn:8.4.11} converges when $c$ tends to infinity
 and that, moreover, the limit is zero if the Satake transform of the function $f_u$ is zero at $q^{-1}$.
 This last condition implies that the integral of $f_u$ over $G_u/Z_u$ is zero and  $F(u, 1:u, j)$ and $F(u, \eta:i, j)$ cancel out at points $u =1/2$ and $u=-1/2$.

@@ -1,76 +1,77 @@
 \section{Matching functions}
 
 \subsection{}
-In this section, $E$ is a local field, which is a quadratic extension of $F$, and $\eta$ is a quadratic character attached to $E$.
-We consider again the pair $(G, T)$ of the group $\GL(2)$ and the subgroup of diagonal matrices, and the set $X = X(E:F)$ that is reduced to two elements $(G_i', T_i')$, $i =1, 2$, with $G_1$ split.
-Let $f$ be a compactly supported smooth function on $G/Z$ and $f_i'$, $i=1, 2$ compactly supported smooth function on $G_i' /Z_i'$.
-We say that $f$ and the pair $(f_1', f_2')$ are matched if the following condition is satisfied:
-For all $x \in F$ not equal to 1 or 0, choose $i$ and $g' \in G_i'$ such that $x = P'(g':T_i')$ ($i=1$ if $x$ is a norm of $E$, $i=2$ otherwise). Then
+In this section, $E$ is a local field that is a quadratic extension of $F$, and $\eta$ is a quadratic character attached to $E$.
+We again consider the pair $(G, T)$ of the group $\GL(2)$ and the subgroup of diagonal matrices, and the set $X = X(E:F)$ that contains two elements $(G_i', T_i')$, $i =1, 2$, where $G_1'$ split.
+Let $f$ be a compactly supported smooth function on $G/Z$ and $f_i'$, $i=1, 2$ compactly supported smooth functions on $G_i' /Z_i'$.
+We say that $f$ and the pair $(f_1', f_2')$ are matched if the following condition holds:
+For all $x \in F \backslash \{0, 1\}$, choose $i$ and $g' \in G_i'$ such that $x = P'(g':T_i')$ ($i=1$ if $x$ is a norm of $E$, and $i=2$ otherwise).
+Then
 \[
 H(x:f:\eta) = H'(g':f_i':T_i').
 \]
 \begin{proposition}\label{prop:4.1}
-For given $f$ there exists a pair of functions $(f_1', f_2')$ that matches $f$.
+For a given function $f$, there exists a pair of functions $(f_1', f_2')$ that matches $f$.
 Moreover, we have
 \begin{align*}
-    \mathrm{vol}(T_i' / Z_i') \int_{T_i'} f_i'(t_i') dt_i' &= H(n_+:f:\eta) \pm H(n_-:f:\eta) \\
-    \mathrm{vol}(T_i' / Z_i') \int_{T_i'} f_i'(\varepsilon t_i') dt_i' &= H(\varepsilon n_+:f:\eta) \pm H(\varepsilon n_-:f:\eta)
+    \mathrm{vol}(T_i' / Z_i') \int_{T_i'} f_i'(t_i') \dd t_i' &= H(n_+:f:\eta) \pm H(n_-:f:\eta) \\
+    \mathrm{vol}(T_i' / Z_i') \int_{T_i'} f_i'(\varepsilon t_i') \dd t_i' &= H(\varepsilon n_+:f:\eta) \pm H(\varepsilon n_-:f:\eta)
 \end{align*}
-with sign $+$ for $i=1$ and $-$ for $i = 2$.
+where the sign is $+$ for $i=1$ and $-$ for $i = 2$.
 \end{proposition}
 \begin{proof}
-This follows from the propositions~\ref{prop:2.1},~\ref{prop:3.1}, and~\ref{prop:3.2}.
+This result follows from the propositions \ref{prop:2.1}, \ref{prop:3.1}, and \ref{prop:3.2}.
 \end{proof}
 
 \subsection{}
-When $F = \mathbb{R}$ we denote as $K$ for the orthogonal subgroup in $G$.
-We denote by $U$ the set of pairs $(f_1', f_2')$ that match a compactly supported smooth function $f$ on $G/Z$, that is $K$-finite if $F = \mathbb{R}$.
+When $F = \mathbb{R}$, let $K$ denote the orthogonal subgroup in $G$.
+We define $U$ to be the set of pairs $(f_1', f_2')$ that match a compactly supported smooth function $f$ on $G/Z$, where $f$ is $K$-finite if $F = \mathbb{R}$.
 
-Let $U_1$ (resp. $U_2$) be a projection of $U$ to the first (resp.\ second) component.
+Let $U_1$ (resp. $U_2$) be a projection of $U$ to the first and second components, respectively.
 Then the sets $U_i$ is \emph{dense} in the following sense.
 \begin{proposition}\label{prop:4.2}
-    Let $\phi'$ be a continuous function on $G_i' / Z_i'$ that is $T_i'$ bi-invariant. 
-    If $\int_{G_i' / Z_i'} \phi(g') f_i'(g') dg' = 0$ for all $f_i' \in U_i$, then $\phi'$ is a zero function.
+    Let $\phi'$ be a continuous function on $G_i' / Z_i'$ that is bi-invariant under $T_i'$. 
+    If $\int_{G_i' / Z_i'} \phi'(g') f_i'(g') \dd g' = 0$ for all $f_i' \in U_i$, then $\phi'$ must be a zero function.
 \end{proposition}
-The proof will occupy the rest of this section.
+The proof of \ref{prop:4.2} will occupy the remainder of this section.
 
 \subsection{}
 Let $f$ be a compactly supported smooth function on $G/Z$.
 Then
 \begin{align}
 \label{4.3.1}
-    \int_{G/Z} f(g)dg = c = \int_{x \in F^\times} H(x:f:A)|1 - x|^{-2} dx.
+    \int_{G/Z} f(g)\dd g = c \int_{x \in F^\times} H(x:f:A)|1 - x|^{-2} \dd x
 \end{align}
-Here $c$ is a constant that does not depend on $f$.
-We also need an estimate on the functions $H(x:f:T)$ for compactly supported continuous functions $f$  on $G/Z$.
+where $c$ is a constant that does not depend on $f$.
+We also need an estimate for the functions $H(x:f:T)$, wehre $f$ is compactly supported continuous on $G/Z$.
 
 \begin{lemma}
-Let $f$ be a compactly supported function on $G/Z$ and $H(x) = H(x:f:T)$.
-Then $H$ vanishes in a neighborhood of 1 and is $O(\log |x|)$ for small or large $|x|$.
+Let $f$ be a compactly supported function on $G/Z$, and $H(x) = H(x:f:T)$.
+Then $H$ vanishes in a neighborhood of 1 and behaves as $O(\log |x|)$ for both small or large $|x|$.
 \end{lemma}
 \begin{proof}
-The proof is similar to that given in (3.2) except that the lemma of (3.2) is replaced by the following assertion: if $\Phi$ is a two-variable Schwarts-Bruhat function, then there exist two single variable Schwartz-Bruhat functions $A_i$, $i = 1, 2$, such that
+The proof is similar to that given in Section 3.2, except that Lemma \ref{lem:3.2} is replaced by the following assertion: if $\Phi$ is a Schwarts--Bruhat function of two variables, then there exist two Schwartz--Bruhat functions $A_1(x)$ and $A_2(x)$, such that
 \begin{align*}
     \int_{F^\times} \Phi(a^{-1}x a) \dd^\times a = A_1(x) + A_2(x) \log |x|.
 \end{align*}
-We need integration formulas for groups $G_i'$ analogous to (1)
+We need integration formulas for groups $G_i'$ analogous to \eqref{4.3.1}:
 \begin{align}
-    \int_{G_1' / Z_1'} f_1'(g) dg &= c_1 \int_{0}^{\infty} H'(x:f_1':T_1') |1 - x|^{-2} dx, \label{4.3.3} \\
-    \int_{G_2' / Z_2'} f_2'(g) dg &= c_2 \int_{-\infty}^{0} H'(x:f_2':T_2') |1-x|^{-2} dx, \label{4.3.4}
+    \int_{G_1' / Z_1'} f_1'(g) \dd g &= c_1 \int_{0}^{\infty} H'(x:f_1':T_1') |1 - x|^{-2} \dd x, \label{4.3.3} \\
+    \int_{G_2' / Z_2'} f_2'(g) \dd g &= c_2 \int_{-\infty}^{0} H'(x:f_2':T_2') |1-x|^{-2} \dd x, \label{4.3.4}
 \end{align}
-where $c_i$ is a constant and $f_i'$ is a compactly supported continuous function on $G_i' / Z_i'$.
+where $c_i$ is a constant and $f_i'$ is a compactly supported continuous function on $G_i' / Z_i'$, for $i = 1, 2$.
 \end{proof}
 
 \subsection{}
-\emph{Proof of the proposition\ \ref{prop:4.2}}.
+\emph{Proof of the proposition \ref{prop:4.2}}.
 Suppose $i = 1$.
 Let $H'(x) = H'(x:\phi':T_1')$.
-In particuler $H'(x) = 0$ if $x$ is not a norm.
-We will compute integrals up to multiplicative constants.
+In particuler, $H'(x) = 0$ if $x$ is not a norm.
+We will compute the integrals up to multiplicative constants.
 Suppose $f$ and $(f_1', f_2')$ match with $f'$ being $K$-finite if $F = \mathbb{R}$.
-By~\eqref{4.3.3},
+By \eqref{4.3.3},
 \begin{align*}
-    \int_{G_1' / Z_1'} \phi'(g_1') f_1'(g_1') dg_1' = \int_{0}^{\infty} H'(x) H'(x:f_1':T_1') |1 - x|^{-2} dx.
+    \int_{G_1' / Z_1'} \phi'(g_1') f_1'(g_1') \dd g_1' = \int_{0}^{\infty} H'(x) H'(x:f_1':T_1') |1 - x|^{-2} \dd x.
 \end{align*}
 Define $\phi_0$ as a function on $G$ by
 \begin{align*}
@@ -78,12 +79,12 @@ Define $\phi_0$ as a function on $G$ by
 \end{align*}
 By the properties of $H'$ and the integration formula~\eqref{4.3.1} $\phi_0$ is locally integrable and
 \begin{align*}
-    \int_{G/Z} \phi_0(g) f(g) = \int_{F^\times} H'(x) H(x:f:\eta) |1 - x|^{-2} dx.
+    \int_{G/Z} \phi_0(g) f(g) = \int_{F^\times} H'(x) H'(x:f:\eta) |1 - x|^{-2} \dd x.
 \end{align*}
-From $H(x:f:\eta) = H'(x:f_1':T_1')$ if $x$ is a norm we get
+From $H(x:f:\eta) = H'(x:f_1':T_1')$, when $x$ is a norm, we find that
 \begin{align*}
-    \int_{G/Z} \phi_0(g) f(g) dg = \int_{G_1' / Z_1'} \phi'(g_1') f_1'(g_1') dg_1'.
+    \int_{G/Z} \phi_0(g) f(g) \dd g = \int_{G_1' / Z_1'} \phi'(g_1') f_1'(g_1') \dd g_1'.
 \end{align*}
 By assumption, the second integral vanishes.
-Therefore $\phi_0$ is orthogonal to any smooth function (resp.\ any $K$-finite smooth function if $F$ is real), and it  follows that $\phi_0$ is zero.
-It is therefore the same for $H'$: since $\phi'$ is $T_1'$ bi-invariant, it is completely determined by $H'$ and we get $\phi' = 0$.
+Therefore $\phi_0$ is orthogonal to any smooth function (resp. any $K$-finite smooth function if $F$ is real), implying that $\phi_0$ must be zero.
+Consequently, $H'$ must also be zero: since $\phi'$ is bi-invariant under $T_1'$, it is completely determined by $H'$ and we get $\phi' = 0$.

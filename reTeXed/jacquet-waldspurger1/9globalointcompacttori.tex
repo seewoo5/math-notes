@@ -44,7 +44,7 @@ The Eisenstein kernel is zero if $G'$ does not split.
 The kernel $K_{\mathrm{sp}}'$ is defined by the following sum
 \begin{equation}
     \label{eqn:9.1.4}
-    K_{\mathrm{sp}}'(x, y) = \sum_{\chi} \frac{1}{\mathrm{vol}([G'])} \int f'(\det g') dg' \cdot \chi(\det x)\chi^{-1}(\det y)
+    K_{\mathrm{sp}}'(x, y) = \sum_{\chi} \frac{1}{\mathrm{vol}([G'])} \int f'(\det g') \dd g' \cdot \chi(\det x)\chi^{-1}(\det y)
 \end{equation}
 where the sum is over all the quadratic characters $\chi$ of the id\'ele class group of $F$.
 We define two other kernels
@@ -103,13 +103,13 @@ Then we get
 Consider $K_{\mathrm{sp}}'$.
 By~\eqref{eqn:9.1.4}, we have
 \begin{equation}
-    \iint K_{\mathrm{sp}}'(s, t)dsdt = \sum_{\chi} \frac{1}{\mathrm{vol}([G'])} \int f'(g) \chi(\det g) dg \int \chi(\det s) ds \int \chi^{-1}(\det t) dt,
+    \iint K_{\mathrm{sp}}'(s, t)dsdt = \sum_{\chi} \frac{1}{\mathrm{vol}([G'])} \int f'(g) \chi(\det g) \dd g \int \chi(\det s) ds \int \chi^{-1}(\det t) dt,
 \end{equation}
 each of the integral of characters over $[T']$ is 0 unless $s\mapsto \chi(\det s)$ is trivial over $T'(\Aa_F) $; 
 this is the case if and only if $\chi=1$ or $\chi=\eta$.
 The integral of $K_{\mathrm{sp}}$ therefore reduces to two terms:
 \begin{equation}
-    \iint K_{\mathrm{sp}}'(s, t) dsdt = \frac{\mathrm{vol}([T'])^2}{\mathrm{vol}([G'])} \left(\int f'(g)\chi(\det g)dg + \int f'(g) dg\right)
+    \iint K_{\mathrm{sp}}'(s, t) dsdt = \frac{\mathrm{vol}([T'])^2}{\mathrm{vol}([G'])} \left(\int f'(g)\chi(\det g)\dd g + \int f'(g) \dd g\right)
 \end{equation}
 In particular, let's choose as in (8.1) a place $z$ of $F$ not in $S$, fix the components of $f$ at places other than $z$ and look at the integral as a function of $\hat{f_z'}$.
 Then \textcolor{red}{the integral (5)} is of the form $c \hat{f_z'}(q_{z}^{-1})$ for a constant $c$.
