@@ -1,133 +1,124 @@
 \section{Orbital integrals: compact torus}
 
 \subsection{}
-Let's keep the notations of section 1 but now assume that $F$ is a local field.
-Then $T'/Z'$ is compact.
-Choose a non-trivial additive character $\Psi$ of $F$.
-Endow the additive group $F$ with the self-dual measure $dx$ for the character $\Psi$, the multiplicative group $F^\times$ with the measure $L(1, 1_F)|x|^{-1} dx$ (Tamagawa measure relative to $\Psi$).
-Also, on the multiplicative group $E^\times$, we give a Tamagawa measure corresponds to the character $\Psi \circ \tr$.
-Then these induce measures on $T'$ and $Z'$.
-Equip $T'/Z'$ with the quotient measure.
+Let's keep the notations from Section 1, but now assume that $F$ is a local field.
+In this case, the quotient $T'/Z'$ is compact.
+We choose a non-trivial additive character $\Psi$ of $F$.
+The additive group $F$ is endowed with the self-dual measure $\dd x$ relative to $\Psi$, while the multiplicative group $F^\times$ is equipped with the measure $L(1, 1_F)|x|^{-1} \dd x$ (the Tamagawa measure relative to $\Psi$).
+Similarly, we endow the multiplicative group $E^\times$ with a Tamagawa measure corresponding to the character $\Psi \circ \tr$.
+These measures induce corresponding measures on $T'$ and $Z'$, and we equip $T'/Z'$ with the quotient measure.
 Let $f'$ be a compactly supported smooth function on $G'/Z'$.
-Let
+Define
 \begin{equation}
-H'(g':f':T') = \int_{T'/Z'} \int_{T'/Z'} f(sg't) dsdt.
+    H'(g':f':T') = \int_{T'/Z'} \int_{T'/Z'} f(sg't) \dd s \dd t.
 \end{equation}
-It is clear that $H'(g':f':T')$ only depends on the double coset of $g'$ modulo $T'$.
-Let $x$ be an element of $F^\times$.
+It is clear that $H'(g':f':T')$ depends only on the double coset of $g'$ modulo $T'$.
+Now, let $x$ be an element of $F^\times$.
 Define $H'(x:f':T')$ as $H'(g':f':T')$ if there's $g'$ in $G'$ such that $P'(g':T') = x$, and 0 otherwise.
-Then we obtain a function $H'(f':T')$ on $F^\times$ and we are going to characterize the functions $H'$ on $F^\times$ which are of the form $H' = H'(f': T')$ for an appropriate function $f'$.
+Thus, we obtain a function $H'(f':T')$ on $F^\times$, and we will now characterize the functions $H'$ on $F^\times$ that arise in the form $H' = H'(f':T')$ for some appropriate function $f'$.
 
 \subsection{}
-Consider a function $H' = H'(f':T')$.
-By definition $H'$ vanishes, therefore is smooth, on the complement of $cN$.
-Consider a point $x$ of the form $P'(h':T')$.
-As the norm is a submersive map from $E^\times$ to $F^\times$, the map $g' \to P'(g':T')$ is a fortiori submersive at the point $h$.
-It follows that $H'$ is smooth at point $x$.
-Finally suppose that 1 is in $cN$ (that is, the group $G'$ splits); then we can assume that $c = 1$.
-We are going to show that $H'$ is zero near 1.
+Consider a function $H' = H'(f':T')$. By construction, $H'$ vanishes on the complement of $c\rN$, and therefore is smooth there. Let $x$ be a point of the form $P'(h':T')$.
+Since the norm is a submersive map from $E^\times$ to $F^\times$, the map $g' \mapsto P'(g':T')$ is also submersive at the point $h'$. 
+Consequently, $H'$ is smooth at $x$.
+Next, assume that $1$ belongs to $c\rN$ (i.e., the group $G'$ splits), and without loss of generality, we take $c = 1$.
+We will show that $H'$ vanishes near 1.
 
 Since $f'$ is compactly supported modulo $Z'$, there exists a compact subset $C$ of $G'$ such that $H'(g':f':T') \neq 0$ implies $g' \in T'CT'$.
-Hence it suffice to show the existence of a number $K$ such that  $|P'(g':T') - 1|>K$ for $g' \in T'CT'$.
-Suppose there is no such number.
-Then there would exist a sequence $g_i'$ of elements in $T'CT'$ such that $P'(g_i':T')$ tends to 1.
-By enlarging $C$ and multiplying the elements of the sequence by elements of $T'$, we can assume that
+Thus, it suffices to show the existence of a number $K$ such that $|P'(g':T') - 1| > K$ for $g' \in T'CT'$.
+Suppose no such number exists. Then, there would exist a sequence $g_i'$ of elements in $T'CT'$ such that $P'(g_i':T') \to 1$. By enlarging $C$ and multiplying the elements of the sequence by elements of $T'$, we can assume that
 \[
 g_i' = 1 + \varepsilon t_i' = c_i z_i'
 \]
-with $t_i'$ in $T'$, $c_i$ in $C$ and $z_i'$ in $Z'$. So
+where $t_i' \in T'$, $c_i \in C$, and $z_i' \in Z'$. Thus,
 \[
 P'(g_i':T') = t_i' \bar{t}_i' = 1 + a_i
 \]
-and $a_i$ tends to zero.
+where $a_i \to 0$.
 On the other hand, we have:
 \[
 \det g_i' = -a_i = {(z_i')}^2 \det c_i.
 \]
-So $z_i'$ tends to zero, and same for $g_i'$.
-Since the projection of $g_i'$ onto $L$ is 1, we get a contradiction.
+which implies that $z_i' \to 0$, and consequently, $g_i' \to 0$. Since the projection of $g_i'$ onto $L$ is 1, this leads to a contradiction. Hence, $H'$ must vanish near 1.
 
 \subsection{}
-Let's examine the behavior of the function $H'$ near zero and near infinity.
-We will show that there is a neighborhood $U$ of 0 in $F$ and a smooth function $A'$ on $U$ such that
+Now, let us examine the behavior of $H'$ near 0 and near infinity. We will show that there exists a neighborhood $U$ of $0$ in $F$ and a smooth function $A'$ on $U$ such that:
 \begin{align}
-    H'(x) = A'(x) (1 + \eta(cx)), \quad x \in U \\
-    2A'(0) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(t) dt.
+    H'(x) &= A'(x) (1 + \eta(cx)), \quad x \in U \\
+    2A'(0) &= \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(t) dt.
 \end{align}
-Similarly we will show that there exists a neighborhood $U$ of 0 in $F$ a smooth function $B'$ on $U$ such that
+Similarly, there exists a neighborhood $U$ of 0 in $F$ and a smooth function $B'$ on $U$ such that:
 \begin{align}
-    H'(x) = B'(x^{-1}) (1 + \eta(cx)), \quad x^{-1} \in U \\
-    2B'(0) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(\varepsilon t) dt.
+    H'(x) &= B'(x^{-1}) (1 + \eta(cx)), \quad x^{-1} \in U \\
+    2B'(0) &= \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(\varepsilon t) \dd t.
 \end{align}
-Since $P'(\varepsilon g': T') = {P'(g':T')}^{-1}$ we have
+Since $P'(\varepsilon g': T') = {P'(g':T')}^{-1}$, we have:
 \[
-\int_{T'/Z'} \int_{T'/Z'} f'(s\varepsilon g't) dsdt = H'(x^{-1}:f':T')
+\int_{T'/Z'} \int_{T'/Z'} f'(s\varepsilon g't) \dd s \dd t = H'(x^{-1}:f':T')
 \]
 or
 \[
 H'(x^{-1}:f': T') = H'(x:f_0':T'), \quad f_0'(g') = f'(\varepsilon g').
 \]
-Hence it suffices to prove the assertions near zero.
-We will consider non-archimedean case first.
-Take a $x$ in $cN$.
-Then $x = cl\bar{l}$ for some $l \in L$, hence $x = P(h)$ with $h = 1 + \varepsilon l$.
-Then we can write
+Thus, it suffices to prove the assertions near 0.
+Let us consider the non-archimedean case first.
+Suppose $x \in c\rN$.
+Then $x = cl\bar{l}$ for some $l \in L$, and thus $x = P(h)$ for $h = 1 + \varepsilon l$.
+We can express
+% We will consider non-archimedean case first.
+% Take a $x$ in $cN$.
+% Then $x = cl\bar{l}$ for some $l \in L$, hence $x = P(h)$ with $h = 1 + \varepsilon l$.
+% Then we can write
 \[
-H'(x:f':T')=\int_{T'/Z'} \int_{T'/Z'} f(t_1 (1 + \varepsilon l) t_2) dt_1 dt_2
+H'(x:f':T')=\int_{T'/Z'} \int_{T'/Z'} f(t_1 (1 + \varepsilon l) t_2) \dd t_1 \dd t_2
 \]
-or with a change of variable
+or, after a change of variables:
 \begin{equation}
-\label{2.3.5}
-H'(x:f':T') = \int_{T'/Z'} \int_{T'/Z'} f\left(\left(1 + \varepsilon l \frac{\bar{t}_{1}}{t_ {1}} \right)t_{2} \right) dt_1 dt_2.
+    \label{2.3.5}
+    H'(x:f':T') = \int_{T'/Z'} \int_{T'/Z'} f\left(\left(1 + \varepsilon l \frac{\bar{t}_{1}}{t_ {1}} \right)t_{2} \right) \dd t_1 \dd t_2.
 \end{equation}
-Since $f'$ is smooth there exists an ideal $V$ of $E$ such that for $l$ in $V$ we have
+Since $f'$ is smooth, there exists an ideal $V$ of $E$ such that for all $l \in V$, we have:
 \[
 f'(g') = f((1 + \varepsilon l) g')
 \]
 for all $g'$.
-Then there exists an ideal $U$ in $F$ such that $l \bar{l} \in U$ is equivalent to $l \in V$.
-For $x$ in $cU$ we therefore have $H'(x) = 0$ if $x$ is not in $cN$; if $x$ is in $cN$ then $x = cl\bar{l}$ with $l$ in $V$ and by~\eqref{2.3.5}
+Therefore, there exists an ideal $U$ of $F$ such that $l\bar{l} \in U$ is equivalent to $l \in V$. For $x \in cU$, we have $H'(x) = 0$ if $x \notin c\rN$; if $x \in c\rN$, then $x = cl\bar{l}$ for $l \in V$, and from \eqref{2.3.5}:
 \[
-H'(x) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(t) dt.
+H'(x) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(t) \dd t.
 \]
 Our assertion follows immediately from this.
 
-Let move on to the archimedean case, i.e. $F = \mathbb{R}$ and $L = \mathbb{C}$.
-Let $K(x) = H'(cx)$.
-Let $V$ be a disk $\{z:z\bar{z} < a\}$ in $L$ such that $1 + \varepsilon V$ is contained in $G$.
-Then the right hand side of~\eqref{2.3.5} defines a smooth function on $V$, say $C(l)$, depending only on the norm of $l$.
-We have
+In the archimedean case, i.e., when $F = \mathbb{R}$ and $L = \mathbb{C}$, let $K(x) = H'(cx)$. Consider a disk $V = \{ z : z \bar{z} < a \}$ in $L$ such that $1 + \varepsilon V \subset G$. Then the right-hand side of \eqref{eqn:2.3.5} defines a smooth function on $V$, say $C(l)$, which depends only on the norm of $l$. Thus,
 \[
 K(x) = \begin{cases} 0 & x < 0 \\ C(l) & x > 0 \text{ and } x = l \bar{l} \text{ for } x \in V.\end{cases}
 \]
-In particular, the restriction of $C$ to the real axis is even and smooth and we have
+In particular, the restriction of $C$ to the real axis is even and smooth, and we obtain:
 \[
 K(x) = \begin{cases} 0 & x < 0 \\ C(y) & 0 <x < a\text{ and } x = y^2, y \in \mathbb{R}. \end{cases}
 \]
-Our assertion follows from the existence of a smooth function $D$ on $F$ such that $D(x) = K(x)$ for $a > x > 0$, which is a consequence of Whitney's theorem.\footnote{Whitney's approximation theorem: smooth function on $\mathbb{R}$ can be approximated by analytic functions.}
+Thus, the existence of a smooth function $D$ on $F$ such that $D(x) = K(x)$ for $0 < x < a$ follows from Whitney's approximation theorem.\footnote{Whitney's approximation theorem: a smooth function on $\mathbb{R}$ can be approximated by analytic functions.}
 
 \subsection{}
-The following properties characterizes $H'(f':T')$:
+The following properties characterizes the functions $H'(f':T')$:
 \begin{proposition}\label{prop:2.1}
-Let $H'$ be a function on $F^\times$.
-There exists a compactly supported smooth function $f'$ on $G'/Z'$ with $H' = H'(f':T')$ if and only if the following conditions hold:
-\begin{enumerate}[label={(\arabic*)}]
-    \item $H'$ vanishes on the complement of $cN$,
-    \item $H'$ vanishes on a neighborhood of 1,
-    \item There exists a smooth function $A'$ on a neighborhood of 0 in $F$ such that, for $x$ near 0, we have
+Let $H'$ be a function on $F^\times$. There exists a compactly supported smooth function $f'$ on $G'/Z'$ such that $H' = H'(f':T')$ if and only if the following conditions hold:
+\begin{enumerate}[label=(\arabic*)]
+    \item $H'$ vanishes on the complement of $c\rN$,
+    \item $H'$ vanishes on a neighborhood of $1$,
+    \item There exists a smooth function $A'$ on a neighborhood of $0$ in $F$ such that, for $x$ near 0, we have:
     \[
     H'(x) = A'(x) (1 + \eta(cx)),
     \]
-    \item There exists a smooth function $B'$ on a neighborhood of 0 in $F$ such that, when $|x|$ is sufficiently large,
+    \item There exists a smooth function $B'$ on a neighborhood of $0$ in $F$ such that, for sufficiently large $|x|$,
     \[
-    H'(x) = B'(x^{-1}) (1 + \eta(cx)) .
+    H'(x) = B'(x^{-1}) (1 + \eta(cx)).
     \]
 \end{enumerate}
-If $f'$, $A'$ and $B'$ satisfy these conditions then
+If $f'$, $A'$, and $B'$ satisfy these conditions, then: 
 \[
-2A'(0) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(t)dt, \quad 2B'(0) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(\varepsilon t) dt.
+2A'(0) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(t) \dd t, \quad 2B'(0) = \mathrm{vol}(T'/Z') \int_{T'/Z'} f'(\varepsilon t) \dd t.
 \]
 \end{proposition}
-We have just shown that the conditions (1) to (4) are necessary.
-We will leave it to the reader to show that they are also sufficient.
-The last assertion of the proposition has been proved above.
+We have demonstrated the necessity of conditions (1) to (4).
+The proof of their sufficiency is left to the reader.
+The last assertion of the proposition has already been established.

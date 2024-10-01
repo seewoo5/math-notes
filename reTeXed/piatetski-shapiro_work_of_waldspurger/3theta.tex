@@ -10,7 +10,7 @@ For $\phi \in \cS(X_1(\bA))$,
 \[
 \vartheta_\psi^\phi(g, h) = \sum_{x \in X_1(k)} \omega_\psi(g, h) \phi(x)\qquad (g \in G(\bA), h \in \widetilde{\SL}_2(\bA)).
 \]
-Here, $G$ is either $\PGL_2$ or $\rP D^\times$.
+Here, $G$ is either $\PGL_2$ or $\rP \dd^\times$.
 It is well known that $\vartheta_\psi^\phi$ is an automorphic function on $G(\bA) \times \widetilde{\SL}_2(\bA)$ of moderate growth.
 
 The theta function $\vartheta_\psi^\phi$'s can be used to define a correspondence between the automorphic representation of $G(\bA)$ and those of $\widetilde{\SL}_2(\bA)$.
@@ -19,7 +19,7 @@ If $f \in \pi \subset A_0$, put
 \[
 \varphi(h) := \int_{G(k) \backslash G(\bA)} \vartheta_\psi^\phi(g, h) f(g) \dd g.
 \]
-In the case $G = \rP D^\times$, we assume that $\int_{G(k)\backslash G(\bA)} f(g) \dd g = 0$.
+In the case $G = \rP \dd^\times$, we assume that $\int_{G(k)\backslash G(\bA)} f(g) \dd g = 0$.
 The fact that $\vartheta_\psi^\phi$ is a function of moderate grwoth on $(G(k) \times \SL_2(k)) \backslash (G(\bA) \times \widetilde{\SL}_2(\bA))$ means that the integral is well-defined, and that $\varphi$ is a function on $\SL_2(k) \backslash \widetilde{\SL}_2(\bA)$.
 
 \begin{claim}
@@ -39,7 +39,7 @@ It is enough to show that $\int_{k\backslash \bA} \varphi\left(\begin{smallmatri
 &= \int_{G(k) \backslash G(\bA)} \sum_{x \in X_1(k)} \omega_\psi(g, 1) \phi(x) f(g) \int_{k \backslash \bA} \psi(z q(x)) \dd z \dd g.
 \end{align*}
 The inner integral $\int_{k \backslash \bA} \psi(z q(x)) \dd z$ is zero unless $q(x) = 0$.
-If $G = \rP D^\times$, then $q(x) = 0$ if and only if $x = 0$, and the integral becomes
+If $G = \rP \dd^\times$, then $q(x) = 0$ if and only if $x = 0$, and the integral becomes
 \[
 \int_{k \backslash \bA} \varphi \begin{pmatrix}
     1 & z \\ 0 & 1
@@ -81,7 +81,7 @@ If $a \in k^\times$, then a calculation similar to the one used to show $\varphi
     \end{pmatrix} \overline{\psi(az)} \dd z \nonumber \\ 
     &= \int_{T^a(\bA) \backslash G(\bA)} \omega_\psi(g) \phi(x_a) \int_{T^a(k) \backslash T^a(\bA)} f(tg) \dd t \dd g. \label{eqn:F}
 \end{align}
-Here, $x_a$ is any element in $X$, such that $q(x_a) = a$ (if $G = \rP D^\times$, we assume $a$ is representable by $q$), and $T^a$ is the stabilizer of $x_a$.
+Here, $x_a$ is any element in $X$, such that $q(x_a) = a$ (if $G = \rP \dd^\times$, we assume $a$ is representable by $q$), and $T^a$ is the stabilizer of $x_a$.
 $T^a$ is a torus in $G$.
 Put
 \[
