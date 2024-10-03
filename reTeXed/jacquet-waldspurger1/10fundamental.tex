@@ -133,8 +133,8 @@ Let's prove~\eqref{eqn:10.2.4}.
 We can use (7.3.7) to compute LHS and (9.3.1) to compute RHS.
 The equality~\eqref{eqn:10.2.4} will then be a consequence of the following two identities
 \begin{align}
-    H(n_+: f: \eta) + H(n_-:f:\eta) &= \sum_{(G',T') \in X(S)} \mathrm{vol}([T']) \int_{[T']} f'(t')dt', \label{eqn:10.4.1}\\
-    H(\varepsilon n_+: f:\eta) + H(\varepsilon n_-:f:\eta) &= \sum_{(G',T')\in X(S)} \mathrm{vol}([T']) \int_{[T']} f'(\varepsilon't')dt'.
+    H(n_+: f: \eta) + H(n_-:f:\eta) &= \sum_{(G',T') \in X(S)} \mathrm{vol}([T']) \int_{[T']} f'(t')\dd t', \label{eqn:10.4.1}\\
+    H(\varepsilon n_+: f:\eta) + H(\varepsilon n_-:f:\eta) &= \sum_{(G',T')\in X(S)} \mathrm{vol}([T']) \int_{[T']} f'(\varepsilon't')\dd t'.
 \end{align}
 
 The second identity results from the first identity applied to the function $f_1$ defined by $f_1'(g) = f'(\varepsilon' g)$.
@@ -181,7 +181,7 @@ Note that all but finitely many factors of each product are equal to 1.
 Let's move on to RHS of~\eqref{eqn:10.4.1}.
 The integral is obviously the product of similar local integrals:
 \begin{equation*}
-    \int_{T'(\Aa_F) / Z'(\Aa_F)} f'(t')dt' = \prod_{v} \int_{T_v' / Z_v'} f'_v(t_v') dt_v'.
+    \int_{T'(\Aa_F) / Z'(\Aa_F)} f'(t')\dd t' = \prod_{v} \int_{T_v' / Z_v'} f'_v(t_v') dt_v'.
 \end{equation*}
 If $v\in V$, the local integral is $M_v$ by the assumption (2.b).
 If $v\in W$ the integral equals to
