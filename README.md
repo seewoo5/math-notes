@@ -17,6 +17,7 @@ List of notes:
 * Geometry
     * Low-dimensional complex Spin groups
     * $\mathbb{S}^2$ is not a Lie group
+    * Singular algebraic curves (follow Chapter 4 of Serre's *Algebraic Groups and Class fields*)
 
 * Representation theory
     * Littlewood-Richardson rule (ongoing)
