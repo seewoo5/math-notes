@@ -15,4 +15,6 @@
 *.ind
 *.ist
 *.xml
+*.tkzparfct.gnuplot
+*.tkzparfct.table
 .DS_Store
