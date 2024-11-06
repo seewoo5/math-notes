@@ -13,6 +13,7 @@ List of notes:
     * Nontrivial examples of ideal class groups
     * Structure of $(\mathbb{Z}/p^{n}\mathbb{Z})^{\times}$
     * Automorphic forms on GL(2)
+    * Modular forms on $G_2$
 
 * Geometry
     * Low-dimensional complex Spin groups

@@ -1,0 +1,134 @@
+\section{Local representation theory of $G_2$}
+\label{sec:g2localrep}
+
+\subsection{Archimedean}
+\label{subsec:arch}
+
+For a holomorphic modular form, the archimedean component of the associated automorphic representation is a \emph{holomorphic} discrete series.
+For a general Lie group $G$ with a maximal compact subgroup $K$, \emph{when $G/K$ possesses a $G$-invariant holomorphic structure}, one can construct holomorphic discrete series using holomorphic line bundles on the homogeneous space $G/K$ (e.g. see \cite{schmid19762}).
+One can try a similar construction of discrete series for $G_2(\bR)$, where it has a maximal compact subgroup $K = \SU_4 = (\SU_2 \times \SU_2) / \{\pm 1\}$.
+Unfortunately, this does not work: we do not have a $G_2(\bR)$-invariant holomorphic structure on $G_2(\bR) / K$.
+Instead, Gross and Wallach \cite{gross1996quaternionic} considered the ``next-best'' discrete series representation for $G_2(\bR)$:
+\emph{quaternionic} discrete series representation.
+These representations are constructed via $\rH^1$ of certain holomorphic line bundles on the ``twistor space covering'' $\mathscr{D} = G_2(\bR) / (L \cap K) \twoheadrightarrow G_2(\bR) / K$, which is a $\bP^1(\bC)$-bundle over $G_2(\bR) / K$.
+These are parametrized by integers $k \ge 2$,\footnote{There are also \emph{limits} of discrete series representations when $k = 0$ and $1$, but we'll ignore these representations.} which have infinitesimal character $\rho + (k - 2) \beta_0$ where $\rho = \frac{1}{2}\sum_{\beta \in \Phi^+} \beta = 3 \alpha + 5 \alpha'$ is the Weyl root.
+Its restriction to $K$ decomposes as
+$$
+(\pi_k)|_K \simeq \bigoplus_{n \ge 0} \Sym^{2k + n}(\bC^2) \boxtimes \Sym^n(\Sym^3 \bC^2),
+$$
+and the minimal $K$-type is the representation
+$$
+    \mathbb{V}_{k} := \Sym^{2k}(\bC^2) \boxtimes \mathbf{1} \quad \text{of }(\SU_2 \times \SU_2) / \{\pm 1\}
+$$
+of dimension $2k + 1$.
+$\pi_k$ is a submodule of $\Ind_{P(\bR)}^{G_2(\bR)} \lambda_k$, where
+$$
+    \lambda_k = (\sgn)^k \cdot |\det|^{-k-1}.
+$$
+
+Recall that the adjoint representation of $L(\bR)$ on $\Hom(U(\bR), \bR)$ is isomorphic to the twisted representation of $\GL_2(\bR)$ on the space of binary cubic forms with coefficients in $\bR$ (Proposition \ref{prop:repL}).
+We have $\Hom(U(\bR), \bR) \simeq \Hom(U(\bR), \bS^1)$ via $f \mapsto \chi = e^{2 \pi i f}$ (non-algebraic isomorphism), which takes the lattice $\Hom(U(\bZ), \bZ)$ to $\Hom(U(\bZ) \backslash U(\bR), \bS^1) = \{ \chi \in \Hom(U(\bR), \bS^1): \chi|_{U(\bZ)} = 1\}$.
+The representation of $L(\bZ)$ on the later subgroup is isomorphic to twisted action of $\GL_2(\bZ)$ on the space of integral binary cubic forms.
+Then a character $\chi$ is called \emph{generic} if the corresponding binary cubic form has nonzero discriminant (which we will denote as $\Delta(\chi)$).\footnote{Usually, a character $\psi: N(F) \to \bC^\times$ is called generic if it is nontrivial on each root (sub)group $N_\beta \le N$, and I think our definition also fits into this definition, but I haven't checked myself.}
+Then the $L(\bR)$-action preserves sign of the discriminant, hence the set of generic characters break up into two orbits: those with $\Delta > 0$ (correponds to the real cubic algebra $\bR^3$) and those with $\Delta < 0$ (corresponds to the cubic algebra $\bR \times \bC$).
+Wallach proved the following uniqueness result of Whittaker models of $\pi_k$ \cite{wallach2003generalized}:
+
+\begin{proposition}
+\label{prop:chihom}
+    Let $\chi$ be a generic character of $U(\bR)$, and $k \ge 0$.
+    Let
+    $$
+    \Wh_{k, \chi} = \Hom_{U(\bR)}(\pi_k, \chi) = \{\ell: \pi_k \to \bC, \ell(\pi_k(u)v) = \chi(u) \ell(v) \,\forall u \in U(\bR)\}
+    $$
+    be the space of $\chi$-Whittaker functionals on $\pi_k$. Then
+    \begin{itemize}
+        \item If $\Delta(\chi) < 0$, $\dim_{\bC} \Wh_{k, \chi} = 0$.
+        \item If $\Delta(\chi) > 0$, $\dim_{\bC} \Wh_{k, \chi} = 1$, and it affords the representation $(\sgn)^k$ of $S_3 \simeq \stab(\chi) \subset \GL_2(\bR)$.
+    \end{itemize}
+\end{proposition}
+The above result will be used to define \emph{Fourier coefficients} of modular forms on $G_2$ (Section \ref{subsec:g2modfourier}).
+
+\subsection{Nonarchimedean}
+\label{subsec:nonarch}
+
+In Section \ref{subsec:gl2nonarch}, we studied (unramified) representations of $\GL_{2}(\bQ_p)$ and Hecke algebras.
+A similar theory for $G_2$ is developed in \cite{gan2002fourier}, which we are going to introduce here.
+Using this, we can describe the action of Hecke operators on $G_2$ modular forms on their Fourier coefficients (Section \ref{subsec:g2heckefourier}).
+
+We have two fundamental representations of $G_2$: the 7-dimensional standard representation (corresponds to the embedding $G_2 \hookrightarrow \SO_7$ explained in \ref{subsec:g2def}), and the 14-dimensional adjoint representation.
+Let $\chi_1$ and $\chi_2$ be the characters of these representations, respectively.
+Then the representation ring $R(\what{G_2})$ of the dual group $\what{G_2} = G_2(\bC)$ (dual of $G_2$ is again $G_2$!) is a polynomial ring in $\chi_1$ and $\chi_2$, with highest weights $\lambda_1$ and $\lambda_2$ identified with coroots
+\begin{align*}
+    \lambda_1 &= \beta_0^\vee = (2\alpha + 3 \alpha')^\vee \\
+    \lambda_2 &= (\alpha + 2 \alpha')^\vee.
+\end{align*}
+We have the following identities between $\chi_1$ and $\chi_2$:
+$$
+\begin{cases}
+    \wedge^2 \chi_1 = \chi_1 + \chi_2 \\
+    \wedge^3 \chi_1 = \chi_1^2 - \chi_2 \\
+    \wedge^{7-n} \chi_1 = \wedge^n \chi_1.
+\end{cases}
+$$
+For the spherical Hecke algebra $\cH_p(G_2):= C_c^\infty(G_2(\bZ_p) \backslash G_2(\bQ_p) / G_2(\bZ_p))$, Gross \cite{gross1998satake} computed Satake transform $\cS_{G_2}: \cH_p(G_2) \simeq R(\what{G_2})$ as
+$$
+\begin{cases}
+    \varphi_1 = p^3 \chi_1 = \cS_{G_2}(K \lambda_1(p) K) + 1, \\
+    \varphi_2 = p^5 \chi_2 = \cS_{G_2}(K \lambda_2(p) K) + p^4 + \varphi_1.
+\end{cases}
+$$
+
+
+Using the equation above, we can find a decomposition of the double cosets $K \lambda_i(p) K$ into single $K$-cosets of the form $ulK$, where $u \in U(\bQ_p)$ and $l \in L(\bQ_p) \simeq \GL_2(\bQ_p)$, which will be used to compute the action of the corresponding Hecke operators on Fourier coefficients (Section \ref{subsec:g2heckefourier}).
+We can use \emph{relative} Satake transform corresponds to the restriction map $R(\what{G_2}) \to R(\what{L})$, and this gives the number of distinct cosets in the decomposition of $K \lambda_i(p) K$ for each $l$.
+More precisely, the relative Satake transform $\cS_{G_2 / L} : \cH_p(G_2) \to \cH_p(L)$ is defined as
+$$
+\cS_{G_2 / L}(c[t])(l) = |\delta_P(l)|^{1/2} \cdot \int_{U} c[t](lu) \dd u
+$$
+and it fits into the following commutative diagram
+\begin{center}
+\begin{tikzcd}
+\cH_p(G_2) \arrow[r, "\cS_{G_2}"] \arrow[d, swap, "\cS_{G_2 / L}"]
+& R(\what{G_2}(\bC)) \arrow[d, "\Res"] \\
+\cH_p(L) \arrow[r, swap, "\cS_{L}"]
+& R(\what{L}(\bC))
+\end{tikzcd}
+\end{center}
+
+\begin{proposition}
+\label{prop:relsat}
+Fix $t \in G_2$ and $l \in L$.
+Let $c[t] = \dso_{KtK} \in \cH_p(G_2, K)$ be the characteristic function.
+Then
+\begin{align*}
+\cS_{G_2 / L}(c[t])(l) = |\delta_P(l)|^{1/2} \cdot \#\{ulK \subset KtK, u \in U\}
+\end{align*}
+\end{proposition}
+Combining Proposition \ref{prop:relsat} with the restriction formula
+\begin{align*}
+    \Res(\chi_1) &= \det + \chi + 1 + \chi^\ast + \det{}^{-1} \\
+    \Res(\chi_2) &= \Res(\chi_1) + \det \cdot \chi + \chi \cdot \chi^\ast + \det{}^{-1} \cdot \chi^\ast - 1,
+\end{align*}
+we can compute the number of distinct cosets of the form $ulK$ in $K\lambda_1(p)K$ and $K\lambda_2(p)K$ for given $l$ (Corollary 13.3 and 13.4 of \cite{gan2002fourier}).
+One can find single cosets for each $l$ with carefully chosen $u$ match with the number: for example, we have the following result \cite[Proposition 14.2]{gan2002fourier}.
+
+\begin{proposition}
+Let $l$ lies in the double coset of either
+$$
+   \begin{pmatrix}
+       p & \\ & p
+   \end{pmatrix}, \quad
+   \begin{pmatrix}
+       p & \\ & 1
+   \end{pmatrix}, \quad
+   \begin{pmatrix}
+       1 & \\ & p^{-1}
+   \end{pmatrix}, \quad
+   \begin{pmatrix}
+       p^{-1} & \\ & p^{-1}
+   \end{pmatrix}
+$$
+in $L \simeq \GL_2$, and $u$ lies in $U(\bZ_p)$, then $ulK$ is contained in the $K$-double coset of $\lambda_1(p)$ in $G$.
+For such $l$, the representatives $u$ of the distinct right cosets of $U(\bZ_p) \cap l U(\bZ_p) l^{-1}$ in $U(\bZ_p)$ give the distinct right cosets of the form $ulK$ in $K \lambda_1(p) K$.
+\end{proposition}
+For other $l \in L$ and the double coset $K \lambda_2(p) K$, $u$ can be chosen as elements in certain root groups (See \cite[Section 14]{gan2002fourier} for details).

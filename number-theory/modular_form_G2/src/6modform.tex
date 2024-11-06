@@ -1,0 +1,314 @@
+\section{Modular forms on $G_2$}
+\label{sec:g2mod}
+
+\subsection{Definition}
+\label{subsec:g2moddef}
+
+Fix the \emph{weight} $k \ge 2$ and a quaternionic discrete series representation $\pi_k$ of $G_2(\bR)$ introduced in Section \ref{subsec:arch}.
+Let $\scA = \scA(G_2)$ be the space of automorphic forms on $G_2$: the are the functions on $G_2(\bA)$ which are
+\begin{itemize}
+    \item left $G_2(\bQ)$-invariant,
+    \item right-invariant under some open compact group $K_f \subseteq G_2(\bA_\fin)$,
+    \item annihilated by an ideal $J \subseteq \cZ(\frg_2)$ of finite codimension in the center $\cZ(\frg_2)$ of the universal enveloping algebra of $\frg_2 = \Lie G_2(\bR)$,
+    \item has uniform moderate growth.
+\end{itemize}
+Note that the definition is slightly different from the literature, e.g. we are not assuming $K$-finiteness (compare this with the definition in Section \ref{subsec:gl2auto}).
+More explanation can be found in \cite[Section 7]{gan2002fourier}.
+Also, we are mainly interested in the modular forms of ``level 1'', i.e. when $K_f = G_2(\what{\bZ})$.
+
+\begin{definition}
+\label{def:g2mod}
+The space of modular forms of weight $k$ and level 1 on $G_2$ is
+$$
+M_k(G_2) = \Hom_{G_2(\bR) \times G_2(\widehat{\bZ})} (\pi_k \otimes \bC, \scA),
+$$
+and the subspace of cusp forms is
+$$
+S_k(G_2) = \Hom_{G_2(\bR) \times G_2(\widehat{\bZ})} (\pi_k \otimes \bC, \scA_0).
+$$
+\end{definition}
+By definition, $f \in M_k(G_2)$ is neither a function on $G_2(\bR)$ nor $G_2(\bA)$, but a $G_2(\bR) \times G_2(\what{\bZ})$-equivariant linear map from $\pi_k \otimes \bC$ to $\scA$.
+Once you choose a vector $v \in \pi_k$, then $f(v)$ is indeed an automorphic form on $G_2$.
+By the theorem of Harish-Chandra \cite[Theorem 1.7]{borel1979automorphic}, these spaces are finite dimensional.
+Also, it admits an action of the spherical Hecke algebra
+$$
+\cH(G_2(\bA_\fin), G_2(\what{\bZ})) \simeq \what{\bigotimes_p} \,\cH_p(G_2)
+$$
+and the action on Fourier coefficients will be explained in Section \ref{subsec:g2heckefourier}.
+
+\subsection{Fourier coefficients and expansion}
+\label{subsec:g2modfourier}
+
+% Let's recall the general theory of Whittaker--Fourier coefficients and the examples from classical \& Siegel modular forms.
+
+Let $f \in M_k(G_2)$ and $v \in \pi_k$.
+Then $f(v)$ can be viewed as a function on the double coset space
+$$
+G_2(\bQ) \backslash G_2(\bA) / G_2(\widehat{\bZ}) \simeq G_2(\bZ) \backslash G_2(\bR)
+$$
+where the homeomorphism comes from the strong approximation theorem.
+For $\chi \in \Hom(U(\bZ) \backslash U(\bR), \bC^\times)$ define a linear functional $\ell_\chi$ on $\pi_k$ as
+$$
+\ell_\chi(v) = \int_{U(\bZ) \backslash U(\bR)} f(v)(u) \overline{\chi(u)} \dd u.
+$$
+Then $\ell_\chi \in \Wh_{k, \chi}$, and for $\gamma \in L(\bZ)$, $\ell_{\gamma \cdot \chi} = \gamma \cdot \ell_\chi$.
+By Proposition \ref{prop:chihom}, $\ell_\chi = 0$ for $\Delta(\chi) < 0$, and $\ell_\chi$ lies in a 1-dimensional space if $\Delta(\chi) > 0$.
+For the latter case, fix $\chi_0$ with $\Delta(\chi_0) > 0$ and a basis $l_0$ of $\Wh_{k, \chi_0}$.
+There exists $g \in L(\bR)$ with $\chi = g \cdot \chi_0$, well defined up to the right multiplication by $\stab(\chi_0) \simeq S_3$.
+The linear functional $\lambda_k(g) \cdot (g \cdot \ell_0)$ is a well-defined basis element of $\Wh_{k, \chi}$ (independent of the choice of $g$), hence
+$$
+\ell_\chi = c_\chi(f)\cdot \lambda_k(g) \cdot (g \cdot \ell_0)
+$$
+for some constant $c_\chi(f)$.
+For \emph{even} $k$, $c_\chi(f)$ depends only on the $L(\bZ)$-orbit of $\chi$, and these orbits are indexed by (isomorphism classes of) cubic rings $A$ with $\disc(A) > 0$, so $A \otimes \bR \simeq \bR^3$.
+We write $c_A(f)$ for the constants $c_\chi(f)$ and call it as $A$-th Fourier coefficient of $f$.
+For \emph{odd} $k$, the situation is more subtle, since $c_\chi(f)$ depends on the $L(\bZ)$-orbit \emph{and} the orientation of $A$, i.e. the choice of a basis element $e$ of $\bigwedge^3 A \simeq \bZ$.
+In this case, coefficients are only determined up to sign.
+
+% We have a multiplicity one theorem for these Fourier coefficients: for $f \in M_k^0$, $c_A(f) = 0$ for all $A$ implies $f = 0$.
+How much do Fourier coefficients $c_A(f)$ know about $f$ itself?
+First of all, cusp forms are determined by the Fourier coefficients:
+\begin{proposition}[Gan--Gross--Savin {\cite[Proposition 8.4]{gan2002fourier}}]
+\label{prop:g2modmult1}
+If $f \in S_k(G_2)$ satisfies $c_A(f) = 0$ for all cubic rings $A$, then $f = 0$.
+\end{proposition}
+% \begin{proof}
+    
+% \end{proof}
+The proof in \cite{gan2002fourier} utilizes another maximal parabolic subgroup $Q = P_{\Delta - \{\alpha'\}} = P_{\{\alpha\}}$.
+Also, we have the following analogue of \emph{Hecke bound} of Fourier coefficients for cusp forms:\footnote{I believe that this bound is not optimal - we may expect a smaller exponent possibly from Ramanujan conjecture (as in the case of modular forms).
+Unfortunately, I have no idea what the optimal exponent would be.
+Note that we expect generalized Ramanujan conjecture (temperedness of local factors $\pi_p$ of $\pi = \pi_f$) for $G_2$ \cite{sarnak2005notes}, but it is not clear how this could be related to the Fourier coefficients.}
+\begin{proposition}[Gan--Gross--Savin {\cite[Proposition 8.6]{gan2002fourier}}]
+\label{prop:g2heckebound}
+    For $f \in S_k(G_2)$, there exists a constant $C_f > 0$ such that
+    $$
+        |c_A(f)| \le C_f \cdot |\disc(A)|^{(k+1)/2}
+    $$
+    for any totally real cubic ring $A$.
+\end{proposition}
+
+Recall that we have Fourier \emph{expansions} of holomorphic modular forms, where the basis elements are exponential functions.
+Similarly, we have a Fourier expansion for Maass wave forms (i.e. non-holomorphic analogue of holomorphic modular forms), with the basis elements given by Bessel functions (see \cite[Section 1.9]{bump1998automorphic}).
+Pollack developed a similar theory for all exceptional groups, including $G_2$, $F_4$, $E_6$, $E_7$, and $E_8$ \cite{pollack2020fourier}.
+To do this, he considered the modular forms $f \in M_k(G_2)$ as the associated vector-valued functions $F = F_f : G_2(\bA) \to \bV_k^\vee$ via $F_f(g)(v) := f(v)(g)$.
+Especially, he consider the restriction of $F$ onto the real points $G_2(\bR)$.
+He proved that, for each character $\chi: U(\bZ) \backslash U(\bR) \to \bS^1$, there exist (vector-valued) basis functions $W_\chi$ on $G_2(\bR)$ are vector-valued functions which are given by solutions of \emph{Schmid operators}.
+He solved the equations explicitly and expressed the solutions in terms of Bessel functions.
+Before we state the result, note that we have a $\GL_2$-invariant symplectic form on $V_1(\bR) \simeq \det^{-1} \otimes \Sym^{3}(\bR^2)$, given by
+$
+\langle f, f' \rangle = ad' - \frac{1}{3} bc' + \frac{1}{3} cb' - da'
+$
+for $f = ax^3 + bx^2 y + cxy^2 + dy^3$ and $f' = a'x^3 + b'x^2 y + c' xy^2 + d'y^3$.
+Now, we have the following theorem.
+
+\begin{theorem}[Pollack \cite{pollack2020fourier,pollack2021modular}]
+\label{thm:g2modfourierexp}
+Let $F$ be a modular form on $G_2$ of weight $k$ and level 1, considered as a vector-valued function $F: G_2(\bR) \to \bV_k^\vee$.
+Let
+$$
+F_0(g) = \int_{U_{\beta_0}(\bZ) \backslash U_{\beta_0}(\bR)} F(ng) \dd n
+$$
+be the constant term of $F$ along the center $U_{\beta_0} = Z(U)$ of the unipotent part of the Heisenberg parabolic subgroup.
+% Let $V_1 = $
+For $x \in V_1(\bR) \simeq \Lie(U(\bR)^{\mathrm{ab}})$ and $g \in L(\bR) \simeq \GL_2(\bR)$, $F_0$ has a Fourier expansion of the form
+% there are complex numbers 
+$$
+F_0(\exp(x)g) = F_{00}(g) + \sum_{A} c_A(F) e^{-2 \pi i \langle f_A, x \rangle} W_{A}(g)
+$$
+where
+\begin{itemize}
+    \item The sum is over all cubic rings with $A \otimes \bR \simeq \bR^3$.
+    \item $c_A(F)$ is the $A$-th Fourier coefficient of $F$.
+    \item $f_A$ is the binary cubic form corresponds to $A$.
+    \item $W_A : \GL_2(\bR) \to \bV_k^\vee$ is the basis function given by
+    $$
+        W_A(g) = \sum_{-k \le v \le k} W_{A, v}(g) \frac{x_\ell^{k + v}y_\ell^{k - v}}{(k+v)!(k-v)!}
+    $$
+    with $W_{A, v}: \GL_2(\bR) \to \bC$,
+    $$
+        W_{A, v}(g) = \det(g)^k |\det(g)| \left(\frac{|j(g, i) p_A(g \cdot i)|}{j(g, i) p_A(g \cdot i)}\right)^{v} K_v(|j(g, i)p_A(g \cdot i)|).
+    $$
+    Here $x_\ell, y_\ell$ are standard basis of weight vectors of the standard representation of $\SU_2$ (so that $\{x_\ell^{k + v} y_\ell^{k - v}\}_{-k \le v \le k}$ are a basis of $\bV_k$)\footnote{$\ell$ for \emph{long} root $\SU_2$.}, $p_A(z) = 2 \pi f_A(z, 1) =  2\pi(az^3 + bz^2 + cz + d)$ is the $2\pi$-multiple of the cubic polynomial corresponds to $A$, $j(g, i) = \det(g)^{-1}(ci + d)^3$ is the automorphy factor of $g = \left(\begin{smallmatrix}
+        a & b \\ c & d
+    \end{smallmatrix}\right)$, and $K_v(y) = \frac{1}{2}\int_0^\infty t^v e^{-y(\frac{t + t^{-1}}{2})} \frac{\dd t}{t}$ is the $v$-th Bessel function.
+    % Note that $W_A = 0$ if $A \otimes \bR \simeq \bR \otimes \bC$, i.e. it is nonzero only if $A$ is a totally real cubic ring.
+    \item $F^{00}$ is the constant term of $F^0$, which has a form of
+    $$
+        F_{00}(g) = \Phi(g) \frac{x_\ell^{2n}}{(2n)!} + \beta \frac{x_\ell^n y_\ell^n}{n! n!} + \Phi'(g) \frac{y_\ell^{2n}}{(2n)!}
+    $$
+    where $\beta \in \bC$ is a constant and $\Phi: L(\bR) \simeq \GL_2(\bR)\to \bC$ is associated with a holomorphic modular form of weight $3k$, and $\Phi'(g) = \Phi(g w_0)$ with $w_0 = \left(\begin{smallmatrix}
+        -1 & 0 \\ 0 & 1
+    \end{smallmatrix}\right)$.
+    When $F \in S_k(G_2)$ is a cusp form, then this term vanishes.
+\end{itemize}
+\end{theorem}
+
+
+\subsection{Hecke operators and Fourier coefficients}
+\label{subsec:g2heckefourier}
+
+For a holomorphic modular form $f = \sum_{n \ge 1} a_n(f) q^n \in S_k(\SL_2(\bZ))$, the Hecke operator $T_p$ acts on the coefficients via
+$$
+a_n(T_p f) = a_{np}(f) + p^{k-1} a_{n/p}(f),
+$$
+where $T_p$ is the Hecke operator corresponds to the characteristic function of $\GL_2(\bZ_p) \left(\begin{smallmatrix}
+    p & \\ & 1
+\end{smallmatrix}\right) \GL_2(\bZ_p)$ in the spherical Hecke algebra $\cH(\GL_2(\bQ_p), \GL_2(\bZ_p))$.
+Gan--Gross--Savin \cite{gan2002fourier} gave a similar description for the modular forms on $G_2$, using the Hecke algebra structure and explicit coset decompositions in Section \ref{subsec:nonarch}.
+
+
+\begin{proposition}[Gan--Gross--Savin {\cite[Proposition 15.6-15.8]{gan2002fourier}}]
+Let $A$ be a cubic ring of $p$-depth zero, and for $i \ge 0$ define  $A_i := \bZ + p^i A$, which has $p$-depth $i$.
+For $k$ even and $f \in M_k(G_2)$,
+\begin{align*}
+c_{A_i}(\chi_1 | f) &= p^{2k-1} c_{A_{i-1}}(f) + p^{k-1} \sum_{A_{i} \subset B \subset A_{i-1}} c_{B}(f) + c_{A_i} (f) \\
+&\quad+ p^{-k} \sum_{A_{i+1} \subset B \subset A_{i}} c_{B}(f) + p^{1-2k} c_{A_{i+1}}(f) \qquad (i \ge 1),\\
+c_{A}(\chi_1|f) &= p^{k-1} \sum_{A \subset_{p}B} c_B(f) + p^{-1}(n_A - 1) c_A(f) \\
+&\quad+ p^{-k} \sum_{A_1 \subset B \subset A} c_B(f) + p^{1-2k} c_1(f), \\
+c_{A_i}(\chi_2|f) &= c_{A_i}(\chi_1|f) + p^{3k-2} \sum_{A_{i-1} \subset B \subset A_{i-2}} c_B(f) + p^{-1} \sum_{A_{i+1} \subset C \subset A_{i-1}} c_C(f) \\
+&\quad + p^{-1}c_{A_i}(f) + p^{1-3k} \sum_{A_{i+2} \subset B \subset A_{i+1}} c_B(f) \qquad (i \ge 2)
+\end{align*}
+where $n_A = \#\{B: A_1 \subset B \subset A\}$. For the last equation, each $C$ in the second sum is a ring with $C / A_{i+1} \simeq \bZ / p^2 \bZ$.
+\end{proposition}
+For example, when $A / pA$ is a field, the first equation simplifies as
+$$
+c_A(\chi_1 | f) = -\frac{1}{p} c_A(f) + p^{1-k} c_{A_1}(f).
+$$
+We\footnote{To be precise, they \cite{gan2002fourier} have, not me.} have a similar description of $c_{A}(\chi_2|f)$ and $c_{A_1}(\chi_2|f)$, but more complicated.
+When $A / pA$ is a field, then \cite[Corollary 15.9]{gan2002fourier}
+\begin{align*}
+    c_A(\chi_2|f) &= \left(\frac{1}{p} + \frac{1}{p^2}\right) c_A(f) - p^{-2k} c_{A_1}(f) + p^{1-3k} \sum_{A_2 \subset B \subset A_1} c_B(f) \\
+    c_{A_1}(\chi_2|f) &= -p^{2k - 2} c_{A}(f) + \left(1 + \frac{1}{p}\right) c_{A_1}(f) + p^{1-2k} c_{A_2}(f) \\
+    &\quad + \sum_{A_3 \subset B \subset A_2} p^{1- 3k} c_B(f).
+\end{align*}
+
+When $f$ is a Hecke eigenform, we have a stronger result than Proposition \ref{prop:g2modmult1}.
+\begin{theorem}[Gan--Gross--Savin {\cite[Theorem 16.2]{gan2002fourier}}]
+Let $f \in M_k(G_2)$ be a Hecke eigenform.
+If $c_A(f) = 0$ for all \emph{Gorenstein} rings, then all the Fourier coefficients of $f$ vanish.
+In particular, if $f$ is a nonzero cuspidal Hecke eigenform, then $c_A(f) \ne 0$ for some Gorenstein ring $A$.
+\end{theorem}
+The analogous result is true for the holomorphic modular forms: if $f \in S_k(\Gamma_1)$ is a Hecke eigenform, then $a_1(f) \ne 0$.
+This is because $a_n(f)$ is completely determined by $a_1(f)$ and the Hecke eigenvalues of $f$, and the above theorem is also proved with a similar argument.
+
+\subsection{Examples}
+\label{subsec:g2modex}
+
+If we cannot find any single example of a nonzero modular form, then there's no reason to develop such a theory.
+Here we introduce examples from \cite{gan2002fourier}: Eisenstein series and theta series.
+
+Let $k \ge 2$ be an even integer.
+Recall that we have an embedding (Section \ref{subsec:arch})
+$$
+i: \pi_{k} \hookrightarrow \Ind_{P(\bR)}^{G_2(\bR)} \lambda_{k}.
+$$
+The character $\lambda_k$ is the archimedean component of the global character
+$$
+\chi_k = |\det|^{-k-1} : P(\bA) \to \bC^\times
+$$
+which is unramified at all finite places.
+Consider the induced representation
+$$
+I(k) = \Ind_{P(\bA)}^{G_2(\bA)} \chi_k = \bigotimes_v I_v(k).
+$$
+For each finite $p < \infty$, choose the unique normalized vector $\varphi_p^\circ \in I_p(k)$ fixed by $G_2(\bZ_p)$ and $\varphi_p^\circ(1) = 1$.
+For $\varphi_\infty \in \pi_k$, let
+$$
+\varphi = i(\varphi_\infty) \otimes \left(\bigotimes_{p} \varphi_p^\circ\right) \in I(k)
+$$
+and form the Eisenstein series
+$$
+E({\varphi}, g) = \sum_{\gamma \in P(\bQ) \backslash G_2(\bQ)} {\varphi}(\gamma g).
+$$
+This converges absolutely when $k > 2$, and defines an element of $\cA$ right-invariant under $G_2(\what{\bZ})$.
+Thus, we get a nonzero element
+$$
+E_k: \varphi_\infty \mapsto E(\varphi, g)
+$$
+in $M_k$.
+Now, for each character $\chi : U(\bR) \to \bS^1$ trivial on $U(\bZ)$, we can consider it as a character on $U(\bA)$ trivial on $U(\bQ)$ and $U(\what{\bZ})$ (by strong approximation).
+To compute the corresponding Fourier coefficients, one needs to observe
+\begin{align*}
+\ell_\chi(\varphi) &= \int_{U(\bQ) \backslash U(\bA)} E(u) \overline{\chi(u)} \dd u \\
+&= \int_{U(\bQ) \backslash U(\bQ)} \left( \sum_{P_2(\bQ) \backslash G_2(\bQ)} \varphi(\gamma u)\right) \overline{\chi(u)} \dd u.
+\end{align*}
+The double coset space $P(\bQ) \backslash G_2(\bQ) / P(\bQ)$ has four representatives, say $w_0, w_1, w_2, w_3$, with
+$$
+P(\bQ) w_0 P(\bQ) = P(\bQ) w_0 U(\bQ)
+$$
+an open orbit $P$, and only this double coset contributes to the integral above.
+Hence we get a factorizable integral
+\begin{align*}
+\ell_\chi(\varphi) &= \int_{U(\bA)} \varphi(w_0 u) \overline{\chi(u)} \dd u \\
+&= \left(\int_{U(\bR)} \varphi_\infty(w_0 u_\infty) \dd u_\infty\right)\left(\prod_{p < \infty} \int_{U(\bQ_p)} \varphi_p^\circ(w_0 u_p) \overline{\chi(u_p)} \dd u_p\right).
+\end{align*}
+Jiang and Rallis \cite{jiang1997fourier} computed the non-archimedean factors above (under certain assumptions):
+\begin{proposition}[{\cite[Theorem 2]{jiang1997fourier}}]
+Assume $\chi$ corresponds to a maximal cubic ring $A$.
+If $A \otimes \bQ_p$ is one of the following:
+$$
+\begin{cases}
+    \bQ_p \times \bQ_p \times \bQ_p \\
+    \bQ_p \times \bQ_{p^2} & p \ne 2\\
+    \bQ_{p^3} & \bQ_p \text{ containing all cube roots of unity},
+\end{cases}
+$$
+($\bQ_{p^m}$ is the unique unramified extension of $\bQ_p$ of degree $m$),
+then
+$$
+\int_{U(\bQ_p)} \varphi_p^\circ( w_0 u_p) \overline{\chi(u_p)} \dd u_p = c_p \cdot \zeta_{A \otimes \bZ_p}(k),
+$$
+where $c_p$ is an explicit universal constant independent of $A$.
+\end{proposition}
+As a result, up to a constant, we have
+$$
+\ell_\chi(\varphi) = \zeta_A(k) \cdot \left(\int_{U(\bR)} \varphi_\infty(w_0 u_\infty) \overline{\chi(u_\infty)}\dd u_\infty\right)
+$$
+and it remains to compute the archimedean factor.
+It defines a nonzero linear form
+$$
+\varphi_\infty \mapsto \int_{U(\bR)} \varphi_\infty(w_0 u_\infty) \overline{\chi(u_\infty)}\dd u_\infty
+$$
+in $\Hom_{U(\bR)}(I_\infty(k), \chi)$, but unfortunately, we do not know whether its restriction to $\pi_k$ is also nonzero or not.
+If we assume that the restriction is also nonzero for some $\chi$ with $\Delta(\chi) > 0$ (recall Proposition \ref{prop:chihom} that the space of the Whittaker functional is zero if $\Delta(\chi) < 0$), then the restriction is nonzero for \emph{all} $\chi$ with $\Delta(\chi) > 0$, so is $c_A(E_k)$.
+Now, fix $\chi_0$ that corresponds to the cubic form $f(x, y) = x^2 y + xy^2$, and let $\ell_0 = \ell_{\chi_0}$.
+Choose any $g \in L(\bR) \simeq \GL_2(\bR)$ with $\chi = g \cdot \chi_0$.
+% Then for $g \in L(\bR) \simeq \GL_2(\bR)$, we can show that
+Then we can show that
+$$
+(g \cdot \ell_0)(\varphi) = \delta_P(g)^{(k-2)/3} \cdot \left(\int_{U(\bR)} \varphi_\infty(w_0 u_\infty) \overline{\chi(u_\infty)}\dd u_\infty\right)
+$$
+and using (...), $\delta_P = |\det|^{-3}$ and $|\det(g)|^2 = \Delta(g \cdot \chi_0) = \disc(A)$, we can conclude
+$$
+c_A(E_k) = \zeta_A(k) \cdot \disc(A)^{k - 1/2} = c \cdot \zeta_A(1 - k)
+$$
+for some constant $c$, where the last equality comes from the functional equation of $\zeta_A$.
+Considering the Proposition \ref{prop:g2heckebound} and $\zeta_A(k) = O(1)$ (as $\disc(A) \to \infty$), one can conclude that $E_k$ is not a cusp form.
+
+% Another example is a weight 4 exceptional theta series.
+% There is an another example in \cite{gan2002fourier}, which is a theta series of weight $4$.
+Gan, Gross, and Savin gave another example in \cite{gan2002fourier}, which are theta series of weight 4.
+For a Gorenstein cubic ring $A$, $A$-th Fourier coefficients $N(A, J_E)$, $N(A, J_I)$ of these theta series $\theta_E$ and $\theta_I$ count the number of embeddings  of $A$ into certain Jordan structures $J_I$ and $J_E$ on the cubic Jordan algebra $J = H_3(\bO)$ of 3 by 3 Hermitian matrices over octonions.
+Especially, the linear combination
+$$
+% \theta = 91 \theta_I + 600 \theta_E
+N(A) = 91 N(A, J_I) + 600 N(A, J_E)
+$$
+is studied in \cite{gross1999commutative}, and Gan proved that the corresponding theta series
+$$
+\theta = 91 \theta_I + 600 \theta_E
+$$
+is a constant multiple of $E_4$ \cite{gan2000siegel}.
+Gan and Gross proved the corresponding formula \cite[Theorem 3]{gross1999commutative}
+$$
+N(A) = 2^7 \cdot 3^3 \cdot 5^2 \cdot 7 \cdot 13 \cdot \zeta_A(-3),
+$$
+but without using the theory of $G_2$ modular forms.
+
+Unfortunately, all the examples above are not cusp forms, and it is not clear whether nonzero cusp forms exist at all.
+In fact, Dalal \cite{dalal2023counting} computed the dimension of the space of $G_2$ modular forms of weight $k \ge 3$, using Arthur's trace formula.
+Especially, there exists a unique normalized nonzero cusp form of weights 9 and 11 respectively, and it is natural to ask if one can compute Fourier coefficients of the form.\footnote{The minimal weight $\ge 3$ with a nonzero cusp form is $k = 6$, but Pollack didn't prove/conjecture that the normalized form in $S_6(G_2)$ has integer Fourier coefficients. At least, we know algebraicity of the Fourier coefficients.}
+Using the exceptional theta correspondences, Pollack \cite{pollack2022exceptional,pollack2024computation} proved that the coefficients of these forms are all integers and that all the coefficients $c_A(f)$ for cubic rings of the form $A \simeq \bZ \times B$ vanish.
+More generally, he also proved that there exists a basis of $S_k(G_2)$ whose Fourier coefficients lie in $\bQ^{\mathrm{cyc}} = \bQ(\mu_\infty)$, for $k \ge 6$\footnote{During the seminar talk, I explained this as an ``interesting'' fact, especially because the ``coefficient field'' is always abelian. Note that the coefficient fields of classical modular forms can be non-abelian (examples can be found in LMFDB), but only when \emph{we increase the levels}. If we keep the level as 1, then the coefficient field is just $\bQ$ (generated by Eisenstein series $E_4$ and $E_6$). Hence, we might even expect that the coefficient field of any $G_2$-modular form of level 1 is in a (abelian) number field, or even $\bQ$.}.
+Note that a similar algebraicity result is known for holomorphic modular forms (if $f$ is a normalized Hecke eigenform, then its coefficient lies in a certain number field $K = K_f$).
