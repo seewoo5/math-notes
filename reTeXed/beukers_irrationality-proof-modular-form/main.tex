@@ -1,0 +1,75 @@
+% --- LaTeX Lecture Notes Template - S. Venkatraman ---
+
+% --- Set document class and font size ---
+
+\documentclass[letterpaper, 12pt]{article}
+
+\input{preamble}
+
+% start section number from 0
+\setcounter{section}{-1}
+
+% --- Document starts here ---
+
+\begin{document}
+
+% --- Main title and subtitle ---
+
+\title{Irrationality Proofs Using Modular Forms \\[1em]
+\normalsize Re-\TeX ed by Seewoo Lee\footnote{seewoo5@berkeley.edu. Some notations in the paper are ``modernized'' or changed a bit.}}
+% \\[1em]
+% \normalsize Re-typed by Seewoo Lee\footnote{seewoo5@berkeley.edu}}
+
+% --- Author and date of last update ---
+
+\author{Frits Beukers}
+\date{\normalsize\vspace{-1ex} Last updated: \today}
+
+% --- Add title and table of contents ---
+
+\maketitle
+
+
+% --- Abstracts ---
+
+% \tableofcontents\label{sec:contents}
+
+\input{src/0intro.tex}
+\input{src/1preliminaries.tex}
+
+
+
+
+
+
+
+
+% --- Bibliography ---
+
+% Start a bibliography with one item.
+% Citation example: "\cite{williams}".
+
+\bibliographystyle{acm} % We choose the "plain" reference style
+\bibliography{refs} % Entries are in the refs.bib file
+
+
+% \begin{thebibliography}{1}
+
+% \bibitem{williams}
+%    Williams, David.
+%    \textit{Probability with Martingales}.
+%    Cambridge University Press, 1991.
+%    Print.
+
+% % Uncomment the following lines to include a webpage
+% % \bibitem{webpage1}
+% %   LastName, FirstName. ``Webpage Title''.
+% %   WebsiteName, OrganizationName.
+% %   Online; accessed Month Date, Year.\\
+% %   \texttt{www.URLhere.com}
+
+% \end{thebibliography}
+
+% --- Document ends here ---
+
+\end{document}
