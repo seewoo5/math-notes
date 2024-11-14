@@ -25,6 +25,7 @@ Our irrationality proofs consist exactly of the construction of such instances.
 The point of having a radius of convergence as large as possible consists of the following Proposition.
 
 \begin{proposition}
+    \label{prop:1.1}
     Let $f_0(t), f_1(t), \dots, f_k(t)$ be powerseries in $t$.
     Suppose that for any $n \in \bN$, $i = 0, 1, \dots, k$ the $n$-th coefficient in the Taylor series of is rational and has denominator dividing $d^n [1, \dots, n]^r$
      where $r, d$ are certain fixed positive integers and $[1, \dots, n]$ is the lowest common multiple of $1, \dots, n$.
@@ -32,9 +33,9 @@ The point of having a radius of convergence as large as possible consists of the
     If $\rho > d e^r$, then at least one of $\theta_1, \dots, \theta_k$ is irrational.
 \end{proposition}
 
-\begin{remark}
+\begin{remark*}
     Note that if $k = 1$ we have an honest irrationality proof.
-\end{remark}
+\end{remark*}
 
 \begin{proof}
     Choose $\epsilon > 0$ such that $\rho - \epsilon > d e^{r(1 + \epsilon)}$.
@@ -57,6 +58,7 @@ results are in fact values at integral points of Dirichlet series
 associated to modular forms.
 
 \begin{proposition}
+    \label{prop:1.2}
     Let $F(\tau) = \sum_{n=1}^{\infty} a_n q^n$, $q = e^{2 \pi i \tau}$ be a Fourier series
     convergent for $|q| < 1$, such that for some $k, n \in \bN$,
     $$
