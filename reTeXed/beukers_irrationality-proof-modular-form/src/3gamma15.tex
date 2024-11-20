@@ -92,19 +92,19 @@ $$
 $$
 
 \begin{lemma}
-\label{lem:3.2}
-The branching values of $s(\tau)$, as defined in Section 1, read $0, \infty$ and $(\lambda_1 + \sqrt{1 + \lambda_1^2})^2$ where $\lambda_1 = -\frac{11}{2} + \frac{5}{2} \sqrt{5}$.
+    \label{lem:3.2}
+    The branching values of $s(\tau)$, as defined in Section 1, read $0, \infty$ and $(\lambda_1 + \sqrt{1 + \lambda_1^2})^2$ where $\lambda_1 = -\frac{11}{2} + \frac{5}{2} \sqrt{5}$.
 \end{lemma}
 
 \begin{proof}
-The branching values of $s(\tau)$ are the values of $s(\tau)$ at the cusps or the values at the points $\tau$, $\Im \tau > 0$ where $s'(\tau) = 0$.
-The values at the cusps are $0, \infty$.
-Notice that
-$$
-    \frac{s'}{s} = \left(1 + \frac{y}{y - \lambda_2} - \frac{y}{y - \lambda_1}\right) \frac{y'}{y} = \frac{y^2 + (11 - 5\sqrt{5})y - 1}{y^2 + 11 y - 1} \frac{y'}{y}.
-$$
-The function $\frac{y'}{y}$ can only be zero at the cusps $0, \frac{1}{2}$.
-If $y^2 + (11 - 5\sqrt{5})y - 1 = 0$ then $y = \lambda_1 \pm \sqrt{1 + \lambda_1^2}$ which implies $s = (\lambda_1 \pm \sqrt{1 + \lambda_1^2})^2$.
+    The branching values of $s(\tau)$ are the values of $s(\tau)$ at the cusps or the values at the points $\tau$, $\Im \tau > 0$ where $s'(\tau) = 0$.
+    The values at the cusps are $0, \infty$.
+    Notice that
+    $$
+        \frac{s'}{s} = \left(1 + \frac{y}{y - \lambda_2} - \frac{y}{y - \lambda_1}\right) \frac{y'}{y} = \frac{y^2 + (11 - 5\sqrt{5})y - 1}{y^2 + 11 y - 1} \frac{y'}{y}.
+    $$
+    The function $\frac{y'}{y}$ can only be zero at the cusps $0, \frac{1}{2}$.
+    If $y^2 + (11 - 5\sqrt{5})y - 1 = 0$ then $y = \lambda_1 \pm \sqrt{1 + \lambda_1^2}$ which implies $s = (\lambda_1 \pm \sqrt{1 + \lambda_1^2})^2$.
 \end{proof}
 
 Notice that the $q$-expansions of $t(\tau)$, $s(\tau)$ read
@@ -115,89 +115,89 @@ where $a_n, b_n$ are algebraic integers in $\bQ(\sqrt{5})$.
 From the construction follows that for every $n$ the numbers $a_n, b_n$ are conjugates.
 
 \begin{theorem}
-\label{thm:4}
-Let $L(3, \chi) = \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) n^{-3}$, where $\left(\frac{n}{5}\right)$ is the Legendre symbol.
-Then $8\zeta(3) - 5\sqrt{5}L(3, \chi)$ is not in $\bQ(\sqrt{5})$.
+    \label{thm:4}
+    Let $L(3, \chi) = \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) n^{-3}$, where $\left(\frac{n}{5}\right)$ is the Legendre symbol.
+    Then $8\zeta(3) - 5\sqrt{5}L(3, \chi)$ is not in $\bQ(\sqrt{5})$.
 \end{theorem}
 
 \begin{proof}
-Consider the weight 4 form on $\Gamma_1(5)$ given by
-$$
-    24 F(\tau) = E_4(\tau) - 25 E_4(5\tau) + 24(E_4(\chi, \tau) - 5\sqrt{5} F_4(\chi, \tau))
-$$
-where
-\begin{align*}
-    E_4(\chi, \tau) &= 1 + \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) \frac{n^3 q^n}{1 - q^n}, \\
-    F_4(\chi, \tau) &= \sum_{m, n=1}^{\infty} \left(\frac{n}{5}\right) m^3  q^{mn}.
-\end{align*}
-Note that up to a constant factor, $F(\tau)$ is cahracterised by the facts $F(\tau) \in \rM_4(\Gamma_1(5))$, $F(i\infty) = 0$, $F(-1/5\tau) = -25 \tau^4 F(\tau)$.
-The corresponding Dirichlet series reads
-$$
-    L(F, s) = 10 (1 - 5^{2-s})\zeta(s) \zeta(s - 3) + \zeta(s) L(s - 3, \chi) - 5\sqrt{5} \zeta(s - 3) L(s, \chi)
-$$
-where
-$$
-    L(s, \chi) = \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) n^{-s}.
-$$
-Define $f(\tau)$ by $f(i\infty) = 0$, $\left(\frac{\dd}{\dd \tau}\right)^{3} f(\tau) = (2\pi i)^3 F(\tau)$.
-then, from Proposition \ref{prop:1.2} follows that
-$$
-    5 \tau^2 \left(f\left(-\frac{1}{5\tau}\right) - A\right) = - (f(\tau) - A)
-$$
-where
-\begin{align*}
-    A &= 10\left(1 - \frac{1}{5}\right) \zeta(3) \zeta(0) + \zeta(3) L(0, \chi) - 5\sqrt{5} \zeta(0) L(3, \chi) \\
-    &= -\frac{1}{3} (8\zeta(3) - 5\sqrt{5} L(3, \chi)).
-\end{align*}
-Now let 
-$$
-    -8 E(\tau) = E_2(\tau) - 5 E_2(5\tau) + 20 (E_2(\chi, \tau) - \sqrt{5} F_2(\chi, \tau))
-$$
-where
-\begin{align*}
-    E_2(\chi, \tau) &= -\frac{1}{5} + \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) \frac{n q^n}{1 - q^n}, \\
-    F_2(\chi, \tau) &= \sum_{m, n=1}^{\infty} \left(\frac{n}{5}\right) m q^{mn}.
-\end{align*}
-The function $E(\tau)$ satisfies $E(-1/5\tau) = -5\tau^2 E(\tau)$, hence $E(\tau) (f(\tau) - A)$ is fixed under the involution $\tau \mapsto -1/5\tau$.
-Consider $E(\tau)$ and $E(\tau)f(\tau)$ as functions of $t = t(\tau)$ and write
-$$
-    E(\tau)f(\tau) = \sum_{n=1}^{\infty} c_n q^n, \quad E(\tau) = \sum_{n=1}^{\infty} d_n q^n.
-$$
-By construction it follows that $d_n$ and $[1, \dots, n]^3 c_n$ are algebraic integers in $\bQ(\sqrt{5})$.
-Just as in the proof of Theorem \ref{thm:1}, we observe that the radius of convergence of $E(t)(f(t) - A)$ equals $(\lambda_2 + \sqrt{1 + \lambda_2^2})^2$\footnote{There's a typo in the original article: sign is fixed.} and hence for all $\epsilon > 0$,
-\begin{equation}
-    \label{eqn:5}
-    |c_n - A d_n| < (\lambda_2 + \sqrt{1 + \lambda_2^2})^{(2 - \epsilon)n} \quad \forall n > n_0(\epsilon).
-\end{equation}
-Now consider the functions
-$$
-    24 \overline{F}(\tau) = E_4(\tau) - 25 E_4(5\tau) + 24(E_4(\chi, \tau) + 5\sqrt{5} F_4(\chi, \tau)) 
-$$
-the corresponding third primitive $\overline{f}(\tau)$ and
-$$
-    -8 \overline{E}(\tau) = E_2(\tau) - 5 E_2(5\tau) + 20 (E_2(\chi, \tau) + \sqrt{5} F_2(\chi, \tau)).
-$$
-Consider them as functions of $s = s(\tau)$ and write
-$$
-    \overline{E}(\tau) \overline{f}(\tau) = \sum_{n=1}^{\infty} \overline{c}_n q^n, \quad \overline{E}(\tau) = \sum_{n=1}^{\infty} \overline{d}_n q^n.
-$$
-From the construction follows that $\overline{c}_n, \overline{d}_n$ are conjugates of $c_n, d_n$ respectively.
-By Lemma \ref{lem:3.2} the smallest nonzero branching value of $s(\tau)$ equals $(-\lambda_1 + \sqrt{1 + \lambda_1^2})^{2}$ and hence the radius of convergence of both $\sum_{n=1}^{\infty} \overline{c}_{n} s^n$ and $\sum_{n=1}^{\infty} \overline{d}_{n} s^n$ is at least $(-\lambda_1 + \sqrt{1 + \lambda_1^2})^{2}$.
-Hence for any $\theta \in \bC$ and any $\epsilon > 0$
-\begin{equation}
-    \label{eqn:6}
-    |\overline{c}_n - \theta \overline{d}_n| < (\lambda_1 + \sqrt{1 + \lambda_1^2})^{(2 + \epsilon) n} \quad \forall n > n_1(\epsilon, \theta).
-\end{equation}
-Now suppose $A \not\in \bQ(\sqrt{5})$.
-Let $\overline{A}$ be its conjugate and let $d$ be its denominator.
-Multiplication of \eqref{eqn:5} and \eqref{eqn:6} with $\theta = \overline{A}$ yields
-\begin{equation}
-    \label{eqn:7}
-    |c_n \overline{c}_n - (c_n \overline{d}_n \overline{A} + \overline{c}_n d_n A) + d_n \overline{d}_n A\overline{A}| < \left(\frac{1}{20.3}\right)^{2n} \quad \forall n > n_0.
-\end{equation}
-Since $c_n \overline{c}_n \in \bZ / [1, \dots, n]^{6}$, $c_n \overline{D}_n \overline{A} + \overline{c}_n d_n A \in \bZ / d[1, \dots, n]^{3}$, $d_n \overline{d}_n A \overline{A} \in \bZ / d^2$ and $d^2 [1, \dots, n]^6 < (20.1)^{2n} < (20.3)^{2n}$ for sufficiently large $n$.
-Hence $c_n - d_n A = 0$ for $n$ large enough, and we have a contradiction.
-Theorem \ref{thm:4} now follows.
+    Consider the weight 4 form on $\Gamma_1(5)$ given by
+    $$
+        24 F(\tau) = E_4(\tau) - 25 E_4(5\tau) + 24(E_4(\chi, \tau) - 5\sqrt{5} F_4(\chi, \tau))
+    $$
+    where
+    \begin{align*}
+        E_4(\chi, \tau) &= 1 + \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) \frac{n^3 q^n}{1 - q^n}, \\
+        F_4(\chi, \tau) &= \sum_{m, n=1}^{\infty} \left(\frac{n}{5}\right) m^3  q^{mn}.
+    \end{align*}
+    Note that up to a constant factor, $F(\tau)$ is cahracterised by the facts $F(\tau) \in \rM_4(\Gamma_1(5))$, $F(i\infty) = 0$, $F(-\frac{1}{5\tau}) = -25 \tau^4 F(\tau)$.
+    The corresponding Dirichlet series reads
+    $$
+        L(F, s) = 10 (1 - 5^{2-s})\zeta(s) \zeta(s - 3) + \zeta(s) L(s - 3, \chi) - 5\sqrt{5} \zeta(s - 3) L(s, \chi)
+    $$
+    where
+    $$
+        L(s, \chi) = \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) n^{-s}.
+    $$
+    Define $f(\tau)$ by $f(i\infty) = 0$, $(\frac{\dd}{\dd \tau})^{3} f(\tau) = (2\pi i)^3 F(\tau)$.
+    then, from Proposition \ref{prop:1.2} follows that
+    $$
+        5 \tau^2 \left(f\left(-\frac{1}{5\tau}\right) - A\right) = - (f(\tau) - A)
+    $$
+    where
+    \begin{align*}
+        A &= 10\left(1 - \frac{1}{5}\right) \zeta(3) \zeta(0) + \zeta(3) L(0, \chi) - 5\sqrt{5} \zeta(0) L(3, \chi) \\
+        &= -\frac{1}{3} (8\zeta(3) - 5\sqrt{5} L(3, \chi)).
+    \end{align*}
+    Now let 
+    $$
+        -8 E(\tau) = E_2(\tau) - 5 E_2(5\tau) + 20 (E_2(\chi, \tau) - \sqrt{5} F_2(\chi, \tau))
+    $$
+    where
+    \begin{align*}
+        E_2(\chi, \tau) &= -\frac{1}{5} + \sum_{n=1}^{\infty} \left(\frac{n}{5}\right) \frac{n q^n}{1 - q^n}, \\
+        F_2(\chi, \tau) &= \sum_{m, n=1}^{\infty} \left(\frac{n}{5}\right) m q^{mn}.
+    \end{align*}
+    The function $E(\tau)$ satisfies $E(-\frac{1}{5\tau}) = -5\tau^2 E(\tau)$, hence $E(\tau) (f(\tau) - A)$ is fixed under the involution $\tau \mapsto -1/5\tau$.
+    Consider $E(\tau)$ and $E(\tau)f(\tau)$ as functions of $t = t(\tau)$ and write
+    $$
+        E(\tau)f(\tau) = \sum_{n=1}^{\infty} c_n q^n, \quad E(\tau) = \sum_{n=1}^{\infty} d_n q^n.
+    $$
+    By construction it follows that $d_n$ and $[1, \dots, n]^3 c_n$ are algebraic integers in $\bQ(\sqrt{5})$.
+    Just as in the proof of Theorem \ref{thm:1}, we observe that the radius of convergence of $E(t)(f(t) - A)$ equals $(\lambda_2 + \sqrt{1 + \lambda_2^2})^2$\footnote{There's a typo in the original article: sign is fixed.} and hence for all $\epsilon > 0$,
+    \begin{equation}
+        \label{eqn:5}
+        |c_n - A d_n| < (\lambda_2 + \sqrt{1 + \lambda_2^2})^{(2 - \epsilon)n} \quad \forall n > n_0(\epsilon).
+    \end{equation}
+    Now consider the functions
+    $$
+        24 \overline{F}(\tau) = E_4(\tau) - 25 E_4(5\tau) + 24(E_4(\chi, \tau) + 5\sqrt{5} F_4(\chi, \tau)) 
+    $$
+    the corresponding third primitive $\overline{f}(\tau)$ and
+    $$
+        -8 \overline{E}(\tau) = E_2(\tau) - 5 E_2(5\tau) + 20 (E_2(\chi, \tau) + \sqrt{5} F_2(\chi, \tau)).
+    $$
+    Consider them as functions of $s = s(\tau)$ and write
+    $$
+        \overline{E}(\tau) \overline{f}(\tau) = \sum_{n=1}^{\infty} \overline{c}_n q^n, \quad \overline{E}(\tau) = \sum_{n=1}^{\infty} \overline{d}_n q^n.
+    $$
+    From the construction follows that $\overline{c}_n, \overline{d}_n$ are conjugates of $c_n, d_n$ respectively.
+    By Lemma \ref{lem:3.2} the smallest nonzero branching value of $s(\tau)$ equals $(-\lambda_1 + \sqrt{1 + \lambda_1^2})^{2}$ and hence the radius of convergence of both $\sum_{n=1}^{\infty} \overline{c}_{n} s^n$ and $\sum_{n=1}^{\infty} \overline{d}_{n} s^n$ is at least $(-\lambda_1 + \sqrt{1 + \lambda_1^2})^{2}$.
+    Hence for any $\theta \in \bC$ and any $\epsilon > 0$
+    \begin{equation}
+        \label{eqn:6}
+        |\overline{c}_n - \theta \overline{d}_n| < (\lambda_1 + \sqrt{1 + \lambda_1^2})^{(2 + \epsilon) n} \quad \forall n > n_1(\epsilon, \theta).
+    \end{equation}
+    Now suppose $A \not\in \bQ(\sqrt{5})$.
+    Let $\overline{A}$ be its conjugate and let $d$ be its denominator.
+    Multiplication of \eqref{eqn:5} and \eqref{eqn:6} with $\theta = \overline{A}$ yields
+    \begin{equation}
+        \label{eqn:7}
+        |c_n \overline{c}_n - (c_n \overline{d}_n \overline{A} + \overline{c}_n d_n A) + d_n \overline{d}_n A\overline{A}| < \left(\frac{1}{20.3}\right)^{2n} \quad \forall n > n_0.
+    \end{equation}
+    Since $c_n \overline{c}_n \in \bZ / [1, \dots, n]^{6}$, $c_n \overline{D}_n \overline{A} + \overline{c}_n d_n A \in \bZ / d[1, \dots, n]^{3}$, $d_n \overline{d}_n A \overline{A} \in \bZ / d^2$ and $d^2 [1, \dots, n]^6 < (20.1)^{2n} < (20.3)^{2n}$ for sufficiently large $n$.
+    Hence $c_n - d_n A = 0$ for $n$ large enough, and we have a contradiction.
+    Theorem \ref{thm:4} now follows.
 \end{proof}
 
 \begin{remark*}
@@ -209,45 +209,45 @@ By some tedius calculation one can veritfy that the numbers $d_n$ satisfy the re
 \end{remark*}
 
 \begin{theorem}
-\label{thm:5}
-The number $\zeta(2) = \frac{\pi^2}{6}$ is irrational.
-\end{theorem}
+    \label{thm:5}
+    The number $\zeta(2) = \frac{\pi^2}{6}$ is irrational.
+    \end{theorem}
 \begin{proof}
-Consider the function
-$$
-    \frac{2i}{5} F(\tau) = (2 + i) E_3(\chi, \tau) - (2 - i) E_3(\chi, \tau)
-$$
-where
-$$
-    E_3(\chi, \tau) = \frac{-2 + i}{5} + \sum_{i=1}^{\infty} \chi(k) \frac{k^2 q^k}{1 - q^k}
-$$
-and $\chi(k)$ is the odd character modulo 5 given by $\chi(2) = -i$ and $\overline{\chi}$ is its complex conjugate.
-Then $F(\tau) \in \rM_3(\Gamma_1(5))$, and, in particular, $F(\frac{\tau}{5\tau + 1}) = (5\tau + 1)^{3} F(\tau)$.
-Let $f(\tau)$ be the Fourier series determined by $f(i\infty) = 0$ and $\left(\frac{\dd}{\dd \tau}\right)^{2} f(\tau) = (2 \pi i)^{2} F(\tau)$.
-In a straightforward manner one can verify that
-$$
-    (5\tau + 1)\left(f\left(\frac{\tau}{5\tau + 1}\right) - L(F, 2)\right)= f(\tau) - L(F, 2)
-$$
-where
-$$
-    L(F, 2) = \frac{5}{2i} \zeta(2) ((2 + i)L(0, \chi) - (2 - i) L(0, \overline{\chi})) = \zeta(2).
-$$
-Consider also
-$$
-    E(\tau) = \frac{3 + i}{2} E_1(\chi, \tau) + \frac{3 - i}{2} E_1(\overline{\chi}, \tau)
-$$
-where
-$$
-    E_1(\chi, \tau) = \frac{3 - i}{10} + \sum_{k=1}^{\infty} \chi(k) \frac{q^k}{1 - q^k}.
-$$
-Then $E(\tau) \in \rM_1(\Gamma_1(5))$ and we obtain
-$$
-    E\left(\frac{\tau}{5\tau + 1}\right) \left(f\left(\frac{\tau}{5\tau + 1}\right) - \zeta(2)\right) = E(\tau) (f(\tau) - \zeta(2)).
-$$
-This implies that $E(\tau)(f(\tau) - \zeta(2))$ considered as function of $y(\tau)$ does not branch above $y = -\frac{11}{2} + \frac{5}{2}\sqrt{5}$, corresponding to $\tau = 0$.
-Hence $E(\tau)(f(\tau) - \zeta(2))$ as a function of $y$ is a Taylor series in $y$ with radius of convergence $\frac{11}{2} + \frac{5}{2}\sqrt{5}$.
-Note that by construction $E(\tau)$ has a $y$-expansion with integral coefficients, and the $n$th coefficient in the $y$-expansion of $E(\tau)f(\tau)$ is rational with a denominator that divides $[1, \dots, n]^{2}$.
-Out standard argument now yields $\zeta(2) \not\in \bQ$.
+    Consider the function
+    $$
+        \frac{2i}{5} F(\tau) = (2 + i) E_3(\chi, \tau) - (2 - i) E_3(\chi, \tau)
+    $$
+    where
+    $$
+        E_3(\chi, \tau) = \frac{-2 + i}{5} + \sum_{i=1}^{\infty} \chi(k) \frac{k^2 q^k}{1 - q^k}
+    $$
+    and $\chi(k)$ is the odd character modulo 5 given by $\chi(2) = -i$ and $\overline{\chi}$ is its complex conjugate.
+    Then $F(\tau) \in \rM_3(\Gamma_1(5))$, and, in particular, $F(\frac{\tau}{5\tau + 1}) = (5\tau + 1)^{3} F(\tau)$.
+    Let $f(\tau)$ be the Fourier series determined by $f(i\infty) = 0$ and $(\frac{\dd}{\dd \tau})^{2} f(\tau) = (2 \pi i)^{2} F(\tau)$.
+    In a straightforward manner one can verify that
+    $$
+        (5\tau + 1)\left(f\left(\frac{\tau}{5\tau + 1}\right) - L(F, 2)\right)= f(\tau) - L(F, 2)
+    $$
+    where
+    $$
+        L(F, 2) = \frac{5}{2i} \zeta(2) ((2 + i)L(0, \chi) - (2 - i) L(0, \overline{\chi})) = \zeta(2).
+    $$
+    Consider also
+    $$
+        E(\tau) = \frac{3 + i}{2} E_1(\chi, \tau) + \frac{3 - i}{2} E_1(\overline{\chi}, \tau)
+    $$
+    where
+    $$
+        E_1(\chi, \tau) = \frac{3 - i}{10} + \sum_{k=1}^{\infty} \chi(k) \frac{q^k}{1 - q^k}.
+    $$
+    Then $E(\tau) \in \rM_1(\Gamma_1(5))$ and we obtain
+    $$
+        E\left(\frac{\tau}{5\tau + 1}\right) \left(f\left(\frac{\tau}{5\tau + 1}\right) - \zeta(2)\right) = E(\tau) (f(\tau) - \zeta(2)).
+    $$
+    This implies that $E(\tau)(f(\tau) - \zeta(2))$ considered as function of $y(\tau)$ does not branch above $y = -\frac{11}{2} + \frac{5}{2}\sqrt{5}$, corresponding to $\tau = 0$.
+    Hence $E(\tau)(f(\tau) - \zeta(2))$ as a function of $y$ is a Taylor series in $y$ with radius of convergence $\frac{11}{2} + \frac{5}{2}\sqrt{5}$.
+    Note that by construction $E(\tau)$ has a $y$-expansion with integral coefficients, and the $n$th coefficient in the $y$-expansion of $E(\tau)f(\tau)$ is rational with a denominator that divides $[1, \dots, n]^{2}$.
+    Out standard argument now yields $\zeta(2) \not\in \bQ$.
 \end{proof}
 
 \begin{remark*}

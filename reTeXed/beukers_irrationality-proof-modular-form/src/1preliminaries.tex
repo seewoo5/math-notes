@@ -46,7 +46,7 @@ The point of having a radius of convergence as large as possible consists of the
     Then $A_n = D d^n [1, \dots, n]^r |a_{0,n} + \theta_1 a_{1,n} + \cdots + \theta_k a_{k,n}|$ is an integer smaller than
     $D d^n [1, \dots, n]^r (\rho - \epsilon)^{-n}$.
     By the prime number theorem we have $[1, \dots, n] < e^{(1 + \epsilon)n}$ for sufficiently large $n$,
-    hence $A_n < D (d e^{r(1 + \epsilon)} / (\rho - \epsilon))^{n}$.
+    hence $A_n < D (d e^{r(1 + \epsilon)} (\rho - \epsilon)^{-1})^{n}$.
     Since $d e^{r(1 + \epsilon)}  (\rho - \epsilon)^{-1} < 1$ this implies that $A_n = 0$ for sufficiently large $n$,
     in contradiction with the assumption $A_n \ne 0$ for infinitely many $n$.
     Thus our proposition follows. 
@@ -62,7 +62,7 @@ associated to modular forms.
     Let $F(\tau) = \sum_{n=1}^{\infty} a_n q^n$, $q = e^{2 \pi i \tau}$ be a Fourier series
     convergent for $|q| < 1$, such that for some $k, n \in \bN$,
     $$
-        F(-1/N\tau) = \varepsilon(-i\tau \sqrt{N})^{k} F(\tau)
+        F\left(-\frac{1}{N\tau}\right) = \varepsilon(-i\tau \sqrt{N})^{k} F(\tau)
     $$
     where $\varepsilon = \pm 1$.
     Let $f(\tau)$ be the Fourier series
@@ -79,7 +79,7 @@ associated to modular forms.
     $$
     Then
     $$
-        h(\tau) - D = (-1)^{k-1} \varepsilon (-i\tau \sqrt{N})^{k-2} h(-1/N\tau)
+        h(\tau) - D = (-1)^{k-1} \varepsilon (-i\tau \sqrt{N})^{k-2} h\left(-\frac{1}{N\tau}\right)
     $$
     where $D = 0$ if $k$ is odd and $D = L(F, \frac{1}{2}k) (2 \pi i \tau)^{\frac{1}{2}k - 1} / (\frac{1}{2}k - 1)!$ if $k$ is even.
     Moreover, $L(F, \frac{1}{2}k) = 0$ if $\varepsilon = -1$.
@@ -88,7 +88,7 @@ associated to modular forms.
 \begin{proof}
     We apply a lemma of Hecke, see \cite[Section 5]{weil1977remarks} with $G(\tau) = \varepsilon F(\tau) / (i \sqrt{N})^k$ to obtain
     $$
-        f(\tau) - \varepsilon(-1)^{k-1} (-i \tau \sqrt{N})^{k-2} f(-1/N\tau) = \sum_{r = 0}^{k-2} \frac{L(F, k - r - 1)}{r!} (2 \pi i \tau)^r.
+        f(\tau) - \varepsilon(-1)^{k-1} (-i \tau \sqrt{N})^{k-2} f\left(-\frac{1}{N\tau}\right) = \sum_{r = 0}^{k-2} \frac{L(F, k - r - 1)}{r!} (2 \pi i \tau)^r.
     $$
     Split the summation on the right hand side into summations over $r < \frac{1}{2}k - 1$, $r > \frac{1}{2}k - 1$ and,
     possibly, $r = \frac{1}{2}k - 1$.

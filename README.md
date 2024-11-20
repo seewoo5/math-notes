@@ -39,3 +39,5 @@ SUR LES CONJECTURES DE GAN-GROSS-PRASAD (d'après Jacquet-Rallis, Waldspurger, W
 * J. Bourgain, L. Clozel, J-P. Kahane, *Principe d'Heisenberg et fonctions positives*, Annales de l'institut Fourier, Tome 60, no 4 (2010), p. 1215-1232.
 
 * J-P. Labesse, *L-indistinguishable representations and trace formula for SL(2)*, Lie Groups and their Representations (I. M. Gelfand, ed.), Wiley, New York, 1975.
+
+* F. Beukers, *Irrationality proofs using modular forms*, Astérisque, tome 147-148 (1987), p. 271-283
