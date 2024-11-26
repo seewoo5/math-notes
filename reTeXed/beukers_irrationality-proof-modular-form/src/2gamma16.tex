@@ -25,7 +25,7 @@ Its fundamental domain can be pictured as below.
 \end{center}
 A complete set of inequivalent cusps is given by $0, 1/2, 1/3, \infty$.
 They are regular and have widths 6, 3, 2, 1 respectively.
-Consider the following function,
+Consider the following function
 $$
     y(\tau) = \frac{\eta(6\tau)^8 \eta(\tau)^4}{\eta(2\tau)^6 \eta(3\tau)^4}
 $$
@@ -35,7 +35,7 @@ $$
 $$
 That it is a modular function on $\Gamma_1(6)$ can be checked using the tranformation formula for $\eta(\tau)$ in \cite[Ch 9]{rademacher2012topics}.
 Since $y(\tau)$ has only one simple zero in the fundamental domain it generates the field of modular functions on $\Gamma_1(6)$.
-Moreover, $y(0) = 1/9$, $y(1/3) = 1$, $y(1/2) = \infty$, $y(\infty) = 0$.
+Moreover, $y(0) = \frac{1}{9}$, $y(\frac{1}{3}) = 1$, $y(\frac{1}{2}) = \infty$, $y(\infty) = 0$.
 The function $y(-\frac{1}{6\tau})$ is again invariant on $\Gamma_1(6)$ and one easily checks that
 \begin{equation}
     \label{eqn:1}
@@ -146,7 +146,7 @@ be the standard Eisenstein series.
     \end{equation}
     The function $E(\tau)(f(\tau) - \zeta(3))$ can be considered as a multivalued function of $t = t(\tau)$.
     We choose it at $t = 0$ as follows.
-    From the expansion $t = q\prod_{n=1}^{\infty} (1 - q^{6n + 1})^{12} (1 - q^{6n + 5})^{-12} = q - 12q^2 = 66q^3 - 220q^4 + 495 q^5 - \dots$ one infers the inverse expansion $q = t + 12 t^2 + 222 t^3 + \dots$.
+    From the expansion $t = q\prod_{n=1}^{\infty} (1 - q^{6n + 1})^{12} (1 - q^{6n + 5})^{-12} = q - 12q^2 + 66q^3 - 220q^4 + 495 q^5 - \dots$ one infers the inverse expansion $q = t + 12 t^2 + 222 t^3 + \dots$.
     Then, from $E(\tau) = 1 + 5q + 13 q^2 + \dots$ one finds $E(t) = 1 + 5t + 73 t^2 + 1445 t^3 + \dots$ and similarly, $E(t) F(t) = 6t + (351/4)t^2 + \dots$.
 
     By construction one notes that $E(t) \in \bZ\llbracket t\rrbracket$ and  and $E(t) f(t) = \sum_{n=1}^{\infty} a_n t^n$ where $a_n \in \bZ / [1, \dots, n]^3$.
@@ -233,11 +233,11 @@ be the standard Eisenstein series.
     $$
         -i\tau \sqrt{6} \left(f\left(-\frac{1}{6\tau}\right) - L(F, 2)\right) = f(\tau) - L(F, 2).
     $$
-    Multiplication with $\sqrt{E(-\frac{1}{6\tau})} = -i\tau \sqrt{6} \sqrt{E(\tau)}$ yields\footnote{There's a typo in the original article $f(\tau)$ on the LHS should be $f(-1/6\tau)$.}
+    Multiplication with $\sqrt{E(-\frac{1}{6\tau})} = -i\tau \sqrt{6} \sqrt{E(\tau)}$ yields\footnote{There's a typo in the original article: $f(\tau)$ on the LHS should be $f(-\frac{1}{6\tau})$.}
     $$
         \sqrt{E\left(-\frac{1}{6 \tau}\right)} \left(f\left(-\frac{1}{6\tau}\right) - L(F, 2)\right) = \sqrt{E(\tau)} (f(\tau) - L(F, 2)).
     $$
-    Notice that $\sqrt{E(\tau)}$ considered as a function of $t$ is a power series whose $n$-th coefficient is rational and ahs denominator dividing $4^n [1, \dots, n]^2$.
+    Notice that $\sqrt{E(\tau)}$ considered as a function of $t$ is a power series whose $n$-th coefficient is rational and has denominator dividing $4^n [1, \dots, n]^2$.
     By the same argument as in the previous theorems, the radius of convergence of $\sqrt{E(t)} (f(t) - L(F, 2))$ is at least $(\sqrt{2} + 1)^4$.
     Since $4 e < (\sqrt{2} + 1)^{4}$, we can apply Proposition \ref{prop:1.1} to find our theorem.
 \end{proof}
