@@ -1,0 +1,100 @@
+\section{Preliminaries}
+
+In this section we shall describe the general principles which are used in the arguments of the following sections.
+
+Let $t(q) = \sum_{n=0}^{\infty} t_n q^n$ a power series convergent for all $|q| < 1$.
+Let $w(q)$ be another analytic function on $|q| < 1$.
+We like to study $w$ as function of $t$.
+In general it will be a multivalued function over which we have no control.
+However, we shall introduce some assumptions.
+First, $t_0 = 0, t_1 \ne 0$.
+Let now $q(t)$ be the local inverse of $t(q)$ with $q(0) = 0$.
+Choose $w(q(t))$ for the value of $w$ around $t = 0$.
+In order to determine the radius of convergence of the powerseries $w(q(t)) = \sum_{n=0}^{\infty} w_n t^n$ we introduce branching values of $t$.
+We say that $t$ branches above $t_0$, if either $t_0$ is not in the image of $t$, or if $t'(q_0) = 0$ for some $q_0$ with $t(q_0) = t_0$.
+In other words, $t$ branches above $t_0$, if the map $t : \{|q| < 1\} \to \bC$ is not a local covering above $t_0$.
+We call such a $t_0$ a branching value of $t$.
+Now assume, that $t$ has a discrete set of branching values $t_1, t_2, \dots$ where we have excluded zero as a possible value and suppose $|t_1| < |t_2| < \dots$.
+It is clear now that the radius of convergence is in general $|t_1|$.
+We shall be interested in cases where the radius of convergence is larger than $|t_1|$.
+Let $\gamma$ be a closed contour in the complex $t$-plane beginning and ending at the origin, not passing through any $t_i$ and which encircles the point $t_1$ exactly once.
+Suppose that analytic continuation of $w(q(t))$ along $\gamma$ again yields the same branch of $w(q(t))$.
+Then $w(q(t))$ can be continued analytically to the disc $|t| < |t_2|$ with exception of the possible isolated singularity $t_1$.
+If $w(q(t))$ remains bounded around we can conclude that the radius of convergence is at least $t_2$.
+Our irrationality proofs consist exactly of the construction of such instances.
+The point of having a radius of convergence as large as possible consists of the following Proposition.
+
+\begin{proposition}
+    \label{prop:1.1}
+    Let $f_0(t), f_1(t), \dots, f_k(t)$ be power series in $t$.
+    Suppose that for any $n \in \bN$, $i = 0, 1, \dots, k$ the $n$-th coefficient in the Taylor series of is rational and has denominator dividing $d^n [1, \dots, n]^r$
+     where $r, d$ are certain fixed positive integers and $[1, \dots, n]$ is the lowest common multiple of $1, \dots, n$.
+    Suppose there exist real numbers $\theta_1, \dots, \theta_k$ such that $f_0(t) + \theta_1 f_1(t) + \cdots + \theta_k f_k(t)$ has radius of convergence $\rho$ and infinitely many nonzero Taylor coefficients.
+    If $\rho > d e^r$, then at least one of $\theta_1, \dots, \theta_k$ is irrational.
+\end{proposition}
+
+\begin{remark*}
+    Note that if $k = 1$ we have an honest irrationality proof.
+\end{remark*}
+
+\begin{proof}
+    Choose $\epsilon > 0$ such that $\rho - \epsilon > d e^{r(1 + \epsilon)}$.
+    Let $f_i = \sum_{n=0}^{\infty} a_{i,n} t^n$.
+    Since the radius of the convergence of $f_0 + \theta_1 f_1 + \cdots + \theta_k f_k$ is $\rho$,
+    we have for sufficiently large $n$, $|a_{0,n} + \theta_1 a_{1,n} + \cdots + \theta_k a_{k,n}| \le (\rho - \epsilon)^{-n}$.
+    Suppose $\theta_1, \dots, \theta_k$ are all rational and have common denominator $D$.
+    Then $A_n = D d^n [1, \dots, n]^r |a_{0,n} + \theta_1 a_{1,n} + \cdots + \theta_k a_{k,n}|$ is an integer smaller than
+    $D d^n [1, \dots, n]^r (\rho - \epsilon)^{-n}$.
+    By the prime number theorem we have $[1, \dots, n] < e^{(1 + \epsilon)n}$ for sufficiently large $n$,
+    hence $A_n < D (d e^{r(1 + \epsilon)} (\rho - \epsilon)^{-1})^{n}$.
+    Since $d e^{r(1 + \epsilon)}  (\rho - \epsilon)^{-1} < 1$ this implies that $A_n = 0$ for sufficiently large $n$,
+    in contradiction with the assumption $A_n \ne 0$ for infinitely many $n$.
+    Thus our proposition follows. 
+\end{proof}
+
+The construction of the functions $t(q)$ and $w(q)$ will proceed using
+modular forms and functions. The values for which we obtain irrationality
+results are in fact values at integral points of Dirichlet series
+associated to modular forms.
+
+\begin{proposition}
+    \label{prop:1.2}
+    Let $F(\tau) = \sum_{n=1}^{\infty} a_n q^n$, $q = e^{2 \pi i \tau}$ be a Fourier series
+    convergent for $|q| < 1$, such that for some $k, n \in \bN$,
+    $$
+        F\left(-\frac{1}{N\tau}\right) = \varepsilon(-i\tau \sqrt{N})^{k} F(\tau)
+    $$
+    where $\varepsilon = \pm 1$.
+    Let $f(\tau)$ be the Fourier series
+    $$
+        f(\tau) = \sum_{n = 1}^{\infty} \frac{a_n}{n^{k-1}} q^n.
+    $$
+    Let
+    $$
+        L(F, s) = \sum_{n=1}^{\infty} \frac{a_n}{n^s}
+    $$
+    and finally,
+    $$
+        h(\tau) = f(\tau) - \sum_{0 \le r < \frac{1}{2}(k - 2)} \frac{L(F, k - r - 1)}{k!} (2 \pi i \tau)^r.
+    $$
+    Then
+    $$
+        h(\tau) - D = (-1)^{k-1} \varepsilon (-i\tau \sqrt{N})^{k-2} h\left(-\frac{1}{N\tau}\right)
+    $$
+    where $D = 0$ if $k$ is odd and $D = L(F, \frac{1}{2}k) (2 \pi i \tau)^{\frac{1}{2}k - 1} / (\frac{1}{2}k - 1)!$ if $k$ is even.
+    Moreover, $L(F, \frac{1}{2}k) = 0$ if $\varepsilon = -1$.
+\end{proposition}
+
+\begin{proof}
+    We apply a lemma of Hecke, see \cite[Section 5]{weil1977remarks} with $G(\tau) = \varepsilon F(\tau) / (i \sqrt{N})^k$ to obtain
+    $$
+        f(\tau) - \varepsilon(-1)^{k-1} (-i \tau \sqrt{N})^{k-2} f\left(-\frac{1}{N\tau}\right) = \sum_{r = 0}^{k-2} \frac{L(F, k - r - 1)}{r!} (2 \pi i \tau)^r.
+    $$
+    Split the summation on the right hand side into summations over $r < \frac{1}{2}k - 1$, $r > \frac{1}{2}k - 1$ and,
+    possibly, $r = \frac{1}{2}k - 1$.
+    For the region $r > \frac{1}{2}k - 1$ we apply the functional equation
+    $$
+        \frac{L(F, k - r - 1)}{r!} = \varepsilon (-1)^{k} (-i\sqrt{N})^{k-2} \left(-\frac{1}{N}\right)^{k-r-2} (2 \pi i )^{k- 2r - 2} \frac{L(F, r + 1)}{(k - r - 2)!}
+    $$
+    and substitute $r$ by $k - 2 - r$.
+\end{proof}
