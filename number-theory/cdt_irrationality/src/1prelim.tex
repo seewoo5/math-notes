@@ -1,0 +1,88 @@
+\section{Review}
+
+Here we briefly review the preliminaries covered by the previous talks.
+We can summarize the proof of \cite[Theorem A]{calegari2024linear} as follows:
+\begin{enumerate}
+    \item The main theorem(s) \cite[Theorem 6.0.2, Theorem 7.0.1, Theorem 7.1.6]{calegari2024linear} gives a bound(s) of the dimension of the $\bQ(x)$-vector space of the $\bQ$-power series of certain denominator type.
+    \item One can construct 7 linearly independent power series coming from symmetrizations of constant function / (di)logarithms / and a hypergeometric function.
+    \item If $1, \zeta(2), L(2, \chi_{-3})$ are $\bQ$-linearly dependent, one can find 7 additional power series (using Zagier's $q$-series \cite{zagier2009integral}) and we have total \textbf{14} linearly independent power series.
+    \item Once we choose $\psi$ carefully, we can obtain an upper bound \textbf{13.9938...} of the dimension, which gives a contradiction.
+\end{enumerate}
+
+Step 1 is covered in Ziyang's talk, \emph{when $\mathbf{e} = \mathbf{0}$} (i.e. \cite[Theorem 2.5.1]{calegari2024linear}).
+The proof uses Bost's slope method in Arakelov theory \cite{bost2001algebraic} (covered in Fangu's talk).
+Especially, for a filtered Euclidean lattice $\overline{E} = (E, \|\cdot\|)$ (which can be viewed as a Hermitian vector bundle on $\mathrm{Spec}(\bZ)$) and a filtered free $\bZ$-module $F$ with $\psi: E_\bQ \hookrightarrow F_\bQ$, we have
+\begin{equation}
+\label{eqn:bostineq}
+    \widehat{\deg}(\overline{E}) \le \sum_{n=0}^{\infty} \rank (E^{(n)} / E^{(n+1)}) [\widehat{\mu}_{\mathrm{max}}(\overline{G^{(n)}}) + h (\psi_D^{(n)})],
+\end{equation}
+where $\widehat{\deg}$ is the arithmetic degree, $\widehat{\mu}_{\mathrm{max}}$ is the maximal slope, and $\overline{G^{(n)}} = (G^{(n)}, \|\cdot\|_{G^{(n)}})$ are Euclidean lattice structures for the graded pieces of $F$ (See \cite[Section 7.2]{calegari2024linear} for the definitions).
+Applying the inequality to certain $\overline{E}$ yields the holonomy bounded, combined with arithmetic Hilbert--Samuel formula and Bost--Charles' formula for the self-intersection number in terms of integrals (See \cite[Lemma 7.4.5]{calegari2024linear}, which appear in the numerator of the holonomy bound \eqref{eqn:holonomybound}) for the estimation of $h_{\infty}(\psi_D^{(n)})$ and further optimizations with prime number theorem for $h_{\mathrm{fin}}(\psi_D^{(n)})$ (here $h = h_\infty +  h_{\mathrm{fin}}$).
+
+Step 2 and 3 are covered in Zhiyu, Daniel and Ruofan's talk (construction and linear independence).
+The first 7 series come from symmetrization of functions on $Y(2) \simeq \bP^1 \backslash \{0, 1, \infty\}$ to $Y_0(2) \simeq \bP^1 \backslash \{0, 4 ,\infty\}$ (and integrals).
+The following four $\bQ(x)$-linearly independent functions
+\begin{align*}
+    A_1(x) &= 1\\
+    A_2(x) &= -\log (1 - x) = \sum_{n \ge 1} \frac{x^n}{n} \\
+    A_3(x) &= \log^2(1 - x) = \left(\sum_{n \ge 1} \frac{x^n}{n}\right)^2 \\
+    A_4(x) &= \Li_2(x) = \sum_{n \ge 1} \frac{x^n}{n^2}
+\end{align*}
+have denominator types\footnote{For $A_3$; others have better denominator types} $[1, \dots, \frac{1}{2}n][1, \dots, n]$.
+By symmetrizing these, we get four $\bQ(y)$-linearly independent series\footnote{All of these are up to a factor of $2 \in \bQ$ for simplicity (and due to my laziness)}
+\begin{align*}
+    B_1(y) &= \Sym^+ (A_1(x)) = 1 \\
+    B_2(y) &= \Sym^- (A_2(x)) = \sum_{n \ge 2} \frac{(n-2)!n!}{(2n)!}y^n  \\
+    B_3(y) &= \Sym^+ (A_3(x)) = \sum_{n \ge 1}\frac{(n-1)!^2}{(2n)!} y^n \\
+    B_4(y) &= \Sym^- (A_4(x)) = 4 \sum_{n \ge 0} \frac{1}{16^n}  \left(\sum_{k=0}^{n} \binom{2k}{k} \binom{2n-2k}{n-k} \frac{1}{(2k-1)(2n-2k+1)^2}\right)y^{n+1}.
+\end{align*}
+We have three more series:
+\begin{align*}
+    B_5(y) &= \Sym^+\left(x \cdot {}_{3}F_{2} \left[\begin{matrix}
+    \frac{1}{2}, & 1, & 1 \\ \frac{3}{2}, & \frac{3}{2} &
+    \end{matrix}; \frac{4x^2}{x - 1}\right]\right) = \sum_{n \ge 1} \frac{(n-1)!^2}{(2n-1)!(2n-1)} y^n \\
+    &= y \cdot {}_{3}F_{2} \left[\begin{matrix}
+    \frac{1}{2}, & 1, & 1 \\ \frac{3}{2}, & \frac{3}{2} &
+    \end{matrix}; \frac{y}{4}\right] \\
+    B_6(y) &= \int \frac{B_3(y)}{y} \dd y = \sum_{n \ge 1} \frac{(n-1)!}{n(2n)!} y^n \\
+    B_7(y) &= \int \frac{B_4(y)}{y} \dd y \\
+    &= 4 \sum_{n \ge 0} \frac{1}{(n+1) \cdot 16^n}  \left(\sum_{k=0}^{n} \binom{2k}{k} \binom{2n-2k}{n-k} \frac{1}{(2k-1)(2n-2k+1)^2}\right)y^{n+1}
+\end{align*}
+and all of $B_1$ to $B_7$ have denominator types of $n[1, \dots, 2n]^2$ (\cite[Lemma 10.2.2]{calegari2024linear}; See also Lemma 9.0.3 of loc. cit. for the general relation between the denominator types of series in $\bQ\llb x \rrb$ and their symmetrizations. More precise denominator types are in Table \ref{tab:denom}).
+Zagier \cite{zagier2009integral} constructed three $q$-series $A(q), B(q), C(q)$ coming from level $\Gamma_0(6)$ and character $\chi_{-3}$ modular forms (and their Eichler integrals), which are
+\begin{align*}
+    A(q) &= 1 + 3 \sum_{n \ge 1} \frac{\chi_{-3}(n)q^n}{1 - q^n} + 3 \sum_{n \ge 1} \frac{\chi_{-3}(n)q^{2n}}{1 - q^{2n}} \\
+    B(q) &= \sum_{n \ge 1} \frac{\chi_{-3}(n)}{n^2} \frac{q^n}{1 + q^n} \\
+    C(q) &= \frac{1}{4}\sum_{n \ge 1} \chi_{-3}(n) (4 \Li_2(q^n) - \Li_2(q^{2n}))
+\end{align*}
+where it is clear that $\lim_{q \to 1} B(q) = \frac{1}{2} L(2, \chi_{-3})$ and $\lim_{q \to 1} C(q) = \frac{1}{4} \zeta(2)$.
+We define power series $H_A(x), H_B(x), H_C(x) \in \bQ \llb x \rrb$ as
+$$
+    H_A(x) = A(q), \quad \frac{H_B(x)}{H_A(x)} = B(q), \quad \frac{H_C(x)}{H_A(x)} = C(q)
+$$
+with respect to the hauptmodul (uniformizing map)
+$$
+    x = q \prod_{n \ge 1} \frac{(1 - q^n)^4 (1 - q^{6n})^8}{(1 - q^{2n})^{8} (1 - q^{3n})^{4}}: Y_0(6) = \bH / \Gamma_0(6) \simeq \bP^1 \backslash \{0, \frac{1}{9}, 1, \infty \}.
+$$
+Then all three functions are multivalued functions on $\bP^1 \backslash \{0, \frac{1}{9}, 1, \infty\}$ (i.e. extends to holomorphic function on the universal cover) and of denominator types $[1, \dots, n]^2$.
+Each of them have a radius of convergence $\frac{1}{9}$, but any linear combinations of the functions
+$$
+    H_B(x) - \frac{L(2, \chi_{-3})}{2} H_A(x), \quad H_C(x) - \frac{\zeta(2)}{4} H_A(x)
+$$
+overconverge at $\frac{1}{9}$ and have a radius of convergence $R = 1$.
+Especially, assuming that there exist $a, b, c \in \bQ$ with
+\begin{equation}
+    \label{eqn:lindep}
+    a + b\cdot \frac{L(2, \chi_{-3})}{2} + c \cdot \frac{\zeta(2)}{2} = 0,
+\end{equation}
+we get a hypothetical series
+\begin{align}
+    H(x) &= aH_A(x) + bH_B(x) + cH_C(x) \nonumber \\
+    &= b \left( H_B(x) - \frac{L(2, \chi_{-3})}{2} H_A(x)\right) + c \left(H_C(x) - \frac{\zeta(2)}{4} H_A(x)\right) \in \bQ \llb x \rrb \label{eqn:H}
+\end{align}
+which is holonomic.
+We symmetrize $H$ to get a (hypothetical) series $G(y) = \Sym^+ H(x) \in \bQ \llb y \rrb$ that has a denominator type $[1, \dots, 2n]^2$ and also holonomic (satisfies a degree 4 ODE).
+Now these are shown to be linearly independent over $\bQ(y)$ by considering various monodromy \cite[Section 12]{calegari2024linear}.
+Note that all 14 series are holonomic.
+
+I'm going to explain the full version of \cite[Theorem 7.0.1]{calegari2024linear} including the case of $\mathbf{e} \ne \mathbf{0}$ (which is essential for our purpose), and the construction of $\psi$ (Step 4).

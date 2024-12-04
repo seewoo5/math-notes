@@ -1,0 +1,98 @@
+\section{Holonomy bound(s)}
+
+In previous talks, we already covered a version of the main theorem of \cite{calegari2024linear}.
+In fact, there are three different (but closely related) holonomy bounds in \cite{calegari2024linear}, which are Theorem 6.0.2, 7.0.1, and 7.1.6, where all three give the desired contradiction (i.e. small enough upper bound).
+In this seminar, we focus on Theorem 7.0.1, whose special case (i.e. when $\mathbf{e} = 0$ \cite[Theorem 2.5.1]{calegari2024linear}) is covered previously.
+Recall that the previous bound was of the form
+\begin{equation}
+\label{eqn:holonomybounde0}
+    m \le \frac{\iint_{\bT^2} \log |\varphi(z) - \varphi(w)| \dd \mu(w) \dd \mu(z)}{\log |\varphi'(0)| - \tau(\mathbf{b})}
+\end{equation}
+where the array $\mathbf{b} = (b_{i, j})$ records the denominator types of the power series
+$$
+    f_i(x) = \sum_{n \ge 0} a_{i, n} \frac{x^n}{[1, \dots, b_{i, 1} n] [1, \dots, b_{i, 2}n] \cdots [1, \dots, b_{i, r}n]}
+$$
+with $a_{i,n} \in \bZ$ and $[1, 2, \dots, bn] := \mathrm{lcm}(1, 2, \dots, \lfloor bn \rfloor)$ and $\tau(\mathbf{b})$ is a nonnegative number associated to the array $\mathbf{b}$ (which has a value in $[0, b_{m, 1} + \cdots + b_{m, r}]$).
+However, some of the 14 power series have slightly more general denominator types of
+$$
+    f_i(x) = \sum_{n \ge 0} a_{i, n} \frac{x^n}{n^{e_i}[1, \dots, b_{i, 1} n] [1, \dots, b_{i, 2}n] \cdots [1, \dots, b_{i, r}n]}
+$$
+where we have an extra $n^{e_i}$ term in the denominator with $e_i \in \bZ_{\ge 0}$ comes from integration.
+It is possible to replace $n^{e_i}$ with $[1, \dots, n]^{e_i}$, but we will see that we cannot obtain a good enough holonomy bound with such replacements.
+
+
+Here is the full version of the theorem that we need:
+\begin{theorem}[{\cite[Theorem 7.0.1]{calegari2024linear}}]
+\label{thm:bound}
+Consider two positive integers $m, r$, a nonnegative integer vector $\mathbf{e} = (e_1, \dots, e_m)$, and an $m \times r$ rectangular array of nonnegative real numbers
+$$
+    \mathbf{b} := (b_{i,j})_{1 \le i \le m, 1 \le j \le r},
+$$
+all of whose columns have the form
+$$
+0 = b_{1, j} = b_{2, j} = \dots = b_{u_j, j} < b_{u_j + 1, j} = \cdots = b_{m, j} =: b_j, \quad \forall 1, \dots, r
+$$
+for some $u_j \in \{0, 1, \dots, m\}$ depending on the column.
+Let
+$$
+    \sigma_i := b_{i, 1} + \cdots + b_{i, r}, \quad i = 1, \dots, m
+$$
+be the $i$-th row sum, and define
+$$
+    \tau^{\flat}(\mathbf{b}) := \frac{1}{m^2} \sum_{i=1}^{m}(2i - 1)\sigma_i = \sigma_m - \frac{1}{m^2} \sum_{j=1}^{r} u_j^2 b_j \in [0, \sigma_m]
+$$
+and
+$$
+    \tau^{\sharp}(\mathbf{e}) := \frac{2}{m^2} \min_{\xi \in [0, m]} \left\{ \xi \sum_{i=1}^{m} e_i + \left(\max_{1 \le i \le m} e_i\right) I_\xi^{m}(\xi)\right\}
+$$
+where $I_{u}^{v}(w)$ a function defined as
+\begin{align*}
+    I_{u}^{v}(w) &:= \int_{\min\{u, 1\}}^{1} \max\{t - w, 0\} \dd t + \int_{\max\{u, 1\}}^{v} \sum_{h=1}^{\left\lfloor \frac{t - 1}{ \max \{1, w\}} \right\rfloor} \frac{1}{h} \dd t \\
+    &+ \int_{\max\{u, 1\}}^{v} \max\left\{ \frac{t}{\left\lfloor \frac{t + \max\{0, w-1\}}{\max\{1, w\}} \right\rfloor} - w, 0\right\} \dd t
+\end{align*}
+for $0 \le \max\{u, 1\} \le v$ and $w \le v$.
+Finally, let
+$$
+\tau(\mathbf{b}; \mathbf{e}) := \tau^{\flat}(\mathbf{b}) + \tau^{\sharp}(\mathbf{e}).
+$$
+Let $\varphi: (\overline{\bD}, 0) \to (\bC, 0)$ be a holomorphic function with
+\begin{equation}
+\label{eqn:cond}
+    \log |\varphi'(0)| > \max\{\sigma_m, \tau(\mathbf{b}; \mathbf{e})\}.
+\end{equation}
+Suppose there exists an $m$-tuple $f_1, \dots, f_m \in \bQ\llb x\rrb$ of $\bQ(x)$-linearly independent formal functions with denominator types of the form
+$$
+    f_i(x) = a_{i, 0} + \sum_{n=1}^{\infty} a_{i, n} \frac{x^n}{n^{e_i} [1, \dots, b_{i, 1}n][1, \dots, b_{i, 2}n] \cdots[1, \dots, b_{i, r}n]}, \quad a_{i, n} \in \bZ
+$$
+such that $f_i(\varphi(z))$ defines a meromorphic function on $|z| < 1$ for all $i = 1, \dots, m$.
+Then
+\begin{equation}
+\label{eqn:holonomybound}
+    m \le \frac{\iint_{\bT^2} \log |\varphi(z) - \varphi(w)| \dd \mu(w) \dd \mu(z)}{\log |\varphi'(0)| - \tau(\mathbf{b};\mathbf{e})}.
+\end{equation}
+In particular, the formal functions $f_1, \dots, f_m$ are holonomic.
+Moreover, if the functions $f_i$ are \emph{a priori} assumed to be holonomic, the condition \eqref{eqn:cond} can be relaxed to $\log |\varphi'(0)| > \tau(\mathbf{b}; \mathbf{e})$.
+\end{theorem}
+
+Let me give a (very) brief sketch of the proof.
+Recall that we considered the Euclidean lattice
+\begin{align*}
+    E_D &:= \bigoplus_{h=0}^{r} \bigoplus_{i=u_h + 1}^{u_{h+1}} \frac{1}{[1, \dots, y_{h+1}D] \cdots [1, \dots,  y_{r}D]} \cdot \bZ\left[\frac{1}{x}\right]_{\le D} \\
+    &=\bigoplus_{i=1}^{m} \frac{1}{[1, \dots, y_1 D] \cdots [1, \dots, y_{r}D]} \cdot \bZ \left[\frac{1}{x} \right]_{\le D}
+\end{align*}
+which is of rank $m(D+1)$ as a free $\bZ$-module (with a suitable Euclidean norm inherited from a Hermitian metric of a line bundle on $\bP^1$) and $F_\bQ = x^{-D} \bQ \llb x \rrb$, with a map
+$$
+    \psi_D: E_{D, \bQ} \to F_\bQ, \quad (Q_i)_{1 \le i \le m} \mapsto \sum_{i=1}^{m} Q_i f_i
+$$
+which is injective due to the linear independence of $f_i$'s.
+Now we applied Bost's slope inequality \eqref{eqn:bostineq} and arithmetic Hilbert--Samuel formula to get the bound of the form \eqref{eqn:holonomybounde0}.
+Here $y_1, \dots, y_r$ are auxiliary parameters that are optimized later and give the expression of $\tau^\flat(\mathbf{b})$, while estimating $h_{\mathrm{fin}}(\psi_D^{(n)})$.
+When $\mathbf{e} \ne \mathbf{0}$, we modify $E_D$ as
+\begin{align*}
+    E_D := \bigoplus_{h=0}^{r} \bigoplus_{i=u_h + 1}^{u_{h+1}} \frac{[1, \dots, \xi D]^{e_i}}{[1, \dots, y_{h+1}D] \cdots [1, \dots,  y_{r}D]} \cdot \bZ\left[\frac{1}{x}\right]_{\le D}
+\end{align*}
+with an additional auxiliary parameter $\xi \in [0, m]$, and this introduces additional terms in the estimation of $h_{\mathrm{fin}}(\psi_D^{(n)})$ which accounts for the term $\tau^\sharp(\mathbf{e})$.
+
+Note that both $\tau^\flat(\mathbf{b})$ and $\tau^\sharp(\mathbf{e})$, hence $\tau(\mathbf{b}; \mathbf{e})$ can be computed explicitly.
+Especially, we can easily plot the graph of $\xi \mapsto \xi \sum_{1 \le i \le m} e_i + (\max_{1 \le i \le m} e_i) I_\xi^m(\xi)$ and see where it attains its minimum value.
+(The function is complicated but elementary, and we can compute the exact minimum value.)

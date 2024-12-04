@@ -1,0 +1,43 @@
+\section{Overconvergence and univalent leaves}
+
+This section summarizes Section 2.9 and last half of Section 9 of \cite{calegari2024linear} about overconvergence and univalent leaves.
+We need to prove that pullbacks of the 14 functions are holomorphic on the unit disc, which is a requirement to apply the holonomy bound (Theorem \ref{thm:bound}).
+Before we state the result, we first define univalent leaves as follows.
+
+
+
+\begin{definition}[{\cite[Definition 9.0.12]{calegari2024linear}}]
+Consider two pointed Riemann surfaces $(D, O)$ and $(X, P)$ and an open neighborhood $P \in U \subset X$.
+A holomorphic mapping $\varphi: (D, O) \to (X, P)$ \emph{has a univalent leaf over $U$ at $O$} if $\varphi$ maps the connected component of $\varphi^{-1}(U)$ containing $O$ conformally isomorphically onto $U$:
+$$
+    \varphi: (\varphi^{-1}(U))_O \xrightarrow{\simeq} U.
+$$
+We refer to $(\varphi^{-1}(U))_O \subset D$ itself as the univalent leaf (at $O$ over $U$).
+\end{definition}
+
+The following Proposition is a key result that allows us to check holomorphicity of the pullbacks of power series under a univalent map.
+
+
+\begin{proposition}[{\cite[Corollary 9.0.19]{calegari2024linear}}]
+\label{prop:pullbackhol}
+Consider an arbitrary power series $F \in \bC \llb y \rrb$ that defines a holomorphic function on a contractible open neighborhood $0 \in U_{Y_0(2)} \subset \bC \backslash \{4\}$.
+Suppose $\Sigma_{Y_0(2)}^{0} \subset U_{Y_0(2)}$ and $\Sigma_{Y_0(2)}^{1} \subset \bC$ are finite subsets such that $F(y)$ continues analytically as a holomorphic function along all paths in $y \in \bP^1 \backslash \{0, 4, \Sigma_{Y_0(2)}^0, \Sigma_{Y_0(2)}^1\}$ and has around $y = 4$ a finite local monodromy of order dividing 2.
+Let $h: \bD \to \bC$ be the hauptmodul of $Y_0(2)$ \eqref{eqn:h}.
+Then, under any holomorphic mapping $\varphi_{Y_0(2)} : \overline{\bD} \to \bC \backslash \Sigma_{Y_0(2)}^1$ that has a univalent leaf over $U_{Y_0(2)}$ at $0 \in \bD$ containing $\varphi^{-1}(\Sigma_{Y_0(2)}^{0})$, and which factors as a composition $\varphi_{Y_0(2)} = h \circ \psi_{Y_0(2)}$ for some holomorphic $\psi_{Y_0(2)} : \overline{\bD} \to \bD$ with $\psi_{Y_0(2)}^{-1}(0) = \{0\}$, the pullback of $F$ is holomorphic: $\varphi_{Y_0(2)}^\ast F \in \cO(\overline{\bD})$.
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+Let $U_{Y(2)} = y^{-1}(U_{Y_0(2)})$ be the inverse image under $y(x) = x + \frac{x}{x-1}$, which is an open neighborhood of $0$ in $\bC \backslash \{2\}$ which is also contractible.
+Let $f(x) := F(y(x))$ and $\Sigma_{Y(2)}^{0} = y^{-1}(\Sigma_{Y_0(2)}^{0})$, $\Sigma_{Y(2)}^{1} = y^{-1}(\Sigma_{Y(2)}^{1})$.
+By assumptions on $\varphi_{Y_0(2)}$, one can show that there is a holomorphic map $\varphi_{Y(2)}: \overline{\bD} \to \bC \backslash \{1, \Sigma_{Y(2)}^{1}\}$ with $\varphi_{Y(2)}^{-1}(0) = \{0\}$ and $w(\varphi_{Y(2)}(z)) = \varphi_{Y(2)}(-z)$, and has a univalent leaf over $U_{Y(2)}$ at $0 \in \bD$ \cite[Lemma 9.0.13]{calegari2024linear}.
+$\varphi_{Y(2)}$ is related to $\varphi_{Y_0(2)}$ via
+$$
+    \varphi_{Y_0(2)} (z) = \varphi_{Y(2)}(\sqrt{z}) + \varphi_{Y(2)}(-\sqrt{z}) = \frac{\varphi_{Y(2)}(\sqrt{z})^2}{\varphi_{Y(2)}(\sqrt{z}) - 1}.
+$$
+(In fact, the existence of $\varphi_{Y(2)}$ follows from solving the above equation with a choice of branch for square root(s).)
+Then the pullback $\varphi_{Y_0(2)}^\ast F$ can be described as
+$$
+    F(\varphi_{Y_0(2)}(z)) = \frac{f (\varphi_{Y(2)}(\sqrt{z})) + f (\varphi_{Y(2)}(-\sqrt{z}))}{2}
+$$
+and $\varphi_{Y(2)}^\ast f$ is holomorphic on $\overline{\bD}$ (follows from \cite[Proposition 2.9.3]{calegari2024linear}).
+\end{proof}
