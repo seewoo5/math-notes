@@ -1,0 +1,63 @@
+\section{Product of two logarithms}
+
+In \cite{calegari2024linear}, the authors also proved irrationality result for the product of log values.
+More precisely, they proved the following theorem:
+\begin{theorem}[{\cite[Theorem 14.0.1]{calegari2024linear}}]
+Let $m, n \in \bZ \backslash \{-1, 0\}$ be integers such that $\left|\frac{n}{m} - 1\right| < 10^{-6}$.
+Then
+$$
+    \log \left(1 + \frac{1}{m}\right) \log \left(1 + \frac{1}{n}\right)
+$$
+is irrational.
+Moreover, for $m \ne n$, the following are linearly independent over $\bQ$:
+\begin{equation}
+\label{eqn:log}
+    1, \quad \log \left(1 + \frac{1}{m}\right), \quad \log \left(1 + \frac{1}{n} \right), \quad \log \left(1 + \frac{1}{m}\right) \log \left(1 + \frac{1}{n}\right).
+\end{equation}
+\end{theorem}
+Proof uses the same idea (holonomy bound) with different series.
+More precisely, let $a = 2m + 1, b = 2n+1$ and define
+\begin{align*}
+    A(a, x) &:= \frac{1}{\sqrt{1 - 2ax + x^2}} \\
+    H(a, x) &:= \frac{1}{\sqrt{1 - 2ax + x^2}} \int_{0}^{x} \frac{\dd t}{\sqrt{1 - 2at + t^2}}
+\end{align*}
+where both lies in $\bQ \llb x \rrb$ and satisfy first order ODEs.
+These have singularities at $a \pm \sqrt{a^2 - 1}$.
+Assume that there exist integers $r_0, r_a, r_b, r_{ab}$ not all zero such that
+$$
+    r_a \cdot \frac{1}{2} \log \left(\frac{a + 1}{a - 1}\right) + r_b \cdot \frac{1}{2} \log \left(\frac{b + 1}{b - 1}\right) + r_{ab} \cdot \frac{1}{4} \log \left(\frac{a + 1}{a - 1}\right) \log \left(\frac{b + 1}{b - 1}\right) = r_0.
+$$
+We use the same 7 functions $B_1, \dots, B_7$ along with new (hypothetical) 10 functions coming from differentiations and integrals of a (hypothetical) $G$-function $G(y) = \Sym^+ P(x) \in \bQ \llb y \rrb$ where
+\begin{align*}
+    P(x) &= r_a P_a + r_b P_b + r_{ab} P_{ab} \\
+    P_a(x) &= \left(H(a, x) - \frac{1}{2} \log \left(\frac{a+1}{a-1}\right) \right) \,\star A(b, x)  \\
+    P_b(x) &= \left(H(b, x) - \frac{1}{2} \log \left(\frac{b+1}{b-1}\right)\right) \,\star A(a, x)  \\
+    P_{ab}(x) &= H(a, x) \,\star H(b, x) - \frac{1}{4} \log \left(\frac{a+1}{a-1} \right) \log \left(\frac{b+1}{b-1}\right) A(a, x) \,\star A(b, x)
+\end{align*}
+where $\star$ is the Hadamard product (coefficient-wise product of two power series).
+Now, the following 17 functions
+\begin{align*}
+    &B_1(y), \quad B_2(y), \quad B_3(y), \quad B_4(y), \quad B_5(y), \\
+    &G(y), \quad G'(y), \quad G''(y), \quad G'''(y), \\
+    &B_6(y), \quad B_7(y), \quad \int y G(y) \dd y, \quad \int G(y) \dd y, \quad \int \frac{G(y) - G(0)}{y} \dd y, \\
+    &\int \frac{G(y) - G(0) - G'(0)y}{y^2} \dd y, \quad \int \frac{G(y) - G(0) - G'(0)y - G''(0) \frac{y^2}{2}}{y^3} \dd y,\\
+    &\int \frac{G(y) - G(0) - G'(0)y - G''(0) \frac{y^2}{2} - G'''(y) \frac{y^3}{6}}{y^4} \dd y
+\end{align*}
+are $\bQ(y)$-linearly independent (in fact, $\bC(y)$-linearly independent), and have denominator types of $n [1, \dots, 2n]^2$.
+More precisely, the corresponding array $\mathbf{b}$ and $\mathbf{e}$ are
+\begin{align*}
+    \mathbf{b} &:= \begin{pmatrix}
+        0 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 \\
+        0 & 0 & 0 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 & 2
+    \end{pmatrix}^\intercal \\
+    \mathbf{e} &:= (0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1).
+\end{align*}
+Using Proposition \ref{prop:pullbackhol} again with $\Sigma_{Y_0(2)}^0 = \{y_{a^-, b^-}\}$, $\Sigma_{Y_0(2)}^1 = \emptyset$, and $U_{Y_0(2)} = D(0, \frac{1}{100})$, where $y_{a^-, b^-}$ is the image of $(a - \sqrt{a^2 - 1})(b - \sqrt{b^2 - 1})$ under the symmetrizing map $x \mapsto y(x)$, one can check holomorphicity of the pullbacks of 17 functions under the same $\varphi$ we used for Theorem \ref{thm:irrational}.
+Now explicit computation gives
+$$
+    \tau(\mathbf{b}; \mathbf{e}) = \frac{1136}{289} + \frac{78419}{242760} = \frac{1032659}{242760} = 4.2538\dots
+$$
+and the corresponding holonomy bound is around $16.2 < 17$, which gives a contradiction and proves linear independence of the four numbers in \eqref{eqn:log}.
+
+In the proof, we use the assumption that $\frac{a}{b}$ is close to $1$, to ensure that 1) the singularities of $P_a(x)$ and $P_b(x)$ are close to $0$ and $\infty$, and 2) the singularities of $P_{ab}(x)$ are close to $0$, $1$, and $\infty$.
+The assumption is also used in the proof of linear independence, although we need a weaker assumption for the purpose.
