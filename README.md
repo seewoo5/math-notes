@@ -6,28 +6,29 @@ For web, use this link: [here](https://seewoo5.github.io/math-notes/)
 List of notes:
 
 * Number theory
-    * [Unramified extension of $\mathbb{Q}(\sqrt{3})$](https://seewoo5.github.io/math-notes/number-theory/unramified_extension/UnrExtn.pdf)
-    * [Some properties of $p$-adic numbers](https://seewoo5.github.io/math-notes/number-theory/p-adic_numbers/padicprop.pdf)
-    * [Irrationality measure](https://seewoo5.github.io/math-notes/number-theory/irrationality_measure/Irrationality_measure.pdf)
-    * [Automorphic induction from GL(1) to GL(2)](https://seewoo5.github.io/math-notes/number-theory/automorphic_induction/AutoInd.pdf)
-    * [Hilbert's theorem 90](https://seewoo5.github.io/math-notes/number-theory/hilbert90/hilbert90.pdf)
-    * [Nontrivial examples of ideal class groups](https://seewoo5.github.io/math-notes/number-theory/ideal_class_group/IdealClassGroup.pdf)
-    * [Structure of $(\mathbb{Z}/p^{n}\mathbb{Z})^{\times}$](https://seewoo5.github.io/math-notes/number-theory/unit_group_of_Zmodpn/Zmodpnx.pdf)
-    * [Automorphic forms on GL(2)](https://seewoo5.github.io/math-notes/number-theory/automorphic_form_GL2/AutomorphicFormGL2.pdf)
+    * [Proof of $L(2, \chi_{-3}) \not \in \mathbb{Q}$ by Calegari-Dimitrov-Tang](https://seewoo5.github.io/math-notes/number-theory/cdt_irrationality/main.pdf)
     * [Modular forms on $G_2$](https://seewoo5.github.io/math-notes/number-theory/modular_form_G2/main.pdf)
+    * [Automorphic forms on GL(2)](https://seewoo5.github.io/math-notes/number-theory/automorphic_form_GL2/AutomorphicFormGL2.pdf)
+    * [Structure of $(\mathbb{Z}/p^{n}\mathbb{Z})^{\times}$](https://seewoo5.github.io/math-notes/number-theory/unit_group_of_Zmodpn/Zmodpnx.pdf)
+    * [Nontrivial examples of ideal class groups](https://seewoo5.github.io/math-notes/number-theory/ideal_class_group/IdealClassGroup.pdf)
+    * [Hilbert's theorem 90](https://seewoo5.github.io/math-notes/number-theory/hilbert90/hilbert90.pdf)
+    * [Some properties of $p$-adic numbers](https://seewoo5.github.io/math-notes/number-theory/p-adic_numbers/padicprop.pdf)
+    * [Automorphic induction from GL(1) to GL(2)](https://seewoo5.github.io/math-notes/number-theory/automorphic_induction/AutoInd.pdf)
+    * [Irrationality measure](https://seewoo5.github.io/math-notes/number-theory/irrationality_measure/Irrationality_measure.pdf)
+    * [Unramified extension of $\mathbb{Q}(\sqrt{3})$](https://seewoo5.github.io/math-notes/number-theory/unramified_extension/UnrExtn.pdf)
     * Langlands functoriality (ongoing)
 
 * Geometry
-    * [Low-dimensional complex Spin groups](https://seewoo5.github.io/math-notes/geometry/low_dim_spin_group/low_dim_spin_group.pdf)
-    * [$\mathbb{S}^2$ is not a Lie group](https://seewoo5.github.io/math-notes/geometry/S2_is_not_Lie_group/S2notLiegrp.pdf)
     * [Singular algebraic curves](https://seewoo5.github.io/math-notes/geometry/singular_algebraic_curves/singular_algebraic_curves.pdf) (follow Chapter 4 of Serre's *Algebraic Groups and Class fields*)
+    * [$\mathbb{S}^2$ is not a Lie group](https://seewoo5.github.io/math-notes/geometry/S2_is_not_Lie_group/S2notLiegrp.pdf)
+    * [Low-dimensional complex Spin groups](https://seewoo5.github.io/math-notes/geometry/low_dim_spin_group/low_dim_spin_group.pdf)
 
 * Representation theory
     * Littlewood-Richardson rule (ongoing)
 
 * Miscellaneous
-    * [Probabilities in poker game](https://seewoo5.github.io/math-notes/miscellaneous/poker_probability/pokerprob.pdf)
     * [Similarity of matrices and field extension](https://seewoo5.github.io/math-notes/miscellaneous/field_extension_and_similarity/field_extension_and_similarity.pdf)
+    * [Probabilities in poker game](https://seewoo5.github.io/math-notes/miscellaneous/poker_probability/pokerprob.pdf)
 
 ### Re-TeXed articles
 
