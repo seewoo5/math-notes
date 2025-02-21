@@ -1,0 +1,140 @@
+\section{Moy--Prasad filtration}
+\label{sec:moyprasad}
+
+Recall that all supercuspidal representations are conjecturally induced from compact subgroups.
+Moy--Prasad filtration gives a partial answer to the question; it is a filtration of $G$ attached to each point of $\scB(G)$, which is used to define \emph{depth} of representations.
+Especially, we can classify all the \emph{depth-zero} supercuspidal representations, where all of them arise as inductions of \emph{depth-zero minimal $K$ types}.
+
+Before we define the Moy--Prasad filtration, we introduce the notion of \emph{parahoric subgroups}, which are groups $G_{x}$ associated to each point $x \in \scB(G)$.
+When $x \in \scA(G, T)$, we define $G_{x}$ and its (pro-)unipotent radical $G_{x}^+$ as follows:
+% For each $x \in \scB(G)$, we associate a \emph{parahoric}\footnote{\textbf{para}bolic + Iwa\textbf{horic}, indeed.} subgroup (an affine analogue of parabolic subgroups) $G_{x}$ and its unipotent radical $G_{x}^+$ as
+\begin{align}
+    G_{x} &:= \langle T(\bZ_p), x_\alpha(p^{-\lfloor \alpha(x) \rfloor}) : \alpha \in \Phi \rangle \\
+    G_{x}^+ &:= \langle T(1 + p\bZ_p), x_\alpha(p^{1 - \lceil \alpha(x) \rceil}) : \alpha \in \Phi \rangle
+\end{align}
+Now, for an arbitary point $x \in \scB(G)$, take $x_0 \in \scA(G)$ and $g \in G$ with $x = g \cdot x_0$.
+Then we define $G_{x} := g G_{x_0} g^{-1}$ and $G_{x}^+ := g G_{x_0}^+ g^{-1}$, which is independent of the choice of $x_0$ and $g$.
+Both of the groups only depends on the facet $\mathscr{F}$ containing $x$, and sometimes we denote them by $G_{\mathscr{F}}$ and $G_{\mathscr{F}}^+$.
+Note that the quotient $G_{x} / G_{x}^+$ is always a Lie group of finite type, which we denote as $\mathscr{G}_{x}$.
+%  finite group, and we denote it by $F_{x}$.
+
+Moy--Prasad filtration is a filtration of these two groups.
+
+\begin{definition}[Moy--Prasad filtration]
+Let $x \in \scA(G, T)$.
+Moy--Prasad filtration of $G_x$ and $G_x^+$ is given by, for each $r \in \bR_{\ge 0}$,
+\begin{align}
+    G_{x, r} &:= \langle T(1 + p^{\lceil r \rceil}), x_{\alpha}(p^{-\lfloor \alpha(x) - r \rfloor}) : \alpha \in \Phi \rangle \subset G_x \\
+    G_{x, r^+} &:= \bigcap_{s > r} G_{x, s}
+    %  \langle T(1 + p^{\lfloor r \rfloor + 1}), x_{\alpha}(p^{1 - \lceil \alpha(x) - r\rceil}) : \alpha \in \Phi \rangle \subset G_{x, r}
+\end{align}
+\end{definition}
+We can generalize the definition to any $x \in \scB(G)$ similarly as before.
+It is easy to check that for any $x$, $G_{x, 0} = G_{x}$, $G_{x, 0^+} = G_{x}^+$, and $\{G_{x, r}\}_{r \ge 0}$ form a decreasing filtration and a basis of open compact neighborhoods of the identity in $G$.
+The parameter $r$ of the filtration is additive in the following sense: we have $[G_{x, r}, G_{x, r'}] \subseteq G_{x, r + r'}$.
+Also, we have analogous filtrations $\frg_{x, r^+} \subset \frg_{x, r} \subset \frg_{x}$ for the Lie algebra $\frg = \mathrm{Lie}(G)$.
+
+% \textcolor{red}{Add filtrations for $\SL_{2}(\bQ_2)$}
+For example, consider $G = \SL_2(\bQ_3)$ again.
+There are essentially two (or three) different possibilities: vertices or the points on the middle of the edges.
+There are two different types of vertices, correspond to two different conjugacy classes of maximal compact subgroups, which are
+\[
+    x_1 \leftrightarrow \begin{bmatrix} \bZ_3 & \bZ_3 \\ \bZ_3 & \bZ_3 \end{bmatrix}, \qquad x_3 \leftrightarrow \begin{bmatrix} \bZ_3 & 3 \bZ_3 \\ \frac{1}{3} \bZ_3 & \bZ_3 \end{bmatrix}.
+\]
+For the point $y$ in the middle of $x_1$ and $x_3$, it corresponds to
+\[
+    y \leftrightarrow \begin{bmatrix}
+        \bZ_3 & 3 \bZ_3 \\ \bZ_3 & \bZ_3
+    \end{bmatrix}.
+\]
+
+The corresponding Moy--Prasad filtrations are given by
+% \begin{align*}
+%     G_{x_1,0} = \begin{bmatrix}
+%         \bZ_3 & \bZ_3 \\ \bZ_3 & \bZ_3
+%     \end{bmatrix} \qquad G_{y,0} &= \begin{bmatrix}
+%         \bZ_3 & 3 \bZ_3 \\ \bZ_3 & \bZ_3
+%     \end{bmatrix} \qquad G_{x_3} = \begin{bmatrix}
+%         \bZ_3 & 3 \bZ_3 \\ \frac{1}{2} \bZ_3 & \bZ_3
+%     \end{bmatrix} \\
+%     G_{y, 0.5} &= \begin{bmatrix}
+%         1 + 3 \bZ_3 & 3 \bZ_3 \\ \bZ_3 & 1 + 3 \bZ_3
+%     \end{bmatrix} \\
+%     G_{x_1, 1} = \begin{bmatrix}
+%         1 + 3 \bZ_3 & 3 \bZ_3 \\ 3 \bZ_3 & 1 + 3 \bZ_3
+%     \end{bmatrix} \qquad G_{y, 1} &= \begin{bmatrix}
+%         1 + 3 \bZ_3 & 3^3 \bZ_3 \\ 3 \bZ_3 & 1 + 3 \bZ_3
+%     \end{bmatrix} \qquad G_{x_3, 1} = \begin{bmatrix}
+%         1 + 3 \bZ_3 & 3^3 \bZ_3 \\ 3 \bZ_3 & 1 + 3 \bZ_3 
+%     \end{bmatrix} \\
+%     G_{y, 1.5} &= \begin{bmatrix}
+%         1 + 3^3 \bZ_3 & 3^3 \bZ_3 \\ 3 \bZ_3 & 1 + 3^3 \bZ_3
+%     \end{bmatrix}
+% \end{align*}
+% the one with $x_{\alpha}(p^{-1})$ and the one with $x_{\alpha}(p^{-2})$.
+
+\begin{table}[h]
+    \footnotesize
+    \begin{center}
+        \begin{tabular}{ccc}
+        % \begin{tabular}{c|c|l}
+            $G_{x_1,0} = \begin{bmatrix}
+                \bZ_3 & \bZ_3 \\ \bZ_3 & \bZ_3
+            \end{bmatrix}$ & $G_{y,0} = \begin{bmatrix}
+                \bZ_3 & 3 \bZ_3 \\ \bZ_3 & \bZ_3
+            \end{bmatrix}$ & $G_{x_3} = \begin{bmatrix}
+                \bZ_3 & 3 \bZ_3 \\ \frac{1}{2} \bZ_3 & \bZ_3
+            \end{bmatrix}$ \\
+            & & \\
+            & $\bigcup$ & \\
+            & & \\
+            $\bigcup$ & $G_{y, 0.5} = \begin{bmatrix}
+                1 + 3 \bZ_3 & 3 \bZ_3 \\ \bZ_3 & 1 + 3 \bZ_3
+            \end{bmatrix}$ & $\bigcup$ \\
+            & & \\
+            & $\bigcup$ & \\
+            & & \\
+            $G_{x_1, 1} = \begin{bmatrix}
+                1 + 3 \bZ_3 & 3 \bZ_3 \\ 3 \bZ_3 & 1 + 3 \bZ_3
+            \end{bmatrix}$ & $G_{y, 1} = \begin{bmatrix}
+                1 + 3 \bZ_3 & 3^3 \bZ_3 \\ 3 \bZ_3 & 1 + 3 \bZ_3
+            \end{bmatrix}$ & $G_{x_3, 1} = \begin{bmatrix}
+                1 + 3 \bZ_3 & 3^3 \bZ_3 \\ 3 \bZ_3 & 1 + 3 \bZ_3 
+            \end{bmatrix}$ \\
+            & & \\
+            & $\bigcup$ & \\
+            & & \\
+            $\bigcup$ & $G_{y, 1.5} = \begin{bmatrix}
+                1 + 3^3 \bZ_3 & 3^3 \bZ_3 \\ 3 \bZ_3 & 1 + 3^3 \bZ_3
+            \end{bmatrix}$ & $\bigcup$ \\
+            $\vdots$ & $\vdots$ & $\vdots$
+        \end{tabular}
+        % \caption{Known optimal bounds for uncertainty principle}
+        \label{tab:uncertainty_optimal_bounds}
+    \end{center}
+\end{table}
+
+They proved that any (smooth) representation of $G(F)$ possesses a vector fixed by a group in the filtration.
+
+\begin{theorem}[Moy--Prasad {\cite[Theorem 5.2]{moy1994unrefined}}]
+\label{thm:mpdepth}
+If $(\pi, V)$ is a smooth representation of $G$, then there is a nonnegative real number $r = \varrho(\pi)$ with the property that $r$ is the minimal number such that $V^{G_{x, r^+}} \ne \{0\}$ for some $x \in \scB(G)$.
+\end{theorem}
+
+We call the number $\varrho(\pi)$ as the \emph{depth} of $\pi$.
+Espeically, depth-zero representation $(\pi, V)$ is a representation with $V^{G_x^+} \ne \{0\}$.
+Note that the depth of a representation does not need to be an integer: we will see an example of depth $\frac{1}{2}$ representation in Section \ref{sec:yu}.
+
+Moreover, they proved that all the depth-zero supercuspidal representations arise from the representations of finite groups, generalizing the construction of representations of $\GL_2(\bQ_p)$ in Section \ref{sec:intro}.
+
+\begin{definition}
+A \emph{depth-zero minimal $K$-type} is a pair $(G_x, \tau)$ where $x \in \scB(G)$ and $\tau$ is a cuspidal representation of the finite group $G_{x} / G_{x}^+$, inflated to $G_{x}$.
+\end{definition}
+
+\begin{theorem}[Moy--Prasad \cite{moy1994unrefined,moy1996jacquet}]
+\label{thm:mpd0}
+Let $(G_x, \sigma)$ be a minimal $K$-type and $\scE(\sigma)$ be the set of irreducible representations of $F_{x} = N_G(G_x)$ (up to equivalence) whose restriction to $G_x$ contains $\sigma$.
+Then for any $\tau \in \scE(\sigma)$, $\Ind_{F_x}^{G}(\tau)$ an irreducible supercuspidal representation of $G$ (necessarily of depth-zero), and any depth-zero irreducible supercuspidal representations arises from some $x \in \scB(G)$ in this way.
+\end{theorem}
+% The theorem tells us that the construction of depth-zero supercuspidal representations reduce to the construction of cuspidal representations of finite groups.
+The construction of the cuspidal representations of ``finite groups of Lie type'' (e.g. has a form of $\scG(\bF_q)$ for some $\scG_{/\bF_q}$) are usually understood by the Deligne--Lusztig theory ($\ell$-adic cohomology of a variety $X_{/\bF_q}$ with $\scG(\bF_q)$-action on it).

@@ -24,6 +24,7 @@ List of notes:
     * [Low-dimensional complex Spin groups](https://seewoo5.github.io/math-notes/geometry/low_dim_spin_group/low_dim_spin_group.pdf)
 
 * Representation theory
+    * [Bruhat-Tits buildings, Moy-Prasad filtration, and Yu's construction](https://seewoo5.github.io/math-notes/representation-theory/Bruhat-Tits-Moy-Prasad-Yu/main.pdf)
     * Littlewood-Richardson rule (ongoing)
 
 * Miscellaneous
