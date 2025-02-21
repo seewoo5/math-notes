@@ -1,0 +1,107 @@
+\section{Yu's construction}
+\label{sec:yu}
+
+As a follow-up of Theorem \ref{thm:mpd0}, it is natural to ask how to construct supercuspidal representations of positive depths.
+Following the folklore conjecture, our goal is to generalize the construction of supercuspidal representations of $\GL_2(\bQ_p)$ mentioned above to general reductive groups, via the following diagram:
+
+\begin{center}
+    \begin{tikzcd}
+        G(F) & \\
+        K \arrow[u, hookrightarrow] \arrow[r, twoheadrightarrow] & \scG(\bF_q)
+    \end{tikzcd}
+\end{center}
+
+In other words, our goal is to find \emph{some} compact-mod-center open subgroup $K$ of $G(F)$ and \emph{some} representation $\rho$ of $K$ factors through a Lie group of finite type $\scG(\bF_q)$, such that the compact induction $\cInd_K^{G(F)} \rho$ is supercuspidal.
+
+Using Moy--Prasad filtration, Yu constructed tons of supercuspidal representations of reductive groups.
+Yu's data consists of the following ingredients:
+
+\begin{definition}[]
+\emph{Yu's datum} is a tuple
+\begin{equation*}
+    ((G_i)_{1 \le i \le n + 1}, x, (r_i)_{1 \le i \le n}, \rho, (\psi_i)_{1 \le i \le n})
+\end{equation*}
+for some $n \in \bZ_{\ge 0}$, where
+\begin{itemize}
+    \item $G = G_1 \supsetneq G_2 \supsetneq G_3 \supsetneq \cdots \supsetneq G_{n+1}$ are \emph{twisted Levi subgroups} of $G$ \cite[Definition 4.1.1]{fintzen2021representations}, which split over a tamely ramified extension of $F$,
+    \item $x \in \widetilde{\scB}(G_{n+1}) \subset \widetilde{\scB}(G)$,
+    \item $r_1 > r_2 > \cdots > r_n > 0$ are real numbers,
+    \item $\rho$ is an irreducible representation of $(G_{n+1})_{[x]}$ trivial on $(G_{n+1})_{x, 0+}$, i.e. a depth-zero representation,
+    \item $\psi_i$ is a character of $G_{i + 1}$ of depth $r_i$,
+\end{itemize}
+satisfying the following conditions:
+\begin{itemize}
+    \item $Z(G_{n+1}) / Z(G)$ is anisotropic,
+    \item the image $[x]$ of the point $x$ in $\scB(G_{n+1})$ is a vertex,
+    \item $\rho|_{(G_{n+1})_{x, 0}}$ is a supercuspidal representation of $(G_{n+1})_{x, 0} / (G_{n+1})_{x, 0+}$,
+    \item $\psi_i$ is \emph{$(G_i, G_{i+1})$-generic} relative to $x$ of depth $r_i$ \cite[Definition 4.1.3]{fintzen2021representations} for all $1 \le i \le n$ with $G_{i} \ne G_{i+1}$.
+\end{itemize}
+\end{definition}
+
+Here $\widetilde{\scB}(G)$ is the enlarged (non-reduced) buliding,
+\[
+    \widetilde{\scB}(G) = \scB(G) \times (X_{\bullet}(G) \otimes_{\bZ} \bR).
+\]
+
+
+\begin{theorem}[Yu {\cite{yu2001construction}}]
+\label{thm:yu}
+Let $((G_i)_{1 \le i \le n + 1}, x, (r_i)_{1 \le i \le n}, \rho, (\psi_i)_{1 \le i \le n})$ be a Yu's datum.
+Define a compact-mod-center open subgroup $K$ of $G(F)$ as
+\[
+    K = (G_1)_{x, \frac{r_1}{2}} (G_2)_{x, \frac{r_2}{2}} \cdots (G_n)_{x, \frac{r_n}{2}} (G_{n+1})_{[x]}
+\]
+and $\tilde{\rho} = \rho \otimes \kappa$ be a representation of $K$, where $\rho$ is trivially extended from $(G_{n+1})_{[x]}$ and $\kappa$ is a certain representation which is built out of $\psi_i$'s via Heisenberg representation (See \cite[Section 3.8]{fintzensupercuspidal}).
+Then $\cInd_{K}^{G(F)} \tilde{\rho}$ is a supercuspidal smooth irreducible representation of $G(F)$ of depth $r_1$.
+\end{theorem}
+
+Intuitively, you have a depth-zero supercuspidal representation of the smallest group in the filtration (which are ``multiplicative''), and enlarge it to a representation of $G(F)$ by using ``additive'' characters $\psi_i$.
+
+For example, consider $G_1 = G = \SL_2(\bQ_3)$ again.
+Take $n = 1$.
+Let $G_2$ be the non-split torus given by
+\[
+    G_2(F') = \left\{ \begin{bmatrix}
+        a & b \\ 3b & a
+    \end{bmatrix} \in \SL_2(F') : a, b \in F'\right\}
+\]
+for all field extensions $F'/ \bQ_3$, which splits over a tame extension $\bQ_3(\sqrt{3})$.
+Let $x$ be the unique point of $\widetilde{\scB}(S, \bQ_3) \subset \widetilde{\scB}(G, \bQ_3)$.
+Let $r_1 = \frac{1}{2}$ and define $\psi_1: G_2(\bQ_3)  \to \bC^\times$ as 
+\[
+    \psi_1 \left(\begin{bmatrix}
+        a & b \\ 3b & a
+    \end{bmatrix}\right) = \varphi(2b)
+\]
+for a fixed additive character $\varphi: \bQ_3 \to \bC^\times$, which is nontrivial on $\bZ_3$ but trivial on $3 \bZ_3$.
+Take $\rho$ to be the trivial representation of $G_2(\bQ_3) = (G_{2})_{[x]}$.
+Then $((G_1, G_2), x, r_1, \rho, \psi_1)$ satisfies the conditions of Yu's construction, and it produces a supercuspidal representation of depth $\frac{1}{2}$.
+In this case, the compact subgroup is
+\[
+    K = \{\pm 1 \} G_{x, \frac{1}{4}} = \left\{\pm\begin{bmatrix}
+        1 + 3\bZ_3 & \bZ_3 \\ 3\bZ_3 & 1 + 3\bZ_3
+    \end{bmatrix} \in \SL_2(\bQ_3) \right\}
+\]
+and $\tilde{\rho}$ is the character of $K$ given by $\tilde{\rho}(\pm 1) = 1$ and
+\[
+    \tilde{\rho} \left( \begin{bmatrix}
+        1 + 3a & b \\ 3c & 1 + 3d
+    \end{bmatrix}\right) = \varphi(b + c).
+\]
+Note that $[x] = y \in \scB(\SL_2(\bQ_3))$ is the point on the middle of the edge of $x_1$ and $x_2$ in Section \ref{sec:building}.
+
+
+There was an error in the original proof \cite{yu2001construction} (due to a misprinted statement in \cite{gerardin1977weil}), which was corrected by Fintzen \cite{fintzen2021representations} later (a counter example to the original argument is also provided).
+Also, Fintzen, Kaletha, and Spice showed that including a quadratic twist restores the validity of the original argument \cite{fintzen2023twisted}.
+
+\begin{theorem}[{Kim \cite{kim2007supercuspidal}, Fintzen \cite{fintzen2021types}, Fintzen--Schwein \cite{fintzen2025construction}}]
+\label{thm:exhaustive}
+Suppose that $G$ splits over a tamely ramified field extension of $F$ (not necessarily characteristic zero).
+Then every supercuspidal smooth irreducible representation of $G(F)$ arises from Yu's construction, i.e., via Theorem \ref{thm:yu}.
+\end{theorem}
+
+Kim proved the exhausitiveness for characteristic zero fields with \emph{very large} residue characteristic (with no effective bounds) \cite{kim2007supercuspidal}, and Fintzen extended the result to \emph{fairly large} residue characteristics, i.e. when $p$ does not divide the order of the Weyl group of $G$ \cite{fintzen2021types}.
+Very recently, Fintzen and Schwein removed the condition and proved the exhausitiveness for all $p$ \cite{fintzen2025construction}.
+
+It is natural to ask when two Yu's data produce equivalent representations.
+Hakim and Murnaghan \cite{hakim2008distinguished} proved that two data produce equivalent representations if and only if one can obtain one from the other by a sequence of elementary transformation, $G(F)$-conjugation and refactorization.

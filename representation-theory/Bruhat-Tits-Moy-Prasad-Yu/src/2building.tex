@@ -1,0 +1,135 @@
+\section{Bruhat--Tits building}
+\label{sec:building}
+
+When we study representations of Lie groups $G$ (especially, infinite dimensional representations), it is common to consider the cohomology of the associated symmetric space $X = G(\bR) / K$ ($K$ is a maximal compact subgroup of $G(\bR)$).
+For example, discrete series of $\GL_2(\bR)$ can be understood by line bundles on $\bH^\pm$.
+% Recall that we often consider a symmetric space where a Lie group acts on it, and considerting a certain cohmology gives a representation of the group.
+% For example, discrete series of $\GL_{2}(\mathbb{R})$ or $\SL_2(\bR)$ can be understood as a line bundle on the 
+Hence it is natural to ask if one can find an analogous space for $p$-adic groups to study representations, and as you expected, the answer is \emph{Bruhat--Tits building}.
+% It is natural to ask if, for a given $p$-adic group $G(\bQ_p)$, there's a space where $G(\bQ_p)$ acts nicely and tell us something about representations of the group.
+% Indeed, \emph{Bruhat--Tits building} is the answer that we are looking for.
+
+Bruhat--Tits building $\scB(G) = \scB(G, \bQ_p)$ of $G$ is a certain contractible and complete metric space obtained by glueing bunch of \emph{apartments} (which are also called \emph{maximal flats}), which are just Euclidean spaces, where $G(\bQ_p)$ acts nicely.\footnote{In Bruhat--Tits building, people (points) are living in at least two apartments.}
+Each of apartment correspond to a maximal split tori, where the bijection is given by considering a stabilizer of the apartment in $G(\bQ_p)$.
+The action of $G(\bQ_p)$ is transitive on the apartments, but not on vertices - the action is transitive on vertices \emph{with same types}.
+% For any two points in a building, there is a unique apartment contains both.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        grow cyclic,
+        level distance=1.5cm,
+        level/.style={
+        level distance/.expanded=\ifnum#1>3 \tikzleveldistance/2\else\tikzleveldistance\fi,
+        nodes/.expanded={fill=none}
+        % nodes/.expanded={\ifodd#1 fill\else fill=none\fi}
+        },
+        nodes={inner sep=+0pt, minimum size=1.2pt},
+        level 1/.style={sibling angle=90,nodes={draw, fill=lightgray}},
+        level 2/.style={sibling angle=0,nodes={circle, draw, fill=Orchid}},
+        level 3/.style={sibling angle=90,nodes={circle, draw, fill=LimeGreen}},
+        level 4/.style={sibling angle=90},
+        ]
+    \path[rotate=45]
+        node[draw, circle, inner sep=+0pt, minimum size=1.2pt, fill=LimeGreen] {\small $x_1$}
+        child foreach \cntI in {1,...,4} {
+        node {\small $y$}
+        child foreach \cntII in {1,...,2} { 
+            node[accepting] {\small $x_2$}
+            child foreach \cntIII in {1,...,3} {
+            node {\scriptsize $x_1$}
+            child foreach \cntIV in {1,...,3} {
+                node[accepting, fill=Orchid] {\tiny $x_2$}
+                child foreach \cntV in {1,...,3} {}
+            }
+            }
+        }
+        };
+    \end{tikzpicture}
+    \caption{Bruhat--Tits building of $\SL_2(\bQ_3)$}
+    \label{fig:btsl2q3}
+\end{figure}
+
+
+For example, Figure \ref{fig:btsl2q3} shows one the most famous Bruhat--Tits building that you may find on Google, which is $\scB(\SL_2(\bQ_3))$:\footnote{The other one is $\scB(\SL_2(\bQ_2))$.}
+It is an infinite 4-regular tree, and in general, $\scB(\SL_2(\bQ_p))$ is a infinite $(p+1)$-regular tree.
+Each vertex corresponds to an isomorphism class of \emph{lattices} in $\bQ_3^2$ (up to homothety by $\bQ_3^\times$), where two of them are connected if and only if there exist representatives $L, L'$ of each class such that $L' \subset L$ and $L / L' \simeq \bZ/3\bZ$.
+For any given $L$ and $L'$, there exists a basis $\{e_1, e_2\}$ of $L$ and integers $a \ge b$ such that $\{3^a e_1, 3^b e_2\}$ form a basis of $L'$, where $|a - b|$ is equal to the distance between the corresponding points.
+We have a natural action of $\SL_2(\bQ_3)$ on the tree via $[L] \mapsto [gL]$ ($g \in \SL_2(\bQ_3)$), and it preserves the metric.
+It is easy to check that the stabilizer of the point corresponds to $L_0 = \bZ_3^2$ is $\SL_2(\bZ_3)$.
+Note that the action is not transitive on the whole vertices, since $d([L], [gL])$ is always even.
+In fact, it acts transitively on the vertices with same  colors in Figure \ref{fig:btsl2q3}.
+%  - distance between $[L]$ and $[gL]$ is always even.
+% The action is transitive on the set of 
+
+Apartments of this tree are the infinite geodesics on it (which is uncountably many), where each of them corresponds to a maximal split tori, i.e. a conjugation of the diagonal torus $\left[\begin{smallmatrix}
+    \bQ_3^\times & \\ & \bQ_3^\times
+\end{smallmatrix}\right]$.
+For example, one can think the apartment for the diagonal torus as a line containing all (equivalence classes of) the lattices of the form $L = \bZ_3 \left[\begin{smallmatrix} 1 \\ 0 \end{smallmatrix}\right] + \bZ_3 \left[\begin{smallmatrix} 0 \\ 1\end{smallmatrix}\right]$.
+The normalizer $N = N_G(T)$ of the diagonal torus acts on the line, where the action factors through the \emph{affine Weyl group} $\widetilde{W} \simeq N / T(\bZ_3) \simeq \bZ \rtimes (\bZ / 2)$, which is generated by reflections over affine hyperplanes.
+See Serre's book for more details \cite[Chapter II]{serre2002trees}.
+
+More generally, we define apartment of a pair $(G, T)$ where $T$ is a maximal torus of $G$ simply as $\mathscr{A} = \mathscr{A}(G, T) = E^\ast$, the Euclidean space containing the coroots.
+Each apartment depends on the choice of $T$, and we \emph{glue} all of them to get the building:
+\[
+    \scB(G) := (G \times \scA) / \sim,
+\]
+where the equivalence relation is given by $(g, x) \sim (h, y)$ iff $\exists n \in N$ such that $nx = y$ and $g^{-1}hn \in \mathrm{Stab}_{G}(x)$.
+Intuitively, we are considering all the possible reflections of $\scA$ by $\widetilde{W}$, and glue them together through the reflections.
+We have a natural metric induced from that of $E^\ast$, where proving the triangle inequality is nontrivial \cite{bruhat1972groupes}.
+
+% Abstract definition: glue bunch of Euclidean spaces (``flat'' spaces)
+
+% apartments = maximal flats
+
+% Acts transitively on geodesics (edges) and apartments, but not on vertices (transitively on vertices wity same \emph{types})
+
+% % split tori correspond to geodesics
+
+% maximal split tori $\leftrightarrow$ apartments by (tori) $\leftrightarrow$ (flat fixed by tori)
+
+% Any two points are contained in a maximal flat
+
+% \begin{definition}[Tits]
+% An (irreducible) \emph{Euclidean building} is a finite-dimensional simplicial complex $X$ with a metric, together with a collection $\mathscr{F}$ of subsets of $X$, satisfying the following axioms:
+% \begin{enumerate}
+%     \item Each $F \in \mathscr{F}$ is a Coxeter complex in some Euclidean space $\bR^d$. This means that the simplicial structure of $F$ is the tiling generated by the hyperplanes of a group generated by reflections.
+%     \item $\forall F_1, F_2 \in \mathscr{F}$, there is an isometry from $F_1$ onto $F_2$ that fixes $F_1 \cap F_2$ pointwise.
+%     \item Every codimension-one simplex is a face of at least three top-dimensional
+%     simplexes (i.e. ``thick'').
+%     \item $\forall x \ne y \in X, \exists! F \in \mathscr{F}$ such that $\{x, y\} \subset F$.
+% \end{enumerate}
+% \end{definition}
+
+% For each $x \in \scB(G)$, we associate a \emph{parahoric}\footnote{\textbf{para}bolic + Iwa\textbf{horic}, indeed.} subgroup (an affine analogue of parabolic subgroups) $G_{x}$ and its unipotent radical $G_{x}^+$ as
+% \begin{align}
+%     G_{x} &:= \langle T(\bZ_p), x_\alpha(p^{-\lfloor \alpha(x) \rfloor}) : \alpha \in \Phi \rangle \\
+%     G_{x}^+ &:= \langle T(1 + p\bZ_p), x_\alpha(p^{1 - \lceil \alpha(x) \rceil}) : \alpha \in \Phi \rangle
+% \end{align}
+
+There's more abstract way to define apartments and buildings, using affine spaces and polysimplicial complexes.
+Although we only focus on the Bruhat--Tits buildings coming from $p$-adic groups.
+
+% the theory of buildings have its own interest with several consequences.
+% Enlarged (non-reduced) buliding
+% \[
+%     \widetilde{\scB}(G) = \scB(G) \times (X_{\bullet}(G) \otimes_{\bZ} \bR)
+% \]
+Here's one nice application of the theory of buildings.
+
+\begin{theorem}[Cartan decomposition]
+Let $G = \SL_n(\bQ_p)$ and $K = \SL_n(\bZ_p)$ be a maximal compact group.
+Let $A \subset G$ be a maximal split torus (e.g. diagonals).
+Then $G = KAK$.
+\end{theorem}
+
+\begin{proof}
+(This proof is stolen from Morris' note \cite{morrisintroduction}.)
+Let $h \in G(\bQ_p)$.
+Let $\scA \subset \scB(G, \bQ_p)$ be an apartment corresponds to $A$ with base point $x \in \scA$.
+Then there exists an apartment $\scA'$ that contains both $x$ and $hx$.
+Also, transitivity of the action tells us that there exists $g \in G(\bQ_p)$ with $\scA = g\scA'$, which fixes the intersection $\scA \cap \scA'$, hence $x$.
+It means that $ghx \in \scA$, and $x$ \& $ghx$ have the same type, so there exists $a \in A$ such that $a(ghx) = x$.
+Hence $g$ and $agh$ both belongs to the stabilizer of $x$, which actually equals to $K$.
+Thus $h = g^{-1} \cdot a^{-1} \cdot (agh) \in KAK$.
+\end{proof}

@@ -1,0 +1,58 @@
+\section{Introduction}
+\label{sec:intro}
+
+One of the fundamental goal of the representation theory is to classify all the irreducible representations of a given group.
+In this seminar, \sout{we are} I am interested in the representations of $p$-adic groups, such as $\SL_{n}(\mathbb{Q}_{p})$ or $\Sp_{2n}(\bQ_p)$.
+As in the finite group case, usual way to construct representations is by (parabolic, compact, ...) induction.
+From this viewpoint, it is natural to ask what are the ``building blocks'' of irreducible representations that might exhaust all the irreducible representations by inducting them.
+The answer will be \emph{supercuspidal representations}.
+
+\begin{definition}
+An irreducible admissible representation $(\pi, V)$ of $G(F)$ is called \emph{supercuspidal} if every Jacquet module $V_N := V / \langle \pi(n) v - v: n \in N, v \in V\rangle$ for parabolic $P = MN \subset G$ is zero.
+Equivalently, their matix coefficients are compactly supported modulo the center.
+\end{definition}
+
+
+Supercuspidal representations are building blocks in the following sense:
+\begin{theorem}[Bernstein {\cite{bernstein1984centre}}]
+Let $(\pi, V)$ be an irreducible smooth representation of $G$.
+Then there exists a parabolic subgroup $P \subseteq G$ with Levi subgroup $M$ and a supercuspidal representation $(\sigma, W)$ of $M(F)$ such that $(\pi, V)$ is a subrepresentation of $(\Ind_{P(F)}^{G(F)} \sigma, \Ind_{P(F)}^{G(F)} W)$.
+\end{theorem}
+
+So, how can we construct supercuspidal representations?
+One way to do (at least, one way to construct \emph{a} representation in an interesting way) is to use induction from a compact subgroup.
+For example, consider the following diagram:
+
+\begin{center}
+\begin{tikzcd}
+    \GL_2(\bQ_p) & \\
+    \GL_2(\bZ_p) \arrow[u, hookrightarrow] \arrow[r, twoheadrightarrow] & \GL_2(\bF_p)
+\end{tikzcd}
+\end{center}
+Let's assume that representations of finite groups are ``easier'' to understand.\footnote{Maybe not... but at least for small $p$'s, you can compute them by hand. In general, you may need Deligne--Lusztig theory.}
+Once we have an irreducible representation $\rho$ of $\GL_2(\bF_p)$ (which is a finite group), we can pullback it to $\GL_2(\bZ_p)$ and then induce it to $\GL_2(\bQ_p)$.
+Then we may prey that the induced representation is irreducible, or even supercuspidal.
+This works sometimes - for example, if $\rho$ is a \emph{Weil representation} of $\GL_2(\bF_p)$, then the pullbacked \& induced representation is supercuspidal (you may find details in \cite[Chapter 4]{bump1998automorphic}).
+Howe \cite{howe1977tamely} give a construction of a lot of supercuspidal representations of $\GL_n(F)$, which turned out to be exhaustive by Moy \cite{moy1986local}.
+
+
+It is a folklore conjecture that all supercuspidal representations (of general reductive groups) arise via compact induction from a representation of a compact-mod-center open subgroup.
+Although we don't know how to prove the conjecture yet, most of the known constructions of the supercuspidal representations would be based on the idea.
+Hence it is important to know what compact-mod-center subgroups we need to consider and what representations of them we need to induce.
+The naive answer that we'll see is the following:
+
+\bigskip
+\begin{myquote}
+For each $G$, there exists a contractible complete metric space $\scB(G)$ called \emph{Bruhat--Tits building} where $G(\bQ_p)$ acts nicely. Each point $x \in \scB(G)$ gives a \emph{Moy--Prasad filtration} $\{G_{x, r}\}_{r \in \bR_{\ge 0}}$, compact open subgroups of the stabilizer subgroup $G_{x} \subset G$, whose quotients are Lie groups of finite type or abelian groups.
+Yu's construction produces a supercuspidal representation to \emph{Yu's datum}, which consists of (i) a finite filtration $G$, (ii) a vertex in $\scB(G)$, (iii) depth-zero cuspidal representation of the smallest subgroup in the filtration, and (iv) \emph{generic} characters of the filtration subgroups.
+\end{myquote}
+
+% \newpage
+
+% The following lemma tells you that irreducibility is enough to guarantee supercuspidality.
+
+% \begin{lemma}
+% \label{lem:cind}
+% Let $K$ be a compact-mod-center open subgroup of $G(F)$ and let $\rho$ be an irreducible representation of $K$.
+% If the compact induction $\cInd_K^{G(F)} \rho$ is irreducible, then is supercuspidal.
+% \end{lemma}
