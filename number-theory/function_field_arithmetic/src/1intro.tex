@@ -1,0 +1,33 @@
+\section{Introduction}
+\label{sec:intro}
+
+The goal of this note is to introduce the arithmetic of function fields, which is the analogue of number theory for polynomials.
+Especially, our main goal is to study various evidences of the following claim:
+
+\begin{myquote}
+A theorem for integers is true for polynomials (over finite fields), and often easier to prove.
+\end{myquote}
+For example, we will see a proof of Fermat's Last Theorem for polynomials, which only requires few pages to prove.
+
+Here's a dictionary between the integers and the polynomials over finite fields.
+\begin{table}[h]
+% \scriptsize
+    \begin{center}
+        \begin{tabular}{c|c}
+            \toprule
+            $\bZ$ & $\bF_p[T]$ \\
+            \midrule
+            prime & irreducible \\
+            $2 = |\bZ^\times|$ & $p - 1 = |\bF_p[T]^\times|$ \\
+            \bottomrule
+        \end{tabular}
+        \caption{Integers and Polynomials.}
+        \label{tab:dictionary}
+    \end{center}
+\end{table}
+
+\subsection*{Exercises}
+\begin{enumerate}
+    \item Prove that $\bZ$ is not a polynomial ring over a field. In other words, show that there is no field $k$ such that $\bZ \cong k[T]$ as rings.
+    \item Think about your favorite theorems in number theory, and try to find their polynomial analogues. Some of them may appear in this note, but some of them may not.
+\end{enumerate}
