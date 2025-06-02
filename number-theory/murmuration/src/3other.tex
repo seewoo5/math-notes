@@ -1,0 +1,160 @@
+\section{Other known cases}
+
+After the success of Zubrilina, a lot of people are interested in murmuration density for different objects in number theory.
+We list the known works here.
+
+\subsection{Flying Dirichlet characters}
+
+Lee, Oliver, and Pozdnyakov computed murmuration density for Dirichlet characters \cite{lee2025murmurations}\footnote{which can be thought as  automorphic forms on $\GL_1$ over $\bQ$.}.
+For complex characters, the corresponding murmuration densities are given by the following theorem.
+
+\begin{theorem}[{Lee--Oliver--Pozdnyakov \cite[Theorem 1.1]{lee2025murmurations}}]
+    Let $\cD_{+}(N)$ (resp. $\cD_{-}(N)$) denote the set of primitive even (resp. odd) Dirichlet characters modulo $N$.
+    For $x \in \bR_{> 0}$, let $\lceil x \rceil^{\frp}$ be the smallest prime $\ge x$.
+    For $c > 1$, $\delta > 0$, and $y > 0$, define
+    \begin{align*}
+        P_{\pm}(y, X, c) &:= \frac{\log X}{X} \sum_{\substack{N \in [X, cX] \\ N \text{ prime}}} \sum_{\chi \in \cD_{\pm}(N)} \frac{\chi(\lceil yX \rceil^{\frp})}{\tau(\chi)} \\
+        P_{\pm}(y, X, \delta) &:= \frac{\log X}{X^\delta} \sum_{\substack{N \in [X, X + X^\delta] \\ N \text{ prime}}} \sum_{\chi \in \cD_{\pm}(N)} \frac{\chi(\lceil yX \rceil^{\frp})}{\tau(\chi)}.
+    \end{align*}
+    Then
+    \begin{equation}
+        \label{eqn:lee_1}
+        \lim_{X \to \infty} P_{\pm} (y, X, c) = \begin{cases}
+            \int_{1}^{c} \cos\left(\frac{2 \pi y}{x}\right) \dd x & \text{if } + \\
+            -i \int_{1}^{c} \sin \left(\frac{2 \pi y}{x}\right) \dd x & \text{if } -
+        \end{cases}
+    \end{equation}
+    and assumming RH, if $\frac{1}{2} < \delta < 1$ we have
+    \begin{equation}
+        \label{eqn:lee_2}
+        \lim_{X \to \infty} P_{\pm} (y, X, \delta) = \begin{cases}
+            \cos (2 \pi y) & \text{if } + \\
+            -i \sin (2 \pi y) & \text{if } -
+        \end{cases}
+    \end{equation}
+\end{theorem}
+
+The proof is much simpler than the case of modular forms.
+The main ingredient of the proof is the following formulas \cite[Lemma 2.6]{lee2025murmurations}: for two distinct primes $p$ and $N$,
+\begin{align}
+    \sum_{\chi \in \cD_{+}(N)} \frac{\chi(p)}{\tau(\chi)} &= \left(\frac{N-1}{N}\right) \cos \left(\frac{2 \pi p}{N}\right) + \frac{1}{N} \\
+    \sum_{\chi \in \cD_{-}(N)} \frac{\chi(p)}{\tau(\chi)} &= -i\left(\frac{N-1}{N}\right) \sin \left(\frac{2 \pi p}{N}\right)
+\end{align}
+Combined with the prime number theorem (which gives equidistribution results of primes in $[X, cX]$ normalized by $X$), we get \eqref{eqn:lee_1}.
+For \eqref{eqn:lee_2}, we need to estimate the number of primes in the short interval $[X, X + X^\delta]$, which is the part that requires RH.
+
+They also proved similar results for real Dirichlet characters, but the proof is more complicated.
+Let $\scG$ be the set of odd square-free integers and let $\chi_{d} = \left(\frac{d}{\cdot}\right)$.
+For a compactly supported smooth function $\Phi \ge 0$ on $\bR$, define
+\begin{equation}
+    M_{\Phi}(y, X, \delta) = \frac{\log X}{X^{1 + \delta}} \sum_{\substack{p \in [yX, yX + X^\delta] \\ p \text{ prime}}} \sum_{d \in \scG} \Phi\left(\frac{d}{X}\right) \chi_{8d}(p) \sqrt{p}.
+\end{equation}
+
+\begin{theorem}[{Lee--Oliver--Pozdnyakov \cite[Theorem 1.2]{lee2025murmurations}}]
+    Fix $y > 0$ and assume $\frac{3}{4} < \delta < 1$.
+    Assumming GRH, we have
+    \begin{equation}
+        M_{\Phi} (y, \delta) := \lim_{X \to \infty} M_{\Phi}(y, X, \delta) = \frac{1}{2} \sum_{\substack{a \ge 1 \\ a \text{ odd}}} \frac{\mu(a)}{a^2} \sum_{m \ge 1} (-1)^{m} \widetilde{\Phi} \left(\frac{m^2}{2 a^2 y}\right),
+    \end{equation}
+    where
+    \begin{equation}
+        \widetilde{\Phi}(\xi) = \int_{-\infty}^{\infty} (\cos(2 \pi \xi x) + \sin(2 \pi \xi x)) \Phi(x) \dd x.
+    \end{equation}
+\end{theorem}
+The proof is more involved, which is based on the Polya--Vinogradov inequality 
+\[
+\left|\sum_{\substack{p \in [yX, yX + X^\delta] \\ p\text{ prime}}} \chi_d(p)\right| \ll (yX)^{\frac{1}{2} + \epsilon}
+\]
+(for non-principal $\chi_d$ with $\frac{1}{2} < \delta < 1$, which uses GRH \cite{granville2007large})
+and a summation formula
+\[
+\frac{1}{X} \sum_{\substack{d \in \bZ \\ d \text{ odd}}} \left(\sum_{\substack{a^2 | |d| \\ a \le A}} \mu(a)\right) \Phi\left(\frac{d}{X}\right) \left(\frac{d}{p}\right) \sqrt{p} = \frac{1}{2} \left(\frac{2}{p}\right) \sum_{\substack{0 < a \le A \\ (a, 2p) = 1}} \frac{\mu(a)}{a^2} \sum_{k \in \bZ} (-1)^k \left(\frac{k}{p}\right) \widetilde{\Phi} \left(\frac{k X}{2 a^2 p}\right)
+\]
+which can be proved by using Poisson summation formula.
+
+
+\subsection{Flying Hecke characters of imaginary quadratic fields}
+
+\cite{wang2025murmurations}
+
+\subsection{Flying modular forms (in weight direction)}
+
+Recall that Zubrilina computed murmuration density for a \emph{fixed weight $k$ and varying level $N$}.
+In \cite{bober2023murmurations}, Bober, Booker, Lee\footnote{Min Lee, not Kyu Hwan Lee}, and Lowry-Duda considered the opposite case, where they fix the level $N = 1$ and vary the weight $k$.
+In this case, the considered family of Hecke newforms whose \emph{analytic conductor}
+\[
+\cN(k) := \left(\frac{\exp \psi(k/2)}{2 \pi}\right)^2 \approx \left(\frac{k-1}{4 \pi}\right)^2 + O(1)
+\]
+are in certain range, where $\psi(x) = \Gamma'(x)/\Gamma(x)$ is the digamma function.
+
+\begin{theorem}[{Bober--Booker--Lee--Lowry-Duda \cite[Theorem 1.1]{bober2023murmurations}}]
+    Fix $\epsilon \in (0, \frac{1}{12})$, $\delta \in \{0, 1\}$, and a compact interval $E \subset \bR_{> 0}$ with $|E| > 0$.
+    Let $K, H > 0$ with $K^{\frac{5}{6} + \epsilon} < H < K^{1 - \epsilon}$, and let $N = \cN(K)$.
+    Then as $K \to \infty$, we have
+
+    \begin{equation}
+        \frac{
+            \sum_{\substack{p \text{ prime} \\ p / N \in E}}
+            \log p
+            \sum_{\substack{k \equiv 2 \delta \Mod{4} \\ |k - K| \le H}}
+            \sum_{f \in H_k(1)} \lambda_f(p)
+        }
+        {
+            \sum_{\substack{p \text{ prime} \\ p / N \in E}} 
+            \log p 
+            \sum_{\substack{k \equiv 2 \delta \Mod{4} \\ |k - K| \le H}} 
+            \sum_{f \in H_k(1)} 1
+        } = \frac{(-1)^\delta}{\sqrt{N}} \left(\frac{\nu(E)}{|E|} + o_{E, \epsilon}(1)\right)
+    \end{equation}
+    where
+    \begin{align}
+        \nu(E) &= \frac{1}{\zeta(2)} \sum_{\substack{a, q \in \bZ_{>0} \\ (a, q) = 1 \\ q^2 / a^2 \in E}} \frac{\mu(q)^2}{\varphi(q)^2 \sigma(q)} \left(\frac{a}{q}\right)^{-3} \\
+        &= \frac{1}{2} \sum_{t \in \bZ} \prod_{p \nmid t} \frac{p^2 - p - 1}{p^2 - p} \int_E \cos\left(\frac{2 \pi t}{\sqrt{y}}\right) \dd y
+    \end{align}
+    where the summation $\sum^{*}$ indicates that the terms occuring at the endpoints of $E$ are halved. 
+\end{theorem}
+
+The main tool for the proof is the (original) Eichler--Selberg trace formula that does not include Atkin--Lehner operators (e.g. \cite[Theorem 2.1]{child2022twist}).
+Then apply class number formula to replace class numbers with the special values of Dirichlet $L$-functions at $s = 1$, which can be estimated under GRH.
+
+\subsection{Flying Maass forms}
+
+Booker, Lee, Lowry-Duda, Seymour-Howell, and Zubrilina computed murmuration densities for weight 0 and level 1 Maass forms \cite{booker2024murmurations}.
+They considered a family of Maass forms where the spectral parameter ($R$ with $\lambda = \frac{1}{4} + R^2$) goes ot $\infty$, which is equivalent to the \emph{analytic conductor} $\cN(R)$ going to $\infty$.
+
+\begin{theorem}[{Booker--Lee--Lowry-Duda--Seymour-Howell--Zubrilina \cite[Theorem 1.1]{booker2024murmurations}}]
+    Let $E \subset \bR_{>0}$ be a fixed compact interval with $|E| > 0$.
+    Let $R, H > 0$ with $R^{\frac{5}{6} + \delta} < H < R^{1 - \delta}$ for some $\delta > 0$ and $N = \cN(R)$.
+    Assumming GRH for $L$-functions of Dirichlet characters and Maass forms, as $R \to \infty$ we have 
+    \begin{equation}
+        \frac{\sum_{\substack{p\text{ prime} \\ p / N \in E}} \log p \sum_{|r(f) - R| \le H} \epsilon(f) a_{f}(p)}{\sum_{\substack{p\text{ prime} \\ p / N \in E}} \log p \sum_{|r(f) - R| \le H} 1} \to \frac{1}{\sqrt{N}|E|}  \sideset{}{^{*}}\sum_{\frac{q^2}{a^2} \in E}  \frac{\mu(q)^2}{\varphi(q)^2 \sigma(q)} \left(\frac{a}{q}\right)^{-3}
+    \end{equation}
+    where the summation $\sum^{*}$ indicates that the terms occuring at the endpoints of $E$ are halved. 
+\end{theorem}
+
+Proof uses an explicit Selberg trace formula due to Str\"ombergsson in his unpublished work \cite{strombergsson}, which requires an analytic test function and cannot be compactly supported, where GRH is needed to control the cutoff error term.
+The remaining proof is similar to the weight aspect case of the modular forms \cite{bober2023murmurations}.
+
+\subsection{General formulation}
+
+In fact, all the above works fit into the general framework suggested by Sarnak, in his letter to Sutherland and Zubrilina \cite{sarnak}.
+
+\subsection{Elliptic curves?}
+
+There \emph{are} some works on murmuration density of elliptic curves.
+
+In the last slide of Sutherland's lecture \cite{sutherland} at Tate conference (\emph{The legacy of John Tate, and beyond} at Harvard university), he mentioned an unpublished work with Sawin on murmuration density of elliptic curves, proved by Voronoi summation formula.
+He considered it as \emph{a} murmuration theorem, and might not be \emph{the} murmuration theorem since the density formula is too complicated.
+
+\begin{theorem}[Sutherland--Sawin, unpublished]
+    Let $\scE(X) := \{y^2 = x^3 + ax + b: a, b \in \bZ, p^4 \mid a \Rightarrow p^6 \nmid b, \max\{4|a|^3, 27 b^2\} \le X\}$ be the set of naive isomorphism classes of elliptic curves over $\bQ$ ordered by height.
+    For any smooth function $W : \bR_{>0} \to \bR$ with compact support, the limit
+    \begin{equation}
+        \lim_{X \to \infty} \frac{1}{|\scE(X)|} \sum_{E \in \scE(X)} \frac{\varepsilon(E)}{N_E} \sum_{n \ge 1} W\left(\frac{n}{N_E}\right) a_n(E)
+    \end{equation}
+    exists and is equal to
+    \begin{equation}
+        \int_{0}^{\infty} 2 \pi W(u) \sum_{n \ge 1} \frac{\prod_{p | n} \ell_{p^{\nu_p(n)}}}{\sqrt{n}} \sqrt{u} J_1 (4 \pi \sqrt{un}) \dd u
+    \end{equation}
+    where $\ell_{p^\nu} = \frac{p^9 - p^8}{p^{10} - 1} \Tr(T_p | S_{\nu + 2}(1))$.
+\end{theorem}

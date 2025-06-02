@@ -1,0 +1,99 @@
+\section{Murmuration of modular forms}
+
+In this section, we sketch Zubrilina's computation of murmuration density for modular forms.
+
+\subsection{Statement}
+
+Before we state the result, we define some notations first.
+\begin{itemize}
+    \item For $n \in \bZ_{\ge 0}$, \emph{Chebyshev polynomial of the second kind} is defined as
+    \[
+        U_n(\cos \theta) = \frac{\sin((n+1) \theta)}{\sin\theta}. 
+    \]
+    \item For $r \in \bZ_{\ge 1}$, define
+    \[
+        \nu(r) := \prod_{p | r} \left(1 + \frac{p^2}{p^4 - 2p^2 - p + 1}\right)
+    \]
+    \item Define constants $\alpha, \beta, \gamma$ as
+    \begin{align*}
+        \alpha &:= 2\pi \prod_{p} \frac{p^4 - 2p^2 - p + 1}{p^4 - 2p^2 + p}, \\
+        \beta &:= 2\pi \prod_{p} \frac{p^3 + p^2 - 1}{p(p^2 + p - 1)}, \\
+        \gamma &:= 12 \prod_{p} \frac{p(p + 1)}{p^2 + p - 1}.
+    \end{align*}
+\end{itemize}
+\begin{theorem}[Zubrilina {\cite{zubrilina2023murmurations}}]
+    \label{thm:zubrilina_modform}
+    Let $X, Y, P$ be parameters going infinite with $X, Y > 0$ and $P$ prime; assume further that $Y = (1 + o(1))X^{1 - \delta_2}$ and $P \ll X^{1 + \delta_1}$ for some $\delta_1, \delta_2$ with $2\delta_1 < \delta_2 < 1$.
+    Let $y = P/X$. Then
+    \begin{equation}
+        \label{eqn:zubrilina_modform}
+        \frac{\sum_{N \in [X, X + Y]}^\square \sum_{f \in H^{\new}(N, k)} \sqrt{P} \lambda_f(P) \varepsilon(f)}{\sum_{N \in  [X, X + Y]}^\square \sum_{f \in H^{\new}(N, k)} 1} = \cM_k(y) + O_\varepsilon \left(X^{-\delta' + \varepsilon} + \frac{1}{P}\right)
+    \end{equation}
+    where
+    \begin{equation}
+        \cM_k(y) = \frac{\alpha(-1)^{k/2 - 1}}{k - 1} \sum_{1 \le r \le 2\sqrt{y}} \nu(r) \sqrt{4y - r^2} U_{k - 2} \left(\frac{r}{2\sqrt{y}}\right) + \frac{\beta}{k-1} \sqrt{y} - \gamma \delta_{k=2} y.
+    \end{equation}
+\end{theorem}
+
+\subsection{Eichler--Selberg trace formula}
+
+To prove Theorem \ref{thm:zubrilina_modform}, one need to understand how to estimate the numerator on the LHS.
+Recall that $a_f(P) = P^{(k-1)/2} \lambda_f(P)$ is the $P$-th Fourier coefficient of $f$, which is also the eigenvalue of the Hecke operator $T_P$ acting on $f$.
+Also, $(-1)^{k/2}\varepsilon(f)$ is equal to the eigenvalue of the Atkin--Lehner involution $W_N = T_N$ acting on $f$.
+Thus the sum appears in the numerator of LHS of \eqref{eqn:zubrilina_modform} can be interpreted as the trace of the operator $(-1)^{k/2} T_P \circ W_N$ acting on the space of cusp forms of weight $k$ and level $N$ (multiplied by $P^{1 - k/2}$).
+Eichler \cite{eichler1955class} studied such a sum of traces and proved that it can be expressed in terms of (Hurwitz) class numbers, which is generalized by Selberg \cite{selberg1956harmonic}.
+To account the root number $\varepsilon(f)$, i.e. eigenvalue of $W_N$, we used the following version of Eichler--Selberg trace formula by Skoruppa and Zagier \cite{skoruppa1987jacobi}.
+
+\begin{theorem}[Skoruppa--Zagier \cite{skoruppa1987jacobi}]
+    \label{thm:sz_tf}
+    For square-free $N$ and prime $P \nmid N$,
+    \begin{align*}
+        &\sum_{f \in H^\new(N, k)} \sqrt{P} \lambda_f(P) \varepsilon(f)\nonumber \\
+        &= \frac{H_1(-4PN)}{2} + (-1)^{k/2 - 1} U_{k - 2} \left(\frac{r\sqrt{N}}{2\sqrt{P}}\right) \sum_{0 < r \le 2\sqrt{P/N}} H_1(r^2 N^2 - 4PN) \\
+        &\quad - \delta_{k-2}(P+1)
+    \end{align*}
+    Here $H_1(-d)$ ($d > 0$) is the Hurwitz class number, the number of equivalence classes of positive definite binary quadratic forms of discriminant $-d$ weighted by the number of automorphisms, i.e. with forms correspond to $x^2 + y^2$ or $x^2 + xy + y^2$ counted with multiplicity $1/2$ and $1/3$ respectively.
+\end{theorem}
+
+Hurwitz class number can be expressed as a sum of usual class numbers as
+\[
+H_1(-d) = \sum_{f^2 | d} h(-d / f^2) + O(1)
+\]
+where the ``error term'' $O(1)$ disappears if $d \ne 3 \cdot \square$ or $4 \cdot \square$.
+Using this, we can rewrite the Skoruppa--Zagier trace formula as
+\begin{align*}
+    &\sum_{f \in H^\new(k, N)} \sqrt{P} \lambda_f(P) \varepsilon(f) \\
+    &= \frac{h(-4PN)}{2} + \frac{h(-PN)}{2} - \delta_{k=2} P + O(1) \\
+    &+ (-1)^{k/2 - 1} U_{k-2} \left(\frac{r\sqrt{N}}{2\sqrt{P}}\right) \sum_{1 \le r \le 2\sqrt{P/N}} \sum_{d^2 | r^2 N - 4P} h\left(\frac{N(r^2 N - 4P)}{d^2}\right)
+\end{align*}
+
+From this, our new goal is to estimage the average of class numbers over short intervals, i.e. when $N \in [X, X + Y]$ with $Y = o(X)$.
+The main idea is to use class number formula to write class numbers as special $L$-values at $s = 1$, e.g.
+\[
+h(-d) = \frac{\sqrt{d}}{\pi} L(1, \chi_d)
+\]
+when $d > 4$ and $-d \equiv 1 \Mod{4}$.
+Then the sum (average) of the corresponding $L$-values can be estimated via truncation and Polya--Vinogradov inequality.
+For example, we have an estimate
+\[
+L(1, \chi_d) = \sum_{n \ge 1} \frac{\chi_d(n)}{n} = \sum_{1 \le n \le T} \frac{\chi_d(n)}{n} + O\left(\frac{\sqrt{d} \log d}{T}\right).
+\]
+With some hard analysis, one get the following estimations.
+\begin{proposition}[Zubrilina {\cite[Proposition 3.1]{zubrilina2023murmurations}}]
+    Let $P$ be an odd prime and let $[X, X + Y]$ be an interval with $Y = o(X)$.
+    Then as $X \to \infty$,
+    \begin{align*}
+        &\frac{\zeta(2) \pi}{XY} \sideset{}{{}^\square}\sum_{\substack{N \in [X, X + Y] \\ P \nmid N}}  \left(\frac{h(-PN)}{2} + \frac{h(-4PN)}{2} \right) \\
+        &= A \sqrt{y} + O_{\varepsilon} \left(\frac{1}{P^{3/2}X^{1/2}} + \frac{P^{7/12}}{Y^{5/6} X^{5/12}} + \frac{YP^{1/2}}{X^{3/2}}\right) (XYP)^{\varepsilon}
+    \end{align*}
+\end{proposition}
+
+
+\begin{proposition}[Zubrilina {\cite[Proposition 3.2]{zubrilina2023murmurations}}]
+    Let $P$ be an odd prime, $r \in \bN$, and $X > Y > 0$ be such that $r^2(X + Y) < 4 P$ for each $r > 2 \sqrt{P/X}$. Let $y = P/X$. Then
+    \begin{align*}
+        &\frac{\zeta(2) \pi}{ XY} \sum_{r \le 2 \sqrt{P/X}} \,\,\,\, \sideset{}{{}^\square}\sum_{\substack{N \in [X, X + Y] \\ P \nmid N}}  H_1\left(r^2 N^2 - 4 PN\right) \\
+        &= \sum_{r \le 2 \sqrt{P/X}} \nu(r) \sqrt{4y - r^2} \\
+        &+ O\left(\frac{P^{11/10}}{Y^{2/5}X^{9/10}} + \frac{YP}{X^2} + \frac{PY^{1/2}}{X^{3/2}} + \frac{P}{X^{1/2} Y^{13/18}} + \frac{P}{XY^{1/9}}\right) (XYP)^\varepsilon
+    \end{align*}
+\end{proposition}
