@@ -17,18 +17,100 @@ The Fundamental Theorem of Arithmetic states that every integer greater than 1 c
 More fancier way to say this is that
 
 \begin{theorem}
+    \label{thm:fta}
     $\mathbb{Z}$ is a unique factorization domain (UFD).
 \end{theorem}
 The standard proof is based on the following implication:
 \begin{theorem}
-    If $R$ is a Euclidean domain (ED), then $R$ is a principal ideal domain (PID), and hence a unique factorization domain (UFD).
+    If $R$ is a Euclidean domain (ED), then $R$ is a principal ideal domain (PID), and hence a UFD.
 \end{theorem}
 Recall that $R$ is a Euclidean domain if there exists a function $f : R \backslash \{0\} \to \mathbb{Z}_{\geq 0}$ such that for any $a, b \in R$ with $b \neq 0$, there exist $q, r \in R$ such that $a = bq + r$ and either $r = 0$ or $f(r) < f(b)$.
-
+Intuitively, $R$ is a Euclidean domain if we can perform the division with remainder, and the function $f$ is a measure of the size of the elements in $R$.
+For any (not necessarily finite) field $k$, we can also divide a polynomial by another polynomial over $k$, where $\deg : R \backslash \{0\} \to \mathbb{Z}_{\geq 0}$ works as the function $f$.
+This shows that:
+\begin{theorem}
+    \label{thm:polynomial_fta}
+    The polynomial ring $k[T]$ is a ED, where $k$ is any field.
+    Hence it is a PID, and hence a UFD.
+\end{theorem}
 
 \subsection{Chinese Remainder Theorem}
 \label{subsec:basicnt_crt}
 
+The Chinese Remainder Theorem (CRT) states that if $n_1, n_2, \ldots, n_k$ are pairwise coprime integers, then the system of congruences
+\[
+    x \equiv a_1 \pmod{n_1}, \quad x \equiv a_2 \pmod{n_2}, \quad \ldots, \quad x \equiv a_k \pmod{n_k}
+\]
+has a unique solution modulo $N = n_1 n_2 \cdots n_k$.
+\begin{theorem}[Chinese Remainder Theorem]
+    \label{thm:crt}
+    Let $n_1, n_2, \ldots, n_k$ be pairwise coprime integers and $a_1, a_2, \ldots, a_k$ be integers.
+    Then the system of congruences
+    \[
+        x \equiv a_1 \pmod{n_1}, \quad x \equiv a_2 \pmod{n_2}, \quad \ldots, \quad x \equiv a_k \pmod{n_k}
+    \]
+    has a unique solution modulo $N = n_1 n_2 \cdots n_k$.
+    More precisely, the unique solution is given by
+    \[
+        x \equiv \sum_{i=1}^k a_i N_i y_i \pmod{N},
+    \]
+    where $N_i = N / n_i$ and $y_i$ is the multiplicative inverse of $N_i$ modulo $n_i$, i.e., $N_i y_i \equiv 1 \pmod{n_i}$.
+\end{theorem}
+
+\begin{proof}
+    The proof is essentially hidden in the following isomorphism:
+    \[
+        \bZ / N\bZ \cong \bZ / n_1\bZ \times \bZ / n_2\bZ \times \cdots \times \bZ / n_k\bZ.
+    \]
+    The natural map from the left hand side to the right hand side is given by reducing modulo $n_i$ for each $i$, and such a map is injective because $n_1, n_2, \ldots, n_k$ are pairwise coprime.
+    Since the size of the both sides are equal, the map is also surjective, hence an isomorphism.
+    Finding the solution to the system of congruences is equivalent to finding an element in $\bZ / N\bZ$ that maps to $(a_1, a_2, \ldots, a_k)$ under the isomorphism.
+    It is enough to find solution for the equations
+    \[
+        x_i \equiv 0 \pmod{n_1}, \quad x_i \equiv 0 \pmod{n_2}, \quad \cdots \quad x_i \equiv 1 \pmod{n_i}, \quad \cdots, \quad x_i \equiv 0 \pmod{n_k}
+    \]
+    for each $i$, then the solution to the original system of congruences is given by the linear combination of the solutions to these equations.
+    Such $x_i$ has to be a multiple of $N_i$, and if we write $x_i = N_i y_i$, then we have $N_i y_i \equiv 1 \pmod{n_i}$, which means $y_i$ is the multiplicative inverse of $N_i$ modulo $n_i$.
+    Such $y_i$ exists and can be found by the Euclidean Algorithm, since $N_i$ and $n_i$ are coprime.
+\end{proof}
+
+For example, consider a system of congruences
+\[
+\begin{cases}
+    x \equiv 2 \pmod{3} \\
+    x \equiv 3 \pmod{5}
+\end{cases}
+\]
+From Euclidean Algorithm, we can write $1 = 2 \cdot 3 - 1 \cdot 5$, which means $5^{-1} \equiv (-1) \pmod{3}$ and $3^{-1} \equiv 2 \pmod{5}$.
+Then the formula in Theorem \ref{thm:crt} gives us $x \equiv 2 \cdot 5 \cdot (-1) + 3 \cdot 3 \cdot 2 \pmod{15}$, which simplifies to $x \equiv -10 + 18 \equiv 8 \pmod{15}$.
+
+What is a polynomial analogue of the Chinese Remainder Theorem?
+We simply replace integers with polynomials over a finite field, and we get the following theorem.
+\begin{theorem}[Chinese Remainder Theorem for Polynomials]
+    \label{thm:polynomial_crt}
+    Let $g_1(T), g_2(T), \ldots, g_k(T) \in \bF_p[T]$ be pairwise coprime polynomials and $a_1(T), a_2(T), \ldots, a_k(T) \in \bF_p[T]$ be polynomials.
+    Then the system of congruences
+    \[
+        f \equiv a_1 \pmod{g_1}, \quad f \equiv a_2 \pmod{g_2}, \quad \ldots, \quad f \equiv a_k \pmod{g_k}
+    \]
+    has a unique solution modulo $G = g_1 g_2 \cdots g_k$.
+    More precisely, the unique solution is given by
+    \[
+        f \equiv \sum_{i=1}^k a_i G_i b_i \pmod{G},
+    \]
+    where $G_i = G / g_i$ and $b_i$ is the multiplicative inverse of $G_i$ modulo $g_i$, i.e., $G_i b_i \equiv 1 \pmod{g_i}$.
+\end{theorem}
+
+Using the exact same method, we can solve a system of congruences.
+For example, consider
+\[
+\begin{cases}
+    f \equiv 1 \pmod{T} \\
+    f \equiv T \pmod{T^2 + 1}
+\end{cases}
+\]
+We can write $1 = (-T) \cdot T + 1 \cdot (T^2 + 1)$ (hence $T$ and $T^2 + 1$ are coprime), which means $(T^2 + 1)^{-1} \equiv 1 \pmod{T}$ and $T^{-1} \equiv -T \pmod{T^2 + 1}$.
+Then the formula in Theorem \ref{thm:polynomial_crt} gives us $f \equiv 1 \cdot (T^2 + 1) \cdot 1 + T \cdot T \cdot (-T) \pmod{(T^2 + 1)T}$, which simplifies to $f \equiv T^2 + 1 - T^3 \equiv T^2 + T + 1 \pmod{(T^2 + 1)T}$.
 
 \subsection{Fermat's Little Theorem and Euler's Theorem}
 \label{subsec:basicnt_flittlet}
@@ -66,9 +148,34 @@ To state Euler's theorem, we need to define the \emph{Euler's totient function} 
     Proof is similar to the proof of Theorem \ref{thm:fermat_little}, where we consider the group $G = (\bZ / n\bZ)^\times$ which has order $\varphi(n)$.
 \end{proof}
 
+One may ask how to compute $\varphi(n)$.
+By CRT again (but for unit groups), we have an isomorphism
+\[
+    (\bZ / n\bZ)^\times \cong (\bZ / p_1^{k_1}\bZ)^\times \times (\bZ / p_2^{k_2}\bZ)^\times \times \cdots \times (\bZ / p_m^{k_m}\bZ)^\times,
+\]
+where $n = p_1^{k_1} p_2^{k_2} \cdots p_m^{k_m}$ is the prime factorization of $n$.
+Thus, we can compute $\varphi(n)$ as
+\[
+    \varphi(n) = \varphi(p_1^{k_1}) \varphi(p_2^{k_2}) \cdots \varphi(p_m^{k_m}),
+\]
+hence we only need to compute $\varphi(p^k)$ for a prime $p$ and a positive integer $k$.
+This counts the number of integers from $1$ to $p^k$ that are coprime to $p^k$, or equivalently multiples of $p$, which is $p^k - p^{k - 1} = p^{k - 1}(p - 1)$.
+This gives us the formula
+\begin{theorem}
+    \label{thm:phi_prime_power}
+    For an integer $n = p_1^{k_1} p_2^{k_2} \cdots p_m^{k_m}$, we have
+    \begin{equation}
+    \label{eqn:phi_formula}
+    \varphi(n) = n \prod_{i=1}^m \left(1 - \frac{1}{p_i}\right).
+    \end{equation}
+\end{theorem}
+
 What is a polynomial analogue of Fermat's Little Theorem and Euler's Theorem?
 Based on Table \ref{tab:dictionary}, prime will be replaced by irreducible polynomial.
-Unfortunately, it does not make sense to take exponentiation of a polynomial.
+Unfortunately, it does not make sense to take exponentiation of a polynomial by another polynomial.
+However, since $\varphi(n)$ was defined as a size of the group $(\bZ / n\bZ)^\times$, we can define a polynomial analogue of $\varphi(g)$ as the size of the group $(A / gA)^\times$.
+Especially, if $g$ is irreducible, then $(A / gA)^\times = (A / gA) \backslash \{0\}$, which has size $|g| - 1$.
+The exact same argument as the proof of Theorem \ref{thm:fermat_little} and Theorem \ref{thm:euler} works for polynomials, and we get the following theorems.
 
 
 \begin{theorem}[Fermat's Little Theorem for Polynomials]
@@ -90,6 +197,16 @@ Unfortunately, it does not make sense to take exponentiation of a polynomial.
     \]
 \end{theorem}
 
+The formula \eqref{eqn:phi_formula} also generalizes to polynomials.
+\begin{theorem}
+    \label{thm:polynomial_phi_prime_power}
+    Let $g(T) = p_1^{k_1} p_2^{k_2} \cdots p_m^{k_m}$ be a polynomial in $A$, where $p_1, p_2, \ldots, p_m$ are distinct irreducible polynomials in $A$.
+    Then
+    \[
+        \varphi(g) = |g| \prod_{i=1}^m \left(1 - \frac{1}{|p_i|}\right).
+    \]
+\end{theorem}
+
 \subsection{Wilson's Theorem}
 \label{subsec:basicnt_wilson}
 
@@ -108,10 +225,10 @@ Another interesting theorem on prime numbers is Wilson's theorem:
 \end{proof}
 
 What is a polynomial analogue of Wilson's theorem?
-Note that the left hand side of Wilson's theorem is the product of all nonzero elements in $\bF_p$, so it might be reasonable to define ``factorial'' $(g - 1)!$ of an irreducible polynomial $g(T) \in \bF_p[T]$ as the product of all nonzero elements in $A / gA$.
+Note that the left hand side of Wilson's theorem is the product of all nonzero elements in $\bF_p$, so it might be reasonable to define ``factorial'' $(g - 1)!$ of an irreducible polynomial $g(T) \in \bF_p[T]$ as the product of all elements in $(A / gA)^\times$.
 
 \begin{theorem}[Wilson's Theorem for Polynomials]
-    \label{thm:polynomial_wilson}1
+    \label{thm:polynomial_wilson}
     Let $p$ be a prime number and $A = \bF_p[T]$ the polynomial ring over the finite field $\bF_p$.
     Let $g(T) \in A$ be an irreducible polynomial of degree $d$.
     Then
@@ -126,21 +243,37 @@ Especially, (LHS) + $1$ is divisible by any irreducible polynomial $g(T)$ of deg
 \subsection*{Exercises}
 
 \begin{enumerate}
-    \item Let $p = 3$ and $f(T) = T^2 + 1$, $g(T) = T^3 - T + 1$.
+    \item
     \begin{enumerate}
-        \item Prove that $f(T)$ and $g(T)$ are irreducible in $\bF_3[T]$.
-        \item Prove that $f(T)$ and $g(T)$ are coprime in $\bF_3[T]$, by finding polynomials $a(T)$ and $b(T)$ in $\bF_3[T]$ such that $1 = a(T)f(T) + b(T)g(T)$.
-        \item Find all polynomials $h(T)$ in $\bF_3[T]$ such that 
+        \item Find a polynomial $f \in \bF_3[T]$ such that\footnote{Answer: $f = T^4 + T^2 + T + 2$}
         \[
         \begin{cases}
-            h(T) \equiv 1 \pmod{f(T)} \\
-            h(T) \equiv T \pmod{g(T)}
+            h \equiv T + 2 \pmod{T^2 + 1} \\
+            h \equiv T^2 + T \pmod{T^3 - T^2 +  T + 2}
         \end{cases} 
         \]
+        \item Find a polynomial $f \in \bF_{7}[T]$ such that\footnote{Answer: $f = T^5 + 3T^2 + 2T + 1$}
+        \[
+        \begin{cases}
+            f \equiv 5T^2 + 3T + 6 \pmod{T^3 + 2T^2 + 3T + 2} \\
+            f \equiv T^3 + 1 \pmod{T^4 + 3T^3 + 2T^2 + 1} \\
+            f \equiv T^4 - T + 2 \pmod{T^2 + 3T + 1}
+        \end{cases} 
+        \]
+        You can try to write a code to find such a polynomial.
     \end{enumerate}
+    \item For each prime $p \le 20$, determine if the polynomial $T^2 + 1$ is irreducible over $\bF_p$ or not. Can you find a pattern?\footnote{Answer will be given later.}
     \item There are several different proofs of Theorem \ref{thm:fermat_little}, e.g. see \href{https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_little_theorem}{wikipedia page}.
-    Choose your favorite argument and try to generalize it to prove \ref{thm:polynomial_fermat_little}.\footnote{For example, there's a proof using induction on $a$. Can you generalize it to polynomials?}
+    Choose your favorite argument (other than the one used in Theorem \ref{thm:fermat_little}) and try to generalize it to prove \ref{thm:polynomial_fermat_little}.\footnote{For example, there's a proof using induction on $a$. Can you generalize it to polynomials?}
     \item Prove Theorem \ref{thm:polynomial_wilson}.
     \item Prove the original version of Fermat's little theorem from the polynomial version.\footnote{Hint: for a prime $p$ and an integer $a$ not divisible by $p$, consider $f(T) = T + a$ and $g(T) = T$.}
     \item Prove the original version of Wilson's theorem from the polynomial version.\footnote{Hint: consider $g(T) = T$.} 
+    \item It is known that the following converse of Wilson's theorem holds: if a natural number $n$ satisfies $(n - 1)! \equiv -1 \pmod{n}$, then $n$ is a prime number.
+    We can consider a polynomial analogue of this converse: if a polynomial $g(T) \in \bF_p[T]$ of degree $d$ satisfies
+    \[
+        \prod_{\substack{0 \le \deg(f) \le d \\ \gcd(f, g) = 1}} f \equiv -1 \pmod{g},
+    \]
+    then $g(T)$ is irreducible over $\bF_p$.
+    Here the left hand side is the product of all elements in $(A / gA)^\times$.
+    Prove or disprove this claim.
 \end{enumerate}
