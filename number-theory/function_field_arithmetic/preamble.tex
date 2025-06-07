@@ -6,18 +6,15 @@
 
 \usepackage{
   amsmath, amsthm, amssymb, mathtools, dsfont, units,          % Math typesetting
-  graphicx, wrapfig, subcaption, float,                            % Figures and graphics formatting
+  graphicx, wrapfig, subfig, float,                            % Figures and graphics formatting
   listings, color, inconsolata, pythonhighlight,               % Code formatting
   fancyhdr, sectsty, hyperref, enumerate, enumitem, framed }   % Headers/footers, section fonts, links, lists
 
 % lipsum is just for generating placeholder text and can be removed
 \usepackage{hyperref, lipsum} 
+% \usepackage{bm}
+% \usepackage{subfig}
 
-\usepackage{cleveref}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage{makecell}
-% \usepackage{subcaption}
 % --- Fonts ---
 
 \usepackage{newpxtext, newpxmath, inconsolata}
@@ -25,39 +22,41 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.12}
 \usepackage{tkz-fct}
-
-\usepackage{tikz,forest}
-\usetikzlibrary{arrows.meta}
-\useforestlibrary{edges}
-
-\tikzset{
-% decision/.style={diamond, minimum height=5pt, minimum width=10pt, inner sep=1pt},
-decision/.style={diamond, inner sep=1pt},
-chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner sep=0pt},
-}
-
+\usepackage{svg}
+\usepackage{tikz}
 \usepackage{tikz-cd}
+\usepackage{lipsum}
 \usepackage{enumitem}
 \usepackage[title]{appendix}
+% \usepackage[toc,page]{appxendix}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{multirow}
 \usepackage{booktabs}
-\usepackage{dynkin-diagrams}
+
+\usepackage{minted}  % code highlighting
+% \usepackage[finalizecache,cachedir=.]{minted}
+% \usepackage[frozencache,cachedir=.]{minted}
+
+\DeclareUnicodeCharacter{3BC}{$\pi$}
+\DeclareUnicodeCharacter{3C0}{$\pi$}
 
 \usepackage[most]{tcolorbox}
 \newtcolorbox{myquote}[1][]{%
-    colback=black!5,
-    colframe=black!5,
-    notitle,
-    sharp corners,
-    % borderline west={2pt}{0pt}{red!80!black},
-    enhanced,
-    breakable,
-  }
+  colback=black!5,
+  colframe=black!5,
+  notitle,
+  sharp corners,
+  % borderline west={2pt}{0pt}{red!80!black},
+  enhanced,
+  breakable,
+}
+
 
 % --- Page layout settings ---
 
 % Set page margins
-% \usepackage[left=1.35in, right=1.35in, top=1.0in, bottom=.9in, headsep=.2in, footskip=0.35in]{geometry}
-\usepackage{geometry}
+\usepackage[left=1.35in, right=1.35in, top=1.0in, bottom=.9in, headsep=.2in, footskip=0.35in]{geometry}
 
 % Anchor footnotes to the bottom of the page
 \usepackage[bottom]{footmisc}
@@ -175,11 +174,6 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newcommand{\PGSp}{\mathrm{PGSp}}
 \newcommand{\Spin}{\mathrm{Spin}}
 \newcommand{\gl}{\mathfrak{gl}}
-\newcommand{\rH}{\mathrm{H}}
-\newcommand{\rM}{\mathrm{M}}
-\newcommand{\rN}{\mathrm{N}}
-\newcommand{\rO}{\mathrm{O}}
-\newcommand{\rP}{\mathrm{P}}
 \newcommand{\JL}{\mathrm{JL}}
 \newcommand{\stab}{\mathrm{Stab}}
 % \newcommand{\ab}{\mathrm{ab}}
@@ -189,6 +183,7 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newcommand{\Li}{\mathrm{Li}}
 \newcommand{\trdeg}{\mathrm{trdeg}}
 \newcommand{\rank}{\mathrm{rank}}
+\newcommand{\rad}{\mathrm{rad}}
 \newcommand{\Res}{\mathrm{Res}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Spec}{\mathrm{Spec}\,}
@@ -197,8 +192,7 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newcommand{\disc}{\mathrm{disc}}
 \newcommand{\Aut}{\mathrm{Aut}}
 \newcommand{\Span}{\mathrm{Span}}
-\newcommand{\Frob}{\mathrm{Frob}}
-\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\supp}{\mathrm{supp}}
 \newcommand{\sgn}{\mathrm{sgn}}
 \newcommand{\Lie}{\mathrm{Lie}}
 \newcommand{\Ind}{\mathrm{Ind}}
@@ -211,20 +205,42 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newcommand{\potimes}{\sideset{}{'}\otimes}
 \newcommand{\pbigotimes}{\sideset{}{'}\bigotimes}
 % \sideset{}{'}\prod
+\newcommand{\RQM}{\mathcal{RQM}}
 
-\newcommand{\real}{\mathsf{real}}
-\newcommand{\imag}{\mathsf{imag}}
-\newcommand{\sqf}{\mathsf{sqf}}
-\newcommand{\fund}{\mathsf{fd}}
-\newcommand{\prim}{\mathsf{prim}}
-
-\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\QM}{\mathcal{QM}}
 
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\dso}{\mathds{1}}
 
 \newcommand{\llb}{\llbracket}
 \newcommand{\rrb}{\rrbracket}
+
+\newcommand{\rA}{\mathrm{A}}
+\newcommand{\rB}{\mathrm{B}}
+\newcommand{\rC}{\mathrm{C}}
+\newcommand{\rD}{\mathrm{D}}
+\newcommand{\rE}{\mathrm{E}}
+\newcommand{\rF}{\mathrm{F}}
+\newcommand{\rG}{\mathrm{G}}
+\newcommand{\rH}{\mathrm{H}}
+\newcommand{\rI}{\mathrm{I}}
+\newcommand{\rJ}{\mathrm{J}}
+\newcommand{\rK}{\mathrm{K}}
+\newcommand{\rL}{\mathrm{L}}
+\newcommand{\rM}{\mathrm{M}}
+\newcommand{\rN}{\mathrm{N}}
+\newcommand{\rO}{\mathrm{O}}
+\newcommand{\rP}{\mathrm{P}}
+\newcommand{\rQ}{\mathrm{Q}}
+\newcommand{\rR}{\mathrm{R}}
+\newcommand{\rS}{\mathrm{S}}
+\newcommand{\rT}{\mathrm{T}}
+\newcommand{\rU}{\mathrm{U}}
+\newcommand{\rV}{\mathrm{V}}
+\newcommand{\rW}{\mathrm{W}}
+\newcommand{\rX}{\mathrm{X}}
+\newcommand{\rY}{\mathrm{Y}}
+\newcommand{\rZ}{\mathrm{Z}}
 
 \newcommand{\bA}{\mathbb{A}}
 \newcommand{\bB}{\mathbb{B}}
@@ -252,6 +268,9 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newcommand{\bX}{\mathbb{X}}
 \newcommand{\bY}{\mathbb{Y}}
 \newcommand{\bZ}{\mathbb{Z}}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
 
 \newcommand{\cA}{\mathcal{A}}
 \newcommand{\cB}{\mathcal{B}}
@@ -307,14 +326,59 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newcommand{\scY}{\mathscr{Y}}
 \newcommand{\scZ}{\mathscr{Z}}
 
+\newcommand{\frA}{\mathfrak{A}}
+\newcommand{\frB}{\mathfrak{B}}
+\newcommand{\frC}{\mathfrak{C}}
+\newcommand{\frD}{\mathfrak{D}}
+\newcommand{\frE}{\mathfrak{E}}
+\newcommand{\frF}{\mathfrak{F}}
+\newcommand{\frG}{\mathfrak{G}}
+\newcommand{\frH}{\mathfrak{H}}
+\newcommand{\frI}{\mathfrak{I}}
+\newcommand{\frJ}{\mathfrak{J}}
+\newcommand{\frK}{\mathfrak{K}}
+\newcommand{\frL}{\mathfrak{L}}
+\newcommand{\frM}{\mathfrak{M}}
+\newcommand{\frN}{\mathfrak{N}}
+\newcommand{\frO}{\mathfrak{O}}
+\newcommand{\frP}{\mathfrak{P}}
+\newcommand{\frQ}{\mathfrak{Q}}
+\newcommand{\frR}{\mathfrak{R}}
+\newcommand{\frS}{\mathfrak{S}}
+\newcommand{\frT}{\mathfrak{T}}
+\newcommand{\frU}{\mathfrak{U}}
+\newcommand{\frV}{\mathfrak{V}}
+\newcommand{\frW}{\mathfrak{W}}
+\newcommand{\frX}{\mathfrak{X}}
+\newcommand{\frY}{\mathfrak{Y}}
+\newcommand{\frZ}{\mathfrak{Z}}
+
 \newcommand{\fra}{\mathfrak{a}}
+\newcommand{\frb}{\mathfrak{b}}
 \newcommand{\frc}{\mathfrak{c}}
-\newcommand{\frp}{\mathfrak{p}}
-\newcommand{\frm}{\mathfrak{m}}
-\newcommand{\frr}{\mathfrak{r}}
+\newcommand{\frd}{\mathfrak{d}}
+\newcommand{\fre}{\mathfrak{e}}
+\newcommand{\frf}{\mathfrak{f}}
 \newcommand{\frg}{\mathfrak{g}}
-
-
+\newcommand{\frh}{\mathfrak{h}}
+\newcommand{\fri}{\mathfrak{i}}
+\newcommand{\frj}{\mathfrak{j}}
+\newcommand{\frk}{\mathfrak{k}}
+\newcommand{\frl}{\mathfrak{l}}
+\newcommand{\frm}{\mathfrak{m}}
+\newcommand{\frn}{\mathfrak{n}}
+\newcommand{\fro}{\mathfrak{o}}
+\newcommand{\frp}{\mathfrak{p}}
+\newcommand{\frq}{\mathfrak{q}}
+\newcommand{\frr}{\mathfrak{r}}
+\newcommand{\frs}{\mathfrak{s}}
+\newcommand{\frt}{\mathfrak{t}}
+\newcommand{\fru}{\mathfrak{u}}
+\newcommand{\frv}{\mathfrak{v}}
+\newcommand{\frw}{\mathfrak{w}}
+\newcommand{\frx}{\mathfrak{x}}
+\newcommand{\fry}{\mathfrak{y}}
+\newcommand{\frz}{\mathfrak{z}}
 
 % Math mode symbols for common sets and spaces. Example usage: $\R$
 \newcommand{\R}{\mathbb{R}}	% Real numbers
@@ -350,7 +414,7 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newcommand*{\dv}{d\!}			% Non-italicized 'with respect to', e.g. $\int f(x) \dv x$
 \newcommand*{\diag}{diag}		% Diagonal of a matrix, e.g. $\diag(M)$
 \newcommand*{\trace}{Tr}		% Trace of a matrix, e.g. $\trace(M)$
-\newcommand*{\supp}{supp}		% Support of a function, e.g., $\supp(f)$
+% \newcommand*{\supp}{supp}		% Support of a function, e.g., $\supp(f)$
 
 % Numbered theorem, lemma, etc. settings - e.g., a definition, lemma, and theorem appearing in that 
 % order in Lecture 2 will be numbered Definition 2.1, Lemma 2.2, Theorem 2.3. 
@@ -364,6 +428,7 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}[theorem]{Question}
 \newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{exercise}[subsubsection]{Exercise}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
@@ -378,6 +443,7 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 \newtheorem*{example*}{Example}
 \newtheorem*{remark*}{Remark}
 \newtheorem*{claim}{Claim}
+\newtheorem*{conjecture*}{Conjecture}
 
 % --- Left/right header text (to appear on every page) ---
 
@@ -393,16 +459,16 @@ chance/.style={circle, minimum width=10pt, draw=blue, fill=none, thick, inner se
 % Left header text: Short course title, hyperlinked to table of contents
 % \fancyhead[L]{\hyperref[sec:contents]{\small Matrix multplication}}
 
-\pgfkeys{/Dynkin diagram,
-edge length=1.5cm,
-fold radius=1cm,
-indefinite edge/.style={
-draw=black,
-fill=white,
-thin,
-densely dashed}}
+% \pgfkeys{/Dynkin diagram,
+% edge length=1.5cm,
+% fold radius=1cm,
+% indefinite edge/.style={
+% draw=black,
+% fill=white,
+% thin,
+% densely dashed}}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead[RO]{}
-\fancyhead[LO]{}
+\fancyhead[R]{}
+\fancyhead[L]{}

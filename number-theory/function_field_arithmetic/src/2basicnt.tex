@@ -34,6 +34,10 @@ This shows that:
     Hence it is a PID, and hence a UFD.
 \end{theorem}
 
+\begin{exercise}
+    For each prime $p \le 20$, determine if the polynomial $T^2 + 1$ is irreducible over $\bF_p$ or not. Can you find a pattern?\footnote{Answer will be given in the next section.}
+\end{exercise}
+
 \subsection{Chinese Remainder Theorem}
 \label{subsec:basicnt_crt}
 
@@ -111,6 +115,27 @@ For example, consider
 \]
 We can write $1 = (-T) \cdot T + 1 \cdot (T^2 + 1)$ (hence $T$ and $T^2 + 1$ are coprime), which means $(T^2 + 1)^{-1} \equiv 1 \pmod{T}$ and $T^{-1} \equiv -T \pmod{T^2 + 1}$.
 Then the formula in Theorem \ref{thm:polynomial_crt} gives us $f \equiv 1 \cdot (T^2 + 1) \cdot 1 + T \cdot T \cdot (-T) \pmod{(T^2 + 1)T}$, which simplifies to $f \equiv T^2 + 1 - T^3 \equiv T^2 + T + 1 \pmod{(T^2 + 1)T}$.
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Find a polynomial $f \in \bF_3[T]$ such that\footnote{Answer: $f = T^4 + T^2 + T + 2$}
+        \[
+        \begin{cases}
+            h \equiv T + 2 \pmod{T^2 + 1} \\
+            h \equiv T^2 + T \pmod{T^3 - T^2 +  T + 2}
+        \end{cases} 
+        \]
+        \item Find a polynomial $f \in \bF_{7}[T]$ such that\footnote{Answer: $f = T^5 + 3T^2 + 2T + 1$}
+        \[
+        \begin{cases}
+            f \equiv 5T^2 + 3T + 6 \pmod{T^3 + 2T^2 + 3T + 2} \\
+            f \equiv T^3 + 1 \pmod{T^4 + 3T^3 + 2T^2 + 1} \\
+            f \equiv T^4 - T + 2 \pmod{T^2 + 3T + 1}
+        \end{cases} 
+        \]
+        You can try to write a code to find such a polynomial.
+    \end{enumerate}
+\end{exercise}
 
 \subsection{Fermat's Little Theorem and Euler's Theorem}
 \label{subsec:basicnt_flittlet}
@@ -207,6 +232,17 @@ The formula \eqref{eqn:phi_formula} also generalizes to polynomials.
     \]
 \end{theorem}
 
+\begin{exercise}
+    There are several different proofs of Theorem \ref{thm:fermat_little}, e.g. see \href{https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_little_theorem}{wikipedia page}.
+    Choose your favorite argument (other than the one used in Theorem \ref{thm:fermat_little}) and try to generalize it to prove \ref{thm:polynomial_fermat_little}.\footnote{For example, there's a proof using induction on $a$. Can you generalize it to polynomials?}
+\end{exercise}
+
+\begin{exercise}
+    Prove the original version of Fermat's little theorem from the polynomial version.\footnote{Hint: for a prime $p$ and an integer $a$ not divisible by $p$, consider $f(T) = T + a$ and $g(T) = T$.}
+\end{exercise}
+
+
+
 \subsection{Wilson's Theorem}
 \label{subsec:basicnt_wilson}
 
@@ -240,35 +276,16 @@ Note that the left hand side of Wilson's theorem is the product of all nonzero e
 Note that the left hand side only depends on the degree of $g(T)$.
 Especially, (LHS) + $1$ is divisible by any irreducible polynomial $g(T)$ of degree $d$.
 
-\subsection*{Exercises}
+\begin{exercise}
+    Prove Theorem \ref{thm:polynomial_wilson}.
+\end{exercise}
 
-\begin{enumerate}
-    \item
-    \begin{enumerate}
-        \item Find a polynomial $f \in \bF_3[T]$ such that\footnote{Answer: $f = T^4 + T^2 + T + 2$}
-        \[
-        \begin{cases}
-            h \equiv T + 2 \pmod{T^2 + 1} \\
-            h \equiv T^2 + T \pmod{T^3 - T^2 +  T + 2}
-        \end{cases} 
-        \]
-        \item Find a polynomial $f \in \bF_{7}[T]$ such that\footnote{Answer: $f = T^5 + 3T^2 + 2T + 1$}
-        \[
-        \begin{cases}
-            f \equiv 5T^2 + 3T + 6 \pmod{T^3 + 2T^2 + 3T + 2} \\
-            f \equiv T^3 + 1 \pmod{T^4 + 3T^3 + 2T^2 + 1} \\
-            f \equiv T^4 - T + 2 \pmod{T^2 + 3T + 1}
-        \end{cases} 
-        \]
-        You can try to write a code to find such a polynomial.
-    \end{enumerate}
-    \item For each prime $p \le 20$, determine if the polynomial $T^2 + 1$ is irreducible over $\bF_p$ or not. Can you find a pattern?\footnote{Answer will be given later.}
-    \item There are several different proofs of Theorem \ref{thm:fermat_little}, e.g. see \href{https://en.wikipedia.org/wiki/Proofs_of_Fermat%27s_little_theorem}{wikipedia page}.
-    Choose your favorite argument (other than the one used in Theorem \ref{thm:fermat_little}) and try to generalize it to prove \ref{thm:polynomial_fermat_little}.\footnote{For example, there's a proof using induction on $a$. Can you generalize it to polynomials?}
-    \item Prove Theorem \ref{thm:polynomial_wilson}.
-    \item Prove the original version of Fermat's little theorem from the polynomial version.\footnote{Hint: for a prime $p$ and an integer $a$ not divisible by $p$, consider $f(T) = T + a$ and $g(T) = T$.}
-    \item Prove the original version of Wilson's theorem from the polynomial version.\footnote{Hint: consider $g(T) = T$.} 
-    \item It is known that the following converse of Wilson's theorem holds: if a natural number $n$ satisfies $(n - 1)! \equiv -1 \pmod{n}$, then $n$ is a prime number.
+\begin{exercise}
+    Prove the original version of Wilson's theorem from the polynomial version.\footnote{Hint: consider $g(T) = T$.} 
+\end{exercise}
+
+\begin{exercise}
+    It is known that the following converse of Wilson's theorem holds: if a natural number $n$ satisfies $(n - 1)! \equiv -1 \pmod{n}$, then $n$ is a prime number.
     We can consider a polynomial analogue of this converse: if a polynomial $g(T) \in \bF_p[T]$ of degree $d$ satisfies
     \[
         \prod_{\substack{0 \le \deg(f) \le d \\ \gcd(f, g) = 1}} f \equiv -1 \pmod{g},
@@ -276,4 +293,6 @@ Especially, (LHS) + $1$ is divisible by any irreducible polynomial $g(T)$ of deg
     then $g(T)$ is irreducible over $\bF_p$.
     Here the left hand side is the product of all elements in $(A / gA)^\times$.
     Prove or disprove this claim.
-\end{enumerate}
+\end{exercise}
+
+\newpage
