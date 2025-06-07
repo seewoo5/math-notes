@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{x}{with\PYGZus{}sol = []}
+\PYG{x}{without\PYGZus{}sol = []}
+\PYG{x}{for p in primes(100):}
+\PYG{x}{    for a in range(p // 2):}
+\PYG{x}{        if (a \PYGZca{} 2 + 1) \PYGZpc{} p == 0:}
+\PYG{x}{            with\PYGZus{}sol.append(p)}
+\PYG{x}{            break}
+\PYG{x}{        if a == p // 2 \PYGZhy{} 1:}
+\PYG{x}{            without\PYGZus{}sol.append(p)}
+\PYG{x}{print(\PYGZdq{}Primes with solution\PYGZdq{}, with\PYGZus{}sol)}
+\PYG{x}{print(\PYGZdq{}Primes without solution\PYGZdq{}, without\PYGZus{}sol)}
+\end{Verbatim}

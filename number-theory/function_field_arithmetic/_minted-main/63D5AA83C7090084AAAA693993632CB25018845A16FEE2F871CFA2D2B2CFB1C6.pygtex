@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{qm2\PYGZus{}weight}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{):}
+    \PYG{n}{w} \PYG{o}{=} \PYG{k+kc}{None}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{e}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{qm}\PYG{o}{.}\PYG{n}{dict}\PYG{p}{()}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+        \PYG{k}{if} \PYG{n}{w} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+            \PYG{n}{w} \PYG{o}{=} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{a} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{b} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{e}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{k}{assert} \PYG{n}{w} \PYG{o}{==} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{a} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{b} \PYG{o}{+} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{e}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Not homogeneous\PYGZdq{}}
+    \PYG{k}{return} \PYG{n}{w}
+
+\PYG{k}{def} \PYG{n+nf}{qm2\PYGZus{}depth}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{):}
+    \PYG{n}{dp} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{e}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{qm}\PYG{o}{.}\PYG{n}{dict}\PYG{p}{()}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{():}
+        \PYG{n}{dp} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{e}\PYG{p}{,} \PYG{n}{dp}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{dp}
+
+\PYG{k}{def} \PYG{n+nf}{qm2\PYGZus{}derivative}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{):}
+    \PYG{n}{r} \PYG{o}{=} \PYG{n}{QM2}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{k}{for} \PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{b}\PYG{p}{,} \PYG{n}{e}\PYG{p}{),} \PYG{n}{coeff} \PYG{o+ow}{in} \PYG{n}{qm}\PYG{o}{.}\PYG{n}{dict}\PYG{p}{()}\PYG{o}{.}\PYG{n}{items}\PYG{p}{():}
+        \PYG{n}{r} \PYG{o}{+=} \PYG{p}{(}\PYG{n}{coeff}\PYG{o}{/}\PYG{l+m+mi}{6}\PYG{p}{)} \PYG{o}{*} \PYG{n}{H2}\PYG{o}{\PYGZca{}}\PYG{n}{a} \PYG{o}{*} \PYG{n}{H4}\PYG{o}{\PYGZca{}}\PYG{n}{b} \PYG{o}{*} \PYG{p}{((}\PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{b}\PYG{p}{)}\PYG{o}{*}\PYG{n}{H2} \PYG{o}{+} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{a}\PYG{o}{\PYGZhy{}}\PYG{n}{b}\PYG{p}{)}\PYG{o}{*}\PYG{n}{H4} \PYG{o}{+} \PYG{p}{(}\PYG{n}{a}\PYG{o}{+}\PYG{n}{b}\PYG{p}{)}\PYG{o}{*}\PYG{n}{E2\PYGZus{}}\PYG{p}{)} \PYG{o}{*} \PYG{n}{E2\PYGZus{}}\PYG{o}{\PYGZca{}}\PYG{n}{e}
+        \PYG{k}{if} \PYG{n}{e} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{1}\PYG{p}{:}
+            \PYG{n}{r} \PYG{o}{+=} \PYG{n}{coeff} \PYG{o}{*} \PYG{n}{H2}\PYG{o}{\PYGZca{}}\PYG{n}{a} \PYG{o}{*} \PYG{n}{H4}\PYG{o}{\PYGZca{}}\PYG{n}{b} \PYG{o}{*} \PYG{n}{e} \PYG{o}{*} \PYG{n}{E2\PYGZus{}}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{n}{e}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{E2\PYGZus{}}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{n}{E4\PYGZus{}}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{12}
+    \PYG{k}{return} \PYG{n}{r}
+
+\PYG{k}{def} \PYG{n+nf}{qm2\PYGZus{}serre\PYGZus{}derivative}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
+    \PYG{n}{s} \PYG{o}{=} \PYG{n}{qm2\PYGZus{}depth}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{)}
+    \PYG{k}{if} \PYG{n}{k} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{} Serre derivative that preserves depth}
+        \PYG{n}{k} \PYG{o}{=} \PYG{n}{qm2\PYGZus{}weight}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{qm2\PYGZus{}depth}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{qm2\PYGZus{}derivative}\PYG{p}{(}\PYG{n}{qm}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{k} \PYG{o}{/} \PYG{l+m+mi}{12}\PYG{p}{)} \PYG{o}{*} \PYG{n}{E2\PYGZus{}} \PYG{o}{*} \PYG{n}{qm}
+\end{Verbatim}

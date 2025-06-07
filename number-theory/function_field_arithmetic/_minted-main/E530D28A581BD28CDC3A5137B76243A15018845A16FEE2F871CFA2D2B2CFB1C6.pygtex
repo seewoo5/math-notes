@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{with\PYGZus{}sol} \PYG{o}{=} \PYG{p}{[]}
+\PYG{n}{without\PYGZus{}sol} \PYG{o}{=} \PYG{p}{[]}
+\PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n}{primes}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{):}
+    \PYG{k}{for} \PYG{n}{a} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{p}\PYG{p}{):}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{o}{\PYGZca{}} \PYG{l+m+mi}{2} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{3}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{p} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{n}{with\PYGZus{}sol}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+            \PYG{k}{break}
+        \PYG{k}{if} \PYG{n}{a} \PYG{o}{==} \PYG{n}{p} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+            \PYG{n}{without\PYGZus{}sol}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{p}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Primes with solution\PYGZdq{}}\PYG{p}{,} \PYG{n}{with\PYGZus{}sol}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Primes without solution\PYGZdq{}}\PYG{p}{,} \PYG{n}{without\PYGZus{}sol}\PYG{p}{)}
+\end{Verbatim}
