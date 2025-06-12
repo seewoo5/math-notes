@@ -3,12 +3,12 @@
 
 Quadratic reciprocity is one of the most important theorem in number theory, which is the origin of all modern number theory including algebraic number theory and Langlands program.
 In this section, we will see the analogue of quadratic reciprocity for function fields.
-Especially, we will present the higher reciprocity laws, which is much more complicated for integer case.
+% Especially, we will present the higher reciprocity laws, which is much more complicated for integer case.
 
 \subsection{Quadratic Reciprocity for Integers}
 \label{subsec:quadratic-reciprocity}
 
-CRT essentially tells us how to solve \emph{linear} congruences, i.e. equations of the form $ax + b \equiv 0 \pmod{n}$.
+CRT tells us how to solve \emph{linear} congruences, i.e. equations of the form $ax + b \equiv 0 \pmod{n}$.
 Now, let's go one step further and consider \emph{quadratic} congruences, i.e. equations of the form $a x^2 + bx + c\equiv 0 \pmod{n}$.
 How can we solve such equations?
 Recall that we solve usual quadratic eqautions by ``completing the square'', and we can do the same for congruences.\footnote{when $n$ is odd and $a$ is invertible modulo $n$.}
@@ -45,9 +45,8 @@ Primes without solution [3, 7, 11, 19, 23, 31, 43, 47, 59, 67, 71, 79, 83]
 \end{minted}
 
 Stare the lists carefully for a while. What do you notice?
-
-\newpage
 The answer is:
+
 \begin{theorem}
     \label{thm:m1sq}
     Let $p$ be a prime number. Then the congruence $x^2 \equiv -1 \pmod{p}$ has a solution if and only if $p = 2$ or $p \equiv 1 \pmod{4}$.
@@ -209,13 +208,13 @@ We can use quadratic reciprocity to prove Theorem \ref{thm:m3sq}.
 
 \begin{exercise}
     \begin{enumerate}
-        \item Find all prime $p < 100$ where the congruence $x^3 - 3x + 1 \equiv 0 \pmod{p}$ has a solution. Can you find a pattern? If you are brave enough, try to prove it.\footnote{Hint: modulo 9. To prove it, one can use the fact that the roots of $x^3 - 3x - 1$ are $2\cos (2\pi / 9), 2 \cos(4\pi/9), 2\cos(8\pi / 9)$, and try to express them in terms of $9$-th roots of unity.}
+        \item Find all prime $p < 100$ where the congruence $x^3 - 3x + 1 \equiv 0 \pmod{p}$ has a solution. Can you find a pattern? If you are brave enough, try to prove it.\footnote{Hint: modulo 9. To prove it, we notice the fact that the roots of $x^3 - 3x + 1$ are $2\cos (2\pi / 9), 2 \cos(4\pi/9), 2\cos(8\pi / 9)$, by double angle formula. Then try to express them in terms of $9$-th roots of unity.}
         \item Find all prime $p < 100$ where the congruence $x^3 - x - 1 \equiv 0 \pmod{p}$ has a solution. Can you find a pattern?
         \item Consider a power series
         \[
         A(T) = T \prod_{n \ge 1} (1 - T^n) (1 - T^{23 n}) = \sum_{n\ge 1} a_n T^n \in \bZ\llb T \rrb.
         \]
-        Compute the first $100$ coefficients of $A(T)$, and check if there's any relation between the $p$-th coefficients $a_p$ and the congruence $x^3 - x - 1 \equiv 0 \pmod{p}$.\footnote{Asnwer: it has a solution in $\bF_p$ if and only if $a_p \in \{0, 2\}$, \emph{when $p \ne 23$}. Buzzword: Artin representation and modular form of weight 1, Nonabelian class field theory.}
+        Compute the first $100$ coefficients of $A(T)$, and check if there's any relation between the $p$-th coefficients $a_p$ and the congruence $x^3 - x - 1 \equiv 0 \pmod{p}$.\footnote{Asnwer: it has a solution in $\bF_p$ if and only if $a_p \in \{0, 2\}$, \emph{when $p \ne 23$}. Buzzwords: Artin representation and modular form of weight 1, Nonabelian class field theory.}
     \end{enumerate}    
 \end{exercise}
 
@@ -226,7 +225,7 @@ We can use quadratic reciprocity to prove Theorem \ref{thm:m3sq}.
 Let's move on to the polynomial case.
 We are going to ask the same question as before:
 \begin{myquote}
-For given polynomial $f \in A$ and irreducible polynomial $P$, when does the congruence $x^2 \equiv f \pmod{P}$ have a solution?
+For given polynomial $f \in A$ and irreducible polynomial $P$, when does the congruence $X^2 \equiv f \pmod{P}$ have a solution?
 \end{myquote}
 We are going to adapt the exact same strategy as before.
 \textbf{For this section, we assume that $p$ is an odd prime.}
@@ -240,7 +239,7 @@ Define the \emph{Legendre symbol} for polynomials as follows:
     \begin{equation}
         \left(\frac{f}{P}\right) = \begin{cases}
             0 & f \equiv 0 \pmod{P} \\
-            1 & \text{if } x^2 \equiv f \pmod{P} \text{ has a solution in } A / P A, \\
+            1 & \text{if } X^2 \equiv f \pmod{P} \text{ has a solution in } A, \\
             -1 & \text{otherwise.}
         \end{cases}
         \label{eqn:legendre-symbol-poly}
@@ -257,9 +256,31 @@ We have Euler's criterion for polynomials as well.
         \label{eqn:euler-criterion-poly}
     \end{equation}
 \end{theorem}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:euler-criterion-poly} by adapting the proof of Theorem \ref{thm:euler-criterion}.\footnote{Hint: Use the fact that $A / P A$ is a finite field of order $|P| = p^{\deg P}$.}
+\end{exercise}
+One interesting corollary of Euler's criterion is the following:
+\begin{corollary}
+    \label{cor:even-deg-qr}
+    Let $P \in A$ be an irreducible polynomial of even degree.
+    Then $\left(\frac{c}{P}\right) = 1$ for any nonzero constant $c \in \bF_p$.
+\end{corollary}
 \begin{proof}
-    
+    Write
+    \[
+    \frac{|P| - 1}{2} = \frac{p^{\deg P} - 1}{2} = (p-1) \cdot \frac{(p^{\deg P - 1} + p^{\deg P - 2} + \cdots + 1)}{2}
+    \]
+    where the second factor of the last equation is an integer since $\deg P$ is even and $p$ is odd.
+    By Euler's criterion and $c^{p-1} = 1$, we have
+    \[
+    \left(\frac{c}{P}\right) = c^{\frac{|P| - 1}{2}} = c^{(p-1) \cdot \frac{(p^{\deg P - 1} + p^{\deg P - 2} + \cdots + 1)}{2}} = 1.
+    \]
 \end{proof}
+\begin{exercise}
+    Let $p = 7$ and $P(T) = T^2 + T + 3$, which is irreducible modulo $7$.
+    Find a polynomial $f \in \bF_7[T]$ such that $f^2 \equiv 3 \pmod{P}$.
+\end{exercise}
 
 \begin{theorem}[Quadratic reciprocity for polynomials]
     \label{thm:quadratic-reciprocity-poly}
@@ -271,7 +292,7 @@ We have Euler's criterion for polynomials as well.
     \end{equation}
 \end{theorem}
 \begin{proof}
-    This proof is due to Carlitz, which can be found in Rosen's book \cite[p. 25, Theorem 3.3]{rosen2013number} and Conrad's note \cite[Section 3]{conrad_rec_odd}.
+    This proof is due to Carlitz, which can be found in Rosen's book \cite[p. 25, Theorem 3.3]{rosen2013number} or Conrad's note \cite[Section 3]{conrad_rec_odd}.
     Let $k / \bF_p$ be a (finite) field contains all roots of $P$ and $Q$.
     Let $d_P = \deg P$ and $d_Q = \deg Q$.
     We will first show that \eqref{eqn:quadratic-reciprocity-poly} is equivalent to:
@@ -301,9 +322,6 @@ We have Euler's criterion for polynomials as well.
         &\equiv P(T)^{\frac{p - 1}{2}(1 + p + \cdots + p^{d_Q - 1})} \pmod{Q(T)} \\
         &\equiv (P(T)P(T)^p \cdots P(T)^{p^{d_Q - 1}})^{\frac{p-1}{2}} \pmod{Q(T)} \\
         &\equiv (P(T) P(T^p) \cdots P(T^{p^{d_Q - 1}}))^{\frac{p-1}{2}} \pmod{Q(T)}
-        %  \\
-        % &\equiv (P(\beta) P(\beta^p) \cdots P(\beta^{p^{d_Q - 1}}))^{\frac{p-1}{2}} \pmod{Q(T)} \\
-        % &\equiv \prod_{i=0}^{d_P - 1} \prod_{j=0}^{d_Q - 1} (\beta^{p^j} - \alpha^{p^i}) \pmod{Q(T)}
     \end{align*}
     If we set $T = \beta$ for the last congruence, it becomes
     \[
@@ -318,8 +336,44 @@ We have Euler's criterion for polynomials as well.
 Note that the proof is very specific for polynomials over finite fields, and it does not work for integer case.
 There are \emph{some} proofs of similar taste, which writes the product $\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)$ as other function that is symmetric in $p$ and $q$.
 
+One can generalize it to higher order reciprocity laws.
+Since the proof is very similar to the quadratic case, we only state the result here.
+Details can be found in \cite[Chapter 3]{rosen2013number}.
+\begin{theorem}[$d$-th power reciprocity law]
+    Let $d \ge 2$ be an integer dividing $p - 1$.
+    For $f \in A$ and irreducible polynomials $P \in A$, define $\left(\frac{f}{P}\right)$ be a unique element of $\bF_p^\times$ such that
+    \begin{equation}
+        \left(\frac{f}{P}\right)_d = f^{\frac{|P| - 1}{d}} \pmod{P}.
+        \label{eqn:legendre-symbol-poly-d}
+    \end{equation}
+    Then for distinct irreducible polynomials $P, Q \in A$, we have
+    \begin{equation}
+        \left(\frac{P}{Q}\right)_d  = (-1)^{\frac{p - 1}{d} \deg P \deg Q} \left(\frac{Q}{P}\right)_d.
+        \label{eqn:dth-power-reciprocity-poly}
+    \end{equation}
+\end{theorem}
+
 \begin{exercise}
-    For an irreducible polynomial $P \in A$ and polynomials $f, g, h \in A$, give a necessary and sufficient condition for the congruence $f x^2 + gx + h \equiv 0 \pmod{P}$ to have a solution (in $A$).
+    Decide if the following congruence equations in $X$ have a solution.
+    \begin{enumerate}
+        \item $X^2 = T^2 + 3T + 3 \pmod{T^3 + T + 1}$ in $\bF_5[T]$.
+        \item $X^2 \equiv 6T^2 + T + 1 \pmod{T^3 + T^2 + T + 5}$ in $\bF_7[T]$.
+        \item $X^2 + TX + T + 1 \equiv 0 \pmod{T^3 + T^2 - 1}$ in $\bF_3[T]$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $p$ be an odd prime and $P \in A$ be an irreducible polynomial of degree $d$.
+    Show that $X^2 \equiv -1 \pmod{P}$ has a solution if and only if $d$ is even or $p \equiv 1 \pmod{4}$.
+    Can you give an explicit formula for a solution in terms of $p$ and $P$?
+\end{exercise}
+
+\begin{exercise}
+    For an irreducible polynomial $P \in A$ and polynomials $f, g, h \in A$, give a necessary and sufficient condition for the congruence $f X^2 + g X + h \equiv 0 \pmod{P}$ to have a solution.
+\end{exercise}
+
+\begin{exercise}
+    Let $f \in A$ be a nonsquare polynomial. Show that $\left(\frac{f}{P}\right) = -1$ for infinitely many irreducible polynomial $P \in A$.\footnote{See \cite[Theorem 4.5]{conrad_rec_odd}.}
 \end{exercise}
 
 
