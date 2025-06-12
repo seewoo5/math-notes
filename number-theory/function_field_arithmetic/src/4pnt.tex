@@ -1,5 +1,267 @@
 \section{How many primes?}
 \label{sec:how-many-primes}
 
+In this section, we will study several questions on counting numbers and polynomials, e.g. number of prime numbers / irreducible polynomials up to certain bounds.
+As you expect, the original propblem for integers are much harder than the one for polynomials, and many of the problems (e.g. error term in the prime number theorem) are wide open.
+However, the polynomial analogue of these problems are often much easier to prove.
+Especially, both of the sides uses certain \emph{zeta functions} or \emph{L-functions} to count certain objects, which becomes much simpler in the polynomial case.
+
+\subsection{Prime number theorem and Riemann zeta function}
+\label{subsec:prime-number-theorem}
+
+We start with the most important fact about prime numbers, proven by Euclid few hundred years ago.
+\begin{theorem}[Euclid]
+    \label{thm:euclid}
+    There are infinitely many prime numbers.
+\end{theorem}
+\begin{proof}
+    Suppose that there are finitely many prime numbers $p_1, p_2, \dots, p_n$.
+    Consider the number $N = p_1 p_2 \cdots p_n + 1$.
+    Then $N$ is not divisible by any of the prime numbers $p_i$, so it must be either prime or divisible by some other prime number.
+    This contradicts our assumption that there are only finitely many prime numbers.
+\end{proof}
+
+Once we know that there are infinitely many prime numbers, we can ask the following question:
+
+\begin{myquote}
+    For given real number $x > 0$, how many prime numbers are there less than or equal to $x$?
+\end{myquote}
+
+We follow the standard notation and denote the number of prime numbers less than or equal to $x$ by $\pi(x)$.
+Hadamard and de la Vall\'ee-Poussin proved independently in 1896 that
+\begin{theorem}[Prime number theorem]
+    \label{thm:prime-number-theorem}
+    We have
+    \[
+        \pi(x) \sim \frac{x}{\log x},
+    \]
+    where $\sim$ means that the ratio of the two sides tends to $1$ as $x$ tends to infinity.
+\end{theorem}
+In other words, the density of prime numbers among integers is approximately $\frac{1}{\log x}$, which tends to $0$ as $x$ tends to infinity.
+
+Although there are some elementary proofs by Selberg \cite{selberg1949elementary} and Erd\"os \cite{erdos1949new}, the original proofs and the most of other proofs (e.g. Newman's proof \cite{newman1980simple,zagier1997newman}) uses \emph{Riemann zeta function}.
+In \cite{riemann1859ueber}, Riemann defined the zeta function:
+
+\begin{definition}[Riemann zeta function]
+    \label{def:riemann-zeta}
+    The \emph{Riemann zeta function} is defined by
+    \[
+        \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}
+    \]
+    for complex numbers $s$ with $\Re(s) > 1$.
+\end{definition}
+
+\begin{theorem}
+    \begin{enumerate}
+        \item $\zeta(s)$ can be analytically continued to a meromorphic function on the whole complex plane, with a simple pole at $s = 1$.
+        \item Define the \emph{completed zeta function} as
+        \begin{equation}
+            \xi(s) = \pi^{-\frac{s}{2}} \Gamma\left(\frac{s}{2}\right) \zeta(s),
+        \end{equation}
+        then $\xi(1 - s) = \xi(s)$ for all $s \in \bC \backslash \{0, 1\}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    See Apostol \cite{apostol2013introduction} or Stein--Shakarchi \cite{stein2010complex}.
+\end{proof}
+
+\begin{theorem}[Euler factorization]
+    \label{thm:euler-factorization}
+    The Riemann zeta function can be expressed as an infinite product over all prime numbers $p$:
+    \begin{equation}
+        \zeta(s) = \prod_{p} \frac{1}{1 - p^{-s}},
+        \label{eq:euler-factorization}
+    \end{equation}
+    for $\Re(s) > 1$.
+\end{theorem}
+\begin{proof}
+    This essentially follows from the fundamental theorem of arithmetic (Theorem \ref{thm:fta}).
+\end{proof}
+
+Let's return to the prime number theorem.
+The main idea of the proof(s) is in two steps:
+\begin{enumerate}
+    \item Reduce the problem to the following claim: $\zeta(s)$ is non-vanishing for $\Re(s) = 1$ and $s \ne 1$.
+    \item Prove the above claim.
+\end{enumerate}
+
+Here we give a sketch of the proof of the claim.
+By taking logarithmic derivative of \eqref{eq:euler-factorization}, we have
+\[
+\log \zeta(s) = - \sum_p \log(1 - p^{-s}) = \sum_p \sum_{k \ge 1} \frac{p^{-ks}}{k}.
+\]
+If $s = x + iy$, we get
+\[
+|\zeta(x + iy)| = \exp\left(\sum_{p} \sum_{k \ge 1} \frac{\cos (ky \log p)}{k p^{kx}}\right)
+\]
+and
+\begin{equation}
+\label{eqn:riemann-zeta-abs}
+|\zeta(x)^3 \zeta(x + iy)^4 \zeta(x + 2iy)| = \exp\left(\sum_{p} \sum_{k \ge 1} \frac{3 + 4 \cos(k y \log p) + \cos(2 k y \log p)}{k p^{kx}}\right)
+\end{equation}
+for all $x > 1$.
+Now, one can prove the inequality
+\begin{equation}
+    \label{eqn:cosineq}
+    3 + 4 \cos \theta + \cos(2\theta) \ge 0
+\end{equation}
+for any $\theta \in \bR$, which shows that the right hand side of \eqref{eqn:riemann-zeta-abs} is at least $1$.
+Assume that $\zeta(1 + iy) = 0$ for some $y$. Then one can derive a contradiction from \eqref{eqn:riemann-zeta-abs} by considering the limit as $x \to 1^+$, where the left hand side tends to $0$ while the right hand is bounded below by $1$.
+
+\begin{exercise}
+    Prove \eqref{eqn:cosineq}.
+\end{exercise}
+
+\subsection{Counting irreducible polynomials with zeta function}
+\label{subsec:counting-irred-poly-zeta}
+
+How about polynomials?
+First of all, there are infinitely many irreducible polynomials:
+\begin{theorem}
+    \label{thm:euclid-poly}
+    For each prime $p$, there are infinitely many irreducible polynomials over $\bF_p$.
+\end{theorem}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:euclid-poly}. You can follow the argument of Theorem \ref{thm:euclid} above, or give more interesting proof.
+\end{exercise}
+
+Now, we can ask more interesting question, i.e. number of irreducible polynomials of certain degree.
+\begin{myquote}
+    For a given prime $p$ and integer $n$, how many irreducible monic polynomials of degree $n$ in $A = \bF_p[T]$?
+\end{myquote}
+We will fix $p$, and denote the number of such polynomials as $a_n$.
+When $n$ is small, we can get nice formulas.
+\begin{proposition}
+    \label{prop:monic_irred_n2}
+    \begin{equation}
+        a_2 = \frac{p^2 - p}{2}.
+        \label{eqn:monic_irred_n2}
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    One can count number of \emph{reducible} monic polynomials, and subtract from the total number of monic quadratic polynomials, which is simply $p^2$ (you have $p$ choices for each $c_0$ and $c_1$ in $f(T) = T^2 + c_1 T + c_0$).
+    If $f(T)$ is not irreducible, then it should factor as $f(T) = (T - \alpha)(T - \beta)$ for some $\alpha, \beta \in \bF_p$.
+    Now, there are $p$ cases where $\alpha = \beta$, and $\binom{p}{2}$ cases where $\alpha \ne \beta$.
+    This gives
+    \[
+    a_2 = p^2 - p - \binom{p}{2} = \frac{p^2 - p}{2}.
+    \]
+\end{proof}
+\begin{exercise}
+    Prove
+    \begin{equation}
+        a_3 = \frac{p^3 - p}{3}.
+        \label{eqn:monic_irred_n3}
+    \end{equation}
+    You may need to exclude the cases when 1) $f(T)$ factors as a product of three linear polynomials, or 2) a product of linear and irreducible quadratic polynomial.
+\end{exercise}
+
+It seems that we may even able to find a nice formula for $a_n$.
+To do this, we will define a \emph{zeta function} for polynomials, which is similar to the Riemann zeta function but much simpler.
+\begin{definition}[Zeta function for $A$]
+    We define \emph{zeta function} as
+    \begin{equation}
+        \zeta_A(s) = \sum_{\substack{0 \ne f\,\text{monic}}} \frac{1}{|f|^s}
+        \label{eqn:zetaA}
+    \end{equation}
+    which converges for $\Re(s) > 1$.
+\end{definition}
+Note that the notation $\zeta_A$ somehow emphasizes $A$, since we will eventually see more general ``zeta functions'' for other polynomial rings (``extensions'' of $A$).
+
+We have a simple formula for $\zeta_A$:
+\begin{proposition}
+    \label{prop:zetaA}
+    We have
+    \begin{equation}
+        \zeta_A(s) = \frac{1}{1 - p^{1 - s}}.
+        \label{eqn:zetaA_formula}
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    We can group the sum in \eqref{eqn:zetaA} by degree, since $|f|$ only depends on degree of $f$.
+    Since there are $p^d$-many monic polynomials of degree $d$, we have
+    \begin{align*}
+        \zeta_A(s) = \sum_{d \ge 1} \frac{p^d}{p^{ds}} = \sum_{d \ge 0} p^{d(1 - s)} = \frac{1}{1 - p^{1 - s}}.
+    \end{align*}
+\end{proof}
+Especially, it has a simple pole at $s = 1$ with residue $1 / \log p$, and analytic continuation is clear from the formula.
+Also, there are no zeros of $\zeta_A(s)$, so Riemann Hypothesis for polynomials is trivially true.
+
+What about Euler factorization?
+Since $A$ is also UFD, the same argument as in Theorem \ref{thm:euler-factorization} gives us
+\begin{theorem}[Euler factorization for polynomials]
+    \label{thm:euler-factorization-poly}
+    We have
+    \begin{equation}
+        \zeta_A(s) = \prod_{P\text{ monic irred}} (1 - |P|^{-s})^{-1}.
+        \label{eqn:euler-factorization-poly}
+    \end{equation}
+\end{theorem}
+
+As in Proposition \ref{prop:zetaA}, we can group the product in \eqref{eqn:euler-factorization-poly} by degree, which gives
+\begin{equation}
+    \zeta_A(s) = \prod_{d \ge 1} (1 - p^{-ds})^{-a_d}.
+    \label{eqn:euler-factorization-poly2}
+\end{equation}
+By comparing \eqref{eqn:zetaA_formula} and \eqref{eqn:euler-factorization-poly2}, we can deduce the following formula for $a_n$:
+\begin{theorem}
+    We have
+    \begin{equation}
+        p^n = \sum_{d \mid n} d a_d.
+        \label{eqn:counting_irred_poly}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Let $u = p^{-s}$, so
+    \begin{equation}
+        \frac{1}{1 - pu} = \prod_{d \ge 1} (1 - u^d)^{-a_d}.
+    \end{equation}
+    By taking logarithmic derivative, we have
+    \begin{equation}
+        \frac{p}{1 - pu} = \sum_{d \ge 1} a_d \frac{d u^{d-1}}{1 - u^d} \Leftrightarrow \frac{pu}{1 - pu} = \sum_{d \ge 1} a_d \frac{d u^d}{1 - u^d}.
+    \end{equation}
+    Using geometric series, we can rewrite the equations as
+    \begin{equation}
+        \sum_{n \ge 1} p^n u^n = \sum_{d \ge 1} d a_d \sum_{k \ge 1} u^{dk} = \sum_{n \ge 1} \left(\sum_{d \mid n} d a_d\right) u^n.
+    \end{equation}
+    Now, we can compare the coefficients of $u^n$ on both sides and get \eqref{eqn:counting_irred_poly}.
+\end{proof}
+
+As a corollary, we can deduce the following formula for $a_n$:
+\begin{corollary}
+    \label{cor:counting_irred_poly}
+    For a given prime $p$ and integer $n$, we have
+    \begin{equation}
+        a_n = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{n/d},
+        \label{eqn:counting_irred_poly_2}
+    \end{equation}
+    where $\mu$ is the M\"obius function, defined as
+    \begin{equation}
+        \mu(n) = \begin{cases}
+            1 & \text{if } n = 1,\\
+            (-1)^k & \text{if } n = p_1 p_2 \cdots p_k \text{ with } k \text{ distinct primes} \\
+            0 & \text{otherwise.}
+        \end{cases}
+    \label{eqn:mobius}
+    \end{equation}
+\end{corollary}
+
+\begin{exercise}
+    Prove Corollary \ref{cor:counting_irred_poly}.
+\end{exercise}
+
+For example, we can recover the formulas \ref{eqn:monic_irred_n2} and \ref{eqn:monic_irred_n3}.
+
+\begin{exercise}
+    For a given prime $p$ and an integer $n$, how you will find an irreducible polynomial of degree $n$ over $\bF_p$? (This is not an easy question.)
+\end{exercise}
+
+\begin{exercise}
+    Prove that the polynomial $T^p - T - 1$ is irreducible over $\bF_p$ for all prime $p$.\footnote{Hint: Such a polynomial is called \emph{Artin--Schreier polynomial}.}
+\end{exercise}
+
+
+\subsection{Counting other things}
 
 \newpage
