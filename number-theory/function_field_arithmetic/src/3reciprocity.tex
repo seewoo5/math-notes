@@ -186,6 +186,15 @@ We can use quadratic reciprocity to prove Theorem \ref{thm:m3sq}.
     Show that $x = \left(\frac{p-1}{2}\right)!$ becomes a solution.\footnote{Hint: Wilson's theorem.}
 \end{exercise}
 
+\begin{exercise}\sage Compute the Legendre symbol $\left(\frac{563}{661}\right)$, by
+    \begin{enumerate}
+        \item brute-force checking all integers $x$ modulo $661$, or
+        \item using Euler's criterion, or
+        \item using quadratic reciprocity, or
+        \item using \texttt{kronecker} in Sage.
+    \end{enumerate}
+\end{exercise}
+
 \begin{exercise}
     Prove Theorem \ref{thm:m3sq} without using quadratic reciprocity, by adapting the proof of Theorem \ref{thm:quadratic-reciprocity-supplementary}.
     Here's a sketch of a proof:
@@ -206,7 +215,7 @@ We can use quadratic reciprocity to prove Theorem \ref{thm:m3sq}.
     For a prime $p$ and integers $a, b, c$, give a necessary and sufficient condition for the congruence $ax^2 + bx + c \equiv 0 \pmod{p}$ to have a solution.
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise}\sage
     \begin{enumerate}
         \item Find all prime $p < 100$ where the congruence $x^3 - 3x + 1 \equiv 0 \pmod{p}$ has a solution. Can you find a pattern? If you are brave enough, try to prove it.\footnote{Hint: modulo 9. To prove it, we notice the fact that the roots of $x^3 - 3x + 1$ are $2\cos (2\pi / 9), 2 \cos(4\pi/9), 2\cos(8\pi / 9)$, by double angle formula. Then try to express them in terms of $9$-th roots of unity.}
         \item Find all prime $p < 100$ where the congruence $x^3 - x - 1 \equiv 0 \pmod{p}$ has a solution. Can you find a pattern?
@@ -353,7 +362,7 @@ Details can be found in \cite[Chapter 3]{rosen2013number}.
     \end{equation}
 \end{theorem}
 
-\begin{exercise}
+\begin{exercise}\sage
     Decide if the following congruence equations in $X$ have a solution.
     \begin{enumerate}
         \item $X^2 = T^2 + 3T + 3 \pmod{T^3 + T + 1}$ in $\bF_5[T]$.

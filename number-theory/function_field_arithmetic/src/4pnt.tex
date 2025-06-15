@@ -2,7 +2,7 @@
 \label{sec:how-many-primes}
 
 In this section, we will study several questions on counting numbers and polynomials, e.g. number of prime numbers / irreducible polynomials up to certain bounds.
-As you expect, the original propblem for integers are much harder than the one for polynomials, and many of the problems (e.g. error term in the prime number theorem) are wide open.
+Over integers, many of such problems are wide open.
 However, the polynomial analogue of these problems are often much easier to prove.
 Especially, both of the sides uses certain \emph{zeta functions} or \emph{L-functions} to count certain objects, which becomes much simpler in the polynomial case.
 
@@ -39,6 +39,11 @@ Hadamard and de la Vall\'ee-Poussin proved independently in 1896 that
 \end{theorem}
 In other words, the density of prime numbers among integers is approximately $\frac{1}{\log x}$, which tends to $0$ as $x$ tends to infinity.
 
+\begin{exercise}\sage
+    Plot the graphs of the functions $\pi(x)$ and $\frac{x}{\log x}$ for $x \in [1, 10^6]$.\footnote{Hint: Sage has \texttt{prime\_pi}.}
+\end{exercise}
+
+
 Although there are some elementary proofs by Selberg \cite{selberg1949elementary} and Erd\"os \cite{erdos1949new}, the original proofs and the most of other proofs (e.g. Newman's proof \cite{newman1980simple,zagier1997newman}) uses \emph{Riemann zeta function}.
 In \cite{riemann1859ueber}, Riemann defined the zeta function:
 
@@ -50,32 +55,50 @@ In \cite{riemann1859ueber}, Riemann defined the zeta function:
     \]
     for complex numbers $s$ with $\Re(s) > 1$.
 \end{definition}
+\begin{exercise}
+    Why it converges for $\Re(s) > 1$?
+\end{exercise}
 
+By writing $\zeta(s)$ as an integral, Riemann showed that it can be analytically (more precisely, meromorphically) continued to the whole complex plane, except for a simple pole at $s = 1$.
 \begin{theorem}
     \begin{enumerate}
-        \item $\zeta(s)$ can be analytically continued to a meromorphic function on the whole complex plane, with a simple pole at $s = 1$.
+        \item $\zeta(s)$ can be analytically continued to a meromorphic function on the whole complex plane, with a simple pole at $s = 1$ with residue $1$.
         \item Define the \emph{completed zeta function} as
         \begin{equation}
             \xi(s) = \pi^{-\frac{s}{2}} \Gamma\left(\frac{s}{2}\right) \zeta(s),
         \end{equation}
-        then $\xi(1 - s) = \xi(s)$ for all $s \in \bC \backslash \{0, 1\}$.
+        where $\Gamma(s)$ is the gamma function.
+        Then $\xi(1 - s) = \xi(s)$ for all $s \in \bC \backslash \{0, 1\}$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
     See Apostol \cite{apostol2013introduction} or Stein--Shakarchi \cite{stein2010complex}.
 \end{proof}
+This allow us to state the infamous \emph{Riemann Hypothesis}:
+\begin{conjecture}[Riemann Hypothesis]
+    \label{conj:riemann-hypothesis}
+    All \emph{non-trivial} zeros of $\zeta(s)$ lie on the critical line $\Re(s) = \frac{1}{2}$.
+\end{conjecture}
+Here the \emph{trivial} zeros are the negative even integers, i.e. $s = -2, -4, -6, \dots$.
 
+But why Riemann zeta function is related to prime numbers?
+The following theorem by Euler is the key.
 \begin{theorem}[Euler factorization]
     \label{thm:euler-factorization}
     The Riemann zeta function can be expressed as an infinite product over all prime numbers $p$:
     \begin{equation}
         \zeta(s) = \prod_{p} \frac{1}{1 - p^{-s}},
-        \label{eq:euler-factorization}
+        \label{eqn:euler-factorization}
     \end{equation}
     for $\Re(s) > 1$.
 \end{theorem}
 \begin{proof}
     This essentially follows from the fundamental theorem of arithmetic (Theorem \ref{thm:fta}).
+    More precisely, using geometric series we can rewrite the right hand side as
+    \[
+    \prod_{p} \frac{1}{1 - p^{-s}} = \prod_{p} \left(1 + \frac{1}{p^s} + \frac{1}{p^{2s}} + \cdots \right)
+    \]
+    and Theorem \ref{thm:fta} implies that each term $\frac{1}{n^s}$ in the left hand side in \eqref{eqn:euler-factorization} appears exactly once in the right hand side.
 \end{proof}
 
 Let's return to the prime number theorem.
@@ -85,8 +108,8 @@ The main idea of the proof(s) is in two steps:
     \item Prove the above claim.
 \end{enumerate}
 
-Here we give a sketch of the proof of the claim.
-By taking logarithmic derivative of \eqref{eq:euler-factorization}, we have
+Here we give a sketch of the proof of 2.
+By taking logarithmic derivative of \eqref{eqn:euler-factorization}, we get
 \[
 \log \zeta(s) = - \sum_p \log(1 - p^{-s}) = \sum_p \sum_{k \ge 1} \frac{p^{-ks}}{k}.
 \]
@@ -111,6 +134,42 @@ Assume that $\zeta(1 + iy) = 0$ for some $y$. Then one can derive a contradictio
 \begin{exercise}
     Prove \eqref{eqn:cosineq}.
 \end{exercise}
+
+So we can approximate $\pi(x)$ by $\frac{x}{\log x}$, but how good is this approximation?
+More precisely, what is the growth of the error term?
+First of all, there's a better approximation than $\frac{x}{\log x}$ suggested by Dirichlet, which is \emph{logarithmic integral}:
+\begin{equation}
+    \Li(x) := \int_2^x \frac{\dd t}{\log t}.
+\end{equation}
+
+In terms of growth, $\frac{x}{\log x}$ and $\Li(x)$ are asymptotically equivalent (see Exercise \ref{ex:Li} below).
+However, $\Li(x)$ gives much better approximation than $\frac{x}{\log x}$.
+In \cite{de1899fonction}, de la Vall\'ee-Poussin proved that the error term $\pi(x) - \Li(x)$ is bounded by 
+\[
+|\pi(x) - \Li(x)| = O(x e^{-c \sqrt{\log x}}) 
+\]
+for some constant $c > 0$.
+Koch \cite{von1901distribution} showed that, \emph{assuming the Riemann Hypothesis}, we obtain the improved bound
+\begin{equation}
+    |\pi(x) - \Li(x)| = O\left(\sqrt{x} \log x\right)
+    \label{eqn:koch}
+\end{equation}
+which in fact turned out to be equivalent to the Riemann Hypothesis.
+
+\begin{exercise}
+    \label{ex:Li}
+    Prove that $\Li(x) \sim \frac{x}{\log x}$ as $x \to \infty$.
+    More precisely, show that
+    \begin{equation}
+        \Li(x) \sim \frac{x}{\log x} \sum_{k \ge 0} \frac{k!}{(\log x)^k} = \frac{x}{\log x} + \frac{x}{(\log x)^2} + \frac{2x}{(\log x)^3} + \cdots.
+    \end{equation}
+\end{exercise}
+
+\begin{exercise}\sage
+    Plot the graphs of the functions $\pi(x)$, $\Li(x)$, and $\frac{x}{\log x}$ for $x \in [1, 10^6]$, and observe that $\Li(x)$ is much closer to $\pi(x)$ than $\frac{x}{\log x}$.
+    Also, compare $\pi(x)$ and $\Li(x)$ - do you have any conjecture on the difference?\footnote{You may find that $\pi(x) < \Li(x)$ when $x$ is not too small, and it is tempting to conjecture that $\pi(x) < \Li(x)$ for sufficiently large $x$. However, this is not true. In fact, Littlewood \cite{littlewood1914distribution} proved that the sign of $\pi(x) - \Li(x)$ changes infinitely many times, although the smallest number $x > 10$ such that $\pi(x) < \Li(x)$ (known as Skewes's number) is probably very huge.}
+\end{exercise}
+
 
 \subsection{Counting irreducible polynomials with zeta function}
 \label{subsec:counting-irred-poly-zeta}
@@ -154,7 +213,7 @@ When $n$ is small, we can get nice formulas.
         a_3 = \frac{p^3 - p}{3}.
         \label{eqn:monic_irred_n3}
     \end{equation}
-    You may need to exclude the cases when 1) $f(T)$ factors as a product of three linear polynomials, or 2) a product of linear and irreducible quadratic polynomial.
+    You may need to exclude the polynomials $f(T)$ which factor as 1) products of three linear polynomials, or 2) products of linear and irreducible quadratic polynomial.
 \end{exercise}
 
 It seems that we may even able to find a nice formula for $a_n$.
@@ -167,7 +226,6 @@ To do this, we will define a \emph{zeta function} for polynomials, which is simi
     \end{equation}
     which converges for $\Re(s) > 1$.
 \end{definition}
-Note that the notation $\zeta_A$ somehow emphasizes $A$, since we will eventually see more general ``zeta functions'' for other polynomial rings (``extensions'' of $A$).
 
 We have a simple formula for $\zeta_A$:
 \begin{proposition}
@@ -187,6 +245,7 @@ We have a simple formula for $\zeta_A$:
 \end{proof}
 Especially, it has a simple pole at $s = 1$ with residue $1 / \log p$, and analytic continuation is clear from the formula.
 Also, there are no zeros of $\zeta_A(s)$, so Riemann Hypothesis for polynomials is trivially true.
+Note that the notation $\zeta_A$ somehow emphasizes $A$, since we will eventually study more general ``zeta functions'' for other polynomial rings (``extensions'' of $A$), where the Riemann Hypothesis is more interesting (but still true).
 
 What about Euler factorization?
 Since $A$ is also UFD, the same argument as in Theorem \ref{thm:euler-factorization} gives us
@@ -228,7 +287,49 @@ By comparing \eqref{eqn:zetaA_formula} and \eqref{eqn:euler-factorization-poly2}
     Now, we can compare the coefficients of $u^n$ on both sides and get \eqref{eqn:counting_irred_poly}.
 \end{proof}
 
-As a corollary, we can deduce the following formula for $a_n$:
+We can \emph{invert} this formula to get a formula for $a_n$.
+Such a process is called \emph{M\"obius inversion} - before we state the general formula, we will first give small examples that may leads to the general formula (in other words, \emph{you can invent M\"obius inversion formula yourself}).
+Let $b_n := n a_n$.
+For $n = 1, 2, 3, 4, 6, 12$, \eqref{eqn:counting_irred_poly} gives us the following equations:
+\begin{align*}
+    p &= b_1,\\
+    p^2 &= b_1 + b_2,\\
+    p^3 &= b_1 + b_3,\\
+    p^4 &= b_1 + b_2 + b_4,\\
+    p^6 &= b_1 + b_2 + b_3 + b_6, \\
+    p^{12} &= b_1 + b_2 + b_3 + b_4 + b_6 + b_{12}.
+\end{align*}
+From these equations, we can compute $b_n$ recursively:
+\begin{align*}
+    b_1 &= p,\\
+    b_2 &= p^2 - p,\\
+    b_3 &= p^3 - p,\\
+    b_4 &= p^4 - p^2,\\
+    b_6 &= p^6 - p^3 - p^2 + p,\\
+    b_{12} &= p^{12} - p^6 - p^4 + p^2.
+\end{align*}
+Let's see how we actually computed $b_6$ and $b_{12}$. $b_{6}$ can be written as
+\begin{align*}
+    b_6 &= p^6 - (b_1 + b_2 + b_3)\\
+        &= p^6 - (b_1 + b_3) - (b_1 + b_2) + b_1\\
+        &= p^6 - p^3 - p^2 + p.
+\end{align*}
+Similarly, we can compute $b_{12}$ as
+\begin{align*}
+    b_{12} &= p^{12} - (b_1 + b_2 + b_3 + b_4 + b_6)\\
+        &= p^{12} - (b_1 + b_2 + b_3 + b_6) - (b_1 + b_2 + b_4) - (b_1 + b_2)\\
+        &= p^{12} - p^6 - p^4 + p^2.
+\end{align*}
+This may reminds you the principle of inclusion-exclusion, and indeed, we can write the general formula as follows: for $n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$,
+\begin{align*}
+    b_{n} &= p^n - \sum_{d \mid n, d < n} b_d\\
+        &= p^n - (b_1 + \cdots + b_{n / p_1}) - (b_1 + \cdots + b_{n / p_2}) - \cdots - (b_1 + \cdots + b_{n / p_k}) \\
+        &\quad + (b_1 + \cdots + b_{n / p_1 p_2}) + (b_1 + \cdots + b_{n / p_1 p_3}) + \cdots\\
+        &\cdots\\
+        &= p^n - p^{n / p_1} - p^{n / p_2} - \cdots - p^{n / p_k} + p^{n / (p_1 p_2)} + p^{n / (p_1 p_3)} + \cdots\\
+\end{align*}
+
+This gives us the following formula for $a_n$:
 \begin{corollary}
     \label{cor:counting_irred_poly}
     For a given prime $p$ and integer $n$, we have
@@ -248,17 +349,55 @@ As a corollary, we can deduce the following formula for $a_n$:
 \end{corollary}
 
 \begin{exercise}
-    Prove Corollary \ref{cor:counting_irred_poly}.
+    Complete the proof of Corollary \ref{cor:counting_irred_poly}.
+    % It uses the \emph{M\"obius inversion formula} - even if you never heard of it, you can \emph{invent} it by yourself.
+    % For example, try to compute first few values of $a_n$ from \eqref{eqn:counting_irred_poly} recursively. Then you may find a pattern, which is the M\"obius inversion formula.
 \end{exercise}
 
-For example, we can recover the formulas \ref{eqn:monic_irred_n2} and \ref{eqn:monic_irred_n3}.
+Note that \eqref{eqn:counting_irred_poly_2} gives an \emph{exact} formula for $a_n$.
+This also gives an analogue of the prime number theorem for polynomials: the dominating term of $a_n$ is
+\[
+\frac{p^n}{n} = \frac{p^n}{\log_p p^n},
+\]
+where $p^n$ is equal to the number of monic polynomials of degree $n$ over $\bF_p$.
+Moreover, the error term is bounded by $O\left(\frac{p^{n/2}}{n}\right)$, so we get
+\begin{equation}
+    a_n = \frac{p^n}{\log_p p^n} + O\left(\frac{\sqrt{p^n}}{\log_p p^n}\right).
+    \label{eqn:pi-f}
+\end{equation}
+which has a similar form as Koch's bound \eqref{eqn:koch} (or even better!).
 
-\begin{exercise}
-    For a given prime $p$ and an integer $n$, how you will find an irreducible polynomial of degree $n$ over $\bF_p$? (This is not an easy question.)
+\begin{exercise}\sage
+    Let $p = 3$. For each $1 \le n \le 10$, find the number of irreducible monic polynomials of degree $n$ over $\bF_3$, by using the factorization of $T^{3^n} - T$.
+    Check that the results match with the formula \eqref{eqn:counting_irred_poly_2}.
 \end{exercise}
 
 \begin{exercise}
-    Prove that the polynomial $T^p - T - 1$ is irreducible over $\bF_p$ for all prime $p$.\footnote{Hint: Such a polynomial is called \emph{Artin--Schreier polynomial}.}
+    Prove the following non-asymptotic version \eqref{eqn:pi-f}:
+    \[
+    \left|a_n - \frac{p^n}{n} \right| \le \frac{p^{n/2}}{n}
+    \]
+\end{exercise}
+
+\begin{exercise}
+    For each $p$ and $d$, prove that the polynomial
+    \[
+    \left(\prod_{0 \le \deg(f) < d} f\right) + 1
+    \]
+    is equal to a constant multiple of the product of all monic irreducible polynomials of degree $d$ over $\bF_p$.
+    What is the constant?
+\end{exercise}
+
+\begin{exercise}
+    Prove that the polynomial $T^p - T - 1$ is irreducible over $\bF_p$ for all prime $p$.\footnote{Such a polynomial is called \emph{Artin--Schreier polynomial}.}
+\end{exercise}
+
+\begin{exercise}\sage
+    For a given prime $p$ and an integer $n$, design an algorithm to find an irreducible polynomial of degree $n$ over $\bF_p$? (This is not an easy question.)
+\end{exercise}
+
+\begin{exercise}
+    What would be a good analogue of the logarithmic integral $\Li(x)$ for polynomials?
 \end{exercise}
 
 

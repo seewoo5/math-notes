@@ -34,8 +34,8 @@ This shows that:
     Hence it is a PID, and hence a UFD.
 \end{theorem}
 
-\begin{exercise}
-    For each prime $p \le 20$, determine if the polynomial $T^2 + 1$ is irreducible over $\bF_p$ or not. Can you find a pattern?\footnote{Answer will be given in the next section.}
+\begin{exercise}\sage
+    For each prime $p \le 100$, determine if the polynomial $T^2 + 1$ is irreducible over $\bF_p$ or not. Can you find a pattern?\footnote{Answer will be given in the next section.}
 \end{exercise}
 
 \subsection{Chinese Remainder Theorem}
@@ -116,7 +116,7 @@ For example, consider
 We can write $1 = (-T) \cdot T + 1 \cdot (T^2 + 1)$ (hence $T$ and $T^2 + 1$ are coprime), which means $(T^2 + 1)^{-1} \equiv 1 \pmod{T}$ and $T^{-1} \equiv -T \pmod{T^2 + 1}$.
 Then the formula in Theorem \ref{thm:polynomial_crt} gives us $f \equiv 1 \cdot (T^2 + 1) \cdot 1 + T \cdot T \cdot (-T) \pmod{(T^2 + 1)T}$, which simplifies to $f \equiv T^2 + 1 - T^3 \equiv T^2 + T + 1 \pmod{(T^2 + 1)T}$.
 
-\begin{exercise}
+\begin{exercise}\sage
     \begin{enumerate}
         \item Find a polynomial $f \in \bF_3[T]$ such that\footnote{Answer: $f = T^4 + T^2 + T + 2$}
         \[
@@ -133,7 +133,6 @@ Then the formula in Theorem \ref{thm:polynomial_crt} gives us $f \equiv 1 \cdot 
             f \equiv T^4 - T + 2 \pmod{T^2 + 3T + 1}
         \end{cases} 
         \]
-        You can try to write a code to find such a polynomial.
     \end{enumerate}
 \end{exercise}
 
@@ -269,7 +268,7 @@ Note that the left hand side of Wilson's theorem is the product of all nonzero e
     Let $g(T) \in A$ be an irreducible polynomial of degree $d$.
     Then
     \[
-        \prod_{0 \le \deg(f) \le d} f \equiv -1 \pmod{g}.
+        \prod_{0 \le \deg(f) < d} f \equiv -1 \pmod{g}.
     \]
 \end{theorem}
 
@@ -282,6 +281,10 @@ Especially, (LHS) + $1$ is divisible by any irreducible polynomial $g(T)$ of deg
 
 \begin{exercise}
     Prove the original version of Wilson's theorem from the polynomial version.\footnote{Hint: consider $g(T) = T$.} 
+\end{exercise}
+
+\begin{exercise}\sage
+    For each $p$ and $d$, compute $\prod_{0 \le \deg(f) < d} f + 1$. Can you find any pattern?
 \end{exercise}
 
 \begin{exercise}
