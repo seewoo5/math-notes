@@ -52,6 +52,15 @@
   breakable,
 }
 
+\renewcommand*\pod[1]{%
+  \allowbreak
+  \mathchoice
+    {\mkern 18mu}%
+    {\mkern  8mu}%
+    {\mkern  6mu}% "6mu" matches the space *after* the word "mod"
+    {\mkern  6mu}%
+  (#1)%
+}
 
 % --- Page layout settings ---
 

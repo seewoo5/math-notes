@@ -1,0 +1,442 @@
+\section{How many primes in arithmetic progressions?}
+\label{sec:dirichlet}
+
+In Section \ref{sec:reciprocity}, we saw that the polynomial $T^2 + 1$ has a root in $\bF_p$ if and only if $p \equiv 1 \pmod{4}$\footnote{or $p = 2$.}.
+Especially, we also saw that almost half of primes $p < 100$ satisfy $p \equiv 1 \pmod{4}$, and the other half satisfy $p \equiv 3 \pmod{4}$.
+One might ask if the ``density'' of primes actually converges to $1/2$ as we consider more and more primes.
+
+In this section, we will show that this is indeed true.
+More generally, we will study Dirichlet's theorem on primes in arithmetic progressions, which states that this is a general phenomenon for any arithmetic progression, and the densities are uniform across all congruence classes.
+Of course, we will also study the polynomial analogue of Dirichlet's theorem on irreducible polynomials.
+
+\subsection{Dirichlet's theorem on primes}
+\label{sec:dirichlet-primes}
+
+\begin{theorem}
+    \label{thm:1m4-prime-infinite}
+    There are infinitely many primes of the form $4k + 1$.
+\end{theorem}
+\begin{proof}
+    Assume that there are only finitely many primes of the form $4k + 1$, and let $p_1, p_2, \dots, p_r$ be the set of such primes.
+    Consider $N = 4 (p_1 p_2 \cdots p_r)^2 + 1$, and let $p$ be a prime dividing $N$.
+    Since $N$ is odd, we have $p > 2$.
+    Also, since $p$ divides $N$, $p$ has to be different from $p_1, \dots, p_r$.
+    However, $(2 p_1 p_2 \cdots p_r)^2 \equiv -1 \pmod{p}$ implies that $-1$ is a quadratic residue modulo $p$, hence $p \equiv 1 \pmod{4}$ by Theorem \ref{thm:m1sq} and we get a contradiction.
+\end{proof}
+
+\begin{exercise}
+    Prove that there are infinitely many primes of the form $4k + 3$.\footnote{Hint: Assume there are finitely many, $p_1, \dots, p_r$. Now consider $N = 4p_1 p_2 \dots p_r + 3$. Show that there is at least one prime $p$ dividing $N$ such that $p \equiv 3 \pmod{4}$.}
+\end{exercise}
+
+\subsection{Dirichlet's theorem on irreducible polynomials}
+\label{sec:dirichlet-polynomials}
+
+Similar as the integer case, we will define and use Dirichlet characters to prove the polynomial analogue of Dirichlet's theorem.
+
+\begin{definition}
+    \label{def:dirichlet-character-poly}
+    Let $h \in A$ be a (monic) polynomial of degree $d \geq 1$.
+    A \emph{Dirichlet character modulo $h$} is a function $\chi: A \to \bC$ such that:
+    \begin{enumerate}
+        \item $\chi(a + bh) = \chi(a)$ for all $a \in A$ and $b \in A$.
+        \item $\chi(ab) = \chi(a)\chi(b)$ for all $a, b \in A$.
+        \item $\chi(a) \ne 0$ if and only if $\gcd(a, h) = 1$.
+    \end{enumerate}
+\end{definition}
+
+As you expect, this induces a group homomorphism $(A / hA)^\times \to \bC^\times$, and conversely, any group homomorphism $\chi: (A / hA)^\times \to \bC^\times$ can be extended to a Dirichlet character modulo $h$.
+The trivial Dirichlet character modulo $h$ is defined by $\chi(a) = 1$ for all $a \in A$ with $\gcd(a, h) = 1$.
+We will denote the set of all Dirichlet characters modulo $h$ by $X_h$.
+
+\begin{example}
+    \label{ex:dirichlet-character1}
+    Let $p = 3$ and $h(T) = T$.
+    Then we have the following nontrivial Dirichlet characters modulo $h$:    
+    \[
+    \chi(f) := \begin{cases}
+        1 & \text{if } f \equiv 1 \pmod{T} \\
+        -1 & \text{if } f \equiv 2 \pmod{T} \\
+        0 & \text{otherwise}
+    \end{cases}
+    \]
+\end{example}
+
+\begin{example}
+    \label{ex:dirichlet-character2}
+    Let $p = 2$ and $h(T) = T^2 + T + 1$.
+    Then the following defines a nontrivial Dirichlet character modulo $h$:
+    \[
+    \chi(f) = \begin{cases}
+        1 & \text{if } f \equiv 1 \pmod{h} \\
+        \zeta_3 & \text{if } f \equiv T \pmod{h} \\
+        \zeta_3^2 & \text{if } f \equiv T + 1 \pmod{h} \\
+        0 & \text{otherwise}
+    \end{cases}
+    \]
+    where $\zeta_3 = e^{2\pi i / 3}$ is a third root of unity.
+\end{example}
+
+\begin{exercise}
+    For the above example, how many Dirichlet characters modulo $h$ are there?
+\end{exercise}
+
+\begin{theorem}[Orthogonality]
+    \label{thm:dirichlet-orthogonality}
+    Let $\chi, \psi$ be Dirichlet characters modulo $h$ and $a, b \in A$ be such that $\gcd(a, h) = \gcd(b, h) = 1$.
+    Then we have
+    \begin{enumerate}
+        \item
+        \begin{equation}
+            \sum_{a \in A / hA} \chi(a) \overline{\psi(a)} = \begin{cases}
+                \phi(h) & \text{if } \chi = \psi \\
+                0 & \text{if } \chi \ne \psi
+            \end{cases}
+        \label{eqn:dirichlet-orthogonality1}
+        \end{equation}
+        \item
+        \begin{equation}
+            \sum_{\chi \in X_h} \chi(a) \overline{\chi(b)} = \begin{cases}
+                \phi(h) & \text{if } a \equiv b \pmod{h} \\
+                0 & \text{otherwise}
+            \end{cases}
+        \label{eqn:dirichlet-orthogonality2}
+        \end{equation}
+    \end{enumerate}
+    Here $\phi(h) = \#(A / hA)^\times$ is the Euler $\phi$-function defined previously.
+\end{theorem}
+\begin{proof}
+    We will only prove \eqref{eqn:dirichlet-orthogonality1}, and leave the proof of \eqref{eqn:dirichlet-orthogonality2} as an exercise.
+    Note that we only need to consider $a \in (A / hA)^\times$ since $\chi(a) = 0$ and $\psi(a) = 0$ if $\gcd(a, h) \ne 1$.
+    If $\chi = \psi$, then we have $\chi(a)\overline{\chi(a)} = 1$ for all $a \in (A / hA)^\times$, and hence the sum becomes $\#(A / hA)^\times = \phi(h)$.
+    If $\chi \ne \psi$, there exists $a_0 \in (A / hA)^\times$ such that $\chi(a_0) \ne \psi(a_0)$, i.e. $\chi(a_0) \overline{\psi(a_0)} = \chi(a_0) \psi(a_0)^{-1} \ne 1$.
+    Since the map $a \mapsto a a_0$ is a bijection on $(A / hA)^\times$, we have
+    \[
+    \sum_{a \in (A / hA)^\times} \chi(a) \overline{\psi(a)} = \sum_{a \in (A / hA)^\times} \chi(a a_0) \overline{\psi(a a_0)} = \chi(a_0)\overline{\psi(a_0)}\sum_{a \in (A / hA)^\times} \chi(a) \overline{\psi(a)}
+    \]
+    and $\chi(a_0) \overline{\psi(a_0)} \ne 1$ implies that the sum is zero.
+\end{proof}
+
+\begin{exercise}
+    Prove \eqref{eqn:dirichlet-orthogonality2}.\footnote{Hint: When $a \not\equiv b \pmod{h}$, there exists $\chi$ such that $\chi(a) \ne \chi(b)$.}
+\end{exercise}
+
+\begin{definition}
+    For a Dirichlet character $\chi$ modulo $h$, we define the \emph{Dirichlet L-function} of $\chi$ as
+    \begin{equation}
+        L(s, \chi) = \sum_{\substack{0 \ne f \in A \\ f\text{ monic}}} \frac{\chi(f)}{|f|^s}
+        \label{eqn:dirichlet-l-function}
+    \end{equation}
+\end{definition}
+
+Using orthogonality, we can show that Dirichlet L-functions for nontrivial characters are simply polynomials in $p^{-s}$.
+\begin{proposition}
+    \label{prop:dirichlet-l-function-poly}
+    Let $\chi$ be a nontrivial Dirichlet character modulo $h$.
+    Then the Dirichlet L-function $L(s, \chi)$ is a polynomial in $p^{-s}$ of degree at most $\deg(h) - 1$.
+\end{proposition}
+\begin{proof}
+    Define
+    \begin{equation}
+        A(n, \chi) = \sum_{\substack{\deg f = n \\ f\text{ monic}}} \chi(f)
+    \end{equation}
+    so that
+    \begin{equation}
+        L(s, \chi) = \sum_{n = 0}^{\infty} A(n, \chi) p^{-ns}
+    \end{equation}
+    Then our goal reduces to showing that $A(n, \chi) = 0$ for all $n \geq \deg(h)$.
+    If $\deg(f) = n$, it can be unique written as $f = g h + r$ where $\deg(r) < \deg(h)$ or $r = 0$, and $\deg(g) = n - \deg(h)$.
+    For each $r$, we have $p^{n - \deg(h)}$ possibilities for $g$, and $\chi(f) = \chi(r)$.
+    Therefore, we have
+    \[
+    A(n, \chi) = p^{n - \deg (h)}\sum_{\deg(r) < \deg(h)} \chi(r) = p^{n - \deg (h)} \sum_{r \in A / hA} \chi(r) = 0
+    \]
+    where the summation is zero by the orthogonality of Dirichlet characters \eqref{eqn:dirichlet-orthogonality1} ($\chi$ is nontrivial).
+\end{proof}
+
+\begin{exercise}
+    Is it always true that $A(\deg(h) - 1, \chi) \ne 0$, i.e. the degree of $L(s, \chi)$ is exactly $\deg(h) - 1$?
+    If not, give a counterexample.
+\end{exercise}
+
+Since $\chi$ is multiplicative, Dirichlet $L$-function admits Euler product formula:
+\begin{proposition}
+    \label{prop:dirichlet-l-function-poly-euler}
+    Let $\chi$ be a Dirichlet character modulo $h$.
+    Then we have
+    \begin{equation}
+        L(s, \chi) = \prod_{P \nmid h} (1 - \chi(P) |P|^{-s})^{-1}
+    \end{equation}
+    where $P$ runs over all irreducible monic polynomials not dividing $h$.
+\end{proposition}
+
+\begin{exercise}
+    Prove Proposition \ref{prop:dirichlet-l-function-poly-euler}.
+\end{exercise}
+
+\begin{example}
+    \label{ex:dirichlet-l-function}
+    Consider the Example \ref{ex:dirichlet-character1} with $p = 3$ and $h(T) = T$.
+    By Proposition \ref{prop:dirichlet-l-function-poly}, $L(s, \chi)$ is a polynomial of degree at most $0$, i.e. a constant.
+    One can directly check that $A(0, \chi) = 1$\footnote{2 is not monic!}, hence $L(s, \chi) = 1$.
+\end{example}
+
+\begin{example}
+    Consider the Example \ref{ex:dirichlet-character2} with $p = 2$ and $h(T) = T^2 + T + 1$.
+    By Proposition \ref{prop:dirichlet-l-function-poly}, $L(s, \chi)$ is a polynomial of degree at most $1$.
+    One can directly check that $A(0, \chi) = 1$ and $A(1, \chi) = \zeta_3 + \zeta_3^2 = -1$, hence $L(s, \chi) = 1 - 2^{-s}$.
+\end{example}
+
+When $\chi = \chi_0$ is the trivial Dirichlet character modulo $h$, the Euler factorization of $L(s, \chi_0)$ is almost the same as \eqref{eqn:euler-factorization-poly} except that we exclude the factor corresponding to $P$ with $P \mid h$, hence
+\begin{equation}
+    L(s, \chi_0) = \prod_{P \mid h} (1 - |P|^{-s}) \cdot \zeta_A(s) = \frac{\prod_{P \mid h} (1 - |P|^{-s})}{1 - p^{1 - s}}.
+    \label{eqn:dirichlet-l-function-chi0-euler}
+\end{equation}
+
+Our main goal is to prove $L(1, \chi) \ne 0$ for all nontrivial Dirichlet characters $\chi$, as in the integer case.
+We need the following lemma.
+\begin{lemma}
+    Let $\chi$ vary over all Dirichlet characters modulo $h$.
+    Then, for each irreducible polynomial $P$ not dividing $h$, there exist positive integers $f_P$ and $g_P$ such that $f_P g_P = \phi(h)$ and
+    \begin{equation}
+        \prod_{\chi \in X_h} L(s, \chi) = \prod_{P \nmid h} (1 - |P|^{-f_P s})^{-g_P}.
+        \label{eqn:dirichlet-l-function-prod-euler-factor}
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    For each $P \nmid h$, the map $\chi \mapsto \chi(P)$ gives a group homomorphism $X_h \to \bC^\times$.
+    Its image is a finite order subgroup of $\bC^\times$, and hence it is cyclic.
+    Let $f_P$ be the order of the image, and $g_P$ be the order of the kernel, so that $f_P g_P = \phi(h)$.
+    Then the $P$-th Euler factor of $\prod_\chi L(s, \chi)$ is given by
+    \[
+    \prod_{j=0}^{f_P - 1} (1 - \zeta_{f_P}^j |P|^{-s})^{-g_P} = (1 - |P|^{-f_P s})^{-g_P}.
+    \]
+    Here $\zeta_{f_P}$ is a primitive $f_P$-th root of unity.
+    Multiplying over all irreducible polynomials $P \nmid h$ gives us the desired formula.
+\end{proof}
+
+Using this, we can prove the nonvanishing result.
+\begin{lemma}
+    Suppose $\chi$ is a complex Dirichlet character modulo $h$, i.e. $\overline{\chi} \ne \chi$.
+    Then $L(1, \chi) \ne 0$.
+\end{lemma}
+\begin{proof}
+    Assume $L(1, \chi) = 0$.
+    Consider \eqref{eqn:dirichlet-l-function-prod-euler-factor} for $h$.
+    Among the factors of the LHS of \eqref{eqn:dirichlet-l-function-prod-euler-factor}, $L(s, \chi_0)$ has a simple pole at $s = 1$ and $L(s, \chi)$ has a zero at $s = 1$, so is $L(s, \overline{\chi})$.
+    Since $L(s, \chi)$ is regular (i.e. no pole) at $s = 1$ for all nontrivial character $\chi$, the LHS a zero at $s = 1$.
+    However, the RHS is positive for all $s > 1$; each Euler factor has positive coefficients as
+    \[
+    (1 - |P|^{-f_P s})^{-g_P} = \sum_{k \ge 0} \binom{g_P + k - 1}{g_P - 1} |P|^{-f_P k s}.
+    \]
+    By taking the limit as $s \to 1$, we get a contradiction.
+\end{proof}
+
+We need to be more careful about the case when $\chi$ is a real Dirichlet character modulo $h$, i.e. $\overline{\chi} = \chi$ (a quadratic character).
+\begin{lemma}
+    Suppose $\chi$ is a nontrivial real Dirichlet character modulo $h$.
+    Then $L(1, \chi) \ne 0$.
+\end{lemma}
+\begin{proof}
+    The main idea is to consider
+    \begin{equation}
+    \label{eqn:G}
+    G(s) = \frac{L(s, \chi_0) L(s, \chi)}{L(2s, \chi_0)} = \sum_{f} \frac{a(f)}{|f|^{s}}
+    \end{equation}
+    where $\chi_0$ is the trivial Dirichlet character modulo $h$.
+    The $P$-th Euler factor of $G(s)$ for $P \nmid h$ is
+    \[
+    \begin{cases}
+        \frac{1 + |P|^{-s}}{1 - |P|^{-s}} = 1 + 2 \sum_{k \ge 1} |P|^{-s} & \text{if }\chi(P) = 1 \\
+        1 & \text{if }\chi(P) = -1
+    \end{cases}
+    \]
+    so $G(s)$ has nonnegative coefficients, i.e. $a(f) \ge 0$ for all $f$.
+    One can rewrite \eqref{eqn:G} as
+    \begin{equation}
+        \frac{(1 - pu^2) L^\ast(u, \chi)}{1 - pu} = \sum_{n \ge 0} A(n) u^n,
+        \label{eqn:G2}
+    \end{equation}
+    where $u = p^{-s}$, $L^\ast(u, \chi) = L(s, \chi)$, and $A(n) = \sum_{\deg f = n} a(f)$.
+    By Proposition \ref{prop:dirichlet-l-function-poly}, $L^\ast(u, \chi)$ is a polynomial in $u$ (of degree at most 1).
+    Now, assume that $L(1, \chi) = 0$, i.e. $L^\ast(p^{-1}, \chi) = 0$.
+    Then $1 - pu$ divides $L^\ast(u, \chi)$ and the LHS of \eqref{eqn:G2} is a polynomial.
+    Thus RHS is also a polynomial, where all the coefficients are nonnegative since $a(f)$'s are.
+    However, the LHS has a zero $u = p^{1/2}$, which is implossible for polynomials with nonnegative coefficients.
+\end{proof}
+
+\begin{theorem}[Dirichlet's theorem for polynomials]
+    \label{thm:dirichlet-poly}
+    Let $h \in A$ be a monic polynomial of degree $d \ge 1$.
+    Let $a \in A$ be a polynomial such that $\gcd(a, h) = 1$.
+    Then the set of irreducible monic polynomials $f \in A$ such that $f \equiv a \pmod{h}$ has Dirichlet density $\frac{1}{\phi(h)} > 0$.
+    Especially, there are infinitely many such polynomials.
+\end{theorem}
+\begin{proof}
+    From Proposition \ref{prop:dirichlet-l-function-poly-euler} and $-\log(1 - x) = \sum_{k \ge 1} \frac{x^k}{k}$, we have
+    \begin{equation}
+        \log L(s, \chi) = - \sum_{P} \log\left(1 - \frac{\chi(P)}{|P|^{s}}\right) = \sum_{P} \frac{\chi(P)}{|P|^s} + \sum_{P, k \ge 2} \frac{\chi(P)^k}{k |P|^{ks}} = \sum_{P} \frac{\chi(P)}{|P|^s} + R(s, \chi)
+    \end{equation}
+    where $R(s, \chi)$ is bounded as $s \to 1$.
+    Now, multiplying $\overline{\chi(a)}$ and summing over $\chi$ gives
+    \begin{equation}
+        \sum_\chi \overline{\chi(a)} \log L(s, \chi) = \phi(h) \sum_{P \equiv a \pmod{h}} \frac{1}{|P|^s} + R(s)
+    \end{equation}
+    where $R(s) = \sum_\chi \overline{\chi(a)} R(s, \chi)$ is still remain bounded as $s \to 1$.
+    Dividing by $\sum_{P} 1 / |P|^{s}$ gives
+    \begin{equation}
+        \frac{\log L(s, \chi_0)}{\sum_{P} 1 / |P|^s} + \sum_{\chi \ne \chi_0} \overline{\chi(a)} \cdot \frac{\log L(s, \chi_0)}{\sum_{P} 1 / |P|^s} = \phi(h) \frac{\sum_{P \equiv a \pmod{h}} 1 / |P|^s}{\sum_{P} 1 / |P|^s} + \frac{R(s)}{\sum_{P} 1 / |P|^s}
+    \end{equation}
+    Using \eqref{eqn:dirichlet-l-function-chi0-euler} and $L(1, \chi) \ne 0$ for $\chi \ne \chi_0$, one can show that the first term of the LHS of the above equation converges to 1, while the other terms correspond to the nontrivial characters converges to 0, as $s \to 1$.
+    This gives the desired result.
+\end{proof}
+
+\begin{corollary}
+    Let $h \in A$ be a monic polynomial of degree $d \ge 1$.
+    For each $a \in A$ such that $\gcd(a, h) = 1$ and $n \ge 0$, consider the set of irreducible monic polynomials
+    \begin{equation}
+        S_n(a, h) := \{P \in A : P \equiv a\pmod{m}, \,\deg(P) = n\}.
+    \end{equation}
+    Then we have
+    \begin{equation}
+        S_n(a, h) = \frac{1}{\phi(h)} \frac{p^n}{n} + O\left(\frac{p^{n/2}}{n}\right).
+        \label{eqn:dirichlet-poly-count-deg}
+    \end{equation}
+\end{corollary}
+If we denote as $S_n$ for the set of irreducible monic polynomials of degree $n$, then \eqref{eqn:dirichlet-poly-count-deg} implies
+\[
+\lim_{n \to \infty} \frac{\# S_n(a, h)}{\# S_n} = \frac{1}{\phi(h)},
+\]
+i.e. the \emph{natural density} of $S_n(a, h)$ is $\frac{1}{\phi(h)}$.
+\begin{proof}
+    \textcolor{red}{(TODO: Show this)}
+    We will only sketch a proof, where the details can be found in \cite[p. 40, Theorem 4.8]{rosen2013number}.
+\end{proof}
+
+\begin{exercise}[{\cite[p. 43, Exercise 6]{rosen2013number}}]
+    Let $f_0(T) \in A$ be a polynomial of degree $d$ with a non-zero constant term.
+    Show that there are infinitely many irreducible monic polynomials $f(T) \in A$ whose first $m + 1$ terms coincide with $f_0(T)$.
+    What is the Dirichlet density of such irreducible polynomials?
+\end{exercise}
+
+
+\subsection{More precise formula and Chebyshev's bias}
+\label{sec:dirichlet-more-precise}
+
+Now we know that Dirichlet's theorem is true for polynomials, i.e.the irreducible polynomials are equidistributed in the congruence classes modulo $h$.
+In the previous section, we were able to prove an exact formula for the number of irreducible polynomials \eqref{eqn:counting_irred_poly_2}.
+Then it is natural to ask if we can also prove an exact formula for the number of irreducible polynomials in a given congruence class modulo $h$.
+We mainly work with the case when $p = 3$ and $h(T) = T$, but the same argument may generalizes to any prime $p$ and any polynomial $h$.
+
+For each $n$, let $a_{n,1}$ and $a_{n,2}$ be the number of irreducible monic polynomials of degree $n$ in $\bF_3[T]$ that are congruent to $1$ and $2$ modulo $T$, respectively.
+Our main goal is express the Dirichlet $L$-functions $L(s, \chi)$ and $L(s, \chi_0)$ in terms of $a_{n,1}$ and $a_{n,2}$, which eventually gives us the exact formulas for $a_{n,1}$ and $a_{n,2}$.
+Here $\chi_0$ is the trivial Dirichlet character modulo $T$, which is defined by $\chi_0(f) = 1$ for all $f \in A$ with $\gcd(f, T) = 1$.
+\begin{lemma}
+    Let $\chi$ be the Dirichlet character modulo $T$ defined in Example \ref{ex:dirichlet-character1}.
+    Then we have
+    \begin{equation}
+        1 = L(s, \chi) = \prod_{n \ge 1} (1 - 3^{-ns})^{-a_{n,1}} (1 + 3^{-ns})^{-a_{n,2}}
+        \label{eqn:dirichlet-l-function-chi}
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    The first equality is shown in Example \ref{ex:dirichlet-l-function}.
+    The second equality follows from the Euler factorization of $L(s, \chi)$.
+\end{proof}
+
+\begin{lemma}
+    Let $\chi_0$ be the trivial Dirichlet character modulo $T$.
+    Then we have
+    \begin{equation}
+        \frac{1 - 3^{-s}}{1 - 3^{1 - s}} = L(s, \chi_0) = \prod_{n \ge 1} (1 - 3^{-ns})^{-a_{n,1} -a_{n,2}}.
+        \label{eqn:dirichlet-l-function-chi0}
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Both of the equalities follow from Euler factorization of $L(s, \chi_0)$.
+    On the one hand, the Euler factorization of $L(s, \chi_0)$ is the same as \eqref{eqn:euler-factorization-poly} except that we exclude the factor corresponding to $T$, which is $(1 - 3^{-s})^{-1}$. This gives us the first equality.
+    On the other hand, grouping the factors by degree gives us the second equality.
+\end{proof}
+
+Now, we can divide \eqref{eqn:dirichlet-l-function-chi0} by \eqref{eqn:dirichlet-l-function-chi} to get
+\begin{align*}
+    \frac{1 - u}{1 - 3u} &= \prod_{n \ge 1} \left(\frac{1 + u^n}{1 - u^n}\right)^{a_{n,2}}.
+\end{align*}
+for $u = 3^{-s}$.
+By taking logarithmic derivative, we have
+\begin{align*}
+    -\frac{1}{1 - u} + \frac{3}{1 - 3u} &= -(1 + u + u^2 + \cdots) + (3 + 3^2 u + 3^3 u^2 + \cdots) \\
+    &= \sum_{n \ge 1} a_{n,2} \left(\frac{nu^{n-1}}{1 + u^n} + \frac{nu^{n-1}}{1 - u^n}\right) \\
+    &= \sum_{n \ge 1} 2 n a_{n,2} u^{n-1} (1 + u^{2n} + u^{4n} + \cdots)
+\end{align*}
+and hence
+\[
+\sum_{n \ge 1} (3^n - 1) u^n = \sum_{n \ge 1} 2 n a_{n,2} (u^n + u^{3n} + u^{5n} + \cdots) = \sum_{n \ge 1} \left(\sum_{\substack{d \mid n \\ n/d \text{ odd}}} 2 d a_{d,2}\right) u^n.
+\]
+By comparing the coefficients, we have
+\begin{equation}
+    \frac{3^n - 1}{2}  = \sum_{\substack{d \mid n \\ n/d \text{ odd}}} d a_{d,2}.
+\end{equation}
+By applying the Möbius inversion formula, we can express $a_{n,2}$ in terms of $n$:
+\begin{theorem}
+    We have
+    \begin{align}
+        a_{n,1} &= \frac{1}{2n} \left(\sum_{2 \nmid d \mid n} \mu(d) \cdot 3^{\frac{n}{d}} + 2 \sum_{2 \mid d \mid n} \mu(d) \cdot 3^{\frac{n}{d}} + \epsilon_n \right) \label{eqn:anp_formula}\\
+        a_{n,2} &= \frac{1}{2n} \left(\sum_{2 \nmid d \mid n} \mu(d) \cdot 3^{\frac{n}{d}} - \epsilon_n\right) \label{eqn:anm_formula}
+    \end{align}
+    where
+    \begin{equation}
+        \epsilon_n = \begin{cases}
+            1 & n = 2^k \text{ for some } k \ge 0 \\
+            0 & \text{otherwise}
+        \end{cases}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Equation \ref{eqn:anm_formula} follows from the above discussion, and \eqref{eqn:anp_formula} follows from the fact that $a_{n,1} + a_{n,2} = a_n$ where the formula for $a_n$ is given in \eqref{eqn:counting_irred_poly_2}.
+\end{proof}
+Not only this explains the exact number of irreducible polynomials in each congruence class modulo $T$, but also it shows that one of them is larger than the other, even if they are asymptotically equal as $n \to \infty$.
+\begin{corollary}
+    We have $a_{n,2} \ge a_{n,1}$ for all $n \ge 1$, and the equality holds if and only if $n$ is odd.
+\end{corollary}
+\begin{proof}
+    It is clear that $a_{n,1} = a_{n,2}$ when $n$ is odd.
+    For $n$ even, we have
+    \begin{align*}
+    a_{n,2} - a_{n,1} &= \frac{1}{n} \left(- \sum_{2 \mid d \mid n} \mu(d)\cdot 3^{\frac{n}{d}} - \epsilon_n\right) = \frac{1}{n} \left(-\sum_{d \mid \frac{n}{2}} \mu(2d) \cdot 3^{\frac{n}{2d}} - \epsilon_n\right) \\
+    &\ge \frac{1}{n} \left(3^{\frac{n}{2}} - 3^{\frac{n}{2} - 1} - \cdots - 3 - 1\right) > 0.
+    \end{align*}
+\end{proof}
+
+In other words, although $a_{n,1}$ and $a_{n,2}$ are asymptotically same as $n \to \infty$, one of them is always larger than or equal to the other.
+Such a \emph{bias} is oberved by Chebyshev for the primes congruent to $1$ and $3$ modulo $4$ \cite{chebyshev1853lettre}.
+Let $\pi(x;m,a)$ be the number of prime numbers $p \le x$ such that $p \equiv a \pmod{m}$.
+Chebyshev found that $\pi(x;4, 3) > \pi(x;4,1)$ occurs much more often than $\pi(x;4,1) > \pi(x;4,3)$.
+It might be even plausible to conjecture that the inequality is true for sufficiently large $x$.
+However, this turned out to be false:
+\begin{theorem}[{Littlewood \cite{littlewood1914distribution}}]
+    There are infinitely many $x$ such that $\pi(x;4,1) > \pi(x;4,3)$.
+    More precisely, we have
+    \[
+    \pi(x;4,1) - \pi(x;4,3) > \frac{1}{2} \frac{\sqrt{x}}{\log x} \log \log \log x
+    \]
+    for infinitely many $x$.
+\end{theorem}
+
+The second thing we can conjecture
+This turned out to be true for general modulus, \emph{under Riemann hypothesis}:
+\begin{theorem}[{Rubinstein--Sarnak \cite{rubinstein1994chebyshev}}]
+    
+\end{theorem}
+
+In case of polynomials, Cha \cite{cha2008chebyshev} proved that Chebyshev's bias still holds for odd characteristics, under certian assumption on the zeros of $L$-functions (\emph{Grand Simplicity Hypothesis, GSH}).
+For more story about Chebyshev's bias, see \cite{granville2006prime}.
+
+\begin{exercise}\sage
+    Reproduce Chebyshev's observation by plotting the graphs of $\pi(x;4,1)$ and $\pi(x;4,3)$.
+\end{exercise}
+
+\begin{exercise}
+    Adapt the same argument to the Example \ref{ex:dirichlet-character2}, where $p = 2$ and $h(T) = T^2 + T + 1$.
+    For each $a = 1, T, T + 1$, find formulas for the number of irreducible polynomials of degree $n$ in $\bF_2[T]$ that are congruent to $a$ modulo $h$.
+    Which is the largest and which is the smallest?\footnote{Hint: You may need to consider three $L$-functions $L(s, \chi)$, $L(s, \chi^2)$, and $L(s, \chi^3)$ where $\chi^3$ is the trivial Dirichlet character modulo $h$.}
+\end{exercise}
