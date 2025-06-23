@@ -46,18 +46,65 @@ He actually proved that they are evenly distributed across all congruence classe
     \delta(S) := \lim_{s \to 1^+} \frac{\sum_{p \in S} p^{-s}}{\sum_{p} p^{-s}}.
     \label{eqn:dirichlet-density}
 \end{equation}
+Note that the denominator $\sum_p p^{-s}$ goes to $\infty$ as $s \to 1^+$, which can be shown by Euler factorization:
+\[
+\log \zeta(s) = \log \prod_p (1 - p^{-s})^{-1} = \sum_p \log(1 - p^{-s})^{-1} = \sum_p \frac{1}{p^s} + \sum_{p, k \ge 2} \frac{1}{k p^{ks}} = \sum_p \frac{1}{p^s} + R(s)
+\]
+where $R(s)$ is bounded as $s \to 1^+$, and the claim follows from $\lim_{s \to 1^+} \zeta(s) = \infty$.
 This might be different from what you'd expect as a density, which is usually called \emph{natural density}:
 \begin{equation}
     \delta_{\mathrm{nat}}(S) := \lim_{n \to \infty} \frac{\#\{p \in S : p \le n\}}{\#\{p : p \le n\}}.
 \end{equation}
 
+Dirichlet proved the following theorem:
 \begin{theorem}[{Dirichlet \cite{dirichlet1837beweis}}]
+    \label{thm:dirichlet}
     For each $a, b$ with $\gcd(a, b) = 1$, there are infinitely many primes of the form $ak + b$.
-    Moreover, the Dirichlet density of such primes is $\frac{1}{\phi(a)}$, where $\phi$ is the Euler $\phi$-function.
+    Moreover, the Dirichlet density of such primes is $\frac{1}{\phi(a)}$, where $\phi$ is the Euler $\phi$-function.\footnote{In fact, natural density also exists and is equal to $\frac{1}{\phi(a)}$.}
 \end{theorem}
+The proof is often considered as a starting point of modern analytic number theory.
+It can be found in many places, and we will only give a sketch.
+For the historical point of view, see the article by Avigad and Morris \cite{avigad2014concept}.
 
-Proof can be found in many places, and we will only sketch the proof.
 The main idea is to use \emph{Dirichlet characters} and associated \emph{Dirichlet L-functions}.
+As a motivating example, let's consider the case when $a = 4$ and $b = 1$, which is already proved in Theorem \ref{thm:1m4-prime-infinite}.
+In this case, the Dirichlet's theorem states that
+\begin{equation}
+    \label{eqn:dirichlet-1m4}
+    \delta(\{p : p \equiv 1 \Mod{4}\}) = \lim_{s \to 1^+} \frac{\sum_{p \equiv 1 \pmod{4}} p^{-s}}{\sum_{p} p^{-s}} = \frac{1}{2}.
+\end{equation}
+From the previous discussion, one may expect to use the Dirichlet series
+\[
+L_1(s) = \sum_{n \equiv 1 \pmod{4}} \frac{1}{n^s} = \frac{1}{1^s} + \frac{1}{5^s} + \frac{1}{9^s} + \frac{1}{13^s} + \cdots.
+\]
+However, this series is not good enough, since it does not admit Euler factorization.
+Similarly, the series
+\[
+L_3(s) = \sum_{n \equiv 3 \pmod{4}} \frac{1}{n^s} = \frac{1}{3^s} + \frac{1}{7^s} + \frac{1}{11^s} + \frac{1}{15^s} + \cdots
+\]
+is not the right choice.
+However, their sum and differences are nice: we have
+\begin{align}
+    L_1(s) + L_3(s) &= \sum_{n \equiv 1 \pmod{4}} \frac{1}{n^s} = \prod_{p \ne 2} (1 - p^{-s})^{-1} = (1 - 2^{-s})\zeta(s) \label{eqn:L1p3} \\
+    L_1(s) - L_3(s) &= \frac{1}{1^s} - \frac{1}{3^s} + \frac{1}{5^s} - \frac{1}{7^s} + \cdots = \prod_{p \equiv 1 \pmod{4}} (1 - p^{-s})^{-1} \prod_{p \equiv 3 \pmod{4}} (1 + p^{-s})^{-1} \label{eqn:L1m3}
+\end{align}
+Especially, taking logarithm of \eqref{eqn:L1m3} gives
+\[
+\log (L_1(s) - L_3(s)) = \sum_{p \equiv 1 \pmod{4}} \frac{1}{p^s} - \sum_{p \equiv 3 \pmod{4}} \frac{1}{p^s} + R(s)
+\]
+where $R(s)$ is bounded as $s \to 1^+$.
+\emph{Assuming $\lim_{s \to 1^+} L_1(s) - L_3(s) \ne 0$}, we can conclude that the Dirichlet density of primes $p \equiv 1 \pmod{4}$ and primes $p \equiv 3 \pmod{4}$ are the same as $1/2$.
+
+The series $L_1(s) - L_3(s)$ is a special case of \emph{Dirichlet L-functions}, associated to a \emph{Dirichlet character}: for the function $\chi: \bZ \to \bC$ defined by
+\begin{equation}
+    \chi(n) = \chi_{-4}(n) := \begin{cases}
+        1 & n \equiv 1 \pmod{4} \\
+        -1 & n \equiv 3 \pmod{4} \\
+        0 & \text{otherwise}
+    \end{cases}
+\end{equation}
+we have $L_1(s) - L_3(s) = \sum_{n \ge 1} \chi(n) n^{-s}$.
+More generally,
 \begin{definition}
     A \emph{Dirichlet character modulo $a$} is a function $\chi: \bZ \to \bC$ such that:
     \begin{enumerate}
@@ -68,10 +115,18 @@ The main idea is to use \emph{Dirichlet characters} and associated \emph{Dirichl
 \end{definition}
 Note that this induces a group homomorphism $(\bZ / a\bZ)^\times \to \bC^\times$, and conversely, any group homomorphism $\chi: (\bZ / a\bZ)^\times \to \bC^\times$ can be extended to a Dirichlet character modulo $a$.
 
+For general modulus, we consider all Dirichlet characters modulo $a$ and the associated Dirichlet L-functions, and consider the linear combination
+\[
+\sum_{\chi} \overline{\chi(b)} \log L(s, \chi) = \phi(a) \sum_{p \equiv b \pmod{a}} \frac{1}{p^s} + R(s)
+\]
+where $R(s)$ is bounded as $s \to 1^+$.
+Equality follows from the \emph{orthogonality} of Dirichlet characters (see Theorem \ref{thm:dirichlet-orthogonality-poly} for the polynomial case).
+Then Theorem \ref{thm:dirichlet} follows once we prove $L(1, \chi) \ne 0$ for all nontrivial $\chi$, which is the main step of Dirichlet's proof.
+
 \begin{exercise}
     In this exercise, we will prove 
     \begin{equation}
-        L(1, \chi_{-4}) = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots = \frac{\pi}{4}.
+        L(1, \chi_{-4}) = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots = \frac{\pi}{4} \ne 0.
     \end{equation}
     \begin{enumerate}
         \item Without computing the actual value, show that the series converges to a positive number.
@@ -94,8 +149,9 @@ Note that this induces a group homomorphism $(\bZ / a\bZ)^\times \to \bC^\times$
 \subsection{Dirichlet's theorem on irreducible polynomials}
 \label{sec:dirichlet-polynomials}
 
-Similar as the integer case, we will define and use Dirichlet characters to prove the polynomial analogue of Dirichlet's theorem.
-
+We will follow the same idea as in the integer case to prove the polynomial analogue of Dirichlet's theorem.
+The notable difference is that proving $L(1, \chi) \ne 0$ for nontrivial $\chi$ is much easier, since the $L$-functions $L(s, \chi)$ are simply polynomials in $p^{-s}$.
+We can define Dirichlet character as you expect.
 \begin{definition}
     \label{def:dirichlet-character-poly}
     Let $h \in A$ be a (monic) polynomial of degree $d \geq 1$.
@@ -144,7 +200,7 @@ We will denote the set of all Dirichlet characters modulo $h$ by $X_h$.
 \end{exercise}
 
 \begin{theorem}[Orthogonality]
-    \label{thm:dirichlet-orthogonality}
+    \label{thm:dirichlet-orthogonality-poly}
     Let $\chi, \psi$ be Dirichlet characters modulo $h$ and $a, b \in A$ be such that $\gcd(a, h) = \gcd(b, h) = 1$.
     Then we have
     \begin{enumerate}
@@ -296,6 +352,7 @@ Using this, we can prove the nonvanishing result.
 
 We need to be more careful about the case when $\chi$ is a real Dirichlet character modulo $h$, i.e. $\overline{\chi} = \chi$ (a quadratic character).
 \begin{lemma}
+    \label{lem:dirichlet-nonvanishing-real}
     Suppose $\chi$ is a nontrivial real Dirichlet character modulo $h$.
     Then $L(1, \chi) \ne 0$.
 \end{lemma}
@@ -327,6 +384,11 @@ We need to be more careful about the case when $\chi$ is a real Dirichlet charac
     However, the LHS has a zero $u = p^{1/2}$, which is implossible for polynomials with nonnegative coefficients.
 \end{proof}
 
+\begin{exercise}
+    Let $\chi$ be a nontrivial real Dirichlet character modulo $h \in A$.
+    Prove that there exists $c \in \bF_p$ such that $\chi(T + c) = 1$.\footnote{Hint: This is equivalent to $L(1, \chi) \ne 0$. In other words, proving this without using the nonvanishing result would give a new proof of Lemma \ref{lem:dirichlet-nonvanishing-real}.}
+\end{exercise}
+
 \begin{theorem}[Dirichlet's theorem for polynomials]
     \label{thm:dirichlet-poly}
     Let $h \in A$ be a monic polynomial of degree $d \ge 1$.
@@ -357,7 +419,7 @@ We need to be more careful about the case when $\chi$ is a real Dirichlet charac
     Let $h \in A$ be a monic polynomial of degree $d \ge 1$.
     For each $a \in A$ such that $\gcd(a, h) = 1$ and $n \ge 0$, consider the set of irreducible monic polynomials
     \begin{equation}
-        S_n(a, h) := \{P \in A : P \equiv a\pmod{m}, \,\deg(P) = n\}.
+        S_n(a, h) := \{P \in A : P \equiv a\Mod{m}, \,\deg(P) = n\}.
     \end{equation}
     Then we have
     \begin{equation}
@@ -371,8 +433,8 @@ If we denote as $S_n$ for the set of irreducible monic polynomials of degree $n$
 \]
 i.e. the \emph{natural density} of $S_n(a, h)$ is $\frac{1}{\phi(h)}$.
 \begin{proof}
-    \textcolor{red}{(TODO: Show this)}
-    We will only sketch a proof, where the details can be found in \cite[p. 40, Theorem 4.8]{rosen2013number}.
+    Proof can be found in \cite[p. 40, Theorem 4.8]{rosen2013number}.
+    Note that it uses Riemann hypothesis for $L(s, \chi)$, which will be covered later.
 \end{proof}
 
 \begin{exercise}[{\cite[p. 43, Exercise 6]{rosen2013number}}]
@@ -489,10 +551,12 @@ The second thing we can guess is that the inequality $\pi(x;4,3) > \pi(x;4,1)$ m
 However, this is also false; in fact, Rubinstein and Sarnak \cite{rubinstein1994chebyshev} showed that the \emph{natural density} of the set $\{x : \pi(x;4,3) > \pi(x;4,1)\}$ does not exist.
 Instead, they showed that \emph{logarithmic density} exists and very close to $1$.
 \begin{theorem}[{Rubinstein--Sarnak \cite{rubinstein1994chebyshev}}]
-    
+    \[
+    \lim_{X \to \infty} \frac{1}{\log X} \sum_{\substack{x \le X \\ \pi(x;4,3) > \pi(x;4,1)}} \frac{1}{x} = 0.9959\dots.
+    \]
 \end{theorem}
 
-In case of polynomials, Cha \cite{cha2008chebyshev} proved that Chebyshev's bias still holds for odd characteristics, under certain assumption on the zeros of $L$-functions (\emph{Grand Simplicity Hypothesis, GSH}).
+In the case of polynomials, Cha \cite{cha2008chebyshev} proved that Chebyshev's bias still holds for odd characteristics, under certain assumption on the zeros of $L$-functions (\emph{Grand Simplicity Hypothesis, GSH}).
 For more story about Chebyshev's bias, see the excellent article of Granville and Martin \cite{granville2006prime}.
 
 \begin{exercise}\sage
