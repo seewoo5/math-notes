@@ -12,6 +12,7 @@ Of course, we will also study the polynomial analogue of Dirichlet's theorem on 
 \subsection{Dirichlet's theorem on primes}
 \label{sec:dirichlet-primes}
 
+Before we talk about denisties of primes in arithmetic progressions $4k + 1$ and $4k + 3$, let's first prove that there are infinitely many primes in each of these two congruence classes, by modifying the proof of Euclid's theorem on the infinitude of primes.
 \begin{theorem}
     \label{thm:1m4-prime-infinite}
     There are infinitely many primes of the form $4k + 1$.
@@ -26,6 +27,68 @@ Of course, we will also study the polynomial analogue of Dirichlet's theorem on 
 
 \begin{exercise}
     Prove that there are infinitely many primes of the form $4k + 3$.\footnote{Hint: Assume there are finitely many, $p_1, \dots, p_r$. Now consider $N = 4p_1 p_2 \dots p_r + 3$. Show that there is at least one prime $p$ dividing $N$ such that $p \equiv 3 \pmod{4}$.}
+\end{exercise}
+
+One may ask if such an argument can be used to prove that there are infinitely many primes in any arithmetic progression $ak + b$ for $a > 0$ and $\gcd(a, b) = 1$, by choosing the polynomial defining $N$ carefully.
+Unfortunately, this is not the case, and it turns out that such \emph{Euclidean proof} only exists in very special cases.
+\begin{theorem}[{Schur \cite{schur1912uber}, Murty \cite{murty1988primes}}]
+    \emph{Euclidean proof} exists for the arithmetic progression $ak + b$ if and only if $b^2 \equiv 1 \pmod{a}$.
+\end{theorem}
+ 
+However, one can find that the primes of the form $ak + b$ for different $a, b$ (with $\gcd(a, b) = 1$) seems to be infinitely many, and also seems to be evenly distributed across all congruence classes.
+\begin{exercise}\sage
+    Count the number of primes $p < 10^6$ in the arithmetic progressions $8k + b$ for $b = 1, 3, 5, 7$.
+\end{exercise}
+
+Dirichlet \cite{dirichlet1837beweis} proved that this is indeed true for any arithmetic progression $ak + b$ with $\gcd(a, b) = 1$.
+He actually proved that they are evenly distributed across all congruence classes modulo $a$ in the following sense: for a subset $S$ of positive integers, the Dirichlet density of $S$ is defined as the limit (if exists)
+\begin{equation}
+    \delta(S) := \lim_{s \to 1^+} \frac{\sum_{p \in S} p^{-s}}{\sum_{p} p^{-s}}.
+    \label{eqn:dirichlet-density}
+\end{equation}
+This might be different from what you'd expect as a density, which is usually called \emph{natural density}:
+\begin{equation}
+    \delta_{\mathrm{nat}}(S) := \lim_{n \to \infty} \frac{\#\{p \in S : p \le n\}}{\#\{p : p \le n\}}.
+\end{equation}
+
+\begin{theorem}[{Dirichlet \cite{dirichlet1837beweis}}]
+    For each $a, b$ with $\gcd(a, b) = 1$, there are infinitely many primes of the form $ak + b$.
+    Moreover, the Dirichlet density of such primes is $\frac{1}{\phi(a)}$, where $\phi$ is the Euler $\phi$-function.
+\end{theorem}
+
+Proof can be found in many places, and we will only sketch the proof.
+The main idea is to use \emph{Dirichlet characters} and associated \emph{Dirichlet L-functions}.
+\begin{definition}
+    A \emph{Dirichlet character modulo $a$} is a function $\chi: \bZ \to \bC$ such that:
+    \begin{enumerate}
+        \item $\chi(n + a) = \chi(n)$ for all $n \in \bZ$.
+        \item $\chi(mn) = \chi(m)\chi(n)$ for all $m, n \in \bZ$.
+        \item $\chi(n) = 0$ if and only if $\gcd(n, a) > 1$.
+    \end{enumerate}
+\end{definition}
+Note that this induces a group homomorphism $(\bZ / a\bZ)^\times \to \bC^\times$, and conversely, any group homomorphism $\chi: (\bZ / a\bZ)^\times \to \bC^\times$ can be extended to a Dirichlet character modulo $a$.
+
+\begin{exercise}
+    In this exercise, we will prove 
+    \begin{equation}
+        L(1, \chi_{-4}) = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots = \frac{\pi}{4}.
+    \end{equation}
+    \begin{enumerate}
+        \item Without computing the actual value, show that the series converges to a positive number.
+        \item Consider the polynomial
+        \[
+        f_n(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \cdots + (-1)^n \frac{x^{2n + 1}}{2n + 1}.
+        \]
+        Show that $\lim_{n \to \infty} f_n(1) = L(1, \chi_{-4})$ and
+        \[
+        f_n'(x) = \frac{1 - (-x^2)^{n+1}}{1 + x^2}.
+        \]
+        \item By integrating $f_n'(x)$ from $0$ to $1$, show that
+        \[
+        f_n(1) = \int_0^1 f_n'(t) \dd t = \int_0^1 \frac{\dd t}{1 + t^2} - \int_0^1 \frac{(-t^2)^{n+1}}{1 + t^2} \dd t = \frac{\pi}{4} - \int_0^1 \frac{(-t^2)^{n+1}}{1 + t^2} \dd t.
+        \]
+        Now use dominated convergence theorem to conclude the proof.
+    \end{enumerate}
 \end{exercise}
 
 \subsection{Dirichlet's theorem on irreducible polynomials}
@@ -422,14 +485,15 @@ However, this turned out to be false:
     for infinitely many $x$.
 \end{theorem}
 
-The second thing we can conjecture
-This turned out to be true for general modulus, \emph{under Riemann hypothesis}:
+The second thing we can guess is that the inequality $\pi(x;4,3) > \pi(x;4,1)$ might be true for almost all $x$, i.e. the density of the set $\{x : \pi(x;4,3) > \pi(x;4,1)\}$ is $1$.
+However, this is also false; in fact, Rubinstein and Sarnak \cite{rubinstein1994chebyshev} showed that the \emph{natural density} of the set $\{x : \pi(x;4,3) > \pi(x;4,1)\}$ does not exist.
+Instead, they showed that \emph{logarithmic density} exists and very close to $1$.
 \begin{theorem}[{Rubinstein--Sarnak \cite{rubinstein1994chebyshev}}]
     
 \end{theorem}
 
-In case of polynomials, Cha \cite{cha2008chebyshev} proved that Chebyshev's bias still holds for odd characteristics, under certian assumption on the zeros of $L$-functions (\emph{Grand Simplicity Hypothesis, GSH}).
-For more story about Chebyshev's bias, see \cite{granville2006prime}.
+In case of polynomials, Cha \cite{cha2008chebyshev} proved that Chebyshev's bias still holds for odd characteristics, under certain assumption on the zeros of $L$-functions (\emph{Grand Simplicity Hypothesis, GSH}).
+For more story about Chebyshev's bias, see the excellent article of Granville and Martin \cite{granville2006prime}.
 
 \begin{exercise}\sage
     Reproduce Chebyshev's observation by plotting the graphs of $\pi(x;4,1)$ and $\pi(x;4,3)$.
