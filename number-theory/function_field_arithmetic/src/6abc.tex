@@ -1,0 +1,143 @@
+\section{It is as easy as ABC}
+\label{sec:abc}
+
+Infamous Fermat's Last Theorem (FLT) states that there are no positive integer solutions to the equation
+\[
+x^n + y^n = z^n
+\]
+for any integer \( n \ge 2 \). The theorem was famously proven by Andrew Wiles in 1994, using sophisticated techniques from algebraic geometry and number theory.
+See the great expository book by Cornell, Silverman, and Stevens \cite{cornell2013modular} for a detailed account of the proof.
+
+As you expect, the goal of this section is to prove a polynomial analogue of FLT.
+Indeed, we will show a stronger result, named \emph{Mason--Stothers theorem} or \emph{Polynomial ABC} \cite{mason1984diophantine,stothers1981polynomial}.
+The proof given in this section is based on the elementary argument by Snyder \cite{snyder2000alternate}, but we will also give a \emph{geometric} proof in the next section.
+
+\subsection{Polynomial FLT}
+\label{sec:abc-flt}
+
+Let \( k \) be a field and \( k[T] \) the polynomial ring over \( k \).
+We have the following version of FLT:
+
+\begin{theorem}[Polynomial FLT]
+\label{thm:abc-flt}
+Let \( k \) be a field and \( n \geq 3 \) an integer.
+Let \( f, g, h \in k[T] \) be mutually coprime polynomials such that not all derivatives \( f', g', h' \) are zero.
+Then \( f^n + g^n \ne h^n \).
+\end{theorem}
+Note that we have solutions for $n \le 2$, e.g. $(1 - T^2)^2 + (2T)^2 = (1 + T^2)^2$.
+Also, when $k$ is of characteristic $0$, $f' = 0$ is equivalent to $f$ being a constant polynomial.
+However, there is a nonconstant solution when $k$ is of characteristic $p$, e.g. $1^p + T^p = (1 + T)^p$ for $n = p$.
+
+The main idea of a proof is to use ``derivatives'' of polynomials.
+\begin{proof}
+    Let's assume that \( f(T)^n + g(T)^n = h(T)^n \).
+    Differentiating both sides gives
+    \[
+    f(T)^{n-1} f'(T) + g(T)^{n-1} g'(T) - h(T)^{n-1} h'(T) = 0.
+    \]
+    By multiplying $h(T)$ on the both sides, we can rewrite this as
+    \begin{align*}
+        f^{n-1} f' h + g^{n-1} g' h - h^n h' &= f^{n-1} f' h + g^{n-1} g' h - (f^n + g^n) h' = 0\\
+        \Leftrightarrow f^{n-1} (f'h - fh') &= -g^{n-1} (g'h - gh').
+    \end{align*}
+    Since $f$ and $g$ are coprime, this implies that $f^{n-1}$ divides $g'h - gh'$.
+    Similarly, we can show that $g^{n-1}$ divides $h'f - hf'$ and $h^{n-1}$ divides $f'g - fg'$.
+    Also, we have \( gh' - g'h \ne 0 \); otherwise, \( gh' = g'h \) and coprimality of \( g, h \) implies that \( g \mid g' \), so \( g' = 0 \) from \( \deg (g') < \deg g \).
+    Without loss of generality, assume that $f$ has the largest degree among the three polynomials.
+    Then
+    \[
+    2 \deg f \le (n-1) \deg f = \deg f^{n-1} \le \deg (g'h - gh') \le \deg g' + \deg h - 1 \le 2 \deg f - 1,
+    \]
+    which is a contradiction.
+\end{proof}
+
+Compared to the Wiles and Taylor's proof of original FLT \cite{wiles1995modular,taylor1995ring}, the proof of Theorem \ref{thm:abc-flt} is very elementary and short.
+However, the above argument cannot be applied to the original FLT, since we don't have a good notion of derivatives for integers.
+
+\begin{exercise}
+    \begin{enumerate}
+        \item Show that the only map \( D: \bZ \to \bZ \) such that \( D(m + n) = D(m) + D(n) \) (additive) and \( D(mn) = mD(n) + nD(m) \) (Leibniz rule) is the zero map.
+        \item If we give up the additivity condition, then show that there is a nonzero map \( D: \bZ \to \bZ \) such that \( D(mn) = mD(n) + nD(m) \). Such a map is called an \emph{arithmetic derivative}, which is used in \cite{pasten2024derivation} to given an alternative proof of infinitude of primes.
+    \end{enumerate}
+\end{exercise}
+
+\subsection{Polynomial ABC}
+\label{sec:abc-abc}
+
+In fact, we can prove more general result called \emph{Mason--Stothers theorem} or \emph{Polynomial ABC} \cite{mason1984diophantine,stothers1981polynomial,snyder2000alternate}.
+Before stating the theorem, we introduce the original ABC conjecture for integers first.
+For \( n \in \bZ \), we define the \emph{radical} of \( n \) as the product of distinct prime factors of \( n \): \(\rad(n) = \prod_{p \mid n} p\).
+Oesterl\'e and Masser conjectured the following:
+\begin{conjecture}[ABC conjecture]
+\label{conj:abc}
+For any \( \epsilon > 0 \), there exists a constant \( K = K_\epsilon > 0 \) such that
+\begin{equation}
+\label{eqn:abc}
+c < K \cdot \rad(abc)^{1 + \epsilon}
+\end{equation}
+for any coprime integers \( a, b, c \) satisfying \( a + b = c \).
+\end{conjecture}
+Compared to $n$, $\rad(n)$ is small when $n$ can be divisible by high powers of primes.
+In other words, to violate \eqref{eqn:abc}, we need to have $a, b, c$ to be divisible by many distinct primes so that $\rad(abc)$ is small.
+It means that the conjecture is saying that the sum of two coprime integers that are divisible by high powers of primes is not divisible by high powers anymore.
+If we define the \emph{quality} of numbers \( a, b, c \) as
+\[
+q(a, b, c) := \frac{\log c}{\log \rad(abc)},
+\]
+then the current record for the highest quality is achieved by
+\[
+(a, b, c) = (2, 3^{10} \cdot 109, 23^5), \quad q(a, b, c) \approx 1.6299.
+\]
+There are numerous applications of the conjecture, which can be found in the \href{https://en.wikipedia.org/wiki/Abc_conjecture}{Wikipedia page}.
+Here we introduce few of them, where some of them are proven (by different methods) or follows from the conjecture.
+The simplest example is the following weak version of FLT:
+\begin{theorem}[Weak FLT]
+    Assume Conjecture \ref{conj:abc} holds.
+    If \( n \ge 4 \), then there are finitely many coprime integers \( x, y, z \) such that \( x^n + y^n = z^n \).
+\end{theorem}
+\begin{proof}
+    Take $\epsilon = 1/4$ and \( (a, b, c) = (x^n, y^n, z^n) \) in Conjecture \ref{conj:abc}.
+    Then there exists a constant \( K > 0 \) such that
+    \[
+    z^n < K \cdot \rad(x^n y^n z^n)^{5 / 4} = K \cdot \rad(xyz)^{5 / 4} \le K \cdot (xyz)^{5 / 4} < K \cdot z^{15 / 4}
+    \]
+    and there are only finitely many \( z \) satisfying this inequality.
+\end{proof}
+
+Another example is the Roth's theorem on Diophantine approximation.
+\begin{theorem}[Roth \cite{roth1955rational}]
+    Let $\alpha$ be an irrational algebraic number.
+    Then the inequality
+    \[
+    \left| \alpha - \frac{p}{q} \right| < \frac{1}{q^{2 + \epsilon}}
+    \]
+    can have only finitely many solutions in coprime integers \( p, q \) for any \( \epsilon > 0 \).
+\end{theorem}
+\begin{proof}
+    Bombieri \cite{bombieri1994roth} gave a proof of Roth's theorem assuming Conjecture \ref{conj:abc}.
+    In fact, he proved a stronger version of a Roth's theorem, which can be stated as an inequality on heights of algebraic numbers.
+    See Frankenhuysen's note \cite{frankenhuysen} for a detailed account of the proof.
+\end{proof}
+
+The last example is the weak version of Hall's conjecture, which is about the difference of a cube and a square.
+\begin{theorem}[Weak Hall's conjecture \cite{hall1971diophantine}]
+    \label{thm:abc-hall}
+    Assume Conjecture \ref{conj:abc} holds.
+    For any \( \epsilon > 0 \), there exists a constant \( K = K_\epsilon > 0 \) such that \( | y^2 - x^3 | > K \cdot x^{1 / 2 - \epsilon} \) for any  integers \( x, y \) such that \( y^2 - x^3 \ne 0 \).
+\end{theorem}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:abc-hall}.
+    Answer can be found in \cite{schmidt2006diophantine}.
+\end{exercise}
+
+\begin{exercise}
+    For any $K > 0$, prove that there exist infinitely many coprime integers \( a, b, c \) such that \( a + b = c \) and \( c > K \cdot \rad(abc) \).
+    In other words, the condition \( \epsilon > 0 \) in Conjecture \ref{conj:abc} is necessary.\footnote{Hint: Consider \( (a, b, c) = (1, 2^{p(p-1)n} - 1, 2^{p(p-1)n})\) for large prime \( p \) and integer \( n \). Prove that \( b \) is divisible by \( p^2 \).}
+\end{exercise}
+
+How about polynomials?
+
+
+
+\newpage
