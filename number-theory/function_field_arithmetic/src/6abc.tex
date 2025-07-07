@@ -131,13 +131,91 @@ The last example is the weak version of Hall's conjecture, which is about the di
     Answer can be found in \cite{schmidt2006diophantine}.
 \end{exercise}
 
+See Granville and Tucker's survey \cite{granville2002s} for more applications of the conjecture.
+
 \begin{exercise}
     For any $K > 0$, prove that there exist infinitely many coprime integers \( a, b, c \) such that \( a + b = c \) and \( c > K \cdot \rad(abc) \).
     In other words, the condition \( \epsilon > 0 \) in Conjecture \ref{conj:abc} is necessary.\footnote{Hint: Consider \( (a, b, c) = (1, 2^{p(p-1)n} - 1, 2^{p(p-1)n})\) for large prime \( p \) and integer \( n \). Prove that \( b \) is divisible by \( p^2 \).}
 \end{exercise}
 
-How about polynomials?
+Let's move on to the polynomial analogue of Conjecture \ref{conj:abc}.
+As you expect, the radical of a polynomial \( f \in k[T] \) is defined as the product of distinct irreducible monic factors of \( f \).
+The polynomial version of the ABC conjecture is now a theorem by Mason and Stothers \cite{mason1984diophantine,stothers1981polynomial}.
 
+\begin{theorem}[Mason--Stothers theorem]
+    Let \( k \) be a field and \( f, g, h \in k[T] \) be mutually coprime polynomials such that \( f + g + h = 0 \) and not all of \( f', g', h' \) are zero.
+    Then
+    \begin{equation}
+        \label{eqn:abc-poly}
+        \max \{ \deg f, \deg g, \deg h \} \le \deg \rad(f g h) - 1.
+    \end{equation}
+\end{theorem}
 
+We follow the proof of Snyder \cite{snyder2000alternate}, which is similar to the proof of Theorem \ref{thm:abc-flt}.
+The main step of the proof is the following lemma:
+\begin{lemma}
+    For any nonzero \( f \in k[T] \), \( f / \rad(f) \) divides \( f' \).
+\end{lemma}
+\begin{proof}
+    This follows from factorization of \( f \) into irreducible monic factors.
+    If we write \( f = \prod_{i=1}^m f_i^{e_i} \) where \( f_i \) are distinct irreducible monic polynomials and \( e_i \ge 1 \), then
+    \begin{align*}
+        f' &= \sum_{i=1}^m e_i f_i^{e_i - 1} f_i' \prod_{j \ne i} f_j^{e_j} \\
+        \frac{f}{\rad(f)} &= \prod_{i=1}^m f_i^{e_i - 1}
+    \end{align*}
+    so \( f / \rad(f) \) divides \( f' \).
+\end{proof}
+\begin{proof}[Proof of Mason--Stothers theorem]
+    For two polynomials \( f, g \in k[T] \), we define the \emph{Wronskian} \( W(f, g) \) as \( W(f, g) = f g' - g f' \).
+    Then \( f + g + h = 0 \) implies that all three Wronskians \( W(f, g), W(g, h), W(h, f) \) are the same:
+    \begin{align*}
+        W(f, g) = f g' - g f' = (- g - h) g' - g (-g' -h') = gh' - g'h = W(g, h).
+    \end{align*}
+    Let $W$ be the common Wronskian of \( f, g, h \).
+    If \( W = 0\), then \( fg' = f'g \) and \( \gcd(f, g) = 1 \) gives \( f \mid f' \) and \(f' = 0\), and similarly \( g' = 0 \) and \( h' = 0 \), which contradicts the assumption that not all of \( f', g', h' \) are zero.
+    Hence \( W \ne 0 \).
+    By the previous Lemma, \( f / \rad(f), g / \rad(g), h / \rad(h) \) divide \( W \), so does \( fgh / \rad(f g h) \) since \( f, g, h \) are mutually coprime.
+    Thus
+    \begin{align*}
+        \deg f + \deg g + \deg h - \deg \rad(fgh) &= \deg \left( \frac{fgh}{\rad(fgh)} \right) \\
+        &\le \deg W \\
+        &= \deg (f g' - g f') \\
+        &\le \deg f + \deg g - 1
+    \end{align*}
+    which implies \( \deg h \le \deg \rad(f g h) - 1 \).
+    Similar inequality holds for \( \deg f \) and \( \deg g \) and we get the desired inequality.
+\end{proof}
+
+This theorem has numerous applications.
+For example, one can prove non-solvability of the Fermat--Catalan equations, which is a generalization of the Fermat equation.
+\begin{theorem}
+    Let \( k \) be a field and \( p, q, r \ge 0 \) be integers satisfying
+    \begin{equation}
+        \label{eqn:abc-pqr}
+        \frac{1}{p} + \frac{1}{q} + \frac{1}{r} \le 1
+    \end{equation}
+    and not divisible by the characteristic of \( k \).
+    Then there are no nonconstant and mutually coprime polynomials \( f, g, h \in k[T] \) such that \( f^p + g^q + h^r = 0 \).
+\end{theorem}
+\begin{proof}
+    Apply the Mason--Stothers theorem to the polynomials \( f^p, g^q, h^r \) to show that \( f' = g' = h' = 0 \).
+    When \( k \) has a positive characteristic, use the fact that \( f' = 0 \) implies that \( f(T) = f_0(T^\ell) \) for some \( f_0 \in k[T] \) and \( \ell = \mathrm{char}(k) \) and apply infinite descent.
+\end{proof}
+
+Note that the finiteness result of the previous theorem for integers and fixed \(p, q, r\) satisfying \( 1 / p + 1 / q + 1 / r < 1 \) is a consequence of the original ABC conjecture, and also proved by Darmon and Granville \cite{darmon1995equations} using Falting's theorem.
+
+We also have a version of the weak Hall's conjecture for polynomials, which is a theorem of Davenport \cite{davenport1965f3}.
+\begin{theorem}[Davenport \cite{davenport1965f3}]
+    Let \( k \) be a field and \( f, g \in k[T] \) be mutually coprime polynomials with nonzero derivatives such that \( f^3 - g^2 \ne 0 \).
+    Then \( \deg f + 2 \le 2 \deg (f^3 - g^2) \).
+\end{theorem}
+
+\begin{exercise}
+    Prove Davenport's theorem using the Mason--Stothers theorem.
+\end{exercise}
+
+\begin{exercise}
+    Search for the result that follows from ABC conjecture for integers, and prove polynomial analogue of the result (if exists) using Mason--Stothers theorem.
+\end{exercise}
 
 \newpage
