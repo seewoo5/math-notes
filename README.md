@@ -45,3 +45,5 @@ I re-TeXed some of the existing articles with old typesets or non-English (e.g. 
 * J-P. Labesse, [*L-indistinguishable representations and trace formula for SL(2)*](https://seewoo5.github.io/math-notes/reTeXed/labesse-l_indistinguishability/main.pdf), Lie Groups and their Representations (I. M. Gelfand, ed.), Wiley, New York, 1975.
 
 * F. Beukers, [*Irrationality proofs using modular forms*](https://seewoo5.github.io/math-notes/reTeXed/beukers_irrationality-proof-modular-form/main.pdf), Astérisque, tome 147-148 (1987), p. 271-283
+
+* P. Colmez, [*Le Rubik's Cube, Groupe de Poche*](https://seewoo5.github.io/math-notes/reTeXed/colmez_rubiks-cube/main.pdf), ENS Ulm, may (2010).

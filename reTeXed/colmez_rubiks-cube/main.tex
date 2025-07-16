@@ -1,0 +1,72 @@
+% --- LaTeX Lecture Notes Template - S. Venkatraman ---
+
+% --- Set document class and font size ---
+
+\documentclass[letterpaper, 10pt]{article}
+
+\input{preamble}
+
+% start section number from 0
+% \setcounter{section}{-1}
+
+% --- Document starts here ---
+
+\begin{document}
+
+% --- Main title and subtitle ---
+
+\title{The Rubik's Cube: A Pocket Group \\[1em]
+\normalsize Le Rubik's Cube, Groupe de Poche\\ - \\
+\normalsize Re-\TeX ed by Seewoo Lee\footnote{seewoo5@berkeley.edu. Most of the translation is due to ChatGPT, and I only fixed a little.}}
+% \\[1em]
+% \normalsize Re-typed by Seewoo Lee\footnote{seewoo5@berkeley.edu}}
+
+% --- Author and date of last update ---
+
+\author{Pierre Colmez}
+\date{\normalsize\vspace{-1ex} Last updated: \today}
+
+% --- Add title and table of contents ---
+
+\maketitle
+
+
+% --- Abstracts ---
+
+% \tableofcontents\label{sec:contents}
+
+\input{src/intro.tex}
+\input{src/1rubiksgroup.tex}
+\input{src/2mixinggroup.tex}
+\input{src/3subgroup.tex}
+\input{src/4solvingcube.tex}
+
+% --- Bibliography ---
+
+% Start a bibliography with one item.
+% Citation example: "\cite{williams}".
+
+% \bibliographystyle{acm} % We choose the "plain" reference style
+% \bibliography{refs} % Entries are in the refs.bib file
+
+
+% \begin{thebibliography}{1}
+
+% \bibitem{williams}
+%    Williams, David.
+%    \textit{Probability with Martingales}.
+%    Cambridge University Press, 1991.
+%    Print.
+
+% % Uncomment the following lines to include a webpage
+% % \bibitem{webpage1}
+% %   LastName, FirstName. ``Webpage Title''.
+% %   WebsiteName, OrganizationName.
+% %   Online; accessed Month Date, Year.\\
+% %   \texttt{www.URLhere.com}
+
+% \end{thebibliography}
+
+% --- Document ends here ---
+
+\end{document}

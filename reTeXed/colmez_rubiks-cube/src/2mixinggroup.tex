@@ -1,0 +1,83 @@
+\section{Uncovering the Scrambling Group}
+
+\begin{itemize}
+    \item \emph{Seperation of edges and corners.} Since it is not possible to swap a corner and an edge, and since the corners and edges can be scrambled completely independently, the group $\bfG$ is the direct product $\bfG = \bfG_\bfX \times \bfG_\bfY$ of the group $\bfG_\bfX$ of corner moves and the group $\bfG_\bfY$ of edge moves. Thus, every element $g$ of $G$ can be written in the form
+    $$
+    g = (\pi_\bfX(g), \pi_\bfY(g)),
+    $$
+    where $\pi_\bfX(g) \in \bfG_\bfX$ and $\pi_\bfY(g) \in \bfG_\bfY$. Moreover,
+    $$
+    \pi_\bfX : \bfG \to \bfG_\bfX \quad \text{and} \quad \pi_\bfY : \bfG \to \bfG_\bfY
+    $$
+    are group homomorphisms.
+    The groups $\bfG_\bfX$ and $\bfG_\bfY$ are the subgroups of $\bfG$ that fix $\bfY$ and $\bfX$, respectively; they are also the kernels of $\pi_\bfY$ and $\pi_\bfX$, respectively.
+
+    \item \emph{The group of scrambling corners.} By considering only the positions of the corners, ignoring their orientations, gives a natural group homomorphism $g \mapsto \sigma_\bfX(g)$ from $\bfG_\bfX$ to the group of permutations $\Perm_\bfX$ of the set $\bfX$ of corners. This morphism is surjective, since all the corners are physically identical. The kernel of this morphism is the group $\Rot_\bfX$ of corner rotations, which is isomorphic\footnote{If $(n_x)_{x \in \bfX}$ is an element of $(\mathbb{Z}/3\mathbb{Z})^\bfX$, the corresponding rotation rotates the corner $x$ by $n_x$ thirds of a turn (in the clockwise direction) around the axis going from the center of the Rubik's Cube through the corner of the cube corresponding to $x$.} to $(\mathbb{Z}/3\mathbb{Z})^\bfX = \prod_{x \in \bfX} (\mathbb{Z}/3\mathbb{Z})$.
+    We can also view $\Perm_\bfX$ as a subgroup of $\bfG_\bfX$ by selecting a distinguished (visible) face of each corner cube $x \in \bfX$: if $\sigma \in \Perm_\bfX$, then $\sigma$ sends the cube located at corner $x$ to corner $x' = \sigma(x)$, with the distinguished face of $x$ placed onto the distinguished face of $x'$.
+    Thus, any element $g$ in $\bfG_\bfX$ can be uniquely written in the form $g = \rho \sigma$, where $\rho \in \Rot_\bfX$ and $\sigma \in \Perm_\bfX$. This expresses the fact that any move involving the corners can be decomposed into a permutation of the corners (aligning distinguished faces), followed by a rotation of the corners.
+
+    Note that the groups $\Rot_\bfX$ and $\Perm_\bfX$ do not commute: if $\rho = (n_x)_{x \in \bfX}$ and $\sigma \in \Perm_\bfX$, then $\sigma \rho \sigma^{-1}$ is the rotation $(n'_{x})_{x \in \bfX}$, with $n'_{x} = n_{\sigma(x)}.$
+    Therefore, the group $\bfG_\bfX$ is not the direct product\footnote{It is the semidirect product of $\Rot_\bfX$ and $\Perm_\bfX$ (this situation is rather rare: in general, if $\varphi : G \to H$ is a surjective group homomorphism, it is impossible to find a subgroup of $G$, isomorphic to $H$, that maps bijectively onto $H$ via $\varphi$).} of $\Rot_\bfX$ and $\Perm_\bfX$.
+
+    If $g = \rho \sigma$, where $\rho = (n_x)_{x \in \bfX}$ and $\sigma \in \Perm_\bfX$, then we define the \emph{total rotation} $\rt_\bfX(g)$ of $g$ by the formula
+    $\rt_\bfX(g) = \sum_{x \in \bfX} n_x$; it is an element of $\mathbb{Z} / 3 \mathbb{Z}$.
+
+    \begin{lemma}
+        $\rt_\bfX : \bfG_\bfX \to \mathbb{Z} / 3 \mathbb{Z}$ is a group homomorphism.\footnote{One might wonder to what extent the previous constructions depend on the choice of distinguished faces. Let $(f_x)_{x \in \bfX}$ and $(f'_{x})_{x \in \bfX}$ be two choices of faces, and let $\iota$ and $\iota'$ denote the injections of $\Perm_{\bfX}$ into $\bfG_\bfX$ determined by these two choices.
+        There exists a unique $r \in \Rot_\bfX$ that sends $f_x$ to $f'_{x}$ for all $x \in \bfX$, and we have $\iota'(\sigma) = r \cdot \iota(\sigma) \cdot r^{-1}$ for all $\sigma \in \Perm_\bfX$. Indeed, by definition, $\iota'(\sigma)$ sends the face $f'_{x}$ of corner $x$ to the face $f'_{\sigma(x)}$ of corner $\sigma(x)$, which is also what $r \cdot \iota(\sigma) \cdot r^{-1}$ does, since: $r^{-1}(f'_{x}) = f_{x}$, $\iota(\sigma)(f_{x}) = f_{\sigma(x)}$, and $r(f_{\sigma(x)}) = f'_{\sigma(x)}$. It follows that if $g$ decomposes as $g = \rho\sigma$, where $\rho = (n_{x})_{x \in \bfX}$, with the choice $(f_{x})_{x \in \bfX}$, and as $g = \rho'\sigma'$, where $\rho' = (n'_{x})_{x \in \bfX}$, with the choice $(f'_{x})_{x \in \bfX}$, then $\sigma' = \sigma$ and $\rho' = \rho \cdot r^{-1} \cdot \iota'(\sigma) \cdot r \cdot \iota'(\sigma)^{-1}$.
+        Now, if $r = (m_{x})_{x \in \bfX}$, then $\iota'(\sigma) \cdot r \cdot \iota'(\sigma)^{-1} = (m'_{x})_{x \in \bfX}$, with $m'_{x} = m_{\sigma(x)}$, and thus $n'_{x} = n_{x} + m_{x} - m_{\sigma(x)}$. We then deduce that $\sum_{x \in \bfX} n'_{x} = \sum_{x \in \bfX} n_{x}$, which proves that $\rt_\bfX$ is independent of the choice of distinguished faces.}
+    \end{lemma}
+    \begin{proof}
+        If $g = \rho \sigma$ and $g' = \rho' \sigma'$, with $\rho = (n_x)_{x \in \bfX}$ and $\rho' = (n'_{x})_{x \in \bfX}$, then $gg' = \rho'' \sigma''$, where
+        $\rho'' = \rho \cdot \sigma \rho' \sigma^{-1}$ and $\sigma'' = \sigma \sigma'$.
+        Now, $\sigma \rho' \sigma^{-1} = (m_x)_{x \in \bfX}$, with $m_x = n'_{\sigma(x)}$, and so, if $\rho'' = (n''_{x})_{x \in \bfX}$, we have:
+        $n''_{x} = n_{x} + n'_{\sigma(x)}$.
+        It follows that
+        $\rt_\bfX(gg') = \sum_{x \in \bfX} (n_{x} + n'_{\sigma(x)}),$
+        and since
+        $\sum_{x \in \bfX} n'_{\sigma(x)} = \sum_{x \in \bfX} n'_{x},$
+        because $x \mapsto \sigma(x)$ is a bijection of $\bfX$, we finally obtain:
+        $\rt_\bfX(gg') = \sum_{x \in \bfX} n_{x} + \sum_{x \in \bfX} n'_{x} = \rt_\bfX(g) + \rt_\bfX(g'),$
+        which completes the argument.
+    \end{proof}
+
+    \item \emph{The group of scrambling edges.} A similar discussion can be made for the edges:
+    we have a natural group homomorphism
+    $g \mapsto \sigma_\bfY(g)$ from $\bfG_\bfY$ to the group of permutations $\Perm(\bfY)$ of the set $\bfY$ of edges.
+    This homomorphism is surjective, and its kernel is the group $\Rot_\bfY$ of edge flips, which is isomorphic to $(\mathbb{Z}/2\mathbb{Z})^{\bfY}$.
+    We can again view $\Perm_\bfY$ as a subgroup of $\bfG_\bfY$ by selecting a preferred visible face for each edge $y \in \bfY$, which allows any element $g \in \bfG_\bfY$ to be uniquely written in the form
+    $g = \rho \sigma$, where $\rho \in \Rot_\bfY$ and $\sigma \in \Perm_\bfY$.
+    We define the total rotation (flip) $\rt_\bfY(g)$ of an element $g \in \bfG_\bfY$ by
+    $\rt_\bfY(g) = \sum_{y \in \bfY} n_{y}$, if $g = \rho \sigma$ with $\rho = (n_{y})_{y \in \bfY}$ and $\sigma \in \Perm_\bfY$.
+    As before, we obtain a group homomorphism $\rt_\bfY : \bfG_\bfY \to \mathbb{Z} / 2 \mathbb{Z}$.
+
+    We can describe the morphism $\rt_\bfY$ a bit more directly: let $\bfF$ be the set of visible faces of the edges (since each edge has two visible faces, we have $|\bfF| = 2|\bfY| = 24$). The group $\bfG_\bfY$ permutes the elements of $\bfF$, which gives rise to a group homomorphism
+    $\sigma_\bfF : \bfG_\bfY \to \Perm_\bfF$.
+
+    \begin{proposition}
+        If $g \in \bfG_\bfY$, then $(-1)^{\rt_\bfY(g)}$ is the signature of the permutation $\sigma_\bfF(g)$.
+    \end{proposition}
+    \begin{proof}
+        We want to verify that the two group homomorphisms
+    $g \mapsto \sgn(\sigma_\bfF(g))$ and $g \mapsto (-1)^{\rt_\bfY(g)}$ coincide.
+    To do so, it suffices to verify the equality in two cases:
+    For $g \in \Perm_\bfY$, since $\sigma_\bfF(g)$ is a permutation of the faces of the edges, it permutes each face an even number of times, so $\sgn(\sigma_\bfF(g)) = 1$.
+    For $g \in \Rot_\bfY$ that flips a single edge—since such flips generate $\Rot_\bfY$, and $\bfG_\bfY$ is generated by $\Rot_\bfY$ and $\Perm_\bfY$.
+
+    \begin{itemize}
+        \item If $g \in \Rot_\bfY$ flips only one edge, then $\rt_\bfY(g) = 1$, hence $(-1)^{\rt_\bfY(g)} = -1$. Furthermore, $\sigma_\bfF(g)$ is the transposition swapping the two faces of that edge, so $\sgn(\sigma_\bfF(g)) = -1$ as well.
+        \item If $g \in \Perm_\bfY$, then $\rt_\bfY(g) = 0$, so $(-1)^{\rt_\bfY(g)} = 1$.
+        Now, if we denote $f_\bfY$ as the preferred face of $y \in \bfY$, and $f'_\bfY$ as the other one, then $\sigma_\bfF(g)$ permutes $f_\bfY$ and $f'_\bfY$ in the same way.
+        As a result, every cycle length in the cycle decomposition of $\sigma_\bfF(g)$ appears an even number of times, so $\sgn(\sigma_\bfF(g)) = 1$ as well.
+    \end{itemize}
+    This completes the proof.
+    \end{proof}
+
+
+    \item \emph{A global invariant.}
+    Let $\varepsilon$ be the homomorphism from $G$ to $\{\pm1\}$, mapping $g \in G$ to the signature of the permutation $\sigma_{\bfX \cup \bfY}(g)$ induced on the positions $\bfX \cup \bfY$ of the Rubik's Cube, ignoring orientations.
+
+    The permutation group of $\bfX \cup \bfY$ contains the product $\Perm_\bfX \times \Perm_\bfY$, and $\sigma_{\bfX \cup \bfY}(g)$ corresponds to the element
+    $(\sigma_\bfX \circ \pi_\bfX(g), \sigma_\bfY \circ \pi_\bfY(g))$ of that product; hence we have:
+    $$\varepsilon(g) = \sgn(\sigma_\bfX \circ \pi_\bfX(g))  \sgn(\sigma_\bfY \circ \pi_\bfY(g)).$$
+\end{itemize}
