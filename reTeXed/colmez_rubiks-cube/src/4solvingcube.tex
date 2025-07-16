@@ -45,6 +45,7 @@ With some thought, the first two steps and the last two can be combined.
         Since such elements generate the subgroup $\Rot_\bfY^0$ of $\Rot_\bfY$ consisting of total rotation zero (i.e., even numbers of edge flips), this proves the following:
 
     \begin{lemma}
+        \label{lem:RotY0}
         $\pi_\bfY$ induces a surjection from $\Rub \cap \ker(\sigma_\bfY \circ \pi_\bfY)$ onto $\Rot_\bfY^0$.
     \end{lemma}
 
@@ -120,7 +121,7 @@ With some thought, the first two steps and the last two can be combined.
         Let us begin by noting that since $\Rub \subseteq \bfH$, the product of an element of $\Rub$ and an element of $\bfH$ is still an element of $\bfH$. Let $h \in \bfH$.
         \begin{itemize}
             \item Since $\sigma_{\bfY} \circ \pi_{\bfY}$ induces (cf. Lemma \ref{lem:comp}) a surjection from $\Rub$ onto $\Perm_\bfY$, there exists $g_{1} \in \Rub$ such that $\sigma_{\bfY} \circ \pi_{\bfY}(g_{1}) = \sigma_{\bfY} \circ \pi_{\bfY}(h)$, and then $h_{1} = g_{1}^{-1} h$ is an element of $\bfH$ that lies in the kernel of $\sigma_{\bfY} \circ \pi_{\bfY}$.
-            \item By Lemma 8, there exists $g_{2} \in \Rub$ such that $\pi_{\bfY}(g_{2}) = \pi_{\bfY}(h_{1})$, and so $h_{2} = g_{2}^{-1} h_{1}$ is an element of $\bfH$ that belongs to $\bfG_{\bfX}$.
+            \item By Lemma \ref{lem:RotY0}, there exists $g_{2} \in \Rub$ such that $\pi_{\bfY}(g_{2}) = \pi_{\bfY}(h_{1})$, and so $h_{2} = g_{2}^{-1} h_{1}$ is an element of $\bfH$ that belongs to $\bfG_{\bfX}$.
             \item We have $\varepsilon(h_{2}) = 1$, and since $h_{2}$ acts as the identity on $\bfY$, the permutation $\sigma_{\bfX}(h_{2})$ belongs to $\Alt_\bfX$.
             By Lemma \ref{lem:AltX}, this implies there exists $g_{3} \in \Rub \cap \bfG_{\bfX}$ such that $\sigma_{\bfX}(g_{3}) = \sigma_{\bfX}(h_{2})$, and then $g_{4} = g_{3}^{-1} h_{2}$ is an element of $\bfH \cap \Rot_{\bfX}$.
             Now, $\bfH \cap \Rot_{\bfX} = \Rot_{\bfX}^{0}$, which is included in $\Rub$ by Lemma \ref{lem:RotX0}; thus $g_{4} \in \Rub$.
