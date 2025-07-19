@@ -1,0 +1,181 @@
+\appendix
+
+\section{Supplementary Figures}
+
+\emph{This section is added by Seewoo Lee, which does not exist in the original document.} Here we give illustrative figures of the ``formulas'' used in the previous section, following more standard notations used in the Rubik's Cube community.
+
+We denote the faces of the cubes as \rr{U}\rr{D}\rr{R}\rr{L}\rr{F}\rr{B}, which stands for Up, Down, Right, Left, Front, and Back. These faces correspond to the previous section's notations $abcdef$ as follows:
+
+\begin{table}[h!]
+    \center
+    \begin{tabular}{c|c|c|c|c|c}
+    \toprule
+    $a$ & $b$ & $c$ & $d$ & $e$ & $f$ \\ \midrule
+    \rr{U} & \rr{F} & \rr{L} & \rr{R} & \rr{B} & \rr{D} \\ \midrule
+    \fcolorbox{black}{white}{\rule{0pt}{6pt}\rule{6pt}{0pt}} & \fcolorbox{black}{orange}{\rule{0pt}{6pt}\rule{6pt}{0pt}} & \fcolorbox{black}{blue}{\rule{0pt}{6pt}\rule{6pt}{0pt}} & \fcolorbox{black}{green}{\rule{0pt}{6pt}\rule{6pt}{0pt}} & \fcolorbox{black}{red}{\rule{0pt}{6pt}\rule{6pt}{0pt}} & \fcolorbox{black}{yellow}{\rule{0pt}{6pt}\rule{6pt}{0pt}} \\ 
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+Also, the counter-clockwise rotations of these faces are denoted as \rr{Up}, \rr{Dp}, \rr{Rp}, \rr{Lp}, \rr{Fp}, and \rr{Bp} respectively.
+Note that the action of $\Rub$ on the cube is \emph{left} action, hence you need to read the moves from right to left.
+However, the usual notation in the Rubik's Cube community is \emph{right} action, and the sequence of moves is read from left to right.
+For example, the element $abc$ with the previous notation corresponds to the move sequence \rr{L}\rr{F}\rr{U} in the new notation, which means that you first do \rr{L} ($c$), then \rr{F} ($b$), and finally \rr{U} ($a$).
+
+\subsection{Edge permutation}
+
+The first step is to put the edges in the correct positions. The previous formula $(a^2 b)^5$ is $($\rr{F}\rr{U}${}^{2})^{5}$ in the new notation, which means that we do the following 5 times:
+
+\begin{figure}[hbt]
+    \centering%
+    \RubikCubeSolvedWY%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \Rubik{F}%
+    \RubikRotation{F}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \Rubik{U}\Rubik{U}%
+    \RubikRotation{U2}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \caption{\rr{F}\rr{U}${}^{2}$\ on a solved cube.}
+    \label{fig:U2F}
+\end{figure}
+
+
+As described in the footnote 9, \rr{F}\rr{U}${}^{2}$ acts as a composition of 2-cycle (swapping white-blue and white-green edges) and 5-cycle on the edges, and doing this 5 times will only swap the white-blue and white-green edges, not flipping any edges of the cube.
+
+\begin{figure}[hbt]
+    \centering%
+    \RubikCubeSolvedWY%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    $\bigg(\Rubik{F}\Rubik{U}\Rubik{U}\bigg)^{5}$
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \caption{$($\rr{F}\rr{U}${}^{2})^{5}$ on a solved cube. White-green and white-blue edges are swapped without flip.}
+    \label{fig:swap-edge1}
+\end{figure}
+
+Using conjugation, we can swap any two edges in the cube, by placing these two edges on the top-left and top-right positions by some move $g$, applying the above formula, and then returning the cube to its original position by $g^{-1}$.
+For example, you can swap white-green and orange-green edges with $g=\text{\rr{F}}^{2}\text{\rr{Lp}}$ as in Figure \ref{fig:swap-edge2}.
+Repeating this process, you can place all the edges in their correct positions.
+
+\begin{figure}[hbt]
+    \centering%
+    \RubikCubeSolvedWY%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \Rubik{F}\Rubik{F}\Rubik{Lp}%
+    \RubikRotation{F2}%
+    \RubikRotation{Lp}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}
+    $\bigg($\Rubik{F}\Rubik{U}\Rubik{U}$\bigg)^{5}$%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \RubikRotation{F}%
+    \RubikRotation{U2}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \Rubik{L}\Rubik{F}\Rubik{F}%
+    \RubikRotation{L}%
+    \RubikRotation{F}%
+    \RubikRotation{F}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \caption{$g($\rr{F}\rr{U}${}^{2})^{5}g^{-1}$ with $g = \text{\rr{F}}^{2}\text{\rr{Lp}}$ on a solved cube. White-green and orange-green edges are swapped without flip.}
+    \label{fig:swap-edge2}
+\end{figure}
+
+
+\subsection{Edge orientation}
+
+Now, one need to flip the edges correctly.
+As mentioned in the previous section, the formula $d^2 f b d^{-1}$, which is $\text{\rr{Rp}\rr{F}\rr{D}\rr{R}}{}^{2}$ in the new notation, flips the white-green edge $y_{\text{\rr{U}\rr{R}}}$ while fixing the white-blue edge $y_{\text{\rr{U}\rr{L}}}$.
+Hence
+\[
+h = (\text{\rr{Rp}\rr{F}\rr{D}\rr{R}}^{2}) (\text{\rr{F}\rr{U}}^{2})^{5} (\text{\rr{Rp}\rr{F}\rr{D}\rr{R}}^{2})^{-1}(\text{\rr{F}\rr{U}}^{2})^{5}
+\]
+flips $y_{\text{\rr{U}\rr{R}}}$ and $y_{\text{\rr{U}\rr{L}}}$, leaving the other edges unchanged (Figure \ref{fig:flip-edge}).
+
+\begin{figure}[hbt]
+    \centering%
+    \RubikCubeSolvedWY%
+    % \ShowCube{2cm}{0.4}{\DrawRubikCubeSF}%
+    \RubikRotation{Rp,F,D,R2}%
+    \RubikRotation{F,U2,F,U2,F,U2,F,U2,F,U2}%
+    \RubikRotation{R2,Dp,Fp,R}%
+    \RubikRotation{F,U2,F,U2,F,U2,F,U2,F,U2}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeSF}%
+    \caption{$h = (\text{\rr{Rp}\rr{F}\rr{D}\rr{R}}^{2}) (\text{\rr{F}\rr{U}}^{2})^{5} (\text{\rr{Rp}\rr{F}\rr{D}\rr{R}}^{2})^{-1}(\text{\rr{F}\rr{U}}^{2})^{5}$ on a solved cube. White-green and white-blue edges are flipped.}
+    \label{fig:flip-edge}
+\end{figure}
+
+Again, using conjugation, you can flip any two edges in the cube.
+
+\subsection{Corner permutation}
+
+For the corner permutation, we use $(\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3}$ which swaps two pairs of corners, $x_{\text{\rr{U}\rr{F}\rr{L}}} \leftrightarrow x_{\text{\rr{D}\rr{L}\rr{F}}}$ and $x_{\text{\rr{U}\rr{R}\rr{F}}} \leftrightarrow x_{\text{\rr{R}\rr{U}\rr{B}}}$, while leaving the other edges and corners unchanged (Figure \ref{fig:swap-corners}).
+Lemma \ref{lem:AltX} uses this move to show that any element of $\Alt_\bfX$ can be reached with the legal moves.
+
+\begin{figure}[hbt]
+    \centering%
+    \RubikCubeSolvedWY%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    $\bigg(\Rubik{U}\Rubik{F}\Rubik{Up}\Rubik{Fp}\bigg)^{3}$
+    \RubikRotation{U,F,Up,Fp,U,F,Up,Fp,U,F,Up,Fp}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \caption{$(\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3}$ on a solved cube. White-green and white-blue edges are flipped.}
+    \label{fig:swap-corners}
+\end{figure}
+
+\subsection{Corner orientation}
+
+Finally, we need to orient the corners.
+The element $ede^{-1}d^{-1}e$, which is $\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}}$ fixes three corners $x_{\text{\rr{U}\rr{F}\rr{L}}}$, $x_{\text{\rr{D}\rr{L}\rr{F}}}$, and $x_{\text{\rr{U}\rr{R}\rr{F}}}$, while rotating the corner $x_{\text{\rr{U}\rr{R}\rr{B}}}$ (Figure \ref{fig:orient-corner}).
+Hence the element
+\[
+    (\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}})^{-1} (\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3} (\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}}) (\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3}
+\]
+rotates exactly two corners $x_{\text{\rr{U}\rr{R}\rr{F}}}$ and $x_{\text{\rr{R}\rr{U}\rr{B}}}$ in opposite directions, fixing other pieces (Figure \ref{fig:orient-corner2}).
+
+\begin{figure}[hbt]
+    \centering%
+    \RubikCubeSolvedWY%
+    \RubikRotation{B,Rp,Bp,R,B}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeSF}%
+    \caption{$\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}}$ on a solved cube. White-green and white-blue edges are flipped.}
+    \label{fig:orient-corner}
+\end{figure}
+
+\begin{figure}[hbt]
+    \centering%
+    \RubikCubeSolvedWY%
+    % \ShowCube{2cm}{0.4}{\DrawRubikCubeRU}%
+    \RubikRotation{Bp,Rp,B,R,Bp}%
+    \RubikRotation{U,F,Up,Fp,U,F,Up,Fp,U,F,Up,Fp}%
+    \RubikRotation{B,Rp,Bp,R,B}%
+    \RubikRotation{U,F,Up,Fp,U,F,Up,Fp,U,F,Up,Fp}%
+    \ShowCube{2cm}{0.4}{\DrawRubikCubeSF}%
+    \caption{$(\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}})^{-1} (\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3} (\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}}) (\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3}$ on a solved cube. Two corners $x_{\text{\rr{U}\rr{R}\rr{F}}}$ and $x_{\text{\rr{R}\rr{U}\rr{B}}}$ are rotated, whilte other pieces are unchanged.}
+    \label{fig:orient-corner2}
+\end{figure}
+
+\subsection{Putting it all together}
+
+Following the above steps, we can solve the Rubik's Cube in the following order:
+\begin{enumerate}
+    \item Place the edges in their correct positions using $(\text{\rr{F}\rr{U}}^{2})^{5}$ and its conjugates.
+    \item Flip the edges correctly using $h = (\text{\rr{Rp}\rr{F}\rr{D}\rr{R}}^{2}) (\text{\rr{F}\rr{U}}^{2})^{5} (\text{\rr{Rp}\rr{F}\rr{D}\rr{R}}^{2})^{-1}(\text{\rr{F}\rr{U}}^{2})^{5}$ and its conjugates.
+    \item Place the corners in their correct positions using $(\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3}$ and its conjugates.
+    \item Rotate the corners correctly using $(\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}})^{-1} (\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3} (\text{\rr{B}\rr{Rp}\rr{Bp}\rr{R}\rr{B}}) (\text{\rr{U}\rr{F}\rr{Up}\rr{Fp}})^{3}$ and its conjugates.
+\end{enumerate}
