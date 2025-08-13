@@ -1,0 +1,389 @@
+\section{Reciprocity Laws}
+\label{sec:reciprocity}
+
+Quadratic reciprocity is one of the most important theorem in number theory, which is the origin of all modern number theory including algebraic number theory and Langlands program.
+In this section, we will see the analogue of quadratic reciprocity for function fields.
+% Especially, we will present the higher reciprocity laws, which is much more complicated for integer case.
+
+\subsection{Quadratic Reciprocity for Integers}
+\label{subsec:quadratic-reciprocity}
+
+CRT tells us how to solve \emph{linear} congruences, i.e. equations of the form $ax + b \equiv 0 \pmod{n}$.
+Now, let's go one step further and consider \emph{quadratic} congruences, i.e. equations of the form $a x^2 + bx + c\equiv 0 \pmod{n}$.
+How can we solve such equations?
+Recall that we solve usual quadratic eqautions by ``completing the square'', and we can do the same for congruences.\footnote{when $n$ is odd and $a$ is invertible modulo $n$.}
+Hence we can reduce to a simpler question:
+
+\begin{myquote}
+For given integer $a$ and $n$, when does the congruence $x^2 \equiv a \pmod{n}$ have a solution?
+\end{myquote}
+
+Although the question seems pretty simple, the answer is quite deep and also interesting.
+To get some intuition, let's first consider the case when $n = p$ is a prime number and $a = -1$.
+In other words, we want to know when the congruence $x^2 \equiv -1 \pmod{p}$ has a solution (this is equivalent to one of the exercises in Section \ref{sec:basicnt}).
+Let's just try some small primes.
+Here's a Sage code to check the congruence $x^2 \equiv -1 \pmod{p}$ for primes $p < 100$:
+
+\begin{minted}[fontsize=\footnotesize,framesep=2mm,bgcolor=lightgray!20]{python}
+with_sol = []
+without_sol = []
+for p in primes(100):
+    for a in range(p):
+        if (a ^ 2 + 1) % p == 0:
+            with_sol.append(p)
+            break
+        if a == p - 1:
+            without_sol.append(p)
+print("Primes with solution", with_sol)
+print("Primes without solution", without_sol)
+\end{minted}
+
+Here's the output of the code you should get:
+\begin{minted}[fontsize=\footnotesize,framesep=2mm,bgcolor=lightgray!20]{text}
+Primes with solution [2, 5, 13, 17, 29, 37, 41, 53, 61, 73, 89, 97]
+Primes without solution [3, 7, 11, 19, 23, 31, 43, 47, 59, 67, 71, 79, 83]
+\end{minted}
+
+Stare the lists carefully for a while. What do you notice?
+The answer is:
+
+\begin{theorem}
+    \label{thm:m1sq}
+    Let $p$ be a prime number. Then the congruence $x^2 \equiv -1 \pmod{p}$ has a solution if and only if $p = 2$ or $p \equiv 1 \pmod{4}$.
+\end{theorem}
+\begin{proof}
+    The case $p = 2$ is trivial, so we assume $p$ is odd.
+    Assume thet the equation has a solution $x$.
+    Then $x^4 \equiv (-1)^2 \equiv 1 \pmod{p}$, so $x$ is an element of order $4$ in $(\bZ / p\bZ)^\times$. 
+    By Lagrange's theorem, the order of $x$ must divide $p - 1$, so $4 \mid (p - 1) \Leftrightarrow p \equiv 1 \pmod{4}$.
+
+    Conversely, assume $p \equiv 1 \pmod{4}$ and let $g \in (\bZ / p \bZ)^\times$ be a generator of the group.
+    Then $g^{(p - 1) / 4}$ is an element of order $4$, so we can set $x = g^{(p - 1) / 4}$ and $(x^2)^2 \equiv x^4 \equiv 1 \pmod{p}$.
+    Since $x^2 \not\equiv 1 \pmod{p}$, we have $x^2 \equiv -1 \pmod{p}$.
+\end{proof}
+
+It is amazing that the solvability of the congruence equation is simply given by a congruence condition on the prime $p$.
+
+Let's try other $a$, say $a = 3$.
+Here's a Sage code to check the congruence $x^2 \equiv 3 \pmod{p}$ for primes $p < 100$:
+\begin{minted}[fontsize=\footnotesize,framesep=2mm,bgcolor=lightgray!20]{python}
+with_sol = []
+without_sol = []
+for p in primes(100):
+    for a in range(p):
+        if (a ^ 2 - 3) % p == 0:
+            with_sol.append(p)
+            break
+        if a == p - 1:
+            without_sol.append(p)
+print("Primes with solution", with_sol)
+print("Primes without solution", without_sol)
+\end{minted}
+Here's the output of the code you should get:
+\begin{minted}[fontsize=\footnotesize,framesep=2mm,bgcolor=lightgray!20]{text}
+Primes with solution [2, 3, 11, 13, 23, 37, 47, 59, 61, 71, 73, 83, 97]
+Primes without solution [5, 7, 17, 19, 29, 31, 41, 43, 53, 67, 79, 89]
+\end{minted}
+Again, the question is: what do you notice?
+The answer is slightly more complicated than the previous case, and you need to observe the numbers modulo $12$.
+\begin{theorem}
+    \label{thm:m3sq}
+    Let $p$ be a prime number. Then the congruence $x^2 \equiv 3 \pmod{p}$ has a solution if and only if $p = 2, 3$ or $p \equiv 1, 11 \pmod{12}$.
+\end{theorem}
+
+To answer the question for general $a$, we need to introduce the Legendre symbol.
+\begin{definition}[Legendre symbol]
+    Let $p$ be a prime and $a$ be an integer.
+    The \emph{Legendre symbol} $\left(\frac{a}{p}\right)$ is defined as follows:
+    \begin{equation}
+        \left(\frac{a}{p}\right) = \begin{cases}
+            0 & a \equiv 0 \pmod{p} \\
+            1 & \text{if } x^2 \equiv a \pmod{p} \text{ has a solution} \\
+            -1 & \text{otherwise.}
+        \end{cases}
+        \label{eqn:legendre-symbol}
+    \end{equation}
+\end{definition}
+
+Do not confuse it with fraction.
+By definition, it tells you whether the congruence $x^2 \equiv a \pmod{p}$ has a solution or not.
+But it does not tell you how to compute the symbol.
+The following theorem gives a way to compute the Legendre symbol for odd primes.
+\begin{theorem}[Euler's criterion]
+    \label{thm:euler-criterion}
+    Let $p$ be an odd prime and $a$ be an integer.
+    Then
+    \begin{equation}
+        \left(\frac{a}{p}\right) = a^{\frac{p - 1}{2}} \pmod{p}.
+        \label{eqn:euler-criterion}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    If $a \equiv 0 \pmod{p}$, then the result is trivial.
+    Recall that the group $\bF_p^\times$ is cyclic of order $p - 1$.
+    Let $g$ be a generator of the group.
+    Then every nonzero element $a \in \bF_p^\times$ can be written as $a \equiv g^k \pmod{p}$ for some integer $k$.
+    The equation is solvable if and only if $k$ is even modulo $p - 1$.
+\end{proof}
+
+\begin{theorem}[Quadratic reciprocity]
+    \label{thm:quadratic-reciprocity}
+    Let $p$ and $q$ be distinct odd prime numbers.
+    Then
+    \begin{equation}
+        \left(\frac{p}{q}\right) \left(\frac{q}{p}\right) = (-1)^{\frac{(p-1)(q-1)}{4}}.
+        \label{eqn:quadratic-reciprocity}
+    \end{equation}
+    Especially, the congruence $x^2 \equiv p \pmod{q}$ has a solution if and only if the congruence $x^2 \equiv q \pmod{p}$ has a solution, except when $p \equiv q \equiv 3 \pmod{4}$. 
+\end{theorem}
+There are tons of proofs of this theorem, and we will not give a proof here.
+You can refer to an archive of proofs by Lemmermeyer \cite{lemmermeyer_qr}, or a book by Baumgart \cite{baumgart2015quadratic}.
+
+We also need the following supplementary results to compute the Legendre symbol completely.
+\begin{theorem}
+    \label{thm:quadratic-reciprocity-supplementary}
+    For odd prime $p$, we have
+    \begin{align*}
+        \left(\frac{-1}{p}\right) &= (-1)^{\frac{p - 1}{2}} = \begin{cases} 1 & p \equiv 1 \pmod{4} \\ -1 & p \equiv 3 \pmod{4} \end{cases} \\
+        \left(\frac{2}{p}\right) &= (-1)^{\frac{p^2 - 1}{8}} = \begin{cases}
+            1 & p \equiv 1, 7 \pmod{8} \\
+            -1 & p \equiv 3, 5 \pmod{8}
+        \end{cases}
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    We already proved the first in Theorem \ref{thm:m1sq}.
+    For the second here is a proof brought from \cite[Theorem]{serre2012course}.
+    Let $\alpha \in \bF_{p^2}$ be a primitive $8$-th root of unity (note that $p^2 - 1$ is divisible by $8$ for any odd $p$).
+    then $\alpha^4 = -1$ and $y = \alpha + \alpha^{-1}$ satisfies $y^2 = 2 + \alpha^2 + \alpha^{-2} = 2$.
+    By binomial expansion, we have $y^p = \alpha^p + \alpha^{-p}$ modulo $p$, hence $y^p = y$ for $p \equiv \pm 1\pmod{8}$ and this gives $\left(\frac{2}{p}\right) = 1$ for such $p$.
+    If $p \equiv \pm 3 \pmod{8}$, then $y^p = -y \Leftrightarrow y^{p-1} = -1$, hence $\left(\frac{2}{p}\right) = y^{p-1} = -1$.\footnote{It may look random to consider such $y$, but this can be thought as an analogue of the identity of complex numbers $\sqrt{2} = e^{2\pi i / 8} + e^{-2 \pi i / 8}$ in finite fields.}
+\end{proof}
+
+We can use quadratic reciprocity to prove Theorem \ref{thm:m3sq}.
+\begin{proof}[Proof of Theorem \ref{thm:m3sq}]
+    By Theorem \ref{thm:quadratic-reciprocity}, we have
+    \[
+    \left(\frac{3}{p}\right) \left(\frac{p}{3}\right) = (-1)^{\frac{(p-1)(3-1)}{4}} = (-1)^{\frac{(p-1)}{2}} \Leftrightarrow \left(\frac{3}{p}\right) = (-1)^{\frac{(p-1)}{2}} \left(\frac{p}{3}\right).
+    \]
+    We can compute each factor on the right-hand side seperately, which are
+    \begin{align*}
+        \left(\frac{p}{3}\right) &= \begin{cases} 1 & p \equiv 1 \pmod{3} \\ -1 & p \equiv 2 \pmod{3} \end{cases}, \\
+        (-1)^{\frac{(p-1)}{2}} &= \begin{cases} 1 & p \equiv 1 \pmod{4} \\ -1 & p \equiv 3 \pmod{4} \end{cases}.
+    \end{align*}
+    By combining these two congruences, we can see that
+    \[
+    \left(\frac{3}{p}\right) = \begin{cases}
+        1 & p \equiv 1, 11 \pmod{12} \\
+        -1 & p \equiv 5, 7 \pmod{12}
+    \end{cases}
+    \]
+    for $p \neq 2, 3$.
+\end{proof}
+
+\begin{exercise}
+    When $p \equiv 1 \pmod{4}$, we know that the congruence $x^2 \equiv -1 \pmod{p}$ has a solution by Theorem \ref{thm:m1sq}.
+    Show that $x = \left(\frac{p-1}{2}\right)!$ becomes a solution.\footnote{Hint: Wilson's theorem.}
+\end{exercise}
+
+\begin{exercise}\sage Compute the Legendre symbol $\left(\frac{563}{661}\right)$, by
+    \begin{enumerate}
+        \item brute-force checking all integers $x$ modulo $661$, or
+        \item using Euler's criterion, or
+        \item using quadratic reciprocity, or
+        \item using \texttt{kronecker} in Sage.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:m3sq} without using quadratic reciprocity, by adapting the proof of Theorem \ref{thm:quadratic-reciprocity-supplementary}.
+    Here's a sketch of a proof:
+    \begin{enumerate}
+        \item Show that, for any prime $p > 3$, there is a $12$-th root of unity $\beta$ in $\bF_{p^2}$.
+        \item Show that $z = \beta + \beta^{-1}$ satisfies $z^2 = 3$.
+        \item Show that $z^p = z$ if and only if $p \equiv 1, 11 \pmod{12}$, and $z^p = -z$ if and only if $p \equiv 5, 7 \pmod{12}$. Conclude that $\left(\frac{3}{p}\right) = 1$ if and only if $p \equiv 1, 11 \pmod{12}$.
+    \end{enumerate}
+    It is natural to ask if one can generalize this proof to other primes.
+    This essentially gives a proof of quadratic reciprocity, and the correct analogue of $y$ or $z$ would be the \emph{Gauss sum}.
+\end{exercise}
+
+\begin{exercise}
+    Characterize the prime $p$ such that the congruence $x^2 \equiv 5 \pmod{p}$ has a solution.\footnote{Hint: Use quadratic reciprocity. Answer will be given modulo $5$.}
+\end{exercise}
+
+\begin{exercise}
+    For a prime $p$ and integers $a, b, c$, give a necessary and sufficient condition for the congruence $ax^2 + bx + c \equiv 0 \pmod{p}$ to have a solution.
+\end{exercise}
+
+\begin{exercise}\sage
+    \begin{enumerate}
+        \item Find all prime $p < 100$ where the congruence $x^3 - 3x + 1 \equiv 0 \pmod{p}$ has a solution. Can you find a pattern? If you are brave enough, try to prove it.\footnote{Hint: modulo 9. To prove it, we notice the fact that the roots of $x^3 - 3x + 1$ are $2\cos (2\pi / 9), 2 \cos(4\pi/9), 2\cos(8\pi / 9)$, by double angle formula. Then try to express them in terms of $9$-th roots of unity.}
+        \item Find all prime $p < 100$ where the congruence $x^3 - x - 1 \equiv 0 \pmod{p}$ has a solution. Can you find a pattern?
+        \item Consider a power series
+        \[
+        A(T) = T \prod_{n \ge 1} (1 - T^n) (1 - T^{23 n}) = \sum_{n\ge 1} a_n T^n \in \bZ\llb T \rrb.
+        \]
+        Compute the first $100$ coefficients of $A(T)$, and check if there's any relation between the $p$-th coefficients $a_p$ and the congruence $x^3 - x - 1 \equiv 0 \pmod{p}$.\footnote{Asnwer: it has a solution in $\bF_p$ if and only if $a_p \in \{0, 2\}$, \emph{when $p \ne 23$}. Buzzwords: Artin representation and modular form of weight 1, Nonabelian class field theory.}
+    \end{enumerate}    
+\end{exercise}
+
+
+\subsection{Quadratic Reciprocity for Polynomials}
+\label{subsec:quadratic-reciprocity-polynomials}
+
+Let's move on to the polynomial case.
+We are going to ask the same question as before:
+\begin{myquote}
+For given polynomial $f \in A$ and irreducible polynomial $P$, when does the congruence $X^2 \equiv f \pmod{P}$ have a solution?
+\end{myquote}
+We are going to adapt the exact same strategy as before.
+\textbf{For this section, we assume that $p$ is an odd prime.}
+Characteristic 2 case is slightly more complicated, and we will not discuss it here.
+You can refer to Keith Conrad's note \cite{conrad_rec_2} for more details for $p = 2$.
+
+Define the \emph{Legendre symbol} for polynomials as follows:
+\begin{definition}[Legendre symbol for polynomials]
+    Let $P \in A$ be an irreducible polynomial and $f \in A$ be a polynomial.
+    The \emph{Legendre symbol} $\left(\frac{f}{P}\right)$ is defined as follows:
+    \begin{equation}
+        \left(\frac{f}{P}\right) = \begin{cases}
+            0 & f \equiv 0 \pmod{P} \\
+            1 & \text{if } X^2 \equiv f \pmod{P} \text{ has a solution in } A, \\
+            -1 & \text{otherwise.}
+        \end{cases}
+        \label{eqn:legendre-symbol-poly}
+    \end{equation}
+\end{definition}
+
+We have Euler's criterion for polynomials as well.
+\begin{theorem}[Euler's criterion for polynomials]
+    \label{thm:euler-criterion-poly}
+    Let $P \in A$ be an irreducible polynomial and $f \in A$ be a polynomial.
+    Then
+    \begin{equation}
+        \left(\frac{f}{P}\right) = f^{\frac{|P| - 1}{2}} \pmod{P}.
+        \label{eqn:euler-criterion-poly}
+    \end{equation}
+\end{theorem}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:euler-criterion-poly} by adapting the proof of Theorem \ref{thm:euler-criterion}.\footnote{Hint: Use the fact that $A / P A$ is a finite field of order $|P| = p^{\deg P}$.}
+\end{exercise}
+One interesting corollary of Euler's criterion is the following:
+\begin{corollary}
+    \label{cor:even-deg-qr}
+    Let $P \in A$ be an irreducible polynomial of even degree.
+    Then $\left(\frac{c}{P}\right) = 1$ for any nonzero constant $c \in \bF_p$.
+\end{corollary}
+\begin{proof}
+    Write
+    \[
+    \frac{|P| - 1}{2} = \frac{p^{\deg P} - 1}{2} = (p-1) \cdot \frac{(p^{\deg P - 1} + p^{\deg P - 2} + \cdots + 1)}{2}
+    \]
+    where the second factor of the last equation is an integer since $\deg P$ is even and $p$ is odd.
+    By Euler's criterion and $c^{p-1} = 1$, we have
+    \[
+    \left(\frac{c}{P}\right) = c^{\frac{|P| - 1}{2}} = c^{(p-1) \cdot \frac{(p^{\deg P - 1} + p^{\deg P - 2} + \cdots + 1)}{2}} = 1.
+    \]
+\end{proof}
+\begin{exercise}
+    Let $p = 7$ and $P(T) = T^2 + T + 3$, which is irreducible modulo $7$.
+    Find a polynomial $f \in \bF_7[T]$ such that $f^2 \equiv 3 \pmod{P}$.
+\end{exercise}
+
+\begin{theorem}[Quadratic reciprocity for polynomials]
+    \label{thm:quadratic-reciprocity-poly}
+    Let $P, Q \in A$ be distinct irreducible polynomials.
+    Then
+    \begin{equation}
+        \left(\frac{P}{Q}\right) \left(\frac{Q}{P}\right) = (-1)^{\frac{|P| - 1}{2} \cdot \frac{|Q| - 1}{2}}.
+        \label{eqn:quadratic-reciprocity-poly}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    This proof is due to Carlitz, which can be found in Rosen's book \cite[p. 25, Theorem 3.3]{rosen2013number} or Conrad's note \cite[Section 3]{conrad_rec_odd}.
+    Let $k / \bF_p$ be a (finite) field contains all roots of $P$ and $Q$.
+    Let $d_P = \deg P$ and $d_Q = \deg Q$.
+    We will first show that \eqref{eqn:quadratic-reciprocity-poly} is equivalent to:
+    \begin{equation}
+        \left(\frac{P}{Q}\right) = (-1)^{\frac{(p-1) d_P d_Q}{2}} \left(\frac{Q}{P}\right).
+        \label{eqn:quadratic-reciprocity-poly-cor}
+    \end{equation} 
+    From $|P| = p^{d_P}$,
+    \begin{align*}
+        \frac{|P| - 1}{2} = \frac{p^{d_P} - 1}{2} = \frac{p-1}{2} \cdot (p^{d_P-1} + p^{d_P-2} + \cdots + 1) \equiv \frac{(p-1) d_P}{2} \pmod{2},
+    \end{align*}
+    since $p$ is odd.
+    Similar congruence holds for $Q$, hence
+    \[
+        \frac{|P| - 1}{2} \cdot \frac{|Q| - 1}{2} \equiv \frac{(p-1) d_P}{2} \cdot \frac{(p-1) d_Q}{2} \equiv \frac{p-1}{2} \cdot d_P d_Q \pmod{2}.
+    \]
+    Note that $n^2 \equiv n \pmod{2}$ for any integer $n$.
+    
+    Now, let $\alpha, \beta \in k$ be roots of $P$ and $Q$, respectively.
+    Then all the zeros of $P$ and $Q$ are given by the $p$-powers of $\alpha$ and $\beta$ (images of Frobenius map): they factor as
+    \begin{align*}
+        P(T) = \prod_{i = 0}^{d_P - 1} (T - \alpha^{p^i}), \quad Q(T) = \prod_{j = 0}^{d_Q - 1} (T - \beta^{p^j}).
+    \end{align*}
+    By Euler's criterion for polynomials and properties of finite fields, we have
+    \begin{align*}
+        \left(\frac{P}{Q}\right) &\equiv P(T)^{\frac{|Q| - 1}{2}} \pmod{Q(T)} \\
+        &\equiv P(T)^{\frac{p - 1}{2}(1 + p + \cdots + p^{d_Q - 1})} \pmod{Q(T)} \\
+        &\equiv (P(T)P(T)^p \cdots P(T)^{p^{d_Q - 1}})^{\frac{p-1}{2}} \pmod{Q(T)} \\
+        &\equiv (P(T) P(T^p) \cdots P(T^{p^{d_Q - 1}}))^{\frac{p-1}{2}} \pmod{Q(T)}
+    \end{align*}
+    If we set $T = \beta$ for the last congruence, it becomes
+    \[
+    \prod_{i=0}^{d_P - 1} \prod_{j=0}^{d_Q - 1} (\beta^{p^j} - \alpha^{p^i})^{\frac{p-1}{2}} \in \{\pm 1\}
+    \]
+    Now we can swap $\alpha$ and $\beta$, which gives $\left(\frac{Q}{P}\right)$ up to a sign
+    \[
+    (-1)^{\frac{(p-1) d_P d_Q}{2}}
+    \]
+    which is exactly matches with the exponent of $(-1)$ in \eqref{eqn:quadratic-reciprocity-poly-cor}.
+\end{proof}
+Note that the proof is very specific for polynomials over finite fields, and it does not work for integer case.
+There are \emph{some} proofs of similar taste, which writes the product $\left(\frac{p}{q}\right)\left(\frac{q}{p}\right)$ as other function that is symmetric in $p$ and $q$.
+
+One can generalize it to higher order reciprocity laws.
+Since the proof is very similar to the quadratic case, we only state the result here.
+Details can be found in \cite[Chapter 3]{rosen2013number}.
+\begin{theorem}[$d$-th power reciprocity law]
+    Let $d \ge 2$ be an integer dividing $p - 1$.
+    For $f \in A$ and irreducible polynomials $P \in A$, define $\left(\frac{f}{P}\right)$ be a unique element of $\bF_p^\times$ such that
+    \begin{equation}
+        \left(\frac{f}{P}\right)_d = f^{\frac{|P| - 1}{d}} \pmod{P}.
+        \label{eqn:legendre-symbol-poly-d}
+    \end{equation}
+    Then for distinct irreducible polynomials $P, Q \in A$, we have
+    \begin{equation}
+        \left(\frac{P}{Q}\right)_d  = (-1)^{\frac{p - 1}{d} \deg P \deg Q} \left(\frac{Q}{P}\right)_d.
+        \label{eqn:dth-power-reciprocity-poly}
+    \end{equation}
+\end{theorem}
+
+\begin{exercise}\sage
+    Decide if the following congruence equations in $X$ have a solution.
+    \begin{enumerate}
+        \item $X^2 = T^2 + 3T + 3 \pmod{T^3 + T + 1}$ in $\bF_5[T]$.
+        \item $X^2 \equiv 6T^2 + T + 1 \pmod{T^3 + T^2 + T + 5}$ in $\bF_7[T]$.
+        \item $X^2 + TX + T + 1 \equiv 0 \pmod{T^3 + T^2 - 1}$ in $\bF_3[T]$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    Let $p$ be an odd prime and $P \in A$ be an irreducible polynomial of degree $d$.
+    Show that $X^2 \equiv -1 \pmod{P}$ has a solution if and only if $d$ is even or $p \equiv 1 \pmod{4}$.
+    Can you give an explicit formula for a solution in terms of $p$ and $P$?
+\end{exercise}
+
+\begin{exercise}
+    For an irreducible polynomial $P \in A$ and polynomials $f, g, h \in A$, give a necessary and sufficient condition for the congruence $f X^2 + g X + h \equiv 0 \pmod{P}$ to have a solution.
+\end{exercise}
+
+\begin{exercise}
+    Let $f \in A$ be a nonsquare polynomial. Show that $\left(\frac{f}{P}\right) = -1$ for infinitely many irreducible polynomial $P \in A$.\footnote{See \cite[Theorem 4.5]{conrad_rec_odd}.}
+\end{exercise}
+
+
+\newpage

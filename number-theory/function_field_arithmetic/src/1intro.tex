@@ -1,0 +1,51 @@
+\section{Introduction}
+\label{sec:intro}
+
+The goal of this note is to introduce the arithmetic of function fields, which is the analogue of number theory for polynomials.
+Especially, our main goal is to study various evidences of the following claim:
+
+\begin{myquote}
+A theorem that holds for integers is also true for polynomials (over finite fields), and latter is often easier to prove.
+\end{myquote}
+For example, we will see a proof of Fermat's Last Theorem for polynomials, which only requires few pages to prove.
+
+Dictionary between the integers and the polynomials over finite fields can be found in Table \ref{tab:dictionary} of Appendix.
+
+\subsection{Prerequisites}
+We assume that the readers are familiar with undergraduate level algebra (groups, rings, fields, etc.), number theory (congruences, prime numbers, etc.), and a bit of complex analysis.
+Some of the theory of finite fields will be reviewed in Appendix \ref{subsec:handbook_galois_ff}.
+
+
+\subsection{Notations}
+
+Let $p$ be a prime number. We denote by $\bF_p$ the finite field of order $p$, which is the field with $p$ elements.
+We denote the polynomial ring $\bF_p[T]$ by $A$.
+For each nonzero polynomial $f \in A$, we denote it's norm by $|f| = p^{\deg (f)}$, where $\deg (f)$ is the degree of $f$, and we set $|0| = 0$.
+
+\subsection{SageMath}
+
+There are some codes in this note, which are mostly written in \href{https://www.sagemath.org/}{Sage}.
+Sage is a free \href{https://github.com/sagemath/sage}{open-source} mathematics software system, which is built on top of many existing open-source packages and wrappedn in a Python interface.
+You can run them online in \href{https://sagecell.sagemath.org/}{SageMathCell}, or install it on your computer.
+Especially, a lot of number-theoretic functions are implemented in Sage, so it is much easier to experiment with it than writing your own code from scratch.
+For example, to check if a large number is prime, you can simply run
+\begin{minted}[fontsize=\footnotesize,framesep=2mm,bgcolor=lightgray!20]{python}
+is_prime(10 ^ 9 + 7)
+\end{minted}
+Some of the exercies in this note are designed to be solved in Sage (or other programming languages that you are familiar with), and those exercises are marked with a Sage logo \sage.
+Several useful Sage functions are listed in Appendix \ref{subsec:handbook_sage}.
+
+
+\subsection*{Acknowledgements}
+
+
+\begin{exercise}
+    Prove that $\bZ$ is not a polynomial ring over a field. In other words, show that there is no field $k$ such that $\bZ \cong k[T]$ as rings.
+\end{exercise}
+
+\begin{exercise}
+    Think about your favorite theorems in number theory, and try to find their polynomial analogues. Some of them may appear in this note, but some of them may not.
+\end{exercise}
+
+
+\newpage

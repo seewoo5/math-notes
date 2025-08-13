@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{k} \PYG{o}{=} \PYG{n}{GF}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}
+\end{Verbatim}

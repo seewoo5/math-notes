@@ -1,0 +1,623 @@
+\section{How many primes?}
+\label{sec:how-many-primes}
+
+In this section, we will study several questions on counting numbers and polynomials, e.g. number of prime numbers / irreducible polynomials up to certain bounds.
+Over integers, many of such problems are wide open.
+However, the polynomial analogue of these problems are often much easier to prove.
+Especially, both of the sides uses certain \emph{zeta functions} or \emph{L-functions} to count certain objects, which becomes much simpler in the polynomial case.
+
+\subsection{Prime number theorem and Riemann zeta function}
+\label{subsec:prime-number-theorem}
+
+We start with the most important fact about prime numbers, proven by Euclid few hundred years ago.
+\begin{theorem}[Euclid]
+    \label{thm:euclid}
+    There are infinitely many prime numbers.
+\end{theorem}
+\begin{proof}
+    Suppose that there are finitely many prime numbers $p_1, p_2, \dots, p_n$.
+    Consider the number $N = p_1 p_2 \cdots p_n + 1$.
+    Then $N$ is not divisible by any of the prime numbers $p_i$, so it must be either prime or divisible by some other prime number.
+    This contradicts our assumption that there are only finitely many prime numbers.
+\end{proof}
+
+Once we know that there are infinitely many prime numbers, we can ask the following question:
+
+\begin{myquote}
+    For given real number $x > 0$, how many prime numbers are there less than or equal to $x$?
+\end{myquote}
+
+We follow the standard notation and denote the number of prime numbers less than or equal to $x$ by $\pi(x)$.
+Hadamard and de la Vall\'ee-Poussin proved independently in 1896 that
+\begin{theorem}[Prime number theorem]
+    \label{thm:prime-number-theorem}
+    We have
+    \[
+        \pi(x) \sim \frac{x}{\log x},
+    \]
+    where $\sim$ means that the ratio of the two sides tends to $1$ as $x$ tends to infinity.
+\end{theorem}
+In other words, the density of prime numbers among integers is approximately $\frac{1}{\log x}$, which tends to $0$ as $x$ tends to infinity.
+
+\begin{exercise}\sage
+    Plot the graphs of the functions $\pi(x)$ and $\frac{x}{\log x}$ for $x \in [1, 10^6]$.\footnote{Hint: Sage has \texttt{prime\_pi}.}
+\end{exercise}
+
+
+Although there are some elementary proofs by Selberg \cite{selberg1949elementary} and Erd\"os \cite{erdos1949new}, the original proofs and the most of other proofs (e.g. Newman's proof \cite{newman1980simple,zagier1997newman}) uses \emph{Riemann zeta function}.
+In \cite{riemann1859ueber}, Riemann defined the zeta function:
+
+\begin{definition}[Riemann zeta function]
+    \label{def:riemann-zeta}
+    The \emph{Riemann zeta function} is defined by
+    \[
+        \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}
+    \]
+    for complex numbers $s$ with $\Re(s) > 1$.
+\end{definition}
+\begin{exercise}
+    Why it converges for $\Re(s) > 1$?
+\end{exercise}
+
+By writing $\zeta(s)$ as an integral, Riemann showed that it can be analytically (more precisely, meromorphically) continued to the whole complex plane, except for a simple pole at $s = 1$.
+\begin{theorem}
+    \begin{enumerate}
+        \item $\zeta(s)$ can be analytically continued to a meromorphic function on the whole complex plane, with a simple pole at $s = 1$ with residue $1$.
+        \item Define the \emph{completed zeta function} as
+        \begin{equation}
+            \xi(s) = \pi^{-\frac{s}{2}} \Gamma\left(\frac{s}{2}\right) \zeta(s),
+        \end{equation}
+        where $\Gamma(s)$ is the gamma function.
+        Then $\xi(1 - s) = \xi(s)$ for all $s \in \bC \backslash \{0, 1\}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    See Apostol \cite{apostol2013introduction} or Stein--Shakarchi \cite{stein2010complex}.
+\end{proof}
+This allow us to state the infamous \emph{Riemann Hypothesis}:
+\begin{conjecture}[Riemann Hypothesis]
+    \label{conj:riemann-hypothesis}
+    All \emph{non-trivial} zeros of $\zeta(s)$ lie on the critical line $\Re(s) = \frac{1}{2}$.
+\end{conjecture}
+Here the \emph{trivial} zeros are the negative even integers, i.e. $s = -2, -4, -6, \dots$.
+
+But why Riemann zeta function is related to prime numbers?
+The following theorem by Euler is the key.
+\begin{theorem}[Euler factorization]
+    \label{thm:euler-factorization}
+    The Riemann zeta function can be expressed as an infinite product over all prime numbers $p$:
+    \begin{equation}
+        \zeta(s) = \prod_{p} \frac{1}{1 - p^{-s}},
+        \label{eqn:euler-factorization}
+    \end{equation}
+    for $\Re(s) > 1$.
+\end{theorem}
+\begin{proof}
+    This essentially follows from the fundamental theorem of arithmetic (Theorem \ref{thm:fta}).
+    More precisely, using geometric series we can rewrite the right hand side as
+    \[
+    \prod_{p} \frac{1}{1 - p^{-s}} = \prod_{p} \left(1 + \frac{1}{p^s} + \frac{1}{p^{2s}} + \cdots \right)
+    \]
+    and Theorem \ref{thm:fta} implies that each term $\frac{1}{n^s}$ in the left hand side in \eqref{eqn:euler-factorization} appears exactly once in the right hand side.
+\end{proof}
+
+Let's return to the prime number theorem.
+The main idea of the proof(s) is in two steps:
+\begin{enumerate}
+    \item Reduce the problem to the following claim: $\zeta(s)$ is non-vanishing for $\Re(s) = 1$ and $s \ne 1$.
+    \item Prove the above claim.
+\end{enumerate}
+
+Here we give a sketch of the proof of 2.
+By taking logarithmic derivative of \eqref{eqn:euler-factorization}, we get
+\[
+\log \zeta(s) = - \sum_p \log(1 - p^{-s}) = \sum_p \sum_{k \ge 1} \frac{p^{-ks}}{k}.
+\]
+If $s = x + iy$, we get
+\[
+|\zeta(x + iy)| = \exp\left(\sum_{p} \sum_{k \ge 1} \frac{\cos (ky \log p)}{k p^{kx}}\right)
+\]
+and
+\begin{equation}
+\label{eqn:riemann-zeta-abs}
+|\zeta(x)^3 \zeta(x + iy)^4 \zeta(x + 2iy)| = \exp\left(\sum_{p} \sum_{k \ge 1} \frac{3 + 4 \cos(k y \log p) + \cos(2 k y \log p)}{k p^{kx}}\right)
+\end{equation}
+for all $x > 1$.
+Now, one can prove the inequality
+\begin{equation}
+    \label{eqn:cosineq}
+    3 + 4 \cos \theta + \cos(2\theta) \ge 0
+\end{equation}
+for any $\theta \in \bR$, which shows that the right hand side of \eqref{eqn:riemann-zeta-abs} is at least $1$.
+Assume that $\zeta(1 + iy) = 0$ for some $y$. Then one can derive a contradiction from \eqref{eqn:riemann-zeta-abs} by considering the limit as $x \to 1^+$, where the left hand side tends to $0$ while the right hand is bounded below by $1$.
+
+\begin{exercise}
+    Prove \eqref{eqn:cosineq}.
+\end{exercise}
+
+So we can approximate $\pi(x)$ by $\frac{x}{\log x}$, but how good is this approximation?
+More precisely, what is the growth of the error term?
+First of all, there's a better approximation than $\frac{x}{\log x}$ suggested by Dirichlet, which is \emph{logarithmic integral}:
+\begin{equation}
+    \Li(x) := \int_2^x \frac{\dd t}{\log t}.
+\end{equation}
+
+In terms of growth, $\frac{x}{\log x}$ and $\Li(x)$ are asymptotically equivalent (see Exercise \ref{ex:Li} below).
+However, $\Li(x)$ gives much better approximation than $\frac{x}{\log x}$.
+In \cite{de1899fonction}, de la Vall\'ee-Poussin proved that the error term $\pi(x) - \Li(x)$ is bounded by 
+\[
+|\pi(x) - \Li(x)| = O(x e^{-c \sqrt{\log x}}) 
+\]
+for some constant $c > 0$.
+Koch \cite{von1901distribution} showed that, \emph{assuming the Riemann Hypothesis}, we obtain the improved bound
+\begin{equation}
+    |\pi(x) - \Li(x)| = O\left(\sqrt{x} \log x\right)
+    \label{eqn:koch}
+\end{equation}
+which in fact turned out to be equivalent to the Riemann Hypothesis.
+
+\begin{exercise}
+    \label{ex:Li}
+    Prove that $\Li(x) \sim \frac{x}{\log x}$ as $x \to \infty$.
+    More precisely, show that
+    \begin{equation}
+        \Li(x) \sim \frac{x}{\log x} \sum_{k \ge 0} \frac{k!}{(\log x)^k} = \frac{x}{\log x} + \frac{x}{(\log x)^2} + \frac{2x}{(\log x)^3} + \cdots.
+    \end{equation}
+\end{exercise}
+
+\begin{exercise}\sage
+    Plot the graphs of the functions $\pi(x)$, $\Li(x)$, and $\frac{x}{\log x}$ for $x \in [1, 10^6]$, and observe that $\Li(x)$ is much closer to $\pi(x)$ than $\frac{x}{\log x}$.
+    Also, compare $\pi(x)$ and $\Li(x)$ - do you have any conjecture on the difference?\footnote{You may find that $\pi(x) < \Li(x)$ when $x$ is not too small, and it is tempting to conjecture that $\pi(x) < \Li(x)$ for sufficiently large $x$. However, this is not true. In fact, Littlewood \cite{littlewood1914distribution} proved that the sign of $\pi(x) - \Li(x)$ changes infinitely many times, although the smallest number $x > 10$ such that $\pi(x) < \Li(x)$ (known as Skewes's number) is probably very huge.}
+\end{exercise}
+
+
+\subsection{Counting irreducible polynomials with zeta function}
+\label{subsec:counting-irred-poly-zeta}
+
+How about polynomials?
+First of all, there are infinitely many irreducible polynomials:
+\begin{theorem}
+    \label{thm:euclid-poly}
+    For each prime $p$, there are infinitely many irreducible polynomials over $\bF_p$.
+\end{theorem}
+
+\begin{exercise}
+    Prove Theorem \ref{thm:euclid-poly}. You can follow the argument of Theorem \ref{thm:euclid} above, or give more interesting proof.
+\end{exercise}
+
+Now, we can ask more interesting question, i.e. number of irreducible polynomials of certain degree.
+\begin{myquote}
+    For a given prime $p$ and integer $n$, how many irreducible monic polynomials of degree $n$ in $A = \bF_p[T]$?
+\end{myquote}
+We will fix $p$, and denote the number of such polynomials as $a_n$.
+When $n$ is small, we can get nice formulas.
+\begin{proposition}
+    \label{prop:monic_irred_n2}
+    \begin{equation}
+        a_2 = \frac{p^2 - p}{2}.
+        \label{eqn:monic_irred_n2}
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    One can count number of \emph{reducible} monic polynomials, and subtract from the total number of monic quadratic polynomials, which is simply $p^2$ (you have $p$ choices for each $c_0$ and $c_1$ in $f(T) = T^2 + c_1 T + c_0$).
+    If $f(T)$ is not irreducible, then it should factor as $f(T) = (T - \alpha)(T - \beta)$ for some $\alpha, \beta \in \bF_p$.
+    Now, there are $p$ cases where $\alpha = \beta$, and $\binom{p}{2}$ cases where $\alpha \ne \beta$.
+    This gives
+    \[
+    a_2 = p^2 - p - \binom{p}{2} = \frac{p^2 - p}{2}.
+    \]
+\end{proof}
+\begin{exercise}
+    Prove
+    \begin{equation}
+        a_3 = \frac{p^3 - p}{3}.
+        \label{eqn:monic_irred_n3}
+    \end{equation}
+    You may need to exclude the polynomials $f(T)$ which factor as 1) products of three linear polynomials, or 2) products of linear and irreducible quadratic polynomial.
+\end{exercise}
+
+It seems that we may even able to find a nice formula for $a_n$.
+To do this, we will define a \emph{zeta function} for polynomials, which is similar to the Riemann zeta function but much simpler.
+\begin{definition}[Zeta function for $A$]
+    We define \emph{zeta function} as
+    \begin{equation}
+        \zeta_A(s) = \sum_{\substack{0 \ne f\,\text{monic}}} \frac{1}{|f|^s}
+        \label{eqn:zetaA}
+    \end{equation}
+    which converges for $\Re(s) > 1$.
+\end{definition}
+
+We have a simple formula for $\zeta_A$:
+\begin{proposition}
+    \label{prop:zetaA}
+    We have
+    \begin{equation}
+        \zeta_A(s) = \frac{1}{1 - p^{1 - s}}.
+        \label{eqn:zetaA_formula}
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    We can group the sum in \eqref{eqn:zetaA} by degree, since $|f|$ only depends on degree of $f$.
+    Since there are $p^d$-many monic polynomials of degree $d$, we have
+    \begin{align*}
+        \zeta_A(s) = \sum_{d \ge 1} \frac{p^d}{p^{ds}} = \sum_{d \ge 0} p^{d(1 - s)} = \frac{1}{1 - p^{1 - s}}.
+    \end{align*}
+\end{proof}
+Especially, it has a simple pole at $s = 1$ with residue $1 / \log p$, and analytic continuation is clear from the formula.
+Also, there are no zeros of $\zeta_A(s)$, so Riemann Hypothesis for polynomials is trivially true.
+Note that the notation $\zeta_A$ somehow emphasizes $A$, since we will eventually study more general ``zeta functions'' for other polynomial rings (``extensions'' of $A$), where the Riemann Hypothesis is more interesting (but still true).
+
+What about Euler factorization?
+Since $A$ is also UFD, the same argument as in Theorem \ref{thm:euler-factorization} gives us
+\begin{theorem}[Euler factorization for polynomials]
+    \label{thm:euler-factorization-poly}
+    We have
+    \begin{equation}
+        \zeta_A(s) = \prod_{P\text{ monic irred}} (1 - |P|^{-s})^{-1}.
+        \label{eqn:euler-factorization-poly}
+    \end{equation}
+\end{theorem}
+
+As in Proposition \ref{prop:zetaA}, we can group the product in \eqref{eqn:euler-factorization-poly} by degree, which gives
+\begin{equation}
+    \zeta_A(s) = \prod_{d \ge 1} (1 - p^{-ds})^{-a_d}.
+    \label{eqn:euler-factorization-poly2}
+\end{equation}
+By comparing \eqref{eqn:zetaA_formula} and \eqref{eqn:euler-factorization-poly2}, we can deduce the following formula for $a_n$:
+\begin{theorem}
+    We have
+    \begin{equation}
+        p^n = \sum_{d \mid n} d a_d.
+        \label{eqn:counting_irred_poly}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Let $u = p^{-s}$, so
+    \begin{equation}
+        \frac{1}{1 - pu} = \prod_{d \ge 1} (1 - u^d)^{-a_d}.
+    \end{equation}
+    By taking logarithmic derivative, we have
+    \begin{equation}
+        \frac{p}{1 - pu} = \sum_{d \ge 1} a_d \frac{d u^{d-1}}{1 - u^d} \Leftrightarrow \frac{pu}{1 - pu} = \sum_{d \ge 1} a_d \frac{d u^d}{1 - u^d}.
+    \end{equation}
+    Using geometric series, we can rewrite the equations as
+    \begin{equation}
+        \sum_{n \ge 1} p^n u^n = \sum_{d \ge 1} d a_d \sum_{k \ge 1} u^{dk} = \sum_{n \ge 1} \left(\sum_{d \mid n} d a_d\right) u^n.
+    \end{equation}
+    Now, we can compare the coefficients of $u^n$ on both sides and get \eqref{eqn:counting_irred_poly}.
+\end{proof}
+
+We can \emph{invert} this formula to get a formula for $a_n$.
+Such a process is called \emph{M\"obius inversion} - before we state the general formula, we will first give small examples that may leads to the general formula (in other words, \emph{you can invent M\"obius inversion formula yourself}).
+Let $b_n := n a_n$.
+For $n = 1, 2, 3, 4, 6, 12$, \eqref{eqn:counting_irred_poly} gives us the following equations:
+\begin{align*}
+    p &= b_1,\\
+    p^2 &= b_1 + b_2,\\
+    p^3 &= b_1 + b_3,\\
+    p^4 &= b_1 + b_2 + b_4,\\
+    p^6 &= b_1 + b_2 + b_3 + b_6, \\
+    p^{12} &= b_1 + b_2 + b_3 + b_4 + b_6 + b_{12}.
+\end{align*}
+From these equations, we can compute $b_n$ recursively:
+\begin{align*}
+    b_1 &= p,\\
+    b_2 &= p^2 - p,\\
+    b_3 &= p^3 - p,\\
+    b_4 &= p^4 - p^2,\\
+    b_6 &= p^6 - p^3 - p^2 + p,\\
+    b_{12} &= p^{12} - p^6 - p^4 + p^2.
+\end{align*}
+Let's see how we actually computed $b_6$ and $b_{12}$. $b_{6}$ can be written as
+\begin{align*}
+    b_6 &= p^6 - (b_1 + b_2 + b_3)\\
+        &= p^6 - (b_1 + b_3) - (b_1 + b_2) + b_1\\
+        &= p^6 - p^3 - p^2 + p.
+\end{align*}
+Similarly, we can compute $b_{12}$ as
+\begin{align*}
+    b_{12} &= p^{12} - (b_1 + b_2 + b_3 + b_4 + b_6)\\
+        &= p^{12} - (b_1 + b_2 + b_3 + b_6) - (b_1 + b_2 + b_4) - (b_1 + b_2)\\
+        &= p^{12} - p^6 - p^4 + p^2.
+\end{align*}
+This may reminds you the principle of inclusion-exclusion, and indeed, we can write the general formula as follows: for $n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$,
+\begin{align*}
+    b_{n} &= p^n - \sum_{d \mid n, d < n} b_d\\
+        &= p^n - (b_1 + \cdots + b_{n / p_1}) - (b_1 + \cdots + b_{n / p_2}) - \cdots - (b_1 + \cdots + b_{n / p_k}) \\
+        &\quad + (b_1 + \cdots + b_{n / p_1 p_2}) + (b_1 + \cdots + b_{n / p_1 p_3}) + \cdots\\
+        &\cdots\\
+        &= p^n - p^{n / p_1} - p^{n / p_2} - \cdots - p^{n / p_k} + p^{n / (p_1 p_2)} + p^{n / (p_1 p_3)} + \cdots\\
+\end{align*}
+
+This gives us the following formula for $a_n$:
+\begin{corollary}
+    \label{cor:counting_irred_poly}
+    For a given prime $p$ and integer $n$, we have
+    \begin{equation}
+        a_n = \frac{1}{n} \sum_{d \mid n} \mu(d) p^{n/d},
+        \label{eqn:counting_irred_poly_2}
+    \end{equation}
+    where $\mu$ is the M\"obius function, defined as
+    \begin{equation}
+        \mu(n) = \begin{cases}
+            1 & \text{if } n = 1,\\
+            (-1)^k & \text{if } n = p_1 p_2 \cdots p_k \text{ with } k \text{ distinct primes} \\
+            0 & \text{otherwise.}
+        \end{cases}
+    \label{eqn:mobius}
+    \end{equation}
+\end{corollary}
+
+\begin{exercise}
+    Complete the proof of Corollary \ref{cor:counting_irred_poly}.
+\end{exercise}
+
+Note that \eqref{eqn:counting_irred_poly_2} gives an \emph{exact} formula for $a_n$.
+This also gives an analogue of the prime number theorem for polynomials: the dominating term of $a_n$ is
+\[
+\frac{p^n}{n} = \frac{p^n}{\log_p p^n},
+\]
+where $p^n$ is equal to the number of monic polynomials of degree $n$ over $\bF_p$.
+Moreover, the error term is bounded by $O\left(\frac{p^{n/2}}{n}\right)$, so we get
+\begin{equation}
+    a_n = \frac{p^n}{\log_p p^n} + O\left(\frac{\sqrt{p^n}}{\log_p p^n}\right).
+    \label{eqn:pi-f}
+\end{equation}
+which has a similar form as Koch's bound \eqref{eqn:koch} (or even better!).
+
+\begin{exercise}\sage
+    Let $p = 3$. For each $1 \le n \le 10$, find the number of irreducible monic polynomials of degree $n$ over $\bF_3$, by using the factorization of $T^{3^n} - T$.
+    Check that the results match with the formula \eqref{eqn:counting_irred_poly_2}.
+\end{exercise}
+
+\begin{exercise}
+    Prove the following non-asymptotic version of \eqref{eqn:pi-f}:
+    \[
+    \left|a_n - \frac{p^n}{n} \right| \le \frac{p^{n/2}}{n}
+    \]
+\end{exercise}
+
+\begin{exercise}
+    For each $p$ and $d$, prove that the polynomial
+    \[
+    \left(\prod_{0 \le \deg(f) < d} f\right) + 1
+    \]
+    is equal to a constant multiple of the product of all monic irreducible polynomials of degree $d$ over $\bF_p$.
+    What is the constant?
+\end{exercise}
+
+\begin{exercise}
+    Prove that the polynomial $T^p - T - 1$ is irreducible over $\bF_p$ for all prime $p$.\footnote{Such a polynomial is called \emph{Artin--Schreier polynomial}.}
+\end{exercise}
+
+\begin{exercise}\sage
+    For a given prime $p$ and an integer $n$, design an algorithm to find an irreducible polynomial of degree $n$ over $\bF_p$? (This is not an easy question.)
+\end{exercise}
+
+\begin{exercise}
+    What would be a good analogue of the logarithmic integral $\Li(x)$ for polynomials?
+\end{exercise}
+
+
+\subsection{Counting other things}
+
+The power of the above method is that we can count other objects by replacing the zeta function with \emph{Dirichlet series}
+\begin{equation}
+    L(s, a) = \sum_{n \ge 1} \frac{a_n}{n^s}
+    \label{eqn:dirichlet_series}
+\end{equation}
+or
+\begin{equation}
+    L(s, a) = \sum_{\substack{0 \ne f \in A \\ f \text{ monic}}} \frac{a_f}{|f|^s},
+    \label{eqn:dirichlet_series_poly}
+\end{equation}
+for given sequence $(a_n)_{n \ge 1}$ or sequence of polynomials $(a_f)_{f \in A}$.
+When these sequences are ``interesting'', we call the Dirichlet series \emph{L-function}.
+One condition for being ``interesting'' is that the Dirichlet series has an Euler factorization, i.e. it can be written as a product over primes (which might be more complicated than \eqref{eqn:euler-factorization} or \eqref{eqn:euler-factorization-poly}).
+
+For example, we will coun the number of \emph{square-free} monic polynomials of given degree $n$ over $\bF_p$.
+Note that $f \in A$ is square-free if and only if $f$ is not divisible by $P^2$ for any monic irreducible polynomial $P$.
+In other words, it has no repeated factors in its factorization.
+To count such polynomials, one can consider the indicator function
+\begin{equation}
+    \delta(f) = \begin{cases}
+        1 & \text{if } f \text{ is square-free},\\
+        0 & \text{otherwise}
+    \end{cases}
+    \label{eqn:square_free_indicator}
+\end{equation}
+and the corresponding Dirichlet series
+\begin{equation}
+    L(s, \delta) = \sum_{\substack{0 \ne f \in A \\ f \text{ monic}}} \frac{\delta(f)}{|f|^s} = \sum_{n \ge 0} \frac{c_n}{p^{ns}},
+    \label{eqn:square_free_dirichlet_series}
+\end{equation}
+where $c_n = \sum_{\deg f = n} \delta(f)$ is the number of square-free monic polynomials of degree $n$ over $\bF_p$ (here $c_0 = 1$).
+Now, only the polynomials with no repeated factors contribute to the sum, so they are product of distinct monic irreducible polynomials.
+This gives us the Euler factorization
+\begin{equation}
+    L(s, \delta) = \prod_{P \text{ monic irred}} (1 + |P|^{-s})
+    \label{eqn:square_free_euler_factorization}
+\end{equation}
+From $1 + |P|^{-s} = (1 - |P|^{-2s}) / (1 - |P|^{-s})$, comparing with the Euler factorization \eqref{eqn:euler-factorization-poly} we can rewrite \eqref{eqn:square_free_euler_factorization} as
+\begin{equation}
+    L(s, \delta) = \frac{\zeta_A(s)}{\zeta_A(2s)} = \frac{1 - p^{1-2s}}{1 - p^{1 - s}}.
+    \label{eqn:square_free_dirichlet_series_2}
+\end{equation}
+Substituting with $u = p^{-s}$ gives us
+\[
+    \frac{1 - pu^2}{1 - pu} = \sum_{n \ge 0} c_n u^{n}.
+\]
+and expanding the left hand side as a geometric series gives us
+
+\begin{theorem}
+    \label{thm:square-free-monic-poly}
+    Let $c_n$ be the number of square-free monic polynomials of degree $n$ over $\bF_p$.
+    Then $c_1 = p$ and $c_n = p^n(1 - p^{-1})$ for $n \ge 2$.
+\end{theorem}
+Since there are $p^n$ monic polynomials of degree $n$, the Theorem shos that the proportion of square-free monic polynomials of degree $n$ is $(1 - p^{-1})$ for $n \ge 2$.
+
+We can ask the same question for integers.
+The analogous $L$-series would be
+\begin{equation}
+    L(s, \delta) = \sum_{n \ge 1} \frac{\delta(n)}{n^s} = \prod_{p \text{ prime}} (1 + p^{-s}) = \frac{\zeta(s)}{\zeta(2s)},
+    \label{eqn:square_free_dirichlet_series_int}
+\end{equation}
+where $\delta(n)$ is the indicator function for square-free integers, i.e.
+\begin{equation}
+    \delta(n) = \begin{cases}
+        1 & \text{if } n \text{ is square-free},\\
+        0 & \text{otherwise.}
+    \end{cases}
+    \label{eqn:square_free_indicator_int}
+\end{equation}
+Then we are interested in the number of square-free integers $n \le x$, i.e. the sum
+\begin{equation}
+\sum_{n \le x} \delta(n).
+\label{eqn:square_free_int_sum}
+\end{equation}
+The main idea is that the above sum \eqref{eqn:square_free_int_sum} can be approximated by the limit of $L(s, \delta)$ as $s \to 0$ (so you need to know analytic continuation of it), and use analytic properties of $L(s, \delta)$ to get the asymptotic formula (such an argument is often called as \emph{Tauberian arguments or theorems}).
+Here we only give the result.
+\begin{theorem}
+    \label{thm:square-free-int}
+    The number of square-free integers $n \le x$ is asymptotically equal to
+    \begin{equation}
+        \sum_{n \le x} \delta(n) \sim \frac{1}{\zeta(2)} x = \frac{6}{\pi^2} x.
+        \label{eqn:square_free_int_asymptotic}
+    \end{equation}
+\end{theorem}
+Note that Theorem \ref{thm:square-free-int} and \ref{thm:square-free-monic-poly} are analogous to each other; the proportion of square-free integers (resp. polynomials) is $\frac{1}{\zeta(2)}$ (resp. $\frac{1}{\zeta_A(2)} = 1 - p^{-1}$).
+
+\begin{exercise}
+    Prove that $\delta(n) = \mu(n)^2$ for all integers $n \ge 1$, where $\mu$ is the M\"obius function defined in \eqref{eqn:mobius}.
+\end{exercise}
+
+\begin{exercise}
+    Compute the number of \emph{cube-free} polynomials of degree $n$ over $\bF_p$, i.e. the number of monic polynomials $f \in A$ such that $f$ is not divisible by $P^3$ for any monic irreducible polynomial $P$.
+    Can you generalize this to higher powers?
+\end{exercise}
+
+
+
+\subsection{Sum of arithmetic functions}
+
+More generally, we can adapt the above method to compute the sum of \emph{arithmetic functions}, i.e. functions defined on integers or polynomials.
+
+For example, we consider the divisor counting function
+\begin{equation}
+    d(n) := \sum_{d \mid n} 1
+    \label{eqn:divisor_counting_function}
+\end{equation}
+for integer $n$, or
+\begin{equation}
+    d(f) := \sum_{\substack{h \mid f \\ h\text{ monic}}} 1
+    \label{eqn:divisor_counting_function_poly}
+\end{equation}
+for (monic) polynomial $f \in A$.
+You may found that the function $d(n)$ behaves quite irregularly, e.g. $d(p) = 2$ for all prime $p$, while $d(n)$ can be large for composite $n$.
+But the sum or average of $d(n)$ (or arithmetic functions in general) behaves much better.
+For example, we have
+\begin{theorem}[Dirichlet]
+    \begin{equation}
+        \sum_{n \le x} d(n) = x \log x  + (2\gamma - 1)x + O(\sqrt{x} \log x),
+        \label{eqn:divisor_counting_function_asymptotic}
+    \end{equation}
+    where $\gamma = 0.577\dots$ is the \emph{Euler-Mascheroni constant}.
+\end{theorem}
+\begin{proof}
+    See \cite[Theorem 3.3]{apostol2013introduction}.
+\end{proof}
+As you expect, it is much easier to compute the sum of $d(f)$ for (monic) polynomials $f \in A$ of given degree $n$.
+In fact, we can obtain an exact formula for the sum of $d(f)$:
+\begin{theorem}
+    \label{thm:divisor_counting_function_poly}
+    For a given prime $p$ and integer $n$, we have
+    \begin{equation}
+        \sum_{\deg(f) = n} d(f) = (n + 1) p^n.
+        \label{eqn:divisor_counting_function_poly_formula}
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    Proof also uses $L$-series.
+    In fact, we will prove that the $L$-series of $d(f)$ is simply given by
+    \begin{equation}
+        \sum_{\substack{0 \ne f \in A \\ f\text{ monic}}} \frac{d(f)}{|f|^s} = \zeta_A(s)^2
+        \label{eqn:divisor_counting_function_poly_L_series}
+    \end{equation}
+    Let's assume that the above formula is true for a moment.
+    Denote the sum of $d(f)$ for monic polynomials of degree $n$ as $D_n$.
+    Then we have ($u = p^{-s}$)
+    \[
+    \sum_{n \ge 0} D_n u^n = \sum_{\substack{0 \ne f \in A \\ f\text{ monic}}} \frac{d(f)}{|f|^s} = \zeta_A(s)^2 = \left(\frac{1}{1 - p^{1 - s}}\right)^2 = \frac{1}{(1 - pu)^2}.
+    \]
+    One can compute the right hand side by differentiating the geometric series $\frac{1}{1 - pu} = 1 + pu + p^2 u^2 + \cdots$, which gives the desired formula.
+
+    To prove \eqref{eqn:divisor_counting_function_poly_L_series}, we can simply take square of $\zeta_A(s)$:
+    \[
+    \zeta_A(s)^2 = \left(\sum_{f} \frac{1}{|f|^s}\right)^2 = \left(\sum_{f_1} \frac{1}{|f_1|^s}\right) \left(\sum_{f_2} \frac{1}{|f_2|^s}\right) = \sum_{f} \left(\sum_{h_1 h_2 = f} 1\right) \frac{1}{|f|^s} = \sum_{f} \frac{d(f)}{|f|^s}.
+    \]
+\end{proof}
+Note that one can write \eqref{eqn:divisor_counting_function_poly_formula} as
+\[
+\sum_{\deg(f) = n} d(f) = n p^n + p^n = p^n \log_p p^n + p^n,
+\]
+which is analogous to the main terms $x \log x + (2\gamma - 1)x$ in \eqref{eqn:divisor_counting_function_asymptotic}.
+
+Why do we care about such sums?
+One nice example is the following theorem by Littlewood.
+\begin{theorem}[Littlewood]
+    Define the \emph{Mertens function} as
+    \begin{equation}
+        M(x) = \sum_{n \le x} \mu(n).
+        \label{eqn:mertens_function}
+    \end{equation}
+    Then the Riemann Hypothesis is equivalent to the following bound:
+    \begin{equation}
+        |M(x)| = O(x^{\frac{1}{2} + \epsilon})
+        \label{eqn:mertens_bound}
+    \end{equation}
+    for any $\epsilon > 0$.
+\end{theorem}
+
+\begin{exercise}
+    For integer $n$, \emph{Dedekind's $\psi$-function} is defined as
+    \begin{equation}
+        \psi(n) = n \prod_{p \mid n} \left(1 + \frac{1}{p}\right).
+        \label{eqn:dedekind_psi}
+    \end{equation}
+    \begin{enumerate}
+        \item Prove that $\psi(n)$ is multiplicative, i.e. if $\gcd(m, n) = 1$, then $\psi(mn) = \psi(m) \psi(n)$.
+        \item Prove that $\psi(n) = n \sum_{d \mid n} \frac{|\mu(d)|}{d}$, where $\mu$ is the M\"obius function defined in \eqref{eqn:mobius}.
+        \item Prove that $\psi(n)$ is equal to the number of cyclic subgroups of order $n$ in $(\bZ / n \bZ)^2$.
+        \item Prove
+        \[
+        \sum_{n \ge 1} \frac{\psi(n)}{n^s} = \frac{\zeta(s) \zeta(s - 1)}{\zeta(2s)}
+        \]
+        for $\Re(s) > 2$.\footnote{Hint: use Euler factorization.}
+    \end{enumerate}
+    It is known that the sum of $\psi(n)$ has an asymptotic formula:
+    \begin{equation}
+        \sum_{n \le x} \psi(n) \sim \frac{\zeta(2)}{2\zeta(4)} x^2 + O(x \log x).
+        \label{eqn:dedekind_psi_asymptotic}
+    \end{equation}
+    (See Apostol \cite[p. 71, Exercise 11]{apostol2013introduction}.)
+\end{exercise}
+
+\begin{exercise}
+    For $f \in A$, define $\psi(f)$ as
+    \begin{equation}
+        \psi(f) := |f| \prod_{P \mid f} (1 + |P|^{-1}),
+        \label{eqn:dedekind_psi_poly}
+    \end{equation}
+    where the product is over all monic irreducible polynomials $P$ dividing $f$.
+    \begin{enumerate}
+        \item Prove all the analogous statements in the previous exercise.
+        \item Compute the sum
+        \[
+        \sum_{f \in A, \deg(f) = n} \psi(f).
+        \]
+        Compare the result with \eqref{eqn:dedekind_psi_asymptotic}.
+    \end{enumerate}
+\end{exercise}
+
+
+\newpage
