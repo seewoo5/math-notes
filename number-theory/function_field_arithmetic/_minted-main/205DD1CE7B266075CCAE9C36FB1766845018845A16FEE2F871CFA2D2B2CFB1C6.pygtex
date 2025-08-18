@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{k}\PYG{o}{.\PYGZlt{}}\PYG{n}{a}\PYG{o}{\PYGZgt{}} \PYG{o}{=} \PYG{n}{GF}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{)}
-\end{Verbatim}
