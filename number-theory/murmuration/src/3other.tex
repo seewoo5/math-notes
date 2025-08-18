@@ -141,12 +141,10 @@ In fact, all the above works fit into the general framework suggested by Sarnak,
 
 \subsection{Elliptic curves?}
 
-There \emph{are} some works on murmuration density of elliptic curves.
+Recently, Will Sawin and Andrew Sutherland announced a murmuration theorem for elliptic curves, which is slightly different from the formulation in \cite{he2024murmurations}.
 
-In the last slide of Sutherland's lecture \cite{sutherland} at Tate conference (\emph{The legacy of John Tate, and beyond} at Harvard university), he mentioned an unpublished work with Sawin on murmuration density of elliptic curves, proved by Voronoi summation formula.
-He considered it as \emph{a} murmuration theorem, and might not be \emph{the} murmuration theorem since the density formula is too complicated.
 
-\begin{theorem}[Sutherland--Sawin, unpublished]
+\begin{theorem}[Sawin--Sutherland {\cite{sawin2025murmurations}}]
     Let $\scE(X) := \{y^2 = x^3 + ax + b: a, b \in \bZ, p^4 \mid a \Rightarrow p^6 \nmid b, \max\{4|a|^3, 27 b^2\} \le X\}$ be the set of naive isomorphism classes of elliptic curves over $\bQ$ ordered by height.
     For any smooth function $W : \bR_{>0} \to \bR$ with compact support, the limit
     \begin{equation}
@@ -158,3 +156,35 @@ He considered it as \emph{a} murmuration theorem, and might not be \emph{the} mu
     \end{equation}
     where $\ell_{p^\nu} = \frac{p^9 - p^8}{p^{10} - 1} \Tr(T_p | S_{\nu + 2}(1))$.
 \end{theorem}
+
+The difference between the original murmuration observed in HLOP \cite{he2024murmurations} and the one in Sawin--Sutherland is well-explained in \cite[Section 1.1]{sawin2025murmurations}.
+The original murmuration considered the averages of the form 
+\[
+\bE_{\substack{N(E) \in [X, X + 1000] \\ \mathrm{rank}(E) = r}} [a_p(E)]
+\]
+as a function in $p$ for fixed $r$.
+However, subsequent works found that the dyadic intervals like $[X, 2X]$ or slightly smaller intervals like $[X, X + X^{1 - \delta}]$ for $\delta > 0$ are more appropriate, since it make analysis more tractable and plots smoother.
+Hence the reformulated HLOP's murmuration would be
+\begin{equation}
+\label{eqn:HLOPavg}
+\bE_{\substack{N(E) \in [X, 2X] \\ \mathrm{rank}(E) = r}} [a_p(E)]
+\end{equation}
+Also, later study found that the oscillations would converge to a continuous function in $p / X$, so we can understand \eqref{eqn:HLOPavg} as (1) the limit of $X \to \infty$ with fixed $p / X$ value, or (2) the limit of the average over $p$ with $p / X$ lies in a fixed interval.
+
+Another subsequent observation is that considering all elliptic curves with different ranks would be better to study, where we weight $a_p(E)$ by the $\epsilon$ factor of $E$.
+Also, rather than $p / X$, the crucial ratio might be $p / N(E)$. In other words, we can consider further averaging over $p$ where $p / N$ lies in a certain interval, such as
+\[
+\bE_{N(E) \in [X, 2X]} \left[ \bE_{p \in (C_1 N(E), C_2 N(E))} [\epsilon(E) a_p(E)]\right]
+\]
+for $0 < C_1 < C_2$.
+Note that it is slightly easier to work with
+\[
+\bE_{N(E) \in [X, 2X]} \left[ \frac{\log \left(N(E)\frac{C_2 - C_1}{2}\right)}{N(E)}\sum_{p \in (C_1 N(E), C_2 N(E))} \epsilon(E) a_p(E)\right]
+\]
+instead of the previous double expectation, where the term $N / \log(N \frac{C_2 - C_1}{2})$ roughly counts the number of primes in the interval $(C_1 N, C_2 N)$.
+What Sawin and Sutherland proved is a naive height variation of the above average.
+
+The main idea of the proof is using Voronoi summation formula.
+
+You can find more on the Sutherland's lecture \cite{sutherland} at Tate conference (\emph{The legacy of John Tate, and beyond} at Harvard university).
+He considered it as \emph{a} murmuration theorem, and might not be \emph{the} murmuration theorem since the density formula is too complicated.

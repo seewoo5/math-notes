@@ -2,7 +2,7 @@
 
 % --- Set document class and font size ---
 
-\documentclass[letterpaper, 10pt]{article}
+\documentclass[10pt,reqno]{amsproc}
 
 \input{preamble}
 % --- Document starts here ---
@@ -11,7 +11,7 @@
 
 % --- Main title and subtitle ---
 
-\title{How modular forms fly?}
+\title{How automorphic forms and elliptic curves fly?}
 % \\[1em]
 % \normalsize Re-typed by Seewoo Lee\footnote{seewoo5@berkeley.edu}}
 
@@ -29,13 +29,15 @@
 
 % \tableofcontents\label{sec:contents}
 \begin{abstract}
-    This is an expository note on \emph{murmurations}, which was initially discovered by He, Lee, Oliver, and Pozdnyakov for elliptic curves \cite{he2024murmurations}.
-    We focus on the cases where the mumuration density is computed, starting from the work of Zubrilina \cite{zubrilina2023murmurations}.
+    This is an expository note on \emph{murmurations}, which was initially discovered by He, Lee, Oliver, and Pozdnyakov for elliptic curves.
+    We focus on the cases where the mumuration density is computed (under GRH), including the work of Zubrilina, Lee--Oliver--Pozdnyakov, and Sawin--Sutherland.
 \end{abstract}
 
 % --- Main content: import lectures as subfiles ---
 \input{src/1intro.tex}
+\input{src/2dirichlet.tex}
 \input{src/2modform.tex}
+\input{src/4elliptic.tex}
 \input{src/3other.tex}
 
 
