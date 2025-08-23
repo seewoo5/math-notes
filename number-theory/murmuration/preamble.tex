@@ -161,7 +161,7 @@
 % \setcounter{section}{-1}
 
 \setcounter{MaxMatrixCols}{20}
-\newcommand{\Mod}[1]{(\text{mod }#1)}
+\newcommand{\Mod}[1]{\,(\text{mod }#1)}
 \newcommand{\SL}{\mathrm{SL}}
 \newcommand{\Sp}{\mathrm{Sp}}
 \newcommand{\Mp}{\mathrm{Mp}}
@@ -425,6 +425,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}[theorem]{Question}
@@ -461,3 +462,10 @@
 \pagestyle{fancy}
 \fancyhead[R,RO]{}
 \fancyhead[L,LO]{}
+
+\newenvironment{red}{\relax\color{red}}{\hspace*{.5ex}\relax}
+\newenvironment{blue}{\relax\color{blue}}{\hspace*{.5ex}\relax}
+\newcommand{\ber}{\begin{red}}
+\newcommand{\er}{\end{red}}
+\newcommand{\beb}{\begin{blue}}
+\newcommand{\eb}{\end{blue}}

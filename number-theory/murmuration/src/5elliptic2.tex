@@ -1,0 +1,73 @@
+\section{Murmuration of Elliptic Curves, Revisited}
+\label{sec:elliptic2}
+
+Recently, Will Sawin and Andrew Sutherland announced a murmuration theorem for elliptic curves, which is slightly different from the formulation in \cite{he2024murmurations}.
+
+
+\begin{theorem}[Sawin--Sutherland {\cite{sawin2025murmurations}}]
+    \label{thm:sawin-sutherland}
+    Let $\scE(X) := \{y^2 = x^3 + ax + b: a, b \in \bZ, p^4 \mid a \Rightarrow p^6 \nmid b, \max\{4|a|^3, 27 b^2\} \le X\}$ be the set of naive isomorphism classes of elliptic curves over $\bQ$ ordered by height.
+    Let $0 < C_1 < C_2$ be real numbers.
+    For any smooth function $W : \bR_{>0} \to \bR$ with compact support, the limit
+    \begin{equation}
+        \lim_{P \to \infty }\lim_{X \to \infty} \bE_{E : H(E) \le X} \left[ \frac{\prod_{p \le P}(1 - p^{-1})^{-1}}{N(E)} \sum_{\substack{n \ge 1 \\ p \nmid n \,\forall p \le P}} W\left(\frac{n}{N(E)}\right) a_n(E) \epsilon(E)\right]
+    \end{equation}
+    exists and is equal to
+    \begin{equation}
+        \int_{0}^{\infty} W(u) \sqrt{u} \left(2\pi \sideset{}{{}^\square}\sum_{q \ge 1} \sum_{m \ge 1} \frac{\mu(\gcd(m,q))}{qm \phi\left(\frac{q}{\gcd(m,q)}\right)} J_1 \left(\frac{4 \pi \sqrt{u}m}{q}\right) \prod_{p \mid q} \hat{\ell}_{p, 2v_p(m)} \prod_{p \mid m, p \nmid q} \ell_{p, 2v_p(m)} \right) \dd u
+    \end{equation}
+    where $\ell_{p, \nu}$ and $\hat{\ell}_{p, \nu}$ are certain local factors that can be written in terms of traces of the Hecke operator $T_p$ (see \cite[Lemma 3, 4]{sawin2025murmurations}).
+\end{theorem}
+
+The difference between the original murmuration observed in HLOP \cite{he2024murmurations} and the one in Sawin--Sutherland is well-explained in \cite[Section 1.1]{sawin2025murmurations}.
+The original murmuration considered the averages of the form 
+\[
+\bE_{\substack{N(E) \in [X, X + 1000] \\ \mathrm{rank}(E) = r}} [a_p(E)]
+\]
+as a function in $p$ for fixed $r$.
+However, subsequent works found that the dyadic intervals like $[X, 2X]$ or slightly smaller intervals like $[X, X + X^{1 - \delta}]$ for $\delta > 0$ are more appropriate, since it make analysis more tractable and plots smoother.
+Hence the reformulated HLOP's murmuration would be
+\begin{equation}
+\label{eqn:HLOPavg}
+\bE_{\substack{N(E) \in [X, 2X] \\ \mathrm{rank}(E) = r}} [a_p(E)]
+\end{equation}
+Also, later study found that the oscillations would converge to a continuous function in $p / X$, so we can understand \eqref{eqn:HLOPavg} as (1) the limit of $X \to \infty$ with fixed $p / X$ value, or (2) the limit of the average over $p$ with $p / X$ lies in a fixed interval.
+
+Another subsequent observation is that considering all elliptic curves with different ranks would be better to study, where we weight $a_p(E)$ by the $\epsilon$ factor of $E$.
+Also, rather than $p / X$, the crucial ratio might be $p / N(E)$. In other words, we can consider further averaging over $p$ where $p / N$ lies in a certain interval, such as
+\[
+\bE_{N(E) \in [X, 2X]} \left[ \bE_{p \in (C_1 N(E), C_2 N(E))} [\epsilon(E) a_p(E)]\right]
+\]
+for $0 < C_1 < C_2$.
+Note that it is slightly easier to work with
+\[
+\bE_{N(E) \in [X, 2X]} \left[ \frac{\log \left(N(E)\frac{C_2 - C_1}{2}\right)}{N(E)}\sum_{p \in (C_1 N(E), C_2 N(E))} \epsilon(E) a_p(E)\right]
+\]
+instead of the previous double expectation, where the term $N / \log(N \frac{C_2 - C_1}{2})$ roughly counts the number of primes in the interval $(C_1 N, C_2 N)$.
+What Sawin and Sutherland proved is a naive height variation of the above average.
+
+The main idea of the proof of Theorem \ref{thm:sawin-sutherland} is the Voronoi summation formula.
+
+\begin{theorem}[{\cite[Lemma 11]{sawin2025murmurations}}]
+    Let $E_{/\bQ}$ be an elliptic curves, $q$ be a positive integer, $a$ a positive integer coprime to $q$, and $W: (0, \infty) \to \bR$ a smooth function with compact support.
+    Then
+    \begin{equation}
+        \epsilon(E) \sum_{n \ge 1} \frac{a_n(E)}{\sqrt{n}} W\left(\frac{n}{N(E)}\right) e\left(\frac{an}{q}\right) = \frac{\sqrt{N(E)}}{q} \sum_{n \ge 1} \frac{a_n(E)}{\sqrt{n}} e\left(\frac{\overline{aN(E)} n}{q}\right) \int_0^{\infty} 2 \pi W(u) J_1\left(\frac{4 \pi \sqrt{u}n}{q}\right) \dd u
+    \end{equation}
+    where $e(x) = e^{2 \pi i x}$ and $\overline{aN(E)}$ is the multiplicative inverse of $aN(E)$ modulo $q$.
+\end{theorem}
+Note that summation of $n$ instead over primes is built-in inside the formula.
+Based on the theorem, they also conjectured that:
+
+\begin{conjecture}[{\cite[Conjecture 1]{sawin2025murmurations}}]
+\begin{align*}
+    &\lim_{X \to \infty} \bE_{H(E) \le X} \left[\frac{\log\left(N(E) \frac{C_1 + C_2}{2}\right)}{N(E)} \sum_{p \in (C_1 N(E), C_2 N(E))} \epsilon(E) a_p(E)\right] \\
+    &= \int_{C_1}^{C_2} 2 \pi \sqrt{u} \sum_{q} \sum_{m \in \bN} \frac{\mu(\gcd(m, q))}{qm \phi\left(\frac{q}{\gcd(m, q)}\right)} J_1 \left(\frac{4 \pi \sqrt{u}m}{q}\right) \prod_{p \mid q} \hat{\ell}_{p, 2v_p(m)} \prod_{p \mid m, p \nmid q} \ell_{p, 2v_p(m)} \dd u
+\end{align*}
+\end{conjecture}
+
+The main two differences between the conjecture and Theorem \ref{thm:sawin-sutherland} are that (1) the summation is over primes and (2) the (smooth, compactly supported) weight function $W$ is replaced by the characteristic function of the interval $(C_1, C_2)$.
+Heuristics like Cr\'amer's random model suggests that these changes do not affect the density function.
+
+You can find more on the Sutherland's lecture \cite{sutherland} at Tate conference (\emph{The legacy of John Tate, and beyond} at Harvard university).
+He considered it as \emph{a} murmuration theorem, and might not be \emph{the} murmuration theorem since the density formula is too complicated.

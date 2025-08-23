@@ -1,0 +1,84 @@
+\section{Murmuration of Dirichlet Series}
+
+Although the original murmuration density for elliptic curves is still unknown, there are few works where murmuration still exists and even computed (under GRH).
+Historically, the first such example is the work of Zubrilina for the modular forms \cite{zubrilina2023murmurations}, but we will start with the simplest case of Dirichlet characters.
+Lee, Oliver, and Pozdnyakov computed murmuration density for Dirichlet characters \cite{lee2025murmurations}\footnote{which can be thought as  automorphic forms on $\GL_1$ over $\bQ$.}.
+For complex characters, the corresponding murmuration densities are given by the following theorem.
+
+\begin{theorem}[{Lee--Oliver--Pozdnyakov \cite[Theorem 1.1]{lee2025murmurations}}]
+    \label{thm:lop_dirichlet}
+    Let $\cD_{+}(N)$ (resp. $\cD_{-}(N)$) denote the set of primitive even (resp. odd) Dirichlet characters modulo $N$.
+    For $x \in \bR_{> 0}$, let $\lceil x \rceil^{\frp}$ be the smallest prime $\ge x$.
+    For $c > 1$, $\delta > 0$, and $y > 0$, define
+    \begin{align*}
+        P_{\pm}(y, X, c) &:= \frac{\log X}{X} \sum_{\substack{N \in [X, cX] \\ N \text{ prime}}} \sum_{\chi \in \cD_{\pm}(N)} \frac{\chi(\lceil yX \rceil^{\frp})}{\tau(\chi)} \\
+        P_{\pm}(y, X, \delta) &:= \frac{\log X}{X^\delta} \sum_{\substack{N \in [X, X + X^\delta] \\ N \text{ prime}}} \sum_{\chi \in \cD_{\pm}(N)} \frac{\chi(\lceil yX \rceil^{\frp})}{\tau(\chi)}.
+    \end{align*}
+    Then
+    \begin{equation}
+        \label{eqn:lee_1}
+        \lim_{X \to \infty} P_{\pm} (y, X, c) = \begin{cases}
+            \int_{1}^{c} \cos\left(\frac{2 \pi y}{x}\right) \dd x & \text{if } + \\
+            -i \int_{1}^{c} \sin \left(\frac{2 \pi y}{x}\right) \dd x & \text{if } -
+        \end{cases}
+    \end{equation}
+    and assumming RH, if $\frac{1}{2} < \delta < 1$ we have
+    \begin{equation}
+        \label{eqn:lee_2}
+        \lim_{X \to \infty} P_{\pm} (y, X, \delta) = \begin{cases}
+            \cos (2 \pi y) & \text{if } + \\
+            -i \sin (2 \pi y) & \text{if } -
+        \end{cases}
+    \end{equation}
+\end{theorem}
+
+See Figure \ref{fig:lop} for the plot of the above murmuration densities.
+As you can see, there are two version of murmurations: \emph{long interval} $[X, cX]$ and \emph{short interval} $[X, X + X^\delta]$.
+Note that one needs to assume RH to get the short interval version, to guarantee the existence of primes in short intervals.
+The summand $\chi(p) / \tau(\chi)$ is the $p$-th Fourier coefficient of $\overline{\chi}$ when expanded in terms of additive characters, which justifies the normalization.
+Also, the above averages only consider prime moduli, where the authors also studied the case of composite moduli in \cite[Section 6.1]{lee2025murmurations}.
+
+The proof of Theorem \ref{thm:lop_dirichlet} is much simpler than the case of modular forms (Section \ref{sec:modform}).
+The main ingredient of the proof is the following formulas \cite[Lemma 2.6]{lee2025murmurations}: for two distinct primes $p$ and $N$,
+\begin{align}
+    \sum_{\chi \in \cD_{+}(N)} \frac{\chi(p)}{\tau(\chi)} &= \left(\frac{N-1}{N}\right) \cos \left(\frac{2 \pi p}{N}\right) + \frac{1}{N} \\
+    \sum_{\chi \in \cD_{-}(N)} \frac{\chi(p)}{\tau(\chi)} &= -i\left(\frac{N-1}{N}\right) \sin \left(\frac{2 \pi p}{N}\right)
+\end{align}
+Combined with the prime number theorem (which gives equidistribution results of primes in $[X, cX]$ normalized by $X$), we get \eqref{eqn:lee_1}, and assuming RH gives \eqref{eqn:lee_2}.
+
+They also proved similar results for real Dirichlet characters, but the proof is more complicated.
+Let $\scG$ be the set of odd square-free integers and let $\chi_{d} = \left(\frac{d}{\cdot}\right)$.
+For a compactly supported smooth function $\Phi \ge 0$ on $\bR$, define
+\begin{equation}
+    M_{\Phi}(y, X, \delta) = \frac{\log X}{X^{1 + \delta}} \sum_{\substack{p \in [yX, yX + X^\delta] \\ p \text{ prime}}} \sum_{d \in \scG} \Phi\left(\frac{d}{X}\right) \chi_{8d}(p) \sqrt{p}.
+\end{equation}
+
+\begin{theorem}[{Lee--Oliver--Pozdnyakov \cite[Theorem 1.2]{lee2025murmurations}}]
+    Fix $y > 0$ and assume $\frac{3}{4} < \delta < 1$.
+    Assumming GRH, we have
+    \begin{equation}
+        M_{\Phi} (y, \delta) := \lim_{X \to \infty} M_{\Phi}(y, X, \delta) = \frac{1}{2} \sum_{\substack{a \ge 1 \\ a \text{ odd}}} \frac{\mu(a)}{a^2} \sum_{m \ge 1} (-1)^{m} \widetilde{\Phi} \left(\frac{m^2}{2 a^2 y}\right),
+    \end{equation}
+    where
+    \begin{equation}
+        \widetilde{\Phi}(\xi) = \int_{-\infty}^{\infty} (\cos(2 \pi \xi x) + \sin(2 \pi \xi x)) \Phi(x) \dd x.
+    \end{equation}
+\end{theorem}
+The proof is more involved, which is based on the Polya--Vinogradov inequality 
+\[
+\left|\sum_{\substack{p \in [yX, yX + X^\delta] \\ p\text{ prime}}} \chi_d(p)\right| \ll (yX)^{\frac{1}{2} + \epsilon}
+\]
+(for non-principal $\chi_d$ with $\frac{1}{2} < \delta < 1$, which uses GRH \cite{granville2007large})
+and a summation formula
+\[
+\frac{1}{X} \sum_{\substack{d \in \bZ \\ d \text{ odd}}} \left(\sum_{\substack{a^2 | |d| \\ a \le A}} \mu(a)\right) \Phi\left(\frac{d}{X}\right) \left(\frac{d}{p}\right) \sqrt{p} = \frac{1}{2} \left(\frac{2}{p}\right) \sum_{\substack{0 < a \le A \\ (a, 2p) = 1}} \frac{\mu(a)}{a^2} \sum_{k \in \bZ} (-1)^k \left(\frac{k}{p}\right) \widetilde{\Phi} \left(\frac{k X}{2 a^2 p}\right)
+\]
+which can be proved by using Poisson summation formula.
+
+
+\begin{figure}[htp] 
+\centering
+    \includegraphics[width=0.7\textwidth]{src/lop.png}%
+    \caption{Murmuration of Dirichlet characters. The top figure presents $P_{\pm}(y, 2^{10}, 2)$ for $y \in [0, 10]$ with $+$ in blue and (imaginary part of) $-$ in red. The bottom figure presents $\widetilde{P}_{\pm}(y, 2002, 0.51)$ for $y \in [0, 2]$ with $+$ in blue and (imaginary part of) $-$ in red.}
+\label{fig:lop}
+\end{figure}
