@@ -1,0 +1,87 @@
+\section{General formulation of Murmuration}
+\label{sec:general}
+
+
+Sarnak suggested a general framework of murmuration in his letter to Sutherland and Zubrilina \cite{sarnak}.
+Let $\scF$ be a family of $L$-functions in a suitable sense (e.g. See \cite{sarnak2016families}).
+For a smooth nonnegative function $\Phi : (0, \infty) \to \bR$ with compact support and $f : \scF \to \bC$, consider the $\Phi$-weighted average of $f$:
+\begin{equation}
+    \bE_{\pi \in \scF}[f; \Phi, N] := \frac{\sum_{\pi \in \scF} \Phi\left(\frac{N_\pi}{N}\right)f(\pi)}{\sum_{\pi \in \scF} \Phi\left(\frac{N_\pi}{N}\right)} = \frac{A_{\scF}(f; \Phi, N)}{A_{\scF}(1; \Phi, N)}
+\end{equation}
+where
+\begin{equation}
+    A_{\scF}(f; \Phi, N) := \sum_{\pi \in \scF} \Phi\left(\frac{N_\pi}{N}\right)f(\pi).
+\end{equation}
+Here $N_\pi$ is the ``conductor'' of $\pi$ (e.g. conductor of an elliptic curve or analytic conductor of an automorphic form).
+When we order the family by the conductor, we say that $\scF$ has \emph{conductor dimension $\delta$} if
+\begin{equation}
+    \# \{\pi \in \scF : N_\pi \le N\} \sim \alpha N^\delta
+\end{equation}
+as $N \to \infty$ for some $\alpha > 0$ and $\delta = \delta(\scF) > 0$.
+For such family, we have
+\[
+A_\scF(1; \Phi, N) \sim \alpha \delta N^\delta \int_0^\infty \Phi(x) x^\delta \frac{\dd x}{x}.
+\]
+
+Most of the known murmuration results consider the function
+\begin{equation}
+    f(\pi) = a_\pi(p) := \sqrt{p} \lambda_\pi(p)
+\end{equation}
+for a given prime $p$, where $\lambda_\pi(p)$ is the normalized trace of Frobenius at $p$ so that the Ramanujan--Petersson conjecture says $|\lambda_\pi(p)| \le n$ for $\GL_n$ automorphic forms $\pi$.
+Furthermore, if $\scF$ is self-dual, then $a_\pi(p)$ are real and the global root number $w_\pi$ is either $1$ or $-1$.
+Then we can separate by root number and consider the averages
+\begin{equation}
+    \bE_{\pi \in \scF^w} [a_\pi(p); \Phi, N]
+\end{equation}
+for $w \in \{\pm 1\}$ and $\scF^w = \{\pi \in \scF : w_\pi = w\}$.
+
+When $\pi$ is self-dual, functional equation relates $L(s, \pi)$ and $L(1-s, \pi)$ and the completed $L$-function $\Lambda(s, \pi \times \pi)$ of $\pi \times \pi$ factors as
+\[
+\Lambda(s, \pi \times \pi) = \Lambda(s, \pi, \Sym^2) \Lambda(s, \pi, \wedge^2).
+\]
+$\pi$ is said to be \emph{orthogonal} if the first factor $\Lambda(s, \pi, \Sym^2)$ has a pole at $s = 1$, and \emph{symplectic} if the second factor $\Lambda(s, \pi, \wedge^2)$ has a pole at $s = 1$.
+The symplectic case occur only if $n$ is even, and root number of orthogonal $\pi$ is always $1$.
+
+Katz and Sarnak \cite{katz1999zeroes,katz2023random} studied statistics of zeros of $L$-functions via random matrix models.
+In particular, they considered \emph{one-level density} of low-lying zeros: for an even function $\phi$ with rapid decay as $|x| \to \infty$, the one-level density of a family $\scF$ is
+\begin{equation}
+    \OLD(\scF; \phi) = \lim_{N \to \infty} \bE_{\pi \in \scF(N)} \left[\sum_{\gamma_\pi} \phi\left(\frac{\gamma_\pi \log N}{2 \pi}\right)\right]
+\end{equation}
+where $\scF(N) := \{\pi \in \scF: N_\pi = N\}$ and $\gamma_\pi$ runs through the ordinates of nontrivial zeros of $L(s, \pi)$ on the critical line, i.e. $L\left(\frac{1}{2} + i\gamma_\pi, \pi\right) = 0$.
+The factor $\frac{\log N}{2\pi}$ guarantees that the nontrivial zeros have unit spacing on average.
+Katz--Sarnak philosophy claims that there is a measure $W_\scF$ coming from matrices related to the ``type'' of $\scF$ such that
+\begin{equation}
+    \OLD(\scF; \phi) = \int_{\bR} \what{\phi}(x) \what{W_\scF}(x) \dd x
+\end{equation}
+for any nice text function $\phi$.
+
+One such example is the following theorem on the family of Hecke eigenforms by Iwaniec, Luo, and Sarnak \cite{iwaniec2000low}.
+\begin{theorem}[Iwaniec--Luo--Sarnak \cite{iwaniec2000low}]
+    Assume GRH. Let $\phi$ be an even Schwartz function with $\supp(\what{\phi}) \subset (-2, 2)$.
+    Let $H_k^\pm$ be a set of Hecke eigenforms of weight $k$ and root number $\epsilon = \pm 1$.
+    Then
+    \begin{equation}
+        \OLD(H_k^\pm; \phi) = \int_{\bR} \what{\phi}(x) \what{W_{\SO(\pm)}}(x) \dd x
+    \end{equation}
+    where
+    \begin{equation}
+        \label{eqn:WSO}
+        W_{\SO(+)}(x) = 1 + \frac{\sin(2\pi x)}{2 \pi x}, \quad W_{\SO(-)}(x) = 1 - \frac{\sin(2\pi x)}{2 \pi x} + \delta_0(x).
+    \end{equation}
+\end{theorem}
+There is an explicit formula relates the summation over zeros of $L$-functions and over primes, which is given by \cite[Section 4]{iwaniec2000low}
+\begin{align*}
+    \sum_{\gamma_\pi} \phi\left(\frac{\gamma_\pi \log N}{2\pi}\right) &= C - 2 \sum_p \sum_{\nu \ge 1} \left(\sum_{j} \alpha_j(p)^\nu\right) \what{\phi}\left(\frac{\nu \log p}{\log N}\right) \frac{\log p}{p^{\nu/2} \log N}
+\end{align*}
+and since $\what{\phi}$ is compactly supported, the main contribution comes from $\nu = 1$ summand, so we are mostly interested in 
+\begin{equation}
+    \sum_{p} \frac{\lambda_\pi(p)}{p^{1/2}} \what{\phi}\left(\frac{\log p}{\log N}\right) \frac{\log p}{\log N} 
+\end{equation}
+The Fourier transforms of \eqref{eqn:WSO} are
+\begin{equation}
+    \what{W_{\SO(+)}}(y) = \delta_0(y) + \frac{2 - \1_{[-1, 1]}(y)}{2}, \quad \what{W_{\SO(-)}}(y) = \delta_0(y) + \frac{\1_{[-1, 1]}(y)}{2}
+\end{equation}
+and there are obvious discontinuities at $y = \pm 1$.
+
+
+\cite{lowry2025murmurations}

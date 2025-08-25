@@ -1,7 +1,7 @@
 \section{Murmuration of Modular Forms}
 \label{sec:modform}
 
-In this section, we sketch Zubrilina's computation of murmuration density for modular forms.
+The first murmuration density that is computed ever is for modular forms by Zubrilina \cite{zubrilina2023murmurations}.
 
 \subsection{Statement}
 
@@ -98,3 +98,10 @@ With some hard analysis, one get the following estimations.
         &+ O\left(\frac{P^{11/10}}{Y^{2/5}X^{9/10}} + \frac{YP}{X^2} + \frac{PY^{1/2}}{X^{3/2}} + \frac{P}{X^{1/2} Y^{13/18}} + \frac{P}{XY^{1/9}}\right) (XYP)^\varepsilon
     \end{align*}
 \end{proposition}
+
+\subsection{Doesn't Zubrilina's result prove murmuration for elliptic curves, because of the modularity?}
+
+\emph{No!} I was also confused about this.
+The reason is because elliptic curves over $\bQ$ corresponds to modular forms of weight $2$ \emph{with coefficient field (Hecke field) $\bQ$} (recall that $a_p(E) = p + 1 - \#E(\bF_p)$ are integers).
+The family (see also Section \ref{subsec:other_sarnak}) that Zubrilina considered is much larger than the family of elliptic curves in \cite{he2024murmurations}, and it seems hard to isolate such family from whole family of Hecke eigenforms (of weight 2).
+It is conjectured that the \emph{conductor dimension} (See \ref{subsec:other_sarnak} for the definition) of elliptic curves is $\frac{5}{6}$ \cite{shankar2019families}, while that of weight 2 modular forms is $2$.
