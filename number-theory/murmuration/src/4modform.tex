@@ -50,8 +50,7 @@ To account the root number $\varepsilon(f)$, i.e. eigenvalue of $W_N$, we used t
     For square-free $N$ and prime $P \nmid N$,
     \begin{align*}
         &\sum_{f \in H^\new(N, k)} \sqrt{P} \lambda_f(P) \varepsilon(f)\nonumber \\
-        &= \frac{H_1(-4PN)}{2} + (-1)^{k/2 - 1} U_{k - 2} \left(\frac{r\sqrt{N}}{2\sqrt{P}}\right) \sum_{0 < r \le 2\sqrt{P/N}} H_1(r^2 N^2 - 4PN) \\
-        &\quad - \delta_{k-2}(P+1)
+        &= \frac{H_1(-4PN)}{2} + (-1)^{k/2 - 1} U_{k - 2} \left(\frac{r\sqrt{N}}{2\sqrt{P}}\right) \sum_{0 < r \le 2\sqrt{P/N}} H_1(r^2 N^2 - 4PN) - \delta_{k=2}(P+1)
     \end{align*}
     Here $H_1(-d)$ ($d > 0$) is the Hurwitz class number, the number of equivalence classes of positive definite binary quadratic forms of discriminant $-d$ weighted by the number of automorphisms, i.e. with forms correspond to $x^2 + y^2$ or $x^2 + xy + y^2$ counted with multiplicity $1/2$ and $1/3$ respectively.
 \end{theorem}
@@ -64,44 +63,85 @@ where the ``error term'' $O(1)$ disappears if $d \ne 3 \cdot \square$ or $4 \cdo
 Using this, we can rewrite the Skoruppa--Zagier trace formula as
 \begin{align*}
     &\sum_{f \in H^\new(k, N)} \sqrt{P} \lambda_f(P) \varepsilon(f) \\
-    &= \frac{h(-4PN)}{2} + \frac{h(-PN)}{2} - \delta_{k=2} P + O(1) \\
-    &+ (-1)^{k/2 - 1} U_{k-2} \left(\frac{r\sqrt{N}}{2\sqrt{P}}\right) \sum_{1 \le r \le 2\sqrt{P/N}} \sum_{d^2 | r^2 N - 4P} h\left(\frac{N(r^2 N - 4P)}{d^2}\right)
+    &= \frac{h(-4PN)}{2} + \frac{h(-PN)}{2} - \delta_{k=2} P + O(1) + (-1)^{k/2 - 1} U_{k-2} \left(\frac{r\sqrt{N}}{2\sqrt{P}}\right) \sum_{1 \le r \le 2\sqrt{P/N}} \sum_{d^2 | r^2 N - 4P} h\left(\frac{N(r^2 N - 4P)}{d^2}\right)
 \end{align*}
-
-From this, our new goal is to estimage the average of class numbers over short intervals, i.e. when $N \in [X, X + Y]$ with $Y = o(X)$.
+From this, our new goal is to estimate the average of class numbers over short intervals, i.e. when $N \in [X, X + Y]$ with $Y = o(X)$.
 The main idea is to use class number formula to write class numbers as special $L$-values at $s = 1$, e.g.
 \[
 h(-d) = \frac{\sqrt{d}}{\pi} L(1, \chi_d)
 \]
-when $d > 4$ and $-d \equiv 1 \Mod{4}$.
+when $d > 4$ and $-d \not\equiv 2,3 \Mod{4}$, and $\chi_d = \left(\frac{d}{\cdot}\right)$ is the Kronecker symbol.
 Then the sum (average) of the corresponding $L$-values can be estimated via truncation and Polya--Vinogradov inequality.
 For example, we have an estimate
 \[
 L(1, \chi_d) = \sum_{n \ge 1} \frac{\chi_d(n)}{n} = \sum_{1 \le n \le T} \frac{\chi_d(n)}{n} + O\left(\frac{\sqrt{d} \log d}{T}\right).
 \]
-With some hard analysis, one get the following estimations.
+With some hard analysis, one get the following estimations on the sum of $h(-PN)$ and $h(-4PN)$.
 \begin{proposition}[Zubrilina {\cite[Proposition 3.1]{zubrilina2023murmurations}}]
     Let $P$ be an odd prime and let $[X, X + Y]$ be an interval with $Y = o(X)$.
     Then as $X \to \infty$,
     \begin{align*}
-        &\frac{\zeta(2) \pi}{XY} \sideset{}{{}^\square}\sum_{\substack{N \in [X, X + Y] \\ P \nmid N}}  \left(\frac{h(-PN)}{2} + \frac{h(-4PN)}{2} \right) \\
-        &= A \sqrt{y} + O_{\varepsilon} \left(\frac{1}{P^{3/2}X^{1/2}} + \frac{P^{7/12}}{Y^{5/6} X^{5/12}} + \frac{YP^{1/2}}{X^{3/2}}\right) (XYP)^{\varepsilon}
+        &\frac{\zeta(2) \pi}{XY} \sideset{}{{}^\square}\sum_{\substack{N \in [X, X + Y] \\ P \nmid N}}  \left(\frac{h(-PN)}{2} + \frac{h(-4PN)}{2} \right) = A \sqrt{y} + O_{\varepsilon} \left(\frac{1}{P^{3/2}X^{1/2}} + \frac{P^{7/12}}{Y^{5/6} X^{5/12}} + \frac{YP^{1/2}}{X^{3/2}}\right) (XYP)^{\varepsilon}
     \end{align*}
+    where
+    \[
+    A = \prod_p \left(1 + \frac{p}{(p + 1)^2 (p - 1)}\right).
+    \]
 \end{proposition}
 
+The summation of $H_1(r^2 N^2 - 4PN)$ terms can be bounded in a similar way, although the computation is much more complicated.
 
 \begin{proposition}[Zubrilina {\cite[Proposition 3.2]{zubrilina2023murmurations}}]
     Let $P$ be an odd prime, $r \in \bN$, and $X > Y > 0$ be such that $r^2(X + Y) < 4 P$ for each $r > 2 \sqrt{P/X}$. Let $y = P/X$. Then
     \begin{align*}
         &\frac{\zeta(2) \pi}{ XY} \sum_{r \le 2 \sqrt{P/X}} \,\,\,\, \sideset{}{{}^\square}\sum_{\substack{N \in [X, X + Y] \\ P \nmid N}}  H_1\left(r^2 N^2 - 4 PN\right) \\
-        &= \sum_{r \le 2 \sqrt{P/X}} \nu(r) \sqrt{4y - r^2} \\
-        &+ O\left(\frac{P^{11/10}}{Y^{2/5}X^{9/10}} + \frac{YP}{X^2} + \frac{PY^{1/2}}{X^{3/2}} + \frac{P}{X^{1/2} Y^{13/18}} + \frac{P}{XY^{1/9}}\right) (XYP)^\varepsilon
+        &= \sum_{r \le 2 \sqrt{P/X}} B\nu(r) \sqrt{4y - r^2} + O\left(\frac{P^{11/10}}{Y^{2/5}X^{9/10}} + \frac{YP}{X^2} + \frac{PY^{1/2}}{X^{3/2}} + \frac{P}{X^{1/2} Y^{13/18}} + \frac{P}{XY^{1/9}}\right) (XYP)^\varepsilon
     \end{align*}
+    where
+    \[
+    B = \prod_p \frac{p^4 - 2p^2 - p + 1}{(p^2 - 1)^2}.
+    \]
 \end{proposition}
+
+\subsection{Geometric intervals}
+
+Theorem \ref{thm:zubrilina_modform} considers the average over ``short intervals'' $[X, X + Y]$ with $Y = o(X)$.
+By integrating it in a suitable sence (and assuming GRH), one can also get the average over ``geometric intervals'' $[X, cX]$ for some constant $c > 1$.
+
+\begin{theorem}[{\cite[Theorem 2]{zubrilina2023murmurations}}]
+    \label{thm:zubrilina_geom}
+    Let $P \ll X^{6/5}$, $c > 1$ be a constant, and $y = P / X$. As $X \to \infty$,
+    \begin{equation}
+        \bE_{\substack{N \in [X, cX] \\ N \text{ squarefree} \\ f \in H^{\text{new}}(N, k)}} [\sqrt{P} \lambda_f(P) \epsilon(f)] = \frac{2}{c^2 - 1} \int_1^c u \mathcal{M}_{k}\left(\frac{y}{u} \right) \dd u + o_y(1)
+    \end{equation}
+    where $\cM_k(y)$ is as in Theorem \ref{thm:zubrilina_modform}.
+    In particular, for $k = c = 2$, the dyadic average
+    \begin{equation}
+        \frac{\sum_{N \in [X, 2X]}^{\square} \sum_{f \in H^{\text{new}}(N, 2)} a_f(P) \epsilon(f)}{\sum_{N \in [X, 2X]}^{\square} \sum_{f \in H^{\text{new}}(N, 2)} 1}
+    \end{equation}
+    converges to
+    \begin{equation}
+        \begin{cases}
+            a \sqrt{y} - b y & 0 \le y \le \frac{1}{4} \\
+            a\sqrt{y} - by + c \pi y^2 - c (1 - 2y) \sqrt{y - \frac{1}{4}} - 2 c y^2 \arcsin\left(\frac{1}{2y} - 1\right)& \frac{1}{4} \le y \le \frac{1}{2} \\
+            a \sqrt{y} - by + 2cy^2 \left(\arcsin\left(\frac{1}{y} - 1\right) - \arcsin\left(\frac{1}{2y} - 1 \right)\right) & \\
+            \quad\quad -c(1 - 2y) \sqrt{y - \frac{1}{4}} + 2c (1 - y) \sqrt{2y - 1} & \frac{1}{2} \le y \le 1
+        \end{cases}
+    \end{equation}
+    for explicit constants $a, b, c$.
+\end{theorem}
+\begin{proof}
+    The main idea of the proof is to divide the interval $[X, cX]$ into short intervals $[X_g, X_{g+1}]$ for $X_g = X + (g - 1)Y$ where $Y \sim X^{1 - \delta_2}$.
+    Then use Theorem \ref{thm:zubrilina_modform} to approximate the sum over short intervals as an integral of $u \cM_k(y/u)$.
+    The case of $k = c = 2$ can be done by elementary computations.
+\end{proof}
+
+The murmuration density function $\cM_k(y)$ have many interesting properties.
+Especially, their properties can be related to Katz and Sarnak's 1-level density conjecture \cite{katz1999zeroes}; see Section \ref{sec:general} for more details.
 
 \subsection{Doesn't Zubrilina's result prove murmuration for elliptic curves, because of the modularity?}
 
-\emph{No!} I was also confused about this.
+\emph{No!}
 The reason is because elliptic curves over $\bQ$ corresponds to modular forms of weight $2$ \emph{with coefficient field (Hecke field) $\bQ$} (recall that $a_p(E) = p + 1 - \#E(\bF_p)$ are integers).
-The family (see also Section \ref{subsec:other_sarnak}) that Zubrilina considered is much larger than the family of elliptic curves in \cite{he2024murmurations}, and it seems hard to isolate such family from whole family of Hecke eigenforms (of weight 2).
-It is conjectured that the \emph{conductor dimension} (See \ref{subsec:other_sarnak} for the definition) of elliptic curves is $\frac{5}{6}$ \cite{shankar2019families}, while that of weight 2 modular forms is $2$.
+The family (see also Section \ref{sec:general}) that Zubrilina considered is much larger than the family of elliptic curves in \cite{he2024murmurations}, and it seems hard to isolate such family from whole family of Hecke eigenforms (of weight 2).
+It is conjectured that the \emph{conductor dimension} (See \ref{sec:general} for the definition) of elliptic curves is $\frac{5}{6}$ \cite{shankar2019families}, while that of the weight 2 modular forms is $2$.

@@ -2,6 +2,7 @@
 \label{sec:elliptic2}
 
 Recently, Will Sawin and Andrew Sutherland announced a murmuration theorem for elliptic curves, which is slightly different from the formulation in \cite{he2024murmurations}.
+Especially, they proved a version of the murmuration theorem \emph{ordered by height}:
 
 
 \begin{theorem}[Sawin--Sutherland {\cite{sawin2025murmurations}}]
@@ -19,32 +20,48 @@ Recently, Will Sawin and Andrew Sutherland announced a murmuration theorem for e
     where $\ell_{p, \nu}$ and $\hat{\ell}_{p, \nu}$ are certain local factors that can be written in terms of traces of the Hecke operator $T_p$ (see \cite[Lemma 3, 4]{sawin2025murmurations}).
 \end{theorem}
 
+You should have a question at this point.
+I said that Sutherland observed no murmuration pattern in \cite{sutherlandletter} when elliptic curves are ordered by height, but Theorem \ref{thm:sawin-sutherland} seems to suggest that there is a murmuration pattern.
+In fact, the difference comes from \emph{local averaging}, which I'm going to explain now.
+
 The difference between the original murmuration observed in HLOP \cite{he2024murmurations} and the one in Sawin--Sutherland is well-explained in \cite[Section 1.1]{sawin2025murmurations}.
 The original murmuration considered the averages of the form 
 \[
-\bE_{\substack{N(E) \in [X, X + 1000] \\ \mathrm{rank}(E) = r}} [a_p(E)]
+\bE_{\substack{N(E) \in [N_1, N_2] \\ \mathrm{rank}(E) = r}} [a_p(E)]
 \]
-as a function in $p$ for fixed $r$.
-However, subsequent works found that the dyadic intervals like $[X, 2X]$ or slightly smaller intervals like $[X, X + X^{1 - \delta}]$ for $\delta > 0$ are more appropriate, since it make analysis more tractable and plots smoother.
+as a function in $p$ for fixed $r, N_1, N_2$ (initially $[N_1, N_2] = [7500, 10000]$ in \cite{he2024murmurations}).
+As mentioned earlier, subsequent works (especially \cite{sutherlandletter}) found that we need to view the murmuration density as a function in $p / N$, not $p$.
+Also, it seems better to consider all elliptic curves with same root numbers at once, or weight $a_p$ by root numbers.
 Hence the reformulated HLOP's murmuration would be
-\begin{equation}
-\label{eqn:HLOPavg}
-\bE_{\substack{N(E) \in [X, 2X] \\ \mathrm{rank}(E) = r}} [a_p(E)]
-\end{equation}
-Also, later study found that the oscillations would converge to a continuous function in $p / X$, so we can understand \eqref{eqn:HLOPavg} as (1) the limit of $X \to \infty$ with fixed $p / X$ value, or (2) the limit of the average over $p$ with $p / X$ lies in a fixed interval.
+\begin{equation*}
+    % \label{eqn:HLOPavg}
+    \bE_{\substack{N(E) \in [X, 2X]}} [\epsilon(E) a_p(E)]
+\end{equation*}
+In \cite{sawin2025murmurations}, the authors mentioned that Bober suggested that one may need \emph{local averaging} in $p$ before we average over different elliptic curves.
+\begin{equation*}
+    \bE_{N(E) \in [X, 2X]} \left[\bE_{\substack{p \in (C_1 N(E), C_2 N(E)) \\ p \text{ prime}}} [\epsilon(E) a_p(E)]\right]
+\end{equation*}
 
-Another subsequent observation is that considering all elliptic curves with different ranks would be better to study, where we weight $a_p(E)$ by the $\epsilon$ factor of $E$.
-Also, rather than $p / X$, the crucial ratio might be $p / N(E)$. In other words, we can consider further averaging over $p$ where $p / N$ lies in a certain interval, such as
-\[
-\bE_{N(E) \in [X, 2X]} \left[ \bE_{p \in (C_1 N(E), C_2 N(E))} [\epsilon(E) a_p(E)]\right]
-\]
-for $0 < C_1 < C_2$.
-Note that it is slightly easier to work with
-\[
-\bE_{N(E) \in [X, 2X]} \left[ \frac{\log \left(N(E)\frac{C_2 - C_1}{2}\right)}{N(E)}\sum_{p \in (C_1 N(E), C_2 N(E))} \epsilon(E) a_p(E)\right]
-\]
-instead of the previous double expectation, where the term $N / \log(N \frac{C_2 - C_1}{2})$ roughly counts the number of primes in the interval $(C_1 N, C_2 N)$.
-What Sawin and Sutherland proved is a naive height variation of the above average.
+% However, subsequent works found that the dyadic intervals like $[X, 2X]$ or slightly smaller intervals like $[X, X + X^{1 - \delta}]$ for $\delta > 0$ are more appropriate, since it make analysis more tractable and plots smoother.
+% Hence the reformulated HLOP's murmuration would be
+% \begin{equation}
+% \label{eqn:HLOPavg}
+% \bE_{\substack{N(E) \in [X, 2X] \\ \mathrm{rank}(E) = r}} [a_p(E)]
+% \end{equation}
+% Also, later study found that the oscillations would converge to a continuous function in $p / X$, so we can understand \eqref{eqn:HLOPavg} as (1) the limit of $X \to \infty$ with fixed $p / X$ value, or (2) the limit of the average over $p$ with $p / X$ lies in a fixed interval.
+
+% Another subsequent observation is that considering all elliptic curves with different ranks would be better to study, where we weight $a_p(E)$ by the $\epsilon$ factor of $E$.
+% Also, rather than $p / X$, the crucial ratio might be $p / N(E)$. In other words, we can consider further averaging over $p$ where $p / N$ lies in a certain interval, such as
+% \[
+% \bE_{N(E) \in [X, 2X]} \left[ \bE_{p \in (C_1 N(E), C_2 N(E))} [\epsilon(E) a_p(E)]\right]
+% \]
+% for $0 < C_1 < C_2$.
+% Note that it is slightly easier to work with
+% \[
+% \bE_{N(E) \in [X, 2X]} \left[ \frac{\log \left(N(E)\frac{C_2 - C_1}{2}\right)}{N(E)}\sum_{p \in (C_1 N(E), C_2 N(E))} \epsilon(E) a_p(E)\right]
+% \]
+% instead of the previous double expectation, where the term $N / \log(N \frac{C_2 - C_1}{2})$ roughly counts the number of primes in the interval $(C_1 N, C_2 N)$.
+% What Sawin and Sutherland proved is a naive height variation of the above average.
 
 The main idea of the proof of Theorem \ref{thm:sawin-sutherland} is the Voronoi summation formula.
 
