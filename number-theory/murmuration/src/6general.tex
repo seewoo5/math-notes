@@ -1,10 +1,13 @@
 \section{General formulation of Murmuration}
 \label{sec:general}
 
+In his letter to Sutherland and Zubrilina, Sarnak proposed a general framework of murmuration \cite{sarnak} for \emph{families} of $L$-functions.
+We explain his definition and explain its connection with Katz--Sarnak philosophy \cite{katz1999zeroes,katz2023random}.
+Also, we revisit the previous murmuration results \cite{zubrilina2025murmurations,lee2025murmurations,sawin2025murmurations} in this framework.
+See also Lowry-Duda's survey note \cite{lowry2025murmurations}.
 
-\subsection{Family}
+\subsection{Murmuration for families}
 
-Sarnak suggested a general framework of murmuration in his letter to Sutherland and Zubrilina \cite{sarnak}.
 Let $\scF$ be a family of $L$-functions in a suitable sense (e.g. See \cite{sarnak2016families}).
 For a smooth nonnegative function $\Phi : (0, \infty) \to \bR$ with compact support and $f : \scF \to \bC$, consider the $\Phi$-weighted average of $f$:
 \begin{equation}
@@ -43,6 +46,45 @@ When $\pi$ is self-dual, functional equation relates $L(s, \pi)$ and $L(1-s, \pi
 \]
 $\pi$ is said to be \emph{orthogonal} if the first factor $\Lambda(s, \pi, \Sym^2)$ has a pole at $s = 1$, and \emph{symplectic} if the second factor $\Lambda(s, \pi, \wedge^2)$ has a pole at $s = 1$.
 The symplectic case occur only if $n$ is even, and root number of orthogonal $\pi$ is always $1$.
+
+
+\begin{definition}
+A continuous function $M_\Phi : (0, \infty) \to \bR$ is a \emph{murmuration function for $\scF$ with weight $\Phi$} if there is $0 \le \gamma < 1$ such that for $P \sim N$
+\begin{equation}
+    \label{eqn:sarnak_murmuration}
+    \bE_{\pi \in \scF} [a_\pi(p);\Phi, N] = M_\Phi\left(\frac{p}{N}\right) + R(p, N)
+\end{equation}
+where the local oscillating term $R(p, N)$ satisfies
+\begin{equation}
+    \label{eqn:sarnak_local_avg}
+    \bE_{P - H \le p \le P + H} [R(p, N)] = o(1)
+\end{equation}
+for $N^\gamma \le H = o(N)$.
+\end{definition}
+\eqref{eqn:sarnak_local_avg} is the local averaging over $p$ of length at least $N^\gamma$ and less than $N$.
+The smaller $\gamma$ we can take, the more visible $M_\Phi$ is.
+In particular, $\gamma = 0$ means that no local averaging is needed.
+He conjectured that if
+\begin{equation}
+    \label{eqn:sarnak_local_thres}
+    \delta + \gamma > 1
+\end{equation}
+then the local oscillating term $R(p, N)$ will vanish as $N \to \infty$.
+In particular, we may not need local averaging if $\delta > 1$.
+
+The function $M_\Phi$ is linear in $\Phi$, and it supposed to have a form of
+\begin{equation}
+    \label{eqn:sarnak_zubrilina_density}
+    M_\Phi(y) = \int_0^{\infty} \Phi(u) M\left(\frac{y}{u}\right) u^\delta \frac{\dd u}{u}
+\end{equation}
+for some universal $M : (0, \infty) \to \bR$.
+If such function exists, we call it as \emph{Zubrilina murmuration density for $\scF$}, denoted as $Z_{\scF}$.
+It might be a distribution on $C_c^\infty((0, \infty))$ rather than a function.
+
+
+
+\subsection{Katz--Sarnak philosophy}
+
 
 Katz and Sarnak \cite{katz1999zeroes,katz2023random} studied statistics of zeros of $L$-functions via random matrix models.
 In particular, they considered \emph{one-level density} of low-lying zeros: for an even function $\phi$ with rapid decay as $|x| \to \infty$, the one-level density of a family $\scF$ is
@@ -86,20 +128,37 @@ The Fourier transforms of \eqref{eqn:WSO} are
 and there are obvious discontinuities at $y = \pm 1$.
 
 
-\cite{lowry2025murmurations}
-
-
-\subsection{Katz--Sarnak philosophy}
-
-
 \subsection{Revisiting the murmuration theorems}
 
-Let's see how the previous works \cite{zubrilina2023murmurations,lee2025murmurations,sawin2025murmurations} fit into the above framework.
+Let's see how the previous works \cite{zubrilina2025murmurations,lee2025murmurations,sawin2025murmurations} fit into the above framework.
 
 \subsubsection{Dirichlet characters}
 
+In case of Dirichlet characters \cite{lee2025murmurations}, the family of even/odd \emph{complex} Dirichlet characters are not self-dual, so it does not fit into Sarnak's framework to be precise.
+Still, we can observe and prove murmuration phenomena for such family, where the density function is much simpler compare to other families.
+Also, for each prime $P$, there are $\phi(P) = P-1$ primitive characters modulo $P$, so there are about $\frac{CN^2}{\log N}$ of primitive Dirichlet characters of prime conductors $\le N$ for some constant $C > 0$, which means that the conductor dimension of the family is $2-\epsilon$\footnote{The $\log N$ factor disappears if we consider all conductors that are not necessarily prime, and the conductor dimension becomes $2$. See \cite[Section 6]{lee2025murmurations} for the version including composite conductors.}.
+In particular, \eqref{eqn:sarnak_local_thres} suggests that we don't need any further local averaging for the family, which is indeed the case of Theorem \ref{thm:lop_dirichlet}.
+Note that normalization used in Theorem \ref{thm:lop_dirichlet} is also different from the one Sarnak suggested.
+
+For the quadratic characters, local averaging is included in Theorem \ref{thm:lop_dirichlet_quad} over $X^{\gamma}$-many primes with $\frac{3}{4} < \gamma < 1$.
+Since the number of square-free odd numbers up to $X$ is $\Theta(X)$, the conductor dimension of the family $\scF = \{\chi_{8d} : d\text{ odd and square-free}\}$ is $1$ so we may only need local averaging over $X^{\epsilon}$-many primes for any $\epsilon > 0$ from \eqref{eqn:sarnak_local_thres}.
+
 \subsubsection{Modular forms}
 
+It is known that the dimension of the space of newforms of fixed weight $k$ and level $\Gamma_0(N)$ is asymptotically $\frac{45(k-1)N}{\pi^2}$ \cite[Theorem 8]{martin2005dimensions}.
+It implies that the number of newforms of fixed weight $k$ and level $\Gamma_0(M)$ for square-free $M \le N$ is asymptotically $c_k N^2$ for a constant $c_k > 0$, so the conductor dimension of the family is $2 > 1$.
+From Sarnak's suggestion \eqref{eqn:sarnak_local_thres}, we may not need any local averaging, and this is indeed the case of Theorem \ref{thm:zubrilina_modform} and \ref{thm:zubrilina_geom}.
+
+Also, she studied several properties of her density function $\cM_k$.
+In particular, for a compactly supported smooth function $\Phi$ on $(0, \infty)$, she proved that the function
+\begin{equation}
+    \cM_{\Phi}^k(y) := \frac{\int_0^\infty \cM_k\left(\frac{y}{u}\right) \Phi(u) u^2 \frac{\dd u}{u}}{\int_0^\infty \Phi(u) u^2 \frac{\dd u}{u}}
+\end{equation}
+is continuous in $y$, $\lim_{y \to 0^+} \cM_{\Phi}^k(y) = 0$ and
+\[
+\cM_k(y) = \frac{1}{2} + o_k(1)
+\]
+as $y \to \infty$.
 
 \subsubsection{Elliptic curves (ordered by heights)}
 
