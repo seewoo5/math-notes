@@ -6,7 +6,7 @@
 
 Murmuration of elliptic curves refers to the following average of Frobenius traces.
 Fix a nonnegative integer $r$ and $N_1 < N_2$.
-Let $\cE_r[N_1, N_2]$ be the set of isomorphism classes of elliptic curves $E_{/\bQ}$ with conductor $N(E) \in [N_1, N_2]$ and rank $r$.
+Let $\cE_r[N_1, N_2]$ be the set of isogenous classes of elliptic curves $E_{/\bQ}$ with conductor $N(E) \in [N_1, N_2]$ and rank $r$.
 For a fixed prime $p$, we consider the following average:
 \begin{equation}
     \bE_{E \in \cE_r[N_1, N_2]} [a_p(E)] = \frac{\sum_{E \in \cE_r[N_1, N_2]} a_p(E)}{\sum_{E \in \cE_r[N_1, N_2]} 1}
@@ -17,7 +17,7 @@ In particular, it appears to have the same oscillation pattern for different con
 
 \begin{figure}[htp] 
 \centering
-    \includegraphics[width=0.7\textwidth]{src/hlop.png}%
+    \includegraphics[width=0.8\textwidth]{src/hlop_fig1.png}%
     \caption{Murmuration of elliptic curves with conductor in $[7500, 1000]$ and rank $r = 0$ (blue) and $r = 1$ (red) \cite{he2024murmurations}.}
 \label{fig:hlop}
 \end{figure}
@@ -26,19 +26,49 @@ In particular, it appears to have the same oscillation pattern for different con
 \subsection{Sutherland's observation}
 \label{subsec:elliptic_sutherland}
 
-Later, Sutherland \cite{sutherlandletter} (and further work by several people) showed that one really needs to view the murmuration density as a function of $p / N$ rather than $p$ for a fixed $N$.
-He found that, for different dyadic intervals of the form $(2^k, 2^{k+1}]$, the murmuration patterns look the same (and become clearer as $k$ increases), even if the averages consider completely different sets of elliptic curves (Figure \ref{fig:sutherland_elliptic_dyadic}).
+When the paper is uploaded on arXiv, Sutherland was interested in the work and sent a letter to Rubinstein and Sarnak \cite{sutherlandletter} asking if murmuration can be explained by the known results, with further experiments.
+In his letter, he observed that one really needs to view the murmuration density as a function of $p / N$ rather than $p$ for a fixed $N$.
+He found that, for different dyadic intervals of the form $[2^k, 2^{k+1})$, the murmuration patterns look the same (and become clearer as $k$ increases), even if the averages consider completely different sets of elliptic curves (Figure \ref{fig:sutherland_elliptic_dyadic}).
 Also, instead of considering each rank separately, it seems better to consider all ranks together, where we weight $a_p(E)$ by the root number $\epsilon(E)$ of $E$.
 One can separate into two groups depending on the parity of the rank.
 So the major open question is to \emph{compute} the density function, i.e., to find a function $M: (0, \infty) \to \bR$ such that
 \begin{equation}
-    \bE_{E \in \cE_r[N, 2N]} [a_p(E)] = M\left(\frac{p}{N}\right) + \text{error}
+    \bE_{E \in \cE_r[N, 2N]} [a_p(E)\epsilon(E)] = M\left(\frac{p}{N}\right) + \text{error}
 \end{equation}
 where the error term goes to zero as $N \to \infty$. More generally, one can fix $0 < C_1 < C_2$ and consider the interval $[C_1 N, C_2 N]$.
 
 \begin{figure}[htp] 
-    \includegraphics[width=\textwidth]{src/sutherland.png}%
-    \caption{Murmuration of elliptic curves with conductor in $[2^{k}, 2^{k+1})$ and primes $p < 2^{k-1}$ for $k = 15, 16, 17$ \cite{sutherlandletter}. Blue (resp. red) curves correspond to $\epsilon(E) = +1$ (resp. $-1$) elliptic curves.}
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/sutherland_4096.png}%
+        \label{fig:sutherland_4096}
+    \end{subfigure}
+    
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/sutherland_8192.png}%
+        \label{fig:sutherland_8192}
+    \end{subfigure}
+
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/sutherland_16384.png}%
+        \label{fig:sutherland_16384}
+    \end{subfigure}
+
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/sutherland_32768.png}%
+        \label{fig:sutherland_32768}
+    \end{subfigure}
+
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/sutherland_65536.png}%
+        \label{fig:sutherland_65536}
+    \end{subfigure}
+    % \includegraphics[width=\textwidth]{src/sutherland.png}%
+    \caption{Murmuration of non-CM elliptic curves with conductor in $[2^{k}, 2^{k+1})$ and primes $p < 2^{k}$ for $k = 12, \dots, 16$. Blue (resp. red) curves correspond to $\epsilon(E) = +1$ (resp. $-1$) elliptic curves.}
 \label{fig:sutherland_elliptic_dyadic}
 \end{figure}
 
@@ -52,20 +82,19 @@ This shows that the murmuration is a phenomenon that is sensitive to the orderin
 Although there seems to be no machine learning involved in the previous discussions, I will make a brief comment on the relation between machine learning and murmuration, as I found that existing literature is often misleading in distinguishing the machine learning part from the murmuration part.
 I have read a few articles on the internet which basically say that ``AI found new mathematics,'' which is false.
 
-One of the main motivations of the paper \cite{he2024murmurations} is to study elliptic curves via machine learning.
+One of the main motivations of the papers \cite{he2023machine,he2024murmurations} is to study elliptic curves via machine learning.
 In particular, they were interested in predicting the rank of elliptic curves (which is widely known to be hard to compute in general) by means of machine learning, where the coefficients $a_p(E)$ of Hasse--Weil $L$-functions are used as features.
-Surprisingly, they found that a simple logistic regression model can already distinguish between rank $0$ and $1$ elliptic curves with high accuracy of $>90\%$ (see also \cite{he2023machine}).
+Surprisingly, they found that a simple logistic regression model can already distinguish between rank $0$ and $1$ elliptic curves with high accuracy of $>90\%$.
 Along these lines, they (more precisely, He, Lee, and Oliver) were curious about what was actually going on, and Pozdnyakov (who was an undergraduate student of Lee at that time) figured out the murmuration pattern.
 This somehow gives an explanation for the high accuracy of the model, since the murmuration patterns for rank $0$ and $1$ elliptic curves are noticeably different.
 But the correct way to say it is that the machine learning experiments \emph{motivated} them to study what the models were doing, which is essentially the work of humans, not the ML models.
 You can find more of the story in the Quanta Magazine article \cite{chiou2024elliptic}.
 
-% and they conjectured that the murmuration density is related to the rank of elliptic curves.
 
-\subsection{Sato--Tate conjecture and Murmuration}
+\subsection{Sato--Tate conjecture, Plancherel density conjecture and Murmuration}
 
 
-One should not confuse murmuration with the (vertical) Sato--Tate conjecture, which we will explain here.
+One should not confuse murmuration with the (vertical) Sato--Tate conjecture or Plancherel density conjecture, which I will explain here.
 The original (i.e., \emph{horizontal}) Sato--Tate conjecture is about the distribution of $a_p(E)$ for a \emph{fixed $E_{/\bQ}$ and varying $p$}.
 The Hasse--Weil bound says that $|a_p(E)| \le 2 \sqrt{p}$, and the conjecture predicts that for a non-CM elliptic curve $E$, the distribution of $a_p(E)$ is semicircular with radius $2\sqrt{p}$, i.e., the density function is $\frac{1}{2\pi}\sqrt{4 - x^2} \dd x$ for the normalized traces $a_p(E)/\sqrt{p}$.
 Equivalently, if we write $a_p(E) = 2 \sqrt{p} \cos \theta_p$ for $\theta_p \in [0, \pi]$, then $\theta_p$ follows the distribution $\frac{2}{\pi} \sin^2 \theta \dd \theta$.
@@ -78,11 +107,12 @@ Birch \cite{birch1968number} proved that the distribution converges to the above
 This is different from the murmuration for two reasons: vertical Sato--Tate considers the elliptic curves over $\bF_p$, and there's no conductor involved in vertical Sato--Tate.
 
 Probably, a closer situation would be fixing a prime $p$ and varying $E$ over $\bQ$ with conductors in a certain range.
-Although we couldn't find a reference for this direction, the most relevant case would be the corresponding case of modular forms by Serre \cite{serre1997repartition}.
+Although we couldn't find a work in this direction, the most relevant case would be the corresponding case of modular forms by Serre \cite{serre1997repartition}.
 In particular, he proved that: if a sequence of pairs of weight and level $(k_i, N_i)$ satisfies $2 \mid k_i$, $k_i + N_i \to \infty$, and $p \nmid N_i$, then the distribution of the normalized Hecke eigenvalues $a_p / p^{\frac{k-1}{2}} \in [-2, 2]$ converges to the Plancherel measure
 \[
-\mu_p = \frac{p+1}{2\pi} \frac{\sqrt{4 - x^2}}{(p^{\frac{1}{2}} + p^{-\frac{1}{2}})^2 - x^2} \dd x.
+\mu_p = \frac{p+1}{2\pi} \frac{\sqrt{4 - x^2}}{(p^{\frac{1}{2}} + p^{-\frac{1}{2}})^2 - x^2} \dd x
 \]
+which is usually dubbed as a Plancherel density theorem (See also \cite{shin2012automorphic} and \cite{shin2016sato} for generalizations).
 Hence one can fix weight $k = 2$ and vary the level $N \to \infty$ with $p \nmid N$.
 However, this includes many more modular forms than the ones corresponding to elliptic curves.
 Also, we want both $p$ and $N$ to grow at similar rates in murmuration, so Serre's result does not directly apply to our situation.

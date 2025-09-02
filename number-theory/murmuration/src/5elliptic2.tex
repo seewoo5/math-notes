@@ -1,17 +1,20 @@
 \section{Murmuration of Elliptic Curves, Revisited}
 \label{sec:elliptic2}
 
-Recently, Will Sawin and Andrew Sutherland announced a murmuration theorem for elliptic curves, which is slightly different from the formulation in \cite{he2024murmurations}.
+Recently, Will Sawin and Andrew Sutherland announced a murmuration theorem for elliptic curves \cite{sawin2025murmurations}, which is slightly different from the formulation in \cite{he2024murmurations}.
 Especially, they proved a version of the murmuration theorem \emph{ordered by height}:
 
 
 \begin{theorem}[Sawin--Sutherland {\cite{sawin2025murmurations}}]
     \label{thm:sawin-sutherland}
-    Let $\scE(X) := \{y^2 = x^3 + ax + b: a, b \in \bZ, p^4 \mid a \Rightarrow p^6 \nmid b, \max\{4|a|^3, 27 b^2\} \le X\}$ be the set of naive isomorphism classes of elliptic curves over $\bQ$ ordered by height.
-    Let $0 < C_1 < C_2$ be real numbers.
+    Let 
+    \[
+    \scE(X) := \{y^2 = x^3 + ax + b: a, b \in \bZ, p^4 \mid a \Rightarrow p^6 \nmid b, \max\{4|a|^3, 27 b^2\} \le X\}
+    \]
+    be the set of isogenous classes of elliptic curves over $\bQ$ ordered by naive height.
     For any smooth function $W : \bR_{>0} \to \bR$ with compact support, the limit
     \begin{equation}
-        \lim_{P \to \infty }\lim_{X \to \infty} \bE_{E : H(E) \le X} \left[ \frac{\prod_{p \le P}(1 - p^{-1})^{-1}}{N(E)} \sum_{\substack{n \ge 1 \\ p \nmid n \,\forall p \le P}} W\left(\frac{n}{N(E)}\right) a_n(E) \epsilon(E)\right]
+        \lim_{P \to \infty }\lim_{X \to \infty} \bE_{\scE(X)} \left[ \frac{\prod_{p \le P}(1 - p^{-1})^{-1}}{N(E)} \sum_{\substack{n \ge 1 \\ p \nmid n \,\forall p \le P}} W\left(\frac{n}{N(E)}\right) a_n(E) \epsilon(E)\right]
     \end{equation}
     exists and is equal to
     \begin{equation}
@@ -21,7 +24,7 @@ Especially, they proved a version of the murmuration theorem \emph{ordered by he
 \end{theorem}
 
 You should have a question at this point.
-I said that Sutherland observed no murmuration pattern in \cite{sutherlandletter} when elliptic curves are ordered by height, but Theorem \ref{thm:sawin-sutherland} seems to suggest that there is a murmuration pattern.
+We said that Sutherland observed no murmuration pattern in \cite{sutherlandletter} when elliptic curves are ordered by height, but Theorem \ref{thm:sawin-sutherland} seems to suggest that there is a murmuration pattern.
 In fact, the difference comes from \emph{local averaging}, which I'm going to explain now.
 
 The difference between the original murmuration observed in HLOP \cite{he2024murmurations} and the one in Sawin--Sutherland is well-explained in \cite[Section 1.1]{sawin2025murmurations}.

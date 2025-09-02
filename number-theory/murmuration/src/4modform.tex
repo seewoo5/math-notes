@@ -2,44 +2,76 @@
 \label{sec:modform}
 
 The first murmuration density that is computed ever is for modular forms by Zubrilina \cite{zubrilina2025murmurations}.
+For each fixed weight $k$, she computed the murmuration density of weight $k$ cusp newforms of level $\Gamma_0(N)$, as $N \to \infty$.
+In this section, we briefly sketch the main ideas and results of her work.
 
 \subsection{Statement}
 
 Before we state the result, we define some notations first.
-\begin{itemize}
-    \item For $n \in \bZ_{\ge 0}$, \emph{Chebyshev polynomial of the second kind} is defined as
-    \[
-        U_n(\cos \theta) = \frac{\sin((n+1) \theta)}{\sin\theta}. 
-    \]
-    \item For $r \in \bZ_{\ge 1}$, define
-    \[
-        \nu(r) := \prod_{p | r} \left(1 + \frac{p^2}{p^4 - 2p^2 - p + 1}\right)
-    \]
-    \item Define constants $\alpha, \beta, \gamma$ as
-    \begin{align*}
-        \alpha &:= 2\pi \prod_{p} \frac{p^4 - 2p^2 - p + 1}{p^4 - 2p^2 + p}, \\
-        \beta &:= 2\pi \prod_{p} \frac{p^3 + p^2 - 1}{p(p^2 + p - 1)}, \\
-        \gamma &:= 12 \prod_{p} \frac{p(p + 1)}{p^2 + p - 1}.
-    \end{align*}
-\end{itemize}
-\begin{theorem}[Zubrilina {\cite{zubrilina2025murmurations}}]
+For each $k$ and $N \ge 1$, let $H^{\mathrm{new}}(N, k)$ be the set of normalized Hecke cuspforms of weight $k$ and level $\Gamma_0(N)$.
+For each $f \in H^{\mathrm{new}}(N, k)$, let $\epsilon(f) \in \{\pm 1\}$ be the root number of $f$, and $a_f(p)$ be the $p$-th Fourier coefficient of $f$ and $\lambda_f(p) := a_f(p) / p^{\frac{k-1}{2}}$ be its analytic normalization.
+For $n \in \bZ_{\ge 0}$, \emph{$n$-th Chebyshev polynomial of the second kind} is defined as
+\[
+    U_n(\cos \theta) = \frac{\sin((n+1) \theta)}{\sin\theta}. 
+\]
+For each $r \in \bZ_{\ge 1}$, define
+\[
+    \nu(r) := \prod_{p | r} \left(1 + \frac{p^2}{p^4 - 2p^2 - p + 1}\right)
+\]
+Lastly, we define the constants $\alpha, \beta, \gamma$ as
+\begin{align*}
+    \alpha := 2\pi \prod_{p} \frac{p^4 - 2p^2 - p + 1}{p^4 - 2p^2 + p}, \quad
+    \beta := 2\pi \prod_{p} \frac{p^3 + p^2 - 1}{p(p^2 + p - 1)}, \quad
+    \gamma := 12 \prod_{p} \frac{p(p + 1)}{p^2 + p - 1}.
+\end{align*}
+\begin{theorem}[Zubrilina {\cite[Theorem 1]{zubrilina2025murmurations}}]
     \label{thm:zubrilina_modform}
-    Let $X, Y, P$ be parameters going infinite with $X, Y > 0$ and $P$ prime; assume further that $Y = (1 + o(1))X^{1 - \delta_2}$ and $P \ll X^{1 + \delta_1}$ for some $\delta_1, \delta_2$ with $2\delta_1 < \delta_2 < 1$.
+    Let $X, Y, P$ be parameters going infinite with $X, Y > 0$ and $P$ prime; assume further that $Y = (1 + o(1))X^{1 - \delta_2}$ and $P \ll X^{1 + \delta_1}$ for some $\delta_1, \delta_2$ with $0 < \delta_1 < \frac{1}{11}, 2\delta_1 < \delta_2 < \frac{1}{13}(4 - 18 \delta_1)$.
     Let $y = P/X$. Then
     \begin{equation}
         \label{eqn:zubrilina_modform}
-        \frac{\sum_{N \in [X, X + Y]}^\square \sum_{f \in H^{\new}(N, k)} \sqrt{P} \lambda_f(P) \varepsilon(f)}{\sum_{N \in  [X, X + Y]}^\square \sum_{f \in H^{\new}(N, k)} 1} = \cM_k(y) + O_\varepsilon \left(X^{-\delta' + \varepsilon} + \frac{1}{P}\right)
+        \bE_{\substack{N \in [X, X + Y] \\ f\in H^{\new}(N, k)}} [\sqrt{P} \lambda_f(P) \epsilon(f)] = \frac{\sum_{N \in [X, X + Y]}^\square \sum_{f \in H^{\new}(N, k)} \sqrt{P} \lambda_f(P) \varepsilon(f)}{\sum_{N \in  [X, X + Y]}^\square \sum_{f \in H^{\new}(N, k)} 1} = \cM_k(y) + O_\varepsilon \left(X^{-\delta' + \varepsilon} + \frac{1}{P}\right)
     \end{equation}
     where
     \begin{equation}
         \cM_k(y) = \frac{\alpha(-1)^{k/2 - 1}}{k - 1} \sum_{1 \le r \le 2\sqrt{y}} \nu(r) \sqrt{4y - r^2} U_{k - 2} \left(\frac{r}{2\sqrt{y}}\right) + \frac{\beta}{k-1} \sqrt{y} - \gamma \delta_{k=2} y.
     \end{equation}
+    Here $\delta' > 0$ is a constant explicitly expressible through $\delta_1, \delta_2$.
+    The notation $\sum^\square$ means the sum is over square-free integers.
 \end{theorem}
+
+Figure \ref{fig:zub_Mk} shows the graphs of $\cM_k(y)$ for $k = 2, 8, 24$ (note that $U_0(x) = 1$ and $\cM_2(y)$ is a linear combination of the functions of the form $\sqrt{4y - r^2}$).
+They are continuous but not differentiable at $y = \frac{r^2}{4}$ for $r \in \bZ_{>0}$, which are the points where the summation index $r$ changes.
+
+\begin{figure}[htp] 
+\centering
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/zub_k=2.png}%
+        \label{fig:M2}
+    \end{subfigure}
+    
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/zub_k=8.png}%
+        \label{fig:M8}
+    \end{subfigure}
+
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/zub_k=24.png}%
+        \label{fig:M24}
+    \end{subfigure}
+    
+    \caption{Murmuration density $\cM_k(y)$ of modular forms for $k = 2, 8, 24$.}
+\label{fig:zub_Mk}
+\end{figure}
+
 
 \subsection{Eichler--Selberg trace formula}
 
 To prove Theorem \ref{thm:zubrilina_modform}, one need to understand how to estimate the numerator on the LHS.
-Recall that $a_f(P) = P^{(k-1)/2} \lambda_f(P)$ is the $P$-th Fourier coefficient of $f$, which is also the eigenvalue of the Hecke operator $T_P$ acting on $f$.
+Recall that $a_f(P)$ is the $P$-th Fourier coefficient of $f$, which is also the eigenvalue of the Hecke operator $T_P$ acting on $f$.
 Also, $(-1)^{k/2}\varepsilon(f)$ is equal to the eigenvalue of the Atkin--Lehner involution $W_N = T_N$ acting on $f$.
 Thus the sum appears in the numerator of LHS of \eqref{eqn:zubrilina_modform} can be interpreted as the trace of the operator $(-1)^{k/2} T_P \circ W_N$ acting on the space of cusp forms of weight $k$ and level $N$ (multiplied by $P^{1 - k/2}$).
 Eichler \cite{eichler1955class} studied such a sum of traces and proved that it can be expressed in terms of (Hurwitz) class numbers, which is generalized by Selberg \cite{selberg1956harmonic}.

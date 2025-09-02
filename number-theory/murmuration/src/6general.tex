@@ -141,7 +141,12 @@ In particular, \eqref{eqn:sarnak_local_thres} suggests that we don't need any fu
 Note that normalization used in Theorem \ref{thm:lop_dirichlet} is also different from the one Sarnak suggested.
 
 For the quadratic characters, local averaging is included in Theorem \ref{thm:lop_dirichlet_quad} over $X^{\gamma}$-many primes with $\frac{3}{4} < \gamma < 1$.
-Since the number of square-free odd numbers up to $X$ is $\Theta(X)$, the conductor dimension of the family $\scF = \{\chi_{8d} : d\text{ odd and square-free}\}$ is $1$ so we may only need local averaging over $X^{\epsilon}$-many primes for any $\epsilon > 0$ from \eqref{eqn:sarnak_local_thres}.
+Since the number of square-free odd numbers up to $X$ is $\Theta(X)$, the conductor dimension of the family $\scF = \{\chi_{8d} : d\text{ odd and square-free}\}$ is $\delta = 1$ so we may only need local averaging over $X^{\epsilon}$-many primes for any $\epsilon > 0$ from \eqref{eqn:sarnak_local_thres}.
+From Theorem \ref{thm:lop_dirichlet_quad}, the Zubrilina density for the family is
+\begin{equation}
+    Z_{\scF}(y) = \frac{\sqrt{2}}{2} \sum_{\substack{a \ge 1 \\ \gcd(a, 2) = 1}} \frac{\mu(a)}{a^2} \sum_{m \ge 1} (-1)^m \cos\left(\frac{\pi m^2}{a^2 y} - \frac{\pi}{4}\right).
+\end{equation}
+Note that this is not an actual function but rather a distribution, since the inner sum in $m$ diverges for the most of $y$'s.
 
 \subsubsection{Modular forms}
 
