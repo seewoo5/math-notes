@@ -1,25 +1,26 @@
 \section{Other known cases}
 \label{sec:other}
 
-After the success of Zubrilina, a lot of people are interested in murmuration density for different objects in number theory.
-We list the known works here.
-
+At last, we mention several other families where murmuration densities have been computed.
 
 \subsection{Flying Hecke characters of imaginary quadratic fields}
 
-Wang \cite{wang2025murmurations} computed murmuration density for Hecke characters of imaginary quadratic fields.
+Wang \cite{wang2025murmurations} computed murmuration density for (possibly trivial) Hecke characters of imaginary quadratic fields.
+Let $\scF$ be the family of nontrivial Hecke characters of $\bQ(\sqrt{-D})$ for square-free $D > 3$, $D \equiv 3 \pmod{4}$.
+For $\psi \in \scF$, let $a_\psi(p) = \sum_{\rN\frp = p} \psi(\frp)$ be the trace of Frobenius at $p$.
+The completed $L$-function $\Lambda(s, \psi)$ satisfies the functional equation $\Lambda(1 - s, \psi) = \Lambda(s, \psi)$, so the root numbeer is always $+1$.
 
 \begin{theorem}[Wang \cite{wang2025murmurations}]
-    Let $\scF$ be the family of nontrivial Hecke characters of $\bQ(\sqrt{-D})$ for square-free $D > 3$, $D \equiv 3 \pmod{4}$.
-    Then the average of normalized trace $\lambda_f(p) = a_f(p) \sqrt{p}$ over $f \in \scF$ with $N_f \in [X, X + Y]$ is
+    \label{thm:wang}
+    Then the average of normalized trace $\sqrt{p} a_\psi(p)$ over $\psi \in \scF$ with $N_\psi = |D_\psi| \in [X, X + Y]$ is
     \begin{equation}
         \label{eqn:wangdensity}
-        \frac{\sum_{\substack{f \in \scF \\ N_f \in [X, X + Y]}} \lambda_f(p)}{\sum_{\substack{f \in \scF \\ N_f \in [X, X + Y]}} 1} = c(p) \sum_{1 \le m \le 2 \sqrt{y}} \delta_m(p) M_m(y) + M_-(y) + \text{error}
+        \bE_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}}[\sqrt{p} a_\psi(p)] = \frac{\sum_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}} \sqrt{p} a_\psi(p)}{\sum_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}} 1} = c(p) \sum_{1 \le m < 2 \sqrt{y}} \delta_m(p) M_m(y) + M_-(y) + \text{error}
     \end{equation}
     where
     \begin{align*}
-        M_m(y) &= \frac{11\zeta(2)}{4A} \sqrt{\frac{y}{4y - m^2}} \vartheta(m)\\
-        M_-(y) &= -\frac{11\pi}{A} \sqrt{y}\\
+        M_m(y) &= \frac{11\zeta(2)}{4A} \sqrt{\frac{y}{4y - m^2}} \vartheta(m), \quad \vartheta(m) = 2^{\omega(m) + \min\{v_2(m), 2\}} \prod_{\substack{q \mid y \\ q \text{ odd}}} \left(1 + \frac{2 q^2 + q - 1}{q^4 - 3q^2 - 2q + 2}\right)\\
+        M_-(y) &= -\frac{11\pi}{12 A} \sqrt{y}\\
         c(p) &= \frac{p+1}{3p} \prod_{\ell > 2, \left(\frac{p}{\ell}\right) = 1} \left(1 - 2 \ell^{-2} - \frac{2 \ell^{-3}}{1 - \ell^{-2}}\right) \\
         \delta_m(p) &= \begin{cases}
             \mathds{1}_{\left(\frac{p}{q}\right) = 1} & m = q^k, \,q\text{ is odd prime} \\
@@ -30,12 +31,35 @@ Wang \cite{wang2025murmurations} computed murmuration density for Hecke characte
     \end{align*}
 \end{theorem}
 See \cite[Theorem 1]{wang2025murmurations} for the missing definitions.
-Note that the main term of \eqref{eqn:wangdensity} depends on the arithmetic of $p$, so it is not a murmuration in the sense of \cite{sarnak}.
+Note that the main term of \eqref{eqn:wangdensity} depends on the arithmetic of $p$.
 However, the dependence on $p$ is explicit and $c(p) \delta_m(p)$ is almost periodic in $m$, where such an almost periodicity does not appear in other families.
-He also proved that the value of the murmuration function at 0 and $\infty$ agrees with the prediction from 1-level density conjecture (Theorem 3).
+In particular, he proved that taking local average over short intervals of $p$ removes the dependence on $p$.
+Especially, taking local average in an interval of length $H$ so that the primes are equidistributed in $[X, X + H]$, in the sense that
+\[
+\sum_{\substack{X \le n \le X + H \\ n \equiv a \Mod{q}}} \Lambda(n) = \frac{H}{\varphi(q)} (1 + o(1))
+\]
+where $\Lambda$ is the von Mangoldt function (for example, $H = X^{\frac{1}{2} + \epsilon}$ is enough under RH), then we get the following theorem.
+
+\begin{theorem}[{Wang \cite[Theorem 2]{wang2025murmurations}}]
+    \label{thm:wanglocal}
+    Let $P \sim X^{1 + \delta_p}$ be a prime with fixed $\delta_p \ge 0$.
+    We have
+    \begin{equation}
+        \bE_{p \in [P, P + H]}\left[\bE_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}}\left[\sqrt{p} a_\psi(p)\right]\right] = \overline{c} \sum_{1 \le m < 2 \sqrt{y}} \overline{M}_m(y) + M_-(y) + o(1)
+    \end{equation}
+    where
+    \begin{align*}
+        \overline{c} &= \frac{1}{3} \prod_{\ell > 2} \left(1 - \ell^{-2} - \frac{\ell^{-3}}{1 - \ell^{-2}}\right),\\
+        \overline{M}_m(y) &= \frac{11\zeta(2)}{4A} \sqrt{\frac{y}{4y - m^2}} \kappa(m), \quad \kappa(m) = 2^{\1_{2 \mid m}} \prod_{\substack{q \mid m \\ q \text{ odd}}} \left(1 + \frac{q^2}{q^4 - 2q^2 - q + 1}\right)
+    \end{align*}
+    and $M_-(y)$ is the same as in Theorem \ref{thm:wang}.
+\end{theorem}
+
+
 The main ingredients of the proof are orthogonality of characters and summation of class numbers in short intervals with class number formula, similar as Zubrilina's approach.
 
 \subsection{Flying modular forms (in weight direction)}
+
 
 Recall that Zubrilina computed murmuration density for a \emph{fixed weight $k$ and varying level $N$}.
 In \cite{bober2023murmurations}, Bober, Booker, M. Lee, and Lowry-Duda considered the opposite case, where they fix the level $N = 1$ and vary the weight $k$.

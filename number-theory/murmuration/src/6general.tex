@@ -54,12 +54,12 @@ A continuous function $M_\Phi : (0, \infty) \to \bR$ is a \emph{murmuration func
     \label{eqn:sarnak_murmuration}
     \bE_{\pi \in \scF} [a_\pi(p);\Phi, N] = M_\Phi\left(\frac{p}{N}\right) + R(p, N)
 \end{equation}
-where the local oscillating term $R(p, N)$ satisfies
+where the local oscillating term $R(p, N)$ satisfies\footnote{In \cite{sarnak}, he considered local average over primes $P-H \le p \le P + H$ instead of $P \le p \le P + H$, but most of the latter works seems to follow one-sided averaging.}
 \begin{equation}
     \label{eqn:sarnak_local_avg}
-    \bE_{P - H \le p \le P + H} [R(p, N)] = o(1)
+    \bE_{P \le p \le P + H} [R(p, N)] = \frac{\sum_{P \le p \le P + H} R(p, N)}{\sum_{P \le p \le P + H} 1} = o(1)
 \end{equation}
-for $N^\gamma \le H = o(N)$.
+for $H = o(N)$.
 \end{definition}
 \eqref{eqn:sarnak_local_avg} is the local averaging over $p$ of length at least $N^\gamma$ and less than $N$.
 The smaller $\gamma$ we can take, the more visible $M_\Phi$ is.
@@ -72,13 +72,13 @@ He conjectured that if
 then the local oscillating term $R(p, N)$ will vanish as $N \to \infty$.
 In particular, we may not need local averaging if $\delta > 1$.
 
-The function $M_\Phi$ is linear in $\Phi$, and it supposed to have a form of
+The function $M_\Phi$ is supposed to have a form of
 \begin{equation}
     \label{eqn:sarnak_zubrilina_density}
-    M_\Phi(y) = \int_0^{\infty} \Phi(u) M\left(\frac{y}{u}\right) u^\delta \frac{\dd u}{u}
+    M_\Phi(y) = \frac{\int_0^{\infty} \Phi(u) M\left(\frac{y}{u}\right) u^\delta \frac{\dd u}{u}}{\int_0^{\infty} \Phi(u) u^\delta \frac{\dd u}{u}}.
 \end{equation}
 for some universal $M : (0, \infty) \to \bR$.
-If such function exists, we call it as \emph{Zubrilina murmuration density for $\scF$}, denoted as $Z_{\scF}$.
+If such a function (more generally, distribution) exists, we call it as \emph{Zubrilina murmuration density for $\scF$}, denoted as $Z_{\scF}$.
 It might be a distribution on $C_c^\infty((0, \infty))$ rather than a function.
 
 
@@ -127,10 +127,13 @@ The Fourier transforms of \eqref{eqn:WSO} are
 \end{equation}
 and there are obvious discontinuities at $y = \pm 1$.
 
+\ber say something more\er
+
+
 
 \subsection{Revisiting the murmuration theorems}
 
-Let's see how the previous works \cite{zubrilina2025murmurations,lee2025murmurations,sawin2025murmurations} fit into the above framework.
+Let's see how the existing works on murmurations fit into the above framework.
 
 \subsubsection{Dirichlet characters}
 
@@ -165,8 +168,72 @@ is continuous in $y$, $\lim_{y \to 0^+} \cM_{\Phi}^k(y) = 0$ and
 \]
 as $y \to \infty$.
 
-\subsubsection{Elliptic curves (ordered by heights)}
+\subsubsection{Elliptic curves}
 
-The conductor dimension of a family of elliptic curves ordered by heights is $\frac{5}{6}$, so we may need further local averaging over $X^{1/6 + \epsilon}$ many primes.
-Sawin and Sutherland introduced local averaging in Theorem \ref{thm:sawin-sutherland}, but it is slightly different from Sarnak's suggestion, since they take local average over $\Theta(N_E)$-many primes, not $O(H_E^{1/6 + \epsilon})$.
+The conductor dimension of a family of elliptic curves ordered by \emph{conductor} is conjecturally $\frac{5}{6}$ \cite{shankar2019families}, so we may need local averaging over $X^{1/6 + \epsilon}$-many primes from \eqref{eqn:sarnak_local_thres}, although it is clear that there's an obvious murmuration pattern in the case (that's the first ever murmuration oberved in number theory!).
+In fact, it seems that the noise may still exist even if we increase the conductor range, as partially shown in Figure \ref{fig:sutherland_elliptic_dyadic} (Sutherland computed murmuration up to the range of $[250000, 500000]$ \cite{sutherlandletter}, which is not reproduced in Figure \ref{fig:sutherland_elliptic_dyadic} due to the computational limitation).
+Figure \ref{fig:elliptic_dyadic_local_avg} shows the murmuration of non-CM elliptic curves with conductor in $[2^k, 2^{k+1})$ and primes $p < 2^k$ for $k = 12, \dots, 16$ weighted by root numbers, without (resp. with) local averaging of $X^\gamma = X^{\frac{1}{2}}$-many primes.
+Smaller $\gamma$ gives less visible (purple) curves with larger noise.
+
+\begin{figure}[htp] 
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/ec_local_4096.png}%
+        \label{fig:ec_local_4096}
+    \end{subfigure}
+    
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/ec_local_8192.png}%
+        \label{fig:ec_local_8192}
+    \end{subfigure}
+
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/ec_local_16384.png}%
+        \label{fig:ec_local_16384}
+    \end{subfigure}
+
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/ec_local_32768.png}%
+        \label{fig:ec_local_32768}
+    \end{subfigure}
+
+    \begin{subfigure}{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/ec_local_65536.png}%
+        \label{fig:ec_local_65536}
+    \end{subfigure}
+    \caption{Murmuration of non-CM elliptic curves with conductor in $[2^{k}, 2^{k+1})$ and primes $p < 2^{k}$ for $k = 12, \dots, 16$ weighted by root numbers, without (resp. with) local averaging of $X^\gamma = X^{\frac{1}{2}}$-many primes.}
+\label{fig:elliptic_dyadic_local_avg}
+\end{figure}
+
+
+In case of \cite{sawin2025murmurations} the conductor dimension of a family of elliptic curves ordered by heights is also (non-conjecturally) $\frac{5}{6}$, so we may need further local averaging over $X^{1/6 + \epsilon}$ many primes.
+The local averaging introduced in Theorem \ref{thm:sawin-sutherland} is slightly different from Sarnak's suggestion, since they take local average over $\Theta(N_E)$-many primes, not $O(H_E^{1/6 + \epsilon})$.
 \ber Cowan \cite{cowan2024murmurations}\er
+
+
+\subsection{Hecke characters of imaginary quadratic fields}
+
+
+For each $D \equiv 3 \Mod{4}$, the number of Hecke characters of $\mathrm{Cl}(\bQ(\sqrt{-D}))$ is $h(-D)$, and the class number formula
+\[
+h(-D) = \frac{\sqrt{D}}{\pi} L(1, \chi_{-D})
+\]
+with the estimates $|D|^{-\epsilon} \ll L(1, \chi_{-D}) \ll |D|^{\epsilon}$\footnote{The lower bound is Siegel's theorem, while the upper bound follows from Polya--Vinogradov inequality.} implies that the conductor dimension of $\scF$ is $\frac{3}{2}$.
+In particular, it is larger than $1$, so we may not need any local averaging from \eqref{eqn:sarnak_local_thres}.
+However, we still include it in Theorem \ref{thm:wanglocal} to remove the dependence on $p$ in the main term of Theorem \ref{thm:wang}.
+The main term
+\[
+M(y) = \overline{c} \sum_{1 \le m < 2 \sqrt{y}} \overline{M}_m(y) + M_-(y)
+\]
+in Theorem \ref{thm:wanglocal} is the murmuration density for the family $\scF$, so we expect that
+\begin{equation}
+    \bE_{P \le p \le P + N}\left[\bE_{\psi \in \scF} [\sqrt{p} a_\psi(p); \Phi, N]\right] = M_\Phi\left(\frac{p}{N}\right) + o(1)
+\end{equation}
+for a compactly supported smooth function $\Phi$ on $(0, \infty)$ and
+\begin{equation}
+    M_\Phi(y) = \frac{\int_0^\infty M\left(\frac{y}{u}\right) \Phi(u) u^{3/2} \frac{\dd u}{u}}{\int_0^\infty \Phi(u) u^{3/2} \frac{\dd u}{u}}.
+\end{equation}
