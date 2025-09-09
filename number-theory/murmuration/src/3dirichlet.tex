@@ -58,7 +58,7 @@ Now, use $\tau(\chi) \tau(\overline{\chi}) = N \chi(-1)$ for $\chi \in \cD_{\pm}
     \sum_{\chi \in \cD_{-}(N)} \frac{\chi(p)}{\tau(\chi)} &= -i\left(\frac{N-1}{N}\right) \sin \left(\frac{2 \pi p}{N}\right).
 \end{align*}
 Combined with the prime number theorem (which gives equidistribution results of primes in $[X, cX]$ normalized by $X$), we get \eqref{eqn:lee_1}.
-For short intervals, RH and the prime number theorem imply \ber unconditional result with larger $\gamma$ exists \er
+For short intervals, RH and the prime number theorem imply
 \[
 \lim_{X \to \infty} \frac{\log X}{X^\gamma}\cdot \#\{p \in [yX, yX + X^\gamma]\} = 1,
 \]
@@ -68,6 +68,7 @@ for $\frac{1}{2} < \gamma < 1$, and this implies \cite[Lemma 2.9]{lee2025murmura
 \lim_{X \to \infty} \frac{\log X}{X^\gamma} \sum_{\substack{p \in [yX, yX + X^\gamma] \\ p \text{ prime}}} f\left(\frac{p}{X}\right) = f(y)
 \end{equation}
 which proves \eqref{eqn:lee_2}.
+Note that Baker, Harman, and Pintz proved an unconditional result for the existence of a prime in a slightly longer short interval $[X, X + X^{0.525}]$, which means that Theorem \ref{thm:lop_dirichlet} holds with $\gamma \ge 0.525$ unconditionally \cite{baker2001difference}.
 
 They also proved similar results for real Dirichlet characters, but the proof is more complicated.
 Let $\scG$ be the set of odd square-free integers and let $\chi_{d} = \left(\frac{d}{\cdot}\right)$.
@@ -90,7 +91,6 @@ For a compactly supported smooth function $\Phi \ge 0$ on $\bR$, define
     \end{equation}
     (The limit does not depend on the choice of $\gamma$.)
 \end{theorem}
-% The authors also considered the case of $\chi_d$; see \cite[Section 6.2]{lee2025murmurations}.
 See Figure \ref{fig:lop_quad} for the corresponding plots when $\Phi_+$ (resp. $\Phi_-$) is supported on $(1, 2)$ (resp. $(-2, -1)$).
 For the proof, we can write $M_\Phi(y, X, \gamma)$ as
 \begin{align*}
@@ -104,13 +104,19 @@ where $\beta := \sup_{x \in \bR}\{|x|: \Phi(x) > 0\}$, $0 < A \le \sqrt{\beta X}
     R_{\Phi, A}(y, X, \gamma) &:= \frac{\log X}{X^{1 + \gamma}} \sum_{\substack{p \in [yX, yX + X^\gamma] \\ p \text{ prime}}} \sum_{\substack{d \in \bZ \\ d \text{ odd}}} \left(\sum_{\substack{a^2 \mid d \\ A < a}}\mu(a)\right) \Phi\left(\frac{d}{X}\right) \chi_{8d}(p) \sqrt{p}. \label{eqn:RA}
 \end{align}
 We will show that $R_{\Phi, A}(y, X, \gamma) \to 0$ and $M_{\Phi, A}(y, X, \gamma)$ converges to the right-hand side of \eqref{eqn:lop_murm_quad}.
-Note that $A$ will not be a fixed constant, but rather grows together with $X$: in fact, the proof uses $0 < \epsilon < (\delta - \frac{3}{4}) / 5$ and $A = X^{1 + 5 \epsilon - \delta}$.
-By applying the Polya--Vinogradov inequality \ber This is not exactly Polya--Vinogradov but more like a corollary\er
+Note that $A$ will not be a fixed constant, but rather grows together with $X$: in fact, the proof uses $0 < \epsilon < (\gamma - \frac{3}{4}) / 5$ and $A = X^{1 + 5 \epsilon - \gamma}$.
+To estimate the sum of the characters, one uses the Pólya--Vinogradov inequality: for a non-principal character $\chi \Mod q$,
+\begin{equation}
+    \label{eqn:pv_basic}
+    \left|\sum_{M < n \le M + N} \chi(n)\right| \ll q^{\frac{1}{2}} \log q
+\end{equation}
+Using this, by assuming GRH, one can show that the summation over primes in the short interval $[yX, yX + X^\gamma]$ is bounded by (see \cite[eq. (5.1)]{granville2007large})
 \begin{equation}
     \label{eqn:pv}
     \left|\sum_{\substack{p \in [yX, yX + X^\gamma] \\ p\text{ prime}}} \chi_d(p)\right| \ll (yX)^{\frac{1}{2} + \epsilon}
 \end{equation}
-for non-principal $\chi_d$ and $\frac{1}{2} < \gamma < 1$ (which uses GRH \cite{granville2007large}), and Abel's summation formula, one can show that the remainder term $R_{\Phi, A}(y, X, \gamma)$ vanishes as $X \to \infty$, where $\gamma > \frac{3}{4}$ is used in the computation.
+for non-principal $\chi_d$ and $\frac{1}{2} < \gamma < 1$.
+Combined with Abel's summation formula, \eqref{eqn:pv} shows that the remainder term $R_{\Phi, A}(y, X, \gamma)$ vanishes as $X \to \infty$, where $\gamma > \frac{3}{4}$ is used in the computation.
 For the main term $M_{\Phi, A}(y, X, \gamma)$, the Poisson summation formula implies \cite[Lemma 2.11]{lee2025murmurations}
 \[
 \frac{1}{X} \sum_{\substack{d \in \bZ \\ d \text{ odd}}} \left(\sum_{\substack{a^2 \mid |d| \\ a \le A}} \mu(a)\right) \Phi\left(\frac{d}{X}\right) \left(\frac{d}{p}\right) \sqrt{p} = \frac{1}{2} \left(\frac{2}{p}\right) \sum_{\substack{0 < a \le A \\ (a, 2p) = 1}} \frac{\mu(a)}{a^2} \sum_{k \in \bZ} (-1)^k \left(\frac{k}{p}\right) \widetilde{\Phi} \left(\frac{k X}{2 a^2 p}\right),
@@ -129,6 +135,7 @@ Now, using the Polya--Vinogradov inequality \eqref{eqn:pv} again, one can show t
 \lim_{X \to \infty} M_{\Phi, A}(y, X, \gamma) = \lim_{X \to \infty} \frac{\log X}{X^\gamma} \sum_{\substack{p \in [yX, yX + X^\gamma] \\ p \text{ prime}}} \frac{1}{2} \sum_{\substack{(a,2) = 1 \\ 0 < a \le A}} \frac{\mu(a)}{a^2} \sum_{\substack{m \ge 1 \\ (m, p) = 1}} (-1)^m \widetilde{\Phi} \left(\frac{m^2 X}{2 a^2 p}\right).
 \]
 Finally, one can use the Poisson summation formula to show that the two inner sums on the right-hand side converge to a smooth function in $y = p / X$ as $X \to \infty$ (hence $A \to \infty$), and applying \eqref{eqn:short_avg} gives the desired result.
+See \cite[Section 6.2]{lee2025murmurations} for an analogous result for $\chi_d$.
 
 
 \begin{figure}[htp] 
