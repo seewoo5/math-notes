@@ -162,6 +162,7 @@ By integrating it in a suitable sense, one can also get the average over ``geome
             \quad\quad -c(1 - 2y) \sqrt{y - \frac{1}{4}} + 2c (1 - y) \sqrt{2y - 1} & \frac{1}{2} \le y \le 1
         \end{cases}
     \end{equation*}
+    where $a = \frac{4}{9}(2^{3/2} - 1)\beta, b = \frac{2}{3}\gamma, c = \frac{2}{3}\alpha$.
     for explicit constants $a, b, c$.
 \end{theorem}
 \begin{proof}
@@ -194,5 +195,12 @@ or more generally,
 \end{equation}
 for a sequence of divisors $Q \mid N$ for each $N$ appearing in the average, where $w_Q(f)$ is the eigenvalue of the Atkin--Lehner involution $W_Q$ acting on $f$.
 $Q = N$ corresponds to the Zubrilina's case (Theorem \ref{thm:zubrilina_geom}), while $Q = 1$ reduces to \eqref{eqn:martin_avg}.
-He conjectured that we do have murmurations in such general cases for ``arithmetically compatible sequences of $(N, Q)$'' \cite[Conjecture 1.8]{martin2025distribution}, and computed the murmuration density for small $y = P / X$.
+He conjectured that we do have murmurations in such general cases for ``arithmetically compatible sequences of $(N, Q)$'' \cite[Conjecture 1.8]{martin2025distribution}, and computed the murmuration density for small $y = P / X$ (See also Figure \ref{fig:martin_wo_root}).
 The analogous trace formula for $T_P \circ W_Q$ is given in \cite[Proposition 5.5]{martin2025distribution}, although the analysis would be much harder since the number of class number terms grows with $P$ (it is bounded in \eqref{eqn:sz_tf}).
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=\textwidth]{src/martin_wo_root.png}
+    \caption{Murmuration of modular forms without root number weight for $k = 2$, $N \in [1000, 2000]$ and $P < 4000$.}
+    \label{fig:martin_wo_root}
+\end{figure}
