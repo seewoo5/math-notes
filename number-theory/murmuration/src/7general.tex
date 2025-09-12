@@ -2,8 +2,8 @@
 \label{sec:general}
 
 In his letter to Sutherland and Zubrilina, Sarnak proposed a general framework of murmuration \cite{sarnak} for \emph{families} of $L$-functions.
-We explain his definition and explain its connection with Katz--Sarnak philosophy \cite{katz1999zeroes,katz2023random}.
-Also, we revisit the previous murmuration results \cite{zubrilina2025murmurations,lee2025murmurations,sawin2025murmurations} in this framework.
+We explain his definition and its connection with the Katz--Sarnak philosophy \cite{katz1999zeroes,katz2023random}.
+Also, we revisit previous murmuration results \cite{zubrilina2025murmurations,lee2025murmurations,sawin2025murmurations,wang2025murmurations} in this framework.
 See also Lowry-Duda's survey note \cite{lowry2025murmurations}.
 
 \subsection{Murmuration for families}
@@ -33,19 +33,12 @@ Most of the known murmuration results consider the function
     f(\pi) = a_\pi(p) := \sqrt{p} \lambda_\pi(p)
 \end{equation}
 for a given prime $p$, where $\lambda_\pi(p)$ is the normalized trace of Frobenius at $p$ so that the Ramanujan--Petersson conjecture says $|\lambda_\pi(p)| \le n$ for $\GL_n$ automorphic forms $\pi$.
-Furthermore, if $\scF$ is self-dual, then $a_\pi(p)$ are real and the global root number $w_\pi$ is either $1$ or $-1$.
+Furthermore, if $\scF$ is self-dual, then $a_\pi(p)$ is real and the global root number $w_\pi$ is either $1$ or $-1$.
 Then we can separate by root number and consider the averages
 \begin{equation}
     \bE_{\pi \in \scF^w} [a_\pi(p); \Phi, N]
 \end{equation}
 for $w \in \{\pm 1\}$ and $\scF^w = \{\pi \in \scF : w_\pi = w\}$.
-
-When $\pi$ is self-dual, functional equation relates $L(s, \pi)$ and $L(1-s, \pi)$ and the completed $L$-function $\Lambda(s, \pi \times \pi)$ of $\pi \times \pi$ factors as
-\[
-\Lambda(s, \pi \times \pi) = \Lambda(s, \pi, \Sym^2) \Lambda(s, \pi, \wedge^2).
-\]
-$\pi$ is said to be \emph{orthogonal} if the first factor $\Lambda(s, \pi, \Sym^2)$ has a pole at $s = 1$, and \emph{symplectic} if the second factor $\Lambda(s, \pi, \wedge^2)$ has a pole at $s = 1$.
-The symplectic case occur only if $n$ is even, and root number of orthogonal $\pi$ is always $1$.
 
 
 \begin{definition}
@@ -61,7 +54,7 @@ where the local oscillating term $R(p, N)$ satisfies\footnote{In \cite{sarnak}, 
 \end{equation}
 for $H = o(N)$.
 \end{definition}
-\eqref{eqn:sarnak_local_avg} is the local averaging over $p$ of length at least $N^\gamma$ and less than $N$.
+Equation \eqref{eqn:sarnak_local_avg} is the local averaging over $p$ of length at least $N^\gamma$ and less than $N$.
 The smaller $\gamma$ we can take, the more visible $M_\Phi$ is.
 In particular, $\gamma = 0$ means that no local averaging is needed.
 He conjectured that if
@@ -97,9 +90,28 @@ Katz--Sarnak philosophy claims that there is a measure $W_\scF$ coming from matr
 \begin{equation}
     \OLD(\scF; \phi) = \int_{\bR} \what{\phi}(x) \what{W_\scF}(x) \dd x
 \end{equation}
-for any nice text function $\phi$.
+for any nice test function $\phi$.
+We say that $\scF$ has orthogonal/symplectic/unitary symmetry type if $W_\scF$ comes from one of the orthogonal/symplectic/unitary groups.
+More precisely, let $G(N)$ be one of the ``ensembles'' in \cite[Table 1]{katz1999zeroes}, e.g. $G(N) = \mathrm{U}(N)$, the compact group of $N \times N$ unitary matrices.
+Let $\dd A$ be a Haar measure on $G(N)$, and let $e^{i \theta_1(A)}, \ldots, e^{i \theta_{N}(A)}$ be the eigenvalues of $A \in G(N)$, where $0 \le \theta_1(A) \le \cdots \le \theta_N(A) < 2\pi$.
+Let
+\[
+\Delta(A)[a, b]  := \#\{\theta(A) : e^{i\theta(A)}\text{ is an eigenvalue of }A \text{ and } \frac{\theta(A)N}{2\pi} \in [a, b]\}.
+\]
+Then we have a density function $W_G : \bR \to \bR_{\ge 0}$ such that for any interval $[a, b] \subset \bR$,
+\[
+\lim_{N \to \infty} \int_{G(N)} \Delta(A)[a, b] \dd A = \int_a^b W_G(x) \dd x.
+\]
+For example, $W_G$ for unitary/orthogonal/symplectic groups are given by
+\begin{align}
+    \label{eqn:WG}
+    W_{\mathrm{U}}(x) &= 1, \\
+    W_{\mathrm{SO(+)}(x)} &= 1 + \frac{\sin(2\pi x)}{2\pi x}, \\
+    W_{\mathrm{SO(-)}(x)} &= 1 - \frac{\sin(2\pi x)}{2\pi x} + \delta_0(x), \\
+    W_{\mathrm{Sp}}(x) &= 1 - \frac{\sin(2\pi x)}{2\pi x}.
+\end{align}
 
-One such example is the following theorem on the family of Hecke eigenforms by Iwaniec, Luo, and Sarnak \cite{iwaniec2000low}.
+One such example is the following theorem on the family of Hecke eigenforms by Iwaniec, Luo, and Sarnak \cite{iwaniec2000low}, showing that the family has orthogonal symmetry type.
 \begin{theorem}[Iwaniec--Luo--Sarnak \cite{iwaniec2000low}]
     Assume GRH. Let $\phi$ be an even Schwartz function with $\supp(\what{\phi}) \subset (-2, 2)$.
     Let $H_k^\pm$ be a set of Hecke eigenforms of weight $k$ and root number $\epsilon = \pm 1$.
@@ -107,13 +119,8 @@ One such example is the following theorem on the family of Hecke eigenforms by I
     \begin{equation}
         \OLD(H_k^\pm; \phi) = \int_{\bR} \what{\phi}(x) \what{W_{\SO(\pm)}}(x) \dd x
     \end{equation}
-    where
-    \begin{equation}
-        \label{eqn:WSO}
-        W_{\SO(+)}(x) = 1 + \frac{\sin(2\pi x)}{2 \pi x}, \quad W_{\SO(-)}(x) = 1 - \frac{\sin(2\pi x)}{2 \pi x} + \delta_0(x).
-    \end{equation}
 \end{theorem}
-There is an explicit formula relates the summation over zeros of $L$-functions and over primes, which is given by \cite[Section 4]{iwaniec2000low}
+There is an explicit formula relating the summation over zeros of $L$-functions and over primes, which is given by \cite[Section 4]{iwaniec2000low}
 \begin{align*}
     \sum_{\gamma_\pi} \phi\left(\frac{\gamma_\pi \log N}{2\pi}\right) &= C - 2 \sum_p \sum_{\nu \ge 1} \left(\sum_{j} \alpha_j(p)^\nu\right) \what{\phi}\left(\frac{\nu \log p}{\log N}\right) \frac{\log p}{p^{\nu/2} \log N}
 \end{align*}
@@ -121,13 +128,27 @@ and since $\what{\phi}$ is compactly supported, the main contribution comes from
 \begin{equation}
     \sum_{p} \frac{\lambda_\pi(p)}{p^{1/2}} \what{\phi}\left(\frac{\log p}{\log N}\right) \frac{\log p}{\log N} 
 \end{equation}
-The Fourier transforms of \eqref{eqn:WSO} are
+The Fourier transforms of \eqref{eqn:WG} are
 \begin{equation}
     \what{W_{\SO(+)}}(y) = \delta_0(y) + \frac{2 - \1_{[-1, 1]}(y)}{2}, \quad \what{W_{\SO(-)}}(y) = \delta_0(y) + \frac{\1_{[-1, 1]}(y)}{2}
 \end{equation}
 and there are obvious discontinuities at $y = \pm 1$.
+Hence, at least roughly, this suggests that the behavior of the average of $\lambda_\pi(p) / p^{1/2}$ with $p \sim N^a$ changes at $a = 1$.
+Katz--Sarnak philosophy suggests that, when $\scF$ is of symplectic type, then
+\[
+\bE_{p \sim N^a} \left[ \bE_{\pi \in \scF} [a_\pi(p); \Phi, N]\right] \to \begin{cases}
+    0 & a < 1 \\ -\frac{1}{2} & a > 1
+\end{cases}
+\]
+and when $\scF$ is of orthogonal type,
+\[
+\bE_{p \sim N^a} \left[ \bE_{\pi \in \scF^w} [a_\pi(p); \Phi, N]\right] \to \begin{cases}
+    0 & a < 1 \\ \frac{w}{2} & a > 1
+\end{cases}
+\]
+(see \cite[eq. (7')]{sarnak}).
+Each $a < 1$ and $a > 1$ corresponds to the limit of $M_\Phi(y)$ as $y \to 0$ and $y \to \infty$.
 
-\ber say something more\er
 
 
 
@@ -137,9 +158,9 @@ Let's see how the existing works on murmurations fit into the above framework.
 
 \subsubsection{Dirichlet characters}
 
-In case of Dirichlet characters \cite{lee2025murmurations}, the family of even/odd \emph{complex} Dirichlet characters are not self-dual, so it does not fit into Sarnak's framework to be precise.
-Still, we can observe and prove murmuration phenomena for such family, where the density function is much simpler compare to other families.
-Also, for each prime $P$, there are $\phi(P) = P-1$ primitive characters modulo $P$, so there are about $\frac{CN^2}{\log N}$ of primitive Dirichlet characters of prime conductors $\le N$ for some constant $C > 0$, which means that the conductor dimension of the family is $2-\epsilon$\footnote{The $\log N$ factor disappears if we consider all conductors that are not necessarily prime, and the conductor dimension becomes $2$. See \cite[Section 6]{lee2025murmurations} for the version including composite conductors.}.
+In case of Dirichlet characters \cite{lee2025murmurations}, the family of even/odd \emph{complex} Dirichlet characters are not self-dual, so it does not fit into Sarnak's framework precisely.
+Still, we can observe and prove murmuration phenomena for such a family, where the density function is much simpler compared to other families.
+Also, for each prime $P$, there are $\phi(P) = P-1$ primitive characters modulo $P$, so there are about $\frac{CN^2}{\log N}$ primitive Dirichlet characters of prime conductors $\le N$ for some constant $C > 0$, which means that the conductor dimension of the family is $2-\epsilon$\footnote{The $\log N$ factor disappears if we consider all conductors that are not necessarily prime, and the conductor dimension becomes $2$. See \cite[Section 6]{lee2025murmurations} for the version including composite conductors.}.
 In particular, \eqref{eqn:sarnak_local_thres} suggests that we don't need any further local averaging for the family, which is indeed the case of Theorem \ref{thm:lop_dirichlet}.
 Note that normalization used in Theorem \ref{thm:lop_dirichlet} is also different from the one Sarnak suggested.
 
@@ -150,23 +171,32 @@ From Theorem \ref{thm:lop_dirichlet_quad}, the Zubrilina density for the family 
     Z_{\scF}(y) = \frac{\sqrt{2}}{2} \sum_{\substack{a \ge 1 \\ \gcd(a, 2) = 1}} \frac{\mu(a)}{a^2} \sum_{m \ge 1} (-1)^m \cos\left(\frac{\pi m^2}{a^2 y} - \frac{\pi}{4}\right).
 \end{equation}
 Note that this is not an actual function but rather a distribution, since the inner sum in $m$ diverges for the most of $y$'s.
+It seems that the distribution is a certain combination of delta functions at rational points, although it is not mentioned in \cite{lee2025murmurations}.
+Figure \ref{fig:dirichlet_density} shows that it might be supported at $0, \frac{1}{5}, \frac{3}{5}, \frac{4}{5}, 1$, etc.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{src/dirichlet_density.png}%
+    \caption{Plot of $Z_{\scF}(y)$ for $y = \frac{i}{500}$ with $1 \le i \le 500$, truncated at $a < 200$ and $m \le 100$.}
+    \label{fig:dirichlet_density}
+\end{figure}
 
 \subsubsection{Modular forms}
 
 It is known that the dimension of the space of newforms of fixed weight $k$ and level $\Gamma_0(N)$ is asymptotically $\frac{45(k-1)N}{\pi^2}$ \cite[Theorem 8]{martin2005dimensions}.
 It implies that the number of newforms of fixed weight $k$ and level $\Gamma_0(M)$ for square-free $M \le N$ is asymptotically $c_k N^2$ for a constant $c_k > 0$, so the conductor dimension of the family is $2 > 1$.
-From Sarnak's suggestion \eqref{eqn:sarnak_local_thres}, we may not need any local averaging, and this is indeed the case of Theorem \ref{thm:zubrilina_modform} and \ref{thm:zubrilina_geom}.
+From Sarnak's suggestion \eqref{eqn:sarnak_local_thres}, we expect that we don't need any further local averaging, and this is indeed the case of Theorem \ref{thm:zubrilina_modform} and \ref{thm:zubrilina_geom}.
 
 Also, she studied several properties of her density function $\cM_k$.
 In particular, for a compactly supported smooth function $\Phi$ on $(0, \infty)$, she proved that the function
 \begin{equation}
     \cM_{\Phi}^k(y) := \frac{\int_0^\infty \cM_k\left(\frac{y}{u}\right) \Phi(u) u^2 \frac{\dd u}{u}}{\int_0^\infty \Phi(u) u^2 \frac{\dd u}{u}}
 \end{equation}
-is continuous in $y$, $\lim_{y \to 0^+} \cM_{\Phi}^k(y) = 0$ and
+is continuous in $y$ and
 \[
-\cM_k(y) = \frac{1}{2} + o_k(1)
+\lim_{y \to 0^+} \cM_k(y) = 0, \quad \lim_{y \to \infty}\cM_k(y) = \frac{1}{2}.
 \]
-as $y \to \infty$.
+This is compatible with Katz--Sarnak philosophy, since the family of modular forms has orthogonal symmetry type.
 
 \subsubsection{Elliptic curves}
 
@@ -175,7 +205,7 @@ In fact, it seems that the noise may still exist even if we increase the conduct
 Figure \ref{fig:elliptic_dyadic_local_avg} shows the murmuration of non-CM elliptic curves with conductor in $[2^k, 2^{k+1})$ and primes $p < 2^k$ for $k = 12, \dots, 16$ weighted by root numbers, without (resp. with) local averaging of $X^\gamma = X^{\frac{1}{2}}$-many primes.
 Smaller $\gamma$ gives less visible (purple) curves with larger noise.
 
-\begin{figure}[htp] 
+\begin{figure} 
     \begin{subfigure}{1.0\textwidth}
         \centering
         \includegraphics[width=\textwidth]{src/ec_local_4096.png}%
@@ -210,9 +240,8 @@ Smaller $\gamma$ gives less visible (purple) curves with larger noise.
 \end{figure}
 
 
-In case of \cite{sawin2025murmurations} the conductor dimension of a family of elliptic curves ordered by heights is also (non-conjecturally) $\frac{5}{6}$, so we may need further local averaging over $X^{1/6 + \epsilon}$ many primes.
-The local averaging introduced in Theorem \ref{thm:sawin-sutherland} is slightly different from Sarnak's suggestion, since they take local average over $\Theta(N_E)$-many primes, not $O(H_E^{1/6 + \epsilon})$.
-\ber Cowan \cite{cowan2024murmurations}\er
+In the case of \cite{sawin2025murmurations}, the conductor dimension of a family of elliptic curves ordered by heights is also (non-conjecturally) $\frac{5}{6}$, so we may need further local averaging over $X^{1/6 + \epsilon}$ many primes.
+The local averaging introduced in Theorem \ref{thm:sawin-sutherland} is slightly different from Sarnak's suggestion, since they take a local average over $\Theta(N_E)$-many primes, not $O(H_E^{1/6 + \epsilon})$.
 
 
 \subsection{Hecke characters of imaginary quadratic fields}
@@ -222,7 +251,7 @@ For each $D \equiv 3 \Mod{4}$, the number of Hecke characters of $\mathrm{Cl}(\b
 \[
 h(-D) = \frac{\sqrt{D}}{\pi} L(1, \chi_{-D})
 \]
-with the estimates $|D|^{-\epsilon} \ll L(1, \chi_{-D}) \ll |D|^{\epsilon}$\footnote{The lower bound is Siegel's theorem, while the upper bound follows from Polya--Vinogradov inequality.} implies that the conductor dimension of $\scF$ is $\frac{3}{2}$.
+with the estimates $|D|^{-\epsilon} \ll L(1, \chi_{-D}) \ll |D|^{\epsilon}$\footnote{The lower bound is Siegel's theorem, while the upper bound follows from the Pólya--Vinogradov inequality.} implies that the conductor dimension of $\scF$ is $\frac{3}{2}$.
 In particular, it is larger than $1$, so we may not need any local averaging from \eqref{eqn:sarnak_local_thres}.
 However, we still include it in Theorem \ref{thm:wanglocal} to remove the dependence on $p$ in the main term of Theorem \ref{thm:wang}.
 The main term
