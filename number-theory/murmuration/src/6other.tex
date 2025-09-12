@@ -1,0 +1,128 @@
+\section{Other known cases}
+\label{sec:other}
+
+At last, we mention several other families where murmuration densities have been computed.
+
+\subsection{Flying Hecke characters of imaginary quadratic fields}
+
+Wang \cite{wang2025murmurations} computed the murmuration density for (possibly trivial) Hecke characters of imaginary quadratic fields.
+Let $\scF$ be the family of nontrivial Hecke characters of $\bQ(\sqrt{-D})$ for square-free $D > 3$, $D \equiv 3 \pmod{4}$.
+For $\psi \in \scF$, let $a_\psi(p) = \sum_{\rN\frp = p} \psi(\frp)$ be the trace of Frobenius at $p$.
+The completed $L$-function $\Lambda(s, \psi)$ satisfies the functional equation $\Lambda(1 - s, \psi) = \Lambda(s, \psi)$, so the root number is always $+1$.
+
+\begin{theorem}[Wang \cite{wang2025murmurations}]
+    \label{thm:wang}
+    Then the average of normalized trace $\sqrt{p} a_\psi(p)$ over $\psi \in \scF$ with $N_\psi = |D_\psi| \in [X, X + Y]$ is
+    \begin{equation}
+        \label{eqn:wangdensity}
+        \bE_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}}[\sqrt{p} a_\psi(p)] = \frac{\sum_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}} \sqrt{p} a_\psi(p)}{\sum_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}} 1} = c(p) \sum_{1 \le m < 2 \sqrt{y}} \delta_m(p) M_m(y) + M_-(y) + \text{error}
+    \end{equation}
+    where
+    \begin{align*}
+        M_m(y) &= \frac{11\zeta(2)}{4A} \sqrt{\frac{y}{4y - m^2}} \vartheta(m), \quad \vartheta(m) = 2^{\omega(m) + \min\{v_2(m), 2\}} \prod_{\substack{q \mid y \\ q \text{ odd}}} \left(1 + \frac{2 q^2 + q - 1}{q^4 - 3q^2 - 2q + 2}\right)\\
+        M_-(y) &= -\frac{11\pi}{12 A} \sqrt{y}\\
+        c(p) &= \frac{p+1}{3p} \prod_{\ell > 2, \left(\frac{p}{\ell}\right) = 1} \left(1 - 2 \ell^{-2} - \frac{2 \ell^{-3}}{1 - \ell^{-2}}\right) \\
+        \delta_m(p) &= \begin{cases}
+            \mathds{1}_{\left(\frac{p}{q}\right) = 1} & m = q^k, \,q\text{ is odd prime} \\
+            \1_{p \equiv 3 \Mod{4}} & m = 2 \\
+            \1_{p \equiv 5 \Mod{4}} & m = 4 \\
+            \1_{p \equiv 1 \Mod{8}} & m = 2^\nu, \,\nu \ge 3
+        \end{cases}
+    \end{align*}
+\end{theorem}
+See \cite[Theorem 1]{wang2025murmurations} for details.
+These characters give rise to modular forms of weight 1 via theta series, and it is conjectured that almost all weight 1 modular forms arise this way \cite{frohlich1977algebraic}.
+Note that the main term of \eqref{eqn:wangdensity} depends on the arithmetic of $p$.
+However, the dependence on $p$ is explicit and $c(p) \delta_m(p)$ is almost periodic in $m$, a phenomenon that does not appear in other families.
+In particular, he proved that taking a local average over short intervals of $p$ removes the dependence on $p$.
+Especially, taking a local average in an interval of length $H$ so that the primes are equidistributed in $[X, X + H]$, in the sense that
+\[
+\sum_{\substack{X \le n \le X + H \\ n \equiv a \Mod{q}}} \Lambda(n) = \frac{H}{\varphi(q)} (1 + o(1))
+\]
+where $\Lambda$ is the von Mangoldt function (for example, $H = X^{\frac{1}{2} + \epsilon}$ is enough under RH), then we get the following theorem.
+
+\begin{theorem}[{Wang \cite[Theorem 2]{wang2025murmurations}}]
+    \label{thm:wanglocal}
+    Let $P \sim X^{1 + \delta_p}$ be a prime with fixed $\delta_p \ge 0$.
+    We have
+    \begin{equation}
+        \bE_{p \in [P, P + H]}\left[\bE_{\substack{\psi \in \scF \\ N_\psi \in [X, X + Y]}}\left[\sqrt{p} a_\psi(p)\right]\right] = \overline{c} \sum_{1 \le m < 2 \sqrt{y}} \overline{M}_m(y) + M_-(y) + o(1)
+    \end{equation}
+    where
+    \begin{align*}
+        \overline{c} &= \frac{1}{3} \prod_{\ell > 2} \left(1 - \ell^{-2} - \frac{\ell^{-3}}{1 - \ell^{-2}}\right),\\
+        \overline{M}_m(y) &= \frac{11\zeta(2)}{4A} \sqrt{\frac{y}{4y - m^2}} \kappa(m), \quad \kappa(m) = 2^{\1_{2 \mid m}} \prod_{\substack{q \mid m \\ q \text{ odd}}} \left(1 + \frac{q^2}{q^4 - 2q^2 - q + 1}\right)
+    \end{align*}
+    and $M_-(y)$ is the same as in Theorem \ref{thm:wang}.
+\end{theorem}
+
+
+The main ingredients of the proof are orthogonality of characters and summation of class numbers in short intervals with the class number formula, similar to Zubrilina's approach.
+
+\subsection{Flying modular forms (in weight direction)}
+
+
+Recall that Zubrilina computed the murmuration density for a \emph{fixed weight $k$ and varying level $N$}.
+In \cite{bober2023murmurations}, Bober, Booker, M. Lee, and Lowry-Duda considered the opposite case, where they fix the level $N = 1$ and vary the weight $k$.
+In this case, they considered the family of Hecke newforms whose \emph{analytic conductor}
+\[
+\cN(k) := \left(\frac{\exp \psi(k/2)}{2 \pi}\right)^2 \approx \left(\frac{k-1}{4 \pi}\right)^2 + O(1)
+\]
+are in certain range, where $\psi(x) = \Gamma'(x)/\Gamma(x)$ is the digamma function.
+
+\begin{theorem}[{Bober--Booker--Lee--Lowry-Duda \cite[Theorem 1.1]{bober2023murmurations}}]
+    \label{thm:bober-lee-ld}
+    Fix $\epsilon \in (0, \frac{1}{12})$, $\delta \in \{0, 1\}$, and a compact interval $E \subset \bR_{> 0}$ with $|E| > 0$.
+    Let $K, H > 0$ with $K^{\frac{5}{6} + \epsilon} < H < K^{1 - \epsilon}$, and let $N = \cN(K)$.
+    Then as $K \to \infty$, we have
+
+    \begin{equation}
+        \frac{
+            \sum_{\substack{p \text{ prime} \\ p / N \in E}}
+            \log p
+            \sum_{\substack{k \equiv 2 \delta \Mod{4} \\ |k - K| \le H}}
+            \sum_{f \in H_k(1)} \lambda_f(p)
+        }
+        {
+            \sum_{\substack{p \text{ prime} \\ p / N \in E}} 
+            \log p 
+            \sum_{\substack{k \equiv 2 \delta \Mod{4} \\ |k - K| \le H}} 
+            \sum_{f \in H_k(1)} 1
+        } = \frac{(-1)^\delta}{\sqrt{N}} \left(\frac{\nu(E)}{|E|} + o_{E, \epsilon}(1)\right)
+    \end{equation}
+    where
+    \begin{equation}
+        \label{eqn:nuE}
+        \nu(E) = \frac{1}{\zeta(2)} \sideset{}{^{*}}\sum_{(a/q)^{-2} \in E} \frac{\mu(q)^2}{\varphi(q)^2 \sigma(q)} \left(\frac{a}{q}\right)^{-3}
+        = \frac{1}{2} \sum_{t \in \bZ} \prod_{p \nmid t} \frac{p^2 - p - 1}{p^2 - p} \int_E \cos\left(\frac{2 \pi t}{\sqrt{y}}\right) \dd y
+    \end{equation}
+    where the summation $\sum^{*}$ indicates that the terms occuring at the endpoints of $E$ are halved. 
+\end{theorem}
+
+The main tool for the proof is the (original) Eichler--Selberg trace formula, which does not include Atkin--Lehner operators (e.g. \cite[Theorem 2.1]{child2022twist}).
+Then, they apply the class number formula to replace class numbers with the special values of Dirichlet $L$-functions at $s = 1$, which can be estimated under GRH.
+
+\subsection{Flying Maass forms}
+
+Booker, Lee, Lowry-Duda, Seymour-Howell, and Zubrilina computed murmuration densities for weight 0 and level 1 Maass forms \cite{booker2024murmurations}.
+They considered a family of Maass forms where the spectral parameter ($R$ with $\lambda = \frac{1}{4} + R^2$) goes to $\infty$, which is equivalent to the \emph{analytic conductor} 
+\[
+\cN(R) := \frac{\exp\left(\psi\left(\frac{1/2 + a + iR}{2}\right)\right) + \exp \left(\psi \left(\frac{1/2 + a - iR}{2}\right)\right)}{\pi^2} \approx \frac{R^2}{4 \pi^2} + O(1)
+\]
+going to $\infty$.
+Here $a = 0$ (resp. $a = 1$) if the Maass form is even (resp. odd).
+
+\begin{theorem}[{Booker--Lee--Lowry-Duda--Seymour-Howell--Zubrilina \cite[Theorem 1.1]{booker2024murmurations}}]
+    Let $E \subset \bR_{>0}$ be a fixed compact interval with $|E| > 0$.
+    Let $R, H > 0$ with $R^{\frac{5}{6} + \delta} < H < R^{1 - \delta}$ for some $\delta > 0$ and $N = \cN(R)$.
+    Assuming GRH for $L$-functions of Dirichlet characters and Maass forms, as $R \to \infty$ we have
+    \begin{equation}
+        \frac{\sum_{\substack{p\text{ prime} \\ p / N \in E}} \log p \sum_{|r(f) - R| \le H} \epsilon(f) a_{f}(p)}{\sum_{\substack{p\text{ prime} \\ p / N \in E}} \log p \sum_{|r(f) - R| \le H} 1} \to \frac{(-1)^\delta}{\sqrt{N}} \left(\frac{\nu(E)}{|E|} + o_{E, \epsilon}(1)\right)
+    \end{equation}
+    where $\nu(E)$ is the same as \eqref{eqn:nuE} of Theorem \ref{thm:bober-lee-ld}.
+\end{theorem}
+
+Proof uses an explicit Selberg trace formula due to Str"ombergsson in his unpublished work \cite{strombergsson}, which requires an analytic test function and cannot be compactly supported, where GRH is needed to control the cutoff error term.
+The remainder of the proof is similar to the weight aspect case of the modular forms \cite{bober2023murmurations}.
+
+

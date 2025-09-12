@@ -1,0 +1,25 @@
+\section{Introduction}
+\label{sec:intro}
+
+Murmuration is a recently discovered phenomenon in number theory, referring to striking oscillatory patterns that appear when averaging (normalized) Frobenius traces over families of $L$-functions, especially as a function of the ratio between a prime $p$ and a parameter like conductor or height.
+The phenomenon was first observed for elliptic curves by He, Lee, Oliver, and Pozdnyakov \cite{he2024murmurations} who found that the average of $a_p(E)$ over isogeny classes of elliptic curves with fixed rank and conductor in a given range exhibits a universal oscillation pattern depending only on the rank.
+Sutherland \cite{sutherlandletter} further clarified that the pattern depends on $p/N$ (with $N$ the conductor), and that similar behavior appears when averaging with root number weights, or over dyadic intervals.
+
+Subsequent works have established and computed murmuration densities in other settings, such as Dirichlet characters \cite{lee2025murmurations}, modular forms \cite{zubrilina2025murmurations,martin2025variations,martin2025distribution,bober2023murmurations}, Hecke characters of imaginary quadratic fields \cite{wang2025murmurations}, and Maass forms \cite{booker2024murmurations}.
+In some cases, the density function (distribution) can be written explicitly, while in others (notably elliptic curves) it remains mysterious or highly intricate.
+Recent progress by Sawin and Sutherland \cite{sawin2025murmurations} has established a version of murmuration for elliptic curves ordered by height, with local averaging.
+Most of the works uses trace formulas in their proofs.
+
+A general framework for murmuration was proposed by Sarnak \cite{sarnak}, relating the phenomenon to the Katz--Sarnak philosophy of low-lying zeros and symmetry types of families of $L$-functions \cite{katz1999zeroes,katz2023random}.
+The existence and form of murmuration densities are closely tied to the conductor dimension of the family and the need for local averaging.
+
+This note surveys the main results and techniques in the study of murmuration, focusing on the cases of elliptic curves, Dirichlet characters, modular forms, and related families. We also discuss the general formulation and its connection to random matrix theory.
+
+Not all existing works on murmuration are included in this note.
+For example, Cowan \cite{cowan2024murmurations} studied the murmuration using ratio conjecture, which also fit into the general framework of Sarnak \cite{sarnak}.
+
+\subsection{Plots}
+
+Most of the plots are reproduced by the author.
+Some of them have fewer data points or smaller conductor ranges than the original ones due to computational limitations.
+Readers can find the code in the GitHub repository: \url{https://github.com/seewoo5/murmuration}.

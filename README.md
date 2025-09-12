@@ -6,6 +6,7 @@ For web, use this link: [here](https://seewoo5.github.io/math-notes/)
 List of notes:
 
 * Number theory
+    * [How automorphic forms and elliptic curves fly?](https://seewoo5.github.io/math-notes/number-theory/murmuration/main.pdf)
     * [Arithmetic of Function Fields (v1.0)](https://seewoo5.github.io/math-notes/number-theory/function_field_arithmetic/main.pdf)
     * [Proof of $L(2, \chi_{-3}) \not \in \mathbb{Q}$ by Calegari-Dimitrov-Tang](https://seewoo5.github.io/math-notes/number-theory/cdt_irrationality/main.pdf)
     * [Modular forms on $G_2$](https://seewoo5.github.io/math-notes/number-theory/modular_form_G2/main.pdf)
